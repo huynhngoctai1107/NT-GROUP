@@ -30,8 +30,8 @@
                     
                     <!-- /.card-header -->
                     <div class="card-body">
-                      <a href="{{route($page=='demand'?'addDemand':'addCategory' )}}" class="button-86 m-2 text-white" role="button">Thêm {{$page=='demand'?' nhu cầu':' danh mục'}}</a>
-
+                        <x-admin.buttom.add :router="$page=='demand'?'addDemand':'addCategory'" :name="$page=='demand'?'Thêm nhu cầu':'Thêm danh mục'"></x-admin.buttom.add>
+ 
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
@@ -43,6 +43,7 @@
                                     <th>Nghiệp vụ</th>
                                 </tr>
                             </thead>
+                  
                             <tbody>
                                 
                                 <tr>

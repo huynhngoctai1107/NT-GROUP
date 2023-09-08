@@ -25,7 +25,7 @@
     @if ($page == 'demand')
         Thêm nhu cầu
     @else
-        Thêm loại bài viết
+        Thêm danh mục bài viết
     @endif
 @endsection
 {{-- endtitle --}}
@@ -44,13 +44,13 @@
 
             <textarea class="form-control" name="note" id="textAreaExample6" rows="3">{{old('note')}}</textarea>
           </div>
-         
+
           <button type="submit" class="btn btn-primary">Thêm</button>
       </form>
       </div>
   </div>
 </div>
- 
+
 @endsection
 
 {{-- javascript --}}

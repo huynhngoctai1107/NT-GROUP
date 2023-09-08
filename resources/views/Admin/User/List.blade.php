@@ -27,11 +27,10 @@
                     <div class="card-header">
                         <h3 class="card-title">  Quản lý tài khoản người dùng </h3>
                     </div>
-                    
+
                     <!-- /.card-header -->
                     <div class="card-body">
-                      <a href="{{route('addUser')}}" class="button-86 m-2 text-white" role="button">Thêm tài khoản</a>
-
+                        <x-admin.buttom.add router="addUser" name="Thêm tài khoản"></x-admin.buttom.add>
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
@@ -47,7 +46,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                
+
                                 <tr>
                                     <td>Tài khoản hệ thống</td>
                                     <td>Hình </td>
@@ -57,10 +56,10 @@
                                     <td>Nam</td>
                                     <td>0949615859</td>
                                     <td>Cần thơ</td>
-                                    <td><a href="{{route('editUser')}}">Sửa</a> / <a href="{{route('deleteUser')}}">Xóa</a></td>
+                                    <td><a href="{{ route('editUser', 1 )}}">Sửa</a> / <a href="{{route('deleteUser')}}">Xóa</a></td>
                                 </tr>
                             </tbody>
-                            
+
                         </table>
                     </div>
                     <!-- /.card-body -->
@@ -114,7 +113,7 @@
 @endsection
 <!-- HTML !-->
 
-<style> 
+<style>
 /* CSS */
 .button-86 {
   all: unset;

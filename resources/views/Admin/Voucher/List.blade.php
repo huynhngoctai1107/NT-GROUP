@@ -30,8 +30,7 @@
                     
                     <!-- /.card-header -->
                     <div class="card-body">
-                      <a href="{{route('addVoucher')}}" class="button-86 m-2 text-white" role="button">Thêm Voucher</a>
-
+                        <x-admin.buttom.add router="addVoucher" name="Thêm mã giảm giá"></x-admin.buttom.add>
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
