@@ -26,9 +26,17 @@ use App\Http\Controllers\Admin\Voucher\EditVoucherController;
 
 //Transactions
 use App\Http\Controllers\Admin\Transactions\RechargeHistoryController;
-
 //index client
 use App\Http\Controllers\Client\Index\IndexController;
+//blogList client
+use App\Http\Controllers\Client\Blog\BlogListController;
+use App\Http\Controllers\Client\Blog\PostSingleController;
+//shopList client
+use App\Http\Controllers\Client\Post\PostListController;
+//search clients
+use App\Http\Controllers\Client\Search\SearchController;
+//contact clients
+use App\Http\Controllers\Client\Contact\ContactController;
 
 Route::group(['prefix' => 'admin'], function () {
     Route::get('/', [ViewDashboardController::class, 'dashboar'])->name('dashboar');
@@ -68,10 +76,25 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/list', [RechargeHistoryController::class, 'listRechargeHistory'])->name('listRechargeHistory');
 
     });
-
-
 });
-Route::get('/', [IndexController::class, 'index'])->name('index');
+
+Route::get('/',[IndexController::class,'index'])->name('index');
+Route::group(['prefix' => '/'],function() {
+    Route::get('/',[IndexController::class,'index'])->name('index');
+    Route::group(['prefix' => 'blog'],function() {
+        Route::get('/list',[BlogListController::class,'listBlog'])->name('listBlog');
+        Route::get('/postSingle',[PostSingleController::class,'postSingle'])->name('postSingle');
+    });
+    Route::group(['prefix' => 'post'],function() {
+        Route::get('/list',[PostListController::class,'listPost'])->name('listPost');
+    });
+    Route::group(['prefix' => 'search'],function() {
+        Route::get('/list',[SearchController::class,'search'])->name('search');
+    });
+    Route::group(['prefix' => 'contact'],function() {
+        Route::get('/list',[ContactController::class,'contact'])->name('contact');
+    });
+});
 
 
 
