@@ -47,17 +47,18 @@
                             </thead>
                             <tbody>
 
-                                <tr>
-                                    <td>Tài khoản hệ thống</td>
-                                    <td>Hình </td>
-                                    <td>Huỳnh ngọc tài</td>
-                                    <td>email@gmail.com</td>
-                                    <td>1.000.000 Đ</td>
-                                    <td>Nam</td>
-                                    <td>0949615859</td>
-                                    <td>Cần thơ</td>
-                                    <td><a href="{{ route('editUser', 1 )}}">Sửa</a> / <a href="{{route('deleteUser')}}">Xóa</a></td>
-                                </tr>
+                            <tr>
+                                <td>Tài khoản hệ thống</td>
+                                <td>Hình</td>
+                                <td>Huỳnh ngọc tài</td>
+                                <td>email@gmail.com</td>
+                                <td>1.000.000 Đ</td>
+                                <td>Nam</td>
+                                <td>0949615859</td>
+                                <td>Cần thơ</td>
+                                <td><a href="{{ route('editUser')}}">Sửa</a> / <a href="{{route('deleteUser')}}">Xóa</a>
+                                </td>
+                            </tr>
                             </tbody>
 
                         </table>
