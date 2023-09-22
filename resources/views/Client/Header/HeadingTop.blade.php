@@ -30,8 +30,8 @@
             <div class="text-center text-md-end">
                 <ul class="header_list">
                     <li><a href="compare.html"><i class="ti-control-shuffle"></i><span>Compare</span></a></li>
-                    <li><a href="wishlist.html"><i class="ti-heart"></i><span>Wishlist</span></a></li>
-                    <li><a href="login.html"><i class="ti-user"></i><span>Login</span></a></li>
+                    <li><a href="{{route('history')}}"><i class="ti-heart"></i><span>Danh sách tin</span></a></li>
+                    <li><a href="{{route('login')}}"><i class="ti-user"></i><span>Đăng nhập</span></a></li>
                 </ul>
             </div>
         </div>
