@@ -9,10 +9,6 @@ use App\Http\Controllers\Admin\Demand\AddDemandController;
 use App\Http\Controllers\Admin\Demand\DeleteDemandController;
 use App\Http\Controllers\Admin\Demand\EditDemandController;
 use App\Http\Controllers\Admin\Demand\ListDemandController;
-use App\Http\Controllers\Admin\Posts\AddPostsController;
-use App\Http\Controllers\Admin\Posts\DeletePostsController;
-use App\Http\Controllers\Admin\Posts\EditPostsController;
-use App\Http\Controllers\Admin\Posts\ListPostsController;
 use App\Http\Controllers\Admin\Transactions\RechargeHistoryController;
 use App\Http\Controllers\Admin\User\AddUserController;
 use App\Http\Controllers\Admin\User\DeleteUserController;
@@ -27,32 +23,32 @@ use App\Http\Controllers\Client\Blog\PostSingleController;
 use App\Http\Controllers\Client\Contact\ContactController;
 use App\Http\Controllers\Client\Index\IndexController;
 use App\Http\Controllers\Client\Post\PostListController;
+use App\Http\Controllers\Client\Post\PostNewController;
 use App\Http\Controllers\Client\Search\SearchController;
+use App\Http\Controllers\Client\TransactionHistory\TransactionHistoryController;
+use App\Http\Controllers\Client\User\FogetPasswordController;
+use App\Http\Controllers\Client\User\LoginController;
+use App\Http\Controllers\Client\User\SignUpController;
 use Illuminate\Support\Facades\Route;
 
 //demand
+
 //category
+
 // user
 
 //voucher
 
-//admin posts-category
-
-//Transactions
-
+// blog
 
 //index client
 
-//blogList client
-//shopList client
-//search clients
-//contact clients
-
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin'], function (){
     Route::get('/', [ViewDashboardController::class, 'dashboar'])->name('dashboar');
-    Route::group(['prefix' => 'demand'], function () {
+    Route::group(['prefix' => 'demand'], function (){
         Route::get('/list', [ListDemandController::class, 'listDemand'])->name('listDemand');
-        Route::get('/delete', [DeleteDemandController::class, 'deleteDemand'])->name('deleteDemand');
+        Route::get('/delete', [DeleteDemandController::class, 'deleteDemand'])
+             ->name('deleteDemand');
         Route::get('/edit', [EditDemandController::class, 'editFormDemand'])->name('editDemand');
         Route::post('/edit', [EditDemandController::class, 'editDemand'])->name('editDemand');
         Route::get('/add', [AddDemandController::class, 'addFormDemand'])->name('addDemand');
@@ -72,9 +68,9 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/edit', [EditUserController::class, 'editFormUser'])->name('editUser');
         Route::post('/edit', [EditUserController::class, 'editUser'])->name('editUser');
         Route::get('/add',[AddUserController::class,'addFormUser'])->name('addUser');
-        Route::post('/add',[AddUserController::class,'addUser'])->name('addUser');
+        Route::post('/add', [AddUserController::class, 'addUser'])->name('addUser');
     });
-    Route::group(['prefix' => 'voucher'],function() {
+    Route::group(['prefix' => 'voucher'], function (){
         Route::get('/list', [ListVoucherController::class, 'listVoucher'])->name('listVoucher');
         Route::get('/delete', [DeleteVoucherController::class, 'deleteVoucher'])
              ->name('deleteVoucher');
@@ -88,28 +84,28 @@ Route::group(['prefix' => 'admin'], function () {
              ->name('listRechargeHistory');
 
     });
-    Route::group(['prefix' => 'posts'], function (){
-        Route::get('/list', [ListPostsController::class, 'listposts'])->name('listposts');
-        Route::get('/delete', [DeletePostsController::class, 'deletePosts'])->name('deletePosts');
-        Route::get('/edit', [EditPostsController::class, 'editFormPosts'])->name('editPosts');
-        Route::post('/edit', [EditPostsController::class, 'editPosts'])->name('editPosts');
-        Route::get('/add', [AddPostsController::class, 'addFormPosts'])->name('addPosts');
-        Route::post('/add', [AddPostsController::class, 'addPosts'])->name('addPosts');
-    });
+
+
 });
 
-Route::group(['prefix' => '/'],function() {
-    Route::get('/',[IndexController::class,'index'])->name('index');
+Route::group(['prefix' => '/'],function(){
+    Route::get('/', [IndexController::class, 'index'])->name('index');
+    Route::get('login', [LoginController::class, 'login'])->name('login');
+    Route::get('signup', [SignUpController::class, 'signup'])->name('signup');
+    Route::get('fogetpassword', [FogetPasswordController::class, 'fogetpassword'])
+         ->name('fogetpassword');
+    Route::get('history', [TransactionHistoryController::class, 'history'])->name('history');
+    Route::get('postnew', [PostNewController::class, 'postnew'])->name('postnew');
 
-    Route::group(['prefix' => 'blog'],function() {
-        Route::get('/list',[BlogListController::class,'listBlog'])->name('listBlog');
-        Route::get('/postSingle',[PostSingleController::class,'postSingle'])->name('postSingle');
+    Route::group(['prefix' => 'blog'], function (){
+        Route::get('/list', [BlogListController::class, 'listBlog'])->name('listBlog');
+        Route::get('/postSingle', [PostSingleController::class, 'postSingle'])->name('postSingle');
     });
-    Route::group(['prefix' => 'post'],function() {
-        Route::get('/list',[PostListController::class,'listPost'])->name('listPost');
+    Route::group(['prefix' => 'post'], function (){
+        Route::get('/list', [PostListController::class, 'listPost'])->name('listPost');
     });
-    Route::group(['prefix' => 'search'],function() {
-        Route::get('/list',[SearchController::class,'search'])->name('search');
+    Route::group(['prefix' => 'search'], function (){
+        Route::get('/list', [SearchController::class, 'search'])->name('search');
     });
     Route::group(['prefix' => 'contact'],function() {
         Route::get('/list',[ContactController::class,'contact'])->name('contact');

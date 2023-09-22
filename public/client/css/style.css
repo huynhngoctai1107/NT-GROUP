@@ -41,26 +41,48 @@ html, body {
     -webkit-font-smoothing: antialiased;
     -moz-font-smoothing: antialiased;
     -o-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-smoothing: antialiased;
 }
 
 body {
-    background: #ffffff none repeat scroll 0 0;
-    color: #687188;
-    font-family: 'Poppins', sans-serif;
-    font-size: 16px;
+	background: #fff none repeat scroll 0 0;
+	color: #687188;
+	font-family: 'Poppins', sans-serif;
+	font-size: 16px;
+}
+.security-code {
+	display: inline-block;
+	border-radius: 10px;
+	height: 64px;
+	line-height: 64px;
+	padding: 0 40px;
+	font-size: 24px;
+	font-weight: bold;
+	background: #bce3c9;
+}
+.text-new {
+	color: #55bb90;
+}
+.text-hot {
+	color: #f74b81;
+}
+.text-sale {
+	color: #67bcee;
+}
+.text-best {
+	color: #f59758;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    color: #292b2c;
-    font-family: 'Roboto';
+	color: #292b2c;
+	font-family: 'Roboto';
 }
 
 p {
-    color: #687188;
-    line-height: 28px;
-    margin-bottom: 25px;
+	color: #687188;
+	line-height: 28px;
+	margin-bottom: 25px;
 }
 
 a {
@@ -5095,7 +5117,6 @@ footer .widget_title {
     top: 0;
     bottom: 0;
     background-color: #FF324D;
-    z-index: ;
     transition: all 0.5s ease-in-out;
     -moz-transform: scale(0);
     -webkit-transform: scale(0);
