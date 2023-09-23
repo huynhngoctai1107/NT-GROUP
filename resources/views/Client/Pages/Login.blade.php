@@ -66,7 +66,7 @@
                                                 <label class="form-check-label" for="exampleCheckbox1"><span>Nhớ tôi</span></label>
                                             </div>
                                         </div>
-                                        <a href="{{route('fogetpassword')}}">Quên mật khẩu?</a>
+                                        <a href="{{route('fogetPassword')}}">Quên mật khẩu?</a>
                                     </div>
                                     <div class="form-group mb-3">
                                         <button type="submit" class="btn btn-fill-out btn-block" name="login">Đăng nhập</button>
