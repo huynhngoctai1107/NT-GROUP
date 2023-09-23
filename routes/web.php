@@ -1,42 +1,52 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\Dashboard\ViewDashboardController;
-//demand
-use App\Http\Controllers\Admin\Demand\ListDemandController;
-use App\Http\Controllers\Admin\Demand\AddDemandController;
-use App\Http\Controllers\Admin\Demand\DeleteDemandController;
-use App\Http\Controllers\Admin\Demand\EditDemandController;
-//category
-use App\Http\Controllers\Admin\Category\ListCategoryController;
 use App\Http\Controllers\Admin\Category\AddCategoryController;
 use App\Http\Controllers\Admin\Category\DeleteCategoryController;
 use App\Http\Controllers\Admin\Category\EditCategoryController;
-// user
-use App\Http\Controllers\Admin\User\ListUserController;
+use App\Http\Controllers\Admin\Category\ListCategoryController;
+use App\Http\Controllers\Admin\Dashboard\ViewDashboardController;
+use App\Http\Controllers\Admin\Demand\AddDemandController;
+use App\Http\Controllers\Admin\Demand\DeleteDemandController;
+use App\Http\Controllers\Admin\Demand\EditDemandController;
+use App\Http\Controllers\Admin\Demand\ListDemandController;
+use App\Http\Controllers\Admin\Posts\AddPostsController;
+use App\Http\Controllers\Admin\Posts\DeletePostsController;
+use App\Http\Controllers\Admin\Posts\EditPostsController;
+use App\Http\Controllers\Admin\Posts\ListPostsController;
+use App\Http\Controllers\Admin\Transactions\RechargeHistoryController;
 use App\Http\Controllers\Admin\User\AddUserController;
 use App\Http\Controllers\Admin\User\DeleteUserController;
 use App\Http\Controllers\Admin\User\EditUserController;
-
-//voucher
-use App\Http\Controllers\Admin\Voucher\ListVoucherController;
+use App\Http\Controllers\Admin\User\ListUserController;
 use App\Http\Controllers\Admin\Voucher\AddVoucherController;
 use App\Http\Controllers\Admin\Voucher\DeleteVoucherController;
 use App\Http\Controllers\Admin\Voucher\EditVoucherController;
-
-//Transactions
-use App\Http\Controllers\Admin\Transactions\RechargeHistoryController;
-//index client
-use App\Http\Controllers\Client\Index\IndexController;
-//blogList client
+use App\Http\Controllers\Admin\Voucher\ListVoucherController;
 use App\Http\Controllers\Client\Blog\BlogListController;
 use App\Http\Controllers\Client\Blog\PostSingleController;
-//shopList client
-use App\Http\Controllers\Client\Post\PostListController;
-//search clients
-use App\Http\Controllers\Client\Search\SearchController;
-//contact clients
 use App\Http\Controllers\Client\Contact\ContactController;
+use App\Http\Controllers\Client\Index\IndexController;
+use App\Http\Controllers\Client\Post\PostListController;
+use App\Http\Controllers\Client\Search\SearchController;
+use Illuminate\Support\Facades\Route;
+
+//demand
+//category
+// user
+
+//voucher
+
+//admin posts-category
+
+//Transactions
+
+
+//index client
+
+//blogList client
+//shopList client
+//search clients
+//contact clients
 
 Route::group(['prefix' => 'admin'], function () {
     Route::get('/', [ViewDashboardController::class, 'dashboar'])->name('dashboar');
@@ -65,22 +75,32 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/add',[AddUserController::class,'addUser'])->name('addUser');
     });
     Route::group(['prefix' => 'voucher'],function() {
-        Route::get('/list',[ListVoucherController::class,'listVoucher'])->name('listVoucher');
-        Route::get('/delete',[DeleteVoucherController::class,'deleteVoucher'])->name('deleteVoucher');
-        Route::get('/edit',[EditVoucherController::class,'editFormVoucher'])->name('editVoucher');
-        Route::post('/edit',[EditVoucherController::class,'editVoucher'])->name('editVoucher');
+        Route::get('/list', [ListVoucherController::class, 'listVoucher'])->name('listVoucher');
+        Route::get('/delete', [DeleteVoucherController::class, 'deleteVoucher'])
+             ->name('deleteVoucher');
+        Route::get('/edit', [EditVoucherController::class, 'editFormVoucher'])->name('editVoucher');
+        Route::post('/edit', [EditVoucherController::class, 'editVoucher'])->name('editVoucher');
         Route::get('/add', [AddVoucherController::class, 'addFormVoucher'])->name('addVoucher');
         Route::post('/add', [AddVoucherController::class, 'addVoucher'])->name('addVoucher');
     });
-    Route::group(['prefix' => 'transactions'], function () {
-        Route::get('/list', [RechargeHistoryController::class, 'listRechargeHistory'])->name('listRechargeHistory');
+    Route::group(['prefix' => 'transactions'], function (){
+        Route::get('/list', [RechargeHistoryController::class, 'listRechargeHistory'])
+             ->name('listRechargeHistory');
 
+    });
+    Route::group(['prefix' => 'posts'], function (){
+        Route::get('/list', [ListPostsController::class, 'listposts'])->name('listposts');
+        Route::get('/delete', [DeletePostsController::class, 'deletePosts'])->name('deletePosts');
+        Route::get('/edit', [EditPostsController::class, 'editFormPosts'])->name('editPosts');
+        Route::post('/edit', [EditPostsController::class, 'editPosts'])->name('editPosts');
+        Route::get('/add', [AddPostsController::class, 'addFormPosts'])->name('addPosts');
+        Route::post('/add', [AddPostsController::class, 'addPosts'])->name('addPosts');
     });
 });
 
-Route::get('/',[IndexController::class,'index'])->name('index');
 Route::group(['prefix' => '/'],function() {
     Route::get('/',[IndexController::class,'index'])->name('index');
+
     Route::group(['prefix' => 'blog'],function() {
         Route::get('/list',[BlogListController::class,'listBlog'])->name('listBlog');
         Route::get('/postSingle',[PostSingleController::class,'postSingle'])->name('postSingle');
