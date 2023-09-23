@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class FogetPasswordController extends Controller{
 
-    function fogetpassword(){
+    function fogetPassword(){
         return view('client.pages.fogetpassword');
     }
 }
