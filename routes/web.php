@@ -18,9 +18,6 @@ use App\Http\Controllers\Admin\Voucher\AddVoucherController;
 use App\Http\Controllers\Admin\Voucher\DeleteVoucherController;
 use App\Http\Controllers\Admin\Voucher\EditVoucherController;
 use App\Http\Controllers\Admin\Voucher\ListVoucherController;
-use App\Http\Controllers\Client\Blog\BlogListController;
-use App\Http\Controllers\Client\Blog\PostSingleController;
-use App\Http\Controllers\Client\Contact\ContactController;
 use App\Http\Controllers\Client\Index\IndexController;
 use App\Http\Controllers\Client\Post\PostListController;
 use App\Http\Controllers\Client\Post\PostNewController;
@@ -39,9 +36,10 @@ use Illuminate\Support\Facades\Route;
 
 //voucher
 
-// blog
+//Transactions
 
 //index client
+
 
 Route::group(['prefix' => 'admin'], function (){
     Route::get('/', [ViewDashboardController::class, 'dashboar'])->name('dashboar');
@@ -54,20 +52,20 @@ Route::group(['prefix' => 'admin'], function (){
         Route::get('/add', [AddDemandController::class, 'addFormDemand'])->name('addDemand');
         Route::post('/add', [AddDemandController::class, 'addDemand'])->name('addDemand');
     });
-    Route::group(['prefix' => 'category'],function() {
+    Route::group(['prefix' => 'category'], function (){
         Route::get('/list',[ListCategoryController::class,'listCategory'])->name('listCategory');
         Route::get('/delete',[DeleteCategoryController::class,'deleteCategory'])->name('deleteCategory');
         Route::get('/edit',[EditCategoryController::class,'editFormCategory'])->name('editCategory');
         Route::post('/edit',[EditCategoryController::class,'editCategory'])->name('editCategory');
         Route::get('/add',[AddCategoryController::class,'addFormCategory'])->name('addCategory');
-        Route::post('/add',[AddCategoryController::class,'addCategory'])->name('addCategory');
+        Route::post('/add', [AddCategoryController::class, 'addCategory'])->name('addCategory');
     });
-    Route::group(['prefix' => 'user'],function() {
-        Route::get('/list',[ListUserController::class,'listUser'])->name('listUser');
+    Route::group(['prefix' => 'user'], function (){
+        Route::get('/list', [ListUserController::class, 'listUser'])->name('listUser');
         Route::get('/delete', [DeleteUserController::class, 'deleteUser'])->name('deleteUser');
         Route::get('/edit', [EditUserController::class, 'editFormUser'])->name('editUser');
         Route::post('/edit', [EditUserController::class, 'editUser'])->name('editUser');
-        Route::get('/add',[AddUserController::class,'addFormUser'])->name('addUser');
+        Route::get('/add', [AddUserController::class, 'addFormUser'])->name('addUser');
         Route::post('/add', [AddUserController::class, 'addUser'])->name('addUser');
     });
     Route::group(['prefix' => 'voucher'], function (){
@@ -88,20 +86,23 @@ Route::group(['prefix' => 'admin'], function (){
 
 });
 
+
 Route::group(['prefix' => '/'],function(){
     Route::get('/', [IndexController::class, 'index'])->name('index');
     Route::get('login', [LoginController::class, 'login'])->name('login');
     Route::get('signup', [SignUpController::class, 'signup'])->name('signup');
-    Route::get('fogetpassword', [FogetPasswordController::class, 'fogetpassword'])
-         ->name('fogetpassword');
+    Route::get('foget-password', [FogetPasswordController::class, 'fogetPassword'])
+         ->name('fogetPassword');
     Route::get('history', [TransactionHistoryController::class, 'history'])->name('history');
-    Route::get('postnew', [PostNewController::class, 'postnew'])->name('postnew');
 
     Route::group(['prefix' => 'blog'], function (){
         Route::get('/list', [BlogListController::class, 'listBlog'])->name('listBlog');
         Route::get('/postSingle', [PostSingleController::class, 'postSingle'])->name('postSingle');
     });
     Route::group(['prefix' => 'post'], function (){
+        Route::get('/new', [PostNewController::class, 'postNew'])->name('postNew');
+        Route::get('/vip', [PostNewController::class, 'postList'])->name('postList');
+        Route::get('/delete', [PostNewController::class, 'postDelete'])->name('postDelete');
         Route::get('/list', [PostListController::class, 'listPost'])->name('listPost');
     });
     Route::group(['prefix' => 'search'], function (){
@@ -111,8 +112,6 @@ Route::group(['prefix' => '/'],function(){
         Route::get('/list',[ContactController::class,'contact'])->name('contact');
     });
 });
-
-
 
 
 
