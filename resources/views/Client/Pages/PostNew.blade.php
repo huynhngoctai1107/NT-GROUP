@@ -3,96 +3,81 @@
 @section('title')
     Bất động sản - NT GROUP
 @endsection
-
+@php
+    $title = "Tin đã đăng";
+@endphp
 @section('main')
-<!-- START SECTION BREADCRUMB -->
-<div class="breadcrumb_section bg_gray page-title-mini  m-0">
-    <div class="container"><!-- STRART CONTAINER -->
-        <div class="row align-items-center">
-            <div class="col-md-6">
-                <div class="page-title">
-                    <h1>Lịch sử giao dịch</h1>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <ol class="breadcrumb justify-content-md-end">
-                    <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
-                    <li class="breadcrumb-item"><a href="#">Trang</a></li>
-                    <li class="breadcrumb-item active">Lịch sử giao dịch</li>
-                </ol>
-            </div>
-        </div>
-    </div><!-- END CONTAINER-->
-</div>
-<!-- END SECTION BREADCRUMB -->
 
-<!-- START MAIN CONTENT -->
-<div class="main_content">
+    <div class="main_content">
+        <!-- START SECTION BREADCRUMB -->
+        <x-client.header.posttitle :title="$title"></x-client.header.posttitle>
+        <div class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row align-items-center">
+                            <div class="col-12 mb-0">
+                                <div class="product_header">
+                                    <div class="product_header_left">
+                                        <div class="custom_select">
+                                            <div class="dropdown">
+                                                <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    Tất cả
+                                                </button>
+                                                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+                                                    <li>
+                                                        <a class="dropdown-item active" href="{{route('postNew')}}">Tin đã đăng</a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="dropdown-item" href="{{route('postList')}}">Tin mua vip</a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="dropdown-item" href="{{route('postDelete')}}">Tin đã xóa</a>
+                                                    </li>
 
-    <!-- START SECTION SHOP -->
-    <div class="section">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="table-responsive shop_cart_table">
-                        <table class="table">
-                            <thead>
-                            <tr>
-                                <th class="product-thumbnail">#</th>
-                                <th class="product-name text-center">Loại</th>
-                                <th class="product-price">Số tiền</th>
-                                <th class="product-quantity">Số dư</th>
-                                <th class="product-subtotal">Nội dung</th>
-                                <th class="product-remove">Thời gian</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td class="product-thumbnail">1</td>
-                                <td class="product-price" data-title="Loại">Mua hàng</td>
-                                <td class="product-price" data-title="Số tiền"><p class="text-danger mt-4">-100.000đ</p></td>
-                                <td class="product-subtotal" data-title="Số dư">2.000đ</td>
-                                <td class="product-quantity" data-title="Nội dung">Mua bài đăng Vip/thường</td>
-                                <td class="product-remove" data-title="Thời gian">Ngày 17/7/2023</td>
-                            </tr>
-                            <tr>
-                                <td class="product-thumbnail">2</td>
-                                <td class="product-price" data-title="Loại">Mua hàng</td>
-                                <td class="product-price" data-title="Số tiền"><p class="text-success mt-4">-100.000đ</p></td>
-                                <td class="product-subtotal" data-title="Số dư">2.000đ</td>
-                                <td class="product-quantity" data-title="Nội dung">Mua bài đăng Vip/thường</td>
-                                <td class="product-remove" data-title="Thời gian">Ngày 17/7/2023</td>
-                            </tr>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product_header_right">
+                                        <div class="products_view">
+                                            <a href="javascript:Void(0);" class="shorting_icon grid"><i class="ti-view-grid"></i></a>
+                                            <a href="javascript:Void(0);" class="shorting_icon list active"><i class="ti-layout-list-thumb"></i></a>
+                                        </div>
 
 
-                            </tbody>
-
-                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <x-client.pages.postlist></x-client.pages.postlist>
+                        </div>
                     </div>
                 </div>
             </div>
-
         </div>
+
+        <!-- END SECTION SHOP -->
+
+        <!-- START SECTION SUBSCRIBE NEWSLETTER -->
+        <div class="section bg_default mb-0 small_pt small_pb">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <div class="heading_s1 mb-0 heading_light">
+                            <h3>Subscribe Our Newsletter</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="newsletter_form">
+                            <form>
+                                <input type="text" required="" class="form-control rounded-0" placeholder="Enter Email Address">
+                                <button type="submit" class="btn btn-dark rounded-0" name="submit" value="Submit">Subscribe</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- START SECTION SUBSCRIBE NEWSLETTER -->
     </div>
-    <!-- START SECTION SUBSCRIBE NEWSLETTER -->
-    <div class="section bg_default small_pt small_pb">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <div class="heading_s1 mb-md-0 heading_light">
-                        <h3>Subscribe Our Newsletter</h3>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="newsletter_form">
-                        <form>
-                            <input type="text" required="" class="form-control rounded-0" placeholder="Enter Email Address">
-                            <button type="submit" class="btn btn-dark rounded-0" name="submit" value="Submit">Subscribe</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 @endsection
