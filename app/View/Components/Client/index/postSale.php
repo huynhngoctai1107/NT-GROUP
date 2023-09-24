@@ -1,27 +1,27 @@
 <?php
 
-namespace App\View\Components\Clients\blog;
+namespace App\View\Components\Client\index;
 
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class blogList extends Component
-{
+class postSale extends Component{
+
     /**
      * Create a new component instance.
      */
     public $name;
     public $img;
-    public $date;
-    public $description;
+    public $address;
+    public $price;
 
-    public function __construct($name, $img, $date, $description)
+    public function __construct($name, $img, $address, $price)
     {
         $this->name= $name ;
         $this->img= $img ;
-        $this->date= $date ;
-        $this->description= $description ;
+        $this->address= $address ;
+        $this->price= $price ;
     }
 
     /**
@@ -29,6 +29,6 @@ class blogList extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.clients.blog.blog-list');
+        return view('components.client.index.post-sale');
     }
 }

@@ -40,6 +40,7 @@
 <link rel="stylesheet" href="{{asset('client/css/style.css')}}">
 <link rel="stylesheet" href="{{asset('client/css/responsive.css')}}">
     @stack('styles')
+    @stack('css')
 
 </head>
 

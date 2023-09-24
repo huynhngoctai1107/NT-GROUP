@@ -1,13 +1,13 @@
 <?php
 
-namespace App\View\Components\Clients\index;
+namespace App\View\Components\Client\index;
 
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class post extends Component
-{
+class post extends Component{
+
     /**
      * Create a new component instance.
      */
@@ -29,6 +29,6 @@ class post extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.clients.index.post');
+        return view('components.client.index.post');
     }
 }

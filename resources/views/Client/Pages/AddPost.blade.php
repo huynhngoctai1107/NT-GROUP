@@ -3,6 +3,9 @@
 @section('title')
     Bất động sản - NT GROUP
 @endsection
+@section('css')
+    <link rel="stylesheet" href="{{asset('client/css/style_blog3.css')}}">
+@endsection
 @section('main')
 
     <!-- START SECTION BREADCRUMB -->
