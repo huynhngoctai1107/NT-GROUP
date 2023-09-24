@@ -194,10 +194,9 @@
                                         $address = '170 hqv';
                                         $price = '200';
                                     @endphp
-                                    <x-clients.index.post :name="$name" :img="$img" :address="$address"
-                                                          :price="$price">
+                                    <x-client.index.post :name="$name" :img="$img" :address="$address" :price="$price">
 
-                                    </x-clients.index.post>
+                                    </x-client.index.post>
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="sellers" role="tabpanel" aria-labelledby="sellers-tab">
@@ -621,10 +620,9 @@
                             </div>
                             <div class="row">
                                 <div class="box">
-                                    <x-clients.index.postSale :name="$name" :img="$img" :address="$address"
-                                                              :price="$price">
+                                    <x-client.index.postSale :name="$name" :img="$img" :address="$address" :price="$price">
 
-                                    </x-clients.index.postSale>
+                                    </x-client.index.postSale>
                                 </div>
                             </div>
                         </div>
