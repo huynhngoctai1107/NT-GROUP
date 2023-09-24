@@ -1,4 +1,4 @@
-@extends('Client.Layout.master')
+@extends('Client.Layout.Master')
 
 @section('title')
     Bất động sản - NT GROUP
@@ -57,8 +57,7 @@
                     </div>
                     <div class="col">
                         <label for="text" class="form-label"><h6>Loại Bất Động Sản *</h6></label>
-                        <input type="text" class="form-control" placeholder="Loại Bất Động Sản"
-                               aria-label="Loại Bất Động Sản">
+                        <input type="text" class="form-control" placeholder="Loại Bất Động Sản" aria-label="Loại Bất Động Sản">
                     </div>
                 </div>
 
@@ -103,8 +102,7 @@
                         <label for="link" class="form-label">
                             <h6>Link YouTube</h6>
                         </label>
-                        <input type="text" pattern="https?://([A-Za-z0-9.-_.!~*'()?:&=+$,;])+"
-                               placeholder="Link youtube" class="form-control" id="youtube_link">
+                        <input type="text" pattern="https?://([A-Za-z0-9.-_.!~*'()?:&=+$,;])+" placeholder="Link youtube" class="form-control" id="youtube_link">
                     </div>
                 </div>
 
@@ -119,8 +117,8 @@
                     <div class="file-upload-content">
                         <img class="file-upload-image" src="#" alt="your image"/>
                         <div class="image-title-wrap">
-                            <button type="button" onclick="removeUpload()" class="remove-image">Remove <span
-                                    class="image-title">Uploaded Image</span></button>
+                            <button type="button" onclick="removeUpload()" class="remove-image">Remove
+                                <span class="image-title">Uploaded Image</span></button>
                         </div>
                     </div>
                 </div>
@@ -207,8 +205,7 @@
 
             <p class="text-center">
                 <br/>
-                <button type="button" class="btn btn-warning"
-                        style="color: white; font-weight: bold; font-family: 'Times New Roman', Times, serif;">Đăng Tin
+                <button type="button" class="btn btn-warning" style="color: white; font-weight: bold; font-family: 'Times New Roman', Times, serif;">Đăng Tin
                 </button>
             </p>
         </div>

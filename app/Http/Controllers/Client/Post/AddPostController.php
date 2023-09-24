@@ -7,6 +7,6 @@ use App\Http\Controllers\Controller;
 class AddPostController extends Controller
 {
     function post(){
-        return view('client.post.post');
+        return view('client.pages.addpost');
     }
 }
