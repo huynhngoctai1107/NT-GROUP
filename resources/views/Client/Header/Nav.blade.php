@@ -22,8 +22,7 @@
                     <img class="logo_light" src="{{asset('client/images/logo_light.png')}}" alt="logo"/>
                     <img class="logo_dark" src="{{asset('client/images/logo_dark.png')}}" alt="logo"/>
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent" aria-expanded="false">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-expanded="false">
                     <span class="ion-android-menu"></span>
                 </button>
                 <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
@@ -46,9 +45,11 @@
                                     <li>
                                         <a class="dropdown-item nav-link nav_item" href="signup.html">Vật liệu xây dựng</a>
                                     </li>
+
                                 </ul>
                             </div>
                         </li>
+
                         <li class="dropdown">
                             <a class="dropdown-toggle nav-link" href="#" data-bs-toggle="dropdown">Nhà đất cần thơ</a>
                             <div class="dropdown-menu">
