@@ -10,7 +10,7 @@
                 <ol class="breadcrumb justify-content-md-end">
                     <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
                     <li class="breadcrumb-item"><a href="#">Trang</a></li>
-                    <li class="breadcrumb-item active">Tin đã đăng</li>
+                    <li class="breadcrumb-item active">{{$title}}</li>
                 </ol>
             </div>
         </div>

@@ -5,7 +5,7 @@
     </td>
     <td class="product-price" data-title="Email">gmail@gmail.com</td>
     <td class="product-price" data-title="Điện thoại">0943500326</td>
-    <td class="product-price" data-title="Số tiền"><p class="text-danger mt-4">-1.000.000VND</p></td>
+    <td class="product-price" data-title="Số tiền"><p class="text-danger">-1.000.000VND</p></td>
     <td class="product-subtotal" data-title="Số dư">500.000VND</td>
     <td class="product-quantity" data-title="Nội dung">Mua bài đăng Vip/thường</td>
     <td class="product-remove" data-title="Thời gian">Ngày 17/7/2023</td>
@@ -17,7 +17,7 @@
     </td>
     <td class="product-price" data-title="Email">gmail@gmail.com</td>
     <td class="product-price" data-title="Điện thoại">0943500326</td>
-    <td class="product-price" data-title="Số tiền"><p class="text-success mt-4">-1.000.000VND</p></td>
+    <td class="product-price" data-title="Số tiền"><p class="text-success">-1.000.000VND</p></td>
     <td class="product-subtotal" data-title="Số dư">500.000VND</td>
     <td class="product-quantity" data-title="Nội dung">Mua bài đăng Vip/thường</td>
     <td class="product-remove" data-title="Thời gian">Ngày 17/7/2023</td>

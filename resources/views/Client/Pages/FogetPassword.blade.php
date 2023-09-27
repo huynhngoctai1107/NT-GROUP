@@ -3,29 +3,15 @@
 @section('title')
     Bất động sản - NT GROUP
 @endsection
+@php
+    $title = "Quên mật khẩu";
+@endphp
 
 @section('main')
 
     <div class="main_content">
-        <div class="breadcrumb_section bg_gray page-title-mini">
-            <div class="container">
-                <!-- STRART CONTAINER -->
-                <div class="row align-items-center">
-                    <div class="col-md-6">
-                        <div class="page-title">
-                            <h1>Quên mật khẩu</h1>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <ol class="breadcrumb justify-content-md-end">
-                            <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
-                            <li class="breadcrumb-item"><a href="#">Trang</a></li>
-                            <li class="breadcrumb-item active"><a href="#">Quên mật khẩu</a>/li>
-                        </ol>
-                    </div>
-                </div>
-            </div><!-- END CONTAINER-->
-        </div>
+        <x-client.header.posttitle :title="$title"></x-client.header.posttitle>
+
         <!-- START LOGIN SECTION -->
         <div class="login_register_wrap section">
             <div class="container">
@@ -89,26 +75,7 @@
         <!-- END LOGIN SECTION -->
 
         <!-- START SECTION SUBSCRIBE NEWSLETTER -->
-        <div class="section bg_default small_pt small_pb">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-md-6">
-                        <div class="heading_s1 mb-md-0 heading_light">
-                            <h3>Subscribe Our Newsletter</h3>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="newsletter_form">
-                            <form>
-                                <input type="text" required="" class="form-control rounded-0" placeholder="Enter Email Address">
-                                <button type="submit" class="btn btn-dark rounded-0" name="submit" value="Submit">Subscribe</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- START SECTION SUBSCRIBE NEWSLETTER -->
+        <x-client.pages.subscribe></x-client.pages.subscribe>
 
     </div>
     <!-- END MAIN CONTENT -->
