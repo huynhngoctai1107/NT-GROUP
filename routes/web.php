@@ -28,6 +28,7 @@ use App\Http\Controllers\Client\TransactionHistory\TransactionHistoryController;
 use App\Http\Controllers\Client\User\FogetPasswordController;
 use App\Http\Controllers\Client\User\LoginController;
 use App\Http\Controllers\Client\User\SignUpController;
+use App\Http\Controllers\Client\About\AboutController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -81,9 +82,8 @@ Route::group(['prefix' => '/'], function (){
     Route::get('login', [LoginController::class, 'login'])->name('login');
     Route::get('signup', [SignUpController::class, 'signup'])->name('signup');
     Route::get('account', [AccountController::class, 'account'])->name('account');
-    Route::get('foget-password', [FogetPasswordController::class, 'fogetPassword'])
-         ->name('fogetPassword');
-    Route::get('history', [TransactionHistoryController::class, 'history'])->name('history');
+    Route::get('foget-password', [FogetPasswordController::class, 'fogetPassword'])->name('fogetPassword');
+    Route::get('about', [AboutController::class, 'about'])->name('about');
 
     Route::group(['prefix' => 'blog'], function (){
         Route::get('/list', [BlogListController::class, 'listBlog'])->name('listBlog');
