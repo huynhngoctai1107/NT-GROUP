@@ -11,9 +11,11 @@
     <div class="main_content">
         <!-- START SECTION BREADCRUMB -->
         <x-client.header.posttitle :title="$title"></x-client.header.posttitle>
+
         <div class="section">
             <div class="container">
-                <div class="row">
+                <x-admin.buttom.add router="postAdd" name="Thêm bài viết" ></x-admin.buttom.add>
+                <div class="row mt-4">
                     <div class="col-12">
                         <div class="row align-items-center">
                             <div class="col-12 mb-0">

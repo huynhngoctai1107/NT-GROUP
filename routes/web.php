@@ -104,10 +104,7 @@ Route::group(['prefix' => '/'], function (){
     });
 });
 
-// Client Post and My account
-Route::get('/Post',[AddPostController::class,'post'])->name('post');
 
-Route::get('/Account',[AccountController::class,'account'])->name('account');
 
 
 

@@ -6,11 +6,7 @@
         <span></span>
     </div>
 </div>
-<div class="modal fade subscribe_popup" id="onload-popup" tabindex="-1" role="dialog" aria-hidden="true">
 
-    @include('client.header.headingform')
-
-</div>
 <header class="header_wrap fixed-top header_with_topbar">
     <div class="top-header">
         @include('client.header.headingtop')

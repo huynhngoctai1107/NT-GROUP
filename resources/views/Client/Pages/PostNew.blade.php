@@ -13,9 +13,13 @@
         <x-client.header.posttitle :title="$title"></x-client.header.posttitle>
         <div class="section">
             <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="row align-items-center">
+                <x-admin.buttom.add router="postAdd" name="Thêm bài viết" ></x-admin.buttom.add>
+                <div class="row mt-4">
+
+                    <div class="col-12 ">
+
+
+                        <div class="row align-items-center mt-2">
                             <div class="col-12 mb-0">
                                 <div class="product_header">
                                     <div class="product_header_left">
@@ -39,6 +43,7 @@
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="product_header_right">
                                         <div class="products_view">
                                             <a href="javascript:Void(0);" class="shorting_icon grid"><i class="ti-view-grid"></i></a>
