@@ -311,10 +311,10 @@
                                         $address = '170 hqv';
                                         $price = '200';
                                     @endphp
-                                    <x-clients.blog.blogVip :name="$name" :img="$img" :address="$address"
+                                    <x-client.blog.blogVip :name="$name" :img="$img" :address="$address"
                                                             :price="$price">
 
-                                    </x-clients.blog.blogVip>
+                                    </x-client.blog.blogVip>
                                 </div>
                             </div>
                         </div>
@@ -339,10 +339,10 @@
                             <div class="widget">
                                 <h5 class="widget_title">Bất Động Sản VIP</h5>
                                 <ul class="widget_recent_post">
-                                    <x-clients.blog.blogVip :name="$name" :img="$img" :address="$address"
+                                    <x-client.blog.blogVip :name="$name" :img="$img" :address="$address"
                                                             :price="$price">
 
-                                    </x-clients.blog.blogVip>
+                                    </x-client.blog.blogVip>
                                 </ul>
                             </div>
                             <div class="widget">

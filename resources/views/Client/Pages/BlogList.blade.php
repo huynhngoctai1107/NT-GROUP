@@ -41,10 +41,10 @@
                                 $address = '170 hqv';
                                 $price = '200';
                             @endphp
-                            <x-clients.blog.blogList :name="$name" :img="$img" :date="$date"
+                            <x-client.blog.blogList :name="$name" :img="$img" :date="$date"
                                                      :description="$description">
 
-                            </x-clients.blog.blogList>
+                            </x-client.blog.blogList>
                         </div>
                         <div class="row">
                             <div class="col-12 mt-2 mt-md-4">
@@ -77,10 +77,10 @@
                             <div class="widget">
                                 <h5 class="widget_title">Bất Động Sản VIP</h5>
                                 <ul class="widget_recent_post">
-                                    <x-clients.blog.blogVip :name="$name" :img="$img" :address="$address"
+                                    <x-client.blog.blogVip :name="$name" :img="$img" :address="$address"
                                                             :price="$price">
 
-                                    </x-clients.blog.blogVip>
+                                    </x-client.blog.blogVip>
                                 </ul>
                             </div>
                             <div class="widget">

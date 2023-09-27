@@ -76,13 +76,8 @@
                                     <button type="submit" class="btn btn-fill-out btn-block" name="register">Đăng ký</button>
                                 </div>
                             </form>
-                            <div class="different_login">
-                                <span>Hoặc</span>
-                            </div>
-                            <ul class="btn-login list_none text-center">
-                                <li><a href="#" class="btn btn-facebook"><i class="ion-social-facebook"></i>Facebook</a></li>
-                                <li><a href="#" class="btn btn-google"><i class="ion-social-googleplus"></i>Google</a></li>
-                            </ul>
+
+
                             <div class="form-note text-center">Bạn đã có tài khoản? <a href="{{route('login')}}">Đăng nhập</a></div>
                         </div>
                     </div>

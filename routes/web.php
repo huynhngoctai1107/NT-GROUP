@@ -19,18 +19,18 @@ use App\Http\Controllers\Admin\Voucher\DeleteVoucherController;
 use App\Http\Controllers\Admin\Voucher\EditVoucherController;
 use App\Http\Controllers\Admin\Voucher\ListVoucherController;
 use App\Http\Controllers\Client\Account\AccountController;
+use App\Http\Controllers\Client\Account\FogetPasswordController;
+use App\Http\Controllers\Client\Account\LoginController;
+use App\Http\Controllers\Client\Account\SignUpController;
+use App\Http\Controllers\Client\Blog\BlogListController;
+use App\Http\Controllers\Client\Blog\PostSingleController;
 use App\Http\Controllers\Client\Index\IndexController;
 use App\Http\Controllers\Client\Post\AddPostController;
 use App\Http\Controllers\Client\Post\PostListController;
 use App\Http\Controllers\Client\Post\PostNewController;
 use App\Http\Controllers\Client\Search\SearchController;
-use App\Http\Controllers\Client\TransactionHistory\TransactionHistoryController;
-use App\Http\Controllers\Client\User\FogetPasswordController;
-use App\Http\Controllers\Client\User\LoginController;
-use App\Http\Controllers\Client\User\SignUpController;
 use App\Http\Controllers\Client\About\AboutController;
 use Illuminate\Support\Facades\Route;
-
 
 Route::group(['prefix' => 'admin'], function (){
     Route::get('/', [ViewDashboardController::class, 'dashboar'])->name('dashboar');
@@ -84,10 +84,9 @@ Route::group(['prefix' => '/'], function (){
     Route::get('account', [AccountController::class, 'account'])->name('account');
     Route::get('foget-password', [FogetPasswordController::class, 'fogetPassword'])->name('fogetPassword');
     Route::get('about', [AboutController::class, 'about'])->name('about');
-
     Route::group(['prefix' => 'blog'], function (){
         Route::get('/list', [BlogListController::class, 'listBlog'])->name('listBlog');
-        Route::get('/post-single', [PostSingleController::class, 'postSingle'])->name('postSingle');
+        Route::get('/single', [PostSingleController::class, 'postSingle'])->name('postSingle');
     });
     Route::group(['prefix' => 'post'], function (){
         Route::get('/add', [AddPostController::class, 'post'])->name('postAdd');
@@ -104,10 +103,7 @@ Route::group(['prefix' => '/'], function (){
     });
 });
 
-// Client Post and My account
-Route::get('/Post',[AddPostController::class,'post'])->name('post');
 
-Route::get('/Account',[AccountController::class,'account'])->name('account');
 
 
 
