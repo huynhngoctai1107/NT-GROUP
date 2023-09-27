@@ -13,10 +13,19 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->foreignId('id_role')->constrained('roles');
+            $table->integer('social_id')->default(0);
+            $table->string('image')->default('');
+            $table->string('fullname');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->string('phone',10);
+            $table->string('address',255);
             $table->string('password');
+            $table->bigInteger('wallet')->default(0);
+            $table->string('token',50)->nullable();
+            $table->string('gender',10)->default(0);
+            $table->date('dateinput');
+            $table->tinyInteger('status')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });
@@ -27,6 +36,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('password_reset_tokens');
     }
 };
