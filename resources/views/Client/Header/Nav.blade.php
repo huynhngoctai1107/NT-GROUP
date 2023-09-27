@@ -180,7 +180,7 @@
                                         <div class="dropdown-menu">
                                             <ul>
                                                 <li><a class="dropdown-item nav-link nav_item"
-                                                       href="blog-three-columns.html">3 columns</a></li>
+                                                       href="{{route('post')}}">Đăng Tin</a></li>
                                                 <li><a class="dropdown-item nav-link nav_item"
                                                        href="blog-four-columns.html">4 columns</a></li>
                                                 <li><a class="dropdown-item nav-link nav_item"
@@ -275,7 +275,7 @@
                                                     <li><a class="dropdown-item nav-link nav_item" href="checkout.html">Checkout</a>
                                                     </li>
                                                     <li><a class="dropdown-item nav-link nav_item"
-                                                           href="my-account.html">My Account</a></li>
+                                                           href="{{route('account')}}">My Account</a></li>
                                                     <li><a class="dropdown-item nav-link nav_item" href="wishlist.html">Wishlist</a>
                                                     </li>
                                                     <li><a class="dropdown-item nav-link nav_item" href="compare.html">compare</a>

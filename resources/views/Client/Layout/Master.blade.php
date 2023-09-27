@@ -39,6 +39,12 @@
 <!-- Style CSS -->
 <link rel="stylesheet" href="{{asset('client/css/style.css')}}">
 <link rel="stylesheet" href="{{asset('client/css/responsive.css')}}">
+
+{{-- gg map and hinh anh upload.js--}}
+    <link rel="stylesheet" href="{{asset('client/css/style_blog3.css')}}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8ttJcdnyqOwb93B47rjRU+ABJxUrEDR/i" crossorigin="anonymous">
+
+
     @stack('styles')
     @stack('css')
 
@@ -80,6 +86,33 @@
 <script src="{{asset('client/js/jquery.elevatezoom.js')}}"></script>
 <!-- scripts js -->
 <script src="{{asset('client/js/scripts.js')}}"></script>
+{{-- gg map and hinh anh upload.js--}}
+
+    <script src="{{asset('client/js/upload.js')}}"></script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_G4pm1e6qVGLB_t1_hYe_KDFc7ObLf6I"></script>
+
+    <script>
+        // Create a new Google Map object.
+        const map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: 10.0401, lng: 105.7364},
+            zoom: 10
+        });
+
+        // Add a click listener to the map.
+        map.addListener('click', function(event) {
+            // Get the longitude and latitude of the click event.
+            const lng = event.latLng.lng();
+            const lat = event.latLng.lat();
+
+            // Update the longitude and latitude input boxes.
+            document.getElementById('longitude').value = lng;
+            document.getElementById('latitude').value = lat;
+        });
+    </script>
+
+
+
     @stack('script')
 
 </body>

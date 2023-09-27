@@ -32,23 +32,17 @@
                     <div class="dashboard_menu">
                         <ul class="nav nav-tabs flex-column" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active" id="dashboard-tab" data-bs-toggle="tab" href="#dashboard"
-                                   role="tab" aria-controls="dashboard" aria-selected="false"><i
-                                        class="ti-layout-grid2"></i>Dashboard</a>
+                                <a class="nav-link active" id="dashboard-tab" data-bs-toggle="tab" href="#dashboard" role="tab" aria-controls="dashboard" aria-selected="false"><i class="ti-layout-grid2"></i>Dashboard</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="orders-tab" data-bs-toggle="tab" href="#orders" role="tab"
-                                   aria-controls="orders" aria-selected="false"><i class="ti-shopping-cart-full"></i>Orders</a>
+                                <a class="nav-link" id="orders-tab" data-bs-toggle="tab" href="#orders" role="tab" aria-controls="orders" aria-selected="false"><i class="ti-shopping-cart-full"></i>Orders</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="address-tab" data-bs-toggle="tab" href="#address" role="tab"
-                                   aria-controls="address" aria-selected="true"><i class="ti-location-pin"></i>My
+                                <a class="nav-link" id="address-tab" data-bs-toggle="tab" href="#address" role="tab" aria-controls="address" aria-selected="true"><i class="ti-location-pin"></i>My
                                     Address</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="account-detail-tab" data-bs-toggle="tab" href="#account-detail"
-                                   role="tab" aria-controls="account-detail" aria-selected="true"><i
-                                        class="ti-id-badge"></i>Account details</a>
+                                <a class="nav-link" id="account-detail-tab" data-bs-toggle="tab" href="#account-detail" role="tab" aria-controls="account-detail" aria-selected="true"><i class="ti-id-badge"></i>Account details</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="login.html"><i class="ti-lock"></i>Logout</a>
@@ -58,19 +52,18 @@
                 </div>
                 <div class="col-lg-9 col-md-8">
                     <div class="tab-content dashboard_content">
-                        <div class="tab-pane fade active show" id="dashboard" role="tabpanel"
-                             aria-labelledby="dashboard-tab">
+                        <div class="tab-pane fade active show" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
                             <div class="card">
                                 <div class="card-header">
                                     <h3>Dashboard</h3>
                                 </div>
                                 <div class="card-body">
-                                    <p>From your account dashboard. you can easily check &amp; view your <a
-                                            href="javascript:void(0);" onclick="$('#orders-tab').trigger('click')">recent
-                                            orders</a>, manage your <a href="javascript:void(0);"
-                                                                       onclick="$('#address-tab').trigger('click')">shipping
-                                            and billing addresses</a> and <a href="javascript:void(0);"
-                                                                             onclick="$('#account-detail-tab').trigger('click')">edit
+                                    <p>From your account dashboard. you can easily check &amp; view your
+                                        <a href="javascript:void(0);" onclick="$('#orders-tab').trigger('click')">recent
+                                            orders</a>, manage your
+                                        <a href="javascript:void(0);" onclick="$('#address-tab').trigger('click')">shipping
+                                            and billing addresses</a> and
+                                        <a href="javascript:void(0);" onclick="$('#account-detail-tab').trigger('click')">edit
                                             your password and account details.</a></p>
                                 </div>
                             </div>
@@ -143,8 +136,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="account-detail" role="tabpanel"
-                             aria-labelledby="account-detail-tab">
+                        <div class="tab-pane fade" id="account-detail" role="tabpanel" aria-labelledby="account-detail-tab">
                             <div class="card">
                                 <div class="card-header">
                                     <h3>Thông Tin Tài Khoản</h3>
@@ -159,110 +151,67 @@
                                         <div class="">
                                             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                                                 <li class="nav-item" role="presentation">
-                                                    <button class="nav-link secondary" id="pills-home-tab"
-                                                            data-bs-toggle="pill"
-                                                            data-bs-target="#pills-home" type="button" role="tab"
-                                                            aria-controls="pills-home"
-                                                            aria-selected="true">Cập Nhật Thông Tin Tài Khoản
+                                                    <button class="nav-link secondary" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Cập Nhật Thông Tin Tài Khoản
                                                     </button>
                                                 </li>
                                                 <li class="nav-item" role="presentation">
-                                                    <button class="nav-link" id="pills-profile-tab"
-                                                            data-bs-toggle="pill"
-                                                            data-bs-target="#pills-profile" type="button" role="tab"
-                                                            aria-controls="pills-profile"
-                                                            aria-selected="false">Đổi Mật Khẩu
+                                                    <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Đổi Mật Khẩu
                                                     </button>
                                                 </li>
                                             </ul>
 
                                             <div class="tab-content" id="pills-tabContent">
-                                                <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
-                                                     aria-labelledby="pills-home-tab"
-                                                     tabindex="0">
+                                                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
                                                     <div class="row justify-content-center">
                                                         <div class="col-md-12">
                                                             <div class="wrapper">
                                                                 <div class="row no-gutters">
                                                                     <div class="col-md-7">
                                                                         <div class="contact-wrap w-100 p-md-5 p-4">
-                                                                            <form method="POST" id="contactForm"
-                                                                                  name="contactForm"
-                                                                                  class="contactForm">
+                                                                            <form method="POST" id="contactForm" name="contactForm" class="contactForm">
                                                                                 <div class="row">
                                                                                     <div class="mb-3">
                                                                                         <div class="form-group">
-                                                                                            <label class="label"
-                                                                                                   for="name">Họ và
+                                                                                            <label class="label" for="name">Họ và
                                                                                                 Tên</label>
-                                                                                            <input type="text"
-                                                                                                   class="form-control"
-                                                                                                   name="name"
-                                                                                                   id="name"
-                                                                                                   placeholder="Name">
+                                                                                            <input type="text" class="form-control" name="name" id="name" placeholder="Name">
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="mb-3">
                                                                                         <div class="form-group">
-                                                                                            <label class="label"
-                                                                                                   for="email">Địa chỉ
+                                                                                            <label class="label" for="email">Địa chỉ
                                                                                                 Email</label>
-                                                                                            <input type="email"
-                                                                                                   class="form-control"
-                                                                                                   name="email"
-                                                                                                   id="email"
-                                                                                                   placeholder="Email">
+                                                                                            <input type="email" class="form-control" name="email" id="email" placeholder="Email">
                                                                                         </div>
                                                                                     </div>
                                                                                     <br/>
                                                                                     <div class="mb-3">
-                                                                                        <label for="gender"
-                                                                                               class="label">Giới
+                                                                                        <label for="gender" class="label">Giới
                                                                                             tính</label>
                                                                                         <div class="form-check">
-                                                                                            <input type="radio"
-                                                                                                   class="form-check-input"
-                                                                                                   name="gender"
-                                                                                                   id="male"
-                                                                                                   value="Nam">
-                                                                                            <label class="label"
-                                                                                                   for="male">Nam</label>
+                                                                                            <input type="radio" class="form-check-input" name="gender" id="male" value="Nam">
+                                                                                            <label class="label" for="male">Nam</label>
                                                                                         </div>
                                                                                         <div class="form-check">
-                                                                                            <input type="radio"
-                                                                                                   class="form-check-input"
-                                                                                                   name="gender"
-                                                                                                   id="female"
-                                                                                                   value="Nữ">
-                                                                                            <label class="label"
-                                                                                                   for="female">Nữ</label>
+                                                                                            <input type="radio" class="form-check-input" name="gender" id="female" value="Nữ">
+                                                                                            <label class="label" for="female">Nữ</label>
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="mb-3">
                                                                                         <div class="form-group">
-                                                                                            <label for="phone-number"
-                                                                                                   class="label">Số điện
+                                                                                            <label for="phone-number" class="label">Số điện
                                                                                                 thoại</label>
-                                                                                            <input type="tel"
-                                                                                                   class="form-control"
-                                                                                                   id="phone-number"
-                                                                                                   placeholder="Nhập số điện thoại của bạn">
+                                                                                            <input type="tel" class="form-control" id="phone-number" placeholder="Nhập số điện thoại của bạn">
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="mb-3">
-                                                                                        <label for="street-address"
-                                                                                               class="label">Địa
+                                                                                        <label for="street-address" class="label">Địa
                                                                                             chỉ</label>
-                                                                                        <input type="text"
-                                                                                               class="form-control"
-                                                                                               id="street-address"
-                                                                                               placeholder="Nhập địa chỉ của bạn">
+                                                                                        <input type="text" class="form-control" id="street-address" placeholder="Nhập địa chỉ của bạn">
                                                                                     </div>
                                                                                     <div class="col-md-12">
                                                                                         <div class="col-md-12">
-                                                                                            <button type="button"
-                                                                                                    class="btn btn-warning"
-                                                                                                    style="color: white">
+                                                                                            <button type="button" class="btn btn-warning" style="color: white">
                                                                                                 Primary
                                                                                             </button>
                                                                                         </div>
@@ -272,31 +221,12 @@
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-5 d-flex align-items-stretch">
-                                                                        <div class="info-wrap w-100 p-5 img" width="50%"
-                                                                             height="auto">
-                                                                            <img
-                                                                                src="{{asset('client/images/hinh-1.jpg')}}"
-                                                                                alt="shop_banner_img1"/>
+                                                                        <div class="info-wrap w-100 p-5 img" >
+                                                                            <img src="{{asset('client/images/hinh-1.jpg')}}" width="800px" height="70%" alt="shop_banner_img1"/>
                                                                             <div class="form-row">
-                                                                                <form action="/submit" method="post">
-                                                                                    <div class="file-upload">
-                                                                                        <div class="file-select">
-                                                                                            <div
-                                                                                                class="file-select-button"
-                                                                                                id="fileName">Choose
-                                                                                                File
-                                                                                            </div>
-                                                                                            <div
-                                                                                                class="file-select-name"
-                                                                                                id="noFile">No file
-                                                                                                chosen...
-                                                                                            </div>
-                                                                                            <input type="file"
-                                                                                                   name="chooseFile"
-                                                                                                   id="chooseFile">
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </form>
+                                                                                <div class="mb-3">
+                                                                                    <input class="form-control form-control-sm" id="formFileSm" type="file">
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -306,56 +236,38 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="tab-pane fade" id="pills-profile" role="tabpanel"
-                                                     aria-labelledby="pills-profile-tab"
-                                                     tabindex="0">
+                                                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
                                                     <div class="row justify-content-center">
                                                         <div class="col-md-12">
                                                             <div class="wrapper">
                                                                 <div class="row no-gutters">
                                                                     <div class="col-md-7">
                                                                         <div class="contact-wrap w-100 p-md-5 p-4">
-                                                                            <form method="POST" id="contactForm"
-                                                                                  name="contactForm"
-                                                                                  class="contactForm">
+                                                                            <form method="POST" id="contactForm" name="contactForm" class="contactForm">
                                                                                 <div class="row">
                                                                                     <div class="mb-3">
-                                                                                        <label for="old-password"
-                                                                                               class="form-label">Nhập
+                                                                                        <label for="old-password" class="form-label">Nhập
                                                                                             Mật khẩu
                                                                                             cũ</label>
-                                                                                        <input type="password"
-                                                                                               class="form-control"
-                                                                                               id="old-password"
-                                                                                               placeholder="Nhập mật khẩu cũ của bạn">
+                                                                                        <input type="password" class="form-control" id="old-password" placeholder="Nhập mật khẩu cũ của bạn">
                                                                                     </div>
 
                                                                                     <div class="mb-3">
-                                                                                        <label for="new-password"
-                                                                                               class="form-label">Nhập
+                                                                                        <label for="new-password" class="form-label">Nhập
                                                                                             Mật khẩu
                                                                                             mới</label>
-                                                                                        <input type="password"
-                                                                                               class="form-control"
-                                                                                               id="new-password"
-                                                                                               placeholder="Nhập mật khẩu mới của bạn">
+                                                                                        <input type="password" class="form-control" id="new-password" placeholder="Nhập mật khẩu mới của bạn">
                                                                                     </div>
 
                                                                                     <div class="mb-3">
-                                                                                        <label for="confirm-password"
-                                                                                               class="form-label">Xác
+                                                                                        <label for="confirm-password" class="form-label">Xác
                                                                                             nhận mật
                                                                                             khẩu mới</label>
-                                                                                        <input type="password"
-                                                                                               class="form-control"
-                                                                                               id="confirm-password"
-                                                                                               placeholder="Nhập lại mật khẩu mới của bạn">
+                                                                                        <input type="password" class="form-control" id="confirm-password" placeholder="Nhập lại mật khẩu mới của bạn">
                                                                                     </div>
 
                                                                                     <div class="col-md-12">
-                                                                                        <button type="button"
-                                                                                                class="btn btn-warning"
-                                                                                                style="color: white">
+                                                                                        <button type="button" class="btn btn-warning" style="color: white">
                                                                                             Primary
                                                                                         </button>
                                                                                     </div>
@@ -364,31 +276,12 @@
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-5 d-flex align-items-stretch">
-                                                                        <div class="info-wrap w-100 p-5 img" width="10%"
-                                                                             height="auto">
-                                                                            <img
-                                                                                src="{{asset('client/images/hinh-1.jpg')}}"
-                                                                                alt="shop_banner_img1"/>
+                                                                        <div class="info-wrap w-100 p-5 img" width="10%" height="auto">
+                                                                            <img src="{{asset('client/images/hinh-1.jpg')}}" alt="shop_banner_img1"/>
                                                                             <div class="form-row">
-                                                                                <form action="/submit" method="post">
-                                                                                    <div class="file-upload">
-                                                                                        <div class="file-select">
-                                                                                            <div
-                                                                                                class="file-select-button"
-                                                                                                id="fileName">Choose
-                                                                                                File
-                                                                                            </div>
-                                                                                            <div
-                                                                                                class="file-select-name"
-                                                                                                id="noFile">No file
-                                                                                                chosen...
-                                                                                            </div>
-                                                                                            <input type="file"
-                                                                                                   name="chooseFile"
-                                                                                                   id="chooseFile">
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </form>
+                                                                                <div class="mb-3">
+                                                                                    <input class="form-control form-control-sm" id="formFileSm" type="file">
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
