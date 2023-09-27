@@ -122,4 +122,5 @@
             </nav>
         </div>
     </div>
-</header><!-- END HEADER -->
+</header>
+<!-- END HEADER -->
