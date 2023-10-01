@@ -36,8 +36,16 @@
             <div class="content-wrapper">
                 <form action="{{route($page=='posts'?'addPosts':'addCategory' )}}" method="post" class="mx-5 pt-4">
                     <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Tên {{$page=="posts"?'Bài viết':'danh mục'}}</label>
+                        <label for="exampleInputEmail1" class="form-label">Tên {{$page=="posts"?'Bài viết':'bài viết'}}</label>
                         <input type="email" class="form-control" value="{{old($page=="posts"?'posts':'category')}}" name="{{$page=="demand"?'demand':'category'}}" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Slug {{$page=="posts"?'Bài viết':''}}</label>
+                        <input type="number" class="form-control" value="{{old($page=="posts"?'posts':'category')}}" name="{{$page=="demand"?'demand':'category'}}" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Ngày {{$page=="posts"?'Bài viết':'tạo'}}</label>
+                        <input type="datetime-local" class="form-control" value="{{old($page=="posts"?'posts':'category')}}" name="{{$page=="demand"?'demand':'category'}}" id="exampleInputEmail1" aria-describedby="emailHelp">
                     </div>
                     <div class="form-outline mb-4">
                         <label class="form-label" for="textAreaExample6">Ghi chú</label>
