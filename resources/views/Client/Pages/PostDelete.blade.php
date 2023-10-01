@@ -37,8 +37,6 @@
                                             <a href="javascript:Void(0);" class="shorting_icon grid"><i class="ti-view-grid"></i></a>
                                             <a href="javascript:Void(0);" class="shorting_icon list active"><i class="ti-layout-list-thumb"></i></a>
                                         </div>
-
-
                                     </div>
                                 </div>
                             </div>
@@ -50,7 +48,5 @@
         </div>
 
         <!-- END SECTION SHOP -->
-
-        <x-client.pages.subscribe></x-client.pages.subscribe>
     </div>
 @endsection

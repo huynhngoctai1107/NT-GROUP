@@ -73,10 +73,6 @@
             </div>
         </div>
         <!-- END LOGIN SECTION -->
-
-        <!-- START SECTION SUBSCRIBE NEWSLETTER -->
-        <x-client.pages.subscribe></x-client.pages.subscribe>
-
     </div>
     <!-- END MAIN CONTENT -->
 

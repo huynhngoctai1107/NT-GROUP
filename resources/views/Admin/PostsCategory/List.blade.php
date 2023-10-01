@@ -114,7 +114,7 @@
 	.button-86 {
 		all: unset;
 		width: 150px;
-		height: 30px;
+		height: 40px;
 		font-size: 16px;
 		background: transparent;
 		border: none;

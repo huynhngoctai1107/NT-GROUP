@@ -62,7 +62,5 @@
         </div>
 
         <!-- END SECTION SHOP -->
-
-        <x-client.pages.subscribe></x-client.pages.subscribe>
     </div>
 @endsection
