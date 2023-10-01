@@ -3,39 +3,19 @@
 @section('title')
     Bất động sản - NT GROUP
 @endsection
+@php
+    $title = "Đăng Tin";
+@endphp
 @section('main')
-
-
-    <div class="breadcrumb_section bg_gray page-title-mini">
-        <div class="container"><!-- STRART CONTAINER -->
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <div class="page-title">
-                        <h1>Blog</h1>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <ol class="breadcrumb justify-content-md-end">
-                        <li class="breadcrumb-item"><a href="{{ route('index') }}">Home</a></li>
-                        <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                        <li class="breadcrumb-item active">My Account</li>
-                    </ol>
-                </div>
-            </div>
-        </div><!-- END CONTAINER-->
-    </div>
-    <!-- END SECTION BREADCRUMB -->
+    <x-client.header.posttitle :title="$title"></x-client.header.posttitle>
 
     <div class="container">
         <br/>
         <div class="row">
-
-            <div class="alert alert-secondary" role="alert">
-                <h6 class=""> Thông Tin Bất Động Sản </h6>
-            </div>
-
-            <form class="row g-3">
-
+            <p class="alert alert-secondary">
+                <b style="font-weight: 700; font-size: 15px; font-family: sans-serif;">Thông Tin Bất Động Sản</b>
+            </p>
+            <form class="row g-3" style="margin-left: 8px;">
                 <div class="col-12">
                     <label for="title" class="form-label">
                         <h6>Tiêu Đề *</h6>
@@ -105,33 +85,32 @@
                         <input type="text" pattern="https?://([A-Za-z0-9.-_.!~*'()?:&=+$,;])+" placeholder="Link youtube" class="form-control" id="youtube_link">
                     </div>
                 </div>
-
-                <div class="file-upload">
-                    <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Thêm Ảnh</button>
-
-                    <div class="image-upload-wrap">
-                        <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
-                        <div class="drag-text">
-                            <h5>Kéo và thả tệp hoặc thêm hình ảnh</h5>
-                        </div>
-                    </div>
-                    <div class="file-upload-content">
-                        <img class="file-upload-image" src="#" alt="your image" />
-                        <div class="image-title-wrap">
-                            <button type="button" onclick="removeUpload()" class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
-                        </div>
-                    </div>
-                </div>
-
             </form>
 
-            <form class="row g-3">
+            <div class="file-upload">
+                <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Thêm Ảnh</button>
 
-                <br/>
-                <div class="alert alert-secondary" role="alert">
-                    <h6>Thông Tin Bất Động Sản</h6>
+                <div class="image-upload-wrap">
+                    <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*"/>
+                    <div class="drag-text">
+                        <h5>Kéo và thả tệp hoặc thêm hình ảnh</h5>
+                    </div>
                 </div>
+                <div class="file-upload-content">
+                    <img class="file-upload-image" src="#" alt="your image"/>
+                    <div class="image-title-wrap">
+                        <button type="button" onclick="removeUpload()" class="remove-image">Remove
+                            <span class="image-title">Uploaded Image</span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
+        <div class="row">
+            <p class="alert alert-secondary">
+                <b style="font-weight: 700; font-size: 15px; font-family: sans-serif;">Thông Tin Lin Hệ</b>
+            </p>
+            <form class="row g-3" style="margin-left: 3px;">
                 <div class="col-md-6">
                     <label for="phone" class="form-label">
                         <h6>Số Điện Thoại Liên Hệ 1 *</h6>
@@ -148,7 +127,7 @@
 
                 <div class="col-md-12">
                     <div class="row">
-                        <label for="images" class="col-sm-2 col-form-label"><h6>Hình Ảnh Liên Hệ 1:</h6></label>
+                        <label for="images" class="form-label"><h6>Hình Ảnh Liên Hệ 1:</h6></label>
 
                         <div class="mb-3">
                             <input class="form-control form-control-sm" id="formFileSm" type="file">
@@ -172,7 +151,7 @@
                 </div>
                 <div class="col-md-12">
                     <div class="row">
-                        <label for="images" class="col-sm-2 col-form-label"><h6>Hình Ảnh Liên Hệ 2:</h6></label>
+                        <label for="images" class="form-label"><h6>Hình Ảnh Liên Hệ 2:</h6></label>
 
                         <div class="mb-3">
                             <input class="form-control form-control-sm" id="formFileSm" type="file">
@@ -186,6 +165,7 @@
                 </div>
             </form>
         </div>
+
         <h4>Google Maps </h4>
 
         <!-- Google Map -->
@@ -209,7 +189,5 @@
         <!-- JavaScript Code -->
 
     </div>
-
-
 
 @endsection
