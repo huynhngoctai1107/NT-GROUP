@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('id_category_transaction')->constrained('transaction_categories');
             $table->foreignId('id_user')->constrained('users');
-            $table->date('dateinput');
+            $table->timestamps();
             $table->bigInteger('surplus');
             $table->bigInteger('price');
             $table->tinyInteger('status')->default(0);
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('password_reset_tokens');
+        Schema::dropIfExists('transactions');
     }
 };

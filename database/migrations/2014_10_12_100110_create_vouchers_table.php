@@ -20,7 +20,7 @@ return new class extends Migration
             $table->bigInteger('discount');
             $table->integer('quantify');
             $table->tinyInteger('status')->default(0);
-            $table->date('date_input')->default(0);
+            $table->timestamps();
             $table->date('expiration_date')->default(0);
             $table->string('content',255);
             $table->string('image',100);
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('password_reset_tokens');
+        Schema::dropIfExists('vouchers');
     }
 };

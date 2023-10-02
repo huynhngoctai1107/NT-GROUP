@@ -77,8 +77,7 @@ Route::group(['prefix' => 'admin'], function (){
         Route::post('/add', [AddVoucherController::class, 'addVoucher'])->name('addVoucher');
     });
     Route::group(['prefix' => 'transactions'], function (){
-        Route::get('/list', [RechargeHistoryController::class, 'listRechargeHistory'])
-             ->name('listRechargeHistory');
+        Route::get('/list', [RechargeHistoryController::class, 'listRechargeHistory'])->name('listRechargeHistory');
     });
     Route::group(['prefix' => 'posts'], function (){
         Route::get('/list', [ListPostsController::class, 'listPosts'])->name('listPosts');
@@ -96,7 +95,8 @@ Route::group(['prefix' => '/'], function (){
     Route::get('login', [LoginController::class, 'login'])->name('login');
     Route::get('signup', [SignUpController::class, 'signup'])->name('signup');
     Route::get('account', [AccountController::class, 'account'])->name('account');
-    Route::get('foget-password', [FogetPasswordController::class, 'fogetPassword'])->name('fogetPassword');
+    Route::get('foget-password', [FogetPasswordController::class, 'fogetPassword'])
+         ->name('fogetPassword');
     Route::get('about', [AboutController::class, 'about'])->name('about');
     Route::group(['prefix' => 'blog'], function (){
         Route::get('/list', [BlogListController::class, 'listBlog'])->name('listBlog');

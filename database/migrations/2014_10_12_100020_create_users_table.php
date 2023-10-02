@@ -24,7 +24,6 @@ return new class extends Migration
             $table->bigInteger('wallet')->default(0);
             $table->string('token',50)->nullable();
             $table->string('gender',10)->default(0);
-            $table->date('dateinput');
             $table->tinyInteger('status')->default(0);
             $table->rememberToken();
             $table->timestamps();
