@@ -5,8 +5,6 @@
 @endsection
 
 @section('main')
-    <x-client.header.posttitle></x-client.header.posttitle>
-
     <div class="container">
         <br/>
         <nav>
