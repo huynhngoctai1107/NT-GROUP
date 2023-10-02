@@ -11,17 +11,11 @@ class post extends Component{
     /**
      * Create a new component instance.
      */
-    public $name;
-    public $img;
-    public $address;
-    public $price;
+    public $list;
 
-    public function __construct($name, $img, $address, $price)
+    public function __construct($list)
     {
-        $this->name= $name ;
-        $this->img= $img ;
-        $this->address= $address ;
-        $this->price= $price ;
+        $this->list= $list ;
     }
 
     /**

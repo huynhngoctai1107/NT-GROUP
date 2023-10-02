@@ -34,15 +34,46 @@
                     <div class="col-lg-9">
                         <div class="row">
                             @php
-                                $name = 'abc';
-                                $img = env('APP_URL') . 'client/images/product_img1.jpg';
-                                $date = '19 - 06 - 2023';
-                                $description = 'Ngân hàng Nhà nước vừa ra quyết định điều chỉnh các mức lãi suất...';
-                                $address = '170 hqv';
-                                $price = '200';
+                                $list = [
+                                            [
+                                                'name'=> 'Nhà ở giá rẻ tại Cần Thơ',
+                                                'img' => 'banner0.webp',
+                                                'address' => '170 Hoàng Quốc Việt, An Bình, Ninh Kiều, Cần Thơ',
+                                                'price' => '2 tỷ',
+                                                'date' => '19/06/2023',
+                                                'description' => 'Ngân hàng Nhà nước vừa ra quyết định điều chỉnh các mức lãi suất...',
+                                                'phone' => '0321456789',
+                                            ],
+                                            [
+                                                'name'=> 'Nhà nguyên căn đầy đủ nội thất tại Cần Thơ',
+                                                'img' => 'banner0.webp',
+                                                'address'=> '170 Hoàng Quốc Việt, An Bình, Ninh Kiều, Cần Thơ',
+                                                'price'=> '2.5 tỷ',
+                                                'date' => '19/06/2023',
+                                                'description' => 'Ngân hàng Nhà nước vừa ra quyết định điều chỉnh các mức lãi suất...',
+                                                'phone' => '0321456789',
+                                            ],
+                                                                                        [
+                                                'name'=> 'Nhà ở giá rẻ tại Cần Thơ',
+                                                'img' => 'banner0.webp',
+                                                'address' => '170 Hoàng Quốc Việt, An Bình, Ninh Kiều, Cần Thơ',
+                                                'price' => '1 tỷ',
+                                                'date' => '19/06/2023',
+                                                'description' => 'Ngân hàng Nhà nước vừa ra quyết định điều chỉnh các mức lãi suất...',
+                                                'phone' => '0321456789',
+                                            ],
+                                            [
+                                                'name'=> 'Nhà nguyên căn đầy đủ nội thất tại Cần Thơ',
+                                                'img' => 'banner0.webp',
+                                                'address'=> '170 Hoàng Quốc Việt, An Bình, Ninh Kiều, Cần Thơ',
+                                                'price'=> '1.5 tỷ',
+                                                'date' => '19/06/2023',
+                                                'description' => 'Ngân hàng Nhà nước vừa ra quyết định điều chỉnh các mức lãi suất thấp kỉ lục trong năm qua và ưu đãi vãy ...',
+                                                'phone' => '0321456789',
+                                            ],
+                                ];
                             @endphp
-                            <x-client.blog.blogList :name="$name" :img="$img" :date="$date"
-                                                     :description="$description">
+                            <x-client.blog.blogList :list="$list">
 
                             </x-client.blog.blogList>
                         </div>
@@ -77,8 +108,7 @@
                             <div class="widget">
                                 <h5 class="widget_title">Bất Động Sản VIP</h5>
                                 <ul class="widget_recent_post">
-                                    <x-client.blog.blogVip :name="$name" :img="$img" :address="$address"
-                                                            :price="$price">
+                                    <x-client.blog.blogVip :list="$list">
 
                                     </x-client.blog.blogVip>
                                 </ul>
@@ -119,28 +149,7 @@
         <!-- END SECTION BLOG -->
 
         <!-- START SECTION SUBSCRIBE NEWSLETTER -->
-        <div class="section bg_default small_pt small_pb">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-md-6">
-                        <div class="heading_s1 mb-md-0 heading_light">
-                            <h3>Đăng Kí Để Nhận Tin Tức Mới Nhất</h3>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="newsletter_form">
-                            <form>
-                                <input type="text" required="" class="form-control rounded-0"
-                                       placeholder="Nhập mail ">
-                                <button type="submit" class="btn btn-dark rounded-0" name="submit"
-                                        value="Submit">Gửi
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <x-client.pages.subscribe></x-client.pages.subscribe>
         <!-- START SECTION SUBSCRIBE NEWSLETTER -->
     </div>
     <!-- END MAIN CONTENT -->

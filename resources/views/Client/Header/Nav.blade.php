@@ -7,16 +7,16 @@
     </div>
 </div>
 
-<header class="header_wrap fixed-top header_with_topbar">
+<header class="header_wrap fixed-top header_with_topbar w-100">
     <div class="top-header">
         @include('client.header.headingtop')
     </div>
     <div class="bottom_header dark_skin main_menu_uppercase">
         <div class="container">
             <nav class="navbar navbar-expand-lg">
-                <a class="navbar-brand" href="index.html">
-                    <img class="logo_light" src="{{asset('client/images/logo_light.png')}}" alt="logo"/>
-                    <img class="logo_dark" src="{{asset('client/images/logo_dark.png')}}" alt="logo"/>
+                <a class="navbar-brand" href="{{route('index')}}">
+                    <img class="logo_light" style="width: 170px; height: 120px" src="{{asset('client/images/logont.jpg')}}" alt="logo"/>
+                    <img class="logo_dark" style="width: 170px; height: 120px" src="{{asset('client/images/logont2.jpg')}}" alt="logo"/>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-expanded="false">
                     <span class="ion-android-menu"></span>
@@ -26,20 +26,21 @@
                         <li><a class="nav-link nav_item" href="">Trang chủ</a></li>
                         <li><a class="nav-link nav_item" href="{{route('about')}}">Giới thiệu</a></li>
                         <li class="dropdown">
-                            <a class="dropdown-toggle nav-link" href="#" data-bs-toggle="dropdown">Tin tức</a>
+                            <a class="dropdown-toggle nav-link" href="{{route('listBlog')}}" data-bs-toggle="dropdown">Tin tức</a>
                             <div class="dropdown-menu">
                                 <ul>
-                                    <li><a class="dropdown-item nav-link nav_item" href="about.html">Tin tức công ty</a>
+                                    <li>
+                                        <a class="dropdown-item nav-link nav_item" href="{{route('about')}}">Tin tức công ty</a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item nav-link nav_item" href="contact.html">Tin thị trường</a>
+                                        <a class="dropdown-item nav-link nav_item" href="{{route('listBlog')}}">Tin thị trường</a>
                                     </li>
-                                    <li><a class="dropdown-item nav-link nav_item" href="faq.html">Nhà đẹp</a></li>
-                                    <li><a class="dropdown-item nav-link nav_item" href="404.html">Phong thủy</a>
+                                    <li><a class="dropdown-item nav-link nav_item" href="{{route('listBlog')}}">Nhà đẹp</a></li>
+                                    <li><a class="dropdown-item nav-link nav_item" href="{{route('listBlog')}}">Phong thủy</a>
                                     </li>
-                                    <li><a class="dropdown-item nav-link nav_item" href="login.html">Kiến thức</a></li>
+                                    <li><a class="dropdown-item nav-link nav_item" href="{{route('listBlog')}}">Kiến thức</a></li>
                                     <li>
-                                        <a class="dropdown-item nav-link nav_item" href="signup.html">Vật liệu xây dựng</a>
+                                        <a class="dropdown-item nav-link nav_item" href="{{route('listBlog')}}">Vật liệu xây dựng</a>
                                     </li>
 
                                 </ul>
@@ -47,34 +48,34 @@
                         </li>
 
                         <li class="dropdown">
-                            <a class="dropdown-toggle nav-link" href="#" data-bs-toggle="dropdown">Nhà đất cần thơ</a>
+                            <a class="dropdown-toggle nav-link" href="{{route('listBlog')}}" data-bs-toggle="dropdown">Nhà đất cần thơ</a>
                             <div class="dropdown-menu">
                                 <ul>
-                                    <li><a class="dropdown-item nav-link nav_item" href="about.html">Bán đất</a></li>
-                                    <li><a class="dropdown-item nav-link nav_item" href="contact.html">Nhà bán</a>
+                                    <li><a class="dropdown-item nav-link nav_item" href="{{route('listBlog')}}">Bán đất</a></li>
+                                    <li><a class="dropdown-item nav-link nav_item" href="{{route('listBlog')}}">Nhà bán</a>
                                     </li>
-                                    <li><a class="dropdown-item nav-link nav_item" href="faq.html">Căn hộ bán</a></li>
-                                    <li><a class="dropdown-item nav-link nav_item" href="404.html">Văn phòng</a>
+                                    <li><a class="dropdown-item nav-link nav_item" href="{{route('listBlog')}}">Căn hộ bán</a></li>
+                                    <li><a class="dropdown-item nav-link nav_item" href="{{route('listBlog')}}">Văn phòng</a>
                                     </li>
-                                    <li><a class="dropdown-item nav-link nav_item" href="login.html">Nhà trọ</a></li>
+                                    <li><a class="dropdown-item nav-link nav_item" href="{{route('listBlog')}}">Nhà trọ</a></li>
                                 </ul>
                             </div>
                         </li>
                         <li class="dropdown">
-                            <a class="dropdown-toggle nav-link" href="#" data-bs-toggle="dropdown">Nhà đất cho thuê</a>
+                            <a class="dropdown-toggle nav-link" href="{{route('listBlog')}}" data-bs-toggle="dropdown">Nhà đất cho thuê</a>
                             <div class="dropdown-menu">
                                 <ul>
-                                    <li><a class="dropdown-item nav-link nav_item" href="about.html">Đất</a></li>
-                                    <li><a class="dropdown-item nav-link nav_item" href="contact.html">Nhà</a>
+                                    <li><a class="dropdown-item nav-link nav_item" href="{{route('listBlog')}}">Đất</a></li>
+                                    <li><a class="dropdown-item nav-link nav_item" href="{{route('listBlog')}}">Nhà</a>
                                     </li>
-                                    <li><a class="dropdown-item nav-link nav_item" href="faq.html">Căn hộ</a></li>
-                                    <li><a class="dropdown-item nav-link nav_item" href="404.html">Văn phòng</a>
+                                    <li><a class="dropdown-item nav-link nav_item" href="{{route('listBlog')}}">Căn hộ</a></li>
+                                    <li><a class="dropdown-item nav-link nav_item" href="{{route('listBlog')}}">Văn phòng</a>
                                     </li>
-                                    <li><a class="dropdown-item nav-link nav_item" href="login.html">Nhà trọ</a></li>
+                                    <li><a class="dropdown-item nav-link nav_item" href="{{route('listBlog')}}">Nhà trọ</a></li>
                                 </ul>
                             </div>
                         </li>
-                        <li><a class="nav-link nav_item" href="contact.html">Liên hệ</a></li>
+                        <li><a class="nav-link nav_item" href="{{route('contact')}}">Liên hệ</a></li>
                     </ul>
                 </div>
                 <ul class="navbar-nav attr-nav align-items-center">
@@ -88,31 +89,6 @@
                             </form>
                         </div>
                         <div class="search_overlay"></div>
-                    </li>
-                    <li class="dropdown cart_dropdown">
-                        <a class="nav-link cart_trigger" href="#" data-bs-toggle="dropdown"><i class="linearicons-cart"></i><span class="cart_count">2</span></a>
-                        <div class="cart_box dropdown-menu dropdown-menu-right">
-                            <ul class="cart_list">
-                                <li>
-                                    <a href="#" class="item_remove"><i class="ion-close"></i></a>
-                                    <a href="#"><img src="{{asset('client/images/cart_thamb1.jpg')}}" alt="cart_thumb1">Variable
-                                        product 001</a>
-                                    <span class="cart_quantity"> 1 x <span class="cart_amount"> <span class="price_symbole">$</span></span>78.00</span>
-                                </li>
-                                <li>
-                                    <a href="#" class="item_remove"><i class="ion-close"></i></a>
-                                    <a href="#"><img src="{{asset('client/images/cart_thamb2.jpg')}}" alt="cart_thumb2">Ornare
-                                        sed consequat</a>
-                                    <span class="cart_quantity"> 1 x <span class="cart_amount"> <span class="price_symbole">$</span></span>81.00</span>
-                                </li>
-                            </ul>
-                            <div class="cart_footer">
-                                <p class="cart_total"><strong>Subtotal:</strong>
-                                    <span class="cart_price"> <span class="price_symbole">$</span></span>159.00</p>
-                                <p class="cart_buttons"><a href="#" class="btn btn-fill-line rounded-0 view-cart">View
-                                        Cart</a><a href="#" class="btn btn-fill-out rounded-0 checkout">Checkout</a></p>
-                            </div>
-                        </div>
                     </li>
                 </ul>
             </nav>

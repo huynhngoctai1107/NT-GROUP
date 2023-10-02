@@ -11,17 +11,11 @@ class blogList extends Component{
     /**
      * Create a new component instance.
      */
-    public $name;
-    public $img;
-    public $date;
-    public $description;
+    public $list;
 
-    public function __construct($name, $img, $date, $description)
+    public function __construct($list)
     {
-        $this->name= $name ;
-        $this->img= $img ;
-        $this->date= $date ;
-        $this->description= $description ;
+        $this->list= $list ;
     }
 
     /**

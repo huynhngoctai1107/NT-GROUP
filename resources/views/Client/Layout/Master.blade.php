@@ -47,6 +47,24 @@
 
     @stack('styles')
     @stack('css')
+    <style>
+	    @media (max-width: 767px) {
+		    .bds .content h2,  .bds .content p {
+			    text-align: center;
+		    }
+
+            .bds .content button{
+                margin:0 auto;
+                display:flex;
+            }
+	    }
+	    .shorten {
+		    /*width: 450px; !* Độ rộng của phần tử chứa văn bản( điền bên style của thẻ trực tiếp)*!*/
+		    white-space: nowrap; /* Ngăn chữ bị ngắt dòng */
+		    overflow: hidden; /* Ẩn phần chữ dư thừa */
+		    text-overflow: ellipsis; /* Hiển thị dấu ba chấm (...) khi chữ bị cắt */
+	    }
+    </style>
 
 </head>
 
@@ -86,6 +104,8 @@
 <script src="{{asset('client/js/jquery.elevatezoom.js')}}"></script>
 <!-- scripts js -->
 <script src="{{asset('client/js/scripts.js')}}"></script>
+    //
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
 {{-- gg map and hinh anh upload.js--}}
 
     <script src="{{asset('client/js/upload.js')}}"></script>
@@ -114,7 +134,6 @@
 
 
     @stack('script')
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 </body>
 </html>

@@ -1,4 +1,4 @@
-@extends('admin.playout.master')
+@extends('Admin.Layout.master')
 
 
 {{-- css --}}

@@ -1,4 +1,4 @@
-@extends('admin.playout.master')
+@extends('Admin.Layout.master')
 
 
 {{-- css --}}
@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
 @endsection
 @section('title')
- Quản lý tài khoản người dùng
+    Quản lý tài khoản người dùng
 @endsection
 
 
@@ -25,7 +25,7 @@
             <div class="content-wrapper">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">  Quản lý tài khoản người dùng </h3>
+                        <h3 class="card-title"> Quản lý tài khoản người dùng </h3>
                     </div>
 
                     <!-- /.card-header -->
@@ -33,17 +33,17 @@
                         <x-admin.buttom.add router="addUser" name="Thêm tài khoản"></x-admin.buttom.add>
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
-                                <tr>
-                                    <th>Loại tài khoản</th>
-                                    <th>Hình ảnh</th>
-                                    <th>Tên tài khoản</th>
-                                    <th>Email</th>
-                                    <th>Số dư</th>
-                                    <th>Giới tính</th>
-                                    <th>Số điện thoại</th>
-                                    <th>Địa chỉ</th>
-                                    <th>Nghiệp vụ</th>
-                                </tr>
+                            <tr>
+                                <th>Loại tài khoản</th>
+                                <th>Hình ảnh</th>
+                                <th>Tên tài khoản</th>
+                                <th>Email</th>
+                                <th>Số dư</th>
+                                <th>Giới tính</th>
+                                <th>Số điện thoại</th>
+                                <th>Địa chỉ</th>
+                                <th>Nghiệp vụ</th>
+                            </tr>
                             </thead>
                             <tbody>
 
@@ -93,7 +93,7 @@
     <script src="{{ asset('dist/js/demo.js') }}"></script>
     <!-- Page specific script -->
     <script>
-        $(function() {
+        $(function () {
             $("#example1").DataTable({
                 "responsive": true,
                 "lengthChange": false,

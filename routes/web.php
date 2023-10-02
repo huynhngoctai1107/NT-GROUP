@@ -10,12 +10,10 @@ use App\Http\Controllers\Admin\Demand\DeleteDemandController;
 use App\Http\Controllers\Admin\Demand\EditDemandController;
 use App\Http\Controllers\Admin\Demand\ListDemandController;
 use App\Http\Controllers\Admin\Transactions\RechargeHistoryController;
-
 use App\Http\Controllers\Admin\User\AddUserController;
 use App\Http\Controllers\Admin\User\DeleteUserController;
 use App\Http\Controllers\Admin\User\EditUserController;
 use App\Http\Controllers\Admin\User\ListUserController;
-
 use App\Http\Controllers\Admin\Voucher\AddVoucherController;
 use App\Http\Controllers\Admin\Voucher\DeleteVoucherController;
 use App\Http\Controllers\Admin\Voucher\EditVoucherController;
@@ -39,9 +37,7 @@ use App\Http\Controllers\Client\Post\PostNewController;
 use App\Http\Controllers\Client\Search\SearchController;
 use App\Http\Controllers\Client\About\AboutController;
 use App\Http\Controllers\Client\Contact\ContactController;
-
 use App\Http\Controllers\Client\Docs\DocsController;
-
 use Illuminate\Support\Facades\Route;
 
 

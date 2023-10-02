@@ -8,25 +8,34 @@
         <div class="row">
             <div class="col-md-8">
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-12 mb-3">
                         <div class="verticalLine">
-                            <h3 class="ms-lg-3">KẾT QUẢ TÌM KIẾM</h3>
+                            <h3 class="ms-lg-3 ms-3">KẾT QUẢ TÌM KIẾM</h3>
                         </div>
-
                     </div>
-                    <div class="row">
+                    <div class="col-md-12 col-12">
                         <div class="box">
                             @php
-                                $name = 'abc';
-                                $img = env('APP_URL') . 'client/images/product_img1.jpg';
-                                $address = '170 hqv';
-                                $price = '200';
+                                $list = [
+                                    [
+                                        'name'=> 'Nhà ở giá rẻ tại Cần Thơ',
+                                        'img' => 'client/images/a1.webp',
+                                        'address' => '170 Hoàng Quốc Việt, An Bình, Ninh Kiều, Cần Thơ',
+                                        'price' => '2000000000',
+                                        'phone' => '032145678',
+                                    ],
+                                    [
+                                        'name'=> 'Nhà nguyên căn đầy đủ nội thất tại Cần Thơ',
+                                        'img' => "env('APP_URL') . 'client/images/banner0.jpeg'",
+                                        'address'=> '170 Hoàng Quốc Việt, An Bình, Ninh Kiều, Cần Thơ',
+                                        'price'=> '200000',
+                                        'phone' => '032145678',
+                                    ],
+                                ];
                             @endphp
-                            <x-clients.index.postSale :name="$name" :img="$img" :address="$address"
-                                                      :price="$price">
+                            <x-client.index.postSale :list="$list">
 
-                            </x-clients.index.postSale>
-
+                            </x-client.index.postSale>
                         </div>
                     </div>
                 </div>
@@ -156,9 +165,9 @@
                         <div class="verticalLine">
                             <h3 class="ms-lg-3">VIP BẤT ĐỘNG SẢN</h3>
                         </div>
-                        <x-clients.blog.blogVip :name="$name" :img="$img" :address="$address" :price="$price">
+                        <x-client.blog.blogVip :list="$list">
 
-                        </x-clients.blog.blogVip>
+                        </x-client.blog.blogVip>
 
 
                     </div>
@@ -198,4 +207,29 @@
     <!-- START SECTION SUBSCRIBE NEWSLETTER -->
 @endsection
 @push('styles')
+@endpush
+@push('script')
+    <script>
+        // Lấy thẻ div chứa form
+        var searchForm = document.getElementById("searchForm");
+        var searchForm2 = document.getElementById("searchForm2");
+
+        // Lấy nút "Nhà bán đất" và nút "Nhà đất cho thuê"
+        var banDatBtn = document.getElementById("banDatBtn");
+        var choThueBtn = document.getElementById("choThueBtn");
+
+        // Gắn sự kiện click cho nút "Nhà bán đất"
+        banDatBtn.addEventListener("click", function () {
+            // Hiển thị form
+            searchForm.style.display = "block";
+            searchForm2.style.display = "none";
+        });
+
+        // Gắn sự kiện click cho nút "Nhà đất cho thuê"
+        choThueBtn.addEventListener("click", function () {
+            // Hiển thị form
+            searchForm2.style.display = "block";
+            searchForm.style.display = "none";
+        });
+    </script>
 @endpush

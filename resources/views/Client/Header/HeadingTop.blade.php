@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row align-items-center">
-        <div class="col-md-6">
+        <div class="col-md-6 d-none d-md-block">
             <div class="d-flex align-items-center justify-content-center justify-content-md-start">
                 <div class="lng_dropdown me-2">
                     <ul class="contact_detail text-center text-lg-start">

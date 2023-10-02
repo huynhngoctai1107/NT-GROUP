@@ -1,4 +1,4 @@
-@extends('admin.playout.master')
+@extends('Admin.Layout.master')
 
 
 {{-- css --}}
@@ -31,25 +31,25 @@
 {{-- endtitle --}}
 
 @section('main')
-<div class="hold-transition sidebar-mini">
-  <div class="wrapper">
-      <div class="content-wrapper">
-        <form action="{{route($page=='demand'?'addDemand':'addCategory' )}}" method="post" class="mx-5 pt-4">
-          <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">Tên {{$page=="demand"?'Nhu cầu':'danh mục'}}</label>
-              <input type="email" class="form-control" value="{{old($page=="demand"?'demand':'category')}}" name="{{$page=="demand"?'demand':'category'}}" id="exampleInputEmail1" aria-describedby="emailHelp">
-           </div>
-           <div class="form-outline mb-4">
-            <label class="form-label" for="textAreaExample6">Ghi chú</label>
+    <div class="hold-transition sidebar-mini">
+        <div class="wrapper">
+            <div class="content-wrapper">
+                <form action="{{route($page=='demand'?'addDemand':'addCategory' )}}" method="post" class="mx-5 pt-4">
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Tên {{$page=="demand"?'Nhu cầu':'danh mục'}}</label>
+                        <input type="email" class="form-control" value="{{old($page=="demand"?'demand':'category')}}" name="{{$page=="demand"?'demand':'category'}}" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
+                    <div class="form-outline mb-4">
+                        <label class="form-label" for="textAreaExample6">Ghi chú</label>
 
-            <textarea class="form-control" name="note" id="textAreaExample6" rows="3">{{old('note')}}</textarea>
-          </div>
+                        <textarea class="form-control" name="note" id="textAreaExample6" rows="3">{{old('note')}}</textarea>
+                    </div>
 
-          <button type="submit" class="btn btn-primary">Thêm</button>
-      </form>
-      </div>
-  </div>
-</div>
+                    <button type="submit" class="btn btn-primary">Thêm</button>
+                </form>
+            </div>
+        </div>
+    </div>
 
 @endsection
 
@@ -81,7 +81,7 @@
     <script src="../../dist/js/demo.js"></script>
     <!-- Page specific script -->
     <script>
-        $(function() {
+        $(function () {
             //Initialize Select2 Elements
             $('.select2').select2()
 
@@ -137,7 +137,7 @@
                     startDate: moment().subtract(29, 'days'),
                     endDate: moment()
                 },
-                function(start, end) {
+                function (start, end) {
                     $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format(
                         'MMMM D, YYYY'))
                 }
@@ -156,12 +156,12 @@
             //color picker with addon
             $('.my-colorpicker2').colorpicker()
 
-            $('.my-colorpicker2').on('colorpickerChange', function(event) {
+            $('.my-colorpicker2').on('colorpickerChange', function (event) {
                 $('.my-colorpicker2 .fa-square').css('color', event.color.toString());
             })
         })
         // BS-Stepper Init
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             window.stepper = new Stepper(document.querySelector('.bs-stepper'))
         })
 
@@ -185,19 +185,19 @@
             clickable: ".fileinput-button" // Define the element that should be used as click trigger to select files.
         })
 
-        myDropzone.on("addedfile", function(file) {
+        myDropzone.on("addedfile", function (file) {
             // Hookup the start button
-            file.previewElement.querySelector(".start").onclick = function() {
+            file.previewElement.querySelector(".start").onclick = function () {
                 myDropzone.enqueueFile(file)
             }
         })
 
         // Update the total progress bar
-        myDropzone.on("totaluploadprogress", function(progress) {
+        myDropzone.on("totaluploadprogress", function (progress) {
             document.querySelector("#total-progress .progress-bar").style.width = progress + "%"
         })
 
-        myDropzone.on("sending", function(file) {
+        myDropzone.on("sending", function (file) {
             // Show the total progress bar when upload starts
             document.querySelector("#total-progress").style.opacity = "1"
             // And disable the start button
@@ -205,17 +205,17 @@
         })
 
         // Hide the total progress bar when nothing's uploading anymore
-        myDropzone.on("queuecomplete", function(progress) {
+        myDropzone.on("queuecomplete", function (progress) {
             document.querySelector("#total-progress").style.opacity = "0"
         })
 
         // Setup the buttons for all transfers
         // The "add files" button doesn't need to be setup because the config
         // `clickable` has already been specified.
-        document.querySelector("#actions .start").onclick = function() {
+        document.querySelector("#actions .start").onclick = function () {
             myDropzone.enqueueFiles(myDropzone.getFilesWithStatus(Dropzone.ADDED))
         }
-        document.querySelector("#actions .cancel").onclick = function() {
+        document.querySelector("#actions .cancel").onclick = function () {
             myDropzone.removeAllFiles(true)
         }
         // DropzoneJS Demo Code End

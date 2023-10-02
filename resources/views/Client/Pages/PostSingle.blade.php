@@ -37,8 +37,8 @@
                             <div class="col-lg-6 col-md-6 mb-4 mb-md-0">
                                 <div class="product-image">
                                     <div class="product_img_box">
-                                        <img id="product_img" src='assets/images/bds.jpg'
-                                             data-zoom-image="assets/images/bds.jpg" alt="product_img1"/>
+                                        <img id="product_img" src="{{ asset('client/images/banner0.webp') }}"
+                                             data-zoom-image="{{ asset('client/images/banner0.webp') }}" alt="product_img1"/>
                                         <a href="#" class="product_img_zoom" title="Zoom">
                                             <span class="linearicons-zoom-in"></span>
                                         </a>
@@ -47,49 +47,40 @@
                                          data-slides-to-show="4" data-slides-to-scroll="1" data-infinite="false">
                                         <div class="item">
                                             <a href="#" class="product_gallery_item active"
-                                               data-image="assets/images/bds.jpg"
-                                               data-zoom-image="assets/images/product_zoom_img1.jpg">
-                                                <img src="assets/images/bds.jpg" alt="product_small_img1" height="70px">
-                                            </a>
-                                        </div>
-                                        <div class="item">
-                                            <a href="#" class="product_gallery_item"
-                                               data-image="assets/images/bds2.png"
-                                               data-zoom-image="assets/images/bds2.png">
-                                                <img src="assets/images/bds2.png" alt="product_small_img2"
-                                                     height="70px">
+                                               data-image="{{ asset('client/images/a1.webp') }}"
+                                               data-zoom-image="{{ asset('client/images/a1.webp') }}">
+                                                <img src="{{ asset('client/images/a1.webp') }}" alt="product_small_img1" height="70px">
                                             </a>
                                         </div>
                                         <div class="item">
                                             <a href="#" class="product_gallery_item active"
-                                               data-image="assets/images/bds.jpg"
-                                               data-zoom-image="assets/images/product_zoom_img1.jpg">
-                                                <img src="assets/images/bds.jpg" alt="product_small_img1" height="70px">
-                                            </a>
-                                        </div>
-                                        <div class="item">
-                                            <a href="#" class="product_gallery_item"
-                                               data-image="assets/images/bds2.png"
-                                               data-zoom-image="assets/images/bds2.png">
-                                                <img src="assets/images/bds2.png" alt="product_small_img2"
-                                                     height="70px">
+                                               data-image="{{ asset('client/images/a1.webp') }}"
+                                               data-zoom-image="{{ asset('client/images/a1.webp') }}">
+                                                <img src="{{ asset('client/images/a1.webp') }}" alt="product_small_img1" height="70px">
                                             </a>
                                         </div>
                                         <div class="item">
                                             <a href="#" class="product_gallery_item active"
-                                               data-image="assets/images/bds.jpg"
-                                               data-zoom-image="assets/images/product_zoom_img1.jpg">
-                                                <img src="assets/images/bds.jpg" alt="product_small_img1" height="70px">
+                                               data-image="{{ asset('client/images/a1.webp') }}"
+                                               data-zoom-image="{{ asset('client/images/a1.webp') }}">
+                                                <img src="{{ asset('client/images/a1.webp') }}" alt="product_small_img1" height="70px">
                                             </a>
                                         </div>
+                                        <div class="item">
+                                            <a href="#" class="product_gallery_item active"
+                                               data-image="{{ asset('client/images/a1.webp') }}"
+                                               data-zoom-image="{{ asset('client/images/a1.webp') }}">
+                                                <img src="{{ asset('client/images/a1.webp') }}" alt="product_small_img1" height="70px">
+                                            </a>
+                                        </div>
+                                        <!-- 4 ảnh, hơn 5 ảnh sẽ bị dư -->
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6">
                                 <div class="pr_detail">
                                     <div class="product_description">
-                                        <h4 class="product_title"><a href="#">Bán nền giá rẻ 390 triệu ngay Thị Trấn
-                                                Mái Dầm tiếp giáp TP Cần Thơ</a></h4>
+                                        <h4 class="product_title"><a href="#">Bán nền giá rẻ 390 triệu ngay Thị Trấn Mái Dầm tiếp giáp TP Cần Thơ</a></h4>
                                         <div class="product_price">
                                             <span class="price">1 tỷ</span>
                                             <del>1 tỷ 2</del>
@@ -144,19 +135,17 @@
                                         <li class="nav-item">
                                             <a class="nav-link" id="Additional-info-tab" data-bs-toggle="tab"
                                                href="#Additional-info" role="tab" aria-controls="Additional-info"
-                                               aria-selected="false">Additional info</a>
+                                               aria-selected="false">Thông tin thêm</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" id="Reviews-tab" data-bs-toggle="tab" href="#Reviews"
-                                               role="tab" aria-controls="Reviews" aria-selected="false">Reviews
-                                                (2)</a>
+                                               role="tab" aria-controls="Reviews" aria-selected="false">Đánh giá (2)</a>
                                         </li>
                                     </ul>
                                     <div class="tab-content shop_info_tab">
                                         <div class="tab-pane fade show active" id="Description" role="tabpanel"
                                              aria-labelledby="Description-tab">
-                                            <p>BÁN 2 NỀN GIÁ RẺ 390 TRIỆU TÁI ĐỊNH CƯ NGAY CHỢ THỊ TRẤN MÁI DẦM HẬU
-                                                GIANG
+                                            <p>BÁN 2 NỀN GIÁ RẺ 390 TRIỆU TÁI ĐỊNH CƯ NGAY CHỢ THỊ TRẤN MÁI DẦM HẬU GIANG
                                                 <br>
                                                 - Diện tích: 5 x 19, 5 x 20- Lộ: 15M - 16M <br>
                                                 - Hướng đa dạng <br>
@@ -170,32 +159,31 @@
                                              aria-labelledby="Additional-info-tab">
                                             <table class="table table-bordered">
                                                 <tr>
-                                                    <td>Capacity</td>
+                                                    <td>Dung tích</td>
                                                     <td>5 Kg</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Color</td>
-                                                    <td>Black, Brown, Red,</td>
+                                                    <td>Màu sắc</td>
+                                                    <td>Đen, Nâu, Đỏ</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Water Resistant</td>
-                                                    <td>Yes</td>
+                                                    <td>Chống nước</td>
+                                                    <td>Có</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Material</td>
-                                                    <td>Artificial Leather</td>
+                                                    <td>Chất liệu</td>
+                                                    <td>Da tổng hợp</td>
                                                 </tr>
                                             </table>
                                         </div>
                                         <div class="tab-pane fade" id="Reviews" role="tabpanel"
                                              aria-labelledby="Reviews-tab">
                                             <div class="comments">
-                                                <h5 class="product_tab_title">2 Review For <span>Blue Dress For
-                                                        Woman</span></h5>
+                                                <h5 class="product_tab_title">2 Đánh giá cho <span>Áo xanh cho phụ nữ</span></h5>
                                                 <ul class="list_none comment_list mt-4">
                                                     <li>
                                                         <div class="comment_img">
-                                                            <img src="assets/images/user1.jpg" alt="user1"/>
+                                                            <img src="{{ asset('assets/images/user1.jpg') }}" alt="user1"/>
                                                         </div>
                                                         <div class="comment_block">
                                                             <div class="rating_wrap">
@@ -205,7 +193,7 @@
                                                             </div>
                                                             <p class="customer_meta">
                                                                 <span class="review_author">Alea Brooks</span>
-                                                                <span class="comment-date">March 5, 2018</span>
+                                                                <span class="comment-date">5 Tháng 3, 2018</span>
                                                             </p>
                                                             <div class="description">
                                                                 <p>Lorem Ipsumin gravida nibh vel velit auctor aliquet.
@@ -218,7 +206,7 @@
                                                     </li>
                                                     <li>
                                                         <div class="comment_img">
-                                                            <img src="assets/images/user2.jpg" alt="user2"/>
+                                                            <img src="{{ asset('assets/images/user2.jpg') }}" alt="user2"/>
                                                         </div>
                                                         <div class="comment_block">
                                                             <div class="rating_wrap">
@@ -228,7 +216,7 @@
                                                             </div>
                                                             <p class="customer_meta">
                                                                 <span class="review_author">Grace Wong</span>
-                                                                <span class="comment-date">June 17, 2018</span>
+                                                                <span class="comment-date">17 Tháng 6, 2018</span>
                                                             </p>
                                                             <div class="description">
                                                                 <p>It is a long established fact that a reader will be
@@ -243,7 +231,7 @@
                                                 </ul>
                                             </div>
                                             <div class="review_form field_form">
-                                                <h5>Add a review</h5>
+                                                <h5>Thêm đánh giá</h5>
                                                 <form class="row mt-3">
                                                     <div class="form-group col-12 mb-3">
                                                         <div class="star_rating">
@@ -255,22 +243,21 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-group col-12 mb-3">
-                                                        <textarea required="required" placeholder="Your review *"
-                                                                  class="form-control" name="message"
-                                                                  rows="4"></textarea>
+                                    <textarea required="required" placeholder="Đánh giá của bạn *"
+                                              class="form-control" name="message"
+                                              rows="4"></textarea>
                                                     </div>
                                                     <div class="form-group col-md-6 mb-3">
-                                                        <input required="required" placeholder="Enter Name *"
+                                                        <input required="required" placeholder="Nhập tên *"
                                                                class="form-control" name="name" type="text">
                                                     </div>
                                                     <div class="form-group col-md-6 mb-3">
-                                                        <input required="required" placeholder="Enter Email *"
+                                                        <input required="required" placeholder="Nhập Email *"
                                                                class="form-control" name="email" type="email">
                                                     </div>
-
                                                     <div class="form-group col-12 mb-3">
                                                         <button type="submit" class="btn btn-fill-out" name="submit"
-                                                                value="Submit">Submit Review
+                                                                value="Submit">Gửi đánh giá
                                                         </button>
                                                     </div>
                                                 </form>
@@ -281,11 +268,8 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-12">
-                                <iframe
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3929.5948724607174!2d105.09792527459444!3d9.967624673591873!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31a0b43853857f1d%3A0x6b5909aaf0a7e39!2zUGhhbiBUaOG7iyBSw6BuZywgQW4gSMOyYSwgVHAuIFLhuqFjaCBHacOhLCBLacOqbiBHaWFuZywgVmlldG5hbQ!5e0!3m2!1sen!2s!4v1694404074860!5m2!1sen!2s"
-                                    width="800" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <div class="col" id="map">
+
                             </div>
                         </div>
                         <div class="row">
@@ -304,15 +288,24 @@
                                      data-margin="20"
                                      data-responsive='{"0":{"items": "1"}, "481":{"items": "2"}, "768":{"items": "3"}, "992":{"items": "2"}, "1199":{"items": "3"}}'>
                                     @php
-                                        $name = 'abc';
-                                        $img = env('APP_URL') . 'client/images/product_img1.jpg';
-                                        $date = '19 - 06 - 2023';
-                                        $description = 'Ngân hàng Nhà nước vừa ra quyết định điều chỉnh các mức lãi suất...';
-                                        $address = '170 hqv';
-                                        $price = '200';
+                                        $list = [
+                                            [
+                                                'name'=> 'Nhà ở giá rẻ tại Cần Thơ',
+                                                'img' => 'banner0.webp',
+                                                'address' => '170 Hoàng Quốc Việt, An Bình, Ninh Kiều, Cần Thơ',
+                                                'price' => '2 tỷ',
+                                                'phone' => '032145678',
+                                            ],
+                                            [
+                                                'name'=> 'Nhà nguyên căn đầy đủ nội thất tại Cần Thơ',
+                                                'img' => 'banner0.webp',
+                                                'address'=> '170 Hoàng Quốc Việt, An Bình, Ninh Kiều, Cần Thơ',
+                                                'price'=> '200000',
+                                                'phone' => '032145678',
+                                            ],
+                                        ];
                                     @endphp
-                                    <x-client.blog.blogVip :name="$name" :img="$img" :address="$address"
-                                                            :price="$price">
+                                    <x-client.blog.blogVip :list="$list">
 
                                     </x-client.blog.blogVip>
                                 </div>
@@ -339,8 +332,7 @@
                             <div class="widget">
                                 <h5 class="widget_title">Bất Động Sản VIP</h5>
                                 <ul class="widget_recent_post">
-                                    <x-client.blog.blogVip :name="$name" :img="$img" :address="$address"
-                                                            :price="$price">
+                                    <x-client.blog.blogVip :list="$list">
 
                                     </x-client.blog.blogVip>
                                 </ul>
@@ -353,19 +345,6 @@
                                     <a href="#">Thuê trọ</a>
                                     <a href="#">Bán</a>
                                     <a href="#">Thuê</a>
-                                </div>
-                            </div>
-                            <div class="widget">
-                                <div class="shop_banner">
-                                    <div class="banner_img overlay_bg_20">
-                                        <img src="assets/images/sale.jpeg" alt="sidebar_banner_img">
-                                    </div>
-                                    <div class="shop_bn_content2 text_white">
-                                        <h5 class="text-uppercase shop_subtitle">New Collection</h5>
-                                        <h3 class="text-uppercase shop_title">Sale 30% Off</h3>
-                                        <a href="#" class="btn btn-white rounded-0 btn-sm text-uppercase">Shop
-                                            Now</a>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -415,5 +394,35 @@
             object-fit: cover;
             /* Cách hình ảnh sẽ được hiển thị */
         }
+        /* Điều chỉnh kích thước bản đồ theo ý muốn */
+        #map {
+	        height: 400px;
+	        width: 100%;
+        }
     </style>
+@endpush
+@push('script')
+    <script>
+        // Tọa độ bạn đã nhập
+        var latitude = 10.026424644944374;
+        var longitude = 105.74954183595408;
+
+        function initMap() {
+            // Tạo một đối tượng bản đồ và thiết lập tọa độ ban đầu
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: latitude, lng: longitude },
+                zoom: 15 // Thay đổi giá trị zoom tùy theo yêu cầu của bạn
+            });
+
+            // Tạo một đối tượng đánh dấu (marker) ở vị trí bạn đã nhập
+            var marker = new google.maps.Marker({
+                position: { lat: latitude, lng: longitude },
+                map: map,
+                title: 'Vị trí cụ thể'
+            });
+        }
+    </script>
+    <!-- Sử dụng API key của bạn từ Google Cloud Console -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_G4pm1e6qVGLB_t1_hYe_KDFc7ObLf6I&callback=initMap" async defer></script>
+
 @endpush
