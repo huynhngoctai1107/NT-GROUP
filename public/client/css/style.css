@@ -878,7 +878,6 @@ button:focus:not(:focus-visible) {
     -webkit-animation: ripple 1.8s infinite;
     -moz-animation: ripple 1.8s infinite;
     -o-animation: ripple 1.8s infinite;
-    -ms-transition: ripple 1.8s infinite;
     animation: ripple 1.8s infinite;
     background-color: #FF324D;
     border-radius: 100%;
@@ -1859,7 +1858,7 @@ button:focus:not(:focus-visible) {
 }
 
 .cart_list img {
-    border: 1px solid #ddd
+    border: 1px solid #ddd;
     background-color: #ffffff;
     float: left;
     margin-right: 10px;
@@ -3384,7 +3383,6 @@ input.text {
 }
 
 .wave_shape_bottom::before {
-    background-image: url("../images/wave_shape.png");
     display: block;
     height: 100%;
     content: "";
@@ -4579,7 +4577,8 @@ footer {
 }
 
 .footer_logo {
-    margin-bottom: 20px;
+	margin-top: -30px;
+	/*margin-bottom: 20px;*/
 }
 
 footer p {

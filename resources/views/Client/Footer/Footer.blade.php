@@ -5,18 +5,23 @@
         <div class="container">
             <div class="container-fluid mt-4">
                 <div class="row mb-5 ms-md-4">
-                    <div class="col-md-4 col-sm-4 col-xs-4">
-                        <div class="footer-text">
+
+                    <div class="col-md-4 col-sm-9 col-xs-4" >
+                        <div class="footer-text ">
                             <div class="footer_logo">
-                                <a href="{{ route('index') }}"><img src="{{asset('client/images/logo.png')}}" width="40%" alt="Logo"></a>
+                                <a href="{{ route('index') }}"><img src="{{asset('client/images/logo.png')}}" width="47%"  alt="Logo" class="ms-5"></a>
                                 <p>Mang lại giá trị cốt lỗi trong cuộc sống</p>
-                                <ul class="widget_links">
-                                    <li class="bi bi-envelope"><a href="htai67934@mail.com "> htai67934@mail.com </a></li>
-                                    <li class="bi bi-telephone"><a href="0949 615 859 "> 0949 615 859 </a></li>
-                                </ul>
+                                <div class="widget">
+                                    <ul class="widget_links">
+                                        <li class="bi bi-envelope"><a href="htai67934@mail.com "> htai67934@mail.com </a></li>
+                                        <li class="bi bi-telephone"><a href="0949 615 859 "> 0949 615 859 </a></li>
+                                    </ul>
+                                </div>
+
                             </div>
                         </div>
                     </div>
+
                     <div class="col-md-2 col-sm-4 col-xs-4">
                         <div class="widget">
                             <h6 class="widget_title">Dịch vụ</h6>
@@ -34,8 +39,6 @@
                             <ul class="widget_links">
                                 <li><a href="{{ route('policy') }}">Chính sách bảo mật</a></li>
                                 <li><a href="{{ route('terms') }}">Điều khoản thoả thuận</a></li>
-                                <li><a href="#">Guide</a></li>
-                                <li><a href="#">My Account</a></li>
                             </ul>
                         </div>
                     </div>
