@@ -39,7 +39,7 @@
                                                 'name'=> 'Nhà ở giá rẻ tại Cần Thơ',
                                                 'img' => 'banner0.webp',
                                                 'address' => '170 Hoàng Quốc Việt, An Bình, Ninh Kiều, Cần Thơ',
-                                                'price' => '2 tỷ',
+                                                'price' => '100000000',
                                                 'date' => '19/06/2023',
                                                 'description' => 'Ngân hàng Nhà nước vừa ra quyết định điều chỉnh các mức lãi suất...',
                                                 'phone' => '0321456789',
@@ -48,7 +48,7 @@
                                                 'name'=> 'Nhà nguyên căn đầy đủ nội thất tại Cần Thơ',
                                                 'img' => 'banner0.webp',
                                                 'address'=> '170 Hoàng Quốc Việt, An Bình, Ninh Kiều, Cần Thơ',
-                                                'price'=> '2.5 tỷ',
+                                                'price'=> '2500000000',
                                                 'date' => '19/06/2023',
                                                 'description' => 'Ngân hàng Nhà nước vừa ra quyết định điều chỉnh các mức lãi suất...',
                                                 'phone' => '0321456789',
@@ -57,7 +57,7 @@
                                                 'name'=> 'Nhà ở giá rẻ tại Cần Thơ',
                                                 'img' => 'banner0.webp',
                                                 'address' => '170 Hoàng Quốc Việt, An Bình, Ninh Kiều, Cần Thơ',
-                                                'price' => '1 tỷ',
+                                                'price' => '1000000000',
                                                 'date' => '19/06/2023',
                                                 'description' => 'Ngân hàng Nhà nước vừa ra quyết định điều chỉnh các mức lãi suất...',
                                                 'phone' => '0321456789',
@@ -66,7 +66,7 @@
                                                 'name'=> 'Nhà nguyên căn đầy đủ nội thất tại Cần Thơ',
                                                 'img' => 'banner0.webp',
                                                 'address'=> '170 Hoàng Quốc Việt, An Bình, Ninh Kiều, Cần Thơ',
-                                                'price'=> '1.5 tỷ',
+                                                'price'=> '1500000000',
                                                 'date' => '19/06/2023',
                                                 'description' => 'Ngân hàng Nhà nước vừa ra quyết định điều chỉnh các mức lãi suất thấp kỉ lục trong năm qua và ưu đãi vãy ...',
                                                 'phone' => '0321456789',
@@ -148,13 +148,42 @@
         </div>
         <!-- END SECTION BLOG -->
 
-        <!-- START SECTION SUBSCRIBE NEWSLETTER -->
-        <x-client.pages.subscribe></x-client.pages.subscribe>
-        <!-- START SECTION SUBSCRIBE NEWSLETTER -->
     </div>
     <!-- END MAIN CONTENT -->
 @endsection
 @push('script')
     <!-- fit video  -->
     <script src="assets/js/jquery.fitvids.js"></script>
+    <script>
+        // Lặp qua tất cả các phần tử có class "price"
+        var priceElements = document.querySelectorAll('.price');
+        priceElements.forEach(function(element) {
+            // Lấy giá trị số tiền từ thuộc tính "data-price"
+            var price = parseFloat(element.textContent);
+
+            // Kiểm tra nếu số tiền lớn hơn hoặc bằng 1 tỷ
+            if (price >= 1000000000) {
+                // Tính tỷ và triệu
+                var ty = Math.floor(price / 1000000000);
+                var trieu = Math.floor((price % 1000000000) / 1000000);
+
+                // Định dạng số tiền thành 'x tỷ y triệu' và gán lại cho phần tử
+                var formattedPrice = ty + ' tỷ';
+                if (trieu > 0) {
+                    formattedPrice += ' ' + trieu + ' triệu';
+                }
+
+                element.textContent = formattedPrice;
+            } else if (price >= 1000000) {
+                // Nếu số tiền lớn hơn hoặc bằng 1 triệu và dưới 1 tỷ
+                var trieu = Math.floor(price / 1000000);
+
+                // Định dạng số tiền thành 'x triệu' và gán lại cho phần tử
+                element.textContent = trieu + ' triệu';
+            } else {
+                // Nếu số tiền dưới 1 triệu, giữ nguyên
+                element.textContent = price;
+            }
+        });
+    </script>
 @endpush
