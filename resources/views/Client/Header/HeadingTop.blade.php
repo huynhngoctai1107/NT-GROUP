@@ -18,7 +18,7 @@
         <div class="col-md-6">
             <div class="text-center text-md-end">
                 <ul class="header_list">
-                    <li><a href="compare.html"><i class="ti-control-shuffle"></i><span>Đăng tin</span></a></li>
+                    <li><a href="{{route('postAdd')}}"><i class="ti-control-shuffle"></i><span>Đăng tin</span></a></li>
                     <li><a href="{{route('postNew')}}"><i class="ti-heart"></i><span>Danh sách tin</span></a></li>
                     <li><a href="{{route('login')}}"><i class="ti-user"></i><span>Đăng nhập</span></a></li>
                 </ul>

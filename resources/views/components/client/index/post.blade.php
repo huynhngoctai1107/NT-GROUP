@@ -12,7 +12,7 @@
                     <span class="card-title my-2 small shorten" >{{$item['address']}}</span>
                     <hr class="my-3">
                     <div class="priceandacreage d-flex justify-content-between w-100">
-                        <span class="price text-warning fw-bold"><i class="bi bi-currency-dollar"></i>{{$item['price']}}</span>
+                        <span class="price format-number text-warning fw-bold"><i class="bi bi-currency-dollar"></i>{{$item['price']}} VND</span>
                         <span class="acreage text-warning fw-bold"><i class="bi bi-arrows-fullscreen"></i>
                                             230m</span>
                     </div>

@@ -47,30 +47,30 @@
                                          data-slides-to-show="4" data-slides-to-scroll="1" data-infinite="false">
                                         <div class="item">
                                             <a href="#" class="product_gallery_item active"
-                                               data-image="{{ asset('client/images/a1.webp') }}"
-                                               data-zoom-image="{{ asset('client/images/a1.webp') }}">
-                                                <img src="{{ asset('client/images/a1.webp') }}" alt="product_small_img1" height="70px">
+                                               data-image="{{ asset('client/images/banner0.webp') }}"
+                                               data-zoom-image="{{ asset('client/images/banner0.webp') }}">
+                                                <img src="{{ asset('client/images/banner0.webp') }}" alt="product_small_img1" height="70px">
                                             </a>
                                         </div>
                                         <div class="item">
                                             <a href="#" class="product_gallery_item active"
-                                               data-image="{{ asset('client/images/a1.webp') }}"
-                                               data-zoom-image="{{ asset('client/images/a1.webp') }}">
-                                                <img src="{{ asset('client/images/a1.webp') }}" alt="product_small_img1" height="70px">
+                                               data-image="{{ asset('client/images/banner00.webp') }}"
+                                               data-zoom-image="{{ asset('client/images/banner00.webp') }}">
+                                                <img src="{{ asset('client/images/banner00.webp') }}" alt="product_small_img1" height="70px">
                                             </a>
                                         </div>
                                         <div class="item">
                                             <a href="#" class="product_gallery_item active"
-                                               data-image="{{ asset('client/images/a1.webp') }}"
-                                               data-zoom-image="{{ asset('client/images/a1.webp') }}">
-                                                <img src="{{ asset('client/images/a1.webp') }}" alt="product_small_img1" height="70px">
+                                               data-image="{{ asset('client/images/banner0.webp') }}"
+                                               data-zoom-image="{{ asset('client/images/banner0.webp') }}">
+                                                <img src="{{ asset('client/images/banner0.webp') }}" alt="product_small_img1" height="70px">
                                             </a>
                                         </div>
                                         <div class="item">
                                             <a href="#" class="product_gallery_item active"
-                                               data-image="{{ asset('client/images/a1.webp') }}"
-                                               data-zoom-image="{{ asset('client/images/a1.webp') }}">
-                                                <img src="{{ asset('client/images/a1.webp') }}" alt="product_small_img1" height="70px">
+                                               data-image="{{ asset('client/images/banner00.webp') }}"
+                                               data-zoom-image="{{ asset('client/images/banner00.webp') }}">
+                                                <img src="{{ asset('client/images/banner00.webp') }}" alt="product_small_img1" height="70px">
                                             </a>
                                         </div>
                                         <!-- 4 ảnh, hơn 5 ảnh sẽ bị dư -->
@@ -82,8 +82,8 @@
                                     <div class="product_description">
                                         <h4 class="product_title"><a href="#">Bán nền giá rẻ 390 triệu ngay Thị Trấn Mái Dầm tiếp giáp TP Cần Thơ</a></h4>
                                         <div class="product_price">
-                                            <span class="price">1 tỷ</span>
-                                            <del>1 tỷ 2</del>
+                                            <span class="price format-number">1000000000</span>
+                                            <del class="format-number">1200000000</del>
                                             <div class="on_sale">
                                                 <span>35% Giảm</span>
                                             </div>
@@ -268,7 +268,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col" id="map">
+                            <div class="col" id="ggmap">
 
                             </div>
                         </div>
@@ -293,14 +293,14 @@
                                                 'name'=> 'Nhà ở giá rẻ tại Cần Thơ',
                                                 'img' => 'banner0.webp',
                                                 'address' => '170 Hoàng Quốc Việt, An Bình, Ninh Kiều, Cần Thơ',
-                                                'price' => '2 tỷ',
+                                                'price' => '2500000000',
                                                 'phone' => '032145678',
                                             ],
                                             [
                                                 'name'=> 'Nhà nguyên căn đầy đủ nội thất tại Cần Thơ',
                                                 'img' => 'banner0.webp',
                                                 'address'=> '170 Hoàng Quốc Việt, An Bình, Ninh Kiều, Cần Thơ',
-                                                'price'=> '200000',
+                                                'price'=> '200000000',
                                                 'phone' => '032145678',
                                             ],
                                         ];
@@ -318,15 +318,15 @@
                                 <h5 class="widget_title">Loại Tin</h5>
                                 <ul class="widget_categories">
                                     <li><a href="#"><span class="categories_name">Bán Đất</span><span
-                                                class="categories_num">(9)</span></a></li>
+                                                    class="categories_num">(9)</span></a></li>
                                     <li><a href="#"><span class="categories_name">Thuê Đất</span><span
-                                                class="categories_num">(6)</span></a></li>
+                                                    class="categories_num">(6)</span></a></li>
                                     <li><a href="#"><span class="categories_name">Bán Nhà</span><span
-                                                class="categories_num">(4)</span></a></li>
+                                                    class="categories_num">(4)</span></a></li>
                                     <li><a href="#"><span class="categories_name">Thuê Nhà</span><span
-                                                class="categories_num">(7)</span></a></li>
+                                                    class="categories_num">(7)</span></a></li>
                                     <li><a href="#"><span class="categories_name">Thuê Trọ</span><span
-                                                class="categories_num">(12)</span></a></li>
+                                                    class="categories_num">(12)</span></a></li>
                                 </ul>
                             </div>
                             <div class="widget">
@@ -353,31 +353,6 @@
             </div>
         </div>
         <!-- END SECTION SHOP -->
-
-        <!-- START SECTION SUBSCRIBE NEWSLETTER -->
-        <div class="section bg_default small_pt small_pb">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-md-6">
-                        <div class="heading_s1 mb-md-0 heading_light">
-                            <h3>Đăng kí để nhận tin mới nhất</h3>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="newsletter_form">
-                            <form>
-                                <input type="text" required="" class="form-control rounded-0"
-                                       placeholder="Nhập mail">
-                                <button type="submit" class="btn btn-dark rounded-0" name="submit"
-                                        value="Submit">Gửi
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- START SECTION SUBSCRIBE NEWSLETTER -->
     </div>
     <!-- END MAIN CONTENT -->
 @endsection
@@ -395,7 +370,7 @@
             /* Cách hình ảnh sẽ được hiển thị */
         }
         /* Điều chỉnh kích thước bản đồ theo ý muốn */
-        #map {
+        #ggmap {
 	        height: 400px;
 	        width: 100%;
         }
@@ -409,7 +384,7 @@
 
         function initMap() {
             // Tạo một đối tượng bản đồ và thiết lập tọa độ ban đầu
-            var map = new google.maps.Map(document.getElementById('map'), {
+            var map = new google.maps.Map(document.getElementById('ggmap'), {
                 center: { lat: latitude, lng: longitude },
                 zoom: 15 // Thay đổi giá trị zoom tùy theo yêu cầu của bạn
             });
@@ -421,6 +396,37 @@
                 title: 'Vị trí cụ thể'
             });
         }
+
+        // Lặp qua tất cả các phần tử có class "price"
+        var priceElements = document.querySelectorAll('.format-number');
+        priceElements.forEach(function(element) {
+            // Lấy giá trị số tiền từ thuộc tính "data-price"
+            var price = parseFloat(element.textContent);
+
+            // Kiểm tra nếu số tiền lớn hơn hoặc bằng 1 tỷ
+            if (price >= 1000000000) {
+                // Tính tỷ và triệu
+                var ty = Math.floor(price / 1000000000);
+                var trieu = Math.floor((price % 1000000000) / 1000000);
+
+                // Định dạng số tiền thành 'x tỷ y triệu' và gán lại cho phần tử
+                var formattedPrice = ty + ' tỷ';
+                if (trieu > 0) {
+                    formattedPrice += ' ' + trieu + ' triệu';
+                }
+
+                element.textContent = formattedPrice;
+            } else if (price >= 1000000) {
+                // Nếu số tiền lớn hơn hoặc bằng 1 triệu và dưới 1 tỷ
+                var trieu = Math.floor(price / 1000000);
+
+                // Định dạng số tiền thành 'x triệu' và gán lại cho phần tử
+                element.textContent = trieu + ' triệu';
+            } else {
+                // Nếu số tiền dưới 1 triệu, giữ nguyên
+                element.textContent = price;
+            }
+        });
     </script>
     <!-- Sử dụng API key của bạn từ Google Cloud Console -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_G4pm1e6qVGLB_t1_hYe_KDFc7ObLf6I&callback=initMap" async defer></script>

@@ -1,8 +1,8 @@
 @foreach($list as $item )
     <div class="card mt-3">
         <div class="row">
-            <div class="col-md-4">
-                <img src="{{asset("client/images/".$item['img'])}}" class="" alt="Hình ảnh" style="max-width: 100%; height: 200px" />
+            <div class="col-md-4 ">
+                <img src="{{asset("client/images/".$item['img'])}}" class="" alt="Hình ảnh" style="max-width: 100%; height: 100%" />
             </div>
             <div class="col-md-8">
                 <div class="card-body">
@@ -10,7 +10,7 @@
                     <p class="card-title my-2 shorten">Nhà trệt lầu đường số 7 KDC ĐH Y Dược, An Khánh, Ninh Kiều, Cần Thơ</p>
                     <hr class="my-3">
                     <div class="d-md-flex justify-content-between">
-                        <span class="price"><strong>Giá:</strong> {{$item['price']}} VND</span>
+                        <span class="price format-number text-warning fw-bold"><i class="bi bi-currency-dollar"></i>{{$item['price']}} VND</span>
                         <span class="acreage"><strong>Diện tích:</strong> 130m</span>
                     </div>
                     <p class="address my-3 shorten"><strong>Khu vực:</strong> {{$item['address']}}</p>
