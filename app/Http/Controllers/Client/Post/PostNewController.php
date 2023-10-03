@@ -11,12 +11,4 @@ class PostNewController extends Controller
     {
         return view('client.pages.postnew');
     }
-    function postList()
-    {
-        return view('client.pages.postlist');
-    }
-    function postDelete()
-    {
-        return view('client.pages.postdelete');
-    }
 }

@@ -105,9 +105,6 @@ Route::group(['prefix' => '/'], function (){
     Route::group(['prefix' => 'post'], function (){
         Route::get('/add', [AddPostController::class, 'post'])->name('postAdd');
         Route::get('/new', [PostNewController::class, 'postNew'])->name('postNew');
-        Route::get('/vip', [PostNewController::class, 'postList'])->name('postList');
-        Route::get('/delete',[PostNewController::class, 'postDelete'])->name('postDelete');
-        Route::get('/list', [PostListController::class, 'listPost'])->name('listPost');
     });
     Route::group(['prefix' => 'search'], function (){
         Route::get('/list', [SearchController::class, 'search'])->name('search');
