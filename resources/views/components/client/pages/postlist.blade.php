@@ -1,4 +1,4 @@
-<div class="table-responsive shop_cart_table mt-2">
+<div class="table-responsive shop_cart_table">
     <table class="table">
         <thead>
         <tr>

@@ -145,7 +145,6 @@
 
 
 
-        <x-client.pages.subscribe></x-client.pages.subscribe>
 
     </div>
     <!-- END MAIN CONTENT -->
