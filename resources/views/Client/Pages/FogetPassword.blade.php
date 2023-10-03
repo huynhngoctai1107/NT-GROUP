@@ -29,17 +29,6 @@
                                         <input type="text" required="" class="form-control" name="email" placeholder="Email">
                                     </div>
 
-                                    <div class="login_footer form-group">
-                                        <div class="chek-form">
-                                            <input class="form-control" required="" type="password" name="password" placeholder="Code *">
-                                        </div>
-                                        <span class="security-code ">
-                                        <b class="text-new">8</b>
-                                        <b class="text-hot">6</b>
-                                        <b class="text-sale">7</b>
-                                        <b class="text-best">5</b>
-                                    </span>
-                                    </div>
                                     <div class="login_footer form-group mb-3">
                                         <div class="chek-form">
                                             <div class="custome-checkbox">
