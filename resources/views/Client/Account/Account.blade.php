@@ -22,13 +22,13 @@
                                 <a class="nav-link" id="orders-tab" data-bs-toggle="tab" href="#orders" role="tab" aria-controls="orders" aria-selected="false"><i class="ti-shopping-cart-full"></i>Lịch Sử Giao dịch</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="address-tab" data-bs-toggle="tab" href="#address" role="tab" aria-controls="address" aria-selected="true"><i class="ti-location-pin"></i>Cập nhật tài khoản</a>
+                                <a class="nav-link" id="address-tab" data-bs-toggle="tab" href="#account" role="tab" aria-controls="account" aria-selected="true"><i class="ti-location-pin"></i>Cập nhật tài khoản</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" id="account-detail-tab" data-bs-toggle="tab" href="#account-detail" role="tab" aria-controls="account-detail" aria-selected="true"><i class="ti-id-badge"></i>Cập nhật mật khẩu</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="login.html"><i class="ti-lock"></i>Logout</a>
+                                <a class="nav-link" href="login.html"><i class="ti-lock"></i>Đăng xuất</a>
                             </li>
                         </ul>
                     </div>
@@ -81,7 +81,7 @@
                             </div>
                         </div>
 
-                        <div class="tab-pane fade" id="address" role="tabpanel" aria-labelledby="address-tab">
+                        <div class="tab-pane fade" id="account" role="tabpanel" aria-labelledby="account-tab">
                             <x-client.account.account></x-client.account.account>
                         </div>
 

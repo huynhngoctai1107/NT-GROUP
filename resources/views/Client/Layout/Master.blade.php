@@ -66,6 +66,8 @@
 	    }
     </style>
 
+
+
 </head>
 
 <body>
@@ -104,13 +106,13 @@
 <script src="{{asset('client/js/jquery.elevatezoom.js')}}"></script>
 <!-- scripts js -->
 <script src="{{asset('client/js/scripts.js')}}"></script>
-    //
+
     <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
 {{-- gg map and hinh anh upload.js--}}
 
     <script src="{{asset('client/js/upload.js')}}"></script>
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_G4pm1e6qVGLB_t1_hYe_KDFc7ObLf6I"></script>
+    <script src="https://maps.app.goo.gl/uxx2Xc9w7GcKigKt7"></script>
 
     <script>
         // Create a new Google Map object.
@@ -130,6 +132,8 @@
             document.getElementById('latitude').value = lat;
         });
     </script>
+
+
 
 
 
