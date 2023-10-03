@@ -42,18 +42,6 @@
                                 <div class="form-group mb-3">
                                     <input class="form-control" required="" type="password" name="password" placeholder="Nhập lại mật khẩu">
                                 </div>
-                                <div class="login_footer form-group">
-                                    <div class="chek-form">
-                                        <input class="form-control" required="" type="password" name="password"
-                                               placeholder="Code *">
-                                    </div>
-                                    <span class="security-code ">
-                                        <b class="text-new">8</b>
-                                        <b class="text-hot">6</b>
-                                        <b class="text-sale">7</b>
-                                        <b class="text-best">5</b>
-                                    </span>
-                                </div>
                                 <div class="payment_option mb-50">
                                     <div class="custome-radio">
                                         <input class="form-check-input" required="" type="radio" name="payment_option" id="exampleRadios3" checked="" />
