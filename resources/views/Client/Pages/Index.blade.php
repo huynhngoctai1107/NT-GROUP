@@ -171,11 +171,11 @@
                                                 'name'=> 'Nhà ở giá rẻ tại Cần Thơ',
                                                 'img' => 'banner0.webp',
                                                 'address' => '170 Hoàng Quốc Việt, An Bình, Ninh Kiều, Cần Thơ',
-                                                'price' => '2500000000',
+                                                'price' => '250000000',
                                             ],
                                             [
                                                 'name'=> 'Nhà nguyên căn đầy đủ nội thất tại Cần Thơ',
-                                                'img' => 'banner00.webp',
+                                                'img' => 'banner00.jpeg',
                                                 'address'=> '170 Hoàng Quốc Việt, An Bình, Ninh Kiều, Cần Thơ',
                                                 'price'=> '2500000000',
                                             ],
@@ -183,11 +183,11 @@
                                                 'name'=> 'Nhà ở giá rẻ tại Cần Thơ',
                                                 'img' => 'banner0.webp',
                                                 'address' => '170 Hoàng Quốc Việt, An Bình, Ninh Kiều, Cần Thơ',
-                                                'price' => '2500000000',
+                                                'price' => '250000000',
                                             ],
                                             [
                                                 'name'=> 'Nhà nguyên căn đầy đủ nội thất tại Cần Thơ',
-                                                'img' => 'banner00.webp',
+                                                'img' => 'banner00.jpeg',
                                                 'address'=> '170 Hoàng Quốc Việt, An Bình, Ninh Kiều, Cần Thơ',
                                                 'price'=> '2500000000',
                                             ],
@@ -276,10 +276,6 @@
         <!-- END SECTION SHOP -->
 
 
-        <!-- START SECTION SUBSCRIBE NEWSLETTER -->
-        <x-client.pages.subscribe></x-client.pages.subscribe>
-        <!-- START SECTION SUBSCRIBE NEWSLETTER -->
-
     </div>
     <!-- END MAIN CONTENT -->
 @endsection
@@ -360,8 +356,9 @@
         });
 
 
+
         // Lặp qua tất cả các phần tử có class "price"
-        var priceElements = document.querySelectorAll('.price');
+        var priceElements = document.querySelectorAll('.format-number');
         priceElements.forEach(function(element) {
             // Lấy giá trị số tiền từ thuộc tính "data-price"
             var price = parseFloat(element.textContent);
@@ -379,6 +376,15 @@
                 }
 
                 element.textContent = formattedPrice;
+            } else if (price >= 1000000) {
+                // Nếu số tiền lớn hơn hoặc bằng 1 triệu và dưới 1 tỷ
+                var trieu = Math.floor(price / 1000000);
+
+                // Định dạng số tiền thành 'x triệu' và gán lại cho phần tử
+                element.textContent = trieu + ' triệu';
+            } else {
+                // Nếu số tiền dưới 1 triệu, giữ nguyên
+                element.textContent = price;
             }
         });
     </script>
