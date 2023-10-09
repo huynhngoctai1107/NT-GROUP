@@ -21,7 +21,7 @@ return new class extends Migration
             $table->integer('quantify');
             $table->tinyInteger('status')->default(0);
             $table->timestamps();
-            $table->date('expiration_date')->default(0);
+            $table->date('expiration_date');
             $table->string('content',255);
             $table->string('image',100);
 

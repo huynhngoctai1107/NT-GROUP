@@ -13,10 +13,9 @@ return new class extends Migration
     {
         Schema::create('category_posts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_demand')->constrained('demands');
             $table->string('name')->unique();
             $table->string('slug')->unique();
-            $table->string('note',255);
+            $table->string('note',255)->nullable();
             $table->timestamps();
         });
     }

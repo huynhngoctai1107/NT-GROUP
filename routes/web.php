@@ -45,18 +45,18 @@ Route::group(['prefix' => 'admin'], function (){
     Route::get('/', [ViewDashboardController::class, 'dashboar'])->name('dashboar');
     Route::group(['prefix' => 'demand'], function (){
         Route::get('/list', [ListDemandController::class, 'listDemand'])->name('listDemand');
-        Route::get('/delete', [DeleteDemandController::class, 'deleteDemand'])
+        Route::get('/delete/{slug}', [DeleteDemandController::class, 'deleteDemand'])
              ->name('deleteDemand');
-        Route::get('/edit', [EditDemandController::class, 'editFormDemand'])->name('editDemand');
-        Route::post('/edit', [EditDemandController::class, 'editDemand'])->name('editDemand');
+        Route::get('/edit/{slug}', [EditDemandController::class, 'editFormDemand'])->name('editDemand');
+        Route::post('/edit/{slug}', [EditDemandController::class, 'editDemand'])->name('editDemand');
         Route::get('/add', [AddDemandController::class, 'addFormDemand'])->name('addDemand');
         Route::post('/add', [AddDemandController::class, 'addDemand'])->name('addDemand');
     });
     Route::group(['prefix' => 'category'], function (){
         Route::get('/list', [ListCategoryController::class, 'listCategory'])->name('listCategory');
-        Route::get('/delete', [DeleteCategoryController::class, 'deleteCategory'])->name('deleteCategory');
-        Route::get('/edit', [EditCategoryController::class, 'editFormCategory'])->name('editCategory');
-        Route::post('/edit', [EditCategoryController::class, 'editCategory'])->name('editCategory');
+        Route::get('/delete/{slug}', [DeleteCategoryController::class, 'deleteCategory'])->name('deleteCategory');
+        Route::get('/edit/{slug}', [EditCategoryController::class, 'editFormCategory'])->name('editCategory');
+        Route::post('/edit/{slug}', [EditCategoryController::class, 'editCategory'])->name('editCategory');
         Route::get('/add', [AddCategoryController::class, 'addFormCategory'])->name('addCategory');
         Route::post('/add', [AddCategoryController::class, 'addCategory'])->name('addCategory');
     });
@@ -86,6 +86,7 @@ Route::group(['prefix' => 'admin'], function (){
         Route::post('/edit', [EditPostsController::class, 'editPosts'])->name('editPosts');
         Route::get('/add', [AddPostsController::class, 'addFormPosts'])->name('addPosts');
         Route::post('/add', [AddPostsController::class, 'addPosts'])->name('addPosts');
+        Route::get('/{id}', [ListPostsController::class, 'UpdateStatus'])->name('UpdateStatus');
     });
 });
 

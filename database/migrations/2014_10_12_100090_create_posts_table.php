@@ -14,6 +14,7 @@ return new class extends Migration{
         Schema::create('posts', function (Blueprint $table){
             $table->id();
             $table->foreignId('id_category')->constrained('category_posts');
+            $table->foreignId('id_demand')->constrained('demands');
             $table->foreignId('id_user')->constrained('users');
             $table->foreignId('id_price')->constrained('prices');
             $table->foreignId('id_acreage')->constrained('acreages');
@@ -25,11 +26,13 @@ return new class extends Migration{
             $table->string('link_youtube',255)->default('');
             $table->longText('address');
             $table->tinyInteger('status')->default(0);
+            $table->tinyInteger('delete')->default(0);
             $table->integer('number_views')->default(0);
             $table->string('longitude',255);
             $table->string('latitude',255);
             $table->integer('voucher')->default(0);
             $table->string('compilation',255);
+            $table->timestamps();
 
 
         });
