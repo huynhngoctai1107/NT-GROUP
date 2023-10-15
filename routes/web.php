@@ -25,9 +25,10 @@ use App\Http\Controllers\Admin\Posts\EditPostsController;
 use App\Http\Controllers\Admin\Posts\AddPostsController;
 
 use App\Http\Controllers\Client\Account\AccountController;
-use App\Http\Controllers\Client\Account\FogetPasswordController;
+use App\Http\Controllers\Client\Account\ForgetPasswordController;
 use App\Http\Controllers\Client\Account\LoginController;
-use App\Http\Controllers\Client\Account\SignUpController;
+use App\Http\Controllers\Client\Account\RegisterController;
+use App\Http\Controllers\Client\ErrorPage\ErrorPageController;
 use App\Http\Controllers\Client\Blog\BlogListController;
 use App\Http\Controllers\Client\Blog\PostSingleController;
 use App\Http\Controllers\Client\Index\IndexController;
@@ -93,11 +94,21 @@ Route::group(['prefix' => 'admin'], function (){
 
 Route::group(['prefix' => '/'], function (){
     Route::get('/', [IndexController::class, 'index'])->name('index');
+    Route::get('error', [ErrorPageController::class, 'error'])->name('error');
     Route::get('login', [LoginController::class, 'login'])->name('login');
-    Route::get('signup', [SignUpController::class, 'signup'])->name('signup');
+    Route::post('login', [LoginController::class, 'loginForm'])->name('loginForm');
+    Route::get('register', [RegisterController::class, 'register'])->name('register');
+    Route::get('logout', [LoginController::class, 'logout'])->name('logout');
+    Route::get('active/{token}', [RegisterController::class, 'active'])->name('active');
+    Route::post('register', [RegisterController::class, 'registerFrom'])->name('registerFrom');
     Route::get('account', [AccountController::class, 'account'])->name('account');
-    Route::get('foget-password', [FogetPasswordController::class, 'fogetPassword'])
-         ->name('fogetPassword');
+    Route::get('forget-password', [ForgetPasswordController::class, 'fogetPassword'])->name('fogetPassword');
+    Route::post('forget-password', [ForgetPasswordController::class, 'postForgetPassword'])->name('postForgetPassword');
+    Route::get('reset-password/{token}', [ForgetPasswordController::class, 'resetPassword'])->name('resetPassword');
+    Route::post('reset-password/{token}', [ForgetPasswordController::class, 'postResetPassword'])->name('postResetPassword');
+
+
+
     Route::get('about', [AboutController::class, 'about'])->name('about');
     Route::group(['prefix' => 'blog'], function (){
         Route::get('/list', [BlogListController::class, 'listBlog'])->name('listBlog');
