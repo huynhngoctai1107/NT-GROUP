@@ -6,7 +6,10 @@
 @php
     $title = "Đăng nhập";
 @endphp
+@section('js')
 
+    <script src="{{asset('client/js/showhide.js')}}"></script>
+@endsection
 @section('main')
 
     <!-- START MAIN CONTENT -->
@@ -23,18 +26,38 @@
                                 <div class="heading_s1">
                                     <h3>Đăng nhập</h3>
                                 </div>
-                                <form method="post">
-                                    <div class="form-group mb-3">
-                                        <input type="text" required="" class="form-control" name="email" placeholder="Email">
+                                @if(Session::has('success'))
+                                    <div class="alert alert-success" role="alert">
+                                        {{Session::get('success')}}
                                     </div>
+                                @endif
+                                @if(Session::has('error-login'))
+                                    <div class="alert alert-danger" role="alert">
+                                        {{Session::get('error-login')}}
+                                    </div>
+                                @endif
+                                <form action="{{route('loginForm')}}" method="post" >
+                                    @csrf
                                     <div class="form-group mb-3">
-                                        <input class="form-control" required="" type="password" name="password" placeholder="Mật khẩu">
+                                        <input type="text" class="form-control" name="email" value="{{old('email')}}" placeholder="Email">
+                                        @error('email')
+                                        <p class="text-danger">
+                                            {{ $message }}
+                                        </p>
+                                        @enderror
+                                    </div>
+                                    <div class="mb-3">
+                                        <input type="password" value="{{old('password')}}"  name="password" class="form-control" id="myInput" placeholder="Mật khẩu">
+                                        @error('password')
+                                        <p class="text-danger">
+                                            {{ $message }}
+                                        </p>
+                                        @enderror
                                     </div>
                                     <div class="login_footer form-group mb-3">
                                         <div class="chek-form">
-                                            <div class="custome-checkbox">
-                                                <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox1" value="">
-                                                <label class="form-check-label" for="exampleCheckbox1"><span>Nhớ tôi</span></label>
+                                            <div class="mb-3">
+                                                <input type="checkbox" onclick="myFunction()"> Hiện mật khẩu
                                             </div>
                                         </div>
                                         <a href="{{route('fogetPassword')}}">Quên mật khẩu?</a>
@@ -50,7 +73,7 @@
                                     <li><a href="#" class="btn btn-facebook"><i class="ion-social-facebook"></i>Facebook</a></li>
                                     <li><a href="#" class="btn btn-google"><i class="ion-social-googleplus"></i>Google</a></li>
                                 </ul>
-                                <div class="form-note text-center">Bạn chưa có tài khoản? <a href="{{route('signup')}}">Đăng ký</a></div>
+                                <div class="form-note text-center">Bạn chưa có tài khoản? <a href="{{route('register')}}">Đăng ký</a></div>
                             </div>
                         </div>
                     </div>

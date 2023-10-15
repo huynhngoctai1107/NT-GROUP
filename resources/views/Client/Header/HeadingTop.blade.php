@@ -9,7 +9,9 @@
                 </div>
                 <div class="me-3">
                     <ul class="contact_detail text-center text-lg-start">
-                        <li><i class="bi bi-geo-alt"></i><span>L2 - 17 Phan Thị Ràng, An Hòa, TP Rạch Giá, Kiên Giang</span></li>
+                        <li>
+                            <i class="bi bi-geo-alt"></i><span>L2 - 17 Phan Thị Ràng, An Hòa, TP Rạch Giá, Kiên Giang</span>
+                        </li>
                     </ul>
                 </div>
 
@@ -20,7 +22,16 @@
                 <ul class="header_list">
                     <li><a href="{{route('postAdd')}}"><i class="ti-control-shuffle"></i><span>Đăng tin</span></a></li>
                     <li><a href="{{route('postNew')}}"><i class="ti-heart"></i><span>Danh sách tin</span></a></li>
-                    <li><a href="{{route('login')}}"><i class="ti-user"></i><span>Đăng nhập</span></a></li>
+                    <li><a href="{{route('login')}}">
+
+                            <a class="btn-sm-square bg-white rounded-circle" href="@if(auth()->user()){{route('login')}}@else{{route('logout')}}@endif">
+                                @if(auth()->user())
+                                    <i class="bi bi-arrow-right-circle"></i><span>Đăng xuất</span>
+                                @else
+                                    <i class="ti-user"></i><span>Đăng nhập</span>
+                                @endif
+                            </a>
+
                 </ul>
             </div>
         </div>
