@@ -34,15 +34,21 @@
     <div class="hold-transition sidebar-mini">
         <div class="wrapper">
             <div class="content-wrapper">
-                <form action="{{ route($page == 'addVoucher' ? 'addVoucher' : 'editVoucher') }}" enctype="multipart/form-data" method="post" class="mx-5 pt-4">
+                <form action="{{ $page == 'addVoucher' ? route('addVoucher') : route('editFormVoucher' , $data->slug ) }}" enctype="multipart/form-data" method="post" class="mx-5 pt-4">
                     @csrf
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Tên mã giảm giá</label>
-                        <input type="text" class="form-control" value="{{ $page == 'addVoucher' ? old('name') : $data->name ?? 'Huỳnh Ngọc Tài' }}" name="name" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <input type="text" class="form-control" value="{{ $page == 'addVoucher' ? old('name') : $data->name }}" name="name" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        @error('name')
+                        <div class="text-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Mã code</label>
-                        <input type="text" class="form-control" value="{{ $page == 'addVoucher' ? old('code') : $data->code ?? 'TUYETNGAN' }}" name="code" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <input type="text" class="form-control" value="{{ $page == 'addVoucher' ? old('code') : $data->code }}" name="code" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        @error('code')
+                        <div class="text-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-outline mb-4">
                         <label class="form-label" for="textAreaExample6">Điều kiện giảm</label>
@@ -51,7 +57,7 @@
                             @if ($page == 'addVoucher')
                                 {{ old('condition') == 1 ? 'selected' : '' }}
                                     @else
-                                {{ $data->condition ??'' == 1 ? 'selected' : '' }}
+                                {{ $data['condition'] ?? '' == 1 ? 'selected' : '' }}
                                     @endif>
                                 Giảm cho tất cả
                             </option>
@@ -59,7 +65,7 @@
                             @if ($page == 'addVoucher')
                                 {{ old('condition') == 2 ? 'selected' : '' }}
                                     @else
-                                {{ $data->condition ??'2' == 2 ? 'selected' : '' }}
+                                {{ $data['condition'] ?? '' == 2 ? 'selected' : '' }}
                                     @endif>
                                 Nạp lần đầu
                             </option>
@@ -67,7 +73,7 @@
                             @if ($page == 'addVoucher')
                                 {{ old('condition') == 3 ? 'selected' : '' }}
                                     @else
-                                {{ $data->condition ??'' == 3 ? 'selected' : '' }}
+                                {{ $data['condition'] ?? '' == 3 ? 'selected' : '' }}
                                     @endif>
                                 Số lượng tin là 10
                             </option>
@@ -75,23 +81,46 @@
                             @if ($page == 'addVoucher')
                                 {{ old('condition') == 4 ? 'selected' : '' }}
                                     @else
-                                {{ $data->condition ??'' == 4 ? 'selected' : '' }}
+                                {{ $data['condition'] ?? '' == 4 ? 'selected' : '' }}
                                     @endif>
                                 Top người đăng tin nhiều nhất
                             </option>
                         </select>
+                        @error('condition')
+                        <div class="text-danger">{{ $message }}</div>
+                        @enderror
                     </div>
-
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Số tiền được giảm</label>
-                        <input type="text" class="form-control" value="{{ $page == 'addVoucher' ? old('discount') : $data->discount ?? '25.000 VND' }}" name="discount" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <input type="text" class="form-control" value="{{ $page == 'addVoucher' ? old('discount') : $data->discount }}" name="discount" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        @error('discount')
+                        <div class="text-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Ngày hết hạn</label>
+                        <input type="date" class="form-control" value="{{ $page == 'addVoucher' ? old('expiration_date') : $data->expiration_date }}" name="expiration_date" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        @error('expiration_date')
+                        <div class="text-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
+                        <label for="imageUpload" class="form-label">Hình ảnh</label>
+                        <input type="file" class="form-control @error('image') is-invalid @enderror" value="{{ $page == 'addVoucher' ? old('image') : $data->image }}" name="image" id="imageUpload" accept="image/*">
+                        <div class="d-flex justify-content-center align-items-center" style="max-width: 190px; max-height: 190px;  margin: 15px auto;">
+                            <div id="imagePreview"></div>
+                        </div>
+                        @error('image')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-outline mb-4">
-                        <label class="form-label" for="textAreaExample6">Nội dungg (Nếu Có)</label>
-
-                        <textarea class="form-control" name="content" id="textAreaExample6" rows="3">{{ $page == 'addVoucher' ? old('content') : $data->content ?? 'Cần thơ ' }}</textarea>
+                        <label class="form-label" for="textAreaExample6">Nội dung (Nếu Có)</label>
+                        <textarea class="form-control" name="content" id="textAreaExample6" rows="3">{{ $page == 'addVoucher' ? old('content') : $data->content }}</textarea>
+                        @error('content')
+                        <div class="text-danger">{{ $message }}</div>
+                        @enderror
                     </div>
-
                     <button type="submit" class="btn btn-primary">
                         @if ($page == 'addVoucher')
                             Thêm mã giảm giá
@@ -107,6 +136,27 @@
 
 {{-- javascript --}}
 @section('js')
+    <script>
+        document.getElementById("imageUpload").addEventListener("change", function (event) {
+            var imagePreview = document.getElementById("imagePreview");
+            imagePreview.innerHTML = "";
+
+            var files = event.target.files;
+            for (var i = 0; i < files.length; i++) {
+                var file = files[i];
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    var img = document.createElement("img");
+                    img.setAttribute("src", e.target.result);
+                    img.setAttribute("class", "img-thumbnail mt-3 thumbnail-image");
+                    imagePreview.appendChild(img);
+                };
+
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
     <script type="text/javascript" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
     <script>
         $('#chooseFile').bind('change', function () {

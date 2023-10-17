@@ -36,27 +36,42 @@
                             <tr>
                                 <th>Tên mã</th>
                                 <th>Mã code</th>
-                                <th>Điều kiện</th>
-                                <th>Số tiền giảm</th>
-                                <th>Nội dung</th>
-                                <th>Nghiệp vụ</th>
+                                <th>Hình ảnh</th>
 
+                                <th>Số tiền giảm</th>
+                                <th>Trạng thái</th>
+                                <th>Ngày hết hạn</th>
+
+                                <th>Nghiệp vụ</th>
                             </tr>
                             </thead>
                             <tbody>
+                            @foreach($list as $data)
+                                <tr>
+                                    <td>{{ $data->name }}</td>
+                                    <td>{{ $data->code }}</td>
+                                    <td><img src='{{asset("images/$data->image")}}' alt="" width="150" height="120"></td>
+                                    <td>{{ number_format($data->discount) }} VNĐ</td>
+                                    <td>
+                                        <a href="{{route('status', $data->id)}}"
+                                           class="btn btn-sm btn-{{$data->status ? 'success':'danger'}}">
+                                            {{$data->status ? 'Hiện':'Ẩn'}}
+                                        </a>
+                                    </td>
+                                    <td>{{date('d-m-Y',strtotime($data->expiration_date))}}</td>
 
-                            <tr>
-                                <td>Cho người mới</td>
-                                <td>TUYETNGAN</td>
-                                <td>Tài khoản nạp lần đầu</td>
-                                <td>30.000 VND</td>
-                                <td>không có</td>
-                                <td><a href="{{route('editVoucher')}}">Sửa</a> /
-                                    <a href="{{route('deleteVoucher')}}">Xóa</a></td>
-                            </tr>
+
+                                    <td>
+                                        <div class="btn-group" role="group">
+                                            <a href="{{route('editFormVoucher', $data->slug)}}" class="btn btn-outline-success btn-sm">Sửa</a>
+                                            <a href="{{route('deleteVoucher', $data->slug)}}" class="btn btn-outline-danger btn-sm">Xóa</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
                             </tbody>
-
                         </table>
+                        <div class="mt-3">{{ $list->links() }}</div>
                     </div>
                     <!-- /.card-body -->
                 </div>
@@ -65,11 +80,11 @@
     </div>
 @endsection
 
-@section('javascript')
+@push('javascript')
     <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
     <!-- Bootstrap 4 -->
     <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <!-- DataTables  & Plugins -->
+    <!-- DataTables & Plugins -->
     <script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
@@ -102,11 +117,11 @@
                 "ordering": true,
                 "info": true,
                 "autoWidth": false,
-                "responsive": true,
+                "responsive": true
             });
         });
     </script>
-@endsection
+@endpush
 <!-- HTML !-->
 
 <style>
