@@ -3,16 +3,34 @@
 namespace App\Http\Controllers\Admin\Demand;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AddDemandRequest;
+use App\Models\Demand;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class AddDemandController extends Controller
 {
-    function addFormDemand(){
-            
 
-        return view('admin.demandcategory.add',['page'=>'demand']); 
+    public $demand;
+    public function __construct()
+    {
+        $this->demand = new Demand();
     }
-    function addDemand(){
-       return redirect()->back()->with('success','Đã thêm nhu cầu thành công');
+
+    function addFormDemand()
+    {
+        return view('admin.demandcategory.add', ['page' => 'demand']);
+    }
+
+    function addDemand(AddDemandRequest $request)
+    {
+        $value = [
+            'name' => $request->input('demand', ''),
+            'slug' => Str::slug($request->input('demand', '')),
+            'note' => $request->note ?? '',
+            'created_at'  => date('y-m-d H:i:s')
+        ];
+        $data = $this->demand->addDemands($value);
+        return redirect()->route('listDemand')->with('success', 'Đã thêm nhu cầu thành công');
     }
 }
