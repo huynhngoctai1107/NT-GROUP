@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="{{asset('dist/css/adminlte.min.css') }}">
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="{{asset('plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
-    @yield('link')
+    @stack('link')
     <!-- Daterange picker -->
     <link rel="stylesheet" href="{{asset('plugins/daterangepicker/daterangepicker.css') }}">
     <link rel="stylesheet" href="{{asset('plugins/summernote/summernote-bs4.min.css') }}">
@@ -46,8 +46,7 @@
 
 <x-admin.footer.footer>
 </x-admin.footer.footer>
-</div>
-@yield('javascript')
+@stack('javascript')
  </body>
 
 </html>

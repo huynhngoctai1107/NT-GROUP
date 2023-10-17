@@ -4,190 +4,236 @@
     Bất động sản - NT GROUP
 @endsection
 @php
-    $title = "Đăng Tin";
+    $title = 'Đăng Tin';
 @endphp
 @section('main')
     <x-client.header.posttitle :title="$title"></x-client.header.posttitle>
 
     <div class="container">
-        <br/>
+        <br />
         <div class="row">
             <p class="alert alert-secondary">
                 <b style="font-weight: 700; font-size: 15px; font-family: sans-serif;">Thông Tin Bất Động Sản</b>
             </p>
-            <form class="row g-3" style="margin-left: 8px;">
+            <form action="{{ route('addClientPosts') }}" method="post" class="row g-3" style="margin-left: 8px;"  enctype="multipart/form-data">
+                @csrf
                 <div class="col-12">
-                    <label for="title" class="form-label">
-                        <h6>Tiêu Đề *</h6>
-                    </label>
-                    <input type="text" class="form-control" id="" name="title">
+                    @error('title')
+                    <div class="alert alert-danger mt-3">{{ $message }}</div>
+                    @enderror
+                    <label for="title" class="form-label">Tiêu Đề *</label>
+                    <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }}">
+                    <input type="hidden" class="form-control" value="1" name="id_user">
+                    <input type="hidden" class="form-control" value="1" name="compilation">
                 </div>
 
-                <div class="col-12">
-                    <label for="address" class="form-label">
-                        <h6>Địa Chỉ *</h6>
-                    </label>
-                    <input type="text" class="form-control" id="address" name="address">
-                </div>
-
-                <div class="row g-3">
-                    <div class="col">
-                        <label for="text" class="form-label"><h6>Nhu Cầu *</h6></label>
-                        <input type="text" class="form-control" placeholder="Nhu Cầu" aria-label="Nhu Cầu">
+                <div class="col-12" style="display: flex; justify-content: space-between">
+                    <div style="width: 45%;">
+                        <label for="id_demand" class="form-label">Chọn nhu cầu</label>
+                        <select class="form-select" name="id_demand" id="id_demand" style="width: 100%; height: 50px">
+                            @foreach ($demand as $row)
+                                <option value="{{ $row->id }}">{{ $row->name }}</option>
+                            @endforeach
+                        </select>
                     </div>
-                    <div class="col">
-                        <label for="text" class="form-label"><h6>Loại Bất Động Sản *</h6></label>
-                        <input type="text" class="form-control" placeholder="Loại Bất Động Sản" aria-label="Loại Bất Động Sản">
-                    </div>
-                </div>
-
-                <div class="row g-3">
-                    <div class="col">
-                        <label for="city" class="form-label">
-                            <h6>Thành Phố *</h6>
-                        </label>
-                        <input type="city" class="form-control" placeholder="Thành Phố" aria-label="Thành Phố">
-                    </div>
-                    <div class="col">
-                        <label class="form-label" for="text">
-                            <h6>Quận *</h6>
-                        </label>
-                        <input type="text" placeholder="Quận" class="form-control" id="district">
+                    <div style="width: 45%;" >
+                        <label for="id_category" class="form-label">Chọn danh mục</label>
+                        <select class="form-select" name="id_category" id="id_category" style="width: 100%; height: 50px">
+                            @foreach ($category as $row)
+                                <option value="{{ $row->id }}">{{ $row->name }}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
-
-                <div class="row g-3">
-                    <div class="col">
-                        <label for="text" class="form-label">
-                            <h6>Phường *</h6>
-                        </label>
-                        <input type="text" placeholder="Phường" class="form-control" id="ward">
+                <div class="col-12" style="display: flex; justify-content: space-between">
+                    <div style="width: 45%;">
+                        <label for="id_price" class="form-label">Chọn giá</label>
+                        <select class="form-select" name="id_price" id="id_price" style="width: 100%; height: 50px">
+                            @foreach ($price as $row)
+                                <option value="{{ $row->id }}">{{ $formatPrice($row->name_min) }} - {{ $formatPrice($row->name_max) }}</option>
+                            @endforeach
+                        </select>
                     </div>
-                    <div class="col">
-                        <label for="" class="form-label">
-                            <h6>Diện Tích *</h6>
-                        </label>
-                        <input type="number" placeholder="Diện tích" class="form-control" id="area">
+                    <div style="width: 45%;">
+                        <label for="id_acreage" class="form-label">Chọn diện tích</label>
+                        <select class="form-select" name="id_acreage" id="id_acreage" style="width: 100%; height: 50px">
+                            @foreach ($acreage as $row)
+                            <option value="{{ $row->id }}">{{ $row->name_min }} m² - {{ $row->name_max }} m²</option>
+                        @endforeach
+                        </select>
                     </div>
                 </div>
 
-                <div class="row g-3">
-                    <div class="col">
-                        <label for="" class="form-label">
-                            <h6>Giá *</h6>
-                        </label>
-                        <input type="price" class="form-control" value="Giá" id="price" name="price">
+                <div class="col-12" style="display: flex; justify-content: space-between">
+                    <div style="width: 45%;">
+                        @error('price')
+                        <div class="alert alert-danger mt-3">{{ $message }}</div>
+                        @enderror
+                        <label for="price" class="form-label">Giá *</label>
+                        <input type="number" class="form-control" id="price" name="price" value="{{ old('price') }}">
                     </div>
-                    <div class="col">
-                        <label for="link" class="form-label">
-                            <h6>Link YouTube</h6>
-                        </label>
-                        <input type="text" pattern="https?://([A-Za-z0-9.-_.!~*'()?:&=+$,;])+" placeholder="Link youtube" class="form-control" id="youtube_link">
-                    </div>
-                </div>
-            </form>
-
-            <div class="file-upload">
-                <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Thêm Ảnh</button>
-
-                <div class="image-upload-wrap">
-                    <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*"/>
-                    <div class="drag-text">
-                        <h5>Kéo và thả tệp hoặc thêm hình ảnh</h5>
+                    <div style="width: 45%;">
+                        @error('link_youtube')
+                        <div class="alert alert-danger mt-3">{{ $message }}</div>
+                        @enderror
+                        <label for="link_youtube" class="form-label">Link YouTube</label>
+                        <input type="text" name="link_youtube" placeholder="Link youtube" class="form-control" id="link_youtube" value="{{ old('link_youtube') }}">
                     </div>
                 </div>
-                <div class="file-upload-content">
-                    <img class="file-upload-image" src="#" alt="your image"/>
-                    <div class="image-title-wrap">
-                        <button type="button" onclick="removeUpload()" class="remove-image">Remove
-                            <span class="image-title">Uploaded Image</span></button>
+
+                <label class="form-label">Thêm ảnh</label>
+                <div class="file-upload">
+                    <div class="image-upload-wrap">
+                        <input class="file-upload-input" type="file" name="uploadfile[]" onchange="readURL(this);"
+                            accept="image/*" multiple />
                     </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <p class="alert alert-secondary">
-                <b style="font-weight: 700; font-size: 15px; font-family: sans-serif;">Thông Tin Lin Hệ</b>
-            </p>
-            <form class="row g-3" style="margin-left: 3px;">
-                <div class="col-md-6">
-                    <label for="phone" class="form-label">
-                        <h6>Số Điện Thoại Liên Hệ 1 *</h6>
-                    </label>
-                    <input type="number" class="form-control" id="" name="phone">
-                </div>
-
-                <div class="col-md-6">
-                    <label for="name" class="form-label">
-                        <h6>Tên Liên Hệ 1 *</h6>
-                    </label>
-                    <input type="text" class="form-control" id="" name="name">
-                </div>
-
-                <div class="col-md-12">
-                    <div class="row">
-                        <label for="images" class="form-label"><h6>Hình Ảnh Liên Hệ 1:</h6></label>
-
-                        <div class="mb-3">
-                            <input class="form-control form-control-sm" id="formFileSm" type="file">
+                    <div class="file-upload-content">
+                        <div class="image-list">
+                            <!-- Đây là nơi để hiển thị danh sách các hình ảnh đã thêm -->
                         </div>
-
                     </div>
                 </div>
+                <script>
+                    function readURL(input) {
+                        if (input.files && input.files[0]) {
+                            var imageList = document.querySelector('.image-list'); // Chọn phần tử chứa danh sách hình ảnh
 
-                <div class="col-md-6">
-                    <label for="phone" class="form-label">
-                        <h6>Số Điện Thoại Liên Hệ 2 *</h6>
-                    </label>
-                    <input type="number" class="form-control" id="" name="phone">
-                </div>
+                            for (var i = 0; i < input.files.length; i++) {
+                                var reader = new FileReader();
 
-                <div class="col-md-6">
-                    <label for="name" class="form-label">
-                        <h6>Tên Liên Hệ 2 *</h6>
-                    </label>
-                    <input type="text" class="form-control" id="" name="name">
-                </div>
-                <div class="col-md-12">
-                    <div class="row">
-                        <label for="images" class="form-label"><h6>Hình Ảnh Liên Hệ 2:</h6></label>
+                                reader.onload = function(e) {
+                                    var image = document.createElement('img'); // Tạo một phần tử hình ảnh
+                                    image.src = e.target.result; // Đặt nguồn hình ảnh từ dữ liệu đọc
+                                    imageList.appendChild(image); // Thêm hình ảnh vào danh sách
+                                }
 
-                        <div class="mb-3">
-                            <input class="form-control form-control-sm" id="formFileSm" type="file">
+                                reader.readAsDataURL(input.files[i]);
+                            }
+                        }
+                    }
+
+                    function removeUpload() {
+                        var imageList = document.querySelector('.image-list');
+                        imageList.innerHTML = ''; // Xóa tất cả hình ảnh trong danh sách
+                    }
+                </script>
+                <label class="form-label">Địa chỉ</label>
+                <div>
+                    <div class="flex-container" style="display: flex; justify-content: space-between">
+                        <div class="mb-3" style="width: 45%;" data-select2-id="29">
+                            @error('city')
+                                <div class="alert alert-danger mt-3">{{ $message }}</div>
+                            @enderror
+                            <label class="mb-3" for="city">Chọn tỉnh thành</label>
+                            <select style="width: 100%; height: 50px" id="city" name="city">
+                                <option value="" selected>Chọn tỉnh thành</option>
+                            </select>
                         </div>
-
+                        <div class="mb-3" style="width: 45%;" data-select2-id="29">
+                            @error('district')
+                                <div class="alert alert-danger mt-3">{{ $message }}</div>
+                            @enderror
+                            <label class="mb-3" for="district">Chọn quận huyện</label>
+                            <select style="width: 100%; height: 50px" id="district" name="district">
+                                <option value="" selected>Chọn quận huyện</option>
+                            </select>
+                        </div>
                     </div>
+                    <div class="flex-container" style="display: flex; justify-content: space-between">
+                        <div class="mb-3" style="width: 45%;" data-select2-id="29">
+                            @error('ward')
+                                <div class="alert alert-danger mt-3">{{ $message }}</div>
+                            @enderror
+                            <label class="mb-3" for="ward">Chọn phường xã</label>
+                            <select style="width: 100%; height: 50px" id="ward" name="ward">
+                                <option value="" selected>Chọn phường xã</option>
+                            </select>
+                        </div>
+                        <div class="mb-3" style="width: 45%">
+                            @error('address')
+                                <div class="alert alert-danger mt-3">{{ $message }}</div>
+                            @enderror
+                            <label class="mb-3" for="addess">Nhâp địa chỉ chi tiết</label>
+                            <input type="text" class="form-control mb-3" name="address" id="addess"
+                                placeholder="Nhập địa chỉ chi tiết">
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" id="result" name="address1" value="">
+                <div class="form-group">
+                    @error('subtitles')
+                        <div class="alert alert-danger mt-3">{{ $message }}</div>
+                    @enderror
+                    <label class="mb-3" for="summernote1">Tiêu đề phụ</label>
+                    <textarea id="summernote1" name="subtitles">{{ old('subtitles') }}</textarea>
+                </div>
+                <div class="form-group">
+                    @error('content')
+                        <div class="alert alert-danger mt-3">{{ $message }}</div>
+                    @enderror
+                    <label class="mb-3" for="summernote">Nội dung</label>
+                    <textarea id="summernote" name="content">{{ old('content') }}</textarea>
+                </div>
+
+                <h4>Google Maps </h4>
+
+                <!-- Google Map -->
+                <div id="map" style="width: 100%; height: 400px;"></div>
+
+                <!-- Longitude and Latitude Input Boxes -->
+                <div class="mb-3">
+                    @error('longitude')
+                    <div class="alert alert-danger mt-3">{{ $message }}</div>
+                    @enderror
+                    <label for="longitude">Nhập kinh độ</label>
+                    <input type="text" class="form-control" id="longitude" name="longitude" value="{{ old('longitude') }}">
                 </div>
                 <div class="mb-3">
-                    <label for="describe" class="form-label"><h6>Mô Tả</h6></label>
-                    <textarea class="form-control" id="describe" name="" rows="3"></textarea>
+                    @error('latitude')
+                    <div class="alert alert-danger mt-3">{{ $message }}</div>
+                    @enderror
+                    <label for="latitude">Nhập vĩ độ</label>
+                    <input type="text" class="form-control" id="latitude" name="latitude" value="{{ old('latitude') }}">
                 </div>
+
+                <button type="submit" class="btn btn-warning mt-3 mb-5">Đăng Tin</button>
+                <!-- JavaScript Code -->
             </form>
         </div>
-
-        <h4>Google Maps </h4>
-
-        <!-- Google Map -->
-        <div id="map" style="width: 100%; height: 400px;"></div>
-
-        <!-- Longitude and Latitude Input Boxes -->
-        <div class="mb-3">
-            <label for="longitude">Longitude</label>
-            <input type="text" class="form-control" id="longitude" value="" disabled>
-        </div>
-        <div class="mb-3">
-            <label for="latitude">Latitude</label>
-            <input type="text" class="form-control" id="latitude" value="" disabled>
-        </div>
-
-        <p class="text-center">
-            <br/>
-            <button type="button" class="btn btn-warning" style="color: white; font-weight: bold; font-family: 'Times New Roman', Times, serif;">Đăng Tin
-            </button>
-        </p>
-        <!-- JavaScript Code -->
-
     </div>
-
 @endsection
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
+    <style>
+        /* CSS cho phần danh sách hình ảnh */
+        .image-list {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 10px 0;
+        }
+
+        .image-list img {
+            width: 150px;
+            /* Điều chỉnh kích thước hình ảnh tùy ý */
+            height: auto;
+            margin: 5px;
+            border: 1px solid #ccc;
+        }
+    </style>
+@endpush
+@push('script')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <script src="{{ asset('plugins/select2/js/address.js') }}"></script>
+    <script src="{{ asset('plugins/summernote/summernote-bs4.min.js') }}"></script>
+    <script>
+        $(function() {
+            // Summernote
+            $('#summernote').summernote()
+        });
+        $(function() {
+            // Summernote
+            $('#summernote1').summernote()
+        });
+    </script>
+@endpush

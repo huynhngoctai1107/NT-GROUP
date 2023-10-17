@@ -2,234 +2,417 @@
 
 
 {{-- css --}}
-@section('link')
-    <!-- iCheck for checkboxes and radio inputs -->
-    <link rel="stylesheet" href="{{ asset('plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
-    <!-- Bootstrap Color Picker -->
-    <link rel="stylesheet" href="{{ asset('plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css') }}">
-    <!-- Select2 -->
-    <link rel="stylesheet" href="{{ asset('plugins/select2/css/select2.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
-    <!-- Bootstrap4 Duallistbox -->
-    <link rel="stylesheet" href="{{ asset('plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css') }}">
-    <!-- BS Stepper -->
-    <link rel="stylesheet" href="{{ asset('plugins/bs-stepper/css/bs-stepper.min.css') }}">
-    <!-- dropzonejs -->
-    <link rel="stylesheet" href="{{ asset('plugins/dropzone/min/dropzone.min.css') }}">
-    {{-- endcss --}}
+@push('link')
 
 
-    {{-- title --}}
-@endsection
+<!-- Google Font: Source Sans Pro -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
+<!-- Ionicons -->
+<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+<!-- Tempusdominus Bootstrap 4 -->
+<link rel="stylesheet" href="{{ asset('plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
+<!-- iCheck -->
+<link rel="stylesheet" href="{{ asset('plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
+<!-- JQVMap -->
+<link rel="stylesheet" href="{{ asset('plugins/jqvmap/jqvmap.min.css') }}">
+<!-- Theme style -->
+<link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
+<!-- overlayScrollbars -->
+<link rel="stylesheet" href="{{ asset('plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
+<!-- Daterange picker -->
+<link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}">
+<!-- summernote -->
+<link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta3/css/all.css">
+//
+<!-- iCheck for checkboxes and radio inputs -->
+<link rel="stylesheet" href="{{ asset('plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
+<!-- Bootstrap Color Picker -->
+<link rel="stylesheet" href="{{ asset('plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css') }}">
+<!-- Select2 -->
+<link rel="stylesheet" href="{{ asset('plugins/select2/css/select2.min.css') }}">
+<link rel="stylesheet" href="{{ asset('plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
+<!-- Bootstrap4 Duallistbox -->
+<link rel="stylesheet" href="{{ asset('plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css') }}">
+<!-- BS Stepper -->
+<link rel="stylesheet" href="{{ asset('plugins/bs-stepper/css/bs-stepper.min.css') }}">
+<!-- dropzonejs -->
+<link rel="stylesheet" href="{{ asset('plugins/dropzone/min/dropzone.min.css') }}">
+//
+<link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
+{{-- endcss --}}
+<style>
+    .select2-container--default .select2-selection--multiple .select2-selection__choice {
+        background-color: #007bff !important;
+    }
+
+    /* CSS cho phần danh sách hình ảnh */
+    .image-list {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 10px 0;
+    }
+
+    .image-list img {
+        width: 150px;
+        /* Điều chỉnh kích thước hình ảnh tùy ý */
+        height: auto;
+        margin: 5px;
+        border: 1px solid #ccc;
+    }
+
+    /* CSS cho nút xóa */
+    .remove-image {
+        background: red;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+    }
+</style>
+{{-- title --}}
+@endpush
 @section('title')
-    @if ($page == 'posts')
-        Sửa danh mục
-    @else
-        Sửa danh mục bài viết
-    @endif
+@if ($page == 'posts')
+Sửa bài viết
+@endif
 @endsection
 {{-- endtitle --}}
 
 @section('main')
-    <div class="hold-transition sidebar-mini">
-        <div class="wrapper">
-            <div class="content-wrapper">
-                <form action="{{route($page=='posts'?'addPosts':'editCategory' )}}" method="post" class="mx-5 pt-4">
-                    @csrf
-                    <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Tên {{$page=="posts"?'Danh mục bài viết':'danh mục bài viết'}}</label>
-                        <input type="text" class="form-control" value="{{$data->name ?? 'Danh mục'}}" name="{{$page=="posts"?'posts':'category'}}" id="exampleInputEmail1" aria-describedby="emailHelp">
+<div class="hold-transition sidebar-mini">
+    <div class="wrapper">
+        <div class="content-wrapper">
+            <form action="{{ route('editPosts', $data->slug) }}" method="post" class="mx-5 pt-4"
+                enctype="multipart/form-data">
+                @csrf
+                <div class="mb-3">
+                    @error('title')
+                    <div class="alert alert-danger mt-3">{{ $message }}</div>
+                    @enderror
+                    <label class="form-label">Tên bài viết</label>
+                    <input type="text" class="form-control" value="{{$data->title}}" name="title"
+                        id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <input type="hidden" class="form-control" value="{{$data->id}}" name="id_post"
+                        id="exampleInputEmail1" aria-describedby="emailHelp">
+                </div>
+                <div class="flex-container" style="display: flex; justify-content: space-between">
+                    <div class="mb-3" style="width: 40%;" data-select2-id="29">
+                        @error('id_demand')
+                        <div class="alert alert-danger mt-3">{{ $message }}</div>
+                        @enderror
+                        <label>Chọn nhu cầu</label>
+                        <select class="select2" multiple="multiple" data-placeholder="Chọn nhu cầu" style="width: 100%;"
+                            data-select2-id="7" tabindex="-1" aria-hidden="true" id="id_demand" name="id_demand">
+                            @foreach ($demand as $row)
+                            <option value="{{ $row->id }}" @if (old('id_demand', $data->id_demand) == $row->id) selected
+                                @endif>{{ $row->name }}</option>
+                            @endforeach
+                        </select>
                     </div>
-                    <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label"> {{$page=="posts"?'Slug':'Slug'}}</label>
-                        <input type="number" class="form-control" value="{{$data->name ?? 'Slug'}}" name="{{$page=="posts"?'posts':'category'}}" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <div class="mb-3" style="width: 40%;">
+                        @error('id_category')
+                        <div class="alert alert-danger mt-3">{{ $message }}</div>
+                        @enderror
+                        <label>Chọn danh mục</label>
+                        <select class="select2" multiple="multiple" data-placeholder="Chọn danh mục"
+                            style="width: 100%;" id="id_category" name="id_category">
+                            @foreach ($category as $row)
+                            <option value="{{ $row->id }}" @if (old('id_category', $data->id_category) == $row->id)
+                                selected @endif>{{ $row->name }}</option>
+                            @endforeach
+                        </select>
                     </div>
-                    <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">{{$page=="posts"?'Ngày Tạo':'Ngày Tạo'}}</label>
-                        <input type="datetime-local" class="form-control" value="{{$data->name ?? 'Ngày Tạo'}}" name="{{$page=="posts"?'posts':'category'}}" id="exampleInputEmail1" aria-describedby="emailHelp">
+                </div>
+                <div class="flex-container" style="display: flex; justify-content: space-between">
+                    <div class="mb-3" style="width: 40%;">
+                        @error('id_user')
+                        <div class="alert alert-danger mt-3">{{ $message }}</div>
+                        @enderror
+                        <label>Chọn người đăng</label>
+                        <select class="select2" multiple="multiple" data-placeholder="Chọn người đăng"
+                            style="width: 100%;" id="id_user" name="id_user">
+                            @foreach ($user as $row)
+                            <option value="{{ $row->id }}" @if (old('id_user', $data->id_user) == $row->id) selected
+                                @endif>{{ $row->fullname }}</option>
+                            @endforeach
+                        </select>
                     </div>
-                    <div class="form-outline mb-4">
-                        <label class="form-label" for="textAreaExample6">Ghi chú</label>
+                    <div class="mb-3" style="width: 40%;">
+                        @error('id_price')
+                        <div class="alert alert-danger mt-3">{{ $message }}</div>
+                        @enderror
+                        <label>Chọn giá</label>
+                        <select class="select2" multiple="multiple" data-placeholder="Select a State"
+                            style="width: 100%;" id="id_price" name="id_price">
+                            @foreach ($price as $row)
+                            <option value="{{ $row->id }}" @if (old('id_price', $data->id_price) == $row->id) selected
+                                @endif>{{ $row->name_min }} - {{$row->name_max}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="flex-container" style="display: flex; justify-content: space-between">
+                    <div class="mb-3" style="width: 40%;">
+                        @error('id_acreage')
+                        <div class="alert alert-danger mt-3">{{ $message }}</div>
+                        @enderror
+                        <label>Chọn diện tích</label>
+                        <select class="select2" multiple="multiple" data-placeholder="Chọn diện tích"
+                            style="width: 100%;" id="id_acreage" name="id_acreage">
+                            @foreach ($acreage as $row)
+                            <option value="{{ $row->id }}" @if (old('id_acreage', $data->id_acreage) == $row->id)
+                                selected @endif>{{ $row->name_min }} - {{$row->name_max}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                @php
+                $mediaValues = [];
+                foreach ($media as $row) {
+                $mediaValues[] = $row->image;
+                }
+                @endphp
+                <h5>Thêm ảnh mới</h5>
+                <div class="file-upload">
+                    <div class="image-upload-wrap">
+                        <input class="file-upload-input" type="file" value="{{ implode(',', $mediaValues) }}"
+                            name="uploadfile[]" onchange="readURL(this);" accept="image/*" multiple />
+                    </div>
+                    <div class="file-upload-content">
+                        <div class="image-list">
+                            <!-- Đây là nơi để hiển thị danh sách các hình ảnh đã thêm -->
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    function readURL(input) {
+                            if (input.files && input.files[0]) {
+                                var imageList = document.querySelector('.image-list'); // Chọn phần tử chứa danh sách hình ảnh
 
-                        <textarea class="form-control" name="note" id="textAreaExample6" rows="3">{{$data->note ?? ''}}</textarea>
-                    </div>
+                                for (var i = 0; i < input.files.length; i++) {
+                                    var reader = new FileReader();
 
-                    <button type="submit" class="btn btn-primary">Thêm</button>
-                </form>
-            </div>
+                                    reader.onload = function(e) {
+                                        var image = document.createElement('img'); // Tạo một phần tử hình ảnh
+                                        image.src = e.target.result; // Đặt nguồn hình ảnh từ dữ liệu đọc
+                                        imageList.appendChild(image); // Thêm hình ảnh vào danh sách
+                                    }
+
+                                    reader.readAsDataURL(input.files[i]);
+                                }
+                            }
+                        }
+
+                        function removeUpload() {
+                            var imageList = document.querySelector('.image-list');
+                            imageList.innerHTML = ''; // Xóa tất cả hình ảnh trong danh sách
+                        }
+                </script>
+                <h5>Ảnh đã có</h5>
+                <div id="imageContainer" class="image-list">
+                    @foreach($media as $row)
+                    <div class="d-flex">
+                        <img src="{{ asset('images/' . $row->image) }}" alt="Image" />
+                        <a href="{{route('deleteMedia',$row->id)}}">Xóa</a>
+                    </div>
+                    @endforeach
+                </div>
+                <div class="mb-3">
+                    @error('price')
+                    <div class="alert alert-danger mt-3">{{ $message }}</div>
+                    @enderror
+                    <label class="form-label">Giá</label>
+                    <input type="number" class="form-control" name="price" value="{{$data->price}}"
+                        id="exampleInputEmail1" aria-describedby="emailHelp">
+                </div>
+                <div class="form-group">
+                    @error('subtitles')
+                    <div class="alert alert-danger mt-3">{{ $message }}</div>
+                    @enderror
+                    <label for="descriptions">Tiêu đề phụ</label>
+                    <textarea id="summernote1" name="subtitles">{{$data->subtitles}}</textarea>
+                </div>
+                <div class="form-group">
+                    @error('content')
+                    <div class="alert alert-danger mt-3">{{ $message }}</div>
+                    @enderror
+                    <label for="descriptions">Nội dung</label>
+                    <textarea id="summernote" name="content">{{$data->content}}</textarea>
+                </div>
+                <div class="mb-3">
+                    @error('featured_news')
+                    <div class="alert alert-danger mt-3">{{ $message }}</div>
+                    @enderror
+                    <label class="form-label">Bài viết VIP</label>
+                    <input type="number" class="form-control" name="featured_news" value="{{$data->featured_news}}"
+                        id="exampleInputEmail1" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    @error('link_youtube')
+                    <div class="alert alert-danger mt-3">{{ $message }}</div>
+                    @enderror
+                    <label class="form-label">Link Youtube</label>
+                    <input type="text" class="form-control" name="link_youtube" value="{{$data->link_youtube}}"
+                        id="exampleInputEmail1" aria-describedby="emailHelp">
+                </div>
+
+                <label class="form-label">Địa chỉ</label>
+                <div>
+                    <input type="hidden" value="{{ $address['province'] }}" id="valueCity">
+                    <input type="hidden" value="{{ $address['district'] }}" id="valueDistrict">
+                    <input type="hidden" value="{{ $address['ward'] }}" id="valueWard">
+                    <div class="flex-container" style="display: flex; justify-content: space-between">
+                        <div class="mb-3" style="width: 40%;" data-select2-id="29">
+                            @error('city')
+                            <div class="alert alert-danger mt-3">{{ $message }}</div>
+                            @enderror
+                            <select style="width: 100%; height: 38px" id="city" name="city">
+                                <option value="" selected>Chọn tỉnh thành</option>
+                            </select>
+                        </div>
+                        <div class="mb-3" style="width: 40%;" data-select2-id="29">
+                            @error('district')
+                            <div class="alert alert-danger mt-3">{{ $message }}</div>
+                            @enderror
+                            <select style="width: 100%; height: 38px" id="district" name="district">
+                                <option value="" selected>Chọn quận huyện</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="flex-container" style="display: flex; justify-content: space-between">
+                        <div class="mb-3" style="width: 40%;" data-select2-id="29">
+                            @error('ward')
+                            <div class="alert alert-danger mt-3">{{ $message }}</div>
+                            @enderror
+                            <select id="ward" name="ward" style="width: 100%; height: 38px">
+                                <option value="" selected>Chọn phường xã</option>
+                            </select>
+                        </div>
+                        <div class="mb-3" style="width: 40%">
+                            @error('address')
+                            <div class="alert alert-danger mt-3">{{ $message }}</div>
+                            @enderror
+                            <input type="text mb-3" class="form-control" name="address" value="{{ $address['street'] }}"
+                                placeholder="Nhập địa chỉ chi tiết">
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" id="result" name="address1" value="">
+                <h5>Google Maps </h5>
+
+                <!-- Google Map -->
+                <div id="map" style="width: 100%; height: 400px;"></div>
+
+                <!-- Longitude and Latitude Input Boxes -->
+                <div class="mb-3">
+                    @error('longitude')
+                    <div class="alert alert-danger mt-3">{{ $message }}</div>
+                    @enderror
+                    <label for="longitude">Kinh độ</label>
+                    <input type="text" class="form-control" id="longitude" name="longitude"
+                        value="{{$data->longitude}}">
+                </div>
+                <div class="mb-3">
+                    @error('latitude')
+                    <div class="alert alert-danger mt-3">{{ $message }}</div>
+                    @enderror
+                    <label for="latitude">Vĩ độ</label>
+                    <input type="text" class="form-control" id="latitude" name="latitude" value="{{$data->latitude}}">
+                </div>
+                <div class="mb-3">
+                    @error('compilation')
+                    <div class="alert alert-danger mt-3">{{ $message }}</div>
+                    @enderror
+                    <label class="form-label">compilation</label>
+                    <input type="text" class="form-control" name="compilation" value="{{$data->compilation}}"
+                        id="exampleInputEmail1" aria-describedby="emailHelp">
+                </div>
+                <button type="submit" class="btn btn-primary mb-3">Sửa</button>
+            </form>
         </div>
     </div>
+</div>
 
 @endsection
 
 {{-- javascript --}}
-@section('js')
-    <script src="../../plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap 4 -->
-    <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- Select2 -->
-    <script src="../../plugins/select2/js/select2.full.min.js"></script>
-    <!-- Bootstrap4 Duallistbox -->
-    <script src="../../plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
-    <!-- InputMask -->
-    <script src="../../plugins/moment/moment.min.js"></script>
-    <script src="../../plugins/inputmask/jquery.inputmask.min.js"></script>
-    <!-- date-range-picker -->
-    <script src="../../plugins/daterangepicker/daterangepicker.js"></script>
-    <!-- bootstrap color picker -->
-    <script src="../../plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
-    <!-- Tempusdominus Bootstrap 4 -->
-    <script src="../../plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
-    <!-- BS-Stepper -->
-    <script src="../../plugins/bs-stepper/js/bs-stepper.min.js"></script>
-    <!-- dropzonejs -->
-    <script src="../../plugins/dropzone/min/dropzone.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="../../dist/js/adminlte.min.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="../../dist/js/demo.js"></script>
-    <!-- Page specific script -->
-    <script>
-        $(function () {
-            //Initialize Select2 Elements
+@push('javascript')
+<!-- jQuery -->
+<script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+<script src="{{ asset('plugins/select2/js/edit-address.js') }}"></script>
+//
+<!-- jQuery UI 1.11.4 -->
+<script src="{{ asset('plugins/jquery-ui/jquery-ui.min.js') }}"></script>
+//
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+    $.widget.bridge('uibutton', $.ui.button)
+</script>
+<!-- Bootstrap 4 -->
+<script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<!-- ChartJS -->
+<script src="{{ asset('plugins/chart.js/Chart.min.js') }}"></script>
+<!-- Sparkline -->
+<script src="{{ asset('plugins/sparklines/sparkline.js') }}"></script>
+<!-- JQVMap -->
+<script src="{{ asset('plugins/jqvmap/jquery.vmap.min.js') }}"></script>
+<script src="{{ asset('plugins/jqvmap/maps/jquery.vmap.usa.js') }}"></script>
+<!-- jQuery Knob Chart -->
+<script src="{{ asset('plugins/jquery-knob/jquery.knob.min.js') }}"></script>
+<!-- daterangepicker -->
+<script src="{{ asset('plugins/moment/moment.min.js') }}"></script>
+<!-- overlayScrollbars -->
+<script src="{{ asset('plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
+<!-- AdminLTE App -->
+<script src="{{ asset('dist/js/adminlte.js') }}"></script>
+<script src="{{ asset('dist/js/pages/dashboard.js') }}"></script>
+<script src="{{ asset('plugins/summernote/summernote-bs4.min.js') }}"></script>
+<script src="{{ asset('plugins/select2/js/select2.full.min.js') }}"></script>
+<!-- Page specific script -->
+{{-- gg map and hinh anh upload.js--}}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8ttJcdnyqOwb93B47rjRU+ABJxUrEDR/i" crossorigin="anonymous">
+<script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
+{{-- gg map and hinh anh upload.js--}}
+
+
+<script src="https://maps.app.goo.gl/uxx2Xc9w7GcKigKt7"></script>
+<script>
+    $(function() {
+            // Summernote
+            $('#summernote').summernote()
+        });
+        $(function() {
+            // Summernote
+            $('#summernote1').summernote()
+        });
+
+        $(function() {
             $('.select2').select2()
+        });
+        // Create a new Google Map object.
+        const map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: 10.0401, lng: 105.7364},
+            zoom: 10
+        });
 
-            //Initialize Select2 Elements
-            $('.select2bs4').select2({
-                theme: 'bootstrap4'
-            })
+        // Add a click listener to the map.
+        map.addListener('click', function(event) {
+            // Get the longitude and latitude of the click event.
+            const lng = event.latLng.lng();
+            const lat = event.latLng.lat();
 
-            //Datemask dd/mm/yyyy
-            $('#datemask').inputmask('dd/mm/yyyy', {
-                'placeholder': 'dd/mm/yyyy'
-            })
-            //Datemask2 mm/dd/yyyy
-            $('#datemask2').inputmask('mm/dd/yyyy', {
-                'placeholder': 'mm/dd/yyyy'
-            })
-            //Money Euro
-            $('[data-mask]').inputmask()
-
-            //Date picker
-            $('#reservationdate').datetimepicker({
-                format: 'L'
-            });
-
-            //Date and time picker
-            $('#reservationdatetime').datetimepicker({
-                icons: {
-                    time: 'far fa-clock'
-                }
-            });
-
-            //Date range picker
-            $('#reservation').daterangepicker()
-            //Date range picker with time picker
-            $('#reservationtime').daterangepicker({
-                timePicker: true,
-                timePickerIncrement: 30,
-                locale: {
-                    format: 'MM/DD/YYYY hh:mm A'
-                }
-            })
-            //Date range as a button
-            $('#daterange-btn').daterangepicker({
-                    ranges: {
-                        'Today': [moment(), moment()],
-                        'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-                        'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-                        'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-                        'This Month': [moment().startOf('month'), moment().endOf('month')],
-                        'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1,
-                            'month').endOf('month')]
-                    },
-                    startDate: moment().subtract(29, 'days'),
-                    endDate: moment()
-                },
-                function (start, end) {
-                    $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format(
-                        'MMMM D, YYYY'))
-                }
-            )
-
-            //Timepicker
-            $('#timepicker').datetimepicker({
-                format: 'LT'
-            })
-
-            //Bootstrap Duallistbox
-            $('.duallistbox').bootstrapDualListbox()
-
-            //Colorpicker
-            $('.my-colorpicker1').colorpicker()
-            //color picker with addon
-            $('.my-colorpicker2').colorpicker()
-
-            $('.my-colorpicker2').on('colorpickerChange', function (event) {
-                $('.my-colorpicker2 .fa-square').css('color', event.color.toString());
-            })
-        })
-        // BS-Stepper Init
-        document.addEventListener('DOMContentLoaded', function () {
-            window.stepper = new Stepper(document.querySelector('.bs-stepper'))
-        })
-
-        // DropzoneJS Demo Code Start
-        Dropzone.autoDiscover = false
-
-        // Get the template HTML and remove it from the doumenthe template HTML and remove it from the doument
-        var previewNode = document.querySelector("#template")
-        previewNode.id = ""
-        var previewTemplate = previewNode.parentNode.innerHTML
-        previewNode.parentNode.removeChild(previewNode)
-
-        var myDropzone = new Dropzone(document.body, { // Make the whole body a dropzone
-            url: "/target-url", // Set the url
-            thumbnailWidth: 80,
-            thumbnailHeight: 80,
-            parallelUploads: 20,
-            previewTemplate: previewTemplate,
-            autoQueue: false, // Make sure the files aren't queued until manually added
-            previewsContainer: "#previews", // Define the container to display the previews
-            clickable: ".fileinput-button" // Define the element that should be used as click trigger to select files.
-        })
-
-        myDropzone.on("addedfile", function (file) {
-            // Hookup the start button
-            file.previewElement.querySelector(".start").onclick = function () {
-                myDropzone.enqueueFile(file)
-            }
-        })
-
-        // Update the total progress bar
-        myDropzone.on("totaluploadprogress", function (progress) {
-            document.querySelector("#total-progress .progress-bar").style.width = progress + "%"
-        })
-
-        myDropzone.on("sending", function (file) {
-            // Show the total progress bar when upload starts
-            document.querySelector("#total-progress").style.opacity = "1"
-            // And disable the start button
-            file.previewElement.querySelector(".start").setAttribute("disabled", "disabled")
-        })
-
-        // Hide the total progress bar when nothing's uploading anymore
-        myDropzone.on("queuecomplete", function (progress) {
-            document.querySelector("#total-progress").style.opacity = "0"
-        })
-
-        // Setup the buttons for all transfers
-        // The "add files" button doesn't need to be setup because the config
-        // `clickable` has already been specified.
-        document.querySelector("#actions .start").onclick = function () {
-            myDropzone.enqueueFiles(myDropzone.getFilesWithStatus(Dropzone.ADDED))
-        }
-        document.querySelector("#actions .cancel").onclick = function () {
-            myDropzone.removeAllFiles(true)
-        }
-        // DropzoneJS Demo Code End
-    </script>
-@endsection
+            // Update the longitude and latitude input boxes.
+            document.getElementById('longitude').value = lng;
+            document.getElementById('latitude').value = lat;
+        });
+</script>
+@endpush
 {{-- endjavascript --}}
 
 

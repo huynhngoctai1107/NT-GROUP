@@ -41,7 +41,6 @@
 <link rel="stylesheet" href="{{asset('client/css/responsive.css')}}">
 
 {{-- gg map and hinh anh upload.js--}}
-    <link rel="stylesheet" href="{{asset('client/css/style_blog3.css')}}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8ttJcdnyqOwb93B47rjRU+ABJxUrEDR/i" crossorigin="anonymous">
 
 
@@ -109,8 +108,6 @@
     @yield('js')
     <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
 {{-- gg map and hinh anh upload.js--}}
-
-    <script src="{{asset('client/js/upload.js')}}"></script>
 
     <script src="https://maps.app.goo.gl/uxx2Xc9w7GcKigKt7"></script>
 

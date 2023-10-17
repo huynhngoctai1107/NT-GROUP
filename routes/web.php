@@ -82,12 +82,16 @@ Route::group(['prefix' => 'admin'], function (){
     });
     Route::group(['prefix' => 'posts'], function (){
         Route::get('/list', [ListPostsController::class, 'listPosts'])->name('listPosts');
-        Route::get('/delete', [DeletePostsController::class, 'deletePosts'])->name('deletePosts');
-        Route::get('/edit', [EditPostsController::class, 'editFormPosts'])->name('editPosts');
-        Route::post('/edit', [EditPostsController::class, 'editPosts'])->name('editPosts');
-        Route::get('/add', [AddPostsController::class, 'addFormPosts'])->name('addPosts');
+        Route::get('/list-history', [ListPostsController::class, 'listHistory'])->name('listHistory');
+        Route::get('/delete/{id}', [DeletePostsController::class, 'deletePosts'])->name('deletePosts');
+        Route::get('/edit/{slug}', [EditPostsController::class, 'editFormPosts'])->name('editPosts');
+        Route::post('/edit/{slug}', [EditPostsController::class, 'editPosts'])->name('editPosts');
+        Route::get('/add', [AddPostsController::class, 'addFormPosts'])->name('addFormPosts');
         Route::post('/add', [AddPostsController::class, 'addPosts'])->name('addPosts');
         Route::get('/{id}', [ListPostsController::class, 'UpdateStatus'])->name('UpdateStatus');
+        Route::get('/media/{id}', [EditPostsController::class, 'deleteMedia'])->name('deleteMedia');
+        Route::get('/delete-history/{slug}', [DeletePostsController::class, 'deleteHistory'])->name('deleteHistory');
+        Route::get('/restore/{slug}', [DeletePostsController::class, 'restorePost'])->name('restorePost');
     });
 });
 
@@ -116,6 +120,7 @@ Route::group(['prefix' => '/'], function (){
     });
     Route::group(['prefix' => 'post'], function (){
         Route::get('/add', [AddPostController::class, 'post'])->name('postAdd');
+        Route::post('/add', [AddPostController::class, 'addClientPosts'])->name('addClientPosts');
         Route::get('/new', [PostNewController::class, 'postNew'])->name('postNew');
     });
     Route::group(['prefix' => 'search'], function (){
