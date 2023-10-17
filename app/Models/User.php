@@ -8,19 +8,13 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\DB;
-use App\Models\Oders;
-use GuzzleHttp\Psr7\Request;
+
 
 class User extends Authenticatable{
 
     use HasApiTokens, HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
-    //đăng ký
+    protected $table = 'users';
     protected $fillable = [
         'id',
         'id_role',
@@ -37,11 +31,27 @@ class User extends Authenticatable{
         'status',
 
     ];
-    protected $table = 'users';
+
 
     public function addUsers($data){
         return $this->insert($data);
     }
+
+    public function listUser($condition){
+
+        return $this->orderBy('id', 'desc')->where($condition)->paginate(5);
+
+    }
+
+
+    public function show($condition){
+        return DB::table('roles')->where($condition)->get();
+    }
+
+    public function editUser($id){
+        return $this->where('id', '=', $id)->first();
+    }
+
 
     public function updateUser($data, $condition){
         return $this
@@ -49,15 +59,17 @@ class User extends Authenticatable{
             ->update($data);
     }
 
-    //quên mật khẩu
     public function resetPassword($condition){
         return $this
             ->where($condition)
             ->first();
     }
-    public function editPassword($email,$data){
+
+    public function editPassword($condition, $data){
         return $this
-           ->where('email','=',$email)
-           ->update($data);
+            ->where($condition)
+            ->update($data);
     }
+
+
 }

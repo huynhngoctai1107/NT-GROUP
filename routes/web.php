@@ -61,24 +61,29 @@ Route::group(['prefix' => 'admin'], function (){
         Route::get('/add', [AddCategoryController::class, 'addFormCategory'])->name('addCategory');
         Route::post('/add', [AddCategoryController::class, 'addCategory'])->name('addCategory');
     });
+
     Route::group(['prefix' => 'user'], function (){
         Route::get('/list', [ListUserController::class, 'listUser'])->name('listUser');
-        Route::get('/delete', [DeleteUserController::class, 'deleteUser'])->name('deleteUser');
-        Route::get('/edit', [EditUserController::class, 'editFormUser'])->name('editUser');
-        Route::post('/edit', [EditUserController::class, 'editUser'])->name('editUser');
-        Route::get('/add', [AddUserController::class, 'addFormUser'])->name('addUser');
-        Route::post('/add', [AddUserController::class, 'addUser'])->name('addUser');
+        Route::get('/userAccount', [ListUserController::class, 'userAccount'])->name('userAccount');
+        Route::get('/edit/{id}', [EditUserController::class, 'editFormUser'])->name('editFormUser');
+        Route::post('/edit/{id}', [EditUserController::class, 'editUser'])->name('editUser');
+        Route::get('/add', [AddUserController::class, 'addFormUser'])->name('addUserForm');
+        Route::post('/add', [AddUserController::class, 'formAddUser'])->name('addUser');
+        Route::get('/delete/{id}', [DeleteUserController::class, 'deleteUser'])->name('deleteUser');
+        Route::get('statusUser/{id}', [ListUserController::class, 'statusUser'])->name('statusUser');
     });
-    Route::group(['prefix' => 'voucher'], function (){
+
+    Route::group(['prefix' => 'voucher'], function () {
         Route::get('/list', [ListVoucherController::class, 'listVoucher'])->name('listVoucher');
-        Route::get('/delete', [DeleteVoucherController::class, 'deleteVoucher'])->name('deleteVoucher');
-        Route::get('/edit', [EditVoucherController::class, 'editFormVoucher'])->name('editVoucher');
-        Route::post('/edit', [EditVoucherController::class, 'editVoucher'])->name('editVoucher');
-        Route::get('/add', [AddVoucherController::class, 'addFormVoucher'])->name('addVoucher');
+        Route::get('/delete/{slug}', [DeleteVoucherController::class, 'deleteVoucher'])->name('deleteVoucher');
+        Route::get('/edit/{slug}', [EditVoucherController::class, 'editFormVoucher'])->name('editFormVoucher');
+        Route::post('/edit/{slug}', [EditVoucherController::class, 'editVoucher'])->name('editVoucher');
+        Route::get('/add', [AddVoucherController::class, 'addFormVoucher'])->name('addFormVoucher');
         Route::post('/add', [AddVoucherController::class, 'addVoucher'])->name('addVoucher');
+        Route::get('status/{id}', [ListVoucherController::class, 'status'])->name('status');
     });
     Route::group(['prefix' => 'transactions'], function (){
-        Route::get('/list', [RechargeHistoryController::class, 'listRechargeHistory'])->name('listRechargeHistory');
+            Route::get('/list', [RechargeHistoryController::class, 'listRechargeHistory'])->name('listRechargeHistory');
     });
     Route::group(['prefix' => 'posts'], function (){
         Route::get('/list', [ListPostsController::class, 'listPosts'])->name('listPosts');

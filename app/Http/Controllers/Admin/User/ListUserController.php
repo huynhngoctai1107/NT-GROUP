@@ -3,11 +3,37 @@
 namespace App\Http\Controllers\Admin\User;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Models\User;
+
 
 class ListUserController extends Controller
 {
-    function listUser(){
-        return view('admin.user.list');
+    public $user;
+
+    public function __construct(){
+        $this->user = new User();
+    }
+    public function listUser()
+    {
+        $condition=[];
+        $data=$this->user->listUser($condition);
+
+
+        return view('admin.user.list', ['list' => $data]);
+    }
+
+    public function statusUser($id)
+    {
+        $user = User::find($id);
+
+        if ($user) {
+            if ($user->status) {
+                $user->status = 0;
+            } else {
+                $user->status = 1;
+            }
+            $user->save();
+        }
+        return back();
     }
 }

@@ -27,7 +27,6 @@
                     <div class="card-header">
                         <h3 class="card-title"> Quản lý tài khoản người dùng </h3>
                     </div>
-
                     <!-- /.card-header -->
                     <div class="card-body">
                         <x-admin.buttom.add router="addUser" name="Thêm tài khoản"></x-admin.buttom.add>
@@ -42,26 +41,49 @@
                                 <th>Giới tính</th>
                                 <th>Số điện thoại</th>
                                 <th>Địa chỉ</th>
+                                <th>Trạng thái</th>
                                 <th>Nghiệp vụ</th>
                             </tr>
                             </thead>
                             <tbody>
-
-                            <tr>
-                                <td>Tài khoản hệ thống</td>
-                                <td>Hình</td>
-                                <td>Huỳnh ngọc tài</td>
-                                <td>email@gmail.com</td>
-                                <td>1.000.000 Đ</td>
-                                <td>Nam</td>
-                                <td>0949615859</td>
-                                <td>Cần thơ</td>
-                                <td><a href="{{ route('editUser')}}">Sửa</a> / <a href="{{route('deleteUser')}}">Xóa</a>
-                                </td>
-                            </tr>
+                            {{-- sửa --}}
+                            @foreach($list as $data)
+                                <tr>
+                                    <td>
+                                        @if($data->id_role == 1)
+                                            Quản trị viên
+                                        @elseif($data->id_role == 2)
+                                            Biên tập viên
+                                        @elseif($data->id_role == 3)
+                                            Khách hàng
+                                        @else
+                                            Không rõ
+                                        @endif
+                                    </td>
+                                    <td><img src='{{asset("images/$data->image")}}' alt="" width="150" height="120"></td>
+                                    <td>{{ $data->fullname }}</td>
+                                    <td>{{ $data->email }}</td>
+                                    <td>{{ number_format($data->wallet)}} VNĐ</td>
+                                    <td>{{ $data->gender }}</td>
+                                    <td>{{ $data->phone }}</td>
+                                    <td>{{ $data->address }}</td>
+                                    <td>
+                                        <a href="{{route('statusUser', $data->id)}}"
+                                           class="btn btn-sm btn-{{$data->status ? 'success':'danger'}}">
+                                            {{$data->status ? 'Hiện':'Ẩn'}}
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <div class="btn-group" role="group">
+                                            <a href="{{ route('editFormUser', $data->id) }}" class="btn btn-outline-success btn-sm">Sửa</a>
+                                            <a href="{{ route('deleteUser', $data->id) }}" class="btn btn-outline-danger btn-sm">Xoá</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
                             </tbody>
-
                         </table>
+                        <div class="mt-3">{{ $list->links() }}</div>
                     </div>
                     <!-- /.card-body -->
                 </div>
@@ -70,11 +92,11 @@
     </div>
 @endsection
 
-@section('javascript')
+@push('javascript')
     <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
     <!-- Bootstrap 4 -->
     <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <!-- DataTables  & Plugins -->
+    <!-- DataTables & Plugins -->
     <script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
@@ -107,9 +129,8 @@
                 "ordering": true,
                 "info": true,
                 "autoWidth": false,
-                "responsive": true,
+                "responsive": true
             });
         });
     </script>
-@endsection
-<!-- HTML !-->
+@endpush<!-- HTML !-->
