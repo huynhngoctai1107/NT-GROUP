@@ -44,8 +44,10 @@
                                         @enderror
                                     </div>
                                     <div class="form-group mb-3">
-                                        <button type="submit" class="btn btn-fill-out btn-block" name="login">Gửi</button>
+                                        {!! RecaptchaV3::field('forGetPassWord') !!}
+                                        <button type="submit" class="btn btn-fill-out btn-block" name="forGetPassWord">Gửi yêu cầu</button>
                                     </div>
+
                                 </form>
 
 

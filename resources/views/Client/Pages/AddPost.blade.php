@@ -10,12 +10,12 @@
     <x-client.header.posttitle :title="$title"></x-client.header.posttitle>
 
     <div class="container">
-        <br />
+        <br/>
         <div class="row">
             <p class="alert alert-secondary">
                 <b style="font-weight: 700; font-size: 15px; font-family: sans-serif;">Thông Tin Bất Động Sản</b>
             </p>
-            <form action="{{ route('addClientPosts') }}" method="post" class="row g-3" style="margin-left: 8px;"  enctype="multipart/form-data">
+            <form action="{{ route('addClientPosts') }}" method="post" class="row g-3" style="margin-left: 8px;" enctype="multipart/form-data">
                 @csrf
                 <div class="col-12">
                     @error('title')
@@ -36,7 +36,7 @@
                             @endforeach
                         </select>
                     </div>
-                    <div style="width: 45%;" >
+                    <div style="width: 45%;">
                         <label for="id_category" class="form-label">Chọn danh mục</label>
                         <select class="form-select" name="id_category" id="id_category" style="width: 100%; height: 50px">
                             @foreach ($category as $row)
@@ -58,8 +58,8 @@
                         <label for="id_acreage" class="form-label">Chọn diện tích</label>
                         <select class="form-select" name="id_acreage" id="id_acreage" style="width: 100%; height: 50px">
                             @foreach ($acreage as $row)
-                            <option value="{{ $row->id }}">{{ $row->name_min }} m² - {{ $row->name_max }} m²</option>
-                        @endforeach
+                                <option value="{{ $row->id }}">{{ $row->name_min }} m² - {{ $row->name_max }} m²</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
@@ -84,8 +84,7 @@
                 <label class="form-label">Thêm ảnh</label>
                 <div class="file-upload">
                     <div class="image-upload-wrap">
-                        <input class="file-upload-input" type="file" name="uploadfile[]" onchange="readURL(this);"
-                            accept="image/*" multiple />
+                        <input class="file-upload-input" type="file" name="uploadfile[]" onchange="readURL(this);" accept="image/*" multiple/>
                     </div>
                     <div class="file-upload-content">
                         <div class="image-list">
@@ -101,7 +100,7 @@
                             for (var i = 0; i < input.files.length; i++) {
                                 var reader = new FileReader();
 
-                                reader.onload = function(e) {
+                                reader.onload = function (e) {
                                     var image = document.createElement('img'); // Tạo một phần tử hình ảnh
                                     image.src = e.target.result; // Đặt nguồn hình ảnh từ dữ liệu đọc
                                     imageList.appendChild(image); // Thêm hình ảnh vào danh sách
@@ -122,7 +121,7 @@
                     <div class="flex-container" style="display: flex; justify-content: space-between">
                         <div class="mb-3" style="width: 45%;" data-select2-id="29">
                             @error('city')
-                                <div class="alert alert-danger mt-3">{{ $message }}</div>
+                            <div class="alert alert-danger mt-3">{{ $message }}</div>
                             @enderror
                             <label class="mb-3" for="city">Chọn tỉnh thành</label>
                             <select style="width: 100%; height: 50px" id="city" name="city">
@@ -131,7 +130,7 @@
                         </div>
                         <div class="mb-3" style="width: 45%;" data-select2-id="29">
                             @error('district')
-                                <div class="alert alert-danger mt-3">{{ $message }}</div>
+                            <div class="alert alert-danger mt-3">{{ $message }}</div>
                             @enderror
                             <label class="mb-3" for="district">Chọn quận huyện</label>
                             <select style="width: 100%; height: 50px" id="district" name="district">
@@ -142,7 +141,7 @@
                     <div class="flex-container" style="display: flex; justify-content: space-between">
                         <div class="mb-3" style="width: 45%;" data-select2-id="29">
                             @error('ward')
-                                <div class="alert alert-danger mt-3">{{ $message }}</div>
+                            <div class="alert alert-danger mt-3">{{ $message }}</div>
                             @enderror
                             <label class="mb-3" for="ward">Chọn phường xã</label>
                             <select style="width: 100%; height: 50px" id="ward" name="ward">
@@ -151,25 +150,24 @@
                         </div>
                         <div class="mb-3" style="width: 45%">
                             @error('address')
-                                <div class="alert alert-danger mt-3">{{ $message }}</div>
+                            <div class="alert alert-danger mt-3">{{ $message }}</div>
                             @enderror
                             <label class="mb-3" for="addess">Nhâp địa chỉ chi tiết</label>
-                            <input type="text" class="form-control mb-3" name="address" id="addess"
-                                placeholder="Nhập địa chỉ chi tiết">
+                            <input type="text" class="form-control mb-3" name="address" id="addess" placeholder="Nhập địa chỉ chi tiết">
                         </div>
                     </div>
                 </div>
                 <input type="hidden" id="result" name="address1" value="">
                 <div class="form-group">
                     @error('subtitles')
-                        <div class="alert alert-danger mt-3">{{ $message }}</div>
+                    <div class="alert alert-danger mt-3">{{ $message }}</div>
                     @enderror
                     <label class="mb-3" for="summernote1">Tiêu đề phụ</label>
                     <textarea id="summernote1" name="subtitles">{{ old('subtitles') }}</textarea>
                 </div>
                 <div class="form-group">
                     @error('content')
-                        <div class="alert alert-danger mt-3">{{ $message }}</div>
+                    <div class="alert alert-danger mt-3">{{ $message }}</div>
                     @enderror
                     <label class="mb-3" for="summernote">Nội dung</label>
                     <textarea id="summernote" name="content">{{ old('content') }}</textarea>
@@ -205,20 +203,20 @@
 @push('styles')
     <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
     <style>
-        /* CSS cho phần danh sách hình ảnh */
-        .image-list {
-            display: flex;
-            flex-wrap: wrap;
-            margin: 10px 0;
-        }
+		/* CSS cho phần danh sách hình ảnh */
+		.image-list {
+			display: flex;
+			flex-wrap: wrap;
+			margin: 10px 0;
+		}
 
-        .image-list img {
-            width: 150px;
-            /* Điều chỉnh kích thước hình ảnh tùy ý */
-            height: auto;
-            margin: 5px;
-            border: 1px solid #ccc;
-        }
+		.image-list img {
+			width: 150px;
+			/* Điều chỉnh kích thước hình ảnh tùy ý */
+			height: auto;
+			margin: 5px;
+			border: 1px solid #ccc;
+		}
     </style>
 @endpush
 @push('script')

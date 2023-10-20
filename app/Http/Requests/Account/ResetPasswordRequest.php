@@ -32,6 +32,7 @@ class ResetPasswordRequest extends FormRequest{
                 'regex:/[0-9]/',      // must contain at least one digit
                 'regex:/[@$!%*#?&]/', // must contain a special character
             ],
+            'g-recaptcha-response' => 'required',
             'password_confirmation' => 'bail|required|same:password',
         ];
 
@@ -40,6 +41,7 @@ class ResetPasswordRequest extends FormRequest{
     public function messages(){
         return [
             'password.required'              => 'Vui lòng nhập vào mật khẩu',
+            'g-recaptcha-response'           => 'Lỗi xác thực',
             'password.min'                   => 'Độ dài tối thiểu là 10',
             'password.regex'                 => 'Mật khẩu phải có Kí tự in hoa, kí tự chữ thường, kí tự đặt biệt và số',
             'password_confirmation.required' => 'Mật khẩu nhập lại không được để trống',

@@ -37,39 +37,29 @@
                             <div class="col-lg-6 col-md-6 mb-4 mb-md-0">
                                 <div class="product-image">
                                     <div class="product_img_box">
-                                        <img id="product_img" src="{{ asset('client/images/banner0.webp') }}"
-                                             data-zoom-image="{{ asset('client/images/banner0.webp') }}" alt="product_img1"/>
+                                        <img id="product_img" src="{{ asset('client/images/banner0.webp') }}" data-zoom-image="{{ asset('client/images/banner0.webp') }}" alt="product_img1"/>
                                         <a href="#" class="product_img_zoom" title="Zoom">
                                             <span class="linearicons-zoom-in"></span>
                                         </a>
                                     </div>
-                                    <div id="pr_item_gallery" class="product_gallery_item slick_slider"
-                                         data-slides-to-show="4" data-slides-to-scroll="1" data-infinite="false">
+                                    <div id="pr_item_gallery" class="product_gallery_item slick_slider" data-slides-to-show="4" data-slides-to-scroll="1" data-infinite="false">
                                         <div class="item">
-                                            <a href="#" class="product_gallery_item active"
-                                               data-image="{{ asset('client/images/banner0.webp') }}"
-                                               data-zoom-image="{{ asset('client/images/banner0.webp') }}">
+                                            <a href="#" class="product_gallery_item active" data-image="{{ asset('client/images/banner0.webp') }}" data-zoom-image="{{ asset('client/images/banner0.webp') }}">
                                                 <img src="{{ asset('client/images/banner0.webp') }}" alt="product_small_img1" height="70px">
                                             </a>
                                         </div>
                                         <div class="item">
-                                            <a href="#" class="product_gallery_item active"
-                                               data-image="{{ asset('client/images/banner00.webp') }}"
-                                               data-zoom-image="{{ asset('client/images/banner00.webp') }}">
+                                            <a href="#" class="product_gallery_item active" data-image="{{ asset('client/images/banner00.webp') }}" data-zoom-image="{{ asset('client/images/banner00.webp') }}">
                                                 <img src="{{ asset('client/images/banner00.webp') }}" alt="product_small_img1" height="70px">
                                             </a>
                                         </div>
                                         <div class="item">
-                                            <a href="#" class="product_gallery_item active"
-                                               data-image="{{ asset('client/images/banner0.webp') }}"
-                                               data-zoom-image="{{ asset('client/images/banner0.webp') }}">
+                                            <a href="#" class="product_gallery_item active" data-image="{{ asset('client/images/banner0.webp') }}" data-zoom-image="{{ asset('client/images/banner0.webp') }}">
                                                 <img src="{{ asset('client/images/banner0.webp') }}" alt="product_small_img1" height="70px">
                                             </a>
                                         </div>
                                         <div class="item">
-                                            <a href="#" class="product_gallery_item active"
-                                               data-image="{{ asset('client/images/banner00.webp') }}"
-                                               data-zoom-image="{{ asset('client/images/banner00.webp') }}">
+                                            <a href="#" class="product_gallery_item active" data-image="{{ asset('client/images/banner00.webp') }}" data-zoom-image="{{ asset('client/images/banner00.webp') }}">
                                                 <img src="{{ asset('client/images/banner00.webp') }}" alt="product_small_img1" height="70px">
                                             </a>
                                         </div>
@@ -80,7 +70,9 @@
                             <div class="col-lg-6 col-md-6">
                                 <div class="pr_detail">
                                     <div class="product_description">
-                                        <h4 class="product_title"><a href="#">Bán nền giá rẻ 390 triệu ngay Thị Trấn Mái Dầm tiếp giáp TP Cần Thơ</a></h4>
+                                        <h4 class="product_title">
+                                            <a href="#">Bán nền giá rẻ 390 triệu ngay Thị Trấn Mái Dầm tiếp giáp TP Cần Thơ</a>
+                                        </h4>
                                         <div class="product_price">
                                             <span class="price format-number">1000000000</span>
                                             <del class="format-number">1200000000</del>
@@ -128,23 +120,17 @@
                                 <div class="tab-style3">
                                     <ul class="nav nav-tabs" role="tablist">
                                         <li class="nav-item">
-                                            <a class="nav-link active" id="Description-tab" data-bs-toggle="tab"
-                                               href="#Description" role="tab" aria-controls="Description"
-                                               aria-selected="true">Mô tả</a>
+                                            <a class="nav-link active" id="Description-tab" data-bs-toggle="tab" href="#Description" role="tab" aria-controls="Description" aria-selected="true">Mô tả</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" id="Additional-info-tab" data-bs-toggle="tab"
-                                               href="#Additional-info" role="tab" aria-controls="Additional-info"
-                                               aria-selected="false">Thông tin thêm</a>
+                                            <a class="nav-link" id="Additional-info-tab" data-bs-toggle="tab" href="#Additional-info" role="tab" aria-controls="Additional-info" aria-selected="false">Thông tin thêm</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" id="Reviews-tab" data-bs-toggle="tab" href="#Reviews"
-                                               role="tab" aria-controls="Reviews" aria-selected="false">Đánh giá (2)</a>
+                                            <a class="nav-link" id="Reviews-tab" data-bs-toggle="tab" href="#Reviews" role="tab" aria-controls="Reviews" aria-selected="false">Đánh giá (2)</a>
                                         </li>
                                     </ul>
                                     <div class="tab-content shop_info_tab">
-                                        <div class="tab-pane fade show active" id="Description" role="tabpanel"
-                                             aria-labelledby="Description-tab">
+                                        <div class="tab-pane fade show active" id="Description" role="tabpanel" aria-labelledby="Description-tab">
                                             <p>BÁN 2 NỀN GIÁ RẺ 390 TRIỆU TÁI ĐỊNH CƯ NGAY CHỢ THỊ TRẤN MÁI DẦM HẬU GIANG
                                                 <br>
                                                 - Diện tích: 5 x 19, 5 x 20- Lộ: 15M - 16M <br>
@@ -152,11 +138,9 @@
                                                 - Đã có kết quả bốc thăm <br>
                                                 - Vị trí ngay trung tâm Thi Trấn Mái Dầm, tiếp giáp TP Cần Thơ <br>
                                                 - Có sẵn trường học, công viên- Còn nhiều nền đẹp, nền cặp, nền góc <br>
-                                                - Giá: 390 Triệu (Nợ CSHT)Số điện thoại: 0943500326
-                                            </p>
+                                                - Giá: 390 Triệu (Nợ CSHT)Số điện thoại: 0943500326 </p>
                                         </div>
-                                        <div class="tab-pane fade" id="Additional-info" role="tabpanel"
-                                             aria-labelledby="Additional-info-tab">
+                                        <div class="tab-pane fade" id="Additional-info" role="tabpanel" aria-labelledby="Additional-info-tab">
                                             <table class="table table-bordered">
                                                 <tr>
                                                     <td>Dung tích</td>
@@ -176,10 +160,10 @@
                                                 </tr>
                                             </table>
                                         </div>
-                                        <div class="tab-pane fade" id="Reviews" role="tabpanel"
-                                             aria-labelledby="Reviews-tab">
+                                        <div class="tab-pane fade" id="Reviews" role="tabpanel" aria-labelledby="Reviews-tab">
                                             <div class="comments">
-                                                <h5 class="product_tab_title">2 Đánh giá cho <span>Áo xanh cho phụ nữ</span></h5>
+                                                <h5 class="product_tab_title">2 Đánh giá cho
+                                                    <span>Áo xanh cho phụ nữ</span></h5>
                                                 <ul class="list_none comment_list mt-4">
                                                     <li>
                                                         <div class="comment_img">
@@ -243,21 +227,16 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-group col-12 mb-3">
-                                    <textarea required="required" placeholder="Đánh giá của bạn *"
-                                              class="form-control" name="message"
-                                              rows="4"></textarea>
+                                    <textarea required="required" placeholder="Đánh giá của bạn *" class="form-control" name="message" rows="4"></textarea>
                                                     </div>
                                                     <div class="form-group col-md-6 mb-3">
-                                                        <input required="required" placeholder="Nhập tên *"
-                                                               class="form-control" name="name" type="text">
+                                                        <input required="required" placeholder="Nhập tên *" class="form-control" name="name" type="text">
                                                     </div>
                                                     <div class="form-group col-md-6 mb-3">
-                                                        <input required="required" placeholder="Nhập Email *"
-                                                               class="form-control" name="email" type="email">
+                                                        <input required="required" placeholder="Nhập Email *" class="form-control" name="email" type="email">
                                                     </div>
                                                     <div class="form-group col-12 mb-3">
-                                                        <button type="submit" class="btn btn-fill-out" name="submit"
-                                                                value="Submit">Gửi đánh giá
+                                                        <button type="submit" class="btn btn-fill-out" name="submit" value="Submit">Gửi đánh giá
                                                         </button>
                                                     </div>
                                                 </form>
@@ -284,9 +263,7 @@
                                 <div class="heading_s1">
                                     <h3>Tin Liên Quan</h3>
                                 </div>
-                                <div class="releted_product_slider carousel_slider owl-carousel owl-theme"
-                                     data-margin="20"
-                                     data-responsive='{"0":{"items": "1"}, "481":{"items": "2"}, "768":{"items": "3"}, "992":{"items": "2"}, "1199":{"items": "3"}}'>
+                                <div class="releted_product_slider carousel_slider owl-carousel owl-theme" data-margin="20" data-responsive='{"0":{"items": "1"}, "481":{"items": "2"}, "768":{"items": "3"}, "992":{"items": "2"}, "1199":{"items": "3"}}'>
                                     @php
                                         $list = [
                                             [
@@ -317,16 +294,21 @@
                             <div class="widget">
                                 <h5 class="widget_title">Loại Tin</h5>
                                 <ul class="widget_categories">
-                                    <li><a href="#"><span class="categories_name">Bán Đất</span><span
-                                                    class="categories_num">(9)</span></a></li>
-                                    <li><a href="#"><span class="categories_name">Thuê Đất</span><span
-                                                    class="categories_num">(6)</span></a></li>
-                                    <li><a href="#"><span class="categories_name">Bán Nhà</span><span
-                                                    class="categories_num">(4)</span></a></li>
-                                    <li><a href="#"><span class="categories_name">Thuê Nhà</span><span
-                                                    class="categories_num">(7)</span></a></li>
-                                    <li><a href="#"><span class="categories_name">Thuê Trọ</span><span
-                                                    class="categories_num">(12)</span></a></li>
+                                    <li>
+                                        <a href="#"><span class="categories_name">Bán Đất</span><span class="categories_num">(9)</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><span class="categories_name">Thuê Đất</span><span class="categories_num">(6)</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><span class="categories_name">Bán Nhà</span><span class="categories_num">(4)</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><span class="categories_name">Thuê Nhà</span><span class="categories_num">(7)</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><span class="categories_name">Thuê Trọ</span><span class="categories_num">(12)</span></a>
+                                    </li>
                                 </ul>
                             </div>
                             <div class="widget">
@@ -360,20 +342,20 @@
     <!-- Bootstrap Font Icon CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"/>
     <style>
-        .rounded-circle-custom {
-            border-radius: 50%;
-            width: 100px;
-            /* Điều chỉnh kích thước ảnh theo ý muốn */
-            height: 100px;
-            /* Điều chỉnh kích thước ảnh theo ý muốn */
-            object-fit: cover;
-            /* Cách hình ảnh sẽ được hiển thị */
-        }
-        /* Điều chỉnh kích thước bản đồ theo ý muốn */
-        #ggmap {
-	        height: 400px;
-	        width: 100%;
-        }
+		.rounded-circle-custom {
+			border-radius: 50%;
+			width: 100px;
+			/* Điều chỉnh kích thước ảnh theo ý muốn */
+			height: 100px;
+			/* Điều chỉnh kích thước ảnh theo ý muốn */
+			object-fit: cover;
+			/* Cách hình ảnh sẽ được hiển thị */
+		}
+		/* Điều chỉnh kích thước bản đồ theo ý muốn */
+		#ggmap {
+			height: 400px;
+			width: 100%;
+		}
     </style>
 @endpush
 @push('script')
@@ -385,13 +367,13 @@
         function initMap() {
             // Tạo một đối tượng bản đồ và thiết lập tọa độ ban đầu
             var map = new google.maps.Map(document.getElementById('ggmap'), {
-                center: { lat: latitude, lng: longitude },
+                center: {lat: latitude, lng: longitude},
                 zoom: 15 // Thay đổi giá trị zoom tùy theo yêu cầu của bạn
             });
 
             // Tạo một đối tượng đánh dấu (marker) ở vị trí bạn đã nhập
             var marker = new google.maps.Marker({
-                position: { lat: latitude, lng: longitude },
+                position: {lat: latitude, lng: longitude},
                 map: map,
                 title: 'Vị trí cụ thể'
             });
@@ -399,7 +381,7 @@
 
         // Lặp qua tất cả các phần tử có class "price"
         var priceElements = document.querySelectorAll('.format-number');
-        priceElements.forEach(function(element) {
+        priceElements.forEach(function (element) {
             // Lấy giá trị số tiền từ thuộc tính "data-price"
             var price = parseFloat(element.textContent);
 
@@ -416,13 +398,15 @@
                 }
 
                 element.textContent = formattedPrice;
-            } else if (price >= 1000000) {
+            }
+            else if (price >= 1000000) {
                 // Nếu số tiền lớn hơn hoặc bằng 1 triệu và dưới 1 tỷ
                 var trieu = Math.floor(price / 1000000);
 
                 // Định dạng số tiền thành 'x triệu' và gán lại cho phần tử
                 element.textContent = trieu + ' triệu';
-            } else {
+            }
+            else {
                 // Nếu số tiền dưới 1 triệu, giữ nguyên
                 element.textContent = price;
             }

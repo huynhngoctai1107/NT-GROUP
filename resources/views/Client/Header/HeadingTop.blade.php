@@ -22,15 +22,15 @@
                 <ul class="header_list">
                     <li><a href="{{route('postAdd')}}"><i class="ti-control-shuffle"></i><span>Đăng tin</span></a></li>
                     <li><a href="{{route('postNew')}}"><i class="ti-heart"></i><span>Danh sách tin</span></a></li>
-                    <li><a href="{{route('login')}}">
-
-                            <a class="btn-sm-square bg-white rounded-circle" href="@if(auth()->user()){{route('login')}}@else{{route('logout')}}@endif">
-                                @if(auth()->user())
-                                    <i class="bi bi-arrow-right-circle"></i><span>Đăng xuất</span>
-                                @else
-                                    <i class="ti-user"></i><span>Đăng nhập</span>
-                                @endif
-                            </a>
+                    <li><a href="{{auth()->check() != '' ? route('account'):route('login')}}"><i class="ti-user"></i> {{auth()->check() != '' ? 'Tài khoản':'Đăng nhập'}}
+                    </a>
+                </li>
+                    @if(auth()->check())
+                    <li><a href="{{route('logout')}}"><span>Đăng xuất</span></a></li>
+                    @endif
+                    
+                                
+                           
 
                 </ul>
             </div>

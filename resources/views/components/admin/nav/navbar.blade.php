@@ -149,15 +149,15 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex  text-center " style="flex-direction: column">
             <div class="image">
-                <img width="200"  src="https://www.pngkit.com/png/full/831-8314676_admin-demo-scalable-vector-graphics.png" class="img-circle elevation-2" alt="User Image">
+                <img width="400px"  src="https://images.freeimages.com/fic/images/icons/2526/bloggers/256/admin.png" class="img-circle elevation-2" alt="User Image">
             </div>
 
-{{--            <div class="info mt-2">--}}
-{{--                <a href="/admin" class="d-block">@if(auth()->user()->level ==2) Quản trị tối cao @else Biên tập viên @endif</a>--}}
-{{--            </div>--}}
-{{--            <div class="info">--}}
-{{--                <a href="/admin" class="d-block"> {{auth()->user()->name}}</a>--}}
-{{--            </div>--}}
+            <div class="info mt-2 text-white">
+              {{auth()->user()->id_role ==2 ? 'Biên tập viên' : 'Quản trị tối cao'}}
+           </div>
+           <div class="info">
+               {{auth()->user()->name}} 
+           </div>
         </div>
 
         <!-- SidebarSearch Form -->
@@ -222,6 +222,7 @@
                             <p class="ms-2">Quản lý voucher</p>
                         </a>
                     </li>
+                    @if(auth()->user()->id_role == 1 )
                     <li class="nav-item">
                         <a href="{{route('listUser')}}" class="nav-link">
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
@@ -239,14 +240,17 @@
                             <p class="ms-2">Quản lý lịch sử nạp tiền</p>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    @endif
+
+                    
+                     {{-- <li class="nav-item">
                         <a href="/admin/list-oders" class="nav-link">
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-folder-symlink-fill" viewBox="0 0 16 16">
                                 <path d="M13.81 3H9.828a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 6.172 1H2.5a2 2 0 0 0-2 2l.04.87a1.99 1.99 0 0 0-.342 1.311l.637 7A2 2 0 0 0 2.826 14h10.348a2 2 0 0 0 1.991-1.819l.637-7A2 2 0 0 0 13.81 3zM2.19 3c-.24 0-.47.042-.683.12L1.5 2.98a1 1 0 0 1 1-.98h3.672a1 1 0 0 1 .707.293L7.586 3H2.19zm9.608 5.271-3.182 1.97c-.27.166-.616-.036-.616-.372V9.1s-2.571-.3-4 2.4c.571-4.8 3.143-4.8 4-4.8v-.769c0-.336.346-.538.616-.371l3.182 1.969c.27.166.27.576 0 .742z"/>
                             </svg>
                             <p class="ms-2">Quản lý giao diện</p>
                         </a>
-                    </li>
+                    </li>  --}}
 
                 </ul>
 
@@ -254,7 +258,7 @@
 
                 <li class="nav-header">Tài khoản</li>
                 <li class="nav-item">
-                    <a href="/logout" class="nav-link">
+                    <a href="{{route('logout')}}" class="nav-link">
                         <svg xmlns="http://www.w3.org/2000/svg" height="1em" class="nav-icon" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#c2c7d0}</style><path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"/></svg>
                         <p class="text">Đăng xuất</p>
                     </a>

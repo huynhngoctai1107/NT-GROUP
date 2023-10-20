@@ -41,7 +41,7 @@ class EditUserController extends Controller{
             'gender'   => $request->gender,
             'phone'    => $request->phone,
             'address'  => $request->address,
-            'password' => Hash::make($request->password)
+         
         ];
 
         // Tìm người dùng theo ID
@@ -65,7 +65,10 @@ class EditUserController extends Controller{
 
         // Lưu giới tính và tên hình ảnh của người dùng vào session
         session(['gender' => $user->gender, 'image' => $user->image]);
-
-        return redirect()->route('listUser');
+        if($request->id_role == 1 ){
+            return redirect()->route('listUser');
+        }else{
+            return redirect()->route('dashboar');
+        }
     }
 }

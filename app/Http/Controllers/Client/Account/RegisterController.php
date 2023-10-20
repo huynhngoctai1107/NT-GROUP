@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Lunaweb\RecaptchaV3\Facades\RecaptchaV3;
 
 class RegisterController extends Controller{
 
@@ -25,33 +26,43 @@ class RegisterController extends Controller{
     }
 
     function registerFrom(RegisterRequest $request){
+        $score = RecaptchaV3::verify($request->get('g-recaptcha-response'));
+ 
+        if ($score > 0.7){
 
-        if ($request->has('uploadfile')){
-            $fileName = time() . '-' . 'product' . '.' . $request->uploadfile->extension();
-            $request->uploadfile->move(public_path("img/users"), $fileName);
-            $request->merge(['image' => $fileName]);
+            if ($request->has('uploadfile')){
+                $fileName = time() . '-' . 'product' . '.' . $request->uploadfile->extension();
+                $request->uploadfile->move(public_path("img/users"), $fileName);
+                $request->merge(['image' => $fileName]);
+            }
+            $data = [
+                'fullname'   => $request->fullname,
+                'email'      => $request->email,
+                'image'      => $request->image,
+                'phone'      => $request->phone,
+                'password'   => Hash:: make($request->password),
+                'id_role'    => 3,
+                'status'     => 0,
+                'address'    => $request->address,
+                'wallet'     => 0,
+                'token'      => strtoupper(Str::random(10)),
+                'gender'     => $request->gender,
+                'created_at' => date('Y-m-d'),
+            ];
+            $user = User::create($data);
+            $this->mail->activateMaill($user);
+
+            return Redirect()
+                ->back()
+                ->with('success', 'Đăng ký thành công, vui lòng kích hoạt tài khoản để đăng nhập');
+        }else{
+            return Redirect()
+                ->back()
+                
+                ->with('error-login',
+                    'Có thể bạn là robot');
+
         }
-        $data = [
-            'fullname'   => $request->fullname,
-            'email'      => $request->email,
-            'image'      => $request->image,
-            'phone'      => $request->phone,
-            'password'   => Hash:: make($request->password),
-            'id_role'    => 3,
-            'status'     => 0,
-            'address'    => $request->address,
-            'wallet'     => 0,
-            'token'      => strtoupper(Str::random(10)),
-            'gender'     => $request->gender,
-            'created_at' => date('Y-m-d'),
-        ];
-        $user = User::create($data);
-        $this->mail->activateMaill($user);
-
-        return Redirect()
-            ->back()
-            ->with('success', 'Đăng ký thành công, vui lòng kích hoạt tài khoản để đăng nhập');
-
 
     }
 

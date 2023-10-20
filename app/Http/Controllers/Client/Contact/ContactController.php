@@ -11,4 +11,8 @@ class ContactController extends Controller
         return view('Client.Pages.contact',['page'=>'contact']);
 
     }
+
+
+
+    
 }

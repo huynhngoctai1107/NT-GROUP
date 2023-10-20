@@ -23,12 +23,14 @@ class ForgetPasswordRequest extends FormRequest{
     : array{
         return [
             'email' => 'bail||required|email',
+            'g-recaptcha-response' => 'required',
         ];
     }
 
     public function messages(){
         return [
             'email.required' => 'Vui lòng nhập vào email',
+            'g-recaptcha-response' =>  'Lỗi xác thực',
             'email.email'    => 'Email chưa đúng định dạng',
         ];
     }

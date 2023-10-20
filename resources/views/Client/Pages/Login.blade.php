@@ -26,6 +26,7 @@
                                 <div class="heading_s1">
                                     <h3>Đăng nhập</h3>
                                 </div>
+
                                 @if(Session::has('success'))
                                     <div class="alert alert-success" role="alert">
                                         {{Session::get('success')}}
@@ -36,7 +37,7 @@
                                         {{Session::get('error-login')}}
                                     </div>
                                 @endif
-                                <form action="{{route('loginForm')}}" method="post" >
+                                <form action="{{route('loginForm')}}" method="post">
                                     @csrf
                                     <div class="form-group mb-3">
                                         <input type="text" class="form-control" name="email" value="{{old('email')}}" placeholder="Email">
@@ -47,7 +48,7 @@
                                         @enderror
                                     </div>
                                     <div class="mb-3">
-                                        <input type="password" value="{{old('password')}}"  name="password" class="form-control" id="myInput" placeholder="Mật khẩu">
+                                        <input type="password" value="{{old('password')}}" name="password" class="form-control" id="myInput" placeholder="Mật khẩu">
                                         @error('password')
                                         <p class="text-danger">
                                             {{ $message }}
@@ -62,7 +63,13 @@
                                         </div>
                                         <a href="{{route('fogetPassword')}}">Quên mật khẩu?</a>
                                     </div>
+                                    {{-- <div class="form-group">
+                                        {!! RecaptchaV3::field('') !!}
+                                        <input  type="submit"  class="btn btn-fill-out btn-block"  name="login" value="Đăng nhập">
+               
+                                     </div> --}}
                                     <div class="form-group mb-3">
+                                        {!! RecaptchaV3::field('login') !!}
                                         <button type="submit" class="btn btn-fill-out btn-block" name="login">Đăng nhập</button>
                                     </div>
                                 </form>
@@ -70,10 +77,14 @@
                                     <span>Hoặc</span>
                                 </div>
                                 <ul class="btn-login list_none text-center">
-                                    <li><a href="#" class="btn btn-facebook"><i class="ion-social-facebook"></i>Facebook</a></li>
-                                    <li><a href="#" class="btn btn-google"><i class="ion-social-googleplus"></i>Google</a></li>
+                                    <li><a href="#" class="btn btn-facebook"><i class="ion-social-facebook"></i>Facebook</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route('loginGoogle')}}" class="btn btn-google"><i class="ion-social-googleplus"></i>Google</a>
+                                    </li>
                                 </ul>
-                                <div class="form-note text-center">Bạn chưa có tài khoản? <a href="{{route('register')}}">Đăng ký</a></div>
+                                <div class="form-note text-center">Bạn chưa có tài khoản?
+                                    <a href="{{route('register')}}">Đăng ký</a></div>
                             </div>
                         </div>
                     </div>

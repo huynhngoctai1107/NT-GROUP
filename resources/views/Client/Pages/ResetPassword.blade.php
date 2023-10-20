@@ -69,8 +69,10 @@
                                         </div>
                                     </div>
                                     <div class="form-group mb-3">
-                                        <button type="submit" class="btn btn-fill-out btn-block" name="login">Gửi</button>
+                                        {!! RecaptchaV3::field('resetPassWord') !!}
+                                        <button type="submit" class="btn btn-fill-out btn-block" name="resetPassWord">Đặt lại mật khẩu</button>
                                     </div>
+
                                 </form>
                             </div>
                         </div>

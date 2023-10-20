@@ -133,7 +133,8 @@
                                     </p>
                                     @enderror
                                     <div class="form-group mb-3">
-                                        <button type="submit" class="btn btn-fill-out btn-block">Đăng ký</button>
+                                        {!! RecaptchaV3::field('resigter') !!}
+                                        <button type="submit" class="btn btn-fill-out btn-block"  name="resigter">Đăng ký</button>
                                     </div>
                                 </form>
 

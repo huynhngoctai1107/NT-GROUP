@@ -9,36 +9,36 @@
                     <div class="mb-3">
                         <div class="form-group">
                             <label class="label" for="name">Họ và Tên</label>
-                            <input type="text" class="form-control" name="name" id="name" placeholder="Name">
+                            <input type="text" class="form-control" name="name" value="{{auth()->user()->fullname}}" id="name" placeholder="Name">
                         </div>
                     </div>
                     <div class="mb-3">
                         <div class="form-group">
                             <label class="label" for="email">Địa chỉ Email</label>
-                            <input type="email" class="form-control" name="email" id="email" placeholder="Email">
+                            <input type="email" class="form-control" name="email" value="{{auth()->user()->email}}" disabled id="email" placeholder="Email">
                         </div>
                     </div>
                     <br/>
                     <div class="mb-3">
                         <label for="gender" class="label">Giới tính</label>
                         <div class="form-check">
-                            <input type="radio" class="form-check-input" name="gender" id="male" value="Nam">
+                            <input type="radio" class="form-check-input" name="gender" id="male" value="Nam" {{auth()->user()->gender == 'Nam' ? 'checked' : ''}}>
                             <label class="label" for="male">Nam</label>
                         </div>
                         <div class="form-check">
-                            <input type="radio" class="form-check-input" name="gender" id="female" value="Nữ">
+                            <input type="radio" class="form-check-input" name="gender" id="female" value="Nữ"   {{auth()->user()->gender == 'Nữ' ? 'checked' : ''}}>
                             <label class="label" for="female">Nữ</label>
                         </div>
                     </div>
                     <div class="mb-3">
                         <div class="form-group">
                             <label for="phone-number" class="label">Số điện thoại</label>
-                            <input type="tel" class="form-control" id="phone-number" placeholder="Nhập số điện thoại của bạn">
+                            <input type="tel" class="form-control" id="phone-number" value="{{auth()->user()->phone ?? ''}}" placeholder="Nhập số điện thoại của bạn">
                         </div>
                     </div>
                     <div class="mb-3">
                         <label for="street-address" class="label">Địa chỉ</label>
-                        <input type="text" class="form-control" id="street-address" placeholder="Nhập địa chỉ của bạn">
+                        <input type="text" class="form-control" id="street-address" value="{{auth()->user()->address ?? ''}}" placeholder="Nhập địa chỉ của bạn">
                     </div>
 
                     <div class="file-upload">

@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-md-8">
                 <div class="img">
-                    <div class="row" >
+                    <div class="row">
                         <div class="bds col-md-7 d-flex justify-content-center align-items-center">
                             <div class="content m-lg-5">
                                 <h2 class="mt-5 fw-bold ">BẤT ĐỘNG SẢN GIÁ RẺ CHẤT LƯỢNG CAO</h2>
@@ -164,45 +164,45 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="tab-content">
-                                <div class="row shop_container">
-                                    @php
-                                        $list = [
-                                            [
-                                                'name'=> 'Nhà ở giá rẻ tại Cần Thơ',
-                                                'img' => 'banner0.webp',
-                                                'address' => '170 Hoàng Quốc Việt, An Bình, Ninh Kiều, Cần Thơ',
-                                                'price' => '250000000',
-                                            ],
-                                            [
-                                                'name'=> 'Nhà nguyên căn đầy đủ nội thất tại Cần Thơ',
-                                                'img' => 'banner00.jpeg',
-                                                'address'=> '170 Hoàng Quốc Việt, An Bình, Ninh Kiều, Cần Thơ',
-                                                'price'=> '2500000000',
-                                            ],
-                                                                                        [
-                                                'name'=> 'Nhà ở giá rẻ tại Cần Thơ',
-                                                'img' => 'banner0.webp',
-                                                'address' => '170 Hoàng Quốc Việt, An Bình, Ninh Kiều, Cần Thơ',
-                                                'price' => '250000000',
-                                            ],
-                                            [
-                                                'name'=> 'Nhà nguyên căn đầy đủ nội thất tại Cần Thơ',
-                                                'img' => 'banner00.jpeg',
-                                                'address'=> '170 Hoàng Quốc Việt, An Bình, Ninh Kiều, Cần Thơ',
-                                                'price'=> '2500000000',
-                                            ],
-                                        ];
-                                    @endphp
-                                    <x-client.index.post :list="$list">
+                            <div class="row shop_container">
+                                @php
+                                    $list = [
+                                        [
+                                            'name'=> 'Nhà ở giá rẻ tại Cần Thơ',
+                                            'img' => 'banner0.webp',
+                                            'address' => '170 Hoàng Quốc Việt, An Bình, Ninh Kiều, Cần Thơ',
+                                            'price' => '250000000',
+                                        ],
+                                        [
+                                            'name'=> 'Nhà nguyên căn đầy đủ nội thất tại Cần Thơ',
+                                            'img' => 'banner00.jpeg',
+                                            'address'=> '170 Hoàng Quốc Việt, An Bình, Ninh Kiều, Cần Thơ',
+                                            'price'=> '2500000000',
+                                        ],
+                                                                                    [
+                                            'name'=> 'Nhà ở giá rẻ tại Cần Thơ',
+                                            'img' => 'banner0.webp',
+                                            'address' => '170 Hoàng Quốc Việt, An Bình, Ninh Kiều, Cần Thơ',
+                                            'price' => '250000000',
+                                        ],
+                                        [
+                                            'name'=> 'Nhà nguyên căn đầy đủ nội thất tại Cần Thơ',
+                                            'img' => 'banner00.jpeg',
+                                            'address'=> '170 Hoàng Quốc Việt, An Bình, Ninh Kiều, Cần Thơ',
+                                            'price'=> '2500000000',
+                                        ],
+                                    ];
+                                @endphp
+                                <x-client.index.post :list="$list">
 
-                                    </x-client.index.post>
-                                </div>
+                                </x-client.index.post>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     <div class="section small_pt pb_70">
         <div class="container">
             <div class="col-md-12 mb-3">
@@ -224,56 +224,56 @@
         </div>
     </div>
     </div>
-        <!-- END SECTION SHOP -->
+    <!-- END SECTION SHOP -->
 
-        <!-- START SECTION SHOP -->
-        <div class="section">
-            <div class="container mb-5">
-                <div class="row">
-                    <div class="col-md-8">
-                        <div class="row">
-                            <div class="col-md-12 mb-3">
-                                <div class="verticalLine">
-                                    <h3 class="ms-lg-3 ms-3">TIN RAO BÁN</h3>
-                                </div>
+    <!-- START SECTION SHOP -->
+    <div class="section">
+        <div class="container mb-5">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
+                            <div class="verticalLine">
+                                <h3 class="ms-lg-3 ms-3">TIN RAO BÁN</h3>
                             </div>
-                            <div class="col-md-12 col-12">
-                                <div class="box">
-                                    <x-client.index.postSale :list="$list">
+                        </div>
+                        <div class="col-md-12 col-12">
+                            <div class="box">
+                                <x-client.index.postSale :list="$list">
 
-                                    </x-client.index.postSale>
-                                </div>
+                                </x-client.index.postSale>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4 mt-1">
-                        <div class="contactInfor mt-5 text-center">
-                            <h4>LIÊN HỆ ĐĂNG TIN</h4>
-                            <p>+8412345678</p>
-                        </div>
-                        <div class="admin border mt-4 mt-md-0">
-                            <div class="row">
-                                <div class="col-4 col-md-12 col-lg-4 text-center">
-                                    <img src="client/images/banner0.webp" alt="Hình ảnh" class="img-fluid rounded-circle-custom m-3">
-                                </div>
-                                <div class="col-8 col-md-12 col-lg-8 d-flex justify-content-center align-items-center">
-                                    <div class="infor">
-                                        <h5>PHÒNG KD</h5>
-                                        <div class="phone border-warning text-warning p-2 rounded bg-light">
-                                            <i class="bi bi-telephone-fill"></i>
-                                            <span>Gọi ngay</span>
-                                        </div>
+                </div>
+                <div class="col-md-4 mt-1">
+                    <div class="contactInfor mt-5 text-center">
+                        <h4>LIÊN HỆ ĐĂNG TIN</h4>
+                        <p>+8412345678</p>
+                    </div>
+                    <div class="admin border mt-4 mt-md-0">
+                        <div class="row">
+                            <div class="col-4 col-md-12 col-lg-4 text-center">
+                                <img src="client/images/banner0.webp" alt="Hình ảnh" class="img-fluid rounded-circle-custom m-3">
+                            </div>
+                            <div class="col-8 col-md-12 col-lg-8 d-flex justify-content-center align-items-center">
+                                <div class="infor">
+                                    <h5>PHÒNG KD</h5>
+                                    <div class="phone border-warning text-warning p-2 rounded bg-light">
+                                        <i class="bi bi-telephone-fill"></i>
+                                        <span>Gọi ngay</span>
                                     </div>
                                 </div>
-
                             </div>
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- END SECTION SHOP -->
+    <!-- END SECTION SHOP -->
 
 
     </div>
@@ -283,52 +283,52 @@
     <!-- Bootstrap Font Icon CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"/>
     <style>
-        .verticalLine {
-            border-left: thick solid #ff0000;
-        }
+		.verticalLine {
+			border-left: thick solid #ff0000;
+		}
 
-        .img {
-            background-image: url("client/images/banner0.webp");
-        }
+		.img {
+			background-image: url("client/images/banner0.webp");
+		}
 
-        .bds {
-            height: 550px !important;
-        }
+		.bds {
+			height: 550px !important;
+		}
 
-        .hexagon {
-            width: 280px;
-            /* Độ rộng của hình lục giác */
-            height: 280px;
-            /* Độ cao của hình lục giác */
-            background-color: #007bff;
-            /* Màu nền của hình lục giác */
-            position: relative;
-            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-        }
+		.hexagon {
+			width: 280px;
+			/* Độ rộng của hình lục giác */
+			height: 280px;
+			/* Độ cao của hình lục giác */
+			background-color: #007bff;
+			/* Màu nền của hình lục giác */
+			position: relative;
+			clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+		}
 
-        .hexagon-inner {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+		.hexagon-inner {
+			width: 100%;
+			height: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
 
-        .rounded-circle-custom {
-            border-radius: 50%;
-            width: 100px;
-            /* Điều chỉnh kích thước ảnh theo ý muốn */
-            height: 100px;
-            /* Điều chỉnh kích thước ảnh theo ý muốn */
-            object-fit: cover;
-            /* Cách hình ảnh sẽ được hiển thị */
-        }
-        .shorten{
-	        /*width: 450px; !* Độ rộng của phần tử chứa văn bản( điền bên style của thẻ trực tiếp)*!*/
-	        white-space: nowrap; /* Ngăn chữ bị ngắt dòng */
-	        overflow: hidden; /* Ẩn phần chữ dư thừa */
-	        text-overflow: ellipsis; /* Hiển thị dấu ba chấm (...) khi chữ bị cắt */
-        }
+		.rounded-circle-custom {
+			border-radius: 50%;
+			width: 100px;
+			/* Điều chỉnh kích thước ảnh theo ý muốn */
+			height: 100px;
+			/* Điều chỉnh kích thước ảnh theo ý muốn */
+			object-fit: cover;
+			/* Cách hình ảnh sẽ được hiển thị */
+		}
+		.shorten {
+			/*width: 450px; !* Độ rộng của phần tử chứa văn bản( điền bên style của thẻ trực tiếp)*!*/
+			white-space: nowrap; /* Ngăn chữ bị ngắt dòng */
+			overflow: hidden; /* Ẩn phần chữ dư thừa */
+			text-overflow: ellipsis; /* Hiển thị dấu ba chấm (...) khi chữ bị cắt */
+		}
     </style>
 @endpush
 @push('script')
@@ -356,10 +356,9 @@
         });
 
 
-
         // Lặp qua tất cả các phần tử có class "price"
         var priceElements = document.querySelectorAll('.format-number');
-        priceElements.forEach(function(element) {
+        priceElements.forEach(function (element) {
             // Lấy giá trị số tiền từ thuộc tính "data-price"
             var price = parseFloat(element.textContent);
 
@@ -376,13 +375,15 @@
                 }
 
                 element.textContent = formattedPrice;
-            } else if (price >= 1000000) {
+            }
+            else if (price >= 1000000) {
                 // Nếu số tiền lớn hơn hoặc bằng 1 triệu và dưới 1 tỷ
                 var trieu = Math.floor(price / 1000000);
 
                 // Định dạng số tiền thành 'x triệu' và gán lại cho phần tử
                 element.textContent = trieu + ' triệu';
-            } else {
+            }
+            else {
                 // Nếu số tiền dưới 1 triệu, giữ nguyên
                 element.textContent = price;
             }

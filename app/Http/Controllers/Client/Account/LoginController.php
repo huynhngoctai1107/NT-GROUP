@@ -5,34 +5,47 @@ namespace App\Http\Controllers\Client\Account;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Account\LoginRequest;
 use Illuminate\Support\Facades\Auth;
+use Lunaweb\RecaptchaV3\Facades\RecaptchaV3;
 
 class LoginController extends Controller{
 
-    function login(){
+    public function login(){
         return view('client.pages.login');
     }
 
-    function loginForm(LoginRequest $request){
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->password, 'status' => 1, 'social_id' => 0])){
-            $acout = Auth::user();
-            if ($acout->id_role == 3){
-                return redirect('/')->with('status',
-                    'Đăng nhập thành công và đã gửi email thông báo!');
+    public function loginForm(LoginRequest $request){
+        $score = RecaptchaV3::verify($request->get('g-recaptcha-response'));
+        if ($score > 0.7){
+            if (Auth::attempt(['email' => $request->email, 'password' => $request->password, 'status' => 1, 'social_id' => 0])){
+                $acout = Auth::user();
+                if ($acout->id_role == 3){
+                    return redirect()->route('account')->with('success',
+                        'Đăng nhập thành công và đã gửi email thông báo đăng nhập!');
 
+                }else{
+                    return redirect()->route('dashboar')->with('success',
+                        'Đăng nhập thành công và đã gửi email thông báo đăng nhập!');
+                }
             }else{
-                return redirect('/admin/')->with('status',
-                    'Đăng nhập thành công email xác nhận đã lỗi!');
+                return Redirect()
+                    ->back()
+                    ->withInput($request->input())
+                    ->with('error-login',
+                        'Đăng nhập thất bại vui lòng kiểm tra thông tin đăng nhập');
             }
+
         }else{
             return Redirect()
                 ->back()
                 ->withInput($request->input())
-                ->with('error-login', 'Đăng nhập thất bại vui lòng kiểm tra thông tin đăng nhập');
+                ->with('error-login',
+                    'Có thể bạn là robot');
+
         }
 
     }
 
-    function logout(){
+    public function logout(){
         Auth::logout();
 
         return Redirect()->route('login')->with('success', 'Đăng xuất thành công');

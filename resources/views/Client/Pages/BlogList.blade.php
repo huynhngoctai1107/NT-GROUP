@@ -80,13 +80,14 @@
                         <div class="row">
                             <div class="col-12 mt-2 mt-md-4">
                                 <ul class="pagination pagination_style1 justify-content-center">
-                                    <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1"><i
-                                                class="linearicons-arrow-left"></i></a></li>
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="#" tabindex="-1"><i class="linearicons-arrow-left"></i></a>
+                                    </li>
                                     <li class="page-item active"><a class="page-link" href="#">1</a></li>
                                     <li class="page-item"><a class="page-link" href="#">2</a></li>
                                     <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item"><a class="page-link" href="#"><i
-                                                class="linearicons-arrow-right"></i></a></li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#"><i class="linearicons-arrow-right"></i></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -96,10 +97,8 @@
                             <div class="widget">
                                 <div class="search_form">
                                     <form>
-                                        <input required="" class="form-control" placeholder="Tìm kiếm ..."
-                                               type="text">
-                                        <button type="submit" title="Subscribe" class="btn icon_search" name="submit"
-                                                value="Submit">
+                                        <input required="" class="form-control" placeholder="Tìm kiếm ..." type="text">
+                                        <button type="submit" title="Subscribe" class="btn icon_search" name="submit" value="Submit">
                                             <i class="ion-ios-search-strong"></i>
                                         </button>
                                     </form>
@@ -116,16 +115,21 @@
                             <div class="widget">
                                 <h5 class="widget_title">Ngày đăng</h5>
                                 <ul class="widget_archive">
-                                    <li><a href="#"><span class="archive_year">Tháng 10 - 2019</span><span
-                                                class="archive_num">(12)</span></a></li>
-                                    <li><a href="#"><span class="archive_year">Tháng 9 - 2019</span><span
-                                                class="archive_num">(5)</span></a></li>
-                                    <li><a href="#"><span class="archive_year">Tháng 10 - 2018</span><span
-                                                class="archive_num">(6)</span></a></li>
-                                    <li><a href="#"><span class="archive_year">Tháng 9 - 2018</span><span
-                                                class="archive_num">(7)</span></a></li>
-                                    <li><a href="#"><span class="archive_year">Tháng 10 -2017</span><span
-                                                class="archive_num">(10)</span></a></li>
+                                    <li>
+                                        <a href="#"><span class="archive_year">Tháng 10 - 2019</span><span class="archive_num">(12)</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><span class="archive_year">Tháng 9 - 2019</span><span class="archive_num">(5)</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><span class="archive_year">Tháng 10 - 2018</span><span class="archive_num">(6)</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><span class="archive_year">Tháng 9 - 2018</span><span class="archive_num">(7)</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><span class="archive_year">Tháng 10 -2017</span><span class="archive_num">(10)</span></a>
+                                    </li>
                                 </ul>
                             </div>
                             <div class="widget">
@@ -157,7 +161,7 @@
     <script>
         // Lặp qua tất cả các phần tử có class "price"
         var priceElements = document.querySelectorAll('.price');
-        priceElements.forEach(function(element) {
+        priceElements.forEach(function (element) {
             // Lấy giá trị số tiền từ thuộc tính "data-price"
             var price = parseFloat(element.textContent);
 
@@ -174,13 +178,15 @@
                 }
 
                 element.textContent = formattedPrice;
-            } else if (price >= 1000000) {
+            }
+            else if (price >= 1000000) {
                 // Nếu số tiền lớn hơn hoặc bằng 1 triệu và dưới 1 tỷ
                 var trieu = Math.floor(price / 1000000);
 
                 // Định dạng số tiền thành 'x triệu' và gán lại cho phần tử
                 element.textContent = trieu + ' triệu';
-            } else {
+            }
+            else {
                 // Nếu số tiền dưới 1 triệu, giữ nguyên
                 element.textContent = price;
             }

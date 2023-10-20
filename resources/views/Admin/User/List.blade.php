@@ -60,7 +60,7 @@
                                             Không rõ
                                         @endif
                                     </td>
-                                    <td><img src='{{asset("images/$data->image")}}' alt="" width="150" height="120"></td>
+                                    <td><img src='{{asset("images/$data->image")}}' alt="Hình ảnh đang cập nhật" width="150" height="120"></td>
                                     <td>{{ $data->fullname }}</td>
                                     <td>{{ $data->email }}</td>
                                     <td>{{ number_format($data->wallet)}} VNĐ</td>
@@ -70,7 +70,7 @@
                                     <td>
                                         <a href="{{route('statusUser', $data->id)}}"
                                            class="btn btn-sm btn-{{$data->status ? 'success':'danger'}}">
-                                            {{$data->status ? 'Hiện':'Ẩn'}}
+                                            {{$data->status ? 'Đang hoạt động':'Tạm ngừng hoạt động'}}
                                         </a>
                                     </td>
                                     <td>

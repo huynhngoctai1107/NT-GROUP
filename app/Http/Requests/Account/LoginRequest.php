@@ -23,6 +23,7 @@ class LoginRequest extends FormRequest{
     : array{
         return [
             'email'    => 'bail||required|email',
+            'g-recaptcha-response' => 'required',
             'password' => [
                 'required',
             ],
@@ -33,6 +34,8 @@ class LoginRequest extends FormRequest{
         return [
             'email.required'    => 'Vui lòng nhập vào email',
             'email.email'       => 'Email chưa đúng định dạng',
+            'g-recaptcha-response' =>  'Lỗi xác thực',
+
             'password.required' => 'Vui lòng nhập vào mật khẩu',
         ];
     }
