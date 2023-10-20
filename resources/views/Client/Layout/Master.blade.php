@@ -39,7 +39,7 @@
 <!-- Style CSS -->
 <link rel="stylesheet" href="{{asset('client/css/style.css')}}">
 <link rel="stylesheet" href="{{asset('client/css/responsive.css')}}">
-
+{!! RecaptchaV3::initJs() !!}
 {{-- gg map and hinh anh upload.js--}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8ttJcdnyqOwb93B47rjRU+ABJxUrEDR/i" crossorigin="anonymous">
 

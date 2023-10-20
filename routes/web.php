@@ -9,139 +9,168 @@ use App\Http\Controllers\Admin\Demand\AddDemandController;
 use App\Http\Controllers\Admin\Demand\DeleteDemandController;
 use App\Http\Controllers\Admin\Demand\EditDemandController;
 use App\Http\Controllers\Admin\Demand\ListDemandController;
+use App\Http\Controllers\Admin\Posts\AddPostsController;
+use App\Http\Controllers\Admin\Posts\DeletePostsController;
+use App\Http\Controllers\Admin\Posts\EditPostsController;
+use App\Http\Controllers\Admin\Posts\ListPostsController;
 use App\Http\Controllers\Admin\Transactions\RechargeHistoryController;
 use App\Http\Controllers\Admin\User\AddUserController;
 use App\Http\Controllers\Admin\User\DeleteUserController;
 use App\Http\Controllers\Admin\User\EditUserController;
 use App\Http\Controllers\Admin\User\ListUserController;
+use App\Http\Controllers\Client\Account\GoogleController;
+//admin
 use App\Http\Controllers\Admin\Voucher\AddVoucherController;
 use App\Http\Controllers\Admin\Voucher\DeleteVoucherController;
 use App\Http\Controllers\Admin\Voucher\EditVoucherController;
 use App\Http\Controllers\Admin\Voucher\ListVoucherController;
-//admin
-use App\Http\Controllers\Admin\Posts\ListPostsController;
-use App\Http\Controllers\Admin\Posts\DeletePostsController;
-use App\Http\Controllers\Admin\Posts\EditPostsController;
-use App\Http\Controllers\Admin\Posts\AddPostsController;
-
+use App\Http\Controllers\Client\About\AboutController;
 use App\Http\Controllers\Client\Account\AccountController;
 use App\Http\Controllers\Client\Account\ForgetPasswordController;
 use App\Http\Controllers\Client\Account\LoginController;
 use App\Http\Controllers\Client\Account\RegisterController;
-use App\Http\Controllers\Client\ErrorPage\ErrorPageController;
 use App\Http\Controllers\Client\Blog\BlogListController;
 use App\Http\Controllers\Client\Blog\PostSingleController;
-use App\Http\Controllers\Client\Index\IndexController;
-use App\Http\Controllers\Client\Post\AddPostController;
-use App\Http\Controllers\Client\Post\PostListController;
-use App\Http\Controllers\Client\Post\PostNewController;
-use App\Http\Controllers\Client\Search\SearchController;
-use App\Http\Controllers\Client\About\AboutController;
 use App\Http\Controllers\Client\Contact\ContactController;
 use App\Http\Controllers\Client\Docs\DocsController;
+use App\Http\Controllers\Client\ErrorPage\ErrorPageController;
+use App\Http\Controllers\Client\Index\IndexController;
+use App\Http\Controllers\Client\Post\AddPostController;
+use App\Http\Controllers\Client\Post\PostNewController;
+use App\Http\Controllers\Client\Search\SearchController;
 use Illuminate\Support\Facades\Route;
 
-
-Route::group(['prefix' => 'admin'], function (){
+Route::group(['prefix' => 'admin', 'middleware' => ['AdminLogin']], function (){
     Route::get('/', [ViewDashboardController::class, 'dashboar'])->name('dashboar');
-    Route::group(['prefix' => 'demand'], function (){
-        Route::get('/list', [ListDemandController::class, 'listDemand'])->name('listDemand');
-        Route::get('/delete/{slug}', [DeleteDemandController::class, 'deleteDemand'])
+    Route::group(['prefix' => 'nhu-cau'], function (){
+        Route::get('/danh-sach', [ListDemandController::class, 'listDemand'])->name('listDemand');
+        Route::get('/xoa/{slug}', [DeleteDemandController::class, 'deleteDemand'])
              ->name('deleteDemand');
-        Route::get('/edit/{slug}', [EditDemandController::class, 'editFormDemand'])->name('editDemand');
-        Route::post('/edit/{slug}', [EditDemandController::class, 'editDemand'])->name('editDemand');
-        Route::get('/add', [AddDemandController::class, 'addFormDemand'])->name('addDemand');
-        Route::post('/add', [AddDemandController::class, 'addDemand'])->name('addDemand');
+        Route::get('/chinh-sua/{slug}', [EditDemandController::class, 'editFormDemand'])
+             ->name('editDemand');
+        Route::post('/chinh-sua/{slug}', [EditDemandController::class, 'editDemand'])
+             ->name('editDemand');
+        Route::get('/them', [AddDemandController::class, 'addFormDemand'])->name('addDemand');
+        Route::post('/them', [AddDemandController::class, 'addDemand'])->name('addDemand');
     });
-    Route::group(['prefix' => 'category'], function (){
-        Route::get('/list', [ListCategoryController::class, 'listCategory'])->name('listCategory');
-        Route::get('/delete/{slug}', [DeleteCategoryController::class, 'deleteCategory'])->name('deleteCategory');
-        Route::get('/edit/{slug}', [EditCategoryController::class, 'editFormCategory'])->name('editCategory');
-        Route::post('/edit/{slug}', [EditCategoryController::class, 'editCategory'])->name('editCategory');
-        Route::get('/add', [AddCategoryController::class, 'addFormCategory'])->name('addCategory');
-        Route::post('/add', [AddCategoryController::class, 'addCategory'])->name('addCategory');
+    Route::group(['prefix' => 'danh-muc'], function (){
+        Route::get('/danh-sach', [ListCategoryController::class, 'listCategory'])
+             ->name('listCategory');
+        Route::get('/xoa/{slug}', [DeleteCategoryController::class, 'deleteCategory'])
+             ->name('deleteCategory');
+        Route::get('/chinh-sua/{slug}', [EditCategoryController::class, 'editFormCategory'])
+             ->name('editCategory');
+        Route::post('/chinh-sua/{slug}', [EditCategoryController::class, 'editCategory'])
+             ->name('editCategory');
+        Route::get('/them', [AddCategoryController::class, 'addFormCategory'])->name('addCategory');
+        Route::post('/them', [AddCategoryController::class, 'addCategory'])->name('addCategory');
     });
 
-    Route::group(['prefix' => 'user'], function (){
-        Route::get('/list', [ListUserController::class, 'listUser'])->name('listUser');
+    Route::group(['prefix' => 'nguoi-dung','middleware' => ['Roles']], function (){
+        Route::get('/danh-sach', [ListUserController::class, 'listUser'])->name('listUser');
         Route::get('/userAccount', [ListUserController::class, 'userAccount'])->name('userAccount');
-        Route::get('/edit/{id}', [EditUserController::class, 'editFormUser'])->name('editFormUser');
-        Route::post('/edit/{id}', [EditUserController::class, 'editUser'])->name('editUser');
-        Route::get('/add', [AddUserController::class, 'addFormUser'])->name('addUserForm');
-        Route::post('/add', [AddUserController::class, 'formAddUser'])->name('addUser');
-        Route::get('/delete/{id}', [DeleteUserController::class, 'deleteUser'])->name('deleteUser');
-        Route::get('statusUser/{id}', [ListUserController::class, 'statusUser'])->name('statusUser');
+        Route::get('/chinh-sua/{id}', [EditUserController::class, 'editFormUser'])
+             ->name('editFormUser');
+        Route::post('/chinh-sua/{id}', [EditUserController::class, 'editUser'])->name('editUser');
+        Route::get('/them', [AddUserController::class, 'addFormUser'])->name('addUserForm');
+        Route::post('/them', [AddUserController::class, 'formAddUser'])->name('addUser');
+        Route::get('/xoa/{id}', [DeleteUserController::class, 'deleteUser'])->name('deleteUser');
+        Route::get('statusUser/{id}', [ListUserController::class, 'statusUser'])
+             ->name('statusUser');
     });
 
-    Route::group(['prefix' => 'voucher'], function () {
-        Route::get('/list', [ListVoucherController::class, 'listVoucher'])->name('listVoucher');
-        Route::get('/delete/{slug}', [DeleteVoucherController::class, 'deleteVoucher'])->name('deleteVoucher');
-        Route::get('/edit/{slug}', [EditVoucherController::class, 'editFormVoucher'])->name('editFormVoucher');
-        Route::post('/edit/{slug}', [EditVoucherController::class, 'editVoucher'])->name('editVoucher');
-        Route::get('/add', [AddVoucherController::class, 'addFormVoucher'])->name('addFormVoucher');
-        Route::post('/add', [AddVoucherController::class, 'addVoucher'])->name('addVoucher');
+    Route::group(['prefix' => 'voucher'], function (){
+        Route::get('/danh-sach', [ListVoucherController::class, 'listVoucher'])
+             ->name('listVoucher');
+        Route::get('/xoa/{slug}', [DeleteVoucherController::class, 'deleteVoucher'])
+             ->name('deleteVoucher');
+        Route::get('/chinh-sua/{slug}', [EditVoucherController::class, 'editFormVoucher'])
+             ->name('editFormVoucher');
+        Route::post('/chinh-sua/{slug}', [EditVoucherController::class, 'editVoucher'])
+             ->name('editVoucher');
+        Route::get('/them', [AddVoucherController::class, 'addFormVoucher'])
+             ->name('addFormVoucher');
+        Route::post('/them', [AddVoucherController::class, 'addVoucher'])->name('addVoucher');
         Route::get('status/{id}', [ListVoucherController::class, 'status'])->name('status');
     });
-    Route::group(['prefix' => 'transactions'], function (){
-            Route::get('/list', [RechargeHistoryController::class, 'listRechargeHistory'])->name('listRechargeHistory');
+    Route::group(['prefix' => 'lich-su-gia-dich','middleware' => ['Roles']], function (){
+        Route::get('/danh-sach', [RechargeHistoryController::class, 'listRechargeHistory'])
+             ->name('listRechargeHistory');
     });
     Route::group(['prefix' => 'posts'], function (){
-        Route::get('/list', [ListPostsController::class, 'listPosts'])->name('listPosts');
-        Route::get('/list-history', [ListPostsController::class, 'listHistory'])->name('listHistory');
-        Route::get('/delete/{id}', [DeletePostsController::class, 'deletePosts'])->name('deletePosts');
-        Route::get('/edit/{slug}', [EditPostsController::class, 'editFormPosts'])->name('editPosts');
-        Route::post('/edit/{slug}', [EditPostsController::class, 'editPosts'])->name('editPosts');
-        Route::get('/add', [AddPostsController::class, 'addFormPosts'])->name('addFormPosts');
-        Route::post('/add', [AddPostsController::class, 'addPosts'])->name('addPosts');
+        Route::get('/danh-sach', [ListPostsController::class, 'listPosts'])->name('listPosts');
+        Route::get('/danh-sach-history', [ListPostsController::class, 'listHistory'])
+             ->name('listHistory');
+        Route::get('/xoa/{id}', [DeletePostsController::class, 'deletePosts'])->name('deletePosts');
+        Route::get('/chinh-sua/{slug}', [EditPostsController::class, 'editFormPosts'])
+             ->name('editPosts');
+        Route::post('/chinh-sua/{slug}', [EditPostsController::class, 'editPosts'])
+             ->name('editPosts');
+        Route::get('/them', [AddPostsController::class, 'addFormPosts'])->name('addFormPosts');
+        Route::post('/them', [AddPostsController::class, 'addPosts'])->name('addPosts');
         Route::get('/{id}', [ListPostsController::class, 'UpdateStatus'])->name('UpdateStatus');
-        Route::get('/media/{id}', [EditPostsController::class, 'deleteMedia'])->name('deleteMedia');
-        Route::get('/delete-history/{slug}', [DeletePostsController::class, 'deleteHistory'])->name('deleteHistory');
-        Route::get('/restore/{slug}', [DeletePostsController::class, 'restorePost'])->name('restorePost');
+        Route::get('/hinh-anh/{id}', [EditPostsController::class, 'deleteMedia'])
+             ->name('deleteMedia');
+        Route::get('/xoa-history/{slug}', [DeletePostsController::class, 'deleteHistory'])
+             ->name('deleteHistory');
+        Route::get('/restore/{slug}', [DeletePostsController::class, 'restorePost'])
+             ->name('restorePost');
     });
-});
 
+});
+Route::group(['prefix' => '/', 'middleware' => ['Logout']], function (){
+    Route::get('dang-xuat', [LoginController::class, 'logout'])->name('logout');
+
+});
+Route::group(['prefix' => '/', 'middleware' => ['checkLogin']], function (){
+     Route::get('/google',[GoogleController::class,'loginUsingGoogle'])->name('loginGoogle');
+     Route::get('/google/callback',[GoogleController::class,'callbackFromGoogle'])->name('callBackGoogle');
+    Route::get('dang-nhap', [LoginController::class, 'login'])->name('login');
+    Route::post('dang-nhap', [LoginController::class, 'loginForm'])->name('loginForm');
+    Route::get('dang-ky', [RegisterController::class, 'register'])->name('register');
+    Route::post('dang-ky', [RegisterController::class, 'registerFrom'])->name('registerFrom');
+    Route::get('quen-mat-khau', [ForgetPasswordController::class, 'fogetPassword'])
+         ->name('fogetPassword');
+    Route::post('quen-mat-khau', [ForgetPasswordController::class, 'postForgetPassword'])
+         ->name('postForgetPassword');
+    Route::get('cap-nhat-lai-mat-khau/{token}', [ForgetPasswordController::class, 'resetPassword'])
+         ->name('resetPassword');
+    Route::post('cap-nhat-lai-mat-khau/{token}',
+        [ForgetPasswordController::class, 'postResetPassword'])->name('postResetPassword');
+
+});
+Route::group(['prefix' => '/', 'middleware' => ['ClientLogin']], function (){
+
+    Route::get('tai-khoan', [AccountController::class, 'account'])->name('account');
+    Route::group(['prefix' => 'bai-viet'], function (){
+     Route::get('/them', [AddPostController::class, 'post'])->name('postAdd');
+     Route::post('/them', [AddPostController::class, 'addClientPosts'])->name('addClientPosts');
+     Route::get('/danh-sach-bai-viet', [PostNewController::class, 'postNew'])->name('postNew');
+ });
+
+});
 
 Route::group(['prefix' => '/'], function (){
+
     Route::get('/', [IndexController::class, 'index'])->name('index');
-    Route::get('error', [ErrorPageController::class, 'error'])->name('error');
-    Route::get('login', [LoginController::class, 'login'])->name('login');
-    Route::post('login', [LoginController::class, 'loginForm'])->name('loginForm');
-    Route::get('register', [RegisterController::class, 'register'])->name('register');
-    Route::get('logout', [LoginController::class, 'logout'])->name('logout');
-    Route::get('active/{token}', [RegisterController::class, 'active'])->name('active');
-    Route::post('register', [RegisterController::class, 'registerFrom'])->name('registerFrom');
-    Route::get('account', [AccountController::class, 'account'])->name('account');
-    Route::get('forget-password', [ForgetPasswordController::class, 'fogetPassword'])->name('fogetPassword');
-    Route::post('forget-password', [ForgetPasswordController::class, 'postForgetPassword'])->name('postForgetPassword');
-    Route::get('reset-password/{token}', [ForgetPasswordController::class, 'resetPassword'])->name('resetPassword');
-    Route::post('reset-password/{token}', [ForgetPasswordController::class, 'postResetPassword'])->name('postResetPassword');
+    Route::get('bao-loi', [ErrorPageController::class, 'error'])->name('error');
+    Route::get('kich-hoat/{token}', [RegisterController::class, 'active'])->name('active');
+    Route::get('/chi-tiet-tin', [PostSingleController::class, 'postSingle'])
+    ->name('postSingle');
+    Route::get('lien-he', [ContactController::class, 'contact'])->name('contact');
 
+    Route::get('gioi-thieu', [AboutController::class, 'about'])->name('about');
+    Route::group(['prefix' => 'tin-tuc'], function (){
+        Route::get('/danh-sach', [BlogListController::class, 'listBlog'])->name('listBlog');
+    });
+    
+    Route::group(['prefix' => 'tim-kiem'], function (){
+        Route::get('/danh-sach', [SearchController::class, 'search'])->name('search');
+    });
 
-
-    Route::get('about', [AboutController::class, 'about'])->name('about');
-    Route::group(['prefix' => 'blog'], function (){
-        Route::get('/list', [BlogListController::class, 'listBlog'])->name('listBlog');
-        Route::get('/single', [PostSingleController::class, 'postSingle'])->name('postSingle');
-    });
-    Route::group(['prefix' => 'post'], function (){
-        Route::get('/add', [AddPostController::class, 'post'])->name('postAdd');
-        Route::post('/add', [AddPostController::class, 'addClientPosts'])->name('addClientPosts');
-        Route::get('/new', [PostNewController::class, 'postNew'])->name('postNew');
-    });
-    Route::group(['prefix' => 'search'], function (){
-        Route::get('/list', [SearchController::class, 'search'])->name('search');
-    });
-    Route::group(['prefix' => 'contact'], function (){
-        Route::get('/list', [ContactController::class, 'contact'])->name('contact');
-    });
-    Route::group(['prefix' => 'docs'], function (){
-        Route::get('/terms',  [DocsController::class, 'docsterms'])->name('terms');
-        Route::get('/policy', [DocsController::class, 'docspolicy'])->name('policy');
+    Route::group(['prefix' => 'tai-lieu'], function (){
+        Route::get('/dieu-khoan', [DocsController::class, 'docsterms'])->name('terms');
+        Route::get('/chinh-sach', [DocsController::class, 'docspolicy'])->name('policy');
     });
 
 });
-
-
-
-
-
