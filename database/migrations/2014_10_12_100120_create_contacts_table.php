@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('id_post')->constrained('posts');
             $table->string('position');
             $table->string('phone',10);
-            $table->string('images',255);
+            $table->string('image',255);
 
         });
     }

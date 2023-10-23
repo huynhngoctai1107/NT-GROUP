@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('id_user')->constrained('users');
             $table->timestamps();
             $table->bigInteger('surplus');
+            $table->string('voucher',50)->default('');
             $table->bigInteger('price');
             $table->tinyInteger('status')->default(0);
             $table->string('content',255);

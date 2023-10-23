@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Http\Requests\Account\EditAccountRequest;
+use Illuminate\Support\Str;
 
 class EditUserController extends Controller{
 
@@ -28,7 +29,7 @@ class EditUserController extends Controller{
         // Xử lý tải lên hình ảnh
         if ($request->hasFile('image')){
             $fileName = time() . '-' . 'users' . '.' . $request->image->extension();
-            $request->image->move(public_path("images"), $fileName);
+            $request->image->move(public_path("images/users"), $fileName);
             $request->merge(['image' => $fileName]);
         }
 
@@ -38,6 +39,7 @@ class EditUserController extends Controller{
             'fullname' => $request->fullname,
             'email'    => $request->email,
             'wallet'   => $request->wallet,
+            'token'      => strtoupper(Str::random(10)),
             'gender'   => $request->gender,
             'phone'    => $request->phone,
             'address'  => $request->address,

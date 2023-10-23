@@ -27,12 +27,12 @@ class RegisterController extends Controller{
 
     function registerFrom(RegisterRequest $request){
         $score = RecaptchaV3::verify($request->get('g-recaptcha-response'));
- 
+
         if ($score > 0.7){
 
             if ($request->has('uploadfile')){
                 $fileName = time() . '-' . 'product' . '.' . $request->uploadfile->extension();
-                $request->uploadfile->move(public_path("img/users"), $fileName);
+                $request->uploadfile->move(public_path("images/users"), $fileName);
                 $request->merge(['image' => $fileName]);
             }
             $data = [
@@ -49,16 +49,21 @@ class RegisterController extends Controller{
                 'gender'     => $request->gender,
                 'created_at' => date('Y-m-d'),
             ];
-            $user = User::create($data);
-            $this->mail->activateMaill($user);
+            if( $user = User::create($data)){
+                $this->mail->activateMaill($user);
+                return Redirect()
+                    ->back()
+                    ->with('success', 'Đăng ký thành công, vui lòng kích hoạt tài khoản để đăng nhập');
+            }else{
+                return Redirect()
+                    ->back()
+                    ->with('error-login', 'Đăng ký không thành công xin vui lòng thử lại');
+            }
 
-            return Redirect()
-                ->back()
-                ->with('success', 'Đăng ký thành công, vui lòng kích hoạt tài khoản để đăng nhập');
+
         }else{
             return Redirect()
-                ->back()
-                
+                ->back()->withInput($request->input())
                 ->with('error-login',
                     'Có thể bạn là robot');
 

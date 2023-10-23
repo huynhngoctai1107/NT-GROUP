@@ -31,8 +31,8 @@ return new class extends Migration{
             $table->integer('number_views')->default(0);
             $table->string('longitude',255);
             $table->string('latitude',255);
-            $table->integer('voucher')->default(0);
-            $table->string('compilation',255);
+
+            $table->string('compilation',255)->default('');
             $table->timestamps();
 
 

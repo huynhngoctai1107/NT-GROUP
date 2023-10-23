@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\Account\AddAccountRequest;
+use Illuminate\Support\Str;
 
 class AddUserController extends Controller{
 
@@ -28,7 +29,7 @@ class AddUserController extends Controller{
         $fileName  = NULL;
         if ($request->hasFile('image')){
             $fileName = time() . '-' . 'users' . '.' . $request->image->extension();
-            $request->image->move(public_path("images"), $fileName);
+            $request->image->move(public_path("images/users"), $fileName);
         }
 
         // Tạo mới tài khoản người dùng
@@ -40,6 +41,7 @@ class AddUserController extends Controller{
             'gender'   => $request->gender,
             'phone'    => $request->phone,
             'address'  => $request->address,
+            'token'      => strtoupper(Str::random(10)),
             'password' => Hash::make($request->password),
             'image'    => $fileName,
         ];

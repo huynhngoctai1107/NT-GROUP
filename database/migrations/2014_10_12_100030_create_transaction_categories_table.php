@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name')->unique();
             $table->string('slug');
             $table->string('note',255)->default('');
+            $table->timestamps();
         });
     }
 

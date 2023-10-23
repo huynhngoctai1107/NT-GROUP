@@ -30,6 +30,11 @@
                                 <div class="heading_s1">
                                     <h3>Đăng ký</h3>
                                 </div>
+                                @if(Session::has('error-login'))
+                                    <div class="alert alert-danger" role="alert">
+                                        {{Session::get('error-login')}}
+                                    </div>
+                                @endif
                                 @if(Session::has('success'))
                                     <div class="alert alert-success" role="alert">
                                         {{Session::get('success')}}
