@@ -19,6 +19,7 @@ use App\Http\Controllers\Admin\User\DeleteUserController;
 use App\Http\Controllers\Admin\User\EditUserController;
 use App\Http\Controllers\Admin\User\ListUserController;
 use App\Http\Controllers\Client\Account\GoogleController;
+
 //admin
 use App\Http\Controllers\Admin\Voucher\AddVoucherController;
 use App\Http\Controllers\Admin\Voucher\DeleteVoucherController;
@@ -66,7 +67,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['AdminLogin']], function (){
         Route::post('/them', [AddCategoryController::class, 'addCategory'])->name('addCategory');
     });
 
-    Route::group(['prefix' => 'nguoi-dung','middleware' => ['Roles']], function (){
+    Route::group(['prefix' => 'nguoi-dung', 'middleware' => ['Roles']], function (){
         Route::get('/danh-sach', [ListUserController::class, 'listUser'])->name('listUser');
         Route::get('/userAccount', [ListUserController::class, 'userAccount'])->name('userAccount');
         Route::get('/chinh-sua/{id}', [EditUserController::class, 'editFormUser'])
@@ -93,7 +94,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['AdminLogin']], function (){
         Route::post('/them', [AddVoucherController::class, 'addVoucher'])->name('addVoucher');
         Route::get('status/{id}', [ListVoucherController::class, 'status'])->name('status');
     });
-    Route::group(['prefix' => 'lich-su-gia-dich','middleware' => ['Roles']], function (){
+    Route::group(['prefix' => 'lich-su-gia-dich', 'middleware' => ['Roles']], function (){
         Route::get('/danh-sach', [RechargeHistoryController::class, 'listRechargeHistory'])
              ->name('listRechargeHistory');
     });
@@ -123,8 +124,9 @@ Route::group(['prefix' => '/', 'middleware' => ['Logout']], function (){
 
 });
 Route::group(['prefix' => '/', 'middleware' => ['checkLogin']], function (){
-     Route::get('/google',[GoogleController::class,'loginUsingGoogle'])->name('loginGoogle');
-     Route::get('/google/callback',[GoogleController::class,'callbackFromGoogle'])->name('callBackGoogle');
+    Route::get('/google', [GoogleController::class, 'loginUsingGoogle'])->name('loginGoogle');
+    Route::get('/google/callback', [GoogleController::class, 'callbackFromGoogle'])
+         ->name('callBackGoogle');
     Route::get('dang-nhap', [LoginController::class, 'login'])->name('login');
     Route::post('dang-nhap', [LoginController::class, 'loginForm'])->name('loginForm');
     Route::get('dang-ky', [RegisterController::class, 'register'])->name('register');
@@ -143,27 +145,25 @@ Route::group(['prefix' => '/', 'middleware' => ['ClientLogin']], function (){
 
     Route::get('tai-khoan', [AccountController::class, 'account'])->name('account');
     Route::group(['prefix' => 'bai-viet'], function (){
-     Route::get('/them', [AddPostController::class, 'post'])->name('postAdd');
-     Route::post('/them', [AddPostController::class, 'addClientPosts'])->name('addClientPosts');
-     Route::get('/danh-sach-bai-viet', [PostNewController::class, 'postNew'])->name('postNew');
- });
+        Route::get('/them', [AddPostController::class, 'post'])->name('postAdd');
+        Route::post('/them', [AddPostController::class, 'addClientPosts'])->name('addClientPosts');
+        Route::get('/danh-sach-bai-viet', [PostNewController::class, 'postNew'])->name('postNew');
+    });
 
 });
 
 Route::group(['prefix' => '/'], function (){
-
     Route::get('/', [IndexController::class, 'index'])->name('index');
     Route::get('bao-loi', [ErrorPageController::class, 'error'])->name('error');
     Route::get('kich-hoat/{token}', [RegisterController::class, 'active'])->name('active');
     Route::get('/chi-tiet-tin', [PostSingleController::class, 'postSingle'])
-    ->name('postSingle');
+         ->name('postSingle');
     Route::get('lien-he', [ContactController::class, 'contact'])->name('contact');
-
     Route::get('gioi-thieu', [AboutController::class, 'about'])->name('about');
     Route::group(['prefix' => 'tin-tuc'], function (){
         Route::get('/danh-sach', [BlogListController::class, 'listBlog'])->name('listBlog');
     });
-    
+
     Route::group(['prefix' => 'tim-kiem'], function (){
         Route::get('/danh-sach', [SearchController::class, 'search'])->name('search');
     });

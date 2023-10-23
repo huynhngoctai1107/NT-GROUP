@@ -21,7 +21,7 @@ class PostsSeeder extends Seeder{
                 'id_demand'     => 1,
                 'id_user'       => 1,
                 'id_price'      => 1,
-                'id_acreage'    => 1,
+                'id_acreage'    => 2,
                 'slug'          => 'cho-thue-mini-house-xay-moi-chi-con-1-phong-duy-nhat',
                 'title'         => 'CHO THUÊ MINI HOUSE XÂY MỚI CHỈ CÒN 1 PHÒNG DUY NHẤT',
                 'content'       => 'CHỈ CÒN 1 PHÒNG DUY NHẤT CHO THUÊ MINI HOUSE MẶT TIỀN ĐƯỜNG NGUYỄN VĂN LINH MỚI 100%
@@ -35,6 +35,7 @@ class PostsSeeder extends Seeder{
                 Giá: 5 triệu : Đầy đủ Nội thất: Sofa, Máy lạnh, tủ lạnh, màn cửa, tủ bếp,tủ quần áo, máy nước nóng.
                 Liên hệ: 0979.660.889',
                 'price'         => 150000000,
+                'acreages'      => 8 ,
                 'subtitles'     => 'MINI HOUSE có thể được sử dụng cho nhiều mục đích khác nhau, như nhà ở, văn phòng, hoặc nhà hàng, quán cà phê. Những căn nhà này thường được ưa chuộng...',
                 'featured_news' => 0,
                 'link_youtube'  => 'https://youtu.be/qKrqdTVrEMM?si=iUUbbVvEOOwArugJ',
@@ -65,6 +66,7 @@ class PostsSeeder extends Seeder{
                 - Vị trí: Cách bờ hồ 50m. Nằm trên con đường ăn uống sầm uất nhất, thông xuống bờ hồ bún Xáng. Xung quanh nhà cửa đông đúc đèn đường , đầy đủ tiện ích.
                 Liên hệ 0979.660.889',
                 'price'         => 350000000,
+                'acreages'      => 8 ,
                 'subtitles'     => 'MINI HOUSE có thể được sử dụng cho nhiều mục đích khác nhau, như nhà ở, văn phòng, hoặc nhà hàng, quán cà phê. Những căn nhà này thường được ưa chuộng...',
                 'featured_news' => 0,
                 'link_youtube'  => 'https://youtu.be/JnWqhQ9OSBU?si=z5BXiCUtB15ZoOy4',

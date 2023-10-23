@@ -22,6 +22,7 @@ return new class extends Migration{
             $table->longText('title');
             $table->longText('subtitles');
             $table->bigInteger('price');
+            $table->bigInteger('acreages');
             $table->longText('content');
             $table->integer('featured_news')->default(0);
             $table->string('link_youtube',255)->default('');
