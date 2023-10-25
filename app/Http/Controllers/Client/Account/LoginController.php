@@ -3,12 +3,16 @@
 namespace App\Http\Controllers\Client\Account;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Client\Mail\MailLoginController;
 use App\Http\Requests\Account\LoginRequest;
 use Illuminate\Support\Facades\Auth;
 use Lunaweb\RecaptchaV3\Facades\RecaptchaV3;
-
+use Jenssegers\Agent\Agent;
 class LoginController extends Controller{
-
+    public $mail;
+    public function __construct(){
+        $this->mail = new MailLoginController();
+    }
     public function login(){
         return view('client.pages.login');
     }
@@ -18,6 +22,7 @@ class LoginController extends Controller{
         if ($score > 0.7){
             if (Auth::attempt(['email' => $request->email, 'password' => $request->password, 'status' => 1, 'social_id' => 0])){
                 $acout = Auth::user();
+                $this->mail->loginMail();
                 if ($acout->id_role == 3){
                     return redirect()->route('account')->with('success',
                         'Đăng nhập thành công và đã gửi email thông báo đăng nhập!');
@@ -33,7 +38,6 @@ class LoginController extends Controller{
                     ->with('error-login',
                         'Đăng nhập thất bại vui lòng kiểm tra thông tin đăng nhập');
             }
-
         }else{
             return Redirect()
                 ->back()
@@ -42,9 +46,7 @@ class LoginController extends Controller{
                     'Có thể bạn là robot');
 
         }
-
     }
-
     public function logout(){
         Auth::logout();
 

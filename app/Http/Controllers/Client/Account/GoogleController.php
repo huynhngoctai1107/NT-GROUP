@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Client\Account;
 
 use App\Http\Controllers\Client\Mail\ActiveController;
+use App\Http\Controllers\Client\Mail\MailLoginController;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -17,7 +18,7 @@ class GoogleController extends Controller{
     public $mail;
 
     public function __construct(){
-        $this->mail = new ActiveController();
+        $this->mail = new MailLoginController();
         $this->user = new User();
     }
 
@@ -45,6 +46,7 @@ class GoogleController extends Controller{
                         'Đăng nhập thất bại email này đã tồn tại trong hệ thống. Xin vui lòng nhập Email và Mật khẩu để đăng nhập');
             }else{
                 if (Auth::attempt(['email' => $user->getEmail(), 'password' => 'nt-group.com', 'status' => 1])){
+                    $this->mail->loginMail();
                     return redirect()
                         ->route('account')
                         ->with('success',
@@ -71,7 +73,7 @@ class GoogleController extends Controller{
             $newUser->phone     = '0912345678';
             $newUser->save();
             auth()->login($newUser, TRUE);
-
+            $this->mail->loginMail();
             return redirect()->route('account')->with('status',
                 'Đăng nhập thành công và đã gửi email thông báo!');
 

@@ -105,27 +105,28 @@
                                     <table border="0" cellpadding="0" cellspacing="0" class="heading_block block-1" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
                                         <tr>
                                             <td class="pad" style="text-align:center;width:100%;">
-                                                <h2 style="margin: 0; color: #003560; direction: ltr; font-family: TimesNewRoman, 'Times New Roman', Times, Beskerville, Georgia, serif; font-size: 24px; font-weight: normal; letter-spacing: normal; line-height: 120%; text-align: center; margin-top: 0; margin-bottom: 0;">
-                                                    <span class="tinyMce-placeholder">Chào mừng bạn đến với website của chúng tôi</span>
-                                                </h2>
+                                                <h1 style="margin: 0; color: #003560; direction: ltr; font-family: TimesNewRoman, 'Times New Roman', Times, Beskerville, Georgia, serif; font-size: 24px; font-weight: normal; letter-spacing: normal; line-height: 120%; text-align: center; margin-top: 0; margin-bottom: 0;">
+                                                    <span class="tinyMce-placeholder">Thông báo đăng nhập</span>
+                                                </h1>
                                             </td>
                                         </tr>
                                     </table>
                                     <table border="0" cellpadding="0" cellspacing="0" class="paragraph_block block-2" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;" width="100%">
-                                        <tr>
+                                        <tr align="center">
                                             <td class="pad" style="padding-bottom:35px;padding-left:60px;padding-right:60px;padding-top:35px;">
-                                                <div style="color:#003560;font-family:Arial, Helvetica Neue, Helvetica, sans-serif;font-size:14px;line-height:120%;text-align:left;mso-line-height-alt:16.8px;">
-                                                    <p style="margin: 0; word-break: break-word;"><em>Xin chào {{$data->fullname}}</em>
+                                                <div class="text-center" style="color:#003560;font-family:Arial, Helvetica Neue, Helvetica, sans-serif;font-size:14px;line-height:120%;text-align:left;mso-line-height-alt:16.8px;">
+                                                    <p class="text-center" style="margin: 0; color: #003560; word-break: break-word; font-weight: bold; text-align: center;"><em>Xin chào {{$data['fullname']}}</em>
                                                     </p>
                                                     <p style="margin: 0; word-break: break-word;"> </p>
-                                                    <p style="margin: 0; word-break: break-word;">Bất Động Sản Kiên Giang là một trong những công ty chuyên về đầu tư xây dựng và phân phối bất động sản đất nền. Đây là một trong những công ty có tuổi đời trẻ nhưng đã khẳng định được vị thế của mình trên thị trường bất động sản Miền Nam – Tp. Kiên Giang</p>
+                                                    <p class="text-dark" style="margin: 0; color: #003560; word-break: break-word; font-size: 15px; margin-top: 4px; text-align: center;"><em>Đăng nhập bằng trình duyệt: {{$data['browser']}}</em></p>
+
+                                                    <p class="text-dark" style="margin: 0; color: #003560; word-break: break-word; font-size: 15px; margin-top: 4px; text-align: center;"><em>Địa chỉ IP đăng nhập: {{$data['version']}}</em></p>
+                                                    <p class="text-dark" style="margin: 0; color: #003560; word-break: break-word; font-size: 15px; margin-top: 4px; text-align: center;"><em>Hệ điều hành: {{$data['platform']}} - Phiên bản: {{$data['device']}}</em></p>
+                                                    <p class="text-dark" style="margin: 0; color: #003560; word-break: break-word; font-size: 15px; margin-top: 4px; text-align: center;"><em>Thời gian đăng nhập: {{$data['time']}}</em></p>
                                                     <p style="margin: 0; word-break: break-word;"> </p>
-                                                    <p style="margin: 0; word-break: break-word;">
-                                                        <em> Long song với việc chú trọng phát triển các hoạt động kinh doanh,Động Sản Kiên Giang cũng luôn chú tâm đến các hoạt động xã hội, tích cực thể hiện thông điệp “Vững Nền Tảng, Chắc Tương Lai”. Thường xuyên tổ chức các hoạt động hướng về cộng đồng, phát huy tinh thần tương thân tương ái, chia sẻ yêu thương cho xã hội, đem đến những tia nắng ấm cho các mảnh đời bất hạnh, kém may mắn.</em>
-                                                    </p>
                                                     <p style="margin: 0; word-break: break-word;"> </p>
-                                                    <p style="margin: 0; word-break: break-word;">
-                                                        <strong><em>Cảm ơn!</em></strong></p>
+                                                    <p style="margin: 0; word-break: break-word; text-align: center;">
+                                                        <strong><em>Cảm ơn bạn đã tin tưởng chúng tôi!</em></strong></p>
                                                 </div>
                                             </td>
                                         </tr>
@@ -172,28 +173,6 @@
                                             </td>
                                         </tr>
                                     </table>
-                                    <div class="spacer_block block-2" style="height:50px;line-height:50px;font-size:1px;"> </div>
-                                    <table border="0" cellpadding="0" cellspacing="0" class="heading_block block-3" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
-                                        <tr>
-                                            <td class="pad" style="padding-bottom:25px;padding-left:20px;padding-right:20px;padding-top:5px;text-align:center;width:100%;">
-                                                <h2 style="margin: 0; color: #ffffff; direction: ltr; font-family: TimesNewRoman, 'Times New Roman', Times, Beskerville, Georgia, serif; font-size: 19px; font-weight: normal; letter-spacing: normal; line-height: 120%; text-align: center; margin-top: 0; margin-bottom: 0;">Xin chào {{$data->fullname}} bạn đã đăng ký thành công tài khoản. Bạn có 15 phút để kích hoạt tài khoản. Hãy kích hoạt tài khoản để có thể sử dụng nhé ! Cảm ơn</h2>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                    <table border="0" cellpadding="0" cellspacing="0" class="button_block block-4" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
-                                        <tr>
-                                            <td class="pad" style="text-align:center;">
-                                                <div align="center" class="alignment"><!--[if mso]>
-                                                    <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://www.example.com" style="height:44px;width:116px;v-text-anchor:middle;" arcsize="0%" strokeweight="0.75pt" strokecolor="#E7C390" fill="false">
-                                                        <w:anchorlock/>
-                                                        <v:textbox inset="0px,0px,0px,0px">
-                                                            <center style="color:#e7c390; font-family:Arial, sans-serif; font-size:16px"><![endif]-->
-                                                    <a href="{{route('active',$data->token)}}" style="text-decoration:none;display:inline-block;color:#e7c390;background-color:transparent;border-radius:0px;width:auto;border-top:1px solid #E7C390;font-weight:undefined;border-right:1px solid #E7C390;border-bottom:1px solid #E7C390;border-left:1px solid #E7C390;padding-top:5px;padding-bottom:5px;font-family:Arial, Helvetica Neue, Helvetica, sans-serif;font-size:16px;text-align:center;mso-border-alt:none;word-break:keep-all;" target="_blank"><span style="padding-left:20px;padding-right:20px;font-size:16px;display:inline-block;letter-spacing:normal;"><span style="word-break: break-word; line-height: 32px;">Kích hoạt</span></span></a><!--[if mso]></center></v:textbox></v:roundrect><![endif]-->
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                    <div class="spacer_block block-5" style="height:50px;line-height:50px;font-size:1px;"> </div>
                                 </td>
                             </tr>
                             </tbody>
@@ -202,13 +181,6 @@
                 </tr>
                 </tbody>
             </table>
-
-
-    <tr>
-        <td class="column column-1" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; padding-bottom: 5px; padding-top: 5px; vertical-align: top; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" width="100%">
-            <div class="spacer_block block-1" style="height:10px;line-height:10px;font-size:1px;"> </div>
-        </td>
-    </tr>
     </tbody>
     <table align="center" border="0" cellpadding="0" cellspacing="0" class="row row-14" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #002548;" width="100%">
         <tbody>
@@ -227,7 +199,7 @@
                                     </td>
                                 </tr>
                             </table>
-                            <table border="0" cellpadding="10" cellspacing="0" class="paragraph_block block-2" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;" width="100%">
+                            <table border="0" cellpadding="10" cellspacing="0" class="paragraph_block block-2 mt-3" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;" width="100%">
                                 <tr>
                                     <td class="pad">
                                         <div style="color:#ffffff;font-family:Arial, Helvetica Neue, Helvetica, sans-serif;font-size:12px;line-height:120%;text-align:center;mso-line-height-alt:14.399999999999999px;">
