@@ -40,25 +40,7 @@
                                 <input type="number" name="price" id="price" value="{{ old('price') }}" class="form-control">
                             </div>
                             <div class="payment_method">
-                                <div class="heading_s1">
-                                    <h4>Phương Thức Thanh Toán</h4>
-                                </div>
                                 <div class="payment_option">
-{{--                                     <div class="custome-radio">--}}
-{{--                                        <input class="form-check-input" required="" type="radio" name="payment_option" id="exampleRadios3" value="1" checked="">--}}
-{{--                                        <label class="form-check-label" for="exampleRadios3">Thanh toán MoMo</label>--}}
-{{--                                        <p data-method="option3" class="payment-text">MoMo</p>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="custome-radio">--}}
-{{--                                        <input class="form-check-input" type="radio" name="payment_option" id="exampleRadios4" value="2">--}}
-{{--                                        <label class="form-check-label" for="exampleRadios4">Thanh toán VnPay</label>--}}
-{{--                                        <p data-method="option4" class="payment-text">VnPay</p>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="custome-radio">--}}
-{{--                                        <input class="form-check-input" type="radio" name="payment_option" id="exampleRadios5" value="3">--}}
-{{--                                        <label class="form-check-label" for="exampleRadios5">Thanh toán Paypal</label>--}}
-{{--                                        <p data-method="option5" class="payment-text">PayPal</p>--}}
-{{--                                    </div>--}}
                                     <h5><label for="price" class="text-bold mb-1">Phương Thức Thanh Toán</label></h5>
                                     <select class="form-select" aria-label="Default select example"
                                         name="payments">

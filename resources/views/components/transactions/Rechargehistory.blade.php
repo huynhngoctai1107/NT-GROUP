@@ -2,7 +2,7 @@
 
 @foreach($list as $item )
     <tr>
-        <td><span class="badge {{$item->id_category_transaction == 2 ? 'bg-success' : 'bg-danger'}}">{{$item->name}}</span></td>
+        <td><span class="badge {{$item->id_category_transaction == 1 ? 'bg-success' : 'bg-danger'}}">{{$item->name}}</span></td>
         <td>{{$item->fullname}}</td>
         <td>{{$item->phone ?? 'Không có'}}</td>
         <td>{{number_format($item->price)}} Đ</td>
