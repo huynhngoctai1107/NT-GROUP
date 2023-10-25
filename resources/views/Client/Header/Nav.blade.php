@@ -1,5 +1,3 @@
-<!-- LOADER -->
- 
 
 <header class="header_wrap fixed-top header_with_topbar w-100">
     <div class="top-header">
@@ -78,8 +76,6 @@
 
                         <div class="search_overlay"></div>
                     </li>
-
-
                 </ul>
             </nav>
         </div>

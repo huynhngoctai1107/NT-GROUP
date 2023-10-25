@@ -9,13 +9,11 @@ use Illuminate\Support\Facades\DB;
 
 class ListPostsController extends Controller
 {
-
     public $posts;
     public function __construct()
     {
         $this->posts = new Post();
     }
-
     function listPosts()
     {
         $condition = [

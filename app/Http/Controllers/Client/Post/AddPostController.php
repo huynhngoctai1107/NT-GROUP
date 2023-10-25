@@ -41,7 +41,7 @@ class AddPostController extends Controller
             'slug' => Str::slug($request->title),
             'id_demand' => $request->id_demand,
             'id_category' => $request->id_category,
-            'id_user' => $request->id_user,
+            'id_user' => auth()->user()->id,
             'id_price' => $request->id_price,
             'id_acreage' => $request->id_acreage,
             'price' => $request->price,

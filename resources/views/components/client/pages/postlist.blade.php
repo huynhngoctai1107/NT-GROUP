@@ -1,70 +1,51 @@
-<div class="table-responsive shop_cart_table">
-    <table class="table">
-        <thead>
-        <tr>
-            <th class="product-thumbnail">&nbsp;Ảnh</th>
-            <th class="product-name">Tiêu đề</th>
-            <th class="product-price">Nhu cầu</th>
-            <th class="product-quantity">Lượt xem</th>
+<div>
+        @foreach($postList as $item)
+            <tr class="text-center">
+                <td class="product-thumbnail pt-4"><a href="#">
+                        @php
+                            $imgPost = explode(',', $item->images)
+                        @endphp
+                        @for($i=0 ; $i <count($imgPost); $i++)
 
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td class="product-thumbnail"><a href="#"><img src="" alt="product1"></a></td>
-            <td class="product-name" data-title="Tiêu đề">
-                <a href="#">Bán nền đất</a><br>
-                <button class="btn btn-warning text-white" style="font-size: 15px;" type="submit">Mua bán đất</button>
-                <button class="btn btn-fill-out" style="font-size: 15px;" type="submit">Chờ duyệt</button>
-                <p class="mb-0 text-success">Ngày đăng 17-7-2023</p>
-            </td>
-            <td class="product-price" data-title="Dịch vụ">
-                <button class="btn btn-info text-white" style="font-size: 15px;" type="submit">Mua Vip tin</button>
-                <button class="btn btn-info text-white" style="font-size: 15px;" type="submit">Làm mới tin</button>
-            </td>
-            <td class="product-quantity" data-title="Lượt xem">3</td>
-            <td class="product-remove">
-                <div class="row align-items-center mb-0">
-                    <div class="col-12">
-                        <div class="custom_select">
-                            <select class="form-control form-control-sm">
-                                <option value="8">Sửa</option>
-                                <option value="9">Tên</option>
-                                <option value="12">Giá</option>
-                                <option value="18">Hình ảnh</option>
-                            </select>
-                        </div>
+                            <img style="width: 100px" src='{{asset("images/posts/".$imgPost[$i])}}' alt="{{$imgPost[$i]}}">
+                            @break
+                        @endfor
+                    </a>
+                </td>
+                <td class="product-name pt-5" data-title="Tiêu đề">
+                    <p class="text-dark" style="
+                                display:inline-block;
+                                white-space: nowrap;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                -webkit-line-clamp:1;
+                                  height: 75px;
+                                max-width: 30ch;">{{$item->title}}</p>
+                </td>
+                <td class="product-quantity pt-5" data-title="Nhu cầu">{{$item->name_demands}}</td>
+                <td class="product-quantity pt-5" data-title="Danh mục">{{$item->name_category}}</td>
+                <td class="product-quantity text-danger pt-5" style="font-weight: bold;"  data-title="Giá">{{$formatPrice($item->price)}}</td>
+                <td class="product-quantity pt-5" data-title="Diện tích">{{$item->acreages}} m<sup>2</sup></td>
+                <td class="product-quantity pt-5" data-title="Địa chỉ"><p class="text-dark" style="
+                                display:inline-block;
+                                white-space: nowrap;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                -webkit-line-clamp:1;
+                                  height: 75px;
+                                max-width: 30ch;">{{$item->address}}</p></td>
+
+                <td class="product-name pt-5" data-title="Chi tiết">
+                    <a href="" class="text-success" style="font-weight: bold;">Chi tiết</a><br>
+                </td>
+                <td>
+                    <div class="btn-group pt-5" role="group">
+                        <a href="" class="btn btn-outline-success btn-sm">Sửa</a>
+                        <a href="{{route('deletePostlist',$item->id_post)}}" class="btn btn-outline-danger btn-sm">Xóa</a>
                     </div>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td class="product-thumbnail"><a href="#"><img src="" alt="product1"></a></td>
-            <td class="product-name" data-title="Tiêu đề">
-                <a href="#">Bán nền đất</a><br>
-                <button class="btn btn-warning text-white" style="font-size: 15px;" type="submit">Mua bán đất</button>
-                <button class="btn btn-fill-out" style="font-size: 15px;" type="submit">Chờ duyệt</button>
-                <p class="mb-0 text-success">Ngày đăng 17-7-2023</p>
-            </td>
-            <td class="product-price" data-title="Dịch vụ">
-                <button class="btn btn-info text-white" style="font-size: 15px;" type="submit">Mua Vip tin</button>
-                <button class="btn btn-info text-white" style="font-size: 15px;" type="submit">Làm mới tin</button>
-            </td>
-            <td class="product-quantity" data-title="Lượt xem">3</td>
-            <td class="product-remove">
-                <div class="row align-items-center mb-0">
-                    <div class="col-12">
-                        <div class="custom_select">
-                            <select class="form-control form-control-sm">
-                                <option value="8">Sửa</option>
-                                <option value="9">Tên</option>
-                                <option value="12">Giá</option>
-                                <option value="18">Hình ảnh</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-            </td>
-        </tr>
-    </table>
-</div>
+                </td>
+            </tr>
+        @endforeach
+    </div>
+
+
