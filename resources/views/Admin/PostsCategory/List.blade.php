@@ -36,14 +36,18 @@
                     <div class="d-flex justify-content-between">
                         <x-admin.buttom.add :router="$page=='posts'?'addFormPosts':''"
                             :name="$page=='posts'?'Thêm bài viết':''"></x-admin.buttom.add>
-                        <x-admin.buttom.add :router="$page=='posts'?'listHistory':''"
-                            :name="$page=='posts'?'Lịch sử xóa':''"></x-admin.buttom.add>
+                        <x-admin.buttom.add router="listHistory" name="Lịch sử xóa"></x-admin.buttom.add>
                     </div>
                     <table id="example1" class="table table-bordered table-striped">
+                        @if(session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
                         <thead>
                             <tr>
 
-                                <th>Tên {{$page=='posts'?' bài viết':''}}</th>
+                                <th>Tên {{$page=='medias'?' bài viết':''}}</th>
                                 <th>Slug</th>
                                 <th>Ngày tạo</th>
                                 <th>Ngày cập nhật</th>

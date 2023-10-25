@@ -15,24 +15,6 @@
                     </div>
                     <div class="col-md-12 col-12">
                         <div class="box">
-                            @php
-                                $list = [
-                                    [
-                                        'name'=> 'Nhà ở giá rẻ tại Cần Thơ',
-                                        'img' => 'client/images/a1.webp',
-                                        'address' => '170 Hoàng Quốc Việt, An Bình, Ninh Kiều, Cần Thơ',
-                                        'price' => '2000000000',
-                                        'phone' => '032145678',
-                                    ],
-                                    [
-                                        'name'=> 'Nhà nguyên căn đầy đủ nội thất tại Cần Thơ',
-                                        'img' => "env('APP_URL') . 'client/images/banner0.jpeg'",
-                                        'address'=> '170 Hoàng Quốc Việt, An Bình, Ninh Kiều, Cần Thơ',
-                                        'price'=> '200000',
-                                        'phone' => '032145678',
-                                    ],
-                                ];
-                            @endphp
                             <x-client.index.postSale :list="$list">
 
                             </x-client.index.postSale>
@@ -165,7 +147,7 @@
                         <div class="verticalLine">
                             <h3 class="ms-lg-3">VIP BẤT ĐỘNG SẢN</h3>
                         </div>
-                        <x-client.blog.blogVip :list="$list">
+                        <x-client.blog.blogVip :list="$sale">
 
                         </x-client.blog.blogVip>
 
@@ -182,29 +164,23 @@
     </div>
 
     <!-- START SECTION SUBSCRIBE NEWSLETTER -->
-    <div class="section bg_default small_pt small_pb">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <div class="heading_s1 mb-md-0 heading_light">
-                        <h3>Subscribe Our Newsletter</h3>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="newsletter_form">
-                        <form>
-                            <input type="text" required="" class="form-control rounded-0" placeholder="Enter Email Address">
-                            <button type="submit" class="btn btn-dark rounded-0" name="submit" value="Submit">Subscribe
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     <!-- START SECTION SUBSCRIBE NEWSLETTER -->
 @endsection
 @push('styles')
+    <style>
+	    .card-name {
+		    display: -webkit-box;
+		    -webkit-line-clamp: 2;
+		    -webkit-box-orient: vertical;
+		    overflow: hidden;
+	    }
+	    .custom-image {
+		    width: 120px;
+		    height: 120px;
+		    object-fit: cover; /* Tùy chọn: để đảm bảo hình ảnh được hiển thị đầy đủ trong ô ảnh */
+	    }
+
+    </style>
 @endpush
 @push('script')
     <script>

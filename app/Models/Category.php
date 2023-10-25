@@ -35,12 +35,16 @@ class Category extends Model
     {
         return $this->where($condition)->update($value);
     }
+    public function GetCategory()
+    {
+        return $this->get();
+    }
 
     public function deleteCategory($slug)
     {
         // Kiểm tra xem nhu cầu có sản phẩm nào không
         $demandHasProducts = $this->where('category_posts.slug', $slug)
-            ->join('posts', 'category_posts.id', '=', 'posts.id_category')
+            ->join('medias', 'category_posts.id', '=', 'medias.id_category')
             ->exists();
 
         if ($demandHasProducts) {

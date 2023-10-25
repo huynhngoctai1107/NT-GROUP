@@ -17,7 +17,7 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                     <ul class="navbar-nav">
-                        <li><a class="nav-link nav_item" href="">Trang chủ</a></li>
+                        <li><a class="nav-link nav_item" href="{{route('index')}}">Trang chủ</a></li>
                         <li><a class="nav-link nav_item" href="{{route('about')}}">Giới thiệu</a></li>
                         <li class="dropdown">
                             <a class="dropdown-toggle nav-link" href="{{route('listBlog')}}" data-bs-toggle="dropdown">Tin tức</a>
@@ -42,30 +42,23 @@
                         </li>
 
                         <li class="dropdown">
-                            <a class="dropdown-toggle nav-link" href="{{route('listBlog')}}" data-bs-toggle="dropdown">Nhà đất cần thơ</a>
+                            <a class="dropdown-toggle nav-link" href="{{route('listBlog')}}" data-bs-toggle="dropdown">Loại Bất Động Sản</a>
                             <div class="dropdown-menu">
                                 <ul>
-                                    <li><a class="dropdown-item nav-link nav_item" href="{{route('listBlog')}}">Bán đất</a></li>
-                                    <li><a class="dropdown-item nav-link nav_item" href="{{route('listBlog')}}">Nhà bán</a>
-                                    </li>
-                                    <li><a class="dropdown-item nav-link nav_item" href="{{route('listBlog')}}">Căn hộ bán</a></li>
-                                    <li><a class="dropdown-item nav-link nav_item" href="{{route('listBlog')}}">Văn phòng</a>
-                                    </li>
-                                    <li><a class="dropdown-item nav-link nav_item" href="{{route('listBlog')}}">Nhà trọ</a></li>
+                                    <li><a class="dropdown-item nav-link nav_item" href="{{route('listPost')}}">Tất Cả Tin</a></li>
+                                    @foreach($dataToCategory as $category)
+                                        <li><a class="dropdown-item nav-link nav_item" href="{{route('search',$category->slug)}}">{{$category->name}}</a></li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </li>
                         <li class="dropdown">
-                            <a class="dropdown-toggle nav-link" href="{{route('listBlog')}}" data-bs-toggle="dropdown">Nhà đất cho thuê</a>
+                            <a class="dropdown-toggle nav-link" href="{{route('listBlog')}}" data-bs-toggle="dropdown">Nhu Cầu Bất Động Sản</a>
                             <div class="dropdown-menu">
                                 <ul>
-                                    <li><a class="dropdown-item nav-link nav_item" href="{{route('listBlog')}}">Đất</a></li>
-                                    <li><a class="dropdown-item nav-link nav_item" href="{{route('listBlog')}}">Nhà</a>
-                                    </li>
-                                    <li><a class="dropdown-item nav-link nav_item" href="{{route('listBlog')}}">Căn hộ</a></li>
-                                    <li><a class="dropdown-item nav-link nav_item" href="{{route('listBlog')}}">Văn phòng</a>
-                                    </li>
-                                    <li><a class="dropdown-item nav-link nav_item" href="{{route('listBlog')}}">Nhà trọ</a></li>
+                                    @foreach($dataToDemand as $demand)
+                                        <li><a class="dropdown-item nav-link nav_item" href="{{route('search1',$demand->slug)}}">{{$demand->name}}</a></li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </li>

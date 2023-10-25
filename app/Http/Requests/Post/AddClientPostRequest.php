@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\Post;
 
+use App\Models\Acreage;
 use Illuminate\Foundation\Http\FormRequest;
+use App\Models\Price;
 
 class AddClientPostRequest extends FormRequest
 {
@@ -27,9 +29,32 @@ class AddClientPostRequest extends FormRequest
             'id_category' => 'required',
             'id_price' => 'required',
             'id_acreage' => 'required',
-            'price' => 'required|numeric',
-            'subtitles' => 'required|min:5|max:255',
-            'content' => 'required|min:5|max:255',
+            'price' => [
+                'required',
+                'numeric',
+                function ($attribute, $value, $fail) {
+                    $idPrice = request()->input('id_price');
+                    $selectedPrice = Price::find($idPrice);
+
+                    if (!$selectedPrice || ($value < $selectedPrice->name_min || $value > $selectedPrice->name_max)) {
+                        $fail('Giá không nằm trong giới hạn cho phép.');
+                    }
+                },
+            ],
+            'acreage' => [
+                'required',
+                'numeric',
+                function ($attribute, $value, $fail) {
+                    $idAcreage = request()->input('id_acreage');
+                    $selectedAcreage = Acreage::find($idAcreage);
+
+                    if (!$selectedAcreage || ($value < $selectedAcreage->name_min || $value > $selectedAcreage->name_max)) {
+                        $fail('Diện tích không nằm trong giới hạn cho phép.');
+                    }
+                },
+            ],
+            'subtitles' => 'required|min:5',
+            'content' => 'required|min:5',
             'link_youtube' => 'required|max:255|url',
             'city' => 'required',
             'district' => 'required',
@@ -53,12 +78,12 @@ class AddClientPostRequest extends FormRequest
             'id_acreage.required' => 'Vui lòng chọn diện tích',
             'price.required' => 'Vui lòng nhập vào giá',
             'price.numeric' => 'Giá bài viết phải là số',
+            'acreage.required' => 'Vui lòng nhập vào diện tích',
+            'acreage.numeric' => 'Diện tích bài viết phải là số',
             'subtitles.required' => 'Vui lòng nhập vào tiêu đề phụ bài viết',
             'subtitles.min' => 'Tiêu đề phụ bài viết từ 5 ký tự trở lên',
-            'subtitles.max' => 'Tiêu đề phụ bài viết dưới 255 ký tự',
             'content.required' => 'Vui lòng nhập vào nội dung bài viết',
             'content.min' => 'Nội dung bài viết từ 5 ký tự trở lên',
-            'content.max' => 'Nội dung bài viết dưới 255 ký tự',
             'link_youtube.required' => 'Vui lòng nhập vào Link Youtube bài viết',
             'link_youtube.max' => 'Link Youtube bài viết dưới 255 ký tự',
             'link_youtube.url' => 'Nhập vào đường dẫn Youtube',
@@ -71,5 +96,14 @@ class AddClientPostRequest extends FormRequest
             'longitude.required' => 'Vui lòng nhập vào kinh độ',
             'latitude.required' => 'Vui lòng nhập vào vĩ độ',
         ];
+    }
+
+    public function withValidator($validator)
+    {
+        $validator->after(function ($validator) {
+            if ($validator->failed()) {
+                // Xử lý khi có lỗi kiểm tra
+            }
+        });
     }
 }

@@ -149,7 +149,7 @@ Sửa bài viết
                             style="width: 100%;" id="id_price" name="id_price">
                             @foreach ($price as $row)
                             <option value="{{ $row->id }}" @if (old('id_price', $data->id_price) == $row->id) selected
-                                @endif>{{ $row->name_min }} - {{$row->name_max}}</option>
+                                @endif>{{ $formatPrice($row->name_min) }} - {{ $formatPrice($row->name_max) }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -164,7 +164,7 @@ Sửa bài viết
                             style="width: 100%;" id="id_acreage" name="id_acreage">
                             @foreach ($acreage as $row)
                             <option value="{{ $row->id }}" @if (old('id_acreage', $data->id_acreage) == $row->id)
-                                selected @endif>{{ $row->name_min }} - {{$row->name_max}}</option>
+                                selected @endif>{{ $row->name_min }} m² - {{ $row->name_max }} m²</option>
                             @endforeach
                         </select>
                     </div>
@@ -175,11 +175,10 @@ Sửa bài viết
                 $mediaValues[] = $row->image;
                 }
                 @endphp
-                <h5>Thêm ảnh mới</h5>
+                <label class="form-label">Thêm ảnh</label>
                 <div class="file-upload">
                     <div class="image-upload-wrap">
-                        <input class="file-upload-input" type="file" value="{{ implode(',', $mediaValues) }}"
-                            name="uploadfile[]" onchange="readURL(this);" accept="image/*" multiple />
+                        <input class="file-upload-input" type="file" name="uploadfile[]" onchange="readURL(this);" accept="image/*" multiple/>
                     </div>
                     <div class="file-upload-content">
                         <div class="image-list">
@@ -189,33 +188,36 @@ Sửa bài viết
                 </div>
                 <script>
                     function readURL(input) {
-                            if (input.files && input.files[0]) {
-                                var imageList = document.querySelector('.image-list'); // Chọn phần tử chứa danh sách hình ảnh
+                        if (input.files && input.files[0]) {
+                            var imageList = document.querySelector('.image-list'); // Chọn phần tử chứa danh sách hình ảnh
 
-                                for (var i = 0; i < input.files.length; i++) {
-                                    var reader = new FileReader();
+                            // Xóa tất cả hình ảnh hiện có trước khi thêm hình ảnh mới
+                            removeUpload();
 
-                                    reader.onload = function(e) {
-                                        var image = document.createElement('img'); // Tạo một phần tử hình ảnh
-                                        image.src = e.target.result; // Đặt nguồn hình ảnh từ dữ liệu đọc
-                                        imageList.appendChild(image); // Thêm hình ảnh vào danh sách
-                                    }
+                            for (var i = 0; i < input.files.length; i++) {
+                                var reader = new FileReader();
 
-                                    reader.readAsDataURL(input.files[i]);
+                                reader.onload = function (e) {
+                                    var image = document.createElement('img'); // Tạo một phần tử hình ảnh
+                                    image.src = e.target.result; // Đặt nguồn hình ảnh từ dữ liệu đọc
+                                    imageList.appendChild(image); // Thêm hình ảnh vào danh sách
                                 }
+
+                                reader.readAsDataURL(input.files[i]);
                             }
                         }
+                    }
 
-                        function removeUpload() {
-                            var imageList = document.querySelector('.image-list');
-                            imageList.innerHTML = ''; // Xóa tất cả hình ảnh trong danh sách
-                        }
+                    function removeUpload() {
+                        var imageList = document.querySelector('.image-list');
+                        imageList.innerHTML = ''; // Xóa tất cả hình ảnh trong danh sách
+                    }
                 </script>
                 <h5>Ảnh đã có</h5>
                 <div id="imageContainer" class="image-list">
                     @foreach($media as $row)
                     <div class="d-flex">
-                        <img src="{{ asset('images/' . $row->image) }}" alt="Image" />
+                        <img src="{{ asset('images/medias/' . $row->image) }}" alt="Image" />
                         <a href="{{route('deleteMedia',$row->id)}}">Xóa</a>
                     </div>
                     @endforeach
@@ -224,9 +226,15 @@ Sửa bài viết
                     @error('price')
                     <div class="alert alert-danger mt-3">{{ $message }}</div>
                     @enderror
-                    <label class="form-label">Giá</label>
-                    <input type="number" class="form-control" name="price" value="{{$data->price}}"
-                        id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <label for="price" class="form-label">Giá</label>
+                    <input type="number" class="form-control" name="price" value="{{$data->price}}" id="price">
+                </div>
+                <div class="mb-3">
+                    @error('acreage')
+                    <div class="alert alert-danger mt-3">{{ $message }}</div>
+                    @enderror
+                    <label for="acreage" class="form-label">Diện tích</label>
+                    <input type="number" class="form-control" name="acreage" value="{{$data->acreages}}" id="acreage">
                 </div>
                 <div class="form-group">
                     @error('subtitles')
@@ -329,6 +337,46 @@ Sửa bài viết
                     <label class="form-label">compilation</label>
                     <input type="text" class="form-control" name="compilation" value="{{$data->compilation}}"
                         id="exampleInputEmail1" aria-describedby="emailHelp">
+                </div>
+                <div class="alert alert-secondary" role="alert">
+                    <h5>Thông Tin Liên Hệ</h5>
+                </div>
+                <div style="display: flex; justify-content: space-between">
+                    @php
+                        $i = 1;
+                    @endphp
+                    @foreach($contact as $row)
+                        <div style="width: 40%">
+                            <div class="mb-3">
+                                @error('phone'.$i)
+                                <div class="alert alert-danger mt-3">{{ $message }}</div>
+                                @enderror
+                                <label for="phone" class="form-label">Số Điện Thoại Liên Hệ {{$i}} *</label>
+                                <input type="number" class="form-control" id="phone" name="phone{{$i}}" value="{{$row->phone}}">
+                                <input type="hidden" name="id{{$i}}" value="{{$row->id}}">
+                            </div>
+                            <div class="mb-3">
+                                @error('name'.$i)
+                                <div class="alert alert-danger mt-3">{{ $message }}</div>
+                                @enderror
+                                <label for="name" class="form-label">Tên Liên Hệ {{$i}} *</label>
+                                <input type="text" class="form-control" id="name" name="name{{$i}}" value="{{$row->position}}">
+                            </div>
+                            <div class="mb-3">
+                                @error('img'.$i)
+                                <div class="alert alert-danger mt-3">{{ $message }}</div>
+                                @enderror
+                                <label for="images">Hình Ảnh Liên Hệ {{$i}}:</label>
+                                <input class="form-control form-control-sm" id="formFileSm" type="file" name="img{{$i}}">
+                                <div class="d-flex">
+                                    <img src="{{ asset('images/contacts/' . $row->image) }}" alt="Image" style="width: 150px; height: 150px; object-fit: cover;">
+                                </div>
+                            </div>
+                        </div>
+                        @php
+                            $i++; // Tăng $i cho lần lặp tiếp theo
+                        @endphp
+                    @endforeach
                 </div>
                 <button type="submit" class="btn btn-primary mb-3">Sửa</button>
             </form>

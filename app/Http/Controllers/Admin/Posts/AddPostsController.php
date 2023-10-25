@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Posts;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Post\AddPostRequest;
+use App\Models\Contact;
 use App\Models\Media;
 use App\Models\Post;
 use Illuminate\Http\Request;
@@ -14,11 +15,13 @@ class AddPostsController extends Controller
 
     public $posts;
     public $media;
+    public $contact;
 
     public function __construct()
     {
         $this->posts = new Post();
         $this->media = new Media();
+        $this->contact = new Contact();
     }
 
     function addFormPosts()
@@ -45,6 +48,7 @@ class AddPostsController extends Controller
             'id_price' => $request->id_price,
             'id_acreage' => $request->id_acreage,
             'price' => $request->price,
+            'acreages' => $request->acreage,
             'subtitles' => $request->subtitles,
             'content' =>  $request->input('content'),
             'featured_news' => $request->featured_news,
@@ -55,6 +59,11 @@ class AddPostsController extends Controller
             'compilation' => $request->compilation,
             'created_at' => now(),
         ];
+        $validatedData = $request->validated();
+
+        if (empty($validatedData)) {
+            return redirect()->back();
+        }// kiểm tra giá trc khi thêm
         $idPost = $this->posts->addPost($value);
         if ($request->hasFile('uploadfile')) {
             // Xử lý khi trường uploadfile không rỗng
@@ -73,7 +82,33 @@ class AddPostsController extends Controller
                 }
             }
         }
+        if (!empty($request->name1)) {
+            $filename = time() . '-' . 'contact' . '.' . $request->img1->extension();
+            $request->img1->move(public_path("images/contacts"), $filename);
+            $request->merge(['image' => $filename]);
+            $data = [
+                "position" => $request->name1,
+                "id_post" => $idPost,
+                "phone" =>$request->phone1,
+                "images" => $request->image ?? '',
+                'created_at' => now(),
+            ];
+            $this->contact->addContact($data);
+        }
+        if (!empty($request->name2)) {
+            $filename = time() . '-' . 'contact' . '.' . $request->img2->extension();
+            $request->img2->move(public_path("images/contacts"), $filename);
+            $request->merge(['image' => $filename]);
+            $data = [
+                "position" => $request->name2,
+                "id_post" => $idPost,
+                "phone" =>$request->phone2,
+                "images" => $request->image ?? '',
+                'created_at' => now(),
+            ];
+            $this->contact->addContact($data);
+        }
 
-        return redirect()->route('listPosts')->with('success', 'Đã thêm nhu cầu thành công');
+        return redirect()->route('listPosts')->with('success', 'Thêm bài viết " ' . $request->title . ' " thành công');
     }
 }

@@ -1,17 +1,27 @@
 @foreach($list as $item )
     <div class="card mt-3">
         <div class="row">
+            @php
+                // Tách chuỗi thành mảng
+                $images = $item->images;
+                $imageArray = explode(',', $images);
+
+                // Lấy tên file ảnh đầu tiên
+                $firstImage = reset($imageArray);
+            @endphp
             <div class="col-md-4 ">
-                <img src="{{asset("client/images/".$item['img'])}}" class="" alt="Hình ảnh" style="max-width: 100%; height: 100%" />
+                <a href="{{ route('postSingle',$item->slug_posts) }}">
+                    <div class="frame d-flex justify-content-center align-items-center" style="width: 100%; height: 250px; background-image: url('{{ asset('images/medias/' . $firstImage) }}'); background-size: cover; background-position: center;"></div>
+                </a>
             </div>
             <div class="col-md-8">
                 <div class="card-body">
-                    <h5 class="card-title fw-bold my-1 shorten">{{$item['name']}}</h5>
-                    <p class="card-title my-2 shorten">Nhà trệt lầu đường số 7 KDC ĐH Y Dược, An Khánh, Ninh Kiều, Cần Thơ</p>
+                    <h5 class="card-title fw-bold my-1 shorten"><a href="{{ route('postSingle',$item->slug_posts) }}">{{ $item->title }}</a></h5>
+                    <p class="card-title my-2 shorten">{!! $item->subtitles !!}</p>
                     <hr class="my-3">
                     <div class="d-md-flex justify-content-between">
-                        <span class="price format-number text-warning fw-bold"><i class="bi bi-currency-dollar"></i>{{$item['price']}} VND</span>
-                        <span class="acreage"><strong>Diện tích:</strong> 130m</span>
+                        <span class="price format-number text-warning fw-bold">{{$formatPrice($item->price)}}</span>
+                        <span class="acreage"><strong>Diện tích:</strong> {{$item->acreages}} m<sup>2</sup></span>
                     </div>
                     <p class="address my-3 shorten"><strong>Khu vực:</strong> {{$item['address']}}</p>
                 </div>

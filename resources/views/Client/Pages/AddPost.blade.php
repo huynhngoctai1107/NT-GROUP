@@ -28,7 +28,13 @@
                     @enderror
                     <label for="title" class="form-label">Tiêu Đề *</label>
                     <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }}">
-                    <input type="hidden" class="form-control" value="1" name="id_user">
+                    @php
+                        $userId = null;
+                        if (Auth::check()) {
+                            $userId = Auth::id();
+                        }
+                    @endphp
+                    <input type="hidden" class="form-control" value="{{ $userId }}" name="id_user">
                     <input type="hidden" class="form-control" value="1" name="compilation">
                 </div>
 
@@ -78,14 +84,20 @@
                         <input type="number" class="form-control" id="price" name="price" value="{{ old('price') }}">
                     </div>
                     <div style="width: 45%;">
-                        @error('link_youtube')
+                        @error('acreage')
                         <div class="alert alert-danger mt-3">{{ $message }}</div>
                         @enderror
-                        <label for="link_youtube" class="form-label">Link YouTube</label>
-                        <input type="text" name="link_youtube" placeholder="Link youtube" class="form-control" id="link_youtube" value="{{ old('link_youtube') }}">
+                        <label for="acreage" class="form-label">Diện tích *</label>
+                        <input type="number" class="form-control" id="acreage" name="acreage" value="{{ old('acreage') }}">
                     </div>
                 </div>
-
+                <div style="width: 45%;">
+                    @error('link_youtube')
+                    <div class="alert alert-danger mt-3">{{ $message }}</div>
+                    @enderror
+                    <label for="link_youtube" class="form-label">Link YouTube</label>
+                    <input type="text" name="link_youtube" placeholder="Link youtube" class="form-control" id="link_youtube" value="{{ old('link_youtube') }}">
+                </div>
                 <label class="form-label">Thêm ảnh</label>
                 <div class="file-upload">
                     <div class="image-upload-wrap">
@@ -186,7 +198,7 @@
                 <!-- Longitude and Latitude Input Boxes -->
                 <div class="mb-3">
                     @error('longitude')
-                    <div class="alert alert-danger mt-3">{{ $message }}</div>
+                    <p class="text-danger ">{{ $message }}</p>
                     @enderror
                     <label for="longitude">Nhập kinh độ</label>
                     <input type="text" class="form-control" id="longitude" name="longitude" value="{{ old('longitude') }}">
@@ -198,7 +210,59 @@
                     <label for="latitude">Nhập vĩ độ</label>
                     <input type="text" class="form-control" id="latitude" name="latitude" value="{{ old('latitude') }}">
                 </div>
+                <div class="alert alert-secondary" role="alert">
+                    <h5>Thông Tin Liên Hệ</h5>
+                </div>
+                <div style="display: flex; justify-content: space-between">
+                    <div style="width: 40%">
+                        <div class="mb-3">
+                            @error('phone1')
+                            <div class="alert alert-danger mt-3">{{ $message }}</div>
+                            @enderror
+                            <label for="phone" class="form-label">Số Điện Thoại Liên Hệ 1 *</label>
+                            <input type="number" class="form-control" id="phone" name="phone1" value="{{ old('phone1') }}">
+                        </div>
+                        <div class="mb-3">
+                            @error('name1')
+                            <div class="alert alert-danger mt-3">{{ $message }}</div>
+                            @enderror
+                            <label for="name" class="form-label">Tên Liên Hệ 1 *</label>
+                            <input type="text" class="form-control" id="name" name="name1" value="{{ old('name1') }}">
+                        </div>
+                        <div class="mb-3">
+                            @error('img1')
+                            <div class="alert alert-danger mt-3">{{ $message }}</div>
+                            @enderror
+                            <label for="images">Hình Ảnh Liên Hệ 1:</label>
+                            <input class="form-control form-control-sm" id="formFileSm" type="file" name="img1">
+                        </div>
+                    </div>
+                    <div style="width: 40%">
+                        <div class="mb-3">
+                            @error('phone2')
+                            <div class="alert alert-danger mt-3">{{ $message }}</div>
+                            @enderror
+                            <label for="phone" class="form-label">Số Điện Thoại Liên Hệ 2 *</label>
+                            <input type="number" class="form-control" id="phone" name="phone2" value="{{ old('phone2') }}">
+                        </div>
 
+                        <div class="mb-3">
+                            @error('name2')
+                            <div class="alert alert-danger mt-3">{{ $message }}</div>
+                            @enderror
+                            <label for="name" class="form-label">Tên Liên Hệ 2 *</label>
+                            <input type="text" class="form-control" id="name" name="name2" value="{{ old('name2') }}">
+                        </div>
+
+                        <div class="mb-3">
+                            @error('img2')
+                            <div class="alert alert-danger mt-3">{{ $message }}</div>
+                            @enderror
+                            <label for="images">Hình Ảnh Liên Hệ 2:</label>
+                            <input class="form-control form-control-sm" id="formFileSm" type="file" name="img2">
+                        </div>
+                    </div>
+                </div>
                 <button type="submit" class="btn btn-warning mt-3 mb-5">Đăng Tin</button>
                 <!-- JavaScript Code -->
             </form>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Post;
 
+use App\Models\Price;
 use Illuminate\Foundation\Http\FormRequest;
 
 class AddPostRequest extends FormRequest
@@ -28,9 +29,20 @@ class AddPostRequest extends FormRequest
             'id_user' => 'required',
             'id_price' => 'required',
             'id_acreage' => 'required',
-            'price' => 'required|numeric',
-            'subtitles' => 'required|min:5|max:255',
-            'content' => 'required|min:5|max:255',
+            'price' => [
+                'required',
+                'numeric',
+                function ($attribute, $value, $fail) {
+                    $idPrice = request()->input('id_price');
+                    $selectedPrice = Price::find($idPrice);
+
+                    if (!$selectedPrice || ($value < $selectedPrice->name_min || $value > $selectedPrice->name_max)) {
+                        $fail('Giá không nằm trong giới hạn cho phép.');
+                    }
+                },
+            ],
+            'subtitles' => 'required|min:5',
+            'content' => 'required|min:5',
             'featured_news' => 'required|numeric',
             'link_youtube' => 'required|max:255|url',
             'city' => 'required',
@@ -40,6 +52,19 @@ class AddPostRequest extends FormRequest
             'longitude' => 'required',
             'latitude' => 'required',
             'compilation' => 'required',
+            'name1' => 'required|min:5|max:255',
+            'name2' => 'required|min:5|max:255',
+            'phone1' => [
+                'required',
+                'regex:/^0[0-9]{9}$/'
+            ],
+            'phone2' => [
+                'required',
+                'regex:/^0[0-9]{9}$/'
+            ],
+            'img1' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+            'img2' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+
 
         ];
     }
@@ -59,10 +84,8 @@ class AddPostRequest extends FormRequest
             'price.numeric' => 'Giá bài viết phải là số',
             'subtitles.required' => 'Vui lòng nhập vào tiêu đề phụ bài viết',
             'subtitles.min' => 'Tiêu đề phụ bài viết từ 5 ký tự trở lên',
-            'subtitles.max' => 'Tiêu đề phụ bài viết dưới 255 ký tự',
             'content.required' => 'Vui lòng nhập vào nội dung bài viết',
             'content.min' => 'Nội dung bài viết từ 5 ký tự trở lên',
-            'content.max' => 'Nội dung bài viết dưới 255 ký tự',
             'featured_news.required' => 'Vui lòng nhập vào VIP bài viết',
             'featured_news.numeric' => 'VIP bài viết phải là số',
             'link_youtube.required' => 'Vui lòng nhập vào Link Youtube bài viết',
@@ -77,6 +100,32 @@ class AddPostRequest extends FormRequest
             'longitude.required' => 'Vui lòng nhập vào kinh độ',
             'latitude.required' => 'Vui lòng nhập vào vĩ độ',
             'compilation.required' => 'Vui lòng nhập vào compilation',
+            'name1.required' => 'Vui lòng nhập vào tên liên hệ 1',
+            'name1.min' => 'Tên liên hệ từ 5 ký tự trở lên',
+            'name1.max' => 'Tên liên hệ dưới 255 ký tự',
+            'name2.required' => 'Vui lòng nhập vào tên liên hệ 1',
+            'name2.min' => 'Tên liên hệ từ 5 ký tự trở lên',
+            'name2.max' => 'Tên liên hệ dưới 255 ký tự',
+            'phone1.required' => 'Vui lòng nhập vào số điện thoại',
+            'phone1.regex' => 'Vui lòng nhập đúng định dạng số điện thoại',
+            'phone2.required' => 'Vui lòng nhập vào số điện thoại',
+            'phone2.regex' => 'Vui lòng nhập đúng định dạng số điện thoại',
+            'img1.required' => 'Vui lòng thêm ảnh',
+            'img1.image' => 'Vui lòng thêm tệp ảnh',
+            'img1.mimes' => 'Trường ảnh phải có một trong các phần mở rộng: jpeg, png, jpg, gif.',
+            'img1.max' => 'Trường ảnh không thể lớn hơn 2MB.',
+            'img2.required' => 'Vui lòng thêm ảnh',
+            'img2.image' => 'Vui lòng thêm tệp ảnh',
+            'img2.mimes' => 'Trường ảnh phải có một trong các phần mở rộng: jpeg, png, jpg, gif.',
+            'img2.max' => 'Trường ảnh không thể lớn hơn 2MB.',
         ];
+    }
+    public function withValidator($validator)
+    {
+        $validator->after(function ($validator) {
+            if ($validator->failed()) {
+                // Xử lý khi có lỗi kiểm tra
+            }
+        });
     }
 }

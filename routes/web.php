@@ -39,33 +39,35 @@ use App\Http\Controllers\Client\Index\IndexController;
 use App\Http\Controllers\Client\Post\AddPostController;
 use App\Http\Controllers\Client\Post\PostNewController;
 use App\Http\Controllers\Client\Search\SearchController;
+use App\Http\Controllers\Client\Pay\RechargeController;
+use App\Http\Controllers\Client\Post\PostListController;
 use Illuminate\Support\Facades\Route;
 
-Route::group(['prefix' => 'admin', 'middleware' => ['AdminLogin']], function (){
-    Route::get('/', [ViewDashboardController::class, 'dashboar'])->name('dashboar');
-    Route::group(['prefix' => 'nhu-cau'], function (){
-        Route::get('/danh-sach', [ListDemandController::class, 'listDemand'])->name('listDemand');
-        Route::get('/xoa/{slug}', [DeleteDemandController::class, 'deleteDemand'])
-             ->name('deleteDemand');
-        Route::get('/chinh-sua/{slug}', [EditDemandController::class, 'editFormDemand'])
-             ->name('editDemand');
-        Route::post('/chinh-sua/{slug}', [EditDemandController::class, 'editDemand'])
-             ->name('editDemand');
-        Route::get('/them', [AddDemandController::class, 'addFormDemand'])->name('addDemand');
-        Route::post('/them', [AddDemandController::class, 'addDemand'])->name('addDemand');
-    });
-    Route::group(['prefix' => 'danh-muc'], function (){
-        Route::get('/danh-sach', [ListCategoryController::class, 'listCategory'])
-             ->name('listCategory');
-        Route::get('/xoa/{slug}', [DeleteCategoryController::class, 'deleteCategory'])
-             ->name('deleteCategory');
-        Route::get('/chinh-sua/{slug}', [EditCategoryController::class, 'editFormCategory'])
-             ->name('editCategory');
-        Route::post('/chinh-sua/{slug}', [EditCategoryController::class, 'editCategory'])
-             ->name('editCategory');
-        Route::get('/them', [AddCategoryController::class, 'addFormCategory'])->name('addCategory');
-        Route::post('/them', [AddCategoryController::class, 'addCategory'])->name('addCategory');
-    });
+Route::group(['prefix' => 'admin', 'middleware' => ['AdminLogin']], function () {
+     Route::get('/', [ViewDashboardController::class, 'dashboar'])->name('dashboar');
+     Route::group(['prefix' => 'nhu-cau'], function () {
+          Route::get('/danh-sach', [ListDemandController::class, 'listDemand'])->name('listDemand');
+          Route::get('/xoa/{slug}', [DeleteDemandController::class, 'deleteDemand'])
+               ->name('deleteDemand');
+          Route::get('/chinh-sua/{slug}', [EditDemandController::class, 'editFormDemand'])
+               ->name('editDemand');
+          Route::post('/chinh-sua/{slug}', [EditDemandController::class, 'editDemand'])
+               ->name('editDemand');
+          Route::get('/them', [AddDemandController::class, 'addFormDemand'])->name('addDemand');
+          Route::post('/them', [AddDemandController::class, 'addDemand'])->name('addDemand');
+     });
+     Route::group(['prefix' => 'danh-muc'], function () {
+          Route::get('/danh-sach', [ListCategoryController::class, 'listCategory'])
+               ->name('listCategory');
+          Route::get('/xoa/{slug}', [DeleteCategoryController::class, 'deleteCategory'])
+               ->name('deleteCategory');
+          Route::get('/chinh-sua/{slug}', [EditCategoryController::class, 'editFormCategory'])
+               ->name('editCategory');
+          Route::post('/chinh-sua/{slug}', [EditCategoryController::class, 'editCategory'])
+               ->name('editCategory');
+          Route::get('/them', [AddCategoryController::class, 'addFormCategory'])->name('addCategory');
+          Route::post('/them', [AddCategoryController::class, 'addCategory'])->name('addCategory');
+     });
 
     Route::group(['prefix' => 'nguoi-dung', 'middleware' => ['Roles']], function (){
         Route::get('/danh-sach', [ListUserController::class, 'listUser'])->name('listUser');
@@ -93,8 +95,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['AdminLogin']], function (){
         Route::post('/them', [AddVoucherController::class, 'addVoucher'])->name('addVoucher');
         Route::get('status/{id}', [ListVoucherController::class, 'status'])->name('status');
     });
-    Route::group(['prefix' => 'lich-su-giao-dich', 'middleware' => ['Roles']], function (){
-        Route::get('/danh-sach', [RechargeHistoryController::class, 'listRechargeHistory'])->name('listRechargeHistory');
+    Route::group(['prefix' => 'lich-su-gia-dich', 'middleware' => ['Roles']], function (){
+        Route::get('/danh-sach', [RechargeHistoryController::class, 'listRechargeHistory'])
+             ->name('listRechargeHistory');
     });
     Route::group(['prefix' => 'posts'], function (){
         Route::get('/danh-sach', [ListPostsController::class, 'listPosts'])->name('listPosts');
@@ -139,14 +142,9 @@ Route::group(['prefix' => '/', 'middleware' => ['checkLogin']], function (){
         [ForgetPasswordController::class, 'postResetPassword'])->name('postResetPassword');
 
 });
-
 Route::group(['prefix' => '/', 'middleware' => ['ClientLogin']], function (){
 
     Route::get('tai-khoan', [AccountController::class, 'account'])->name('account');
-    Route::post('sua-tai-khoan/{token}',[AccountController::class, 'updateProfile'])->name('updateProfile');
-    Route::post('doi-mat-khau/{token}',[AccountController::class, 'updatePassword'])->name('updatePassword');
-
-
     Route::group(['prefix' => 'bai-viet'], function (){
         Route::get('/them', [AddPostController::class, 'post'])->name('postAdd');
         Route::post('/them', [AddPostController::class, 'addClientPosts'])->name('addClientPosts');
@@ -155,21 +153,25 @@ Route::group(['prefix' => '/', 'middleware' => ['ClientLogin']], function (){
 
 });
 
-Route::group(['prefix' => '/'], function (){
-    Route::get('/', [IndexController::class, 'index'])->name('index');
-    Route::get('bao-loi', [ErrorPageController::class, 'error'])->name('error');
-    Route::get('kich-hoat/{token}', [RegisterController::class, 'active'])->name('active');
-    Route::get('/chi-tiet-tin', [PostSingleController::class, 'postSingle'])
-         ->name('postSingle');
-    Route::get('lien-he', [ContactController::class, 'contact'])->name('contact');
-    Route::get('gioi-thieu', [AboutController::class, 'about'])->name('about');
-    Route::group(['prefix' => 'tin-tuc'], function (){
-        Route::get('/danh-sach', [BlogListController::class, 'listBlog'])->name('listBlog');
-    });
+Route::group(['prefix' => '/'], function () {
+     Route::get('/', [IndexController::class, 'index'])->name('index');
+     Route::get('bao-loi', [ErrorPageController::class, 'error'])->name('error');
+     Route::get('kich-hoat/{token}', [RegisterController::class, 'active'])->name('active');
+     Route::get('/chi-tiet-tin/{slug}', [PostSingleController::class, 'postSingle'])
+          ->name('postSingle');
+     Route::get('lien-he', [ContactController::class, 'contact'])->name('contact');
+     Route::get('gioi-thieu', [AboutController::class, 'about'])->name('about');
+     Route::group(['prefix' => 'tin-tuc'], function () {
+          Route::get('/danh-sach', [BlogListController::class, 'listBlog'])->name('listBlog');
+     });
+     Route::group(['prefix' => 'tin'], function () {
+          Route::get('/danh-sach-tin', [PostListController::class, 'listPost'])->name('listPost');
+     });
 
-    Route::group(['prefix' => 'tim-kiem'], function (){
-        Route::get('/danh-sach', [SearchController::class, 'search'])->name('search');
-    });
+     Route::group(['prefix' => 'tim-kiem'], function () {
+          Route::get('/loai/danh-sach/{slug}', [SearchController::class, 'search'])->name('search');
+         Route::get('/nhu-cau/danh-sach/{slug}', [SearchController::class, 'search1'])->name('search1');
+     });
 
     Route::group(['prefix' => 'tai-lieu'], function (){
         Route::get('/dieu-khoan', [DocsController::class, 'docsterms'])->name('terms');

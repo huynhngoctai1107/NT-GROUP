@@ -2,9 +2,11 @@
 
 namespace App\Providers;
 
+use App\Models\Demand;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\View;
+use App\Models\Category;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -44,6 +46,18 @@ class AppServiceProvider extends ServiceProvider
 
                 return $formattedPrice;
             });
+        });
+
+        View::composer('*', function ($view) {
+            $category = new Category(); // Thay Category() bằng tên của mô hình của bạn
+            $dataToCategory = $category->GetCategory();
+            $view->with('dataToCategory', $dataToCategory);
+        });
+
+        View::composer('*', function ($view) {
+            $demand = new Demand(); // Thay Category() bằng tên của mô hình của bạn
+            $dataToDemand = $demand->GetDemand();
+            $view->with('dataToDemand', $dataToDemand);
         });
 
     }

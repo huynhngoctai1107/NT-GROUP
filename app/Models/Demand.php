@@ -17,6 +17,10 @@ class Demand extends Model
     {
         return $this->orderBy('id', 'desc')->paginate(5);
     }
+    public function GetDemand()
+    {
+        return $this->get();
+    }
 
     public function addDemands($value)
     {
@@ -38,7 +42,7 @@ class Demand extends Model
     {
         // Kiểm tra xem nhu cầu có sản phẩm nào không
         $demandHasProducts = $this->where('demands.slug', $slug)
-            ->join('posts', 'demands.id', '=', 'posts.id_demand')
+            ->join('medias', 'demands.id', '=', 'medias.id_demand')
             ->exists();
 
         if ($demandHasProducts) {

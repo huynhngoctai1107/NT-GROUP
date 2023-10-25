@@ -105,7 +105,7 @@
 <script src="{{asset('client/js/jquery.elevatezoom.js')}}"></script>
 <!-- scripts js -->
 <script src="{{asset('client/js/scripts.js')}}"></script>
-    @yield('js')
+    @stack('javascript')
     <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
 {{-- gg map and hinh anh upload.js--}}
 
@@ -129,11 +129,6 @@
             document.getElementById('latitude').value = lat;
         });
     </script>
-
-
-
-
-
     @stack('script')
 
 </body>

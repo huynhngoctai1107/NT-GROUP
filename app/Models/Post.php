@@ -57,4 +57,71 @@ class Post extends Model
     {
         return $this->hasMany(Media::class, 'id_post');
     }
+
+    public function getPost($condition){
+        return $this->where($condition)
+                    ->select('posts.id as id_post','posts.slug as slug_posts','category_posts.name as name_category',
+                        'category_posts.slug as slug_category', 'demands.name as name_demands',
+                        'demands.slug as slug_demands','title', 'address', 'acreages', 'number_views', 'price','subtitles', 'posts.created_at',
+                        DB::raw('GROUP_CONCAT(medias.image) AS images'))
+                    ->join('medias', 'medias.id_post', '=', 'posts.id')
+                    ->join('demands', 'demands.id', '=', 'posts.id_demand')
+                    ->join('category_posts', 'category_posts.id', '=', 'posts.id_category')
+                    ->groupby('id_post')
+                    ->get();
+    }
+
+    public function getFirstPost($condition) {
+        return $this->select('posts.id as id_post', 'posts.slug as slug_posts', 'category_posts.name as name_category',
+            'category_posts.slug as slug_category', 'demands.name as name_demand', 'demands.slug as slug_demand', 'title',
+            'content', 'acreages', 'address', 'posts.price as price_posts', 'subtitles', 'posts.created_at as posts_at',
+            'longitude', 'latitude',
+            DB::raw('GROUP_CONCAT(medias.image) AS images'))
+                    ->join('medias', 'medias.id_post', '=', 'posts.id')
+                    ->join('demands', 'demands.id', '=', 'posts.id_demand')
+                    ->join('category_posts', 'category_posts.id', '=', 'posts.id_category')
+                    ->where($condition)
+                    ->groupBy('id_post')
+                    ->first();
+    }
+
+    public function getPostCategory($condition, $slug){
+        return $this->where($condition)
+                    ->whereHas('category', function ($query) use ($slug) {
+                        $query->where('slug', '=', $slug);
+                    })
+                    ->select('posts.id as id_post', 'posts.slug as slug_posts', 'category_posts.name as name_category',
+                        'category_posts.slug as slug_category', 'demands.name as name_demands',
+                        'demands.slug as slug_demands', 'title', 'address', 'acreages', 'price', 'subtitles', 'posts.created_at',
+                        DB::raw('GROUP_CONCAT(medias.image) AS images'))
+                    ->join('medias', 'medias.id_post', '=', 'posts.id')
+                    ->join('demands', 'demands.id', '=', 'posts.id_demand')
+                    ->join('category_posts', 'category_posts.id', '=', 'posts.id_category')
+                    ->groupBy('id_post')
+                    ->get();
+    }
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'id_category');
+    }
+
+    public function getPostDeamnd($condition, $slug){
+        return $this->where($condition)
+                    ->whereHas('demand', function ($query) use ($slug) {
+                        $query->where('slug', '=', $slug);
+                    })
+                    ->select('posts.id as id_post', 'posts.slug as slug_posts', 'category_posts.name as name_category',
+                        'category_posts.slug as slug_category', 'demands.name as name_demands',
+                        'demands.slug as slug_demands', 'title', 'address', 'acreages', 'price', 'subtitles', 'posts.created_at',
+                        DB::raw('GROUP_CONCAT(medias.image) AS images'))
+                    ->join('medias', 'medias.id_post', '=', 'posts.id')
+                    ->join('demands', 'demands.id', '=', 'posts.id_demand')
+                    ->join('category_posts', 'category_posts.id', '=', 'posts.id_category')
+                    ->groupBy('id_post')
+                    ->get();
+    }
+    public function demand()
+    {
+        return $this->belongsTo(Demand::class, 'id_demand');
+    }
 }

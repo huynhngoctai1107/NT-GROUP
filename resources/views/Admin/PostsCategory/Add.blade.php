@@ -36,7 +36,6 @@
     <link rel="stylesheet" href="{{ asset('plugins/bs-stepper/css/bs-stepper.min.css') }}">
     <!-- dropzonejs -->
     <link rel="stylesheet" href="{{ asset('plugins/dropzone/min/dropzone.min.css') }}">
-    //
     <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
     {{-- endcss --}}
     <style>
@@ -168,6 +167,9 @@
                             if (input.files && input.files[0]) {
                                 var imageList = document.querySelector('.image-list'); // Chọn phần tử chứa danh sách hình ảnh
 
+                                // Xóa tất cả hình ảnh hiện có trước khi thêm hình ảnh mới
+                                removeUpload();
+
                                 for (var i = 0; i < input.files.length; i++) {
                                     var reader = new FileReader();
 
@@ -188,10 +190,17 @@
                         }
                     </script>
                     <div class="mb-3">
+                        @error('acreage')
+                        <div class="alert alert-danger mt-3">{{ $message }}</div>
+                        @enderror
+                        <label for="acreage" class="form-label">Giá</label>
+                        <input type="number" class="form-control" name="acreage" value="{{ old($page == 'posts' ? 'acreage' : '') }}" id="acreage">
+                    </div>
+                    <div class="mb-3">
                         @error('price')
                         <div class="alert alert-danger mt-3">{{ $message }}</div>
                         @enderror
-                        <label for="price" class="form-label">Giá</label>
+                        <label for="price" class="form-label">Diện tích</label>
                         <input type="number" class="form-control" name="price" value="{{ old($page == 'posts' ? 'price' : '') }}" id="price">
                     </div>
                     <div class="form-group">
@@ -267,7 +276,7 @@
                     <h5>Google Maps </h5>
 
                     <!-- Google Map -->
-                    <div class="mb-3" id="map" style="width: 100%; height: 400px;"></div>
+                    <div id="map" style="width: 100%; height: 400px;"></div>
 
                     <!-- Longitude and Latitude Input Boxes -->
                     <div class="mb-3">
@@ -291,6 +300,59 @@
                         <label class="form-label" for="compilation">compilation</label>
                         <input type="text" class="form-control" name="compilation" value="{{ old($page == 'posts' ? 'compilation' : '') }}" id="compilation" >
                     </div>
+                    <div class="alert alert-secondary" role="alert">
+                        <h5>Thông Tin Liên Hệ</h5>
+                    </div>
+                    <div style="display: flex; justify-content: space-between">
+                        <div style="width: 40%">
+                            <div class="mb-3">
+                                @error('phone1')
+                                <div class="alert alert-danger mt-3">{{ $message }}</div>
+                                @enderror
+                                <label for="phone" class="form-label">Số Điện Thoại Liên Hệ 1 *</label>
+                                <input type="number" class="form-control" id="phone" name="phone1" value="{{ old($page == 'posts' ? 'phone1' : '') }}">
+                            </div>
+                            <div class="mb-3">
+                                @error('name1')
+                                <div class="alert alert-danger mt-3">{{ $message }}</div>
+                                @enderror
+                                <label for="name" class="form-label">Tên Liên Hệ 1 *</label>
+                                <input type="text" class="form-control" id="name" name="name1" value="{{ old($page == 'posts' ? 'name1' : '') }}">
+                            </div>
+                            <div class="mb-3">
+                                @error('img1')
+                                <div class="alert alert-danger mt-3">{{ $message }}</div>
+                                @enderror
+                                <label for="images">Hình Ảnh Liên Hệ 1:</label>
+                                <input class="form-control form-control-sm" id="formFileSm" type="file" name="img1">
+                            </div>
+                        </div>
+                        <div style="width: 40%">
+                            <div class="mb-3">
+                                @error('phone2')
+                                <div class="alert alert-danger mt-3">{{ $message }}</div>
+                                @enderror
+                                <label for="phone" class="form-label">Số Điện Thoại Liên Hệ 2 *</label>
+                                <input type="number" class="form-control" id="phone" name="phone2" value="{{ old($page == 'posts' ? 'phone2' : '') }}">
+                            </div>
+
+                            <div class="mb-3">
+                                @error('name2')
+                                <div class="alert alert-danger mt-3">{{ $message }}</div>
+                                @enderror
+                                <label for="name" class="form-label">Tên Liên Hệ 2 *</label>
+                                <input type="text" class="form-control" id="name" name="name2" value="{{ old($page == 'posts' ? 'name2' : '') }}">
+                            </div>
+
+                            <div class="mb-3">
+                                @error('img2')
+                                <div class="alert alert-danger mt-3">{{ $message }}</div>
+                                @enderror
+                                <label for="images">Hình Ảnh Liên Hệ 2:</label>
+                                <input class="form-control form-control-sm" id="formFileSm" type="file" name="img2">
+                            </div>
+                        </div>
+                    </div>
                     <button type="submit" class="btn btn-primary mb-3">Thêm</button>
                 </form>
             </div>
@@ -305,9 +367,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
     <script src="{{ asset('plugins/select2/js/address.js') }}"></script>
-    //<!-- jQuery UI 1.11.4 -->
+    <!-- jQuery UI 1.11.4 -->
     <script src="{{ asset('plugins/jquery-ui/jquery-ui.min.js') }}"></script>
-    //<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script>
         $.widget.bridge('uibutton', $.ui.button)
     </script>
@@ -323,17 +385,6 @@
     <script src="{{ asset('dist/js/pages/dashboard.js') }}"></script>
     <script src="{{ asset('plugins/summernote/summernote-bs4.min.js') }}"></script>
     <script src="{{ asset('plugins/select2/js/select2.full.min.js') }}"></script>
-
-
-
-    //<!-- Page specific script -->
-    {{-- gg map and hinh anh upload.js --}}
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8ttJcdnyqOwb93B47rjRU+ABJxUrEDR/i" crossorigin="anonymous">
-    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
-    {{-- gg map and hinh anh upload.js --}}
-
-
-    <script src="https://maps.app.goo.gl/uxx2Xc9w7GcKigKt7"></script>
     <script>
         $(function () {
             // Summernote
@@ -347,17 +398,21 @@
         $(function () {
             $('.select2').select2()
         });
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
+    {{-- gg map and hinh anh upload.js--}}
+
+    <script src="https://maps.app.goo.gl/uxx2Xc9w7GcKigKt7"></script>
+
+    <script>
         // Create a new Google Map object.
         const map = new google.maps.Map(document.getElementById('map'), {
-            center: {
-                lat: 10.0401,
-                lng: 105.7364
-            },
+            center: {lat: 10.0401, lng: 105.7364},
             zoom: 10
         });
 
         // Add a click listener to the map.
-        map.addListener('click', function (event) {
+        map.addListener('click', function(event) {
             // Get the longitude and latitude of the click event.
             const lng = event.latLng.lng();
             const lat = event.latLng.lat();
