@@ -7,7 +7,7 @@ use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
-class PostListController extends Controller
+class PostNewController extends Controller
 {
     public $post;
     public $category;
