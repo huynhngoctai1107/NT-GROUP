@@ -46,7 +46,7 @@ class AddPostsController extends Controller
             'id_acreage' => $request->id_acreage,
             'price' => $request->price,
             'subtitles' => $request->subtitles,
-            'content' => $request->content,
+            'content' =>  $request->input('content'),
             'featured_news' => $request->featured_news,
             'link_youtube' => $request->link_youtube,
             'address' => $request->input('address1') . ' ' . $request->address,
@@ -62,7 +62,7 @@ class AddPostsController extends Controller
             if ($countImg > 0) {
                 for ($i = 0; $i < $countImg; $i++) {
                     $filename = time() . '-' . 'medias' . '.' . $request->uploadfile[$i]->extension();
-                    $request->uploadfile[$i]->move(public_path("images"), $filename);
+                    $request->uploadfile[$i]->move(public_path("images/medias"), $filename);
                     $request->merge(['image' => $filename]);
                     // Thay đổi 'image' thành 'images' trong mảng dữ liệu
                     $data = [

@@ -13,6 +13,11 @@
 
         <x-client.header.posttitle :title="$title"></x-client.header.posttitle>
         <div class="section">
+            @if(Session::has('success'))
+                <div class="alert alert-success text-center" role="alert">
+                    {{Session::get('success')}}
+                </div>
+            @endif
             <div class="container">
                 <x-admin.buttom.add router="postAdd" name="Thêm bài viết"></x-admin.buttom.add>
                 <nav>

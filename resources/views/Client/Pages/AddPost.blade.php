@@ -10,6 +10,11 @@
     <x-client.header.posttitle :title="$title"></x-client.header.posttitle>
 
     <div class="container">
+        @if(Session::has('success'))
+            <div class="alert alert-success text-center" role="alert">
+                {{Session::get('success')}}
+            </div>
+        @endif
         <br/>
         <div class="row">
             <p class="alert alert-secondary">

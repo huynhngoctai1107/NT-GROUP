@@ -50,4 +50,6 @@ class LoginController extends Controller{
 
         return Redirect()->route('login')->with('success', 'Đăng xuất thành công');
     }
+
+
 }

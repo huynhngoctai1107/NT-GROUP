@@ -84,7 +84,7 @@
     </div>
 @endsection
 
-@section('javascript')
+@push('javascript')
     <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
     <!-- Bootstrap 4 -->
     <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -125,7 +125,7 @@
             });
         });
     </script>
-@endsection
+@endpush
 <!-- HTML !-->
 
 <style>

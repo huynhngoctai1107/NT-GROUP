@@ -20,20 +20,18 @@
         <div class="col-md-6">
             <div class="text-center text-md-end">
                 <ul class="header_list">
-                    <li><a href="{{route('postAdd')}}"><i class="ti-control-shuffle"></i><span>Đăng tin</span></a></li>
-                    <li><a href="{{route('postNew')}}"><i class="ti-heart"></i><span>Danh sách tin</span></a></li>
+                    <li><a href="{{route('postAdd')}}" ><i class="ti-control-shuffle"></i><span>Đăng tin</span></a></li>
+                    <li><a href="{{route('postNew')}}" ><i class="ti-heart"></i><span>Danh sách tin</span></a></li>
                     <li><a href="{{auth()->check() != '' ? route('account'):route('login')}}"><i class="ti-user"></i> {{auth()->check() != '' ? 'Tài khoản':'Đăng nhập'}}
                     </a>
                 </li>
                     @if(auth()->check())
                     <li><a href="{{route('logout')}}"><span>Đăng xuất</span></a></li>
                     @endif
-                    
-                                
-                           
-
                 </ul>
             </div>
         </div>
     </div>
 </div>
+
+

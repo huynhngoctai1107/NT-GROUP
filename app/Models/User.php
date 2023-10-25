@@ -32,7 +32,6 @@ class User extends Authenticatable{
 
     ];
 
-
     public function addUsers($data){
         return $this->insert($data);
     }
@@ -43,7 +42,6 @@ class User extends Authenticatable{
 
     }
 
-
     public function show($condition){
         return DB::table('roles')->where($condition)->get();
     }
@@ -51,7 +49,6 @@ class User extends Authenticatable{
     public function editUser($id){
         return $this->where('id', '=', $id)->first();
     }
-
 
     public function updateUser($data, $condition){
         return $this

@@ -69,7 +69,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['AdminLogin']], function (){
 
     Route::group(['prefix' => 'nguoi-dung', 'middleware' => ['Roles']], function (){
         Route::get('/danh-sach', [ListUserController::class, 'listUser'])->name('listUser');
-        Route::get('/userAccount', [ListUserController::class, 'userAccount'])->name('userAccount');
         Route::get('/chinh-sua/{id}', [EditUserController::class, 'editFormUser'])
              ->name('editFormUser');
         Route::post('/chinh-sua/{id}', [EditUserController::class, 'editUser'])->name('editUser');
@@ -94,9 +93,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['AdminLogin']], function (){
         Route::post('/them', [AddVoucherController::class, 'addVoucher'])->name('addVoucher');
         Route::get('status/{id}', [ListVoucherController::class, 'status'])->name('status');
     });
-    Route::group(['prefix' => 'lich-su-gia-dich', 'middleware' => ['Roles']], function (){
-        Route::get('/danh-sach', [RechargeHistoryController::class, 'listRechargeHistory'])
-             ->name('listRechargeHistory');
+    Route::group(['prefix' => 'lich-su-giao-dich', 'middleware' => ['Roles']], function (){
+        Route::get('/danh-sach', [RechargeHistoryController::class, 'listRechargeHistory'])->name('listRechargeHistory');
     });
     Route::group(['prefix' => 'posts'], function (){
         Route::get('/danh-sach', [ListPostsController::class, 'listPosts'])->name('listPosts');
@@ -141,9 +139,14 @@ Route::group(['prefix' => '/', 'middleware' => ['checkLogin']], function (){
         [ForgetPasswordController::class, 'postResetPassword'])->name('postResetPassword');
 
 });
+
 Route::group(['prefix' => '/', 'middleware' => ['ClientLogin']], function (){
 
     Route::get('tai-khoan', [AccountController::class, 'account'])->name('account');
+    Route::post('sua-tai-khoan/{token}',[AccountController::class, 'updateProfile'])->name('updateProfile');
+    Route::post('doi-mat-khau/{token}',[AccountController::class, 'updatePassword'])->name('updatePassword');
+
+
     Route::group(['prefix' => 'bai-viet'], function (){
         Route::get('/them', [AddPostController::class, 'post'])->name('postAdd');
         Route::post('/them', [AddPostController::class, 'addClientPosts'])->name('addClientPosts');
