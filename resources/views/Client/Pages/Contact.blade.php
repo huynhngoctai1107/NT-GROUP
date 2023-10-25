@@ -3,59 +3,79 @@
 @section('title')
     Liên Hệ - NT GROUP
 @endsection
+@php
+    $title = "Liên hệ";
+@endphp
 @section('main')
     <!-- START SECTION BREADCRUMB -->
-    <div class="breadcrumb_section bg_gray page-title-mini">
-        <div class="container"><!-- STRART CONTAINER -->
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <div class="page-title">
-                        <h1>Liên hệ chúng tôi</h1>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <ol class="breadcrumb justify-content-md-end">
-                        <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
-                        <li class="breadcrumb-item"><a href="#">Liên hệ</a></li>
-                    </ol>
-                </div>
-            </div>
-        </div><!-- END CONTAINER-->
-    </div>
-
     <div class="main_content">
+        <x-client.header.posttitle :title="$title"></x-client.header.posttitle>
         <!-- START SECTION CONTACT -->
         <div class="section pt-0">
             <div class="container mb-5 mt-5">
                 <div class="row">
                     <div class="col-md-6">
+                        @if(Session::has('success'))
+                            <div class="alert alert-success" role="alert">
+                                {{Session::get('success')}}
+                            </div>
+                        @endif
+                            @if(Session::has('error'))
+                                <div class="alert alert-danger" role="alert">
+                                    {{Session::get('error')}}
+                                </div>
+                            @endif
                         <p>Mọi thắc mắc xin mời bạn liên hệ với chúng tôi theo form dưới đây, xin cảm ơn!</p>
-                        <form>
+                            <form action="{{route('contactFrom')}}" method="post" enctype="multipart/form-data">
+                                @csrf
                             <div class="mb-3">
                                 <label for="name" class="form-label text-dark">Tên của bạn</label>
-                                <input type="text" class="form-control" id="name" name="name" placeholder="Ví dụ: Nguyễn Duy Hòa" required>
+                                <input type="text" class="form-control" id="name" name="fullname" placeholder="Ví dụ: Nguyễn Duy Hòa">
+                                @error('fullname')
+                                <p class="text-danger">
+                                    {{ $message }}
+                                </p>
+                                @enderror
                             </div>
                             <div class="mb-3">
                                 <label for="phone" class="form-label text-dark">Số điện thoại</label>
-                                <input type="tel" class="form-control" id="phone" name="phone" placeholder="Ví dụ: 0123456789" required>
+                                <input type="tel" class="form-control" id="phone" name="phone" placeholder="Ví dụ: 0123456789" >
+                                @error('phone')
+                                <p class="text-danger">
+                                    {{ $message }}
+                                </p>
+                                @enderror
                             </div>
                             <div class="mb-3">
                                 <label for="email" class="form-label text-dark">Email</label>
-                                <input type="email" class="form-control" id="email" name="email" placeholder="Ví dụ: Duyhoa2001@gmail.com" required>
+                                <input type="text" class="form-control" id="email" name="email" placeholder="Ví dụ: Duyhoa2001@gmail.com" >
+                                @error('email')
+                                <p class="text-danger">
+                                    {{ $message }}
+                                </p>
+                                @enderror
                             </div>
                             <div class="mb-3">
                                 <label for="address" class="form-label text-dark">Địa chỉ</label>
-                                <input type="text" class="form-control" id="address" name="address" placeholder="Ví dụ: 123 Hoàng Quốc Việt, An Bình, Ninh Kiều, Cần Thơ" required>
+                                <input type="text" class="form-control" id="address" name="address" placeholder="Ví dụ: 123 Hoàng Quốc Việt, An Bình, Ninh Kiều, Cần Thơ" >
+                                @error('address')
+                                <p class="text-danger">
+                                    {{ $message }}
+                                </p>
+                                @enderror
                             </div>
                             <div class="mb-3">
                                 <label for="message" class="form-label text-dark">Nội dung</label>
-                                <textarea class="form-control" id="message" name="message" rows="4" placeholder="Vui lòng nhập nội dung" required></textarea>
+                                <textarea class="form-control" id="message" name="content" rows="4" placeholder="Vui lòng nhập nội dung" ></textarea>
+                                @error('content')
+                                <p class="text-danger">
+                                    {{ $message }}
+                                </p>
+                                @enderror
                             </div>
                             <span class="mb-4 text-sm">Chúng tôi đảm bảo sẽ không tiết lộ bất cứ thông tin nào của
                                 bạn!</span>
-
                             <div class="form-group mb-3">
-                                {!! RecaptchaV3::field('contact') !!}
                                 <button type="submit" class="btn btn-fill-out  btn-block" name="contact">Gửi yêu cầu</button>
                             </div>
 

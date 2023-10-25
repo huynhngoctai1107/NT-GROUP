@@ -138,12 +138,9 @@
                                     </p>
                                     @enderror
                                     <div class="form-group mb-3">
-                                        {!! RecaptchaV3::field('resigter') !!}
-                                        <button type="submit" class="btn btn-fill-out btn-block"  name="resigter">Đăng ký</button>
+                                         <button type="submit" class="btn btn-fill-out btn-block"  name="resigter">Đăng ký</button>
                                     </div>
                                 </form>
-
-
                                 <div class="form-note text-center">Bạn đã có tài khoản?
                                     <a href="{{route('login')}}">Đăng nhập</a></div>
                             </div>

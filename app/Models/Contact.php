@@ -23,4 +23,14 @@ class Contact extends Model
         return $this->where($condition)->update($data);
     }
 
+//    public function addContact($value){
+//        return $this->insert($value);
+//    }
+//    public function listContact($condition){
+//        return $this->where($condition)->get();
+//    }
+//    public function deleteContact($condition){
+//        return $this->where($condition)->delete();
+//    }
+
 }
