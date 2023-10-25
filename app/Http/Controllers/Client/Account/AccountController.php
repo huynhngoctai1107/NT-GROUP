@@ -3,24 +3,9 @@
 namespace App\Http\Controllers\Client\Account;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Account\UpdateAccountRequest;
-use App\Http\Requests\Account\UpdatePasswordRequest;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Auth;
-use App\Models\User;
-use Illuminate\Support\Str;
-use App\Http\Controllers\Client\Transaction\TransactionHistoryController;
 
-
-class AccountController extends Controller{
-
-    public $user;
-    public $transaction;
-    public function __construct(){
-        $this->user = new User();
-        $this->transaction =new TransactionHistoryController() ;
-    }
+class AccountController extends Controller
+{
 
     public function account(){
 
