@@ -21,14 +21,14 @@ class IndexController extends Controller
            ['delete', '=', 0],
            ['status', '=', 1],
        ];
-       $data = $this->post->getPost($condition)->take(3);
+       $data = $this->post->getPostList($condition)->take(3);
        $hot = $data->sortByDesc('number_views')->take(8);
        $condition1 = [
            ['delete', '=', 0],
            ['status', '=', 1],
            ['featured_news', '=', 1],
        ];
-       $vip = $this->post->getPost($condition1)->take(8);
+       $vip = $this->post->getPostList($condition1)->take(8);
        $category = $this->category->GetCategory();
        return view('client.pages.index',['data'=>$data, 'category'=>$category, 'vip'=>$vip, 'hot'=>$hot]);
    }

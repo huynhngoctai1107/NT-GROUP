@@ -20,7 +20,7 @@ class BlogListController extends Controller
         $condition = [
             ['delete', '=', 0],
         ];
-        $data = $this->post->getPost($condition);
+        $data = $this->post->getPostList($condition);
         $category = $this->category->GetCategory();
         return view('Client.Pages.BlogList',['page'=>'blog', 'list'=>$data, 'category'=>$category]);
 

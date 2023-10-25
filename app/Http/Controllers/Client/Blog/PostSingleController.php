@@ -32,7 +32,7 @@ class PostSingleController extends Controller
             ['delete', '=', 0],
             ['status', '=', 1],
         ];
-        $list = $this->post->getPost($condition1)->take(3);
+        $list = $this->post->getPostList($condition1)->take(3);
         return view('Client.Pages.PostSingle',['page'=>'blog', 'data'=>$data, 'category'=>$category, 'list'=>$list]);
     }
 }

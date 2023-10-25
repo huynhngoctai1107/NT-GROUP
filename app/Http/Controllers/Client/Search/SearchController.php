@@ -21,8 +21,8 @@ class SearchController extends Controller
             ['delete', '=', 0],
             ['status', '=', 1],
         ];
-        $data = $this->post->getPostCategory($condition,$slug);
-        $sale = $this->post->getPost($condition)->take(3);
+        $data = $this->post->getPostCD($condition,$slug,'category');
+        $sale = $this->post->getPostList($condition)->take(3);
         return view('Client.Pages.search',['page'=>'search', 'list'=>$data, 'sale'=>$sale]);
 
     }
@@ -31,8 +31,8 @@ class SearchController extends Controller
             ['delete', '=', 0],
             ['status', '=', 1],
         ];
-        $data = $this->post->getPostDeamnd($condition,$slug);
-        $sale = $this->post->getPost($condition)->take(3);
+        $data = $this->post->getPostCD($condition,$slug,'demand');
+        $sale = $this->post->getPostList($condition)->take(3);
         return view('Client.Pages.search',['page'=>'search', 'list'=>$data, 'sale'=>$sale]);
 
     }
