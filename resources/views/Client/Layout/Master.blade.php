@@ -76,7 +76,7 @@
  {{-- end main --}}
     @include('client.footer.footer')
 <a href="#" class="scrollup" style="display: none;"><i class="ion-ios-arrow-up"></i></a>
-
+    @yield('showhide')
 <!-- Latest jQuery -->
 <script src="{{asset('client/js/jquery-3.6.0.min.js')}}"></script>
 <!-- popper min js -->

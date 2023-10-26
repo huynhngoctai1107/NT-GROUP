@@ -117,13 +117,13 @@
                                                 <div style="color:#003560;font-family:Arial, Helvetica Neue, Helvetica, sans-serif;font-size:14px;line-height:120%;text-align:left;mso-line-height-alt:16.8px;">
                                                     <p style="margin: 0; word-break: break-word;"><em>Xin chào {{$data->fullname}}</em>
                                                     </p>
-                                                    <p style="margin: 0; word-break: break-word;"> </p>
-                                                    <p style="margin: 0; word-break: break-word;">Bất Động Sản Kiên Giang là một trong những công ty chuyên về đầu tư xây dựng và phân phối bất động sản đất nền. Đây là một trong những công ty có tuổi đời trẻ nhưng đã khẳng định được vị thế của mình trên thị trường bất động sản Miền Nam – Tp. Kiên Giang</p>
-                                                    <p style="margin: 0; word-break: break-word;"> </p>
-                                                    <p style="margin: 0; word-break: break-word;">
-                                                        <em> Long song với việc chú trọng phát triển các hoạt động kinh doanh,Động Sản Kiên Giang cũng luôn chú tâm đến các hoạt động xã hội, tích cực thể hiện thông điệp “Vững Nền Tảng, Chắc Tương Lai”. Thường xuyên tổ chức các hoạt động hướng về cộng đồng, phát huy tinh thần tương thân tương ái, chia sẻ yêu thương cho xã hội, đem đến những tia nắng ấm cho các mảnh đời bất hạnh, kém may mắn.</em>
+                                                    <p style="margin: 0; word-break: break-word;"> </p>
+                                                    <p style="margin: 0; word-break: break-word; color:#003560";>Bất Động Sản Kiên Giang là một trong những công ty chuyên về đầu tư xây dựng và phân phối bất động sản đất nền. Đây là một trong những công ty có tuổi đời trẻ nhưng đã khẳng định được vị thế của mình trên thị trường bất động sản Miền Nam – Tp. Kiên Giang</p>
+                                                    <p style="margin: 0; word-break: break-word;"> </p>
+                                                    <p style="margin: 0; word-break: break-word; color:#003560";>
+                                                        <em class="text-dark"> Long song với việc chú trọng phát triển các hoạt động kinh doanh,Động Sản Kiên Giang cũng luôn chú tâm đến các hoạt động xã hội, tích cực thể hiện thông điệp “Vững Nền Tảng, Chắc Tương Lai”. Thường xuyên tổ chức các hoạt động hướng về cộng đồng, phát huy tinh thần tương thân tương ái, chia sẻ yêu thương cho xã hội, đem đến những tia nắng ấm cho các mảnh đời bất hạnh, kém may mắn.</em>
                                                     </p>
-                                                    <p style="margin: 0; word-break: break-word;"> </p>
+                                                    <p style="margin: 0; word-break: break-word;"> </p>
                                                     <p style="margin: 0; word-break: break-word;">
                                                         <strong><em>Cảm ơn!</em></strong></p>
                                                 </div>
@@ -222,7 +222,7 @@
                                 <tr>
                                     <td class="pad">
                                         <div align="center" style="font-family:Arial, Helvetica Neue, Helvetica, sans-serif;text-align:center;">
-                                            <div style="height:30px;"> </div>
+                                            <div style="height:30px;"> </div>
                                         </div>
                                     </td>
                                 </tr>
@@ -261,9 +261,9 @@
                                 <tr>
                                     <td class="pad" style="padding-bottom:10px;padding-left:20px;padding-right:20px;padding-top:25px;">
                                         <div style="color:#ffffff;font-family:Arial, Helvetica Neue, Helvetica, sans-serif;font-size:12px;line-height:120%;text-align:center;mso-line-height-alt:14.399999999999999px;">
-                                            <p style="margin: 0; word-break: break-word;"> </p>
+                                            <p style="margin: 0; word-break: break-word;"> </p>
                                             <p style="margin: 0; word-break: break-word;">Bất động sản Kiên Giang - Kết hợp các tiện ích dịch vụ</p>
-                                            <p style="margin: 0; word-break: break-word;"><span> </span></p>
+                                            <p style="margin: 0; word-break: break-word;"><span> </span></p>
                                         </div>
                                     </td>
                                 </tr>

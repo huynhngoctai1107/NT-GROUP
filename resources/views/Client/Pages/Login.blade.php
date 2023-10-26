@@ -6,7 +6,7 @@
 @php
     $title = "Đăng nhập";
 @endphp
-@section('js')
+@section('showhide')
 
     <script src="{{asset('client/js/showhide.js')}}"></script>
 @endsection

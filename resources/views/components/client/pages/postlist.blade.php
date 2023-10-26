@@ -22,8 +22,8 @@
                 {{ $item->name_category }}</a>
 
 
-              
-                
+
+
             <a href="{{route('search1',$item->slug_demands)}}" class=" text-white  btn btn-fill-out fst-italic" type="button">
                 {{ $item->name_demands }}</a>
         </td>
@@ -71,4 +71,3 @@
 
     </tr>
 @endforeach
-

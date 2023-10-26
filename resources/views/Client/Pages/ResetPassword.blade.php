@@ -6,7 +6,7 @@
 @php
     $title = "Quên mật khẩu";
 @endphp
-@section('js')
+@section('showhide')
 
     <script src="{{asset('client/js/showhide.js')}}"></script>
 @endsection

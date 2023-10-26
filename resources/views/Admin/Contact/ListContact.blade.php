@@ -28,34 +28,46 @@
                     <div class="card-body mt-3">
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
-                            <tr>
+                            <tr class="text-center">
                                 <th>Tên</th>
                                 <th>Email</th>
                                 <th>Số điện thoại</th>
                                 <th>Địa chỉ</th>
                                 <th>Nội dung</th>
+                                <th>Trạng thái</th>
                                 <th>Nghiệp vụ</th>
                             </tr>
                             </thead>
                             <tbody>
                             @foreach($query as $item)
-                                <tr>
-                                    <td>{{$item->fullname}}</td>
+                                <tr class="text-center">
+                                    <td >{{$item->fullname}}</td>
                                     <td>{{$item->email}}</td>
                                     <td>{{$item->phone}}</td>
                                     <td>{{$item->address}}</td>
                                     <td>{{$item->content}}</td>
+
+                                    <td class="text-center" style="font-weight: bold;">
+                                        <a href="{{route('statusContact', $item->id)}}"
+                                           class="btn btn-sm btn-{{$item->status ? 'danger':'success'}}">
+                                            {{$item->status==0 ? 'Đang xử lí':'Đã xử lí'}}
+                                        </a>
+                                    </td>
                                     <td>
-                                        <a href="{{route('deleteContact',$item->id)}}">Xóa</a>
+                                        <div class="btn-group"  role="group">
+                                            <a href="{{route('deleteContact',$item->id)}}"  class="btn btn-outline-danger btn-sm">Xoá</a>
+                                        </div>
                                     </td>
                                 </tr>
                             @endforeach
                             </tbody>
                         </table>
+                        <div class="mt-3">{{ $query->links() }}</div>
                     </div>
                     <!-- /.card-body -->
                 </div>
             </div>
+
         </div>
     </div>
 @endsection

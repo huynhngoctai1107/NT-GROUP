@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin\Contact;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Account\ContactsRequest;
 use App\Http\Controllers\Client\Mail\ContactController;
-use App\Models\Contact;
+use App\Models\ContactClient;
 
 class AddContactController extends Controller{
 
@@ -13,7 +13,7 @@ class AddContactController extends Controller{
     public $mail;
 
     public function __construct(){
-        $this->contact = new Contact();
+        $this->contact = new ContactClient();
         $this->mail = new ContactController();
     }
     function contact(){

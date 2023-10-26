@@ -87,6 +87,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['AdminLogin']], function (){
         Route::post('/them', [AddUserController::class, 'formAddUser'])->name('addUser');
         Route::get('/xoa/{id}', [DeleteUserController::class, 'deleteUser'])->name('deleteUser');
         Route::get('deleted-user-list', [DeleteUserController::class, 'deletedUserList'])->name('deletedUserList');
+        Route::get('statusUser/{id}', [ListUserController::class, 'statusUser'])
+             ->name('statusUser');
+        Route::get('trang-thai-lien-he/{id}', [ListContactController::class, 'statusContact'])
+             ->name('statusContact');
     });
 
     Route::group(['prefix' => 'voucher'], function (){

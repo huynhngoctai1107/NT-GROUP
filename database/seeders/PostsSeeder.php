@@ -136,7 +136,7 @@ class PostsSeeder extends Seeder{
         ];
 
         foreach ($post as $item){
-            DB::table('medias')->insert($item);
+            DB::table('posts')->insert($item);
 
         }
         foreach ($images as $item){

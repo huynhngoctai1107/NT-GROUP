@@ -16,7 +16,6 @@ class postlist extends Component
     {
         $this->postList = $postList;
     }
-
     /**
      * Get the view / contents that represent the component.
      */
