@@ -1,45 +1,56 @@
 <div class="containers" id="containers">
 
-    <div class="form-container sign-up-container">
-        <form class="wallet" action="#">
-            <div class="round-image">
-                <img src="@if(auth()->user()->image){{asset('images/users/'.auth()->user()->image )}}@else{{'https://static.vecteezy.com/system/resources/previews/000/439/863/original/vector-users-icon.jpg'}}@endif" class="rounded-circle img-fluid" style="width: 100px;"/>            </div>
+    <form class="bb-form validate-form"> <span class="bb-form-title p-b-26"> Welcome </span>
+        <span class="bb-form-title p-b-48"> <i class="mdi mdi-symfony"></i> </span>
+        <div class="wrap-input100 validate-input" data-validate="Valid email is: a@b.c"> <input class="input100" type="text" name="email">
+            <span class="bbb-input" data-placeholder="Email"></span> </div>
+        <div class="wrap-input100 validate-input" data-validate="Enter password">
+            <span class="btn-show-pass"> <i class="mdi mdi-eye show_password"></i> </span> <input class="input100" type="password" name="pass">
+            <span class="bbb-input" data-placeholder="Password"></span> </div>
+        <div class="login-container-form-btn">
+            <div class="bb-login-form-btn">
+                <div class="bb-form-bgbtn"></div> <button class="bb-form-btn"> Login </button>
+            </div>
+        </div>
+        <div class="text-center p-t-115"> <span class="txt1"> Don&rsquo;t have an account? </span> <a
+                    class="txt2" href="#"> Sign Up </a> </div>
+    </form>
 
-            <h4 class="mt-3">{{auth()->user()->fullname}}</h4>
-
-            <form class="row g-3">
-
-                <label for="name" id="name-label">
-                    <span>Tên chủ thẻ</span>
-                    <input type="text" name="name" class="form-control" required="required">
-                </label>
-
-                <label for="phone" id="name-label">
-                    <span>Số điện thoại</span>
-                    <input type="text" name="phone" class="form-control" required="required">
-                </label>
-
-                <label for="email" id="email-label">
-                    <span>Eamil chủ thẻ</span>
-                    <input type="text" name="name" min="1" max="999" class="form-control" required="required">
-                </label>
-
-                <br/>
-                <div class="px-5 pay">
-                    <button class="btn btn-success btn-block">Nạp Tiền</button>
-                </div>
-            </form>
-        </form>
-    </div>
+{{--    <div class="form-container sign-up-container">--}}
+{{--        <div class="card py-4">--}}
+{{--            <form action="{{ route('vnpay-payment') }}" method="POST" class="text-center">--}}
+{{--                @csrf--}}
+{{--                <div class="round-image1">--}}
+{{--                    <img src="@if(auth()->user()->image){{asset('images/users/'.auth()->user()->image )}}@else{{'https://static.vecteezy.com/system/resources/previews/000/439/863/original/vector-users-icon.jpg'}}@endif" class="rounded-circle img-fluid" id="userImage"/>--}}
+{{--                </div>--}}
+{{--                <h4 class="mt-4">{{auth()->user()->fullname}}</h4>  <br/>--}}
+{{--                <div class="mb-3">--}}
+{{--                    <label for="name" id="name-label">Số tiền cần nạp</label>--}}
+{{--                    <input type="number" name="price" class="form-control rounded-input" required="required" />--}}
+{{--                </div>--}}
+{{--                <br/>--}}
+{{--                <div class="mb-3">--}}
+{{--                    <label for="payments">Phương thức thanh toán</label>--}}
+{{--                    <select class="form-select rounded-input" aria-label="Default select example" name="payments">--}}
+{{--                        <option value="1">Momo</option>--}}
+{{--                        <option value="2">VNPay</option>--}}
+{{--                        <option value="3">Paypal</option>--}}
+{{--                    </select>--}}
+{{--                </div>--}}
+{{--                <div class="btn-group" role="group">--}}
+{{--                    <button name="redirect" class="centered">Nạp Tiền</button>--}}
+{{--                </div>--}}
+{{--            </form>--}}
+{{--        </div>--}}
+{{--    </div>--}}
 
     <div class="form-container sign-in-container">
-
         <div class="card py-4">
-            <div class="round-image">
-                <img src="@if(auth()->user()->image){{asset('images/users/'.auth()->user()->image )}}@else{{'https://static.vecteezy.com/system/resources/previews/000/439/863/original/vector-users-icon.jpg'}}@endif" class="rounded-circle img-fluid" style="width: 100px;"/>            </div>
+            <div class="round-image2">
+                <img src="@if(auth()->user()->image){{asset('images/users/'.auth()->user()->image )}}@else{{'https://static.vecteezy.com/system/resources/previews/000/439/863/original/vector-users-icon.jpg'}}@endif" class="rounded-circle img-fluid" id=""/>
+            </div>
             <div class="#">
-                <h4 class="mt-3">{{auth()->user()->fullname}}</h4>
-                <br/>
+                <h4 class="mt-3">{{auth()->user()->fullname}}</h4><br/>
                 <form class="row g-3">
                     <div class="col-md-6">
                         <label for="email"> Email: </label>
@@ -69,7 +80,6 @@
 
             </div>
         </div>
-
     </div>
 
     <div class="overlay-container">
@@ -94,15 +104,23 @@
 <style>
 	button {
 		border-radius: 50px;
-		border: 1px solid #4A00E0;
-		background-color: #4A00E0;
-		color: #000000;
+		border: 1px solid #279b00;
+		background-color: #17a846;
+		color: rgb(255, 255, 255);
 		font-size: 13px;
+		margin-top: 20px;
 		font-weight: bold;
 		padding: 12px 45px;
 		text-transform: uppercase;
 		transition: transform 80ms ease-in;
 	}
+	.centered social:hover {
+		cursor: pointer;
+		opacity: 0.8;
+		color: springgreen;
+		background-color: #222425;
+		transition: all 0.3s ease-in
+    }
 
 	button:active {
 		transform: scale(0.95);
@@ -117,17 +135,15 @@
 		border-color: #FFFFFF;
 	}
 
-	.wallet {
-		background-color: #FFFFFF;
+	.form-container {
 		display: flex;
-		align-items: center;
-		justify-content: center;
 		flex-direction: column;
-		padding: 0 50px;
-		height: 100%;
-		text-align: center;
+		align-items: center;
 	}
 
+	.rounded-input {
+		border-radius: 20px;
+	}
 
 	.containers {
 		background-color: #FFFFFF;
@@ -143,7 +159,7 @@
 	.form-container {
 		position: absolute;
 		top: 0;
-		height: 100%;
+		height: 150px;
 		transition: all 0.6s ease-in-out;
 	}
 
@@ -154,7 +170,7 @@
 	}
 
 	.sign-up-container {
-		left: 0;
+		left: 20px;
 		width: 50%;
 		opacity: 0;
 		z-index: 1;
@@ -185,7 +201,7 @@
 	.overlay {
 		background: #f6f5f7;
 		background: -webkit-linear-gradient(to right, #a8fc87, #fcbe8e);
-		background: linear-gradient(to right, #a8cefa, #f6ee93);
+		background: linear-gradient(to right, #ff947e, #f6ee93);
 		background-repeat: no-repeat;
 		background-size: cover;
 		background-position: 0 0;
@@ -250,17 +266,46 @@
 		width: 40px;
 	}
 
-	.round-image {
-		width: 100px;
-		height: 100px;
+	.round-image1 {
+		margin-left: 50px;
+		width: 120px;
+		height: 120px;
 		border: 2px solid red;
 		border-radius: 50%;
 		display: flex;
 		justify-content: center;
 		align-items: center;
-
+		overflow: hidden;
 	}
 
+	.round-image1 img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.round-image2 {
+		width: 125px;
+		height: 125px;
+		border: 2px solid red;
+		border-radius: 50%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		overflow: hidden;
+	}
+
+	.round-image2 img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	#userImage {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
 
 </style>
 

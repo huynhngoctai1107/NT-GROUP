@@ -31,6 +31,11 @@
                     <div class="card-body">
                         <x-admin.buttom.add router="addUser" name="Thêm tài khoản"></x-admin.buttom.add>
                         <table id="example1" class="table table-bordered table-striped">
+                            @if(session('success'))
+                                <div class="alert alert-success">
+                                    {{ session('success') }}
+                                </div>
+                            @endif
                             <thead>
                             <tr>
                                 <th>Loại tài khoản</th>
@@ -60,7 +65,8 @@
                                             Không rõ
                                         @endif
                                     </td>
-                                    <td><img src='{{asset("images/$data->image")}}' alt="Hình ảnh đang cập nhật" width="150" height="120"></td>
+                                    <td><img src='{{asset("images/$data->image")}}' alt="" width="150" height="120">
+                                    </td>
                                     <td>{{ $data->fullname }}</td>
                                     <td>{{ $data->email }}</td>
                                     <td>{{ number_format($data->wallet)}} VNĐ</td>
@@ -68,9 +74,8 @@
                                     <td>{{ $data->phone }}</td>
                                     <td>{{ $data->address }}</td>
                                     <td>
-                                        <a href="{{route('statusUser', $data->id)}}"
-                                           class="btn btn-sm btn-{{$data->status ? 'success':'danger'}}">
-                                            {{$data->status ? 'Đang hoạt động':'Tạm ngừng hoạt động'}}
+                                        <a href="{{route('statusUser', $data->id)}}" class="btn btn-sm btn-{{$data->status ? 'success':'danger'}}">
+                                            {{$data->status ? 'Đang hoạt động':'Tạm ngưng hoạt động'}}
                                         </a>
                                     </td>
                                     <td>
@@ -90,6 +95,7 @@
             </div>
         </div>
     </div>
+    <div style="margin-bottom: 30px;"></div>
 @endsection
 
 @push('javascript')
@@ -114,23 +120,23 @@
     <!-- AdminLTE for demo purposes -->
     <script src="{{ asset('dist/js/demo.js') }}"></script>
     <!-- Page specific script -->
-    <script>
-        $(function () {
-            $("#example1").DataTable({
-                "responsive": true,
-                "lengthChange": false,
-                "autoWidth": false,
-                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-            $('#example2').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true
-            });
-        });
-    </script>
+{{--    <script>--}}
+{{--        $(function () {--}}
+{{--            $("#example1").DataTable({--}}
+{{--                "responsive": true,--}}
+{{--                "lengthChange": false,--}}
+{{--                "autoWidth": false,--}}
+{{--                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]--}}
+{{--            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');--}}
+{{--            $('#example2').DataTable({--}}
+{{--                "paging": true,--}}
+{{--                "lengthChange": false,--}}
+{{--                "searching": false,--}}
+{{--                "ordering": true,--}}
+{{--                "info": true,--}}
+{{--                "autoWidth": false,--}}
+{{--                "responsive": true--}}
+{{--            });--}}
+{{--        });--}}
+{{--    </script>--}}
 @endpush<!-- HTML !-->

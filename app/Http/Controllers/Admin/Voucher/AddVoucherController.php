@@ -46,7 +46,7 @@ class AddVoucherController extends Controller{
 
         $data = $this->voucher->addVoucher($value);
 
-        return redirect()->route('listVoucher')->with('success', 'Voucher đã được tạo thành công.');
+        return redirect()->route('listVoucher')->with('success', 'Thêm Voucher " ' . $request->name . ' " thành công');
     }
 
 }

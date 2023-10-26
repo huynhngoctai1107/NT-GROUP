@@ -1,7 +1,4 @@
 @extends('Admin.Layout.master')
-
-
-{{-- css --}}
 @section('link')
     <!-- iCheck for checkboxes and radio inputs -->
     <link rel="stylesheet" href="{{ asset('plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
@@ -43,6 +40,7 @@
                         <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
+                    <x-admin.user.images></x-admin.user.images>
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Mã code</label>
                         <input type="text" class="form-control" value="{{ $page == 'addVoucher' ? old('code') : $data->code }}" name="code" id="exampleInputEmail1" aria-describedby="emailHelp">
@@ -59,7 +57,7 @@
                                     @else
                                 {{ $data['condition'] ?? '' == 1 ? 'selected' : '' }}
                                     @endif>
-                                Giảm cho tất cả
+                                Giảm khi mua combo 3 món ăn trưa
                             </option>
                             <option value="2"
                             @if ($page == 'addVoucher')
@@ -67,7 +65,7 @@
                                     @else
                                 {{ $data['condition'] ?? '' == 2 ? 'selected' : '' }}
                                     @endif>
-                                Nạp lần đầu
+                                Giảm khi lần đầu mua ở shop
                             </option>
                             <option value="3"
                             @if ($page == 'addVoucher')
@@ -75,7 +73,7 @@
                                     @else
                                 {{ $data['condition'] ?? '' == 3 ? 'selected' : '' }}
                                     @endif>
-                                Số lượng tin là 10
+                                Giảm khi mua full 5 món ăn trưa
                             </option>
                             <option value="4"
                             @if ($page == 'addVoucher')
@@ -83,7 +81,7 @@
                                     @else
                                 {{ $data['condition'] ?? '' == 4 ? 'selected' : '' }}
                                     @endif>
-                                Top người đăng tin nhiều nhất
+                                Giảm cho khách hàng mua nhiều nhất ở shop
                             </option>
                         </select>
                         @error('condition')
@@ -104,16 +102,6 @@
                         <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
-                    <div class="mb-3">
-                        <label for="imageUpload" class="form-label">Hình ảnh</label>
-                        <input type="file" class="form-control @error('image') is-invalid @enderror" value="{{ $page == 'addVoucher' ? old('image') : $data->image }}" name="image" id="imageUpload" accept="image/*">
-                        <div class="d-flex justify-content-center align-items-center" style="max-width: 190px; max-height: 190px;  margin: 15px auto;">
-                            <div id="imagePreview"></div>
-                        </div>
-                        @error('image')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
                     <div class="form-outline mb-4">
                         <label class="form-label" for="textAreaExample6">Nội dung (Nếu Có)</label>
                         <textarea class="form-control" name="content" id="textAreaExample6" rows="3">{{ $page == 'addVoucher' ? old('content') : $data->content }}</textarea>
@@ -132,6 +120,7 @@
             </div>
         </div>
     </div>
+    <div style="margin-bottom: 30px;"></div>
 @endsection
 
 {{-- javascript --}}
@@ -172,140 +161,6 @@
         });
     </script>
 @endsection
-{{-- endjavascript --}}
 
 
-{{-- main page --}}
-<style>
-	.copyright {
-		display: block;
-		margin-top: 100px;
-		text-align: center;
-		font-family: Helvetica, Arial, sans-serif;
-		font-size: 12px;
-		font-weight: bold;
-		text-transform: uppercase;
-	}
 
-	.copyright a {
-		text-decoration: none;
-		color: #EE4E44;
-	}
-
-
-	/****** CODE ******/
-
-	.file-upload {
-		display: block;
-		text-align: center;
-		font-family: Helvetica, Arial, sans-serif;
-		font-size: 12px;
-	}
-
-	.file-upload .file-select {
-		display: block;
-		border: 2px solid #dce4ec;
-		color: #34495e;
-		cursor: pointer;
-		height: 40px;
-		line-height: 40px;
-		text-align: left;
-		background: #FFFFFF;
-		overflow: hidden;
-		position: relative;
-	}
-
-	.file-upload .file-select .file-select-button {
-		background: #dce4ec;
-		padding: 0 10px;
-		display: inline-block;
-		height: 40px;
-		line-height: 40px;
-	}
-
-	.file-upload .file-select .file-select-name {
-		line-height: 40px;
-		display: inline-block;
-		padding: 0 10px;
-	}
-
-	.file-upload .file-select:hover {
-		border-color: #34495e;
-		transition: all .2s ease-in-out;
-		-moz-transition: all .2s ease-in-out;
-		-webkit-transition: all .2s ease-in-out;
-		-o-transition: all .2s ease-in-out;
-	}
-
-	.file-upload .file-select:hover .file-select-button {
-		background: #34495e;
-		color: #FFFFFF;
-		transition: all .2s ease-in-out;
-		-moz-transition: all .2s ease-in-out;
-		-webkit-transition: all .2s ease-in-out;
-		-o-transition: all .2s ease-in-out;
-	}
-
-	.file-upload.active .file-select {
-		border-color: #3fa46a;
-		transition: all .2s ease-in-out;
-		-moz-transition: all .2s ease-in-out;
-		-webkit-transition: all .2s ease-in-out;
-		-o-transition: all .2s ease-in-out;
-	}
-
-	.file-upload.active .file-select .file-select-button {
-		background: #3fa46a;
-		color: #FFFFFF;
-		transition: all .2s ease-in-out;
-		-moz-transition: all .2s ease-in-out;
-		-webkit-transition: all .2s ease-in-out;
-		-o-transition: all .2s ease-in-out;
-	}
-
-	.file-upload .file-select input[type=file] {
-		z-index: 100;
-		cursor: pointer;
-		position: absolute;
-		height: 100%;
-		width: 100%;
-		top: 0;
-		left: 0;
-		opacity: 0;
-		filter: alpha(opacity=0);
-	}
-
-	.file-upload .file-select.file-select-disabled {
-		opacity: 0.65;
-	}
-
-	.file-upload .file-select.file-select-disabled:hover {
-		cursor: default;
-		display: block;
-		border: 2px solid #dce4ec;
-		color: #34495e;
-		cursor: pointer;
-		height: 40px;
-		line-height: 40px;
-		margin-top: 5px;
-		text-align: left;
-		background: #FFFFFF;
-		overflow: hidden;
-		position: relative;
-	}
-
-	.file-upload .file-select.file-select-disabled:hover .file-select-button {
-		background: #dce4ec;
-		color: #666666;
-		padding: 0 10px;
-		display: inline-block;
-		height: 40px;
-		line-height: 40px;
-	}
-
-	.file-upload .file-select.file-select-disabled:hover .file-select-name {
-		line-height: 40px;
-		display: inline-block;
-		padding: 0 10px;
-	}
-</style>

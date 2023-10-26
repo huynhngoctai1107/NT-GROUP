@@ -52,6 +52,6 @@ class EditVoucherController extends Controller{
 
         $data = $this->voucher->updateVoucher($condition, $value);
 
-        return redirect()->route('listVoucher');
+        return redirect()->route('listVoucher')->with('success', 'Sửa voucher thành công');
     }
 }

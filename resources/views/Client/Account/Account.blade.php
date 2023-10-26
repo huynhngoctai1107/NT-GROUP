@@ -16,15 +16,16 @@
                         {{Session::get('success')}}
                     </div>
                 @endif
-                    @if(Session::has('error'))
-                        <div class="alert alert-danger text-center" role="alert">
-                            {{Session::get('error')}}
-                        </div>
-                    @endif
+                @if(Session::has('error'))
+                    <div class="alert alert-danger text-center" role="alert">
+                        {{Session::get('error')}}
+                    </div>
+                @endif
                 <div class="col-md-12 col-xl-4  mb-5">
                     <div class="card-body text-center">
                         <div class="mt-3 mb-4">
-                            <img src="@if(auth()->user()->image){{asset('images/users/'.auth()->user()->image )}}@else{{'https://static.vecteezy.com/system/resources/previews/000/439/863/original/vector-users-icon.jpg'}}@endif" class="rounded-circle img-fluid" style="width: 100px;"/>            </div>
+                            <div class="round-image">
+                                <img src="@if(auth()->user()->image){{asset('images/users/'.auth()->user()->image )}}@else{{'https://static.vecteezy.com/system/resources/previews/000/439/863/original/vector-users-icon.jpg'}}@endif" class="rounded-circle img-fluid" id="userImage"/>                            </div><br/>
                             <h4 class="mb-2">{{auth()->user()->fullname}}</h4>
                         </div>
                     </div>
@@ -99,7 +100,7 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <x-transactions.rechargehistory :list="$list"></x-transactions.rechargehistory>
+                                                <x-transactions.rechargehistory :list="$list"></x-transactions.rechargehistory>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -127,5 +128,29 @@
             </div>
         </div>
     </div>
+
+    <style>
+	    .round-image {
+		    width: 150px;
+		    height: 150px;
+		    border: 2px solid red;
+		    border-radius: 50%;
+		    display: flex;
+		    margin-left: 27%;
+	    }
+
+	    .round-image img {
+		    width: 100%;
+		    height: 100%;
+		    object-fit: cover;
+	    }
+	    #userImage {
+		    width: 100%;
+		    height: 100%;
+		    object-fit: cover;
+	    }
+    </style>
 @endsection
+
+
 

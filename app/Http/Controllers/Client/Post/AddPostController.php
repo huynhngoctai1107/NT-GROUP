@@ -47,7 +47,7 @@ class AddPostController extends Controller
             'price' => $request->price,
             'acreages' => $request->acreage,
             'subtitles' => $request->subtitles,
-            'content' =>  $request->content,
+            'content' =>  $request->input('content'),
             'link_youtube' => $request->link_youtube,
             'address' => $request->input('address1') . ' ' . $request->address,
             'longitude' => $request->longitude,

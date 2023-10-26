@@ -22,9 +22,9 @@ class ListUserController extends Controller
         return view('admin.user.list', ['list' => $data]);
     }
 
-    public function statusUser($id)
+    public function statusUser($userId)
     {
-        $user = User::find($id);
+        $user = User::find($userId);
 
         if ($user) {
             if ($user->status) {

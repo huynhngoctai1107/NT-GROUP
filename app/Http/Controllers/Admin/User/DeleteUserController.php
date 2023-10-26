@@ -5,19 +5,33 @@ namespace App\Http\Controllers\Admin\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\User;
 
 class DeleteUserController extends Controller
 {
+    public $user;
+
+    public function __construct(){
+        $this->user = new User();
+    }
+
+
     public function deleteUser($id)
     {
-        // Kiểm tra xem người dùng có tồn tại trong cơ sở dữ liệu hay không
         $user = DB::table('users')->find($id);
 
         if ($user) {
-            // Xóa tài khoản người dùng khỏi cơ sở dữ liệu
-            DB::table('users')->where('id', $id)->delete();
+            // Cập nhật cột 'deleted' để đánh dấu người dùng là đã xóa
+            DB::table('users')->where('id', $id)->update(['is_deleted' => true]);
         }
 
-        return redirect()->route('listUser');
+        return redirect()->route('listUser')->with('success', 'Xoá tài khoản người dùng thành công');
+    }
+
+    public function deletedUserList()
+    {
+        $deletedUsers = User::onlyTrashed()->get();
+
+        return view('admin.user.deleted_user_list', compact('deletedUsers'));
     }
 }

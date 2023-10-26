@@ -27,11 +27,14 @@
                     <div class="card-header">
                         <h3 class="card-title"> Quản lý mã giảm giá </h3>
                     </div>
-
-                    <!-- /.card-header -->
                     <div class="card-body">
                         <x-admin.buttom.add router="addVoucher" name="Thêm mã giảm giá"></x-admin.buttom.add>
                         <table id="example1" class="table table-bordered table-striped">
+                            @if(session('success'))
+                                <div class="alert alert-success">
+                                    {{ session('success') }}
+                                </div>
+                            @endif
                             <thead>
                             <tr>
                                 <th>Tên mã</th>
@@ -55,7 +58,7 @@
                                     <td>
                                         <a href="{{route('status', $data->id)}}"
                                            class="btn btn-sm btn-{{$data->status ? 'success':'danger'}}">
-                                            {{$data->status ? 'Hiện':'Ẩn'}}
+                                            {{$data->status ? 'Chưa sử dụng':'Đã sử dụng'}}
                                         </a>
                                     </td>
                                     <td>{{date('d-m-Y',strtotime($data->expiration_date))}}</td>
@@ -71,13 +74,14 @@
                             @endforeach
                             </tbody>
                         </table>
-                        <div class="mt-3">{{ $list->links() }}</div>
+                        <div class="mt-3" style="float: right">{{ $list->links() }}</div>
                     </div>
                     <!-- /.card-body -->
                 </div>
             </div>
         </div>
     </div>
+
 @endsection
 
 @push('javascript')
@@ -102,94 +106,6 @@
     <!-- AdminLTE for demo purposes -->
     <script src="{{ asset('dist/js/demo.js') }}"></script>
     <!-- Page specific script -->
-    <script>
-        $(function () {
-            $("#example1").DataTable({
-                "responsive": true,
-                "lengthChange": false,
-                "autoWidth": false,
-                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-            $('#example2').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true
-            });
-        });
-    </script>
+
 @endpush
 <!-- HTML !-->
-
-<style>
-	/* CSS */
-	.button-86 {
-		all: unset;
-		width: 100px;
-		height: 30px;
-		font-size: 16px;
-		background: transparent;
-		border: none;
-		position: relative;
-		color: #f0f0f0;
-		cursor: pointer;
-		z-index: 1;
-		padding: 10px 20px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		white-space: nowrap;
-		user-select: none;
-		-webkit-user-select: none;
-		touch-action: manipulation;
-	}
-
-	.button-86::after,
-	.button-86::before {
-		content: '';
-		position: absolute;
-		bottom: 0;
-		right: 0;
-		z-index: -99999;
-		transition: all .4s;
-	}
-
-	.button-86::before {
-		transform: translate(0%, 0%);
-		width: 100%;
-		height: 100%;
-		background: #28282d;
-		border-radius: 10px;
-	}
-
-	.button-86::after {
-		transform: translate(10px, 10px);
-		width: 35px;
-		height: 35px;
-		background: #ffffff15;
-		backdrop-filter: blur(5px);
-		-webkit-backdrop-filter: blur(5px);
-		border-radius: 50px;
-	}
-
-	.button-86:hover::before {
-		transform: translate(5%, 20%);
-		width: 110%;
-		height: 110%;
-	}
-
-	.button-86:hover::after {
-		border-radius: 10px;
-		transform: translate(0, 0);
-		width: 100%;
-		height: 100%;
-	}
-
-	.button-86:active::after {
-		transition: 0s;
-		transform: translate(0, 5%);
-	}
-</style>

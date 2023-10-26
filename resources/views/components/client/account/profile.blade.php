@@ -50,7 +50,7 @@
                     <div class="mb-3">
                         <label for="imageUpload" class="form-label">Hình ảnh</label>
                         <input type="file" class="form-control @error('image') is-invalid @enderror" value="" name="image" id="imageUpload" accept="image/*">
-                        <div class="d-flex justify-content-center align-items-center" style="max-width: 190px; max-height: 190px;  margin: 15px auto;">
+                        <div class="d-flex justify-content-center align-items-center imgs" style="max-width: 190px; max-height: 190px;  margin: 15px auto;">
                             <div id="imagePreview"></div>
                         </div>
                         @error('image')
@@ -67,6 +67,16 @@
         </div>
     </div>
 </div>
+
+<style>
+    .imgs{
+	    max-width: 300px;
+	    max-height: 300px;
+	    margin: 15px auto;
+	    position: relative;
+	    overflow: hidden;
+    }
+</style>
 
 <script>
     document.getElementById("imageUpload").addEventListener("change", function (event) {

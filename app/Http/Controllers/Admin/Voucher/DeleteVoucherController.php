@@ -21,6 +21,6 @@ class DeleteVoucherController extends Controller
 
         $this->voucher->deleteVoucher($condition);
 
-        return redirect()->route('listVoucher');
+        return redirect()->route('listVoucher')->with('success', 'Xoá voucher thành công" ');
     }
 }
