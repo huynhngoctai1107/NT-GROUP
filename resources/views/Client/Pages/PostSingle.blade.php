@@ -34,7 +34,7 @@
                 <div class="row">
                     <div class="col-xl-8 col-lg-8">
                         <div class="row">
-                            <div class="col-lg-6 col-md-6 mb-4 mb-md-0">
+                            <div class="col-lg-12 col-md-6 mb-4 mb-md-0">
                                 @php
                                     // Tách chuỗi thành mảng
                                     $images = $data->images;
@@ -45,7 +45,7 @@
                                 @endphp
                                 <div class="product-image">
                                     <div class="product_img_box">
-                                      <img id="product_img" src="{{ asset('images/medias/' . $firstImage) }}" data-zoom-image="{{ asset('images/medias/' . $firstImage) }}" alt="product_img1" style="width: 400px; height: 350px" />
+                                      <img id="product_img" src="{{ asset('images/medias/' . $firstImage) }}" data-zoom-image="{{ asset('images/medias/' . $firstImage) }}" alt="product_img1" style="width: 100%; height: 500px" />
                                         <a href="#" class="product_img_zoom" title="Zoom">
                                             <span class="linearicons-zoom-in"></span>
                                         </a>
@@ -54,14 +54,14 @@
                                         @foreach($imageArray as $img)
                                             <div class="item">
                                                 <a href="#" class="product_gallery_item active" data-image="{{ asset('images/medias/' . $img) }}" data-zoom-image="{{ asset('images/medias/' . $img) }}">
-                                                    <img src="{{ asset('images/medias/' . $img) }}" alt="product_small_img1" height="80px" />
+                                                    <img src="{{ asset('images/medias/' . $img) }}" alt="product_small_img1" style="width: 100%; height: 120px; object-fit: cover;" />
                                                 </a>
                                             </div>
                                         @endforeach
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-6">
+                            <div class="col-lg-12 col-md-6 mt-3">
                                 <div class="pr_detail">
                                     <div class="product_description">
                                         <h4 class="product_title">
@@ -252,22 +252,34 @@
                             <div class="widget">
                                 <h5 class="widget_title">Loại Tin</h5>
                                 <ul class="widget_categories">
+                                    @foreach($count as $item)
                                     <li>
-                                        <a href="#"><span class="categories_name">Bán Đất</span><span class="categories_num">(9)</span></a>
+                                        <a href="{{route('search',$item->slug)}}"><span class="categories_name">{{$item->name}}</span><span class="categories_num">({{$item->post_count}})</span></a>
                                     </li>
-                                    <li>
-                                        <a href="#"><span class="categories_name">Thuê Đất</span><span class="categories_num">(6)</span></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><span class="categories_name">Bán Nhà</span><span class="categories_num">(4)</span></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><span class="categories_name">Thuê Nhà</span><span class="categories_num">(7)</span></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><span class="categories_name">Thuê Trọ</span><span class="categories_num">(12)</span></a>
-                                    </li>
+                                    @endforeach
                                 </ul>
+                            </div>
+                            <div class="col-12 mt-3 mb-3">
+                                <h4>Liên Hệ</h4>
+                                @foreach($data->contacts as $contacts)
+                                    <div class="admin mt-3">
+                                        <div class="row d-flex justify-content-center align-items-center">
+                                            <div class="col-md-4 col-4 ">
+                                                <img src="{{ asset('images/contacts/' . $contacts->image) }}" class="img-fluid rounded-circle-custom" alt="Hình ảnh" style="border: 1px solid #000; border-radius: 50%; width: 100px; height: 100px;">
+                                            </div>
+                                            <div class="col-md-8 col-8">
+                                                <div class="infor">
+                                                    <h5>{{$contacts->position}}</h5>
+                                                    <div class="phone border-warning text-warning p-2 rounded bg-light">
+                                                        <a href="tel:{{$contacts->phone}}"><i class="bi bi-telephone-fill"></i>
+                                                        <span>Gọi ngay</span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
                             </div>
                             <div class="widget">
                                 <h5 class="widget_title">Bất Động Sản VIP</h5>

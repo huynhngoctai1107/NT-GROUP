@@ -9,15 +9,20 @@
             // Lấy tên file ảnh đầu tiên
             $firstImage = reset($imageArray);
         @endphp
-        <img src="{{ asset('images/medias/' . $firstImage) }}" class="m-3" alt="Hình ảnh"
-             style="width: 120px; height: 150px; object-fit: cover" />
-        <div class="one ms-lg-3 d-block mt-2">
-            <span class="card-name card-title my-2">{{$item->title}}</span>
-            <div class="address my-2">
-                <span class="card-name card-text"><strong> Đường:</strong>{{$item->address}}</span>
-            </div>
-            <div class="price my-2">
-                <span>Giá: {{$formatPrice($item->price)}} - {{$item->acreages}} m²</span>
+        <div class="col-md-4">
+        <a href="{{ route('postSingle',$item->slug_posts) }}">
+        <img src="{{ asset('images/medias/' . $firstImage) }}" alt="Hình ảnh" style="width: 150px; height: 120px; object-fit: cover" />
+        </a>
+        </div>
+        <div class="col-md-8 d-block">
+            <div class="col-11 m-2">
+                <span class="card-name card-title">
+                    <a href="{{ route('postSingle',$item->slug_posts) }}">{{$item->title}}</a>
+                </span>
+                <div class="price">
+                    <span class="d-block ">Giá: {{$formatPrice($item->price)}}</span>
+                    <span class="d-block">Diện tích: {{$item->acreages}} m²</span>
+                </div>
             </div>
         </div>
     </div>

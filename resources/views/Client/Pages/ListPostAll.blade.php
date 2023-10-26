@@ -190,53 +190,52 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-8">
-                                <div class="row">
-                                    <div class="col-md-12 mb-3">
-                                        <div class="verticalLine">
-                                            <h3 class="ms-lg-3">TIN RAO BÁN</h3>
-                                        </div>
-
-                                    </div>
+                            <div class="row">
+                                <div class="col-md-8">
                                     <div class="row">
-                                        <div class="box">
-                                            <x-client.index.postSale :list="$lq">
+                                        <div class="col-md-12 mb-3">
+                                            <div class="verticalLine">
+                                                <h3 class="ms-lg-3">TIN RAO BÁN</h3>
+                                            </div>
 
-                                            </x-client.index.postSale>
+                                        </div>
+                                        <div class="row">
+                                            <div class="box">
+                                                <x-client.index.postSale :list="$lq">
+
+                                                </x-client.index.postSale>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="col-md-4 mt-1">
-                                <div class="contactInfor text-center" style="border: 1px solid #000; border-radius: 60px; align-items: center;">
-                                    <div>
-                                        <h4>LIÊN HỆ ĐĂNG TIN</h4>
-                                        <span>+8412345678</span>
-                                    </div>
-                                </div>
-                                <div class="admin border mt-3">
-                                    <div class="row">
-                                        <div class="col-md-4" >
-                                            <img src="{{asset('client/images/logont.jpg')}}" style="border: 1px solid #000; border-radius: 60px;" alt="Hình ảnh" class="img-fluid rounded-circle-custom m-3">
+                                <div class="col-md-4 mt-1">
+                                    <div class="contactInfor text-center d-flex justify-content-center align-items-center">
+                                        <div class="col-10" style="border: 1px solid #000; border-radius: 60px; align-items: center; padding: 10px">
+                                            <h4>LIÊN HỆ ĐĂNG TIN</h4>
                                         </div>
-                                        <div class="col-md-6 d-flex justify-content-center align-items-center">
-                                            <div class="infor">
-                                                <h5>PHÒNG KD</h5>
-                                                <div class="phone border-warning text-warning p-2 rounded bg-light">
-                                                    <i class="bi bi-telephone-fill"></i>
-                                                    <span>Gọi ngay</span>
+                                    </div>
+                                    <div class="admin mt-3">
+                                        <div class="row d-flex justify-content-center align-items-center" style="border: 1px solid #000; padding: 5px">
+                                            <div class="col-md-4 col-4 ">
+                                                <img src="{{asset('client/images/logont.jpg')}}" class="img-fluid rounded-circle-custom" alt="Hình ảnh" style="border: 1px solid #000; border-radius: 50%; width: 100px; height: 100px;">
+                                            </div>
+                                            <div class="col-md-8 col-8">
+                                                <div class="infor">
+                                                    <h5>PHÒNG KD</h5>
+                                                    <div class="phone border-warning text-warning p-2 rounded bg-light">
+                                                        <i class="bi bi-telephone-fill"></i>
+                                                        <span>Gọi ngay</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+
                     </div>
                 </div>
             </div>

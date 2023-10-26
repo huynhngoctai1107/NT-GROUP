@@ -26,13 +26,13 @@ class PostSingleController extends Controller
             'posts.slug' => $slug,
         ];
 
-        $data = $this->post->getFirstPost($condition);
-        $category = $this->category->GetCategory();
+        $data = $this->post->getPostWithContacts($condition);
         $condition1 = [
             ['delete', '=', 0],
             ['status', '=', 1],
         ];
+        $count = $this->post->categoriesWithPostCount();
         $list = $this->post->getPostList($condition1)->take(3);
-        return view('Client.Pages.PostSingle',['page'=>'blog', 'data'=>$data, 'category'=>$category, 'list'=>$list]);
+        return view('Client.Pages.PostSingle',['page'=>'blog', 'data'=>$data, 'category'=>$count, 'list'=>$list, 'count'=>$count]);
     }
 }

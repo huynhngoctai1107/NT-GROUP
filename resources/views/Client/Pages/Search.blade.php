@@ -156,11 +156,6 @@
                 </div>
             </div>
         </div>
-        <div class="xemthem d-flex justify-content-center mt-3">
-            <button class="btn btn-warning ">Xem thêm</button>
-        </div>
-
-
     </div>
 
     <!-- START SECTION SUBSCRIBE NEWSLETTER -->

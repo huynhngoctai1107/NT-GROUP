@@ -5,143 +5,57 @@
 @endsection
 @section('main')
     <!-- START SECTION BANNER -->
-    <div class="container mt-3">
-        <div class="row">
-            <div class="col-md-8">
-                <div class="img">
-                    <div class="row">
-                        <div class="bds col-md-7 d-flex justify-content-center align-items-center">
-                            <div class="content m-lg-5">
-                                <h2 class="mt-5 fw-bold ">BẤT ĐỘNG SẢN GIÁ RẺ CHẤT LƯỢNG CAO</h2>
-                                <p class="mt-4 ">Kênh mua bán bất động sản ưu tín hàng đầu Kiên Giang.</p>
-                                <button class="btn btn-warning p-3 px-xl-5 mt-4 ">Xem ngay</button>
+    <div class="banner_section slide_medium shop_banner_slider staggered-animation-wrap">
+        <div id="carouselExampleControls" class="carousel slide carousel-fade light_arrow" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active background_bg" data-img-src="{{asset('client/images/baner/banner0.jpeg')}}">
+                    <div class="banner_slide_content">
+                        <div class="container"><!-- STRART CONTAINER -->
+                            <div class="row">
+                                <div class="col-lg-10 col-12">
+                                    <div class="banner_content overflow-hidden">
+                                        <h5 class="mb-3 staggered-animation font-weight-light" data-animation="slideInLeft" data-animation-delay="0.5s">Nhà mới, Cuộc sống mới!</h5>
+                                        <h2 class="staggered-animation" data-animation="slideInLeft" data-animation-delay="1s">Tìm kiếm ngay hôm nay!</h2>
+                                        <a class="btn btn-fill-out rounded-0 staggered-animation text-uppercase" href="{{route('postAdd')}}" data-animation="slideInLeft" data-animation-delay="1.5s">Đăng tin</a>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        </div><!-- END CONTAINER-->
                     </div>
-
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="row mb-5">
-                    <div class="col-md-12 bg-light">
-                        <div class="d-flex justify-content-between">
-                            <button class="btn" id="banDatBtn">Nhà bán đất</button>
-                            <button class="btn" id="choThueBtn">Nhà đất cho thuê</button>
-                        </div>
-                        <div class="mt-3" id="searchForm">
-                            <form>
-                                <div class="mb-3">
-                                    <input type="text" class="form-control" id="keyword" name="keyword"/>
+                <div class="carousel-item background_bg" data-img-src="{{asset('client/images/baner/banner1.jpeg')}}">
+                    <div class="banner_slide_content">
+                        <div class="container"><!-- STRART CONTAINER -->
+                            <div class="row">
+                                <div class="col-lg-10">
+                                    <div class="banner_content overflow-hidden">
+                                        <h5 class="mb-3 staggered-animation font-weight-light" data-animation="slideInLeft" data-animation-delay="0.5s">Kết nối Ươm Đẹp</h5>
+                                        <h2 class="staggered-animation" data-animation="slideInLeft" data-animation-delay="1s"> Tìm nhà mơ ước!</h2>
+                                        <a class="btn btn-fill-out rounded-0 staggered-animation text-uppercase" href="{{route('postAdd')}}" data-animation="slideInLeft" data-animation-delay="1.5s">Đăng tin</a>
+                                    </div>
                                 </div>
-                                <div class="mb-3">
-                                    <select class="form-select" id="propertyType" name="propertyType">
-                                        <option value="">Loai BĐS</option>
-                                        <option value="nha">Nhà</option>
-                                        <option value="dat">Đất</option>
-                                    </select>
+                            </div>
+                        </div><!-- END CONTAINER-->
+                    </div>
+                </div>
+                <div class="carousel-item background_bg" data-img-src="{{asset('client/images/baner/banner2.jpeg')}}">
+                    <div class="banner_slide_content">
+                        <div class="container"><!-- STRART CONTAINER -->
+                            <div class="row">
+                                <div class="col-lg-10">
+                                    <div class="banner_content overflow-hidden">
+                                        <h5 class="mb-3 staggered-animation font-weight-light" data-animation="slideInLeft" data-animation-delay="0.5s">Chúng tôi không chỉ bán nhà</h5>
+                                        <h2 class="staggered-animation" data-animation="slideInLeft" data-animation-delay="1s">Chúng tôi xây dựng tổ ấm!</h2>
+                                        <a class="btn btn-fill-out rounded-0 staggered-animation text-uppercase" href="{{route('postAdd')}}" data-animation="slideInLeft" data-animation-delay="1.5s">Đăng Tin</a>
+                                    </div>
                                 </div>
-                                <div class="mb-3">
-                                    <select class="form-select" id="propertyType" name="propertyType">
-                                        <option value="">Tỉnh / Thành Phố</option>
-                                        <option value="camau">Cà Mau</option>
-                                        <option value="dat">Đất</option>
-                                    </select>
-                                </div>
-                                <div class="mb-3">
-                                    <select class="form-select" id="propertyType" name="propertyType">
-                                        <option value="">Huyện / Quận</option>
-                                        <option value="nha">Nhà</option>
-                                        <option value="dat">Đất</option>
-                                    </select>
-                                </div>
-                                <div class="mb-3">
-                                    <select class="form-select" id="propertyType" name="propertyType">
-                                        <option value="">Xã / Phường</option>
-                                        <option value="nha">Nhà</option>
-                                        <option value="dat">Đất</option>
-                                    </select>
-                                </div>
-                                <div class="mb-3">
-                                    <select class="form-select" id="propertyType" name="propertyType">
-                                        <option value="">Giá</option>
-                                        <option value="nha">Nhà</option>
-                                        <option value="dat">Đất</option>
-                                    </select>
-                                </div>
-                                <div class="mb-3">
-                                    <select class="form-select" id="propertyType" name="propertyType">
-                                        <option value="">Diện tích</option>
-                                        <option value="dat">Đất</option>
-                                    </select>
-                                </div>
-                                <div class="d-flex justify-content-center">
-
-                                    <button type="submit" class="btn btn-warning mb-4">
-                                        <i class="bi bi-search"></i>
-                                        Tìm kiếm
-                                    </button>
-                                </div>
-
-                            </form>
-                        </div>
-                        <div class="mt-3" id="searchForm2" style="display: none">
-                            <form>
-                                <div class="mb-3">
-                                    <input type="text" class="form-control" id="keyword" name="keyword"/>
-                                </div>
-                                <div class="mb-3">
-                                    <select class="form-select" id="propertyType" name="propertyType">
-                                        <option value="">Loai BĐS</option>
-                                        <option value="nha">Nhà</option>
-                                        <option value="dat">Đất</option>
-                                    </select>
-                                </div>
-                                <div class="mb-3">
-                                    <select class="form-select" id="propertyType" name="propertyType">
-                                        <option value="">Tỉnh / Thành Phố</option>
-                                        <option value="camau">Cà Mau</option>
-                                        <option value="dat">Đất</option>
-                                    </select>
-                                </div>
-                                <div class="mb-3">
-                                    <select class="form-select" id="propertyType" name="propertyType">
-                                        <option value="">Huyện / Quận</option>
-                                        <option value="nha">Nhà</option>
-                                        <option value="dat">Đất</option>
-                                    </select>
-                                </div>
-                                <div class="mb-3">
-                                    <select class="form-select" id="propertyType" name="propertyType">
-                                        <option value="">Xã / Phường</option>
-                                        <option value="nha">Nhà</option>
-                                        <option value="dat">Đất</option>
-                                    </select>
-                                </div>
-                                <div class="mb-3">
-                                    <select class="form-select" id="propertyType" name="propertyType">
-                                        <option value="">Giá</option>
-                                        <option value="nha">Nhà</option>
-                                        <option value="dat">Đất</option>
-                                    </select>
-                                </div>
-                                <div class="mb-3">
-                                    <select class="form-select" id="propertyType" name="propertyType">
-                                        <option value="">Diện tích</option>
-                                        <option value="dat">Đất</option>
-                                    </select>
-                                </div>
-                                <div class="d-flex justify-content-center">
-
-                                    <button type="submit" class="btn btn-warning mb-4">
-                                        <i class="bi bi-search"></i>
-                                        Tìm thuê
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
+                            </div>
+                        </div><!-- END CONTAINER-->
                     </div>
                 </div>
             </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev"><i class="ion-chevron-left"></i></a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-slide="next"><i class="ion-chevron-right"></i></a>
         </div>
     </div>
     <!-- END SECTION BANNER -->

@@ -16,7 +16,7 @@
             </div>
             <div class="product_info">
                 <div class="one m-3 d-flex flex-column">
-                    <span class="card-name card-title fw-bold my-1">{{$item->title}}</span>
+                    <span class="card-name card-title fw-bold my-1"><a href="{{ route('postSingle',$item->slug_posts) }}">{{$item->title}}</a></span>
                     <span class="card-name card-title my-2">{{$item->address}}</span>
                     <hr class="my-3">
                     <div class="priceandacreage d-flex justify-content-between w-100">
