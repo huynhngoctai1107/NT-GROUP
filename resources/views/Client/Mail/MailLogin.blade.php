@@ -121,8 +121,8 @@
                                                     <p class="text-dark" style="margin: 0; color: #003560; word-break: break-word; font-size: 15px; margin-top: 4px; text-align: center;"><em>Đăng nhập bằng trình duyệt: {{$data['browser']}}</em></p>
 
                                                     <p class="text-dark" style="margin: 0; color: #003560; word-break: break-word; font-size: 15px; margin-top: 4px; text-align: center;"><em>Địa chỉ IP đăng nhập: {{$data['version']}}</em></p>
-                                                    <p class="text-dark" style="margin: 0; color: #003560; word-break: break-word; font-size: 15px; margin-top: 4px; text-align: center;"><em>Hệ điều hành: {{$data['platform']}} - Phiên bản: {{$data['device']}}</em></p>
-                                                    <p class="text-dark" style="margin: 0; color: #003560; word-break: break-word; font-size: 15px; margin-top: 4px; text-align: center;"><em>Thời gian đăng nhập: {{$data['time']}}</em></p>
+                                                    <p class="text-dark" style="margin: 0; color: #003560; word-break: break-word; font-size: 15px; margin-top: 4px; text-align: center;"><em>Hệ điều hành: {{$data['platform']}} </em></p>
+                                                    <p class="text-dark" style="margin: 0; color: #003560; word-break: break-word; font-size: 15px; margin-top: 4px; text-align: center;"><em>Thời gian đăng nhập:  {{date('d-m-Y',strtotime($data['time']))}}</em></p>
                                                     <p style="margin: 0; word-break: break-word;"> </p>
                                                     <p style="margin: 0; word-break: break-word;"> </p>
                                                     <p style="margin: 0; word-break: break-word; text-align: center;">

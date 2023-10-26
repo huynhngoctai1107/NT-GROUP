@@ -29,7 +29,7 @@
                         </div>
                     </div>
                 </div>
-
+                {{ url()->previous() }}
                 <div class="row">
                     <div class="col-lg-3 col-md-4">
                         <div class="dashboard_menu">
@@ -51,10 +51,11 @@
                                     <li class="nav-item">
                                         <a class="nav-link" id="account-detail-tab" data-bs-toggle="tab" href="#account-detail" role="tab" aria-controls="account-detail" aria-selected="true"><i class="ti-id-badge"></i>Đổi mật khẩu</a>
                                     </li>
-                                @endif
+                                    @endif
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{route('logout')}}"><i class="ti-lock"></i>Đăng xuất</a>
                                 </li>
+                              
 
                             </ul>
                         </div>
@@ -109,15 +110,15 @@
                             <div class="tab-pane fade" id="wallet" role="tabpanel" aria-labelledby="wallet-tab">
                                 <x-client.pages.wallet></x-client.pages.wallet>
                             </div>
-
+                           
                             <div class="tab-pane fade" id="account" role="tabpanel" aria-labelledby="account-tab">
                                 <x-client.account.profile></x-client.account.profile>
                             </div>
-
+                            @if(auth()->user()->social_id==0)
                             <div class="tab-pane fade" id="account-detail" role="tabpanel" aria-labelledby="account-detail-tab">
                                 <x-client.account.password></x-client.account.password>
                             </div>
-
+                            @endif 
 
                         </div>
                     </div>

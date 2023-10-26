@@ -58,9 +58,9 @@
                         @enderror
                     </div>
 
-                        <div class="btn-group" role="group">
-                            <button class="btn btn-success" type="submit">Cập nhật</button>
-                        </div>
+                    <div class="col-md-12 mb-3">
+                        <button type="submit" title="Submit Your Message!" class="btn btn-fill-out" id="submitButton" name="submit" value="Submit">Cập nhật tài khoản</button>
+                    </div>
 
                     </div>
             </form>

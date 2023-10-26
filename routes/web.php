@@ -153,7 +153,6 @@ Route::group(['prefix' => '/', 'middleware' => ['checkLogin']], function (){
 
 });
 Route::group(['prefix' => '/', 'middleware' => ['ClientLogin']], function (){
-    Route::get('/danh-sach-dang-tin', [PostNewController::class, 'listPost'])->name('postNew');
 
 
     Route::group(['prefix' => 'nap-tien'], function () {
@@ -166,16 +165,16 @@ Route::group(['prefix' => '/', 'middleware' => ['ClientLogin']], function (){
         Route::get('/tai-khoan', [AccountController::class, 'account'])->name('account');
         Route::post('/sua-tai-khoan/{token}',[AccountController::class, 'updateProfile'])->name('updateProfile');
         Route::post('/doi-mat-khau/{token}',[AccountController::class, 'updatePassword'])->name('updatePassword');
-
+        Route::post('trang-thai/{slug}', [PostNewController::class, 'status'])->name('editStatus');
 
 
     Route::group(['prefix' => 'bai-viet'], function (){
+     Route::get('/danh-sach-tin-da-dang', [PostNewController::class, 'postNew'])->name('postNew');
+    
         Route::get('/them', [AddPostController::class, 'post'])->name('postAdd');
         Route::post('/them', [AddPostController::class, 'addClientPosts'])->name('addClientPosts');
-        Route::get('/danh-sach-bai-viet', [PostListController::class, 'listPost'])
-             ->name('listPost');
-        Route::get('/danh-sach-dang-tin', [PostListController::class, 'listPost'])->name('postNew');
-        Route::get('/xoa-dang-tin/{id}', [DeletePostController::class, 'deletePostlist'])
+        Route::get('/danh-sach-dang-tin', [PostListController::class, 'listPost'])->name('listPost');
+        Route::get('/xoa-dang-tin/{slug}', [DeletePostController::class, 'deletePostlist'])
              ->name('deletePostlist');
     });
 

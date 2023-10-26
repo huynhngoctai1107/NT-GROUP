@@ -8,20 +8,21 @@ use App\Models\Post;
 
 class DeletePostController extends Controller
 {
-    public $Post;
+    public $post;
 
     public function __construct()
     {
         $this->post = new Post();
     }
-    function deletePostlist($id){
+    function deletePostlist($slug){
         $condition = [
-            'id' => $id,
+            'slug' => $slug,
         ];
         $value = [
             'delete' => 1,
+            'status'=> 0,
         ];
         $this->post->updatePost($condition,$value);
-        return redirect()->back()->with('Xóa bài viết thành công');
+        return redirect()->back()->with('success','Xóa bài viết thành công');
     }
 }

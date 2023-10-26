@@ -72,10 +72,10 @@ class Post extends Model
     }
     public function getPost($condition){
         return $this->where($condition)
-                    ->select('posts.id as id_post', 'category_posts.name as name_category',
+                    ->select('posts.id as id_post','posts.slug as slug_posts', 'category_posts.name as name_category', 'demands.id as id_demands',
                         'category_posts.slug as slug_category', 'demands.name as name_demands',
-                        'demands.slug as slug_demands', 'users.email', 'title', 'subtitles',
-                        'price', 'acreages', 'content',
+                        'demands.slug as slug_demands', 'users.email','posts.delete as delete_posts', 'title', 'subtitles',
+                        'price', 'acreages', 'content','posts.status as status_post',
                         'link_youtube', 'posts.address',
                         DB::raw('GROUP_CONCAT(medias.image) AS images'))
                     ->join('medias', 'medias.id_post', '=', 'posts.id')

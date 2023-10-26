@@ -3,43 +3,55 @@
 namespace App\Http\Controllers\Client\Post;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
+ 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class PostNewController extends Controller
 {
     public $post;
-    public $category;
+ 
     public function __construct()
     {
         $this->post = new Post();
-        $this->category = new Category();
+  
     }
-    function listPost(Request $request){
+    function postNew(Request $request){
         $condition = [
-            ['delete', '=', 0],
-            ['status', '=', 1],
+           'delete'=> 0,
+           'featured_news'=> 0,
         ];
-        $condition1 = [
-            ['delete', '=', 0],
-            ['status', '=', 1],
+        $postList = $this->post->getPost($condition);
+        $condition = [
+            'delete'=> 0,
+            'featured_news'=> 1,
         ];
+        $postVip = $this->post->getPost($condition);
+        $condition = [
+            'delete' => 1,
+ 
+        ];
+        $postDelete = $this->post->getPost($condition);
+        
+     
+        return view('Client.Pages.postnew',['postList'=>$postList, 'postVip'=> $postVip, 'postDelete'=>$postDelete]);
+    }
 
-        if ($request->filled('keyword')) {
-            $keyword = $request->keyword;
-            $condition[] = ['title', 'LIKE', "%$keyword%"];
+    function status($slug, Request $request){
+       
+        if($request->status==1){
+            $value = ['status'=> 0];
+            $condition=[
+                'slug'=>$slug,
+            ];
+        }else{
+            $value = ['status'=> 1];
+            $condition=[
+                'slug'=>$slug,
+            ];
         }
-
-        if ($request->filled('category')) {
-            $category = $request->category;
-            if ($category != 0){
-                $condition[] = ['id_category', '=', $category];
-            }
-        }
-        $data = $this->post->getPostList($condition);
-        $lq = $this->post->getPostList($condition1)->take(3);
-        $category = $this->category->GetCategory();
-        return view('Client.Pages.ListPostAll',['page'=>'post', 'list'=>$data, 'category'=>$category, 'lq'=>$lq]);
+       $this->post->updatePost($condition,$value);
+       return Redirect()->back()->with('success','Cập nhật trạng thái thành công');
     }
 }
