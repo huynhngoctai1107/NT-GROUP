@@ -16,33 +16,6 @@
                     class="txt2" href="#"> Sign Up </a> </div>
     </form>
 
-{{--    <div class="form-container sign-up-container">--}}
-{{--        <div class="card py-4">--}}
-{{--            <form action="{{ route('vnpay-payment') }}" method="POST" class="text-center">--}}
-{{--                @csrf--}}
-{{--                <div class="round-image1">--}}
-{{--                    <img src="@if(auth()->user()->image){{asset('images/users/'.auth()->user()->image )}}@else{{'https://static.vecteezy.com/system/resources/previews/000/439/863/original/vector-users-icon.jpg'}}@endif" class="rounded-circle img-fluid" id="userImage"/>--}}
-{{--                </div>--}}
-{{--                <h4 class="mt-4">{{auth()->user()->fullname}}</h4>  <br/>--}}
-{{--                <div class="mb-3">--}}
-{{--                    <label for="name" id="name-label">Số tiền cần nạp</label>--}}
-{{--                    <input type="number" name="price" class="form-control rounded-input" required="required" />--}}
-{{--                </div>--}}
-{{--                <br/>--}}
-{{--                <div class="mb-3">--}}
-{{--                    <label for="payments">Phương thức thanh toán</label>--}}
-{{--                    <select class="form-select rounded-input" aria-label="Default select example" name="payments">--}}
-{{--                        <option value="1">Momo</option>--}}
-{{--                        <option value="2">VNPay</option>--}}
-{{--                        <option value="3">Paypal</option>--}}
-{{--                    </select>--}}
-{{--                </div>--}}
-{{--                <div class="btn-group" role="group">--}}
-{{--                    <button name="redirect" class="centered">Nạp Tiền</button>--}}
-{{--                </div>--}}
-{{--            </form>--}}
-{{--        </div>--}}
-{{--    </div>--}}
 
     <div class="form-container sign-in-container">
         <div class="card py-4">

@@ -30,7 +30,7 @@
                         </div>
                     </div>
                 </div>
-                {{ url()->previous() }}
+
                 <div class="row">
                     <div class="col-lg-3 col-md-4">
                         <div class="dashboard_menu">

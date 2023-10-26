@@ -58,8 +58,8 @@
                         @enderror
                     </div>
 
-                    <div class="col-md-12 mb-3">
-                        <button type="submit" title="Submit Your Message!" class="btn btn-fill-out" id="submitButton" name="submit" value="Submit">Cập nhật tài khoản</button>
+                    <div class="btn-group" role="group">
+                        <button type="submit" class="btn btn-fill-out" >Cập nhật tài khoản</button>
                     </div>
 
                     </div>
