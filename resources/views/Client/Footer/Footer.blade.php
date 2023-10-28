@@ -1,5 +1,8 @@
-<x-client.pages.subscribe></x-client.pages.subscribe>
 
+<div style="margin-top: 150px !important;">
+
+
+<x-client.pages.subscribe></x-client.pages.subscribe>
 <footer class="footer_dark">
     <div class="footer_top">
         <div class="container">
@@ -83,3 +86,4 @@
         </div>
     </div>
 </footer>
+</div>

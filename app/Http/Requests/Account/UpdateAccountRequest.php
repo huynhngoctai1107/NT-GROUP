@@ -43,7 +43,7 @@ class UpdateAccountRequest extends FormRequest{
     public function messages()
     : array{
 
-
+        session()->flash('active', 'updateProfile') ;
         return [
             'fullname.required'                   => 'Vui lòng nhập họ và tên.',
             'fullname.min'                        => 'Vui lòng nhập họ và tên tối thiểu 5 kí tự.',

@@ -6,7 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class AnswersSeeder extends Seeder{
+class Faqs extends Seeder{
 
     /**
      * Run the database seeds.
@@ -37,7 +37,7 @@ class AnswersSeeder extends Seeder{
         ];
 
         foreach ($data as $item){
-            DB::table('q&a')->insert($item);
+            DB::table('faqs')->insert($item);
 
         }
     }

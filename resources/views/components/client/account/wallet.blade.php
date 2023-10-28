@@ -1,36 +1,40 @@
 <div class="containers" id="containers">
     <div class="form-container1 sign-up-container">
-        <div class="round-image2">
-            <img src="@if(auth()->user()->image){{asset('images/users/'.auth()->user()->image )}}@else{{'https://static.vecteezy.com/system/resources/previews/000/439/863/original/vector-users-icon.jpg'}}@endif" class="rounded-circle img-fluid" id="userImage"/>
-        </div>
-        <form action="{{ route('vnpay-payment') }}" method="POST" class="row g-3">
-            <h4 class="mt-3">{{auth()->user()->fullname}}</h4><br/>
+
+        <form action="{{ route('vnpay-payment') }}" method="POST">
+
             @csrf
             <div class="col-12">
                 <label for="inputAddress" class="form-label">Số tiền cần nạp</label>
-                <input type="number" name="price" class="form-control rounded-input" required="required" />
+                <input type="number" name="price" class="form-control rounded-input" required="required"/>
             </div>
             <div class="col-md-12">
+
                 <label for="payments" class="form-label">Phương thức thanh toán</label>
                 <select class="form-select rounded-input" aria-label="Default select example" name="payments">
-                    <option value="1">Momo</option>
-                    <option value="2">VNPay</option>
-                    <option value="3">Paypal</option>
+                    @foreach($payment as $key => $payment_method)
+
+                        @if($payment_method->id == 5)
+                        @break
+                        @endif
+                        <option value="{{$payment_method->id}}">{{$payment_method->name}}</option>
+
+                        @endforeach
+
+
                 </select>
             </div>
-            <div class="btn-group" role="group">
-                <button  name="redirect" class="centered">Nạp Tiền</button>
+            <div class="btn-group text-center" role="group">
+                <button name="redirect" class="centered button">Nạp Tiền</button>
             </div>
         </form>
     </div>
 
     <div class="form-container sign-in-container">
         <div class="card py-4">
-            <div class="round-image2">
-                <img src="@if(auth()->user()->image){{asset('images/users/'.auth()->user()->image )}}@else{{'https://static.vecteezy.com/system/resources/previews/000/439/863/original/vector-users-icon.jpg'}}@endif" class="rounded-circle img-fluid" id=""/>
-            </div>
+
             <div class="#">
-                <h4 class="mt-3">{{auth()->user()->fullname}}</h4><br/>
+
                 <form class="row g-3">
                     <div class="col-md-6">
                         <label for="email"> Email: </label>
@@ -68,13 +72,13 @@
                 <h1 id="title">Chào Mừng Bạn Đến Với Website Bất Động Sản</h1>
                 <p>Điền các thông tin thẻ của bạn</p>
                 <p>Khi điền thông tin thẻ vui lòng không để lộ ra bên ngoài</p>
-                <button class="ghost" id="signIn">Ví của tôi</button>
+                <button class="ghost button" id="signIn">Ví của tôi</button>
             </div>
 
             <div class="overlay-panel overlay-right">
                 <h3 id="title">Website Bất Động Sản! Xin Chào Bạn</h3>
                 <p>Nhập thông tin ví hoặc số thẻ của bạn để nạp tiền</p>
-                <button class="ghost" id="signUp">Nạp Tiền</button>
+                <button class="ghost button" id="signUp">Nạp Tiền</button>
             </div>
         </div>
     </div>
@@ -108,7 +112,7 @@
 		border-radius: 5px;
 	}
 
-	.form-container1 button {
+	.form-container1 .button {
 		width: 100%;
 		border-radius: 50px;
 		border: 1px solid #279b00;
@@ -122,15 +126,15 @@
 		transition: transform 80ms ease-in;
 	}
 
-	.form-container1 button:active {
+	.form-container1 .button:active {
 		transform: scale(0.95);
 	}
 
-	.form-container1 button:focus {
+	.form-container1 .button:focus {
 		outline: none;
 	}
 
-	button {
+	.button {
 		border-radius: 50px;
 		border: 1px solid #279b00;
 		background-color: #17a846;
@@ -150,15 +154,15 @@
 		transition: all 0.3s ease-in
 	}
 
-	button:active {
+	.button:active {
 		transform: scale(0.95);
 	}
 
-	button:focus {
+	.button:focus {
 		outline: none;
 	}
 
-	button.ghost {
+	.ghost {
 		background-color: transparent;
 		border-color: #FFFFFF;
 	}

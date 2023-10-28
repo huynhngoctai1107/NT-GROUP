@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ContactClient extends Model{
+class faqs extends Model{
 
     use HasFactory;
-    protected $table = 'q&a';
+    protected $table = 'faqs';
     public function addContact($value){
         return $this->insert($value);
     }

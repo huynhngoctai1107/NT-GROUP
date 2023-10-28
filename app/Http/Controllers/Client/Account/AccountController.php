@@ -11,19 +11,24 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Support\Str;
 use App\Http\Controllers\Client\Transaction\TransactionHistoryController;
+use App\Models\PaymentMethod ;
 
 class AccountController extends Controller
 {
     public $user;
     public $transaction;
+    public $method;
     public function __construct(){
+        $this->method = new PaymentMethod();
         $this->user = new User();
         $this->transaction =new TransactionHistoryController() ;
     }
 
     public function account(){
-
-        return view('client.account.account', ['list'=>$this->transaction->getHistory()]);
+        $condition = [
+            'status' => 1
+        ] ;
+        return view('client.account.account', ['list'=>$this->transaction->getHistory(),'payment'=>$this->method->getPaymentMethod($condition)]);
     }
 
     public function updateProfile(UpdateAccountRequest $request, $token){
@@ -50,13 +55,12 @@ class AccountController extends Controller
 
         $this->user->updateUser($userData, $condition);
 
-        return redirect()->back()->with('success', 'Cập nhật thông tin tài khoản thành công.');
+        return redirect()->back()->with(['success'=>'Cập nhật thông tin tài khoản thành công.','active' => 'updateProfile']);
     }
 
     public function updatePassword(UpdatePasswordRequest $request, $token){
 
         if (Hash::check($request->current_password, auth()->user()->password)) {
-            if ($request->new_password === $request->confirm_password) {
                 $condition = [
                     'token' => $token,
                 ];
@@ -65,12 +69,10 @@ class AccountController extends Controller
                     'token' => strtoupper(Str::random(10)),
                 ];
                 $this->user->updateUser($condition, $values);
-                return redirect()->back()->with('success', 'Đổi mật khẩu thành công.');
-            } else {
-                return redirect()->back()->with('error', 'Mật khẩu mới và xác nhận mật khẩu không khớp.');
-            }
+                return redirect()->back()->with(['success'=>'Cập nhật thông tin tài khoản thành công.','active' => 'updatePassword']);
+
         } else {
-            return redirect()->back()->with('error', 'Mật khẩu cũ không khớp với hệ thống.');
+            return redirect()->back()->with(['error'=>'Mật khẩu cũ không khớp với hệ thống.','active' => 'updatePassword']);
         }
 
 

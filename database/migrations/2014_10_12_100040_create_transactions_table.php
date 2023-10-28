@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('id_category_transaction')->constrained('transaction_categories');
             $table->foreignId('id_user')->constrained('users');
+            $table->foreignId('id_method')->constrained('payment_methods');
             $table->timestamps();
             $table->bigInteger('surplus');
             $table->string('voucher',50)->default('');

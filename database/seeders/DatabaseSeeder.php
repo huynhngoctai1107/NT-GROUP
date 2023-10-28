@@ -17,14 +17,18 @@ class DatabaseSeeder extends Seeder{
             CategorySeeder::class,
             RolesSeeder::class,
             UsersSeeder::class,
+            Payment_methods::class,
             Transaction_CategoriesSeeder::class,
             TransactionsSeeder::class,
             AcreagesSeeder::class,
             PricesSeeder::class,
             PostsSeeder::class,
+            Medias::class,
+            Customer_reports::class,
             ContactsSeeder::class,
-            AnswersSeeder::class,
+            Faqs::class,
             VouchersSeeder::class,
+            EmailNews::class,
 
         ]);
     }

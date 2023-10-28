@@ -6,14 +6,16 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\Client\Mail\MailLoginController;
 use App\Http\Requests\Account\LoginRequest;
 use Illuminate\Support\Facades\Auth;
-use Lunaweb\RecaptchaV3\Facades\RecaptchaV3;
-use Jenssegers\Agent\Agent;
+use Illuminate\Support\Facades\Route;
+
 class LoginController extends Controller{
     public $mail;
     public function __construct(){
         $this->mail = new MailLoginController();
     }
     public function login(){
+        session('resetPage', Route::current()->getName()) ;
+
         return view('client.pages.login');
     }
 
@@ -23,12 +25,13 @@ class LoginController extends Controller{
             if (Auth::attempt(['email' => $request->email, 'password' => $request->password, 'status' => 1, 'social_id' => 0])){
                 $acout = Auth::user();
                 $this->mail->loginMail();
+
                 if ($acout->id_role == 3){
-                    return redirect()->route('account')->with('success',
+                    return redirect(session('resetPage') ?? 'tai-khoan')->with('success',
                         'Đăng nhập thành công và đã gửi email thông báo đăng nhập!');
 
                 }else{
-                    return redirect()->route('dashboar')->with('success',
+                    return redirect()->route(session('resetPage') ?? 'dashboar')->with('success',
                         'Đăng nhập thành công và đã gửi email thông báo đăng nhập!');
                 }
             }else{
@@ -49,7 +52,7 @@ class LoginController extends Controller{
     }
     public function logout(){
         Auth::logout();
-
+        session()->flush();
         return Redirect()->route('login')->with('success', 'Đăng xuất thành công');
     }
 

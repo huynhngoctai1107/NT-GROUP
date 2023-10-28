@@ -10,10 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class RechargeController extends Controller
 {
-    function Recharge()
-    {
-        return view('client.pages.Pay');
-    }
+
     function Pay(Request $request)
     {
         // dd($request->all());
@@ -26,7 +23,7 @@ class RechargeController extends Controller
     }
     public function vnpayPayment(Request $request)
     {
-        if ($request['payments'] == 2) {
+        if ($request['payments'] == 1) {
             //    dd($request->all());
             error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED);
             date_default_timezone_set('Asia/Ho_Chi_Minh');
@@ -97,14 +94,14 @@ class RechargeController extends Controller
             }
         }
         else{
-            return redirect()->back()->with('error', 'Vui vòng chọn phương thúc thanh toán VnPay.');
+            return redirect()->back()->with(['error'=>'Vui vòng chọn phương thúc thanh toán VnPay.','active' => 'vnpay']);
         }
     }
     public function vnpaySuccess(Request $request)
     {
         $this->storeTransaction($request);
         // dd($request);
-        return redirect()->route('account');
+        return redirect()->route('account')->with(['success'=>'Nạp tiền vào tài khoản thành công.','active' => 'vnpay']);
     }
     public function storeTransaction(Request $request)
     {

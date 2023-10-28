@@ -5,20 +5,20 @@ namespace App\Http\Controllers\Admin\Contact;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
-use App\Models\ContactClient;
+use App\Models\Faqs;
 
 
 class ListContactController extends Controller{
 
-    public $Contact;
+    public $faqs;
 
     public function __construct(){
-        $this->contact = new ContactClient();
+        $this->faqs = new Faqs();
     }
 
     function listContact(){
         $condition = []; // Thêm các điều kiện của bạn ở đây nếu cần
-        $query     = $this->contact->listContact($condition);
+        $query     = $this->faqs->listContact($condition);
 
         return view('Admin.Contact.ListContact', compact('query'));
     }
@@ -27,7 +27,7 @@ class ListContactController extends Controller{
         $condition = [
             'id' => $id
         ];
-        $query = $this->contact->firstContact($condition);
+        $query = $this->faqs->firstContact($condition);
         if ($query->status == 0){
             $value= [
                 'status' => 1
@@ -37,7 +37,7 @@ class ListContactController extends Controller{
                 'status' => 0
             ];
         }
-        $this->contact->updateContact($condition,$value);
+        $this->faqs->updateContact($condition,$value);
         return back();
     }
 }

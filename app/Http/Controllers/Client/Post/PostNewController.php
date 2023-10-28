@@ -18,19 +18,24 @@ class PostNewController extends Controller
   
     }
     function postNew(Request $request){
+    
+
         $condition = [
-           'delete'=> 0,
-           'featured_news'=> 0,
+            'posts.delete'  => 0,
+            'featured_news' => 0,
+            'id_user'=> auth()->user()->id,
         ];
-        $postList = $this->post->getPost($condition);
-        $condition = [
-            'delete'=> 0,
-            'featured_news'=> 1,
+        $postList  = $this->post->getPost($condition);
+
+        $condition  = [
+            'posts.delete'  => 0,
+            'featured_news' => 1,
+            'id_user'=> auth()->user()->id,
         ];
-        $postVip = $this->post->getPost($condition);
-        $condition = [
-            'delete' => 1,
- 
+        $postVip    = $this->post->getPost($condition);
+        $condition  = [
+            'posts.delete' => 1,
+            'id_user'=> auth()->user()->id,
         ];
         $postDelete = $this->post->getPost($condition);
         
@@ -44,11 +49,13 @@ class PostNewController extends Controller
             $value = ['status'=> 0];
             $condition=[
                 'slug'=>$slug,
+                'id_user'=> auth()->user()->id,
             ];
         }else{
             $value = ['status'=> 1];
             $condition=[
                 'slug'=>$slug,
+                'id_user'=> auth()->user()->id,
             ];
         }
        $this->post->updatePost($condition,$value);
