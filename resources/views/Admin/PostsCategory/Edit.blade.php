@@ -240,31 +240,28 @@ Sửa bài viết
                     @error('subtitles')
                     <div class="alert alert-danger mt-3">{{ $message }}</div>
                     @enderror
-                    <label for="descriptions">Tiêu đề phụ</label>
+                    <label for="summernote1">Tiêu đề phụ</label>
                     <textarea id="summernote1" name="subtitles">{{$data->subtitles}}</textarea>
                 </div>
                 <div class="form-group">
                     @error('content')
                     <div class="alert alert-danger mt-3">{{ $message }}</div>
                     @enderror
-                    <label for="descriptions">Nội dung</label>
+                    <label for="summernote">Nội dung</label>
                     <textarea id="summernote" name="content">{{$data->content}}</textarea>
                 </div>
                 <div class="mb-3">
-                    @error('featured_news')
-                    <div class="alert alert-danger mt-3">{{ $message }}</div>
-                    @enderror
-                    <label class="form-label">Bài viết VIP</label>
+                    <label for="featured_news" class="form-label">Bài viết VIP</label>
                     <input type="number" class="form-control" name="featured_news" value="{{$data->featured_news}}"
-                        id="exampleInputEmail1" aria-describedby="emailHelp">
+                        id="featured_news">
                 </div>
                 <div class="mb-3">
                     @error('link_youtube')
                     <div class="alert alert-danger mt-3">{{ $message }}</div>
                     @enderror
-                    <label class="form-label">Link Youtube</label>
+                    <label for="link_youtube" class="form-label">Link Youtube</label>
                     <input type="text" class="form-control" name="link_youtube" value="{{$data->link_youtube}}"
-                        id="exampleInputEmail1" aria-describedby="emailHelp">
+                        id="link_youtube">
                 </div>
 
                 <label class="form-label">Địa chỉ</label>
@@ -329,14 +326,6 @@ Sửa bài viết
                     @enderror
                     <label for="latitude">Vĩ độ</label>
                     <input type="text" class="form-control" id="latitude" name="latitude" value="{{$data->latitude}}">
-                </div>
-                <div class="mb-3">
-                    @error('compilation')
-                    <div class="alert alert-danger mt-3">{{ $message }}</div>
-                    @enderror
-                    <label class="form-label">compilation</label>
-                    <input type="text" class="form-control" name="compilation" value="{{$data->compilation}}"
-                        id="exampleInputEmail1" aria-describedby="emailHelp">
                 </div>
                 <div class="alert alert-secondary" role="alert">
                     <h5>Thông Tin Liên Hệ</h5>

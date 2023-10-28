@@ -51,12 +51,12 @@ class AddPostsController extends Controller
             'acreages' => $request->acreage,
             'subtitles' => $request->subtitles,
             'content' =>  $request->input('content'),
-            'featured_news' => $request->featured_news,
+            'featured_news' => $request->featured_news ?? 0,
             'link_youtube' => $request->link_youtube,
             'address' => $request->input('address1') . ' ' . $request->address,
             'longitude' => $request->longitude,
             'latitude' => $request->latitude,
-            'compilation' => $request->compilation,
+            'compilation' => $request->id_user,
             'created_at' => now(),
         ];
         $validatedData = $request->validated();
@@ -90,7 +90,7 @@ class AddPostsController extends Controller
                 "position" => $request->name1,
                 "id_post" => $idPost,
                 "phone" =>$request->phone1,
-                "images" => $request->image ?? '',
+                "image" => $request->image ?? '',
                 'created_at' => now(),
             ];
             $this->contact->addContact($data);
@@ -103,7 +103,7 @@ class AddPostsController extends Controller
                 "position" => $request->name2,
                 "id_post" => $idPost,
                 "phone" =>$request->phone2,
-                "images" => $request->image ?? '',
+                "image" => $request->image ?? '',
                 'created_at' => now(),
             ];
             $this->contact->addContact($data);

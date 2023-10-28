@@ -71,12 +71,12 @@ class EditPostsController extends Controller{
             'acreages' => $request->acreage,
             'subtitles' => $request->subtitles,
             'content' => $request->input('content'),
-            'featured_news' => $request->input('featured_news'),
+            'featured_news' => $request->input('featured_news') ?? 0,
             'link_youtube' => $request->input('link_youtube'),
             'address' => $request->input('address1') . ' ' . $request->address,
             'longitude' => $request->input('longitude'),
             'latitude' => $request->input('latitude'),
-            'compilation' => $request->input('compilation'),
+            'compilation' => $request->id_user,
             ];
         $validatedData = $request->validated();
 

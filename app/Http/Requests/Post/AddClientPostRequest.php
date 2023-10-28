@@ -24,7 +24,7 @@ class AddClientPostRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|min:5|max:255|unique:posts,title',
+            'title' => 'required|min:50|max:255|unique:posts,title',
             'id_demand' => 'required',
             'id_category' => 'required',
             'id_price' => 'required',
@@ -53,8 +53,8 @@ class AddClientPostRequest extends FormRequest
                     }
                 },
             ],
-            'subtitles' => 'required|min:5',
-            'content' => 'required|min:5',
+            'subtitles' => 'required|min:50',
+            'content' => 'required|min:50',
             'link_youtube' => 'required|max:255|url',
             'city' => 'required',
             'district' => 'required',
@@ -70,7 +70,7 @@ class AddClientPostRequest extends FormRequest
         return [
             'title.required' => 'Vui lòng nhập vào tên bài viết',
             'title.unique' => 'Tên bài viết đã tồn tại',
-            'title.min' => 'Tên bài viết từ 5 ký tự trở lên',
+            'title.min' => 'Tên bài viết từ 50 ký tự trở lên',
             'title.max' => 'Tên bài viết dưới 255 ký tự',
             'id_demand.required' => 'Vui lòng chọn nhu cầu',
             'id_category.required' => 'Vui lòng chọn danh mục',
@@ -81,9 +81,9 @@ class AddClientPostRequest extends FormRequest
             'acreage.required' => 'Vui lòng nhập vào diện tích',
             'acreage.numeric' => 'Diện tích bài viết phải là số',
             'subtitles.required' => 'Vui lòng nhập vào tiêu đề phụ bài viết',
-            'subtitles.min' => 'Tiêu đề phụ bài viết từ 5 ký tự trở lên',
+            'subtitles.min' => 'Tiêu đề phụ bài viết từ 50 ký tự trở lên',
             'content.required' => 'Vui lòng nhập vào nội dung bài viết',
-            'content.min' => 'Nội dung bài viết từ 5 ký tự trở lên',
+            'content.min' => 'Nội dung bài viết từ 50 ký tự trở lên',
             'link_youtube.required' => 'Vui lòng nhập vào Link Youtube bài viết',
             'link_youtube.max' => 'Link Youtube bài viết dưới 255 ký tự',
             'link_youtube.url' => 'Nhập vào đường dẫn Youtube',

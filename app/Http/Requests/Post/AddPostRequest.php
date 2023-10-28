@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Post;
 
+use App\Models\Acreage;
 use App\Models\Price;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -23,7 +24,7 @@ class AddPostRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|min:5|max:255|unique:posts,title',
+            'title' => 'required|min:50|max:255|unique:posts,title',
             'id_demand' => 'required',
             'id_category' => 'required',
             'id_user' => 'required',
@@ -41,9 +42,20 @@ class AddPostRequest extends FormRequest
                     }
                 },
             ],
-            'subtitles' => 'required|min:5',
-            'content' => 'required|min:5',
-            'featured_news' => 'required|numeric',
+            'acreage' => [
+                'required',
+                'numeric',
+                function ($attribute, $value, $fail) {
+                    $idAcreage = request()->input('id_acreage');
+                    $selectedAcreage = Acreage::find($idAcreage);
+
+                    if (!$selectedAcreage || ($value < $selectedAcreage->name_min || $value > $selectedAcreage->name_max)) {
+                        $fail('Diện tích phải nằm trong giới hạn cho phép từ.');
+                    }
+                },
+            ],
+            'subtitles' => 'required|min:50',
+            'content' => 'required|min:50',
             'link_youtube' => 'required|max:255|url',
             'city' => 'required',
             'district' => 'required',
@@ -51,7 +63,6 @@ class AddPostRequest extends FormRequest
             'address' => 'required|min:5|max:255',
             'longitude' => 'required',
             'latitude' => 'required',
-            'compilation' => 'required',
             'name1' => 'required|min:5|max:255',
             'name2' => 'required|min:5|max:255',
             'phone1' => [
@@ -73,7 +84,7 @@ class AddPostRequest extends FormRequest
         return [
             'title.required' => 'Vui lòng nhập vào tên bài viết',
             'title.unique' => 'Tên bài viết đã tồn tại',
-            'title.min' => 'Tên bài viết từ 5 ký tự trở lên',
+            'title.min' => 'Tên bài viết từ 50 ký tự trở lên',
             'title.max' => 'Tên bài viết dưới 255 ký tự',
             'id_demand.required' => 'Vui lòng chọn nhu cầu',
             'id_category.required' => 'Vui lòng chọn danh mục',
@@ -83,11 +94,9 @@ class AddPostRequest extends FormRequest
             'price.required' => 'Vui lòng nhập vào giá',
             'price.numeric' => 'Giá bài viết phải là số',
             'subtitles.required' => 'Vui lòng nhập vào tiêu đề phụ bài viết',
-            'subtitles.min' => 'Tiêu đề phụ bài viết từ 5 ký tự trở lên',
+            'subtitles.min' => 'Tiêu đề phụ bài viết từ 30 ký tự trở lên',
             'content.required' => 'Vui lòng nhập vào nội dung bài viết',
-            'content.min' => 'Nội dung bài viết từ 5 ký tự trở lên',
-            'featured_news.required' => 'Vui lòng nhập vào VIP bài viết',
-            'featured_news.numeric' => 'VIP bài viết phải là số',
+            'content.min' => 'Nội dung bài viết từ 50 ký tự trở lên',
             'link_youtube.required' => 'Vui lòng nhập vào Link Youtube bài viết',
             'link_youtube.max' => 'Link Youtube bài viết dưới 255 ký tự',
             'link_youtube.url' => 'Nhập vào đường dẫn Youtube',
@@ -99,7 +108,6 @@ class AddPostRequest extends FormRequest
             'address.max' => 'Địa chỉ dưới 255 ký tự',
             'longitude.required' => 'Vui lòng nhập vào kinh độ',
             'latitude.required' => 'Vui lòng nhập vào vĩ độ',
-            'compilation.required' => 'Vui lòng nhập vào compilation',
             'name1.required' => 'Vui lòng nhập vào tên liên hệ 1',
             'name1.min' => 'Tên liên hệ từ 5 ký tự trở lên',
             'name1.max' => 'Tên liên hệ dưới 255 ký tự',

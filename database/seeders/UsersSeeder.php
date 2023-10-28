@@ -29,6 +29,7 @@ class UsersSeeder extends Seeder{
                 'address'   => 'Phường An Khánh, Quận Ninh Kiều, Thành Phố Cần Thơ',
                 'password'  => Hash::make('Nt-group@123'),
                 'wallet'    => 0,
+                'delete'     => 0,
                 'token'     => strtoupper(Str::random(10)),
                 'gender'    => 'Nam',
                 'status'    => 1
@@ -46,6 +47,7 @@ class UsersSeeder extends Seeder{
                 'wallet'     => 0,
                 'token'      => strtoupper(Str::random(10)),
                 'gender'     => 'Nữ',
+                'delete'     => 0,
                 'status'     => 1,
                 'created_at' => date('Y-m-d'),
 

@@ -53,6 +53,7 @@ class Post extends Model
         // Xóa bài viết
         $this->delete();
     }
+
     public function media()
     {
         return $this->hasMany(Media::class, 'id_post');

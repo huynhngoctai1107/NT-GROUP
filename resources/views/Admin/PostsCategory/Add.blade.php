@@ -193,14 +193,14 @@
                         @error('acreage')
                         <div class="alert alert-danger mt-3">{{ $message }}</div>
                         @enderror
-                        <label for="acreage" class="form-label">Giá</label>
+                        <label for="acreage" class="form-label">Diện tích</label>
                         <input type="number" class="form-control" name="acreage" value="{{ old($page == 'posts' ? 'acreage' : '') }}" id="acreage">
                     </div>
                     <div class="mb-3">
                         @error('price')
                         <div class="alert alert-danger mt-3">{{ $message }}</div>
                         @enderror
-                        <label for="price" class="form-label">Diện tích</label>
+                        <label for="price" class="form-label">Giá</label>
                         <input type="number" class="form-control" name="price" value="{{ old($page == 'posts' ? 'price' : '') }}" id="price">
                     </div>
                     <div class="form-group">
@@ -218,11 +218,8 @@
                         <textarea id="summernote" name="content">{{ old($page == 'posts' ? 'content' : '') }}</textarea>
                     </div>
                     <div class="mb-3">
-                        @error('featured_news')
-                        <div class="alert alert-danger mt-3">{{ $message }}</div>
-                        @enderror
                         <label for="featured_news" class="form-label">Bài viết VIP</label>
-                        <input type="number" class="form-control" name="featured_news" value="{{ old($page == 'posts' ? 'featured_news' : '') }}" id="featured_news">
+                        <input type="number" min="0" max="1" class="form-control" name="featured_news" value="{{ old($page == 'posts' ? 'featured_news' : '') }}" id="featured_news">
                     </div>
                     <div class="mb-3">
                         @error('link_youtube')
@@ -292,13 +289,6 @@
                         @enderror
                         <label for="latitude">Vĩ độ</label>
                         <input type="text" class="form-control" id="latitude" name="latitude" value="{{ old($page == 'posts' ? 'latitude' : '') }}">
-                    </div>
-                    <div class="mb-3">
-                        @error('compilation')
-                        <div class="alert alert-danger mt-3">{{ $message }}</div>
-                        @enderror
-                        <label class="form-label" for="compilation">compilation</label>
-                        <input type="text" class="form-control" name="compilation" value="{{ old($page == 'posts' ? 'compilation' : '') }}" id="compilation" >
                     </div>
                     <div class="alert alert-secondary" role="alert">
                         <h5>Thông Tin Liên Hệ</h5>
