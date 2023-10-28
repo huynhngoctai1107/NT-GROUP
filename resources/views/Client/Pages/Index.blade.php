@@ -58,9 +58,29 @@
             <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-slide="next"><i class="ion-chevron-right"></i></a>
         </div>
     </div>
-    <!-- END SECTION BANNER -->
 
-    <!-- END MAIN CONTENT -->
+    <div class="section small_pt pb_70">
+        <div class="container">
+            <div class="col-md-12 mb-3">
+                <div class="verticalLine">
+                    <h3 class="ms-lg-3 ms-3">TIN VIP</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="tab-content">
+                        <div class="row shop_container">
+                            <x-client.index.post :list="$vip">
+
+                            </x-client.index.post>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
     <div class="main_content">
 
         <!-- START SECTION BANNER -->
@@ -89,30 +109,8 @@
             </div>
         </div>
     </div>
-    <div class="section small_pt pb_70">
-        <div class="container">
-            <div class="col-md-12 mb-3">
-                <div class="verticalLine">
-                    <h3 class="ms-lg-3 ms-3">TIN VIP</h3>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <div class="tab-content">
-                        <div class="row shop_container">
-                            <x-client.index.post :list="$vip">
 
-                            </x-client.index.post>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-    <!-- END SECTION SHOP -->
 
-    <!-- START SECTION SHOP -->
     <div class="section">
         <div class="container mb-5">
             <div class="row">
