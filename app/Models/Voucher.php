@@ -38,9 +38,11 @@ class Voucher extends Model
     {
         return $this->where($condition)->first();
     }
-    public function deleteVoucher($condition)
+    public function deleteVoucher($id)
     {
-        return $this->where($condition)->delete();
+        $this->delete(); // Xoá mềm voucher
+
+        return $this->where($id)->delete();
     }
 
     public function updateVoucher($condition, $value)

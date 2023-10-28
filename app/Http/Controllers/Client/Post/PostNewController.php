@@ -18,14 +18,14 @@ class PostNewController extends Controller{
     }
 
     function postNew(Request $request){
-        $condition  = [
-            'posts.delete'        => 0,
+        $condition = [
+            'posts.delete'  => 0,
             'featured_news' => 0,
         ];
-        $postList   = $this->post->getPost($condition);
+        $postList  = $this->post->getPost($condition);
 
         $condition  = [
-            'posts.delete'        => 0,
+            'posts.delete'  => 0,
             'featured_news' => 1,
         ];
         $postVip    = $this->post->getPost($condition);

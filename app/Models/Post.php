@@ -48,15 +48,20 @@ class Post extends Model
     {
         // Xóa liên kết trong bảng "media"
         $this->media()->delete();
+        $this->contact()->delete();
 
         // Xóa bài viết
         $this->delete();
     }
-
     public function media()
     {
         return $this->hasMany(Media::class, 'id_post');
     }
+    public function contact()
+    {
+        return $this->hasMany(Contact::class, 'id_post');
+    }
+
 
     public function getPostList($condition){
         return $this->where($condition)

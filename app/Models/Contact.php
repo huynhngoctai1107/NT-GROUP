@@ -32,5 +32,8 @@ class Contact extends Model
 //    public function deleteContact($condition){
 //        return $this->where($condition)->delete();
 //    }
-
+    public function post()
+    {
+        return $this->belongsTo(Post::class, 'id_post');
+    }
 }

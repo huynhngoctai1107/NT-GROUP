@@ -14,7 +14,7 @@ class ListVoucherController extends Controller
     }
     public function listVoucher()
     {
-        $condition = []; // Thêm các điều kiện của bạn ở đây nếu cần
+        $condition = ['delete'=>0,];
 
         $list =$this->voucher->listVoucher($condition);
 

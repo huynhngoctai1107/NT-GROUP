@@ -42,6 +42,19 @@ class User extends Authenticatable{
 
     }
 
+    public function deleteUser()
+    {
+        // Xóa liên kết trong bảng "Transaction"
+        $this->transactions()->delete();
+
+        // Xóa tài khoản
+        $this->delete();
+    }
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class, 'id_user');
+    }
+
     public function show($condition){
         return DB::table('roles')->where($condition)->get();
     }

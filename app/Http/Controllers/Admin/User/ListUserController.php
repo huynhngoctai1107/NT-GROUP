@@ -15,9 +15,8 @@ class ListUserController extends Controller
     }
     public function listUser()
     {
-        $condition=[];
+        $condition=['delete'=>0,];
         $data=$this->user->listUser($condition);
-
 
         return view('admin.user.list', ['list' => $data]);
     }

@@ -13,14 +13,17 @@ class DeleteVoucherController extends Controller
     public function __construct(){
         $this->voucher = new Voucher();
     }
-    public function deleteVoucher($slug)
+    public function deleteVoucher($id)
     {
-        $condition = [
-            ['slug', '=', $slug],
-        ];
+        $voucher = Voucher::find($id);
 
-        $this->voucher->deleteVoucher($condition);
+        if ($voucher) {
 
-        return redirect()->route('listVoucher')->with('success', 'Xoá voucher thành công" ');
+            // Cập nhật trạng thái đã xoá của voucher
+            $voucher->delete = true;
+            $voucher->save();
+        }
+            return redirect()->route('listVoucher')->with('success', 'Xoá voucher thành công.');
+
     }
 }

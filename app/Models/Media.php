@@ -23,4 +23,9 @@ class Media extends Model
     {
         return $this->where($condition)->delete();
     }
+
+    public function post()
+    {
+        return $this->belongsTo(Post::class, 'id_post');
+    }
 }

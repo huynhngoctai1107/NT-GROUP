@@ -28,7 +28,7 @@
                         <h3 class="card-title"> Quản lý mã giảm giá </h3>
                     </div>
                     <div class="card-body">
-                        <x-admin.buttom.add router="addVoucher" name="Thêm mã giảm giá"></x-admin.buttom.add>
+                        <x-admin.buttom.add :router="$page=='vouchers'?'listVoucher':''":name="$page=='vouchers'?'Danh sách voucher':''"></x-admin.buttom.add>
                         <table id="example1" class="table table-bordered table-striped">
                             @if(session('success'))
                                 <div class="alert alert-success">

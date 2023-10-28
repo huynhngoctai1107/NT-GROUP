@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
 @endsection
 @section('title')
-    Quản lý mã giảm giá
+    Quản lý tài khoản người dùng
 @endsection
 
 
@@ -25,10 +25,11 @@
             <div class="content-wrapper">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title"> Quản lý mã giảm giá </h3>
+                        <h3 class="card-title"> Quản lý tài khoản người dùng </h3>
                     </div>
+                    <!-- /.card-header -->
                     <div class="card-body">
-                        <x-admin.buttom.add router="addVoucher" name="Thêm mã giảm giá"></x-admin.buttom.add>
+                        <x-admin.buttom.add router="listUser" name="Danh sách tài khoản"></x-admin.buttom.add>
                         <table id="example1" class="table table-bordered table-striped">
                             @if(session('success'))
                                 <div class="alert alert-success">
@@ -37,50 +38,67 @@
                             @endif
                             <thead>
                             <tr>
-                                <th>Tên mã</th>
-                                <th>Mã code</th>
+                                <th>Loại tài khoản</th>
                                 <th>Hình ảnh</th>
-                                <th>Số tiền giảm</th>
+                                <th>Tên tài khoản</th>
+                                <th>Email</th>
+                                <th>Số dư</th>
+                                <th>Giới tính</th>
+                                <th>Số điện thoại</th>
+                                <th>Địa chỉ</th>
                                 <th>Trạng thái</th>
-                                <th>Ngày hết hạn</th>
                                 <th>Nghiệp vụ</th>
                             </tr>
                             </thead>
                             <tbody>
+                            {{-- sửa --}}
                             @foreach($list as $data)
                                 <tr>
-                                    <td>{{ $data->name }}</td>
-                                    <td>{{ $data->code }}</td>
-                                    <td><img src='{{asset("images/$data->image")}}' alt="" width="150" height="120"></td>
-                                    <td>{{ number_format($data->discount) }} VNĐ</td>
                                     <td>
-                                        <a href="{{route('status', $data->id)}}"
-                                           class="btn btn-sm btn-{{$data->status ? 'success':'danger'}}">
-                                            {{$data->status ? 'Chưa sử dụng':'Đã sử dụng'}}
-                                        </a>
+                                        @if($data->id_role == 1)
+                                            Quản trị viên
+                                        @elseif($data->id_role == 2)
+                                            Biên tập viên
+                                        @elseif($data->id_role == 3)
+                                            Khách hàng
+                                        @else
+                                            Không rõ
+                                        @endif
                                     </td>
-                                    <td>{{date('d-m-Y',strtotime($data->expiration_date))}}</td>
-
-
+                                    <td><img src='{{asset("images/$data->image")}}' alt="" width="150" height="150">
+                                    </td>
+                                    <td>{{ $data->fullname }}</td>
+                                    <td>{{ $data->email }}</td>
+                                    <td>{{ number_format($data->wallet)}} VNĐ</td>
+                                    <td>{{ $data->gender }}</td>
+                                    <td>{{ $data->phone }}</td>
+                                    <td>{{ $data->address }}</td>
                                     <td>
                                         <div class="btn-group" role="group">
-                                            <a href="{{route('editFormVoucher', $data->slug)}}" class="btn btn-outline-success btn-sm">Sửa</a>
-                                            <a href="{{route('deleteVoucher', $data->id)}}" class="btn btn-outline-danger btn-sm">Xóa</a>
+                                            <a href="{{ route('deleteUser', $data->id) }}" class="btn btn-outline-danger btn-sm">Xoá</a>
+                                            <a href="{{ route('deleteUser', $data->id) }}" class="btn btn-outline-danger btn-sm">Khôi phục</a>
                                         </div>
                                     </td>
                                 </tr>
                             @endforeach
                             </tbody>
                         </table>
-                        <div class="mt-3" style="float: right">{{ $list->links() }}</div>
+                        <div class="mt-3">{{ $list->links() }}</div>
                     </div>
                     <!-- /.card-body -->
                 </div>
             </div>
         </div>
     </div>
-
+    <div style="margin-bottom: 30px;"></div>
 @endsection
+
+
+<style>
+	img{
+		object-fit: cover;
+	}
+</style>
 
 @push('javascript')
     <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
@@ -105,5 +123,4 @@
     <script src="{{ asset('dist/js/demo.js') }}"></script>
     <!-- Page specific script -->
 
-@endpush
-<!-- HTML !-->
+@endpush<!-- HTML !-->

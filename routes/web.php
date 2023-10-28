@@ -86,11 +86,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['AdminLogin']], function (){
         Route::get('/them', [AddUserController::class, 'addFormUser'])->name('addUserForm');
         Route::post('/them', [AddUserController::class, 'formAddUser'])->name('addUser');
         Route::get('/xoa/{id}', [DeleteUserController::class, 'deleteUser'])->name('deleteUser');
-        Route::get('deleted-user-list', [DeleteUserController::class, 'deletedUserList'])->name('deletedUserList');
-        Route::get('statusUser/{id}', [ListUserController::class, 'statusUser'])
-             ->name('statusUser');
-        Route::get('trang-thai-lien-he/{id}', [ListContactController::class, 'statusContact'])
-             ->name('statusContact');
+        Route::get('/lich-su-xoa-tai-khoan/{id}', [DeleteUserController::class, 'userHistory'])->name('userHistory');
     });
 
     Route::group(['prefix' => 'voucher'], function (){
@@ -141,6 +137,7 @@ Route::group(['prefix' => '/', 'middleware' => ['checkLogin']], function (){
     Route::get('/google/callback', [GoogleController::class, 'callbackFromGoogle'])
          ->name('callBackGoogle');
     Route::get('dang-nhap', [LoginController::class, 'login'])->name('login');
+    Route::get('/checkPost', [LoginController::class, 'checkPost'])->name('checkPost');
     Route::post('dang-nhap', [LoginController::class, 'loginForm'])->name('loginForm');
     Route::get('dang-ky', [RegisterController::class, 'register'])->name('register');
     Route::post('dang-ky', [RegisterController::class, 'registerFrom'])->name('registerFrom');
@@ -174,7 +171,7 @@ Route::group(['prefix' => '/', 'middleware' => ['ClientLogin']], function (){
 
     Route::group(['prefix' => 'bai-viet'], function (){
      Route::get('/danh-sach-tin-da-dang', [PostNewController::class, 'postNew'])->name('postNew');
-
+        Route::get('/danh-sach-tin-da-dang', [PostNewController::class, 'postNew'])->name('postNew');
         Route::get('/them', [AddPostController::class, 'post'])->name('postAdd');
         Route::post('/them', [AddPostController::class, 'addClientPosts'])->name('addClientPosts');
         Route::get('/danh-sach-dang-tin', [PostListController::class, 'listPost'])->name('listPost');

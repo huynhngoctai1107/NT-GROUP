@@ -1,21 +1,28 @@
 <div class="containers" id="containers">
-
-    <form class="bb-form validate-form"> <span class="bb-form-title p-b-26"> Welcome </span>
-        <span class="bb-form-title p-b-48"> <i class="mdi mdi-symfony"></i> </span>
-        <div class="wrap-input100 validate-input" data-validate="Valid email is: a@b.c"> <input class="input100" type="text" name="email">
-            <span class="bbb-input" data-placeholder="Email"></span> </div>
-        <div class="wrap-input100 validate-input" data-validate="Enter password">
-            <span class="btn-show-pass"> <i class="mdi mdi-eye show_password"></i> </span> <input class="input100" type="password" name="pass">
-            <span class="bbb-input" data-placeholder="Password"></span> </div>
-        <div class="login-container-form-btn">
-            <div class="bb-login-form-btn">
-                <div class="bb-form-bgbtn"></div> <button class="bb-form-btn"> Login </button>
-            </div>
+    <div class="form-container1 sign-up-container">
+        <div class="round-image2">
+            <img src="@if(auth()->user()->image){{asset('images/users/'.auth()->user()->image )}}@else{{'https://static.vecteezy.com/system/resources/previews/000/439/863/original/vector-users-icon.jpg'}}@endif" class="rounded-circle img-fluid" id="userImage"/>
         </div>
-        <div class="text-center p-t-115"> <span class="txt1"> Don&rsquo;t have an account? </span> <a
-                    class="txt2" href="#"> Sign Up </a> </div>
-    </form>
-
+        <form action="{{ route('vnpay-payment') }}" method="POST" class="row g-3">
+            <h4 class="mt-3">{{auth()->user()->fullname}}</h4><br/>
+            @csrf
+            <div class="col-12">
+                <label for="inputAddress" class="form-label">Số tiền cần nạp</label>
+                <input type="number" name="price" class="form-control rounded-input" required="required" />
+            </div>
+            <div class="col-md-12">
+                <label for="payments" class="form-label">Phương thức thanh toán</label>
+                <select class="form-select rounded-input" aria-label="Default select example" name="payments">
+                    <option value="1">Momo</option>
+                    <option value="2">VNPay</option>
+                    <option value="3">Paypal</option>
+                </select>
+            </div>
+            <div class="btn-group" role="group">
+                <button  name="redirect" class="centered">Nạp Tiền</button>
+            </div>
+        </form>
+    </div>
 
     <div class="form-container sign-in-container">
         <div class="card py-4">
@@ -75,6 +82,54 @@
 
 
 <style>
+
+	.form-container1 {
+		background-color: #FFFFFF;
+		border-radius: 10px;
+		padding: 40px;
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+		width: 400px;
+	}
+
+	.form-container1 h1 {
+		text-align: center;
+		margin-bottom: 20px;
+	}
+	.form-container1 span {
+		text-align: center;
+		margin-bottom: 10px;
+	}
+
+	.form-container1 input {
+		width: 100%;
+		padding: 10px;
+		margin-bottom: 10px;
+		border: 1px solid #DDDDDD;
+		border-radius: 5px;
+	}
+
+	.form-container1 button {
+		width: 100%;
+		border-radius: 50px;
+		border: 1px solid #279b00;
+		background-color: #17a846;
+		color: #FFFFFF;
+		font-size: 13px;
+		margin-top: 20px;
+		font-weight: bold;
+		padding: 12px 45px;
+		text-transform: uppercase;
+		transition: transform 80ms ease-in;
+	}
+
+	.form-container1 button:active {
+		transform: scale(0.95);
+	}
+
+	.form-container1 button:focus {
+		outline: none;
+	}
+
 	button {
 		border-radius: 50px;
 		border: 1px solid #279b00;
@@ -93,7 +148,7 @@
 		color: springgreen;
 		background-color: #222425;
 		transition: all 0.3s ease-in
-    }
+	}
 
 	button:active {
 		transform: scale(0.95);
@@ -140,13 +195,6 @@
 		left: 0;
 		width: 50%;
 		z-index: 2;
-	}
-
-	.sign-up-container {
-		left: 20px;
-		width: 50%;
-		opacity: 0;
-		z-index: 1;
 	}
 
 	.containers.right-panel-active .sign-up-container {
@@ -228,6 +276,20 @@
 		font-size: 25px;
 	}
 
+	.sign-up-container {
+		left: 0;
+		width: 50%;
+		opacity: 0;
+		z-index: 1;
+	}
+
+	.container.right-panel-active .sign-up-container {
+		transform: translateX(100%);
+		opacity: 1;
+		z-index: 5;
+		animation: show 0.6s;
+	}
+
 	.social-container a {
 		border: 1px solid #DDDDDD;
 		border-radius: 50%;
@@ -258,6 +320,7 @@
 	}
 
 	.round-image2 {
+		margin-left: 50px;
 		width: 125px;
 		height: 125px;
 		border: 2px solid red;
@@ -274,7 +337,7 @@
 		object-fit: cover;
 	}
 
-	#userImage {
+	userImage {
 		width: 100%;
 		height: 100%;
 		object-fit: cover;

@@ -65,7 +65,7 @@
                                             Không rõ
                                         @endif
                                     </td>
-                                    <td><img src='{{asset("images/$data->image")}}' alt="" width="150" height="120">
+                                    <td><img src='{{asset("images/$data->image")}}' alt="" width="150" height="150">
                                     </td>
                                     <td>{{ $data->fullname }}</td>
                                     <td>{{ $data->email }}</td>
@@ -98,6 +98,13 @@
     <div style="margin-bottom: 30px;"></div>
 @endsection
 
+
+<style>
+	img{
+		object-fit: cover;
+	}
+</style>
+
 @push('javascript')
     <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
     <!-- Bootstrap 4 -->
@@ -120,23 +127,5 @@
     <!-- AdminLTE for demo purposes -->
     <script src="{{ asset('dist/js/demo.js') }}"></script>
     <!-- Page specific script -->
-{{--    <script>--}}
-{{--        $(function () {--}}
-{{--            $("#example1").DataTable({--}}
-{{--                "responsive": true,--}}
-{{--                "lengthChange": false,--}}
-{{--                "autoWidth": false,--}}
-{{--                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]--}}
-{{--            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');--}}
-{{--            $('#example2').DataTable({--}}
-{{--                "paging": true,--}}
-{{--                "lengthChange": false,--}}
-{{--                "searching": false,--}}
-{{--                "ordering": true,--}}
-{{--                "info": true,--}}
-{{--                "autoWidth": false,--}}
-{{--                "responsive": true--}}
-{{--            });--}}
-{{--        });--}}
-{{--    </script>--}}
+
 @endpush<!-- HTML !-->

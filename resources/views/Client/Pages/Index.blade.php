@@ -8,7 +8,8 @@
     <div class="banner_section slide_medium shop_banner_slider staggered-animation-wrap">
         <div id="carouselExampleControls" class="carousel slide carousel-fade light_arrow" data-bs-ride="carousel">
             <div class="carousel-inner">
-                <div class="carousel-item active background_bg" data-img-src="{{asset('client/images/baner/banner0.jpeg')}}">
+                <div class="carousel-item active background_bg" data-img-src="">
+                    <img src="{{asset('client/images/baner/banner_6.jpg')}}" style="filter:  brightness(65%)">
                     <div class="banner_slide_content">
                         <div class="container"><!-- STRART CONTAINER -->
                             <div class="row">
@@ -23,7 +24,8 @@
                         </div><!-- END CONTAINER-->
                     </div>
                 </div>
-                <div class="carousel-item background_bg" data-img-src="{{asset('client/images/baner/banner1.jpeg')}}">
+                <div class="carousel-item background_bg" data-img-src="">
+                    <img src="{{asset('client/images/baner/banner_1.jpg')}}" style="filter:  brightness(65%)">
                     <div class="banner_slide_content">
                         <div class="container"><!-- STRART CONTAINER -->
                             <div class="row">
@@ -38,11 +40,12 @@
                         </div><!-- END CONTAINER-->
                     </div>
                 </div>
-                <div class="carousel-item background_bg" data-img-src="{{asset('client/images/baner/banner2.jpeg')}}">
+                <div class="carousel-item background_bg" data-img-src="">
+                    <img src="{{asset('client/images/baner/banner_7.jpg')}}" style="filter:  brightness(65%)">
                     <div class="banner_slide_content">
                         <div class="container"><!-- STRART CONTAINER -->
                             <div class="row">
-                                <div class="col-lg-10">
+                                <div class="col-lg-10" style="color: white">
                                     <div class="banner_content overflow-hidden">
                                         <h5 class="mb-3 staggered-animation font-weight-light" data-animation="slideInLeft" data-animation-delay="0.5s">Chúng tôi không chỉ bán nhà</h5>
                                         <h2 class="staggered-animation" data-animation="slideInLeft" data-animation-delay="1s">Chúng tôi xây dựng tổ ấm!</h2>
@@ -167,6 +170,18 @@
     <!-- Bootstrap Font Icon CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"/>
     <style>
+
+        img{
+
+	        display: flex;
+	        justify-content: center;
+	        position: relative;
+	        overflow: hidden;
+        }
+
+	    h5, h2 {
+		    color: white;
+	    }
 		.verticalLine {
 			border-left: thick solid #ff0000;
 		}

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('condition');
             $table->bigInteger('discount');
             $table->integer('quantify');
+            $table->tinyInteger('delete')->default(0);
             $table->tinyInteger('status')->default(0);
             $table->timestamps();
             $table->date('expiration_date');

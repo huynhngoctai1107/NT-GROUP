@@ -3,12 +3,13 @@
 namespace App\Http\Controllers\Admin\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
 
-class DeleteUserController extends Controller
-{
+class DeleteUserController extends Controller{
+
     public $user;
 
     public function __construct(){
@@ -16,22 +17,29 @@ class DeleteUserController extends Controller
     }
 
 
-    public function deleteUser($id)
-    {
-        $user = DB::table('users')->find($id);
+    public function deleteUser($id){
 
-        if ($user) {
-            // Cập nhật cột 'deleted' để đánh dấu người dùng là đã xóa
-            DB::table('users')->where('id', $id)->update(['is_deleted' => true]);
+        // Tìm bài viết cần xóa
+        $user = User::findOrFail($id);
+        $posts = Post::where('id_user', $id)->get();
+        // Xóa các bài viết
+        foreach ($posts as $post) {
+            $post->deletePost();
         }
 
-        return redirect()->route('listUser')->with('success', 'Xoá tài khoản người dùng thành công');
+        // Xóa bài viết và liên kết trong bảng "media" thông qua phương thức trong Model
+        $user->deleteUser();
+
+        return redirect()->back()->with('success', 'Tài khoản đã được xóa thành công.');
     }
 
-    public function deletedUserList()
+    public function userHistory()
     {
-        $deletedUsers = User::onlyTrashed()->get();
+        // Lấy tất cả các tài khoản đã bị xóa từ bảng DeletedUser
+        $userHistory = userHistory::all();
 
-        return view('admin.user.deleted_user_list', compact('deletedUsers'));
+        // Truyền dữ liệu tài khoản đã xóa vào view để hiển thị
+        return view('userHistory', compact('userHistory'));
     }
+
 }
