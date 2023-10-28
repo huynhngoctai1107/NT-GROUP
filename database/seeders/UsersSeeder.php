@@ -70,6 +70,24 @@ class UsersSeeder extends Seeder{
                 'created_at' => date('Y-m-d'),
 
             ],
+            [
+                'id'         => 3,
+                'fullname'   => 'Tuyết Ngân',
+                'social_id'  => '0',
+                'email'      => 'ngan@gmail.com',
+                'image'      => 'user-2.jpg',
+                'id_role'    => 3,
+                'phone'      => '0125849578',
+                'address'    => 'Phường Hương Lợi, Quận Ninh Kiều, Thành Phố Cần Thơ',
+                'password'   => Hash::make('Nt-group@123'),
+                'wallet'     => 0,
+                'token'      => strtoupper(Str::random(10)),
+                'gender'     => 'Nữ',
+                'delete'     => 0,
+                'status'     => 1,
+                'created_at' => date('Y-m-d'),
+
+            ],
 
         ];
 
