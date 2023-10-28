@@ -72,6 +72,18 @@ class AcreagesSeeder extends Seeder{
             [
                 'id'      => 10,
                 'name_min' => 100,
+                'name_max' => 200,
+
+            ],
+            [
+                'id'      => 11,
+                'name_min' => 200,
+                'name_max' => 500,
+
+            ],
+            [
+                'id'      => 12,
+                'name_min' => 500,
                 'name_max' => 1000,
 
             ],

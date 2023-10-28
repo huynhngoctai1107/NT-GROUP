@@ -42,6 +42,34 @@ class ContactsSeeder extends Seeder{
                 'phone'    => '0856851255',
                 'image'    => 'user-2.jpg',
             ],
+            [
+                'id'       => 5,
+                'id_post'  => 3,
+                'position' => 'Giám đốc ',
+                'phone'    => '0758462559',
+                'image'    => 'user-2.jpg',
+            ],
+            [
+                'id'       => 6,
+                'id_post'  => 3,
+                'position' => 'Thứ kí',
+                'phone'    => '0856851255',
+                'image'    => 'user-2.jpg',
+            ],
+            [
+                'id'       => 7,
+                'id_post'  => 4,
+                'position' => 'Giám đốc',
+                'phone'    => '0758462559',
+                'image'    => 'user-2.jpg',
+            ],
+            [
+                'id'       => 8,
+                'id_post'  => 4,
+                'position' => 'Phòng kế toán',
+                'phone'    => '0856851255',
+                'image'    => 'user-2.jpg',
+            ],
 
         ];
 
