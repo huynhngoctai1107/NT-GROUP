@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Client\Blog;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Post;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class PostSingleController extends Controller
 {
@@ -18,10 +18,17 @@ class PostSingleController extends Controller
     }
     function postSingle($slug){
         $post = Post::where('slug', $slug)->firstOrFail();
-        // Tăng số lượt xem lên 1
-        $post->number_views++;
-        $post->save();
-        //
+        $postId = $post->id;
+        $userId = auth()->user()->id; // Lấy ID của người dùng hiện tại
+        $cacheKey = "posts_view:$postId:user:$userId";
+        $viewedAt = Cache::get($cacheKey);
+        if (!$viewedAt || now()->diffInMinutes($viewedAt) >= 5) {
+            // Tăng lượt xem và cập nhật Cache
+            $post->increment('number_views');
+            Cache::put($cacheKey, now(), now()->addMinutes(5));
+        }
+
+
         $condition = [
             'posts.slug' => $slug,
         ];

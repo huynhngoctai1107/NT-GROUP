@@ -44,6 +44,7 @@ use App\Http\Controllers\Client\Pay\RechargeController;
 use App\Http\Controllers\Client\Post\DeletePostController;
 use App\Http\Controllers\Client\Search\SearchController;
 use App\Http\Controllers\Client\Post\PostNewController;
+use App\Http\Controllers\Client\Post\EditPostController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'admin', 'middleware' => ['AdminLogin']], function (){
@@ -82,7 +83,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['AdminLogin']], function (){
         Route::get('/danh-sach', [ListUserController::class, 'listUser'])->name('listUser');
         Route::get('/danh-sach-xoa-tai-khoan', [ListUserController::class, 'ListUserHistory'])
              ->name('ListUserHistory');
-        Route::get('statusUser/{id}', [ListUserController::class, 'statusUser'])
+        Route::get('cap-nhat-trang-thai/{id}', [ListUserController::class, 'statusUser'])
              ->name('statusUser');
         Route::get('/chinh-sua/{id}', [EditUserController::class, 'editFormUser'])
              ->name('editFormUser');
@@ -90,14 +91,14 @@ Route::group(['prefix' => 'admin', 'middleware' => ['AdminLogin']], function (){
         Route::get('/them', [AddUserController::class, 'addFormUser'])->name('addUserForm');
         Route::post('/them', [AddUserController::class, 'formAddUser'])->name('addUser');
         Route::get('/xoa/{id}', [DeleteUserController::class, 'deleteUser'])->name('deleteUser');
-        Route::get('/userRestore/{id}', [DeleteUserController::class, 'userRestore'])
+        Route::get('/khoi-phuc-tai-khoan/{id}', [DeleteUserController::class, 'userRestore'])
              ->name('userRestore');
     });
 
     Route::group(['prefix' => 'voucher'], function (){
         Route::get('/danh-sach', [ListVoucherController::class, 'listVoucher'])
              ->name('listVoucher');
-        Route::get('status/{id}', [ListVoucherController::class, 'status'])->name('status');
+        Route::get('trang-thai-voucher/{id}', [ListVoucherController::class, 'status'])->name('status');
         Route::get('/danh-sach-xoa-voucher', [ListVoucherController::class, 'ListVoucherHistory'])
              ->name('ListVoucherHistory');
         Route::get('/chinh-sua/{slug}', [EditVoucherController::class, 'editFormVoucher'])
@@ -109,16 +110,14 @@ Route::group(['prefix' => 'admin', 'middleware' => ['AdminLogin']], function (){
         Route::post('/them', [AddVoucherController::class, 'addVoucher'])->name('addVoucher');
         Route::get('/xoa/{slug}', [DeleteVoucherController::class, 'deleteVoucher'])
              ->name('deleteVoucher');
-        Route::get('/VoucherDelete/{slug}', [DeleteVoucherController::class, 'VoucherDelete'])
-             ->name('VoucherDelete');
-        Route::get('/VoucherRestor/{slug}', [DeleteVoucherController::class, 'VoucherRestor'])
+        Route::get('/khoi-phuc-voucher/{slug}', [DeleteVoucherController::class, 'VoucherRestor'])
              ->name('VoucherRestor');
     });
     Route::group(['prefix' => 'lich-su-giao-dich', 'middleware' => ['Roles']], function (){
         Route::get('/danh-sach', [RechargeHistoryController::class, 'listRechargeHistory'])
              ->name('listRechargeHistory');
     });
-    Route::group(['prefix' => 'posts'], function (){
+    Route::group(['prefix' => 'bai-viet'], function (){
         Route::get('/danh-sach', [ListPostsController::class, 'listPosts'])->name('listPosts');
         Route::get('/danh-sach-history', [ListPostsController::class, 'listHistory'])
              ->name('listHistory');
@@ -134,7 +133,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['AdminLogin']], function (){
              ->name('deleteMedia');
         Route::get('/xoa-history/{slug}', [DeletePostsController::class, 'deleteHistory'])
              ->name('deleteHistory');
-        Route::get('/restore/{slug}', [DeletePostsController::class, 'restorePost'])
+        Route::get('/khoi-phuc-bai-viet/{slug}', [DeletePostsController::class, 'restorePost'])
              ->name('restorePost');
     });
 
@@ -170,9 +169,9 @@ Route::group(['prefix' => '/', 'middleware' => ['ClientLogin']], function (){
     Route::group(['prefix' => 'nap-tien'], function (){
         Route::get('/', [RechargeController::class, 'Recharge'])->name('recharge');
         Route::post('/', [RechargeController::class, 'Pay'])->name('pay');
-        Route::post('/vnpay-payment', [RechargeController::class, 'vnpayPayment'])
+        Route::post('/thanh-toan-vnpay', [RechargeController::class, 'vnpayPayment'])
              ->name('vnpay-payment');
-        Route::get('/vnpay-success', [RechargeController::class, 'vnpaySuccess'])
+        Route::get('/vnpay-thanh-cong', [RechargeController::class, 'vnpaySuccess'])
              ->name('vnpay-success');
     });
 
@@ -187,12 +186,15 @@ Route::group(['prefix' => '/', 'middleware' => ['ClientLogin']], function (){
     Route::group(['prefix' => 'bai-viet'], function (){
         Route::get('/danh-sach-tin-da-dang', [PostNewController::class, 'postNew'])
              ->name('postNew');
-        Route::get('/danh-sach-tin-da-dang', [PostNewController::class, 'postNew'])
-             ->name('postNew');
         Route::get('/them', [AddPostController::class, 'post'])->name('postAdd');
         Route::post('/them', [AddPostController::class, 'addClientPosts'])->name('addClientPosts');
         Route::get('/danh-sach-dang-tin', [PostListController::class, 'listPost'])
              ->name('listPost');
+        Route::get('/sua-tin/{slug}', [EditPostController::class, 'editPostsClient'])->name('editPostsClient');
+        Route::post('/sua-tin/{slug}', [EditPostController::class, 'storePostsClient'])->name('storePostsClient');
+        Route::get('/hinh-anh/{id}', [EditPostController::class, 'deleteMedia'])
+             ->name('deleteMedia');
+        Route::get('/danh-sach-dang-tin', [PostListController::class, 'listPost'])->name('listPost');
         Route::get('/xoa-dang-tin/{slug}', [DeletePostController::class, 'deletePostlist'])
              ->name('deletePostlist');
     });

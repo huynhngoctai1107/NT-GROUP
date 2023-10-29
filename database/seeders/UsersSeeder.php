@@ -36,7 +36,7 @@ class UsersSeeder extends Seeder{
             ],
             [
                 'id'         => 2,
-                'fullname'   => 'Nguyễn Minh Nhi',
+                'fullname'   => 'Lê Hồng Nhi',
                 'social_id'  => '0',
                 'email'      => 'amimon552@gmail.com',
                 'image'      => 'user-2.jpg',

@@ -74,10 +74,7 @@
                                             </div>
                                         </div>
                                         <div class="rating_wrap">
-                                            <div class="rating">
-                                                <div class="product_rate" style="width:80%"></div>
-                                            </div>
-                                            <span class="rating_num">(21)</span>
+                                            <span class="rating_num">{{$data->number_views}} lượt xem</span>
                                         </div>
                                         <div class="pr_desc">
                                             <div class="posts_subtitle">{!! $data->subtitles !!}</div>

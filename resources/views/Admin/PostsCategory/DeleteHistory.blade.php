@@ -57,9 +57,7 @@
 								<td>{{$item->slug}}</td>
 								<td>{{$item->created_at}}</td>
 								<td>{{$item->updated_at}}</td>
-								<td><a href="{{route('restorePost', $item->slug)}}">Khôi phục</a> /
-									<a href="{{route('deletePosts', $item->id)}}">Xóa</a>
-								</td>
+								<td><a href="{{route('restorePost', $item->slug)}}">Khôi phục</a></td>
 							</tr>
 							@endforeach
 						</tbody>
@@ -96,25 +94,6 @@
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('dist/js/demo.js') }}"></script>
 <!-- Page specific script -->
-<script>
-	$(function () {
-        $("#example1").DataTable({
-            "responsive": true,
-            "lengthChange": false,
-            "autoWidth": false,
-            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-        $('#example2').DataTable({
-            "paging": true,
-            "lengthChange": false,
-            "searching": false,
-            "ordering": true,
-            "info": true,
-            "autoWidth": false,
-            "responsive": true,
-        });
-    });
-</script>
 @endpush
 <!-- HTML !-->
 

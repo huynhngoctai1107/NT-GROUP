@@ -63,7 +63,7 @@
         <td colspan="2">
             @if($item->delete_posts == 0)
                 <div class="btn-group  align-items-center" role="group">
-                    <a href="{{route('postSingle',$item->slug_posts)}}" class="btn btn-outline-success btn-sm">Sửa</a>
+                    <a href="{{route('editPostsClient',$item->slug_posts)}}" class="btn btn-outline-success btn-sm">Sửa</a>
                     <a href="{{ route('deletePostlist', $item->slug_posts) }}" class="btn btn-outline-danger btn-sm">Xóa</a>
                 </div>
             @endif

@@ -21,7 +21,7 @@
                     <hr class="my-3">
                     <div class="d-md-flex justify-content-between">
                         <span class="price format-number text-warning fw-bold">{{$formatPrice($item->price)}}</span>
-                        <span class="acreage"><strong>Diện tích:</strong> {{$item->acreages}} m<sup>2</sup></span>
+                        <span class="acreage"><i class="bi bi-arrows-fullscreen"></i>  {{$item->acreages}} m<sup>2</sup></span>
                     </div>
                     <p class="address my-3 shorten"><strong>Khu vực:</strong> {{$item['address']}}</p>
                 </div>

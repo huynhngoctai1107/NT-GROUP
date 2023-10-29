@@ -104,6 +104,7 @@ class Post extends Model
             'content',
             'acreages',
             'address',
+            'number_views',
             'posts.price as price_posts',
             'subtitles',
             'posts.created_at as posts_at',
