@@ -1,4 +1,7 @@
 @extends('Admin.Layout.master')
+
+
+{{-- css --}}
 @push('link')
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -21,9 +24,6 @@
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title"> Lịch sử xóa liên hệ </h3>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        <x-admin.buttom.add router="listContact" name="Lịch sử xóa"></x-admin.buttom.add>
                     </div>
                     @if(Session::has('success'))
                         <div class="alert alert-success" role="alert">
@@ -51,6 +51,7 @@
                                     <td>{{$item->phone}}</td>
                                     <td>{{$item->address}}</td>
                                     <td>{{$item->content}}</td>
+
                                     <td class="text-center" style="font-weight: bold;">
                                         <a href="{{route('statusContact', $item->id)}}"
                                            class="btn btn-sm btn-{{$item->status ? 'danger':'success'}}">
@@ -59,7 +60,7 @@
                                     </td>
                                     <td>
                                         <div class="btn-group"  role="group">
-                                            <a href="{{route('deleteContact',$item->id)}}"  class="btn btn-outline-danger btn-sm">Xoá</a>
+                                            <a href="{{route('restoreContact',$item->id)}}" class="btn btn-outline-danger btn-sm">Khôi phục</a>
                                         </div>
                                     </td>
                                 </tr>

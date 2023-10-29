@@ -77,6 +77,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['AdminLogin']], function (){
              ->name('listContact');
         Route::get('/xoa-lien-he/{id}', [DeleteContactController::class, 'deleteContact'])
              ->name('deleteContact');
+        Route::get('/khoi-phuc/{id}', [DeleteContactController::class, 'restoreContact'])
+             ->name('restoreContact');
+        Route::get('/lich-su-xoa-tai-khoan/{id}', [DeleteUserController::class, 'userHistory'])->name('userHistory');
+        Route::get('/trang-thai-lien-he/{id}', [ListContactController::class, 'statusContact'])->name('statusContact');
     });
 
     Route::group(['prefix' => 'nguoi-dung', 'middleware' => ['Roles']], function (){
