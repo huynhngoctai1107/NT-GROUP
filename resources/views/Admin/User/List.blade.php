@@ -23,26 +23,30 @@
     <div class="hold-transition sidebar-mini">
         <div class="wrapper">
             <div class="content-wrapper">
-                <div class="card">
+                <div class="card ">
                     <div class="card-header">
                         <h3 class="card-title"> Quản lý tài khoản người dùng </h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <x-admin.buttom.add router="addUser" name="Thêm tài khoản"></x-admin.buttom.add>
-                        <table id="example1" class="table table-bordered table-striped">
+                        <div class="d-flex justify-content-between">
+                            <x-admin.buttom.add router="addUser" name="Thêm tài khoản"></x-admin.buttom.add>
+                            <x-admin.buttom.add router="ListUserHistory" name="Lịch sử xóa"></x-admin.buttom.add>
+                        </div>
+
+                        <table id="example1" class="table table-bordered table-striped ">
                             @if(session('success'))
                                 <div class="alert alert-success">
                                     {{ session('success') }}
                                 </div>
                             @endif
-                            <thead>
+                            <thead class="text-center">
                             <tr>
                                 <th>Loại tài khoản</th>
                                 <th>Hình ảnh</th>
                                 <th>Tên tài khoản</th>
                                 <th>Email</th>
-                                <th>Số dư</th>
+                                <th>Ví</th>
                                 <th>Giới tính</th>
                                 <th>Số điện thoại</th>
                                 <th>Địa chỉ</th>
@@ -50,8 +54,7 @@
                                 <th>Nghiệp vụ</th>
                             </tr>
                             </thead>
-                            <tbody>
-                            {{-- sửa --}}
+                            <tbody class="text-center">
                             @foreach($list as $data)
                                 <tr>
                                     <td>

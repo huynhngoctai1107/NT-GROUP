@@ -85,18 +85,17 @@
                                     <div class="card-body">
                                         <div class="table-responsive">
                                             <table class="table">
-                                                <thead>
+                                                <thead class="text-center">>
                                                 <tr>
                                                     <th class="product-remove text-center">Loại</th>
                                                     <th class="product-price">Họ và Tên</th>
-                                                    <th class="product-price">Điện thoại</th>
                                                     <th class="product-remove">Số tiền</th>
                                                     <th class="product-quantity">Số dư</th>
                                                     <th class="product-subtotal">Nội dung</th>
                                                     <th class="product-remove">Ngày giao dịch</th>
                                                 </tr>
                                                 </thead>
-                                                <tbody>
+                                                <tbody class="text-center">>
                                                 <x-transactions.rechargehistory :list="$list"></x-transactions.rechargehistory>
                                                 </tbody>
                                             </table>

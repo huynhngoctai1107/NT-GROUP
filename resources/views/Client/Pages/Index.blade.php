@@ -134,27 +134,7 @@
                     </div>
                 </div>
                 <div class="col-md-4 mt-1">
-                    <div class="contactInfor mt-5 text-center">
-                        <h4>LIÊN HỆ ĐĂNG TIN</h4>
-                        <p>+8412345678</p>
-                    </div>
-                    <div class="admin border mt-4 mt-md-0">
-                        <div class="row">
-                            <div class="col-4 col-md-12 col-lg-4 text-center">
-                                <img src="client/images/banner0.webp" alt="Hình ảnh" class="img-fluid rounded-circle-custom m-3">
-                            </div>
-                            <div class="col-8 col-md-12 col-lg-8 d-flex justify-content-center align-items-center">
-                                <div class="infor">
-                                    <h5>PHÒNG KD</h5>
-                                    <div class="phone border-warning text-warning p-2 rounded bg-light">
-                                        <i class="bi bi-telephone-fill"></i>
-                                        <span>Gọi ngay</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
+                    <x-client.index.contact_post></x-client.index.contact_post>
                 </div>
             </div>
         </div>

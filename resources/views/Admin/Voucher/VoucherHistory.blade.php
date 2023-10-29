@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
 @endsection
 @section('title')
-    Quản lý mã giảm giá
+
 @endsection
 
 
@@ -25,54 +25,45 @@
             <div class="content-wrapper">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title"> Quản lý mã giảm giá </h3>
+                        <h3 class="card-title"> Lịch sử mã giảm giá </h3>
                     </div>
                     <div class="card-body">
-                        <x-admin.buttom.add :router="$page=='vouchers'?'listVoucher':''":name="$page=='vouchers'?'Danh sách voucher':''"></x-admin.buttom.add>
+                        <x-admin.buttom.add router="listVoucher" name="Danh sách voucher"></x-admin.buttom.add>
                         <table id="example1" class="table table-bordered table-striped">
                             @if(session('success'))
                                 <div class="alert alert-success">
                                     {{ session('success') }}
                                 </div>
                             @endif
-                            <thead>
+                            <thead class="text-center">
                             <tr>
                                 <th>Tên mã</th>
                                 <th>Mã code</th>
                                 <th>Hình ảnh</th>
                                 <th>Số tiền giảm</th>
-                                <th>Trạng thái</th>
                                 <th>Ngày hết hạn</th>
                                 <th>Nghiệp vụ</th>
                             </tr>
                             </thead>
-                            <tbody>
-                            @foreach($list as $data)
+                            <tbody class="text-center">
+                            @foreach($query as $data)
                                 <tr>
                                     <td>{{ $data->name }}</td>
                                     <td>{{ $data->code }}</td>
-                                    <td><img src='{{asset("images/$data->image")}}' alt="" width="150" height="120"></td>
-                                    <td>{{ number_format($data->discount) }} VNĐ</td>
-                                    <td>
-                                        <a href="{{route('status', $data->id)}}"
-                                           class="btn btn-sm btn-{{$data->status ? 'success':'danger'}}">
-                                            {{$data->status ? 'Chưa sử dụng':'Đã sử dụng'}}
-                                        </a>
+                                    <td><img src='{{asset("images/$data->image")}}' alt="" width="150" height="120">
                                     </td>
+                                    <td>{{ number_format($data->discount) }} VNĐ</td>
                                     <td>{{date('d-m-Y',strtotime($data->expiration_date))}}</td>
-
-
                                     <td>
                                         <div class="btn-group" role="group">
-                                            <a href="{{route('editFormVoucher', $data->slug)}}" class="btn btn-outline-success btn-sm">Sửa</a>
-                                            <a href="{{route('deleteVoucher', $data->id)}}" class="btn btn-outline-danger btn-sm">Xóa</a>
+                                            <a href="{{route('VoucherRestor', $data->slug)}}" class="btn btn-outline-success btn-sm">khôi phục</a>
                                         </div>
                                     </td>
                                 </tr>
                             @endforeach
                             </tbody>
                         </table>
-                        <div class="mt-3" style="float: right">{{ $list->links() }}</div>
+                        <div class="mt-3" style="float: right">{{ $query->links() }}</div>
                     </div>
                     <!-- /.card-body -->
                 </div>
@@ -81,7 +72,11 @@
     </div>
 
 @endsection
-
+<style>
+	img {
+		object-fit: cover;
+	}
+</style>
 @push('javascript')
     <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
     <!-- Bootstrap 4 -->

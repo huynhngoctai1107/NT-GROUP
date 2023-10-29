@@ -33,48 +33,28 @@
 
 
                         <table id="example1" class="table table-bordered table-striped">
-                            <thead>
+                            <thead class="text-center">
                             <tr>
-                                <th>Loại giao dịch</th>
-                                <th>Email</th>
-                                <th>Ngày giao dịch</th>
-                                <th>Số tiền</th>
-                                <th>Số dư</th>
-                                <th>Ghi chú</th>
-                                <th>Nhiệp vụ</th>
+                                <th class="product-remove text-center">Loại</th>
+                                <th class="product-price">Họ và Tên</th>
+                                <th class="product-remove">Số tiền</th>
+                                <th class="product-quantity">Số dư</th>
+                                <th class="product-subtotal">Nội dung</th>
+                                <th class="product-remove">Ngày giao dịch</th>
                             </tr>
                             </thead>
-                            <tbody>
-                            @php
-                                $list =[[
-                                      'id_category'=>1 ,
-                                      'email'=>'gmail@gmail.com',
-                                      'date_input'=>'11/07/2003',
-                                      'price'=>1000000,
-                                      'surplus'=>1800000,
-                                       ],
-                                       [
-                                       'id_category'=>2 ,
-                                      'email'=>'gmail@gmail.com',
-                                      'date_input'=>'11/07/2003',
-                                      'price'=>1100000,
-                                      'surplus'=>1900000,
-                                          ],
-                                       [
-                                       'id_category'=>1,
-                                      'email'=>'gmail@gmail.com',
-                                      'date_input'=>'11/07/2003',
-                                      'price'=>1500000,
-                                      'surplus'=>2100000,
-                                          ]];
-
-
-                            @endphp
-                            <x-transactions.rechargehistory :list="$list"></x-transactions.rechargehistory>
-
-
+                            <tbody class="text-center">
+                            @foreach($list as $item )
+                                <tr>
+                                    <td><span class="badge {{$item->id_category_transaction == 1 ? 'bg-success' : 'bg-danger'}}">{{$item->name}}</span></td>
+                                    <td>{{$item->fullname}}</td>
+                                    <td>{{number_format($item->price)}} Đ</td>
+                                    <td>{{number_format($item->surplus)}} Đ</td>
+                                    <td>{{$item->content ?? 'Không có'}}</td>
+                                    <td> {{date('d-m-Y',strtotime($item->created_at))}}</td>
+                                </tr>
+                            @endforeach
                             </tbody>
-
                         </table>
                     </div>
                     <!-- /.card-body -->
@@ -106,25 +86,6 @@
     <!-- AdminLTE for demo purposes -->
     <script src="{{ asset('dist/js/demo.js') }}"></script>
     <!-- Page specific script -->
-    <script>
-        $(function () {
-            $("#example1").DataTable({
-                "responsive": true,
-                "lengthChange": false,
-                "autoWidth": false,
-                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-            $('#example2').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
-            });
-        });
-    </script>
 @endpush
 <!-- HTML !-->
 

@@ -18,9 +18,15 @@ class Transaction extends Model{
     public function getHistory($condition){
         return $this->join('transaction_categories', 'transaction_categories.id', '=',
             'transactions.id_category_transaction')
-            ->join('users','users.id','=','transactions.id_user')
+                    ->join('users', 'users.id', '=', 'transactions.id_user')
                     ->groupby('transactions.id')->where($condition)->get();
 
+    }
+
+    public function listRechargeHistory($condition){
+
+        return $this->orderBy('id', 'desc')->where($condition)->paginate(5);
 
     }
+
 }

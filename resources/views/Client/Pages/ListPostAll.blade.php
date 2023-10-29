@@ -208,34 +208,11 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="col-md-4 mt-1">
-                                    <div class="contactInfor text-center d-flex justify-content-center align-items-center">
-                                        <div class="col-10" style="border: 1px solid #000; border-radius: 60px; align-items: center; padding: 10px">
-                                            <h4>LIÊN HỆ ĐĂNG TIN</h4>
-                                        </div>
-                                    </div>
-                                    <div class="admin mt-3">
-                                        <div class="row d-flex justify-content-center align-items-center" style="border: 1px solid #000; padding: 5px">
-                                            <div class="col-md-4 col-4 ">
-                                                <img src="{{asset('client/images/logont.jpg')}}" class="img-fluid rounded-circle-custom" alt="Hình ảnh" style="border: 1px solid #000; border-radius: 50%; width: 100px; height: 100px;">
-                                            </div>
-                                            <div class="col-md-8 col-8">
-                                                <div class="infor">
-                                                    <h5>PHÒNG KD</h5>
-                                                    <div class="phone border-warning text-warning p-2 rounded bg-light">
-                                                        <i class="bi bi-telephone-fill"></i>
-                                                        <span>Gọi ngay</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <x-client.index.contact_post></x-client.index.contact_post>
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
                 </div>
             </div>
@@ -248,7 +225,6 @@
     <!-- Bootstrap Font Icon CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"/>
     <style>
-
 		.card-name {
 			display: -webkit-box;
 			-webkit-line-clamp: 2;

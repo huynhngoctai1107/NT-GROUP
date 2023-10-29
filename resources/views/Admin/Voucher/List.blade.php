@@ -28,14 +28,17 @@
                         <h3 class="card-title"> Quản lý mã giảm giá </h3>
                     </div>
                     <div class="card-body">
-                        <x-admin.buttom.add router="addVoucher" name="Thêm mã giảm giá"></x-admin.buttom.add>
+                        <div class="d-flex justify-content-between">
+                            <x-admin.buttom.add router="addVoucher" name="Thêm mã giảm giá"></x-admin.buttom.add>
+                            <x-admin.buttom.add router="ListVoucherHistory" name="Lịch sử xoá"></x-admin.buttom.add>
+                        </div>
                         <table id="example1" class="table table-bordered table-striped">
                             @if(session('success'))
                                 <div class="alert alert-success">
                                     {{ session('success') }}
                                 </div>
                             @endif
-                            <thead>
+                            <thead class="text-center">
                             <tr>
                                 <th>Tên mã</th>
                                 <th>Mã code</th>
@@ -46,17 +49,17 @@
                                 <th>Nghiệp vụ</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody class="text-center">
                             @foreach($list as $data)
                                 <tr>
                                     <td>{{ $data->name }}</td>
                                     <td>{{ $data->code }}</td>
-                                    <td><img src='{{asset("images/$data->image")}}' alt="" width="150" height="120"></td>
+                                    <td><img src='{{asset("images/$data->image")}}' alt="" width="150" height="120">
+                                    </td>
                                     <td>{{ number_format($data->discount) }} VNĐ</td>
                                     <td>
-                                        <a href="{{route('status', $data->id)}}"
-                                           class="btn btn-sm btn-{{$data->status ? 'success':'danger'}}">
-                                            {{$data->status ? 'Chưa sử dụng':'Đã sử dụng'}}
+                                        <a href="{{route('status', $data->id)}}" class="btn btn-sm btn-{{$data->status ? 'success':'danger'}}">
+                                            {{$data->status = 1 ? 'Đang hoạt động':' Chưa hoạt động'}}
                                         </a>
                                     </td>
                                     <td>{{date('d-m-Y',strtotime($data->expiration_date))}}</td>
@@ -81,6 +84,12 @@
     </div>
 
 @endsection
+
+<style>
+	img {
+		object-fit: cover;
+	}
+</style>
 
 @push('javascript')
     <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>

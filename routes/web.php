@@ -80,20 +80,26 @@ Route::group(['prefix' => 'admin', 'middleware' => ['AdminLogin']], function (){
 
     Route::group(['prefix' => 'nguoi-dung', 'middleware' => ['Roles']], function (){
         Route::get('/danh-sach', [ListUserController::class, 'listUser'])->name('listUser');
-        Route::get('statusUser/{id}', [ListUserController::class, 'statusUser'])->name('statusUser');
-        Route::get('/chinh-sua/{id}', [EditUserController::class, 'editFormUser'])->name('editFormUser');
+        Route::get('/danh-sach-xoa-tai-khoan', [ListUserController::class, 'ListUserHistory'])
+             ->name('ListUserHistory');
+        Route::get('statusUser/{id}', [ListUserController::class, 'statusUser'])
+             ->name('statusUser');
+        Route::get('/chinh-sua/{id}', [EditUserController::class, 'editFormUser'])
+             ->name('editFormUser');
         Route::post('/chinh-sua/{id}', [EditUserController::class, 'editUser'])->name('editUser');
         Route::get('/them', [AddUserController::class, 'addFormUser'])->name('addUserForm');
         Route::post('/them', [AddUserController::class, 'formAddUser'])->name('addUser');
         Route::get('/xoa/{id}', [DeleteUserController::class, 'deleteUser'])->name('deleteUser');
-        Route::get('/lich-su-xoa-tai-khoan/{id}', [DeleteUserController::class, 'userHistory'])->name('userHistory');
+        Route::get('/userRestore/{id}', [DeleteUserController::class, 'userRestore'])
+             ->name('userRestore');
     });
 
     Route::group(['prefix' => 'voucher'], function (){
         Route::get('/danh-sach', [ListVoucherController::class, 'listVoucher'])
              ->name('listVoucher');
-        Route::get('/xoa/{slug}', [DeleteVoucherController::class, 'deleteVoucher'])
-             ->name('deleteVoucher');
+        Route::get('status/{id}', [ListVoucherController::class, 'status'])->name('status');
+        Route::get('/danh-sach-xoa-voucher', [ListVoucherController::class, 'ListVoucherHistory'])
+             ->name('ListVoucherHistory');
         Route::get('/chinh-sua/{slug}', [EditVoucherController::class, 'editFormVoucher'])
              ->name('editFormVoucher');
         Route::post('/chinh-sua/{slug}', [EditVoucherController::class, 'editVoucher'])
@@ -101,9 +107,14 @@ Route::group(['prefix' => 'admin', 'middleware' => ['AdminLogin']], function (){
         Route::get('/them', [AddVoucherController::class, 'addFormVoucher'])
              ->name('addFormVoucher');
         Route::post('/them', [AddVoucherController::class, 'addVoucher'])->name('addVoucher');
-        Route::get('status/{id}', [ListVoucherController::class, 'status'])->name('status');
+        Route::get('/xoa/{slug}', [DeleteVoucherController::class, 'deleteVoucher'])
+             ->name('deleteVoucher');
+        Route::get('/VoucherDelete/{slug}', [DeleteVoucherController::class, 'VoucherDelete'])
+             ->name('VoucherDelete');
+        Route::get('/VoucherRestor/{slug}', [DeleteVoucherController::class, 'VoucherRestor'])
+             ->name('VoucherRestor');
     });
-    Route::group(['prefix' => 'lich-su-gia-dich', 'middleware' => ['Roles']], function (){
+    Route::group(['prefix' => 'lich-su-giao-dich', 'middleware' => ['Roles']], function (){
         Route::get('/danh-sach', [RechargeHistoryController::class, 'listRechargeHistory'])
              ->name('listRechargeHistory');
     });
@@ -156,25 +167,32 @@ Route::group(['prefix' => '/', 'middleware' => ['ClientLogin']], function (){
     Route::get('/danh-sach-dang-tin', [PostNewController::class, 'listPost'])->name('postNew');
 
 
-    Route::group(['prefix' => 'nap-tien'], function () {
+    Route::group(['prefix' => 'nap-tien'], function (){
         Route::get('/', [RechargeController::class, 'Recharge'])->name('recharge');
         Route::post('/', [RechargeController::class, 'Pay'])->name('pay');
-        Route::post('/vnpay-payment', [RechargeController::class, 'vnpayPayment'])->name('vnpay-payment');
-        Route::get('/vnpay-success', [RechargeController::class, 'vnpaySuccess'])->name('vnpay-success');
+        Route::post('/vnpay-payment', [RechargeController::class, 'vnpayPayment'])
+             ->name('vnpay-payment');
+        Route::get('/vnpay-success', [RechargeController::class, 'vnpaySuccess'])
+             ->name('vnpay-success');
     });
 
-        Route::get('/tai-khoan', [AccountController::class, 'account'])->name('account');
-        Route::post('/sua-tai-khoan/{token}',[AccountController::class, 'updateProfile'])->name('updateProfile');
-        Route::post('/doi-mat-khau/{token}',[AccountController::class, 'updatePassword'])->name('updatePassword');
-        Route::post('trang-thai/{slug}', [PostNewController::class, 'status'])->name('editStatus');
+    Route::get('/tai-khoan', [AccountController::class, 'account'])->name('account');
+    Route::post('/sua-tai-khoan/{token}', [AccountController::class, 'updateProfile'])
+         ->name('updateProfile');
+    Route::post('/doi-mat-khau/{token}', [AccountController::class, 'updatePassword'])
+         ->name('updatePassword');
+    Route::post('trang-thai/{slug}', [PostNewController::class, 'status'])->name('editStatus');
 
 
     Route::group(['prefix' => 'bai-viet'], function (){
-     Route::get('/danh-sach-tin-da-dang', [PostNewController::class, 'postNew'])->name('postNew');
-        Route::get('/danh-sach-tin-da-dang', [PostNewController::class, 'postNew'])->name('postNew');
+        Route::get('/danh-sach-tin-da-dang', [PostNewController::class, 'postNew'])
+             ->name('postNew');
+        Route::get('/danh-sach-tin-da-dang', [PostNewController::class, 'postNew'])
+             ->name('postNew');
         Route::get('/them', [AddPostController::class, 'post'])->name('postAdd');
         Route::post('/them', [AddPostController::class, 'addClientPosts'])->name('addClientPosts');
-        Route::get('/danh-sach-dang-tin', [PostListController::class, 'listPost'])->name('listPost');
+        Route::get('/danh-sach-dang-tin', [PostListController::class, 'listPost'])
+             ->name('listPost');
         Route::get('/xoa-dang-tin/{slug}', [DeletePostController::class, 'deletePostlist'])
              ->name('deletePostlist');
     });

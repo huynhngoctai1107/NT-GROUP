@@ -15,7 +15,11 @@
     <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
 @endsection
 @section('title')
-    Quản lý tài khoản người dùng
+    @if ($page == 'history')
+        Lịch sử tài khoản
+    @else
+        Danh sách tài khoản
+    @endif
 @endsection
 
 
@@ -25,9 +29,7 @@
             <div class="content-wrapper">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title"> Quản lý tài khoản người dùng </h3>
-                    </div>
-                    <!-- /.card-header -->
+                        <h3 class="card-title"> Lịch sử xoá tài khoản người dùng </h3></div>
                     <div class="card-body">
                         <x-admin.buttom.add router="listUser" name="Danh sách tài khoản"></x-admin.buttom.add>
                         <table id="example1" class="table table-bordered table-striped">
@@ -36,23 +38,21 @@
                                     {{ session('success') }}
                                 </div>
                             @endif
-                            <thead>
+                                <thead class="text-center">
                             <tr>
-                                <th>Loại tài khoản</th>
+                                <th>Quyền</th>
                                 <th>Hình ảnh</th>
                                 <th>Tên tài khoản</th>
                                 <th>Email</th>
-                                <th>Số dư</th>
+                                <th>Ví</th>
                                 <th>Giới tính</th>
                                 <th>Số điện thoại</th>
                                 <th>Địa chỉ</th>
-                                <th>Trạng thái</th>
                                 <th>Nghiệp vụ</th>
                             </tr>
                             </thead>
-                            <tbody>
-                            {{-- sửa --}}
-                            @foreach($list as $data)
+                            <tbody class="text-center">
+                            @foreach($query as $data)
                                 <tr>
                                     <td>
                                         @if($data->id_role == 1)
@@ -75,27 +75,25 @@
                                     <td>{{ $data->address }}</td>
                                     <td>
                                         <div class="btn-group" role="group">
-                                            <a href="{{ route('deleteUser', $data->id) }}" class="btn btn-outline-danger btn-sm">Xoá</a>
-                                            <a href="{{ route('deleteUser', $data->id) }}" class="btn btn-outline-danger btn-sm">Khôi phục</a>
+                                            <a href="{{ route('userRestore', $data->id) }}" class="btn btn-outline-primary btn-sm">Khôi phục</a>
                                         </div>
                                     </td>
                                 </tr>
                             @endforeach
                             </tbody>
                         </table>
-                        <div class="mt-3">{{ $list->links() }}</div>
+                        <div class="mt-3" style="float: right"></div>
                     </div>
                     <!-- /.card-body -->
                 </div>
             </div>
         </div>
     </div>
-    <div style="margin-bottom: 30px;"></div>
 @endsection
 
 
 <style>
-	img{
+	img {
 		object-fit: cover;
 	}
 </style>

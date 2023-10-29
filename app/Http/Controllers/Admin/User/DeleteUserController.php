@@ -19,27 +19,32 @@ class DeleteUserController extends Controller{
 
     public function deleteUser($id){
 
-        // Tìm bài viết cần xóa
-        $user = User::findOrFail($id);
+        // Tìm tài khoản cần xóa
+        $user  = User::findOrFail($id);
         $posts = Post::where('id_user', $id)->get();
         // Xóa các bài viết
-        foreach ($posts as $post) {
-            $post->deletePost();
-        }
-
-        // Xóa bài viết và liên kết trong bảng "media" thông qua phương thức trong Model
+//        foreach ($posts as $post){
+//            $post->deletePost();
+//        }
+        // Xóa tài khoản và liên kết trong bảng "media" thông qua phương thức trong Model
         $user->deleteUser();
+
+        // Cập nhật trạng thái đã xoá của tài khoản
+        $user->delete = true;
+        $user->save();
 
         return redirect()->back()->with('success', 'Tài khoản đã được xóa thành công.');
     }
 
-    public function userHistory()
+    function userRestore($id)
     {
-        // Lấy tất cả các tài khoản đã bị xóa từ bảng DeletedUser
-        $userHistory = userHistory::all();
+        $user = User::findOrFail($id); // Tìm người dùng dựa trên ID
 
-        // Truyền dữ liệu tài khoản đã xóa vào view để hiển thị
-        return view('userHistory', compact('userHistory'));
+        $user->delete = 0; // Khôi phục trường deleted_at thành null
+
+        $user->save(); // Lưu thay đổi
+
+        return redirect()->back()->with('success', 'Đã khôi phục tài khoản thành công');
     }
 
 }

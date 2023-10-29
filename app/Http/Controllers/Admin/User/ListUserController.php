@@ -35,4 +35,13 @@ class ListUserController extends Controller
         }
         return back();
     }
+
+    function ListUserHistory()
+    {
+        $condition = [
+            ['delete', '=', 1],
+        ];
+        $data = $this->user->listUser($condition);
+        return view('admin.user.UserHistory', ['page' => 'history', 'query' => $data]);
+    }
 }

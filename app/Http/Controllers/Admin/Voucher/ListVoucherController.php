@@ -14,7 +14,7 @@ class ListVoucherController extends Controller
     }
     public function listVoucher()
     {
-        $condition = ['delete'=>0,];
+        $condition = ['delete'=>0];
 
         $list =$this->voucher->listVoucher($condition);
 
@@ -34,5 +34,14 @@ class ListVoucherController extends Controller
             $voucher->save();
         }
         return back();
+    }
+    function ListVoucherHistory()
+    {
+        $condition = [
+            ['delete', '=', 1],
+        ];
+
+        $list =$this->voucher->listVoucher($condition);
+        return view('admin.voucher.VoucherHistory', ['page' => 'ListVoucherHistory', 'query' => $list]);
     }
 }
