@@ -18,14 +18,18 @@
                     text-overflow: ellipsis;
                     -webkit-line-clamp:1;
                     max-width: 30ch;">{{ $item->title }}</span>
+
             <a href="{{route('search',$item->slug_category )}}" class="btn btn-fill-out fst-italic " type="button">
                 {{ $item->name_category }}</a>
 
-
-
-
             <a href="{{route('search1',$item->slug_demands)}}" class=" text-white  btn btn-fill-out fst-italic" type="button">
                 {{ $item->name_demands }}</a>
+            <br>
+            @if($item->featured_news == 0 && $item->delete_posts ==0)
+                <a href="{{route('buyVipNew',$item->slug_posts)}}" class=" text-white mt-2  btn btn-fill-out fst-italic" type="button">
+                    Mua tin vip</a>
+            @endif
+
         </td>
 
 

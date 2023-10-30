@@ -16,10 +16,19 @@ class Transaction extends Model{
 
 
     public function getHistory($condition){
-        return $this->join('transaction_categories', 'transaction_categories.id', '=',
-            'transactions.id_category_transaction')
+
+        return $this->select('fullname', 'phone', 'wallet', 'id_category_transaction',
+            'transactions.created_at', 'transactions.surplus', 'transactions.status',
+            'transactions.content', 'price', 'transaction_categories.name as name_category',
+            'payment_methods.name as method')
+                    ->join('transaction_categories', 'transaction_categories.id', '=',
+                        'transactions.id_category_transaction')
                     ->join('users', 'users.id', '=', 'transactions.id_user')
-                    ->groupby('transactions.id')->where($condition)->get();
+                    ->join('payment_methods', 'payment_methods.id', '=', 'transactions.id_method')
+                    ->groupby('transactions.id')
+                    ->orderBy('transactions.id', 'desc')
+                    ->where($condition)
+                    ->get();
 
     }
 
@@ -27,6 +36,10 @@ class Transaction extends Model{
 
         return $this->orderBy('id', 'desc')->where($condition)->paginate(5);
 
+    }
+
+    public function addTransaction($data){
+        return $this->insert($data);
     }
 
 }

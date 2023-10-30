@@ -6,14 +6,14 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Account\ContactsRequest;
 use App\Http\Controllers\Client\Mail\ContactController;
 use App\Models\ContactClient;
-
+use App\Models\faqs ;
 class AddContactController extends Controller{
 
-    public $contact;
+    public $faqs;
     public $mail;
 
     public function __construct(){
-        $this->contact = new ContactClient();
+        $this->faqs = new Faqs();
         $this->mail = new ContactController();
     }
     function contact(){
@@ -27,7 +27,7 @@ class AddContactController extends Controller{
             'address'    => $request->address,
             'content'    => $request->content,
         ];
-    if($this->contact->addContact($data)){
+    if($this->faqs->addContact($data)){
 
         $this->mail->contactMail($data);
         return Redirect()

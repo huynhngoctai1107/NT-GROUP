@@ -7,7 +7,7 @@ use App\Http\Controllers\Client\Mail\MailLoginController;
 use App\Http\Requests\Account\LoginRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
+use Lunaweb\RecaptchaV3\Facades\RecaptchaV3 ;
 class LoginController extends Controller{
     public $mail;
     public function __construct(){
@@ -24,6 +24,7 @@ class LoginController extends Controller{
         if ($score > 0.7){
             if (Auth::attempt(['email' => $request->email, 'password' => $request->password, 'status' => 1, 'social_id' => 0])){
                 $acout = Auth::user();
+                
                 $this->mail->loginMail();
 
                 if ($acout->id_role == 3){

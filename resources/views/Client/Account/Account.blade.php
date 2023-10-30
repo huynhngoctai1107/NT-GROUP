@@ -38,13 +38,13 @@
                             <ul class="nav nav-tabs flex-column" role="tablist">
 
                                 <li class="nav-item">
-                                    <a class="nav-link {{Session::get('active') =='vnpay' ? '' : (Session::get('active') =='updateProfile' ? '' : (Session::get('active') =='updatePassword' ? '' : 'active'))}}  " id="dashboard-tab" data-bs-toggle="tab" href="#dashboard" role="tab" aria-controls="dashboard" aria-selected="false"><i class="ti-layout-grid2"></i>Thống Kê</a>
+                                    <a class="nav-link {{Session::get('active') =='payment' ? '' : (Session::get('active') =='updateProfile' ? '' : (Session::get('active') =='updatePassword' ? '' : 'active'))}}  " id="dashboard-tab" data-bs-toggle="tab" href="#dashboard" role="tab" aria-controls="dashboard" aria-selected="false"><i class="ti-layout-grid2"></i>Thống Kê</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" id="orders-tab" data-bs-toggle="tab" href="#orders" role="tab" aria-controls="orders" aria-selected="false"><i class="ti-shopping-cart-full"></i>Lịch Sử Giao dịch</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link  {{Session::get('active') =='vnpay' ? 'active' : ''}}" id="wallet-tab" data-bs-toggle="tab" href="#wallet" role="tab" aria-controls="wallet" aria-selected="false"><i class="ti-wallet"></i>Ví của tôi</a>
+                                    <a class="nav-link  {{Session::get('active') =='payment' ? 'active' : ''}}" id="wallet-tab" data-bs-toggle="tab" href="#wallet" role="tab" aria-controls="wallet" aria-selected="false"><i class="ti-wallet"></i>Ví của tôi</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link {{Session::get('active') =='updateProfile' ? 'active' : ''}}" id="address-tab" data-bs-toggle="tab" href="#account" role="tab" aria-controls="account" aria-selected="true"><i class="ti-location-pin"></i>Cập nhật tài khoản</a>
@@ -64,7 +64,7 @@
                     </div>
                     <div class="col-lg-9 col-md-8">
                         <div class="tab-content dashboard_content">
-                            <div class="tab-pane fade {{Session::get('active') =='vnpay' ? '' : (Session::get('active') =='updateProfile' ? '' : (Session::get('active') =='updatePassword' ? '' : 'active show'))}}   " id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
+                            <div class="tab-pane fade {{Session::get('active') =='payment' ? '' : (Session::get('active') =='updateProfile' ? '' : (Session::get('active') =='updatePassword' ? '' : 'active show'))}}   " id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
                                 <div class="card">
                                     <div class="card-header">
                                         <h3>Thống Kê</h3>
@@ -88,6 +88,7 @@
                                                 <thead class="text-center">>
                                                 <tr>
                                                     <th class="product-remove text-center">Loại</th>
+                                                    <th class="product-remove text-center">Hình thức</th>
                                                     <th class="product-price">Họ và Tên</th>
                                                     <th class="product-remove">Số tiền</th>
                                                     <th class="product-quantity">Số dư</th>
@@ -104,7 +105,7 @@
                                 </div>
                             </div>
 
-                            <div class="tab-pane fade  {{Session::get('active') =='vnpay' ? 'active show' : ''}} " id="wallet" role="tabpanel" aria-labelledby="wallet-tab">
+                            <div class="tab-pane fade  {{Session::get('active') =='payment' ? 'active show' : ''}} " id="wallet" role="tabpanel" aria-labelledby="wallet-tab">
                                 <x-client.account.wallet :payment="$payment"></x-client.account.wallet>
                             </div>
 

@@ -46,6 +46,8 @@ use App\Http\Controllers\Client\Search\SearchController;
 use App\Http\Controllers\Client\Post\PostNewController;
 use App\Http\Controllers\Client\Post\EditPostController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Client\Pay\PaypalController;
+use App\Http\Controllers\Client\Pay\BuyArticleController;
 
 Route::group(['prefix' => 'admin', 'middleware' => ['AdminLogin']], function (){
     Route::get('/', [ViewDashboardController::class, 'dashboar'])->name('dashboar');
@@ -171,14 +173,24 @@ Route::group(['prefix' => '/', 'middleware' => ['ClientLogin']], function (){
 
 
     Route::group(['prefix' => 'nap-tien'], function (){
-        Route::get('/', [RechargeController::class, 'Recharge'])->name('recharge');
-        Route::post('/', [RechargeController::class, 'Pay'])->name('pay');
-        Route::post('/thanh-toan-vnpay', [RechargeController::class, 'vnpayPayment'])
-             ->name('vnpay-payment');
+
+        Route::post('/thanh-toan', [RechargeController::class, 'PaymentMethod'])
+             ->name('Payment_method');
         Route::get('/vnpay-thanh-cong', [RechargeController::class, 'vnpaySuccess'])
              ->name('vnpay-success');
+        //paypal
+        Route::get('/thanh-toan-paypal-thanh-cong', [PaypalController::class, 'paypalSuccess'])
+             ->name('paypal_success');
+        Route::get('/thanh-toan-paypal-that-bai', [PaypalController::class, 'paypalCanel'])
+             ->name('paypal_canel');
     });
+    Route::group(['prefix' => 'mua-tin-vip'], function (){
+        Route::get('/kiem-tra-vi/{slug}', [BuyArticleController::class, 'buyVipNew'])->name('buyVipNew');
+        Route::get('/su-dung-voucher', [BuyArticleController::class, 'voucher'])->name('voucher');
 
+
+
+    });
     Route::get('/tai-khoan', [AccountController::class, 'account'])->name('account');
     Route::post('/sua-tai-khoan/{token}', [AccountController::class, 'updateProfile'])
          ->name('updateProfile');

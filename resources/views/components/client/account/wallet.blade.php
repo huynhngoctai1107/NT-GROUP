@@ -1,7 +1,7 @@
 <div class="containers" id="containers">
     <div class="form-container1 sign-up-container">
 
-        <form action="{{ route('vnpay-payment') }}" method="POST">
+        <form action="{{route('Payment_method')}}" method="POST">
 
             @csrf
             <div class="col-12">

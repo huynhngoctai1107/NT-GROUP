@@ -67,7 +67,7 @@ class Post extends Model
     public function getPostList($condition){
         return $this->where($condition)
                     ->select('posts.id as id_post','posts.slug as slug_posts','category_posts.name as name_category',
-                        'category_posts.slug as slug_category', 'demands.name as name_demands',
+                        'category_posts.slug as slug_category','posts.delete as delete_posts', 'demands.name as name_demands','featured_news',
                         'demands.slug as slug_demands','title', 'address', 'acreages', 'number_views', 'price','subtitles', 'posts.created_at',
                         DB::raw('GROUP_CONCAT(medias.image) AS images'))
                     ->join('medias', 'medias.id_post', '=', 'posts.id')
@@ -80,9 +80,9 @@ class Post extends Model
         return $this->where($condition)
                     ->select('posts.id as id_post','posts.slug as slug_posts', 'category_posts.name as name_category', 'demands.id as id_demands',
                         'category_posts.slug as slug_category', 'demands.name as name_demands',
-                        'demands.slug as slug_demands', 'users.email','posts.delete as delete_posts', 'title', 'subtitles',
-                        'price', 'acreages', 'content','posts.status as status_post',
-                        'link_youtube', 'posts.address',
+                        'demands.slug as slug_demands', 'users.email','posts.delete as delete_posts', 'posts.title', 'posts.subtitles',
+                        'price', 'acreages', 'content','posts.status as status_post','posts.featured_news',
+                        'posts.link_youtube', 'posts.address',
                         DB::raw('GROUP_CONCAT(medias.image) AS images'))
                     ->join('medias', 'medias.id_post', '=', 'posts.id')
                     ->join('demands', 'demands.id', '=', 'posts.id_demand')
@@ -91,6 +91,22 @@ class Post extends Model
                     ->groupby('id_post')
                     ->get();
     }
+    public function firstPost($condition){
+        return $this->where($condition)
+                    ->select('posts.id as id_post','posts.slug as slug_posts', 'category_posts.name as name_category', 'demands.id as id_demands',
+                        'category_posts.slug as slug_category', 'demands.name as name_demands',
+                        'demands.slug as slug_demands', 'users.email','posts.delete as delete_posts', 'posts.title', 'posts.subtitles',
+                        'price', 'acreages', 'content', 'posts.id_user','posts.status as status_post','posts.featured_news',
+                        'posts.link_youtube', 'posts.address',
+                        DB::raw('GROUP_CONCAT(medias.image) AS images'))
+                    ->join('medias', 'medias.id_post', '=', 'posts.id')
+                    ->join('demands', 'demands.id', '=', 'posts.id_demand')
+                    ->join('category_posts', 'category_posts.id', '=', 'posts.id_category')
+                    ->join('users', 'users.id', '=', 'posts.id_user')
+                    ->groupby('id_post')
+                    ->first();
+    }
+
 
     public function getPostWithContacts($condition) {
         $post = $this->select(
@@ -100,6 +116,9 @@ class Post extends Model
             'category_posts.slug as slug_category',
             'demands.name as name_demand',
             'demands.slug as slug_demand',
+            'posts.id_user',
+            'posts.featured_news',
+            'posts.delete as delete_posts',
             'title',
             'content',
             'acreages',

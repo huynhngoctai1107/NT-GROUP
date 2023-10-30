@@ -82,7 +82,7 @@ class RegisterController extends Controller{
                 $data = [
                     'token' => strtoupper(Str::random(10)),
                 ];
-                $this->user->updateUser($data, $condition);
+                    $this->user->updateUser($data, $condition);
 
                 return Redirect()
                     ->route('error')

@@ -28,7 +28,7 @@
                         <h3 class="card-title">Lịch sử giao dịch </h3>
                     </div>
 
-                    <!-- /.card-header -->
+
                     <div class="card-body">
 
 
