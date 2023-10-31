@@ -112,6 +112,7 @@ class RechargeController extends Controller{
         $transaction->content                 = "Giao dịch thành công";
         $transaction->save();
         session()->forget('method');
+
         return redirect()
             ->route('account')
             ->with(['success' => 'Nạp tiền vào tài khoản thành công.', 'active' => 'payment']);

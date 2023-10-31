@@ -187,6 +187,7 @@ Route::group(['prefix' => '/', 'middleware' => ['ClientLogin']], function (){
     Route::group(['prefix' => 'mua-tin-vip'], function (){
         Route::get('/kiem-tra-vi/{slug}', [BuyArticleController::class, 'buyVipNew'])->name('buyVipNew');
         Route::get('/su-dung-voucher', [BuyArticleController::class, 'voucher'])->name('voucher');
+        Route::get('/thanh-toan-hoa-don', [BuyArticleController::class, 'checkOut'])->name('checkOut');
 
 
 

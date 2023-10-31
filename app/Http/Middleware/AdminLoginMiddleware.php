@@ -19,7 +19,7 @@ class AdminLoginMiddleware
         session()->put('resetPage', Route::getFacadeRoot()->current()->uri()) ;
         if(Auth::check())
         { 
-            if(Auth::user()->status == 1 ){
+            if(Auth::user()->status == 1   && Auth::user()->delete == 0 ){
                 if(Auth::user()->id_role != 3   ){
                     return $next($request);
                     }else{

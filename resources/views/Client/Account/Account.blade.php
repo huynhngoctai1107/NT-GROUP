@@ -91,9 +91,11 @@
                                                     <th class="product-remove text-center">Hình thức</th>
                                                     <th class="product-price">Họ và Tên</th>
                                                     <th class="product-remove">Số tiền</th>
+                                                    <th class="product-remove">Mã giảm giá</th>
                                                     <th class="product-quantity">Số dư</th>
                                                     <th class="product-subtotal">Nội dung</th>
                                                     <th class="product-remove">Ngày giao dịch</th>
+                                                   <th class="product-remove">Ngày hết hạng sử dụng VIP</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody class="text-center">>

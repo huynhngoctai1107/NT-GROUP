@@ -93,6 +93,7 @@
                             @csrf
                             <div class="col-md-12 col-12">
                                 <div class="coupon field_form input-group">
+                                    <input type="hidden" name="id_user" value="{{$user->id}}" class="form-control form-control-sm" >
                                     <input type="text" name="voucher" value="{{session()->get('voucher')[0]['code'] ?? ''}}" class="form-control form-control-sm" placeholder="Nhập mã giảm giá">
                                     <div class="input-group-append">
                                         <button class="btn btn-fill-out btn-sm" type="submit">Sửa dụng</button>
@@ -102,10 +103,11 @@
                         </div>
 
                     </form>
-                    <form action="" class="col-md-6">
+                    <form action="{{route('checkOut')}}" class="col-md-6">
                         @csrf
-                        <input type="hidden" name="slug" value="{{$post->slug_posts}}" class="form-control form-control-sm" placeholder="Enter Coupon Code..">
-                        <input type="hidden" name="total" value="{{$total *0.05  + $total}}" class="form-control form-control-sm" placeholder="Enter Coupon Code..">
+                        <input type="hidden" name="id_user" value="{{$user->id}}" class="form-control form-control-sm" >
+                        <input type="hidden" name="slug" value="{{$post->slug_posts}}" class="form-control form-control-sm" >
+                        <input type="hidden" name="total" value="{{($total *0.05  +$total) - (session()->get('voucher')[0]['discount'] ?? 0) }}" class="form-control form-control-sm" placeholder="Enter Coupon Code..">
                         <div class="border p-3 p-md-4">
                             <div class="heading_s1 mb-3">
                                 <h6>Hóa đơn</h6>
@@ -115,7 +117,7 @@
                                     <tbody>
                                     <tr>
                                         <td class="cart_total_label">Tổng tiền</td>
-                                        <td class="cart_total_amount">- {{number_format($total)}} VND</td>
+                                        <td class="cart_total_amount">- {{number_format($total)}} VND/Tháng</td>
                                     </tr>
                                     <tr>
                                         <td class="cart_total_label">Thuế (5%)</td>
@@ -128,12 +130,13 @@
                                     <tr>
                                         <td class="cart_total_label">Tổng</td>
                                         <td class="cart_total_amount">
-                                            <strong>- {{number_format(($total *0.05  +$total) - (session()->get('voucher')[0]['discount'] ?? 0) )}} VND</strong></td>
+                                            <strong>- {{number_format(($total *0.05  +$total) - (session()->get('voucher')[0]['discount'] ?? 0) )}} VND/Tháng</strong></td>
+
                                     </tr>
                                     </tbody>
                                 </table>
                             </div>
-                            <a href="#" class="btn btn-fill-out">Thanh toán</a>
+                            <button class="btn btn-fill-out btn-sm" type="submit">Thanh toán</button>
                         </div>
 
                     </form>

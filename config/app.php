@@ -170,6 +170,7 @@ return [
         App\Providers\EventServiceProvider::class,
         Jenssegers\Agent\AgentServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+
     ])->toArray(),
 
     /*

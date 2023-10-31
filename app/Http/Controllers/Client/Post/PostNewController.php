@@ -18,7 +18,7 @@ class PostNewController extends Controller
   
     }
     function postNew(Request $request){
-    
+        $request->session()->forget('voucher');
 
         $condition = [
             'posts.delete'  => 0,

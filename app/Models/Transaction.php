@@ -17,9 +17,9 @@ class Transaction extends Model{
 
     public function getHistory($condition){
 
-        return $this->select('fullname', 'phone', 'wallet', 'id_category_transaction',
+        return $this->select('fullname','phone', 'wallet', 'id_category_transaction',
             'transactions.created_at', 'transactions.surplus', 'transactions.status',
-            'transactions.content', 'price', 'transaction_categories.name as name_category',
+            'transactions.content', 'price','voucher', 'transaction_categories.name as name_category',
             'payment_methods.name as method')
                     ->join('transaction_categories', 'transaction_categories.id', '=',
                         'transactions.id_category_transaction')
