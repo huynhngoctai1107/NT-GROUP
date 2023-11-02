@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('email');
             $table->integer('interaction_count');
+            $table->tinyInteger('delete')->default(0);
             $table->timestamps();
 
         });

@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin\Contact;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\ContactClient;
-use App\Models\faqs ;
+use App\Models\Faqs;
+
 class DeleteContactController extends Controller{
 
   public $faqs;
@@ -27,9 +27,9 @@ class DeleteContactController extends Controller{
     }
     function restoreContact($id){
         $condition = [
-            ['$id', '=', $id],
+            ['id', '=', $id],
         ];
-        $value     = [
+        $value = [
             'delete' => 0,
         ];
         $this->faqs->updateContact($condition, $value);

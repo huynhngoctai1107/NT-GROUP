@@ -34,16 +34,15 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-6">
+                        <div class="about_img scene mb-4 mb-lg-0">
+                            <img src="https://batdongsancantho.vn/public/upload/images/20160114164905-d953.jpg" alt="about_img"/>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
                         <div class="heading_s1">
                             <h2>Quá trình hình thành và phát triển Bất Động Sản Kiên Giang</h2>
                         </div>
                         <p>Để đạt được mục tiêu vươn lên tầm cao mới trong lĩnh vực kinh doanh bất động sản toàn thể ban lãnh đạo, cán bộ, công nhân viên của Động Sản Kiên Giang với sức trẻ, tinh thần nhiệt huyết, không ngừng nỗ lực và sáng tạo sẽ kiến tạo nên những khu đô thị mới, những văn phòng, với chất lượng tốt nhất, xây dựng phong cách phục vụ chuyên nghiệp, uy tín nhằm mang đến cho khách hàng những dịch vụ phong phú và hoàn hảo nhất. Mang Bất Động Sản Kiên Giang đến gần hơn với khách hàng, và từng bước một trở thành một trong các doanh nghiệp bất động sản hàng đầu Việt Nam không chỉ về quy mô, chất lượng mà còn là nơi đáng tin cậy nhất để khách hàng vững tâm xây dựng tương lai.</p>
-                    </div>
-                    <div class="col-lg-6">
-
-                        <div class="about_img scene mb-4 mb-lg-0">
-                            <img src="https://batdongsancantho.vn/public/upload/images/20160114164905-d953.jpg" alt="about_img"/>
-                        </div>
                     </div>
 
                 </div>

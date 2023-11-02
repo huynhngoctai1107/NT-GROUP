@@ -38,6 +38,9 @@ use App\Http\Controllers\Client\Blog\BlogListController;
 use App\Http\Controllers\Client\Blog\PostSingleController;
 use App\Http\Controllers\Admin\Contact\AddContactController;
 use App\Http\Controllers\Admin\Contact\ListContactController;
+use App\Http\Controllers\Admin\EmailNew\ListEmailController;
+use App\Http\Controllers\Admin\EmailNew\AddEmaiController;
+use App\Http\Controllers\Admin\EmailNew\DeleteEmailController;
 use App\Http\Controllers\Admin\Contact\DeleteContactController;
 use App\Http\Controllers\Client\Docs\DocsController;
 use App\Http\Controllers\Client\ErrorPage\ErrorPageController;
@@ -86,6 +89,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['AdminLogin']], function (){
              ->name('deleteContact');
         Route::get('/khoi-phuc/{id}', [DeleteContactController::class, 'restoreContact'])
              ->name('restoreContact');
+        Route::get('/lich-su-xoa-tai-khoan/{id}', [DeleteUserController::class, 'userHistory'])->name('userHistory');
+        Route::get('/trang-thai-lien-he/{id}', [ListContactController::class, 'statusContact'])->name('statusContact');
+        Route::get('/danh-sach-xoa-lien-he', [ListContactController::class, 'listDeleteContact'])
+             ->name('listDeleteContact');
         Route::get('/lich-su-xoa-tai-khoan/{id}', [DeleteUserController::class, 'userHistory'])
              ->name('userHistory');
         Route::get('/trang-thai-lien-he/{id}', [ListContactController::class, 'statusContact'])
@@ -273,6 +280,17 @@ Route::group(['prefix' => '/'], function (){
     Route::group(['prefix' => 'tai-lieu'], function (){
         Route::get('/dieu-khoan', [DocsController::class, 'docsterms'])->name('terms');
         Route::get('/chinh-sach', [DocsController::class, 'docspolicy'])->name('policy');
+    });
+
+    Route::group(['prefix' => 'dang-ky-nhan-bai-viet'], function (){
+        Route::get('/danh-sach-dang-ky', [ListEmailController::class, 'listEmail'])->name('listEmail');
+        Route::post('them-dang-ky', [AddEmaiController::class, 'emailFrom'])->name('emailForm');
+        Route::get('/xoa-email-nhan-tin/{id}', [DeleteEmailController::class, 'deleteEmail'])
+             ->name('deleteEmail');
+        Route::get('/danh-sach-xoa-email', [ListEmailController::class, 'listDeleteEmail'])
+             ->name('listDeleteEmail');
+        Route::get('/khoi-phuc-email/{id}', [ListEmailController::class, 'restoreEmail'])
+             ->name('restoreEmail');
     });
 
 });

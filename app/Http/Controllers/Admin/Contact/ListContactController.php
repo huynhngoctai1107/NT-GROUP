@@ -17,9 +17,10 @@ class ListContactController extends Controller{
     }
 
     function listContact(){
-        $condition = []; // Thêm các điều kiện của bạn ở đây nếu cần
+        $condition = [
+            'delete' => 0,
+        ]; // Thêm các điều kiện của bạn ở đây nếu cần
         $query     = $this->faqs->listContact($condition);
-
         return view('Admin.Contact.ListContact', compact('query'));
     }
 
@@ -39,5 +40,13 @@ class ListContactController extends Controller{
         }
         $this->faqs->updateContact($condition,$value);
         return back();
+    }
+    function listDeleteContact()
+    {
+        $condition = [
+            'delete' => 1,
+        ]; //
+        $data = $this->faqs->listContact($condition);
+        return view('admin.contact.DeleteContact', ['page' => 'faqs', 'query' => $data]);
     }
 }

@@ -245,8 +245,6 @@
                                                         <p
                                                                 style="margin: 0; font-size: 14px; color: #0c0c0d; text-align: left; mso-line-height-alt: 25.2px;">
                                                             <strong class="text-dark">Hệ điều hành máy: <em>{{$data['device']}}  </em></strong></p>
-
-
                                                         <p
                                                                 style="margin: 0; font-size: 14px; color: #0c0c0d; text-align: left; mso-line-height-alt: 25.2px;">
                                                             <strong class="text-dark">Đăng nhập bằng trình duyệt: <em>{{$data['browser']}}</em></strong><strong><br /><br /><span

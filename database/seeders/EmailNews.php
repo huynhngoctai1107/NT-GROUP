@@ -18,27 +18,27 @@ class EmailNews extends Seeder
             [
                 'id'      => 1,
                 'email' => 'muoiman@gmail.com',
-              'interaction_count' => 10 ,
+              'interaction_count' => 0 ,
             ],
             [
                 'id'      => 2,
                 'email' => 'tuyetngan17072003z@gmail.com',
-                'interaction_count' => 45 ,
+                'interaction_count' => 0 ,
             ],
             [
                 'id'      => 3,
                 'email' => 'nganlttpc04307@fpt.edu.vn',
-                'interaction_count' => 20 ,
+                'interaction_count' => 0 ,
             ],
             [
                 'id'      => 4,
                 'email' => 'duyhoa102201@gmail.com',
-                'interaction_count' => 12 ,
+                'interaction_count' => 0 ,
             ],
             [
                 'id'      => 5,
                 'email' => 'hoandps23837@fpt.edu.vn',
-                'interaction_count' => 48 ,
+                'interaction_count' => 0 ,
             ],
 
 

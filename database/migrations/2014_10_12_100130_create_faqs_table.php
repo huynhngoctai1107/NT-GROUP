@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('address');
             $table->string('content');
             $table->tinyInteger('status')->default(0);
+            $table->tinyInteger('delete')->default(0);
             $table->timestamps();
 
         });

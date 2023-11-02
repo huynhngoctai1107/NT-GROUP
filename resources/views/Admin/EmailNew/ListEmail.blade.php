@@ -1,7 +1,4 @@
 @extends('Admin.Layout.master')
-
-
-{{-- css --}}
 @push('link')
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -15,7 +12,7 @@
     <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
 @endpush
 @section('title')
-    Quản lý liên hệ
+    Quản lý email đăng ký
 @endsection
 @section('main')
     <div class="hold-transition sidebar-mini">
@@ -23,47 +20,33 @@
             <div class="content-wrapper">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title"> Lịch sử xóa liên hệ </h3>
+                        <h3 class="card-title"> Danh sách đăng ký nhận tin mới </h3>
                     </div>
-                    @if(Session::has('success'))
-                        <div class="alert alert-success" role="alert">
-                            {{Session::get('success')}}
-                        </div>
-                    @endif
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
-                            <x-admin.buttom.add router="listContact" name="Danh sách liên hệ"></x-admin.buttom.add>
+                            <x-admin.buttom.add router="listDeleteEmail" name="Lịch sử xóa"></x-admin.buttom.add>
                         </div>
+                        @if(Session::has('success'))
+                            <div class="alert alert-success" role="alert">
+                                {{Session::get('success')}}
+                            </div>
+                        @endif
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
-                            <tr class="text-center">
-                                <th>Tên</th>
-                                <th>Email</th>
-                                <th>Số điện thoại</th>
-                                <th>Địa chỉ</th>
-                                <th>Nội dung</th>
-                                <th>Trạng thái</th>
-                                <th>Nghiệp vụ</th>
+                            <tr>
+                                <th class="text-center">ID</th>
+                                <th class="">Email</th>
+                                <th class="text-center">Nghiệp vụ</th>
                             </tr>
                             </thead>
                             <tbody>
                             @foreach($query as $item)
-                                <tr class="text-center">
-                                    <td >{{$item->fullname}}</td>
-                                    <td>{{$item->email}}</td>
-                                    <td>{{$item->phone}}</td>
-                                    <td>{{$item->address}}</td>
-                                    <td>{{$item->content}}</td>
-
-                                    <td class="text-center" style="font-weight: bold;">
-                                        <a href="{{route('statusContact', $item->id)}}"
-                                           class="btn btn-sm btn-{{$item->status ? 'danger':'success'}}">
-                                            {{$item->status==0 ? 'Đang xử lý':'Đã xử lý'}}
-                                        </a>
-                                    </td>
-                                    <td>
+                                <tr>
+                                    <td class="text-center">{{$item->id}}</td>
+                                    <td class="text-md-left">{{$item->email}}</td>
+                                    <td class="text-center">
                                         <div class="btn-group"  role="group">
-                                            <a href="{{route('restoreContact',$item->id)}}" class="btn btn-outline-danger btn-sm">Khôi phục</a>
+                                            <a href="{{route('deleteEmail',$item->id)}}"  class="btn btn-outline-danger btn-sm">Xoá</a>
                                         </div>
                                     </td>
                                 </tr>

@@ -14,7 +14,7 @@ class faqs extends Model{
     }
 
     public function listContact($condition){
-        return $this->where($condition)->paginate(4);
+        return $this->where($condition)->paginate(5);
     }
     public function firstContact($condition){
         return $this->where($condition)->first();

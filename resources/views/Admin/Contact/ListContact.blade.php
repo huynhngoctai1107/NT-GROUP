@@ -20,20 +20,20 @@
             <div class="content-wrapper">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title"> Lịch sử xóa liên hệ </h3>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        <x-admin.buttom.add router="listContact" name="Lịch sử xóa"></x-admin.buttom.add>
+                        <h3 class="card-title"> Danh sách liên hệ </h3>
                     </div>
                     @if(Session::has('success'))
                         <div class="alert alert-success" role="alert">
                             {{Session::get('success')}}
                         </div>
                     @endif
-                    <div class="card-body mt-3">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <x-admin.buttom.add router="listDeleteContact" name="Lịch sử xóa"></x-admin.buttom.add>
+                        </div>
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
-                            <tr class="text-center">
+                            <tr>
                                 <th>Tên</th>
                                 <th>Email</th>
                                 <th>Số điện thoại</th>
@@ -45,8 +45,8 @@
                             </thead>
                             <tbody>
                             @foreach($query as $item)
-                                <tr class="text-center">
-                                    <td >{{$item->fullname}}</td>
+                                <tr>
+                                    <td>{{$item->fullname}}</td>
                                     <td>{{$item->email}}</td>
                                     <td>{{$item->phone}}</td>
                                     <td>{{$item->address}}</td>

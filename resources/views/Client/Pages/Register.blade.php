@@ -75,9 +75,9 @@
                                         @enderror
                                     </div>
                                     <div class="input-group date" id="reservationdatetime" data-target-input="nearest">
-                                        <input type='file' name="uploadfile" multiple id="imgInp"/>
+                                        <input type='file' class="form-control" name="uploadfile" multiple id="imgInp"/>
                                     </div>
-                                    <div class="text-center">
+                                    <div align="center">
                                         <img width="100" id="blah" src="#" alt="your image"/>
                                     </div>
                                     @error('uploadfile')

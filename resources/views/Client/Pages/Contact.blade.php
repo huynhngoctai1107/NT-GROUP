@@ -86,7 +86,7 @@
                                     <i class="bi bi-telephone fs-3 pe-2"></i>
                                     <div class="sdt">
                                         <span class="d-block"><strong>SĐT</strong></span>
-                                        <span class="text-primary small">0123456789</span>
+                                        <span class="text-primary small">0943500326</span>
 
                                     </div>
                                 </div>

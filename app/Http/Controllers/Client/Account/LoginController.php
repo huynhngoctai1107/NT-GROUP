@@ -25,7 +25,6 @@ class LoginController extends Controller{
         if ($score > 0.7){
             if (Auth::attempt(['email' => $request->email, 'password' => $request->password, 'status' => 1, 'social_id' => 0])){
                 $acout = Auth::user();
-
                 $this->mail->loginMail();
 
                 if ($acout->id_role == 3){
