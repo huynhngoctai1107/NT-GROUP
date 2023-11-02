@@ -64,17 +64,27 @@ class Post extends Model
     }
 
 
-    public function getPostList($condition){
-        return $this->where($condition)
-                    ->select('posts.id as id_post','posts.slug as slug_posts','category_posts.name as name_category',
-                        'category_posts.slug as slug_category','posts.delete as delete_posts', 'demands.name as name_demands','featured_news',
-                        'demands.slug as slug_demands','title', 'address', 'acreages', 'number_views', 'price','subtitles', 'posts.created_at',
-                        DB::raw('GROUP_CONCAT(medias.image) AS images'))
-                    ->join('medias', 'medias.id_post', '=', 'posts.id')
-                    ->join('demands', 'demands.id', '=', 'posts.id_demand')
-                    ->join('category_posts', 'category_posts.id', '=', 'posts.id_category')
-                    ->groupby('id_post')
-                    ->get();
+    public function getPostList($condition, $orderBy, $random)
+    {
+        $query = $this->where($condition)
+                      ->select('posts.id as id_post', 'posts.slug as slug_posts', 'category_posts.name as name_category',
+                          'category_posts.slug as slug_category', 'demands.name as name_demands',
+                          'demands.slug as slug_demands', 'title', 'address', 'acreages', 'number_views', 'price', 'subtitles', 'posts.created_at',
+                          DB::raw('GROUP_CONCAT(medias.image) AS images'))
+                      ->join('medias', 'medias.id_post', '=', 'posts.id')
+                      ->join('demands', 'demands.id', '=', 'posts.id_demand')
+                      ->join('category_posts', 'category_posts.id', '=', 'posts.id_category')
+                      ->groupBy('id_post');
+
+        if ($orderBy !== null) {
+            $query->orderBy($orderBy);
+        }
+
+        if ($random) {
+            $query->inRandomOrder();
+        }
+
+        return $query->get();
     }
     public function getPost($condition){
         return $this->where($condition)
@@ -119,6 +129,7 @@ class Post extends Model
             'posts.id_user',
             'posts.featured_news',
             'posts.delete as delete_posts',
+            'demands.id as id_demand',
             'title',
             'content',
             'acreages',

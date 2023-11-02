@@ -45,7 +45,7 @@ class PostSingleController extends Controller
             ['status', '=', 1],
         ];
         $count = $this->post->categoriesWithPostCount();
-        $list = $this->post->getPostList($condition1)->take(3);
+        $list = $this->post->getPostList($condition1, null, false)->take(3);
         return view('Client.Pages.PostSingle',['page'=>'blog', 'data'=>$data, 'category'=>$count, 'list'=>$list, 'count'=>$count]);
     }
 }

@@ -37,8 +37,8 @@ class PostListController extends Controller
                 $condition[] = ['id_category', '=', $category];
             }
         }
-        $data = $this->post->getPostList($condition);
-        $lq = $this->post->getPostList($condition1)->take(3);
+        $data = $this->post->getPostList($condition, null, false);
+        $lq = $this->post->getPostList($condition, null, true)->take(3);
         $category = $this->category->GetCategory();
         return view('Client.Pages.ListPostAll',['page'=>'post', 'list'=>$data, 'category'=>$category, 'lq'=>$lq]);
     }

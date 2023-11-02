@@ -3,27 +3,13 @@
 @section('title')
     Tin Tức Chi Tiết - NT GROUP
 @endsection
+@php
+    $title = "Chi Tiết Tin";
+@endphp
 @section('main')
     <!-- START SECTION BREADCRUMB -->
 
-    <div class="breadcrumb_section bg_gray page-title-mini">
-        <div class="container"><!-- STRART CONTAINER -->
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <div class="page-title">
-                        <h1>Chi Tiết Tin Rao Bán</h1>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <ol class="breadcrumb justify-content-md-end">
-                        <li class="breadcrumb-item"><a href="#">Trang Chủ</a></li>
-                        <li class="breadcrumb-item"><a href="#">Tin</a></li>
-                        <li class="breadcrumb-item active">Chi tiết tin</li>
-                    </ol>
-                </div>
-            </div>
-        </div><!-- END CONTAINER-->
-    </div>
+    <x-client.header.posttitle :title="$title"></x-client.header.posttitle>
     <!-- END SECTION BREADCRUMB -->
 
     <!-- START MAIN CONTENT -->
@@ -69,7 +55,8 @@
                                             <a href="#" class="posts_title">{{$data->title}}</a>
                                         </h4>
                                         <div class="product_price">
-                                            <span class="price">Giá: {{$formatPrice($data->price_posts)}}</span>
+                                            <span class="price">Giá: {{$formatPrice($data->price_posts)}}
+                                                @if($data->slug_demand == 'thue')/tháng @endif</span>
                                             <del></del>
                                             <div class="on_sale">
                                             </div>

@@ -20,10 +20,10 @@
             <div class="p-3 card-child mt-4">
                 <div class="d-flex flex-row align-items-center">
               <span class="circle-2">
-                    <i class="bi bi-telephone-fill"></i>
+                  <a href="tel:0949 615 859"><i class="bi bi-telephone-fill"></i></a>
               </span>
                     <div class="d-flex flex-column ms-3">
-                        <h6 class="fw-bold"><a href="{{route('contact')}}">Liên Hệ</a></h6>
+                        <h6 class="fw-bold">Liên Hệ</h6>
                         <span>Nếu còn thắc mắc hãy gọi ngay với chúng tôi</span>
                     </div>
                 </div>

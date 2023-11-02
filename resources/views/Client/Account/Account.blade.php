@@ -70,9 +70,22 @@
                                         <h3>Thống Kê</h3>
                                     </div>
                                     <div class="card-body">
-                                        <p>
-                                            Biểu đồ thống kê danh thu trang tài khoản là một loại biểu đồ hiển thị dữ liệu về doanh thu của một trang web hoặc ứng dụng. Biểu đồ này thường được sử dụng để theo dõi hiệu suất của các chiến dịch marketing, quảng cáo, hoặc các tính năng mới được triển khai.
-
+                                        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Thống Kê Bài Viết</button>
+                                            </li>
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Thống Kê Chi Tiêu</button>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content" id="pills-tabContent">
+                                            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
+                                                <x-client.account.charts.post-charts :dates="$dates" :vip="$vip" :charts="$charts"></x-client.account.charts.post-charts>
+                                            </div>
+                                            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
+                                                <x-client.account.charts.transition-charts :dateT="$dateT" :transitionPay="$transitionPay" :transitionMua="$transitionMua"></x-client.account.charts.transition-charts>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -129,6 +142,14 @@
     </div>
 
     <style>
+	    #charts {
+		    height: 400px;
+		    min-width: 310px;
+	    }
+	    #transition {
+		    height: 400px;
+		    min-width: 310px;
+	    }
 	    .round-image {
 		    width: 150px;
 		    height: 150px;
@@ -150,6 +171,13 @@
 	    }
     </style>
 @endsection
+@push('javascript')
+    <script src="https://code.highcharts.com/stock/highstock.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/data.js"></script>
+{{--    <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>--}}
+{{--    <script src="https://code.highcharts.com/stock/modules/export-data.js"></script>--}}
+{{--    <script src="https://code.highcharts.com/stock/modules/accessibility.js"></script>--}}
+@endpush
 
 
 

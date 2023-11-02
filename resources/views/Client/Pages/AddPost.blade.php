@@ -16,11 +16,11 @@
             </div>
         @endif
         <br/>
-        <div class="row">
+        <div class="">
             <p class="alert alert-secondary">
                 <b style="font-weight: 700; font-size: 15px; font-family: sans-serif;">Thông Tin Bất Động Sản</b>
             </p>
-            <form action="{{ route('addClientPosts') }}" method="post" class="row g-3" style="margin-left: 8px;" enctype="multipart/form-data">
+            <form action="{{ route('addClientPosts') }}" method="post" class="row g-3" enctype="multipart/form-data">
                 @csrf
                 <div class="col-12">
                     @error('title')
@@ -193,7 +193,9 @@
                 <h4>Google Maps </h4>
 
                 <!-- Google Map -->
-                <div id="map" style="width: 100%; height: 400px;"></div>
+                <div>
+                    <div id="map" style="width: 100%; height: 400px;"></div>
+                </div>
 
                 <!-- Longitude and Latitude Input Boxes -->
                 <div class="mb-3">
@@ -210,11 +212,13 @@
                     <label for="latitude">Nhập vĩ độ</label>
                     <input type="text" class="form-control" id="latitude" name="latitude" value="{{ old('latitude') }}">
                 </div>
-                <div class="alert alert-secondary" role="alert">
-                    <h5>Thông Tin Liên Hệ</h5>
+                <div>
+                    <p class="alert alert-secondary">
+                        <b style="font-weight: 700; font-size: 15px; font-family: sans-serif;">Thông Tin Liên Hệ</b>
+                    </p>
                 </div>
                 <div style="display: flex; justify-content: space-between">
-                    <div style="width: 40%">
+                    <div style="width: 45%">
                         <div class="mb-3">
                             @error('phone1')
                             <div class="alert alert-danger mt-3">{{ $message }}</div>
@@ -237,7 +241,7 @@
                             <input class="form-control form-control-sm" id="formFileSm" type="file" name="img1">
                         </div>
                     </div>
-                    <div style="width: 40%">
+                    <div style="width: 45%">
                         <div class="mb-3">
                             @error('phone2')
                             <div class="alert alert-danger mt-3">{{ $message }}</div>
@@ -263,7 +267,9 @@
                         </div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-warning mt-3 mb-5">Đăng Tin</button>
+                <div class="d-flex justify-content-center">
+                    <button style="width: 20%;" type="submit" class="btn btn-warning mt-3 mb-5">Đăng Tin</button>
+                </div>
                 <!-- JavaScript Code -->
             </form>
         </div>

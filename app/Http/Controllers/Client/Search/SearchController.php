@@ -22,7 +22,7 @@ class SearchController extends Controller
             ['status', '=', 1],
         ];
         $data = $this->post->getPostCD($condition,$slug,'category');
-        $sale = $this->post->getPostList($condition)->take(3);
+        $sale = $this->post->getPostList($condition, null, true)->take(3);
         return view('Client.Pages.search',['page'=>'search', 'list'=>$data, 'sale'=>$sale]);
 
     }

@@ -16,11 +16,11 @@
             </div>
         @endif
         <br/>
-        <div class="row">
+        <div class="">
             <p class="alert alert-secondary">
                 <b style="font-weight: 700; font-size: 15px; font-family: sans-serif;">Thông Tin Bất Động Sản</b>
             </p>
-            <form action="{{ route('storePostsClient', $data->slug) }}" method="post" class="row g-3" style="margin-left: 8px;" enctype="multipart/form-data">
+            <form action="{{ route('storePostsClient', $data->slug) }}" method="post" class="row g-3" enctype="multipart/form-data">
                 @csrf
                 <div class="col-12">
                     @error('title')
@@ -159,38 +159,40 @@
                     <input type="hidden" value="{{ $address['district'] }}" id="valueDistrict">
                     <input type="hidden" value="{{ $address['ward'] }}" id="valueWard">
                     <div class="flex-container" style="display: flex; justify-content: space-between">
-                        <div class="mb-3" style="width: 40%;" data-select2-id="29">
+                        <div class="mb-3" style="width: 45%;" data-select2-id="29">
                             @error('city')
                             <div class="alert alert-danger mt-3">{{ $message }}</div>
                             @enderror
-                            <select style="width: 100%; height: 38px" id="city" name="city">
+                            <select style="width: 100%; height: 50px" id="city" name="city">
                                 <option value="" selected>Chọn tỉnh thành</option>
                             </select>
                         </div>
-                        <div class="mb-3" style="width: 40%;" data-select2-id="29">
+                        <div class="mb-3" style="width: 45%;" data-select2-id="29">
                             @error('district')
                             <div class="alert alert-danger mt-3">{{ $message }}</div>
                             @enderror
-                            <select style="width: 100%; height: 38px" id="district" name="district">
+                            <select style="width: 100%; height: 50px" id="district" name="district">
                                 <option value="" selected>Chọn quận huyện</option>
                             </select>
                         </div>
                     </div>
                     <div class="flex-container" style="display: flex; justify-content: space-between">
-                        <div class="mb-3" style="width: 40%;" data-select2-id="29">
+                        <div class="mb-3" style="width: 45%;" data-select2-id="29">
                             @error('ward')
                             <div class="alert alert-danger mt-3">{{ $message }}</div>
                             @enderror
-                            <select id="ward" name="ward" style="width: 100%; height: 38px">
+                            <label class="mb-3" for="ward">Chọn phường xã</label>
+                            <select id="ward" name="ward" style="width: 100%; height: 50px">
                                 <option value="" selected>Chọn phường xã</option>
                             </select>
                         </div>
-                        <div class="mb-3" style="width: 40%">
+                        <div class="mb-3" style="width: 45%">
                             @error('address')
                             <div class="alert alert-danger mt-3">{{ $message }}</div>
                             @enderror
-                            <input type="text mb-3" class="form-control" name="address" value="{{ $address['street'] }}"
-                                   placeholder="Nhập địa chỉ chi tiết">
+                            <label class="mb-3" for="addess">Nhâp địa chỉ chi tiết</label>
+                            <input type="text" class="form-control mb-3" name="address" value="{{ $address['street'] }}"
+                                   placeholder="Nhập địa chỉ chi tiết" id="addess">
                         </div>
                     </div>
                 </div>
@@ -212,7 +214,9 @@
                 <h4>Google Maps </h4>
 
                 <!-- Google Map -->
-                <div id="map" style="width: 100%; height: 400px;"></div>
+                <div>
+                    <div id="map" style="width: 100%; height: 400px;"></div>
+                </div>
                 <!-- Longitude and Latitude Input Boxes -->
                 <div class="mb-3">
                     @error('longitude')
@@ -228,15 +232,17 @@
                     <label for="latitude">Nhập vĩ độ</label>
                     <input type="text" class="form-control" id="latitude" name="latitude" value="{{$data->latitude}}">
                 </div>
-                <div class="alert alert-secondary" role="alert">
-                    <h5>Thông Tin Liên Hệ</h5>
+                <div>
+                    <p class="alert alert-secondary">
+                        <b style="font-weight: 700; font-size: 15px; font-family: sans-serif;">Thông Tin Liên Hệ</b>
+                    </p>
                 </div>
                 <div style="display: flex; justify-content: space-between">
                     @php
                         $i = 1;
                     @endphp
                     @foreach($contact as $row)
-                        <div style="width: 40%">
+                        <div style="width: 45%">
                             <div class="mb-3">
                                 @error('phone'.$i)
                                 <div class="alert alert-danger mt-3">{{ $message }}</div>
@@ -269,8 +275,10 @@
                     @endforeach
                 </div>
 
+                <div class="d-flex justify-content-center">
+                    <button style="width: 20%;" type="submit" class="btn btn-warning mt-3 mb-5">Sửa Tin</button>
+                </div>
 
-                <button type="submit" class="btn btn-warning mt-3 mb-5">Sửa Tin</button>
                 <!-- JavaScript Code -->
             </form>
         </div>
