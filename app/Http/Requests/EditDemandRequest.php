@@ -25,7 +25,7 @@ class EditDemandRequest extends FormRequest
         return [
             'demand' => [
                 'required',
-                'min:5',
+                'min:3',
                 'max:100',
                 Rule::unique('demands', 'name')->ignore($this->slug, 'slug'),
             ],
@@ -36,7 +36,7 @@ class EditDemandRequest extends FormRequest
         return [
             'demand.required' => 'Vui lòng nhập vào tên nhu cầu',
             'demand.unique' => 'Tên nhu cầu đã tồn tại',
-            'demand.min' => 'Tên nhu cầu từ 5 ký tự trở lên',
+            'demand.min' => 'Tên nhu cầu từ 3 ký tự trở lên',
             'demand.max' => 'Tên nhu cầu dưới 100 ký tự',
         ];
     }

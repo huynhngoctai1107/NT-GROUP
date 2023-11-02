@@ -270,6 +270,7 @@ Route::group(['prefix' => '/'], function (){
     });
     Route::group(['prefix' => 'tin'], function (){
         Route::get('/danh-sach-tin', [PostListController::class, 'listPost'])->name('listPost');
+        Route::post('/danh-sach-tin', [PostListController::class, 'listPost'])->name('listPost');
     });
     Route::group(['prefix' => 'tim-kiem'], function (){
         Route::get('/loai/danh-sach/{slug}', [SearchController::class, 'search'])->name('search');

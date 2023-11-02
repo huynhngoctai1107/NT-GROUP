@@ -22,7 +22,7 @@ class AddDemandRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'demand' => 'required|min:5|max:100|unique:demands,name',
+            'demand' => 'required|min:3|max:100|unique:demands,name',
         ];
     }
 
@@ -30,7 +30,7 @@ class AddDemandRequest extends FormRequest
         return [
             'demand.required' => 'Vui lòng nhập vào tên nhu cầu',
             'demand.unique' => 'Tên nhu cầu đã tồn tại',
-            'demand.min' => 'Tên nhu cầu từ 5 ký tự trở lên',
+            'demand.min' => 'Tên nhu cầu từ 3 ký tự trở lên',
             'demand.max' => 'Tên nhu cầu dưới 100 ký tự',
         ];
     }

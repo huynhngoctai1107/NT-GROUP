@@ -25,7 +25,7 @@ class EditCategoryRequest extends FormRequest
         return [
             'category' => [
                 'required',
-                'min:5',
+                'min:3',
                 'max:100',
                 Rule::unique('category_posts', 'name')->ignore($this->slug, 'slug'),
             ],
@@ -35,7 +35,7 @@ class EditCategoryRequest extends FormRequest
         return [
             'category.required' => 'Vui lòng nhập vào tên danh mục',
             'category.unique' => 'Tên danh mục đã tồn tại',
-            'category.min' => 'Tên danh mục từ 5 ký tự trở lên',
+            'category.min' => 'Tên danh mục từ 3 ký tự trở lên',
             'category.max' => 'Tên danh mục dưới 100 ký tự',
         ];
     }

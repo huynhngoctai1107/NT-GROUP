@@ -54,128 +54,7 @@
                                     </div>
 
                                 </div>
-                                <div class="col-md-4 mt-1">
-                                    <div class="row mb-5">
-                                        <div class="col-md-12 bg-light">
-                                            <div class="d-flex justify-content-between">
-                                                <button class="btn" id="banDatBtn">Nhà bán đất</button>
-                                                <button class="btn" id="choThueBtn">Nhà đất cho thuê</button>
-                                            </div>
-                                            <div class="mt-3" id="searchForm">
-                                                <form action="{{route('listPost')}}">
-                                                    <div class="mb-3">
-                                                        <input type="text" class="form-control" id="keyword" name="keyword" placeholder="Nhập từ khóa cần tìm kiếm ..."/>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <select class="form-select" aria-label="Default select example" name="category">
-                                                            <option value="0" selected>Loại BDS</option>
-                                                            @foreach($category as $item)
-                                                                <option value="{{$item->id}}">{{$item->name}}</option>
-                                                            @endforeach
-                                                        </select>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <select class="form-select" id="propertyType" name="propertyType">
-                                                            <option value="">Tỉnh / Thành Phố</option>
-                                                            <option value="camau">Cà Mau</option>
-                                                            <option value="dat">Đất</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <select class="form-select" id="propertyType" name="propertyType">
-                                                            <option value="">Huyện / Quận</option>
-                                                            <option value="nha">Nhà</option>
-                                                            <option value="dat">Đất</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <select class="form-select" id="propertyType" name="propertyType">
-                                                            <option value="">Xã / Phường</option>
-                                                            <option value="nha">Nhà</option>
-                                                            <option value="dat">Đất</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <select class="form-select" id="propertyType" name="propertyType">
-                                                            <option value="">Giá</option>
-                                                            <option value="nha">Nhà</option>
-                                                            <option value="dat">Đất</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <select class="form-select" id="propertyType" name="propertyType">
-                                                            <option value="">Diện tích</option>
-                                                            <option value="dat">Đất</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="d-flex justify-content-center">
-
-                                                        <button type="submit" class="btn btn-warning mb-4">
-                                                            <i class="bi bi-search"></i>
-                                                            Tìm kiếm
-                                                        </button>
-                                                    </div>
-
-                                                </form>
-                                            </div>
-                                            <div class="mt-3" id="searchForm2" style="display: none">
-                                                <form>
-                                                    <div class="mb-3">
-                                                        <input type="text" class="form-control" id="keyword" name="keyword"/>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <select class="form-select" id="propertyType" name="propertyType">
-                                                            <option value="">Loai BĐS</option>
-                                                            <option value="nha">Nhà</option>
-                                                            <option value="dat">Đất</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <select class="form-select" id="propertyType" name="propertyType">
-                                                            <option value="">Tỉnh / Thành Phố</option>
-                                                            <option value="camau">Cà Mau</option>
-                                                            <option value="dat">Đất</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <select class="form-select" id="propertyType" name="propertyType">
-                                                            <option value="">Huyện / Quận</option>
-                                                            <option value="nha">Nhà</option>
-                                                            <option value="dat">Đất</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <select class="form-select" id="propertyType" name="propertyType">
-                                                            <option value="">Xã / Phường</option>
-                                                            <option value="nha">Nhà</option>
-                                                            <option value="dat">Đất</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <select class="form-select" id="propertyType" name="propertyType">
-                                                            <option value="">Giá</option>
-                                                            <option value="nha">Nhà</option>
-                                                            <option value="dat">Đất</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <select class="form-select" id="propertyType" name="propertyType">
-                                                            <option value="">Diện tích</option>
-                                                            <option value="dat">Đất</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="d-flex justify-content-center">
-
-                                                        <button type="submit" class="btn btn-warning mb-4">
-                                                            <i class="bi bi-search"></i>
-                                                            Tìm thuê
-                                                        </button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <x-client.pages.searchpost :category="$category"></x-client.pages.searchpost>
                             </div>
                             <div class="row">
                                 <div class="col-md-8">
@@ -187,9 +66,7 @@
 
                                         </div>
                                         <div class="box">
-                                            <x-client.index.postSale :list="$lq">
-
-                                            </x-client.index.postSale>
+                                            <x-client.index.postSale :list="$lq"></x-client.index.postSale>
                                         </div>
                                     </div>
                                 </div>

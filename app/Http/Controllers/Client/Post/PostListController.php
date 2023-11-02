@@ -25,20 +25,8 @@ class PostListController extends Controller
             ['delete', '=', 0],
             ['status', '=', 1],
         ];
-
-        if ($request->filled('keyword')) {
-            $keyword = $request->keyword;
-            $condition[] = ['title', 'LIKE', "%$keyword%"];
-        }
-
-        if ($request->filled('category')) {
-            $category = $request->category;
-            if ($category != 0){
-                $condition[] = ['id_category', '=', $category];
-            }
-        }
         $data = $this->post->getPostList($condition, null, false);
-        $lq = $this->post->getPostList($condition, null, true)->take(3);
+        $lq = $this->post->getPostList($condition1, null, true)->take(3);
         $category = $this->category->GetCategory();
         return view('Client.Pages.ListPostAll',['page'=>'post', 'list'=>$data, 'category'=>$category, 'lq'=>$lq]);
     }

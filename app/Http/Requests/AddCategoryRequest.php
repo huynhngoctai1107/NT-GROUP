@@ -22,7 +22,7 @@ class AddCategoryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'category' => 'required|min:5|max:100|unique:category_posts,name',
+            'category' => 'required|min:3|max:100|unique:category_posts,name',
         ];
     }
 
@@ -30,7 +30,7 @@ class AddCategoryRequest extends FormRequest
         return [
             'category.required' => 'Vui lòng nhập vào tên danh mục',
             'category.unique' => 'Tên danh mục đã tồn tại',
-            'category.min' => 'Tên danh mục từ 5 ký tự trở lên',
+            'category.min' => 'Tên danh mục từ 3 ký tự trở lên',
             'category.max' => 'Tên danh mục dưới 100 ký tự',
         ];
     }

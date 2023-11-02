@@ -69,7 +69,7 @@ class Post extends Model
         $query = $this->where($condition)
                       ->select('posts.id as id_post', 'posts.slug as slug_posts', 'category_posts.name as name_category',
                           'category_posts.slug as slug_category', 'demands.name as name_demands',
-                          'demands.slug as slug_demands', 'title', 'address', 'acreages', 'number_views', 'price', 'subtitles', 'posts.created_at',
+                          'demands.slug as slug_demands', 'title', 'address', 'expiration_date', 'acreages', 'number_views', 'price', 'subtitles', 'posts.created_at',
                           DB::raw('GROUP_CONCAT(medias.image) AS images'))
                       ->join('medias', 'medias.id_post', '=', 'posts.id')
                       ->join('demands', 'demands.id', '=', 'posts.id_demand')
