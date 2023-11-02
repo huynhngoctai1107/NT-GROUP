@@ -37,6 +37,11 @@ class Customer_reports extends Model
                     ->where('Customer_reports.delete', $condition['delete'])
                     ->get();
     }
+        public function AddReport($values){
+       return $this->insert($values) ;
+
+
+    }
 
     public function getTitleAttribute()
     {

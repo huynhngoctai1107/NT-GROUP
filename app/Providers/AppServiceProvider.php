@@ -61,27 +61,7 @@ class AppServiceProvider extends ServiceProvider{
             $dataToDemand = $demand->GetDemand();
             $view->with('dataToDemand', $dataToDemand);
         });
-        View::composer('*', function ($view){
-            $post      = new Post();
-            $condition = [
-                'featured_news' => 1];
-            if ($data = $post->getPostList($condition)){
-                $today = new DateTime();
-                foreach ($data as $item){
-                    $expirationDate = new DateTime($item->expiration_date);
-                    if ($expirationDate < $today){
-                        $condition   = [
-                            'slug' => $item->slug,
-                        ];
-                        $dataUpdate = [
-                            'featured_news' => 0,
-                        ];
-                        $post->updatePost($condition, $dataUpdate);
-                    }
 
-                }
-            }
-        });
 
     }
 }

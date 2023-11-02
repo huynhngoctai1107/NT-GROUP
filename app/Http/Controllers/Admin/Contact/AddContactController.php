@@ -26,6 +26,7 @@ class AddContactController extends Controller{
             'phone'      => $request->phone,
             'address'    => $request->address,
             'content'    => $request->content,
+            'title'    => "Liên hệ" ,
         ];
     if($this->faqs->addContact($data)){
 

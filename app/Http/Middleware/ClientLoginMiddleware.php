@@ -18,7 +18,9 @@ class ClientLoginMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         session()->put('resetPage', Route::getFacadeRoot()->current()->uri()) ;
-
+       if(session('resetPage') == 'bao-cao'){
+           session()->put('resetPage',session('report')) ;
+       }
 
         if(Auth::check())
         {

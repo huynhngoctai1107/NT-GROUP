@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Customer_reports;
 use Illuminate\Http\Request;
 
-class ListRepostController extends Controller
+class ListReportController extends Controller
 {
     public $Customer_reports;
 

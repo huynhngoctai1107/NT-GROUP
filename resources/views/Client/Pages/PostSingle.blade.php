@@ -1,4 +1,4 @@
-@extends('Client.Layout.master')
+    @extends('Client.Layout.master')
 
 @section('title')
     Tin Tức Chi Tiết - NT GROUP
@@ -18,10 +18,27 @@
         <!-- START SECTION SHOP -->
         <div class="section">
             <div class="container">
+                @if(Session::has('success'))
+
+                    <div class="alert alert-success text-center" role="alert">
+                        {{Session::get('success')}}
+                    </div>
+                @endif
+                @if(Session::has('error-report'))
+
+                    <div class="alert alert-danger text-center" role="alert">
+                        {{Session::get('error-report')}}
+                    </div>
+                @endif
+
                 <div class="row">
                     <div class="col-xl-8 col-lg-8">
+
                         <div class="row">
+
                             <div class="col-lg-12 col-md-6 mb-4 mb-md-0">
+
+
                                 @php
                                     // Tách chuỗi thành mảng
                                     $images = $data->images;
@@ -123,8 +140,8 @@
                                                 </tr>
                                             </table>
                                         </div>
-                                        <div class="tab-pane fade" id="Reviews" role="tabpanel" aria-labelledby="Reviews-tab">
-                                            <x-client.pages.report></x-client.pages.report>
+                                        <div class="tab-pane fade mb-4" id="Reviews" role="tabpanel" aria-labelledby="Reviews-tab">
+                                            <x-client.pages.report :report="$data"></x-client.pages.report>
                                         </div>
                                     </div>
                                 </div>
@@ -243,6 +260,18 @@
 @endpush
 @push('script')
     <script>
+        $(document).ready(function() {
+            // Khi chọn loại báo cáo là "Khác" thì sẽ hiện ra textarea nhập nội dung
+            $("#type").change(function() {
+                if ($(this).val() == "khác") {
+                    $("#content-wrapper").find("textarea").css("display", "block");
+                } else {
+                    $("#content-wrapper").find("textarea").css("display", "none");
+                }
+            });
+        });
+    </script>
+    <script>
         // Tọa độ bạn đã nhập
         var latitude = {{$data->latitude}};
         var longitude = {{$data->longitude}};
@@ -264,5 +293,5 @@
     </script>
     <!-- Sử dụng API key của bạn từ Google Cloud Console -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_G4pm1e6qVGLB_t1_hYe_KDFc7ObLf6I&callback=initMap" async defer></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 @endpush

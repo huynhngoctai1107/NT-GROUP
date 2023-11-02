@@ -21,7 +21,7 @@ use App\Http\Controllers\Admin\User\ListUserController;
 use App\Http\Controllers\Client\Account\GoogleController;
 
 //admin
-use App\Http\Controllers\Admin\Repost\ListRepostController;
+use App\Http\Controllers\Admin\Repost\ListReportController;
 use App\Http\Controllers\Admin\Repost\DeleteReportController;
 
 //admin
@@ -52,6 +52,7 @@ use App\Http\Controllers\Client\Post\EditPostController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Client\Pay\PaypalController;
 use App\Http\Controllers\Client\Pay\BuyArticleController;
+use App\Http\Controllers\Admin\Repost\AddRepostController;
 
 Route::group(['prefix' => 'admin', 'middleware' => ['AdminLogin']], function (){
     Route::get('/', [ViewDashboardController::class, 'dashboar'])->name('dashboar');
@@ -85,8 +86,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['AdminLogin']], function (){
              ->name('deleteContact');
         Route::get('/khoi-phuc/{id}', [DeleteContactController::class, 'restoreContact'])
              ->name('restoreContact');
-        Route::get('/lich-su-xoa-tai-khoan/{id}', [DeleteUserController::class, 'userHistory'])->name('userHistory');
-        Route::get('/trang-thai-lien-he/{id}', [ListContactController::class, 'statusContact'])->name('statusContact');
+        Route::get('/lich-su-xoa-tai-khoan/{id}', [DeleteUserController::class, 'userHistory'])
+             ->name('userHistory');
+        Route::get('/trang-thai-lien-he/{id}', [ListContactController::class, 'statusContact'])
+             ->name('statusContact');
     });
 
     Route::group(['prefix' => 'nguoi-dung', 'middleware' => ['Roles']], function (){
@@ -108,7 +111,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['AdminLogin']], function (){
     Route::group(['prefix' => 'voucher'], function (){
         Route::get('/danh-sach', [ListVoucherController::class, 'listVoucher'])
              ->name('listVoucher');
-        Route::get('trang-thai-voucher/{id}', [ListVoucherController::class, 'status'])->name('status');
+        Route::get('trang-thai-voucher/{id}', [ListVoucherController::class, 'status'])
+             ->name('status');
         Route::get('/danh-sach-xoa-voucher', [ListVoucherController::class, 'ListVoucherHistory'])
              ->name('ListVoucherHistory');
         Route::get('/chinh-sua/{slug}', [EditVoucherController::class, 'editFormVoucher'])
@@ -149,9 +153,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['AdminLogin']], function (){
 
 
     Route::group(['prefix' => 'quan-ly-bao-cao'], function (){
-        Route::get('/danh-sach-bao-cao', [ListRepostController::class, 'ListRepost'])->name('ListRepost');
-        Route::get('/trang-thai-bao-cao/{id}', [ListRepostController::class, 'statusReport'])->name('statusReport');
-        Route::get('/Xoa-cao/{id}', [DeleteReportController::class, 'deleteReport'])->name('deleteReport');
+        Route::get('/danh-sach-bao-cao', [ListReportController::class, 'ListRepost'])
+             ->name('ListRepost');
+        Route::get('/trang-thai-bao-cao/{id}', [ListReportController::class, 'statusReport'])
+             ->name('statusReport');
+        Route::get('/xoa-cao/{id}', [DeleteReportController::class, 'deleteReport'])
+             ->name('deleteReport');
 
     });
 
@@ -196,11 +203,17 @@ Route::group(['prefix' => '/', 'middleware' => ['ClientLogin']], function (){
         Route::get('/thanh-toan-paypal-that-bai', [PaypalController::class, 'paypalCanel'])
              ->name('paypal_canel');
     });
-    Route::group(['prefix' => 'mua-tin-vip'], function (){
-        Route::get('/kiem-tra-vi/{slug}', [BuyArticleController::class, 'buyVipNew'])->name('buyVipNew');
-        Route::get('/su-dung-voucher', [BuyArticleController::class, 'voucher'])->name('voucher');
-        Route::get('/thanh-toan-hoa-don', [BuyArticleController::class, 'checkOut'])->name('checkOut');
 
+
+    Route::post('/bao-cao', [AddRepostController::class, 'addReport'])->name('addReport');
+
+
+    Route::group(['prefix' => 'mua-tin-vip'], function (){
+        Route::get('/kiem-tra-vi/{slug}', [BuyArticleController::class, 'buyVipNew'])
+             ->name('buyVipNew');
+        Route::get('/su-dung-voucher', [BuyArticleController::class, 'voucher'])->name('voucher');
+        Route::get('/thanh-toan-hoa-don', [BuyArticleController::class, 'checkOut'])
+             ->name('checkOut');
 
 
     });
@@ -219,11 +232,14 @@ Route::group(['prefix' => '/', 'middleware' => ['ClientLogin']], function (){
         Route::post('/them', [AddPostController::class, 'addClientPosts'])->name('addClientPosts');
         Route::get('/danh-sach-dang-tin', [PostListController::class, 'listPost'])
              ->name('listPost');
-        Route::get('/sua-tin/{slug}', [EditPostController::class, 'editPostsClient'])->name('editPostsClient');
-        Route::post('/sua-tin/{slug}', [EditPostController::class, 'storePostsClient'])->name('storePostsClient');
+        Route::get('/sua-tin/{slug}', [EditPostController::class, 'editPostsClient'])
+             ->name('editPostsClient');
+        Route::post('/sua-tin/{slug}', [EditPostController::class, 'storePostsClient'])
+             ->name('storePostsClient');
         Route::get('/hinh-anh/{id}', [EditPostController::class, 'deleteMedia'])
              ->name('deleteMedia');
-        Route::get('/danh-sach-dang-tin', [PostListController::class, 'listPost'])->name('listPost');
+        Route::get('/danh-sach-dang-tin', [PostListController::class, 'listPost'])
+             ->name('listPost');
         Route::get('/xoa-dang-tin/{slug}', [DeletePostController::class, 'deletePostlist'])
              ->name('deletePostlist');
     });
