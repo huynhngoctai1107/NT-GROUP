@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
 @endsection
 @section('title')
-    Lịch sử giao dịch
+    Quản lý tài khoản người dùng
 @endsection
 
 
@@ -23,41 +23,37 @@
     <div class="hold-transition sidebar-mini">
         <div class="wrapper">
             <div class="content-wrapper">
-                <div class="card">
+                <div class="card ">
                     <div class="card-header">
-                        <h3 class="card-title">Lịch sử giao dịch </h3>
+                        <h3 class="card-title"> Lịch sử xoá Báo cáo </h3>
                     </div>
-
-
+                    <!-- /.card-header -->
                     <div class="card-body">
-
-
-                        <table id="example1" class="table table-bordered table-striped">
+                        <div class="d-flex justify-content-between">
+                            <x-admin.buttom.add router="ListRepost" name="Danh sách báo cáo"></x-admin.buttom.add>
+                        </div>
+                        <table id="example1" class="table table-bordered table-striped ">
                             <thead class="text-center">
                             <tr>
-                                <th>Loại</th>
-                                <th>Thanh toán</th>
-                                <th>Họ và Tên</th>
-                                <th>Số tiền</th>
-                                <th>số dư</th>
-                                <th>Voucher</th>
-                                <th>Nội dung</th>
-                                <th>Ngày tạo</th>
-                                <th>Ngày hết hạn</th>
+                                <th style="width: 10%;">Tên tài khoản</th>
+                                <th style="width: 30%;">Bài viết</th>
+                                <th style="width: 30%;">Nội dung</th>
+                                <th style="width: 7%;">Trạng thái</th>
+                                <th style="width: 8%;">Ngày tạo</th>
                             </tr>
                             </thead>
                             <tbody class="text-center">
-                            @foreach($list as $item )
+                            @foreach($list as $data)
                                 <tr>
-                                    <td><span class="badge {{$item->id_category_transaction == 1 ? 'bg-success' : 'bg-danger'}}">{{$item->name_category}}</span></td>
-                                    <td><span class="badge {{$item->id_category_transaction == 1 ? 'bg-success' : 'bg-danger'}}">{{$item->id_category_transaction == 1 ? $item->method : 'Mua bài viết VIP'}}</span></td>
-                                    <td>{{$item->fullname}}</td>
-                                    <td>{{number_format($item->price)}} Đ</td>
-                                    <td>{{number_format($item->surplus)}} Đ</td>
-                                    <td>{{ $item->id_category_transaction == 2 ? ($item->voucher ?? "Không sử dụng") : "bạn không dùng voucher" }}</td>
-                                    <td>{{$item->content ?? 'Không có'}}</td>
-                                    <td> {{date('d-m-Y',strtotime($item->created_at))}}</td>
-                                    <td> {{$item->id_category_transaction == 2 ? date('d-m-Y',strtotime($item->created_at->addDays(30))) : "demo1"}}</td>
+                                    <td>{{ $data->fullname }}</td>
+                                    <td>{{ $data->getTitleAttribute() }}</td>
+                                    <td>{{ $data->content }}</td>
+                                    <td>
+                                        <a href="{{route('statusReport', $data->id)}}" class="btn btn-sm btn-{{$data->status ? 'success':'danger'}}">
+                                            {{$data->status ? 'Đã xử lý':'Chưa xử lý'}}
+                                        </a>
+                                    </td>
+                                    <td>{{ $data->created_at }}</td>
                                 </tr>
                             @endforeach
                             </tbody>
@@ -68,13 +64,21 @@
             </div>
         </div>
     </div>
+    <div style="margin-bottom: 30px;"></div>
 @endsection
+
+
+<style>
+	img {
+		object-fit: cover;
+	}
+</style>
 
 @push('javascript')
     <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
     <!-- Bootstrap 4 -->
     <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <!-- DataTables  & Plugins -->
+    <!-- DataTables & Plugins -->
     <script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
@@ -92,75 +96,5 @@
     <!-- AdminLTE for demo purposes -->
     <script src="{{ asset('dist/js/demo.js') }}"></script>
     <!-- Page specific script -->
-@endpush
-<!-- HTML !-->
 
-<style>
-	/* CSS */
-	.button-86 {
-		all: unset;
-		width: 100px;
-		height: 30px;
-		font-size: 16px;
-		background: transparent;
-		border: none;
-		position: relative;
-		color: #f0f0f0;
-		cursor: pointer;
-		z-index: 1;
-		padding: 10px 20px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		white-space: nowrap;
-		user-select: none;
-		-webkit-user-select: none;
-		touch-action: manipulation;
-	}
-
-	.button-86::after,
-	.button-86::before {
-		content: '';
-		position: absolute;
-		bottom: 0;
-		right: 0;
-		z-index: -99999;
-		transition: all .4s;
-	}
-
-	.button-86::before {
-		transform: translate(0%, 0%);
-		width: 100%;
-		height: 100%;
-		background: #28282d;
-		border-radius: 10px;
-	}
-
-	.button-86::after {
-		transform: translate(10px, 10px);
-		width: 35px;
-		height: 35px;
-		background: #ffffff15;
-		backdrop-filter: blur(5px);
-		-webkit-backdrop-filter: blur(5px);
-		border-radius: 50px;
-	}
-
-	.button-86:hover::before {
-		transform: translate(5%, 20%);
-		width: 110%;
-		height: 110%;
-	}
-
-	.button-86:hover::after {
-		border-radius: 10px;
-		transform: translate(0, 0);
-		width: 100%;
-		height: 100%;
-	}
-
-	.button-86:active::after {
-		transition: 0s;
-		transform: translate(0, 5%);
-	}
-</style>
+@endpush<!-- HTML !-->

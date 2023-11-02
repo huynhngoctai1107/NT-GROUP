@@ -62,20 +62,20 @@
                         <button type="submit" class="btn btn-fill-out" >Cập nhật tài khoản</button>
                     </div>
 
-                    </div>
+                </div>
             </form>
         </div>
     </div>
 </div>
 
 <style>
-    .imgs{
-	    max-width: 300px;
-	    max-height: 300px;
-	    margin: 15px auto;
-	    position: relative;
-	    overflow: hidden;
-    }
+	.imgs{
+		max-width: 300px;
+		max-height: 300px;
+		margin: 15px auto;
+		position: relative;
+		overflow: hidden;
+	}
 </style>
 
 <script>
@@ -99,3 +99,20 @@
         }
     });
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

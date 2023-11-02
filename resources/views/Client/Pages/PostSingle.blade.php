@@ -5,6 +5,7 @@
 @endsection
 @section('main')
     <!-- START SECTION BREADCRUMB -->
+
     <div class="breadcrumb_section bg_gray page-title-mini">
         <div class="container"><!-- STRART CONTAINER -->
             <div class="row align-items-center">
@@ -113,10 +114,10 @@
                                             <a class="nav-link active" id="Description-tab" data-bs-toggle="tab" href="#Description" role="tab" aria-controls="Description" aria-selected="true">Mô tả</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" id="Additional-info-tab" data-bs-toggle="tab" href="#Additional-info" role="tab" aria-controls="Additional-info" aria-selected="false">Thông tin thêm</a>
+                                            <a class="nav-link" id="Additional-info-tab" data-bs-toggle="tab" href="#Additional-info" role="tab" aria-controls="Additional-info" aria-selected="false">Thông tin</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" id="Reviews-tab" data-bs-toggle="tab" href="#Reviews" role="tab" aria-controls="Reviews" aria-selected="false">Đánh giá (2)</a>
+                                            <a class="nav-link" id="Reviews-tab" data-bs-toggle="tab" href="#Reviews" role="tab" aria-controls="Reviews" aria-selected="false">Báo cáo bài viết</a>
                                         </li>
                                     </ul>
                                     <div class="tab-content shop_info_tab">
@@ -136,86 +137,7 @@
                                             </table>
                                         </div>
                                         <div class="tab-pane fade" id="Reviews" role="tabpanel" aria-labelledby="Reviews-tab">
-                                            <div class="comments">
-                                                <h5 class="product_tab_title">2 Đánh giá cho
-                                                    <span>Áo xanh cho phụ nữ</span></h5>
-                                                <ul class="list_none comment_list mt-4">
-                                                    <li>
-                                                        <div class="comment_img">
-                                                            <img src="{{ asset('assets/images/user1.jpg') }}" alt="user1"/>
-                                                        </div>
-                                                        <div class="comment_block">
-                                                            <div class="rating_wrap">
-                                                                <div class="rating">
-                                                                    <div class="product_rate" style="width:80%"></div>
-                                                                </div>
-                                                            </div>
-                                                            <p class="customer_meta">
-                                                                <span class="review_author">Alea Brooks</span>
-                                                                <span class="comment-date">5 Tháng 3, 2018</span>
-                                                            </p>
-                                                            <div class="description">
-                                                                <p>Lorem Ipsumin gravida nibh vel velit auctor aliquet.
-                                                                    Aenean sollicitudin, lorem quis bibendum auctor,
-                                                                    nisi
-                                                                    elit consequat ipsum, nec sagittis sem nibh id elit.
-                                                                    Duis sed odio sit amet nibh vulputate</p>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="comment_img">
-                                                            <img src="{{ asset('assets/images/user2.jpg') }}" alt="user2"/>
-                                                        </div>
-                                                        <div class="comment_block">
-                                                            <div class="rating_wrap">
-                                                                <div class="rating">
-                                                                    <div class="product_rate" style="width:60%"></div>
-                                                                </div>
-                                                            </div>
-                                                            <p class="customer_meta">
-                                                                <span class="review_author">Grace Wong</span>
-                                                                <span class="comment-date">17 Tháng 6, 2018</span>
-                                                            </p>
-                                                            <div class="description">
-                                                                <p>It is a long established fact that a reader will be
-                                                                    distracted by the readable content of a page when
-                                                                    looking at its layout. The point of using Lorem
-                                                                    Ipsum is
-                                                                    that it has a more-or-less normal distribution of
-                                                                    letters</p>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="review_form field_form">
-                                                <h5>Thêm đánh giá</h5>
-                                                <form class="row mt-3">
-                                                    <div class="form-group col-12 mb-3">
-                                                        <div class="star_rating">
-                                                            <span data-value="1"><i class="far fa-star"></i></span>
-                                                            <span data-value="2"><i class="far fa-star"></i></span>
-                                                            <span data-value="3"><i class="far fa-star"></i></span>
-                                                            <span data-value="4"><i class="far fa-star"></i></span>
-                                                            <span data-value="5"><i class="far fa-star"></i></span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group col-12 mb-3">
-                                    <textarea required="required" placeholder="Đánh giá của bạn *" class="form-control" name="message" rows="4"></textarea>
-                                                    </div>
-                                                    <div class="form-group col-md-6 mb-3">
-                                                        <input required="required" placeholder="Nhập tên *" class="form-control" name="name" type="text">
-                                                    </div>
-                                                    <div class="form-group col-md-6 mb-3">
-                                                        <input required="required" placeholder="Nhập Email *" class="form-control" name="email" type="email">
-                                                    </div>
-                                                    <div class="form-group col-12 mb-3">
-                                                        <button type="submit" class="btn btn-fill-out" name="submit" value="Submit">Gửi đánh giá
-                                                        </button>
-                                                    </div>
-                                                </form>
-                                            </div>
+                                            <x-client.pages.report></x-client.pages.report>
                                         </div>
                                     </div>
                                 </div>

@@ -85,7 +85,7 @@
                                     <div class="card-body">
                                         <div class="table-responsive">
                                             <table class="table">
-                                                <thead class="text-center">>
+                                                <thead class="text-center">
                                                 <tr>
                                                     <th class="product-remove text-center">Loại</th>
                                                     <th class="product-remove text-center">Hình thức</th>
@@ -98,7 +98,7 @@
                                                    <th class="product-remove">Ngày hết hạng sử dụng VIP</th>
                                                 </tr>
                                                 </thead>
-                                                <tbody class="text-center">>
+                                                <tbody class="text-center">
                                                 <x-transactions.rechargehistory :list="$list"></x-transactions.rechargehistory>
                                                 </tbody>
                                             </table>

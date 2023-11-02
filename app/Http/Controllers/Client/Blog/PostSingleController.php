@@ -19,7 +19,13 @@ class PostSingleController extends Controller
     function postSingle($slug){
         $post = Post::where('slug', $slug)->firstOrFail();
         $postId = $post->id;
-        $userId = auth()->user()->id; // Lấy ID của người dùng hiện tại
+        if (auth()->check()) {
+            // Đã đăng nhập
+            $userId = auth()->user()->id;
+        } else {
+            // Chưa đăng nhập, tạo một định danh duy nhất cho người dùng vô danh (anonymous user)
+            $userId = request()->ip(); // Sử dụng địa chỉ IP làm định danh tạm thời
+        }
         $cacheKey = "posts_view:$postId:user:$userId";
         $viewedAt = Cache::get($cacheKey);
         if (!$viewedAt || now()->diffInMinutes($viewedAt) >= 5) {

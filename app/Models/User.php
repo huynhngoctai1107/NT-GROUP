@@ -46,9 +46,16 @@ class User extends Authenticatable{
     {
         // Xóa liên kết trong bảng "Transaction"
         $this->transactions()->delete();
+        $this->customerReports()->delete();
 
-        // Xóa tài khoản
+        // Xóa mềm tài khoản
         $this->delete();
+        $this->save();
+    }
+
+    public function customerReports()
+    {
+        return $this->hasMany(Customer_reports::class, 'user_id');
     }
     public function transactions()
     {

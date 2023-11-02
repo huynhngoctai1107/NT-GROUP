@@ -21,6 +21,10 @@ use App\Http\Controllers\Admin\User\ListUserController;
 use App\Http\Controllers\Client\Account\GoogleController;
 
 //admin
+use App\Http\Controllers\Admin\Repost\ListRepostController;
+use App\Http\Controllers\Admin\Repost\DeleteReportController;
+
+//admin
 use App\Http\Controllers\Admin\Voucher\AddVoucherController;
 use App\Http\Controllers\Admin\Voucher\DeleteVoucherController;
 use App\Http\Controllers\Admin\Voucher\EditVoucherController;
@@ -141,6 +145,14 @@ Route::group(['prefix' => 'admin', 'middleware' => ['AdminLogin']], function (){
              ->name('deleteHistory');
         Route::get('/khoi-phuc-bai-viet/{slug}', [DeletePostsController::class, 'restorePost'])
              ->name('restorePost');
+    });
+
+
+    Route::group(['prefix' => 'quan-ly-bao-cao'], function (){
+        Route::get('/danh-sach-bao-cao', [ListRepostController::class, 'ListRepost'])->name('ListRepost');
+        Route::get('/trang-thai-bao-cao/{id}', [ListRepostController::class, 'statusReport'])->name('statusReport');
+        Route::get('/Xoa-cao/{id}', [DeleteReportController::class, 'deleteReport'])->name('deleteReport');
+
     });
 
 });

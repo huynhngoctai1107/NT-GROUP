@@ -74,7 +74,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <p class="mb-md-0 text-center text-md-start">© Design with love © NT - GROUP 2023. All right reserved</p>
+                    <p class="mb-md-0 text-center text-md-start">© Copyright © 2023 Bản quyền thuộc về NT - GROUP Bất Động Sản Kiên Giang</p>
                 </div>
                 <div class="col-md-6">
                     <ul class="footer_payment text-center text-lg-end">
