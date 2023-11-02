@@ -4,6 +4,9 @@ use App\Http\Controllers\Admin\Category\AddCategoryController;
 use App\Http\Controllers\Admin\Category\DeleteCategoryController;
 use App\Http\Controllers\Admin\Category\EditCategoryController;
 use App\Http\Controllers\Admin\Category\ListCategoryController;
+use App\Http\Controllers\Admin\Contact\AddContactController;
+use App\Http\Controllers\Admin\Contact\DeleteContactController;
+use App\Http\Controllers\Admin\Contact\ListContactController;
 use App\Http\Controllers\Admin\Dashboard\ViewDashboardController;
 use App\Http\Controllers\Admin\Demand\AddDemandController;
 use App\Http\Controllers\Admin\Demand\DeleteDemandController;
@@ -13,6 +16,9 @@ use App\Http\Controllers\Admin\Posts\AddPostsController;
 use App\Http\Controllers\Admin\Posts\DeletePostsController;
 use App\Http\Controllers\Admin\Posts\EditPostsController;
 use App\Http\Controllers\Admin\Posts\ListPostsController;
+use App\Http\Controllers\Admin\Report\DeleteReportController;
+use App\Http\Controllers\Admin\Report\AddReportController;
+use App\Http\Controllers\Admin\Report\ListRepostController;
 use App\Http\Controllers\Admin\Transactions\RechargeHistoryController;
 use App\Http\Controllers\Admin\User\AddUserController;
 use App\Http\Controllers\Admin\User\DeleteUserController;
@@ -22,7 +28,6 @@ use App\Http\Controllers\Client\Account\GoogleController;
 
 //admin
 use App\Http\Controllers\Admin\Repost\ListReportController;
-use App\Http\Controllers\Admin\Repost\DeleteReportController;
 
 //admin
 use App\Http\Controllers\Admin\Voucher\AddVoucherController;
@@ -36,26 +41,27 @@ use App\Http\Controllers\Client\Account\LoginController;
 use App\Http\Controllers\Client\Account\RegisterController;
 use App\Http\Controllers\Client\Blog\BlogListController;
 use App\Http\Controllers\Client\Blog\PostSingleController;
-use App\Http\Controllers\Admin\Contact\AddContactController;
-use App\Http\Controllers\Admin\Contact\ListContactController;
 use App\Http\Controllers\Admin\EmailNew\ListEmailController;
 use App\Http\Controllers\Admin\EmailNew\AddEmaiController;
 use App\Http\Controllers\Admin\EmailNew\DeleteEmailController;
-use App\Http\Controllers\Admin\Contact\DeleteContactController;
 use App\Http\Controllers\Client\Docs\DocsController;
 use App\Http\Controllers\Client\ErrorPage\ErrorPageController;
 use App\Http\Controllers\Client\Index\IndexController;
-use App\Http\Controllers\Client\Post\AddPostController;
-use App\Http\Controllers\Client\Post\PostListController;
+use App\Http\Controllers\Client\Pay\BuyArticleController;
+use App\Http\Controllers\Client\Pay\PaypalController;
 use App\Http\Controllers\Client\Pay\RechargeController;
+use App\Http\Controllers\Client\Post\AddPostController;
 use App\Http\Controllers\Client\Post\DeletePostController;
 use App\Http\Controllers\Client\Search\SearchController;
 use App\Http\Controllers\Client\Post\PostNewController;
 use App\Http\Controllers\Client\Post\EditPostController;
+use App\Http\Controllers\Client\Post\PostListController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Client\Pay\PaypalController;
-use App\Http\Controllers\Client\Pay\BuyArticleController;
 use App\Http\Controllers\Admin\Repost\AddRepostController;
+
+//admin
+
+//admin
 
 Route::group(['prefix' => 'admin', 'middleware' => ['AdminLogin']], function (){
     Route::get('/', [ViewDashboardController::class, 'dashboar'])->name('dashboar');

@@ -60,11 +60,23 @@ class Customer_reports extends Model
 
     public function updateReport($data, $condition)
     {
-        return DB::table('customer_reports')
+        return DB::table('Customer_reports')
                  ->where($condition)
                  ->update($data);
     }
 
+    public  function editReport($id, $data)
+    {
+        $report = Customer_reports::find($id);
+        if ($report) {
+            $report->update($data);
+            return $report;
+        }
+        return null;
+    }
 
-
+    public  function showReport($id)
+    {
+        return Customer_reports::find($id);
+    }
 }

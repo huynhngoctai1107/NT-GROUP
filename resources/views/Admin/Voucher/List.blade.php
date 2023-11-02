@@ -59,7 +59,7 @@
                                     <td>{{ number_format($data->discount) }} VNĐ</td>
                                     <td>
                                         <a href="{{route('status', $data->id)}}" class="btn btn-sm btn-{{$data->status ? 'success':'danger'}}">
-                                            {{$data->status = 1 ? 'Đang hoạt động':' Chưa hoạt động'}}
+                                            {{$data->status  ? 'Đang hoạt động':' Chưa hoạt động'}}
                                         </a>
                                     </td>
                                     <td>{{date('d-m-Y',strtotime($data->expiration_date))}}</td>

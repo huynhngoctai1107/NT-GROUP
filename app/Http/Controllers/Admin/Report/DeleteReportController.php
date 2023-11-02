@@ -1,11 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Repost;
+namespace App\Http\Controllers\Admin\Report;
 
 use App\Http\Controllers\Controller;
 use App\Models\Customer_reports;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class DeleteReportController extends Controller
 {

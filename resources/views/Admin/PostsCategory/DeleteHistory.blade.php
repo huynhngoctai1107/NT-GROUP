@@ -40,11 +40,11 @@
 						<thead>
 							<tr>
 
-								<th>Tên {{$page=='posts'?' bài viết':''}}</th>
-								<th>Slug</th>
-								<th>Ngày tạo</th>
-								<th>Ngày cập nhật</th>
-								<th>Nghiệp vụ</th>
+                                <th style="width: 30%;">Tên {{$page=='medias'?' bài viết':''}}</th>
+                                <th style="width: 30%;">Slug</th>
+                                <th style="width: 8%;">Ngày tạo</th>
+                                <th style="width: 8%;">Ngày cập nhật</th>
+                                <th style="width: 7%;">Nghiệp vụ</th>
 							</tr>
 						</thead>
 
@@ -55,9 +55,9 @@
 							<tr>
 								<td>{{$item->title}}</td>
 								<td>{{$item->slug}}</td>
-								<td>{{$item->created_at}}</td>
-								<td>{{$item->updated_at}}</td>
-								<td><a href="{{route('restorePost', $item->slug)}}">Khôi phục</a></td>
+                                <td>{{ date('d-m-Y', strtotime($item->created_at)) }}</td>
+                                <td>{{ date('d-m-Y', strtotime($item->updated_at)) }}</td>
+								<td><a href="{{route('restorePost', $item->slug)}}" class="btn btn-outline-primary btn-sm">Khôi phục</a></td>
 							</tr>
 							@endforeach
 						</tbody>

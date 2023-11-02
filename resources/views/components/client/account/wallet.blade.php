@@ -69,9 +69,9 @@
     <div class="overlay-container">
         <div class="overlay">
             <div class="overlay-panel overlay-left">
-                <h1 id="title">Chào Mừng Bạn Đến Với Website Bất Động Sản</h1>
-                <p>Điền các thông tin thẻ của bạn</p>
-                <p>Khi điền thông tin thẻ vui lòng không để lộ ra bên ngoài</p>
+                <h3 id="title">Chào Mừng Bạn Đến Với Website Bất Động Sản</h3>
+                <p>Điền các thông tin thẻ của bạn. Khi điền thông tin thẻ vui lòng không để lộ ra bên ngoài</p>
+                <p></p>
                 <button class="ghost button" id="signIn">Ví của tôi</button>
             </div>
 
