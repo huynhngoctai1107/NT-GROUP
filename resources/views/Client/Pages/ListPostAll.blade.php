@@ -33,14 +33,14 @@
                                             <a href="javascript:Void(0);" class="shorting_icon grid"><i class="ti-view-grid"></i></a>
                                             <a href="javascript:Void(0);" class="shorting_icon list active"><i class="ti-layout-list-thumb"></i></a>
                                         </div>
-                                        <div class="custom_select">
-                                            <select class="form-control form-control-sm">
-                                                <option value="">Hiển thị</option>
-                                                <option value="9">9</option>
-                                                <option value="12">12</option>
-                                                <option value="18">18</option>
-                                            </select>
-                                        </div>
+{{--                                        <div class="custom_select">--}}
+{{--                                            <select class="form-control form-control-sm">--}}
+{{--                                                <option value="">Hiển thị</option>--}}
+{{--                                                <option value="9">9</option>--}}
+{{--                                                <option value="12">12</option>--}}
+{{--                                                <option value="18">18</option>--}}
+{{--                                            </select>--}}
+{{--                                        </div>--}}
                                     </div>
                                 </div>
                             </div>
@@ -54,7 +54,9 @@
                                     </div>
 
                                 </div>
-                                <x-client.pages.searchpost :category="$category"></x-client.pages.searchpost>
+                                <div class="col-md-4">
+                                    <x-client.pages.searchpost :dataToCategory="$dataToCategory" :dataToDemand="$dataToDemand" :dataToPrice="$dataToPrice" :dataToAcreage="$dataToAcreage"></x-client.pages.searchpost>
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-8">
@@ -96,6 +98,9 @@
     </style>
 @endpush
 @push('script')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <script src="{{ asset('plugins/select2/js/address.js') }}"></script>
     <script>
         // Lấy thẻ div chứa form
         var searchForm = document.getElementById("searchForm");

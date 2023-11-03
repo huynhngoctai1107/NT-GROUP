@@ -276,12 +276,12 @@ Route::group(['prefix' => '/'], function (){
     });
     Route::group(['prefix' => 'tin'], function (){
         Route::get('/danh-sach-tin', [PostListController::class, 'listPost'])->name('listPost');
-        Route::post('/danh-sach-tin', [PostListController::class, 'listPost'])->name('listPost');
     });
     Route::group(['prefix' => 'tim-kiem'], function (){
         Route::get('/loai/danh-sach/{slug}', [SearchController::class, 'search'])->name('search');
         Route::get('/nhu-cau/danh-sach/{slug}', [SearchController::class, 'search1'])
              ->name('search1');
+        Route::post('/', [PostListController::class, 'SearchPost'])->name('SearchPost');
     });
 
     Route::group(['prefix' => 'tai-lieu'], function (){

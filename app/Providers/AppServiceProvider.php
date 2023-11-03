@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\Acreage;
 use App\Models\Demand;
+use App\Models\Price;
 use DateTime;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
@@ -60,6 +62,18 @@ class AppServiceProvider extends ServiceProvider{
             $demand       = new Demand(); // Thay Category() bằng tên của mô hình của bạn
             $dataToDemand = $demand->GetDemand();
             $view->with('dataToDemand', $dataToDemand);
+        });
+
+        View::composer('*', function ($view){
+            $price       = new Price(); // Thay Category() bằng tên của mô hình của bạn
+            $dataToPrice = $price->GetPrice();
+            $view->with('dataToPrice', $dataToPrice);
+        });
+
+        View::composer('*', function ($view){
+            $acreage       = new Acreage(); // Thay Category() bằng tên của mô hình của bạn
+            $dataToAcreage = $acreage->GetAcreage();
+            $view->with('dataToAcreage', $dataToAcreage);
         });
 
 

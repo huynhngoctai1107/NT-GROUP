@@ -10,4 +10,8 @@ class Price extends Model
     use HasFactory;
     protected $table = 'prices';
     protected $primaryKey = 'id';
+    public function GetPrice()
+    {
+        return $this->get();
+    }
 }

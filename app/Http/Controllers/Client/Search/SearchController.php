@@ -36,10 +36,4 @@ class SearchController extends Controller
         return view('Client.Pages.search',['page'=>'search', 'list'=>$data, 'sale'=>$sale]);
 
     }
-    public function LoadPost(){
-        $condition = [
-            ['delete', '=', 0],
-            ['status', '=', 1],
-        ];
-    }
 }

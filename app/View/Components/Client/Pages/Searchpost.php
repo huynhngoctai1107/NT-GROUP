@@ -11,10 +11,16 @@ class Searchpost extends Component
     /**
      * Create a new component instance.
      */
-    public $category;
-    public function __construct($category)
+    public $dataToCategory;
+    public $dataToDemand;
+    public $dataToPrice;
+    public $dataToAcreage;
+    public function __construct($dataToCategory, $dataToDemand, $dataToPrice, $dataToAcreage)
     {
-        $this->category= $category;
+        $this->dataToCategory= $dataToCategory;
+        $this->dataToDemand= $dataToDemand;
+        $this->dataToPrice= $dataToPrice;
+        $this->dataToAcreage= $dataToAcreage;
     }
 
     /**

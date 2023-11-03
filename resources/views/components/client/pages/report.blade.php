@@ -4,9 +4,9 @@
 
         @php session()->put('report', url()->current()) @endphp
         <input type="hidden"  name="id_post" value="{{$report->id_post}}">
-        <input type="hidden" name="id_user" value="{{auth()->user()->id}}">
-        <input type="hidden" name="email" value="{{auth()->user()->email}}">
-        <input type="hidden" name="fullname" value="{{auth()->user()->fullname}}">
+        <input type="hidden" name="id_user" value="{{auth()->user()->id ?? ''}}">
+        <input type="hidden" name="email" value="{{auth()->user()->email ?? ''}}">
+        <input type="hidden" name="fullname" value="{{auth()->user()->fullname ?? ''}}">
         <label for="type" class="form-label">Loại báo cáo</label>
         <select class="form-control" id="type" name="type">
             <option value="{{ Str::slug('Tài sản đã bán/cho thuê')}}">Tài sản đã bán/cho thuê</option>

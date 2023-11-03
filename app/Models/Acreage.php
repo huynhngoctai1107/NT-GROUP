@@ -10,4 +10,8 @@ class Acreage extends Model
     use HasFactory;
     protected $table = 'acreages';
     protected $primaryKey = 'id';
+    public function GetAcreage()
+    {
+        return $this->get();
+    }
 }
