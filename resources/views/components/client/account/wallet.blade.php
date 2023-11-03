@@ -1,33 +1,38 @@
 <div class="containers" id="containers">
     <div class="form-container1 sign-up-container">
 
+
         <form action="{{route('Payment_method')}}" method="POST">
 
             @csrf
-            <div class="col-12">
-                <label for="inputAddress" class="form-label">Số tiền cần nạp</label>
-                <input type="number" name="price" class="form-control rounded-input" required="required"/>
-            </div>
-            <div class="col-md-12">
 
-                <label for="payments" class="form-label">Phương thức thanh toán</label>
-                <select class="form-select rounded-input" aria-label="Default select example" name="payments">
+            <div class="form-group">
+                <label for="so-tien">Số tiền</label>
+                <input type="number" class="form-control" id="so-tien" name="price" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phuong-thuc-thanh-toan">Phương thức thanh toán</label>
+                <select  class="form-control"   name="payments">
                     @foreach($payment as $key => $payment_method)
 
                         @if($payment_method->id == 5)
-                        @break
+                            @break
                         @endif
                         <option value="{{$payment_method->id}}">{{$payment_method->name}}</option>
 
-                        @endforeach
+                    @endforeach
 
 
                 </select>
+
             </div>
+
             <div class="btn-group text-center" role="group">
                 <button name="redirect" class="centered button">Nạp Tiền</button>
             </div>
         </form>
+
     </div>
 
     <div class="form-container sign-in-container">

@@ -39,7 +39,7 @@
                 </div>
 
                 <div class="col-12" style="display: flex; justify-content: space-between">
-                    <div style="width: 45%;">
+                    <div style="width: 49%;">
                         <label for="id_demand" class="form-label">Chọn nhu cầu</label>
                         <select class="form-select" name="id_demand" id="id_demand" style="width: 100%; height: 50px">
                             @foreach ($demand as $row)
@@ -47,7 +47,7 @@
                             @endforeach
                         </select>
                     </div>
-                    <div style="width: 45%;">
+                    <div style="width: 49%;">
                         <label for="id_category" class="form-label">Chọn danh mục</label>
                         <select class="form-select" name="id_category" id="id_category" style="width: 100%; height: 50px">
                             @foreach ($category as $row)
@@ -57,7 +57,7 @@
                     </div>
                 </div>
                 <div class="col-12" style="display: flex; justify-content: space-between">
-                    <div style="width: 45%;">
+                    <div style="width: 49%;">
                         <label for="id_price" class="form-label">Chọn giá</label>
                         <select class="form-select" name="id_price" id="id_price" style="width: 100%; height: 50px">
                             @foreach ($price as $row)
@@ -65,7 +65,7 @@
                             @endforeach
                         </select>
                     </div>
-                    <div style="width: 45%;">
+                    <div style="width: 49%;">
                         <label for="id_acreage" class="form-label">Chọn diện tích</label>
                         <select class="form-select" name="id_acreage" id="id_acreage" style="width: 100%; height: 50px">
                             @foreach ($acreage as $row)
@@ -76,14 +76,14 @@
                 </div>
 
                 <div class="col-12" style="display: flex; justify-content: space-between">
-                    <div style="width: 45%;">
+                    <div style="width: 49%;">
                         @error('price')
                         <div class="alert alert-danger mt-3">{{ $message }}</div>
                         @enderror
                         <label for="price" class="form-label">Giá *</label>
                         <input type="number" class="form-control" id="price" name="price" value="{{ old('price') }}">
                     </div>
-                    <div style="width: 45%;">
+                    <div style="width: 49%;">
                         @error('acreage')
                         <div class="alert alert-danger mt-3">{{ $message }}</div>
                         @enderror
@@ -91,7 +91,7 @@
                         <input type="number" class="form-control" id="acreage" name="acreage" value="{{ old('acreage') }}">
                     </div>
                 </div>
-                <div style="width: 45%;">
+                <div  style="width: 50%;">
                     @error('link_youtube')
                     <div class="alert alert-danger mt-3">{{ $message }}</div>
                     @enderror
@@ -136,7 +136,7 @@
                 <label class="form-label">Địa chỉ</label>
                 <div>
                     <div class="flex-container" style="display: flex; justify-content: space-between">
-                        <div class="mb-3" style="width: 45%;" data-select2-id="29">
+                        <div class="mb-3" style="width: 49%;" data-select2-id="29">
                             @error('city')
                             <div class="alert alert-danger mt-3">{{ $message }}</div>
                             @enderror
@@ -145,7 +145,7 @@
                                 <option value="" selected>Chọn tỉnh thành</option>
                             </select>
                         </div>
-                        <div class="mb-3" style="width: 45%;" data-select2-id="29">
+                        <div class="mb-3" style="width: 49%;" data-select2-id="29">
                             @error('district')
                             <div class="alert alert-danger mt-3">{{ $message }}</div>
                             @enderror
@@ -156,7 +156,7 @@
                         </div>
                     </div>
                     <div class="flex-container" style="display: flex; justify-content: space-between">
-                        <div class="mb-3" style="width: 45%;" data-select2-id="29">
+                        <div class="mb-3" style="width: 49%;" data-select2-id="29">
                             @error('ward')
                             <div class="alert alert-danger mt-3">{{ $message }}</div>
                             @enderror
@@ -165,7 +165,7 @@
                                 <option value="" selected>Chọn phường xã</option>
                             </select>
                         </div>
-                        <div class="mb-3" style="width: 45%">
+                        <div class="mb-3" style="width: 49%">
                             @error('address')
                             <div class="alert alert-danger mt-3">{{ $message }}</div>
                             @enderror
@@ -218,7 +218,7 @@
                     </p>
                 </div>
                 <div style="display: flex; justify-content: space-between">
-                    <div style="width: 45%">
+                    <div style="width: 49%">
                         <div class="mb-3">
                             @error('phone1')
                             <div class="alert alert-danger mt-3">{{ $message }}</div>
@@ -241,7 +241,7 @@
                             <input class="form-control form-control-sm" id="formFileSm" type="file" name="img1">
                         </div>
                     </div>
-                    <div style="width: 45%">
+                    <div style="width: 49%">
                         <div class="mb-3">
                             @error('phone2')
                             <div class="alert alert-danger mt-3">{{ $message }}</div>

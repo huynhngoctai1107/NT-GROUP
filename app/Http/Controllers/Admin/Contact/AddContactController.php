@@ -26,7 +26,7 @@ class AddContactController extends Controller{
             'email'      => $request->email,
             'phone'      => $request->phone,
             'address'    => $request->address,
-            'content'    => $request->content,
+            'content'    => $request->input('content'),
 
         ];
     if($this->faqs->addContact($data)){

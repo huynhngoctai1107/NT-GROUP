@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http;
-
+use App\Console\Commands\SendRequestEmail;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -72,4 +72,5 @@ class Kernel extends HttpKernel
         'Roles' => \App\Http\Middleware\RolesMiddleware::class,
         
     ];
+
 }

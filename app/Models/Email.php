@@ -9,7 +9,15 @@ class Email extends Model
 {
     use HasFactory;
     protected $table = 'email_news';
+    protected $fillable = [
+        'id',
+        'email',
+        'interaction_count',
+        'delete',
+        'created_at',
+        'updated_at',
 
+    ];
     public function ListEmail($condition){
         return $this->where($condition)->paginate(5);
     }
