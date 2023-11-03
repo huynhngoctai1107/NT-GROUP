@@ -8,8 +8,8 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\DB;
 
-class Customer_reports extends Model
-{
+class Customer_reports extends Model{
+
     use HasApiTokens, HasFactory, Notifiable;
 
     protected $table = 'Customer_reports';
@@ -24,59 +24,45 @@ class Customer_reports extends Model
         'created_at',
     ];
 
-    public function ListRepost($condition)
-    {
-        return $this->join('users', 'users.id', '=', 'Customer_reports.user_id')
-                    ->where('Customer_reports.delete', $condition['delete'])
+    public function ListReport($condition){
+        return $this->orderBy('id', 'desc')->where($condition)->paginate(5);
+    }
+
+    public function ListPostReport($condition){
+        return $this->select('customer_reports.id as id_report','user_id','post_id','Customer_reports.content','Customer_reports.delete as delete_report','Customer_reports.status as status_report','Customer_reports.created_at as created_at_report','Customer_reports.updated_at as updated_at_report','fullname','email')->
+                    join('users', 'users.id', '=', 'Customer_reports.user_id')
+                    ->join('posts','posts.id','=','Customer_reports.post_id')
+                    ->where($condition)
+                     ->groupby('customer_reports.id')
                     ->paginate(5);
     }
 
-    public function ListPostRepost($condition)
-    {
-        return $this->join('posts', 'posts.id', '=', 'Customer_reports.post_id')
-                    ->where('Customer_reports.delete', $condition['delete'])
-                    ->get();
-    }
-        public function AddReport($values){
-       return $this->insert($values) ;
+
+
+    public function AddReport($values){
+        return $this->insert($values);
 
 
     }
 
-    public function getTitleAttribute()
-    {
+    public function getTitleAttribute(){
         $post = Post::find($this->post_id);
-        if ($post) {
+        if ($post){
             return $post->title;
         }
-        return null;
+
+        return NULL;
     }
 
-    public function deleteReport()
-    {
-        $this->delete = 0;
-        $this->save();
+
+
+    public function updateReport($data, $condition){
+        return $this
+            ->where($condition)
+            ->update($data);
     }
 
-    public function updateReport($data, $condition)
-    {
-        return DB::table('Customer_reports')
-                 ->where($condition)
-                 ->update($data);
-    }
 
-    public  function editReport($id, $data)
-    {
-        $report = Customer_reports::find($id);
-        if ($report) {
-            $report->update($data);
-            return $report;
-        }
-        return null;
-    }
 
-    public  function showReport($id)
-    {
-        return Customer_reports::find($id);
-    }
+
 }

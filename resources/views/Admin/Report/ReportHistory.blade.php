@@ -15,7 +15,11 @@
     <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
 @endsection
 @section('title')
-    Quản lý tài khoản người dùng
+    @if ($page == 'report')
+        Lịch sử xoá báo cáo
+    @else
+        Danh sách báo cáo
+    @endif
 @endsection
 
 
@@ -25,10 +29,13 @@
             <div class="content-wrapper">
                 <div class="card ">
                     <div class="card-header">
-                        <h3 class="card-title"> Quản lý tài Báo cáo </h3>
+                        <h3 class="card-title"> Lịch sử xoá Báo cáo </h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <x-admin.buttom.add router="ListReport" name="Danh sách báo cáo"></x-admin.buttom.add>
+                        </div>
                         @if(session('success'))
                             <div class="alert alert-success">
                                 {{ session('success') }}
@@ -38,30 +45,35 @@
                             <thead class="text-center">
                             <tr>
                                 <th style="width: 10%;">Tên tài khoản</th>
+                                <th style="width: 10%;">Email </th>
                                 <th style="width: 30%;">Bài viết</th>
                                 <th style="width: 30%;">Nội dung</th>
                                 <th style="width: 7%;">Trạng thái</th>
                                 <th style="width: 8%;">Ngày tạo</th>
-                                <th style="width: 4%;">Nghiệp vụ</th>
+                                <th style="width: 7%;">Nghiệp vụ</th>
                             </tr>
                             </thead>
                             <tbody class="text-center">
-                            @foreach($list as $data)
+                            @foreach($query as $data)
                                 <tr>
                                     <td>{{ $data->fullname }}</td>
+                                    <td>{{ $data->email }}</td>
                                     <td>{{ $data->getTitleAttribute() }}</td>
                                     <td>{{ $data->content }}</td>
                                     <td>
-                                        <a href="{{route('statusReport', $data->id)}}" class="btn btn-sm btn-{{$data->status ? 'success':'danger'}}">
-                                            {{$data->status ? 'Đã xử lý':'Chưa xử lý'}}
+                                        <a href="" class="btn btn-sm btn-{{$data->status_report == 1 ? 'success':'danger'}}">
+                                            {{$data->status_report == 1 ? 'Đã xử lý':'Chưa xử lý'}}
                                         </a>
                                     </td>
-                                    <td>{{ date('d-m-Y', strtotime($data->created_at)) }}</td>
-                                    <td><a href="{{ route('deleteReport', $data->id) }}" class="btn btn-outline-danger btn-sm">Xoá</a></td>
+                                    <td>{{ date('d-m-Y', strtotime($data->created_at_report)) }}</td>
+                                    <td>
+                                        <a href="{{ route('restoreReport', $data->id_report) }}" class="btn btn-outline-success btn-sm">Khôi phục </a>
+                                    </td>
                                 </tr>
                             @endforeach
                             </tbody>
                         </table>
+                        <div class="mt-3">{{ $query->links() }}</div>
                     </div>
                     <!-- /.card-body -->
                 </div>

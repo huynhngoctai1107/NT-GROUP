@@ -95,25 +95,9 @@
 		color: rgb(0, 0, 0);
 	}
 
-	.card_post:before, .card_post:after {
-		content: '';
-		position: absolute;
-		width: 100%;
-		height: 50%;
-		background: #ff7d7d;
-		z-index: -20;
-		transition: all 0.5s;
-	}
-
 	.card_post:before {
 		top: 0;
 		right: 0;
-	}
-
-	.card_post:after {
-		bottom: 0;
-		left: 0;
-		background: #ffd1d1;
 	}
 
 	.card_post:hover::before {

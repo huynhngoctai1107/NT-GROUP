@@ -49,10 +49,10 @@
         var checkbox = document.getElementById(checkboxId);
 
         if (checkbox.checked) {
-            input.type = "text";
+            input.setAttribute('type', 'text');
         }
         else {
-            input.type = "password";
+            input.setAttribute('type', 'password');
         }
     }
 </script>

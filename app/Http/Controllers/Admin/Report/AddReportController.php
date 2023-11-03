@@ -1,15 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Repost;
+namespace App\Http\Controllers\Admin\Report;
 
 use App\Http\Controllers\Client\Mail\ContactController;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Customer_reports;
-use Lunaweb\RecaptchaV3\Facades\RecaptchaV3;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class AddRepostController extends Controller{
+class AddReportController extends Controller{
 
     public $report;
     public $mail;
@@ -26,20 +25,20 @@ class AddRepostController extends Controller{
             'user_id' => $request->id_user
         ];
 
-        $value  = [
+        $value = [
             'user_id' => $request->id_user,
             'post_id' => $request->id_post,
-            'content' => $request->content ?: $request->type,
+            'content' => $request->input('content') ?: $request->type,
             'delete'  => 0,
             'status'  => 0,
 
         ];
-        $data   = [
+        $data  = [
             'fullname' => $request->fullname,
             'email'    => $request->email,
             'title'    => "Báo cáo"
         ];
-        if ($report = DB::table('Customer_reports')->where($condition)->first()){
+        if ($report = Customer_reports::where($condition)->first()){
             if ($report && now()->diffInHours($report->created_at) < 6){
                 return Redirect()
                     ->back()

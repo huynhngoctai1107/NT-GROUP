@@ -12,24 +12,21 @@ use App\Http\Controllers\Admin\Demand\AddDemandController;
 use App\Http\Controllers\Admin\Demand\DeleteDemandController;
 use App\Http\Controllers\Admin\Demand\EditDemandController;
 use App\Http\Controllers\Admin\Demand\ListDemandController;
+use App\Http\Controllers\Admin\EmailNew\AddEmaiController;
+use App\Http\Controllers\Admin\EmailNew\DeleteEmailController;
+use App\Http\Controllers\Admin\EmailNew\ListEmailController;
 use App\Http\Controllers\Admin\Posts\AddPostsController;
 use App\Http\Controllers\Admin\Posts\DeletePostsController;
 use App\Http\Controllers\Admin\Posts\EditPostsController;
 use App\Http\Controllers\Admin\Posts\ListPostsController;
-use App\Http\Controllers\Admin\Report\DeleteReportController;
 use App\Http\Controllers\Admin\Report\AddReportController;
-use App\Http\Controllers\Admin\Report\ListRepostController;
+use App\Http\Controllers\Admin\Report\DeleteReportController;
+use App\Http\Controllers\Admin\Report\ListReportController;
 use App\Http\Controllers\Admin\Transactions\RechargeHistoryController;
 use App\Http\Controllers\Admin\User\AddUserController;
 use App\Http\Controllers\Admin\User\DeleteUserController;
 use App\Http\Controllers\Admin\User\EditUserController;
 use App\Http\Controllers\Admin\User\ListUserController;
-use App\Http\Controllers\Client\Account\GoogleController;
-
-//admin
-use App\Http\Controllers\Admin\Repost\ListReportController;
-
-//admin
 use App\Http\Controllers\Admin\Voucher\AddVoucherController;
 use App\Http\Controllers\Admin\Voucher\DeleteVoucherController;
 use App\Http\Controllers\Admin\Voucher\EditVoucherController;
@@ -37,13 +34,11 @@ use App\Http\Controllers\Admin\Voucher\ListVoucherController;
 use App\Http\Controllers\Client\About\AboutController;
 use App\Http\Controllers\Client\Account\AccountController;
 use App\Http\Controllers\Client\Account\ForgetPasswordController;
+use App\Http\Controllers\Client\Account\GoogleController;
 use App\Http\Controllers\Client\Account\LoginController;
 use App\Http\Controllers\Client\Account\RegisterController;
 use App\Http\Controllers\Client\Blog\BlogListController;
 use App\Http\Controllers\Client\Blog\PostSingleController;
-use App\Http\Controllers\Admin\EmailNew\ListEmailController;
-use App\Http\Controllers\Admin\EmailNew\AddEmaiController;
-use App\Http\Controllers\Admin\EmailNew\DeleteEmailController;
 use App\Http\Controllers\Client\Docs\DocsController;
 use App\Http\Controllers\Client\ErrorPage\ErrorPageController;
 use App\Http\Controllers\Client\Index\IndexController;
@@ -52,12 +47,13 @@ use App\Http\Controllers\Client\Pay\PaypalController;
 use App\Http\Controllers\Client\Pay\RechargeController;
 use App\Http\Controllers\Client\Post\AddPostController;
 use App\Http\Controllers\Client\Post\DeletePostController;
-use App\Http\Controllers\Client\Search\SearchController;
-use App\Http\Controllers\Client\Post\PostNewController;
 use App\Http\Controllers\Client\Post\EditPostController;
 use App\Http\Controllers\Client\Post\PostListController;
+use App\Http\Controllers\Client\Post\PostNewController;
+use App\Http\Controllers\Client\Search\SearchController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\Repost\AddRepostController;
+
+//admin
 
 //admin
 
@@ -166,12 +162,16 @@ Route::group(['prefix' => 'admin', 'middleware' => ['AdminLogin']], function (){
 
 
     Route::group(['prefix' => 'quan-ly-bao-cao'], function (){
-        Route::get('/danh-sach-bao-cao', [ListReportController::class, 'ListRepost'])
-             ->name('ListRepost');
+        Route::get('/danh-sach-bao-cao', [ListReportController::class, 'ListReport'])
+             ->name('ListReport');
+        Route::get('/lich-su-bao-cao', [ListReportController::class, 'reportHistory'])
+             ->name('reportHistory');
         Route::get('/trang-thai-bao-cao/{id}', [ListReportController::class, 'statusReport'])
              ->name('statusReport');
-        Route::get('/xoa-cao/{id}', [DeleteReportController::class, 'deleteReport'])
+        Route::get('/xoa-bao-cao/{id}', [DeleteReportController::class, 'deleteReport'])
              ->name('deleteReport');
+        Route::get('/khoi-phuc-bao-cao/{id}', [DeleteReportController::class, 'restoreReport'])
+             ->name('restoreReport');
 
     });
 
@@ -218,7 +218,7 @@ Route::group(['prefix' => '/', 'middleware' => ['ClientLogin']], function (){
     });
 
 
-    Route::post('/bao-cao', [AddRepostController::class, 'addReport'])->name('addReport');
+    Route::post('/bao-cao', [AddReportController::class, 'addReport'])->name('addReport');
 
 
     Route::group(['prefix' => 'mua-tin-vip'], function (){
