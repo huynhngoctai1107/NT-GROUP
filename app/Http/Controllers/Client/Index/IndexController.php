@@ -4,10 +4,13 @@ namespace App\Http\Controllers\Client\Index;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Email;
+
 use App\Models\Post;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str ;
 class IndexController extends Controller
 {
@@ -20,6 +23,8 @@ class IndexController extends Controller
     }
     public function index()
     {
+
+
         $condition = [
             ['delete', '=', 0],
             ['status', '=', 1],

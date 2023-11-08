@@ -12,7 +12,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-//        $schedule->command('emailNew:cron')->everySecond();
+        $schedule->command(News::class)->timezone('Asia/Ho_Chi_Minh')->dailyAt('13:00');
 
     }
 

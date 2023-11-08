@@ -6,18 +6,18 @@
     <div class="bottom_header dark_skin main_menu_uppercase">
         <div class="container">
             <nav class="navbar navbar-expand-lg">
-                <a class="navbar-brand" href="{{route('index')}}">
-                    <img class="logo_dark " style="width: 150px;" src="{{asset('images/logos/logo_1.png')}}" alt="logo"/>
+                <a class="navbar-brand  " href="{{route('index')}}">
+                    <img class="logo_dark " style="width: 150px;" src="{{asset('images\logos\logo.png')}}" alt="logo"/>
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-expanded="false">
+                <button class="navbar-toggler pt-2 pt-md-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-expanded="false">
                     <span class="ion-android-menu"></span>
                 </button>
-                <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                <div class="collapse navbar-collapse justify-content-end " id="navbarSupportedContent">
                     <ul class="navbar-nav">
-                        <li><a class="nav-link nav_item" href="{{route('index')}}">Trang chủ</a></li>
-                        <li><a class="nav-link nav_item" href="{{route('about')}}">Giới thiệu</a></li>
+                        <li><a class="nav-link nav_item ps-3 ps-md-2" href="{{route('index')}}">Trang chủ</a></li>
+                        <li><a class="nav-link nav_item ps-3 ps-md-2" href="{{route('about')}}">Giới thiệu</a></li>
                         <li class="dropdown">
-                            <a class="dropdown-toggle nav-link" href="{{route('listBlog')}}" data-bs-toggle="dropdown">Tin tức</a>
+                            <a class="dropdown-toggle nav-link ps-3 ps-md-2" href="{{route('listBlog')}}" data-bs-toggle="dropdown">Tin tức</a>
                             <div class="dropdown-menu">
                                 <ul>
                                     <li>
@@ -39,7 +39,7 @@
                         </li>
 
                         <li class="dropdown">
-                            <a class="dropdown-toggle nav-link" href="{{route('listBlog')}}" data-bs-toggle="dropdown">Loại Bất Động Sản</a>
+                            <a class="dropdown-toggle nav-link ps-3 ps-md-2" href="{{route('listBlog')}}" data-bs-toggle="dropdown">Loại Bất Động Sản</a>
                             <div class="dropdown-menu">
                                 <ul>
                                     <li><a class="dropdown-item nav-link nav_item" href="{{route('listPost')}}">Tất Cả Tin</a></li>
@@ -50,7 +50,7 @@
                             </div>
                         </li>
                         <li class="dropdown">
-                            <a class="dropdown-toggle nav-link" href="{{route('listBlog')}}" data-bs-toggle="dropdown">Nhu Cầu Bất Động Sản</a>
+                            <a class="dropdown-toggle nav-link ps-3 ps-md-2" href="{{route('listBlog')}}" data-bs-toggle="dropdown">Nhu Cầu Bất Động Sản</a>
                             <div class="dropdown-menu">
                                 <ul>
                                     @foreach($dataToDemand as $demand)
@@ -59,10 +59,10 @@
                                 </ul>
                             </div>
                         </li>
-                        <li><a class="nav-link nav_item" href="{{route('contact')}}">Liên hệ</a></li>
+                        <li><a class="nav-link nav_item  ps-3 ps-md-2" href="{{route('contact')}}">Liên hệ</a></li>
                     </ul>
                 </div>
-                <ul class="navbar-nav attr-nav align-items-center">
+                <ul class="navbar-nav attr-nav align-items-center pt-2 pt-md-0">
                     <li>
                         <a href="javascript:void(0);" class="nav-link search_trigger"><i class="linearicons-magnifier"></i></a>
                         <div class="search_wrap">
@@ -78,7 +78,9 @@
                     </li>
                 </ul>
             </nav>
+
         </div>
     </div>
 </header>
+
 <!-- END HEADER -->

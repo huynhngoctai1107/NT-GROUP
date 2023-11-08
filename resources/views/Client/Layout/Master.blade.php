@@ -28,6 +28,8 @@
 <link rel="stylesheet" href="{{asset('client/css/flaticon.css')}}">
 <link rel="stylesheet" href="{{asset('client/css/simple-line-icons.css')}}">
 <!--- owl carousel CSS-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"/>
+
 <link rel="stylesheet" href="{{asset('client/owlcarousel/css/owl.carousel.min.css')}}">
 <link rel="stylesheet" href="{{asset('client/owlcarousel/css/owl.theme.css')}}">
 <link rel="stylesheet" href="{{asset('client/owlcarousel/css/owl.theme.default.min.css')}}">
@@ -40,8 +42,8 @@
 <link rel="stylesheet" href="{{asset('client/css/style.css')}}">
 <link rel="stylesheet" href="{{asset('client/css/responsive.css')}}">
 {!! RecaptchaV3::initJs() !!}
-{{-- gg map and hinh anh upload.js--}}
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8ttJcdnyqOwb93B47rjRU+ABJxUrEDR/i" crossorigin="anonymous">
+
+
 
 
     @stack('styles')
@@ -71,11 +73,13 @@
 
 <body>
     @include('client.header.nav')
+    @include('client.header.tools')
 {{-- main --}}
     @yield('main')
+
  {{-- end main --}}
     @include('client.footer.footer')
-<a href="#" class="scrollup" style="display: none;"><i class="ion-ios-arrow-up"></i></a>
+
     @yield('showhide')
 <!-- Latest jQuery -->
 <script src="{{asset('client/js/jquery-3.6.0.min.js')}}"></script>
@@ -110,6 +114,7 @@
 {{-- gg map and hinh anh upload.js--}}
 
     <script src="https://maps.app.goo.gl/uxx2Xc9w7GcKigKt7"></script>
+
 
     <script>
         // Create a new Google Map object.

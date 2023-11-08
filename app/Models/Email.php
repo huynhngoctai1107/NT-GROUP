@@ -21,6 +21,12 @@ class Email extends Model
     public function ListEmail($condition){
         return $this->where($condition)->paginate(5);
     }
+    public function getAll($condition){
+        return $this->where($condition)->get();
+    }
+    public function first($condition){
+        return $this->where($condition)->first();
+    }
     public function addEmail($value){
         return $this->insert($value);
     }

@@ -52,12 +52,8 @@ use App\Http\Controllers\Client\Post\PostListController;
 use App\Http\Controllers\Client\Post\PostNewController;
 use App\Http\Controllers\Client\Search\SearchController;
 use Illuminate\Support\Facades\Route;
-
-//admin
-
-//admin
-
-//admin
+use App\Http\Controllers\Admin\EmailNew\InteractionCountCotroller;
+use App\Http\Controllers\Client\Tools\DesignCostsController;
 
 Route::group(['prefix' => 'admin', 'middleware' => ['AdminLogin']], function (){
     Route::get('/', [ViewDashboardController::class, 'dashboar'])->name('dashboar');
@@ -252,8 +248,7 @@ Route::group(['prefix' => '/', 'middleware' => ['ClientLogin']], function (){
              ->name('storePostsClient');
         Route::get('/hinh-anh/{id}', [EditPostController::class, 'deleteMedia'])
              ->name('deleteMedia');
-        Route::get('/danh-sach-dang-tin', [PostListController::class, 'listPost'])
-             ->name('listPost');
+
         Route::get('/xoa-dang-tin/{slug}', [DeletePostController::class, 'deletePostlist'])
              ->name('deletePostlist');
     });
@@ -262,7 +257,10 @@ Route::group(['prefix' => '/', 'middleware' => ['ClientLogin']], function (){
 
 Route::group(['prefix' => '/'], function (){
 
+
     Route::get('/', [IndexController::class, 'index'])->name('index');
+    Route::get('/xem-them-bai-viet-moi/{email}', [InteractionCountCotroller::class, 'interactionCount'])->name('interactionCount');
+    Route::get('/tin-chi-phi-thiet-ke', [DesignCostsController::class, 'designCost'])->name('designCost');
     Route::get('bao-loi', [ErrorPageController::class, 'error'])->name('error');
     Route::get('kich-hoat/{token}', [RegisterController::class, 'active'])->name('active');
     Route::get('/chi-tiet-tin/{slug}', [PostSingleController::class, 'postSingle'])
