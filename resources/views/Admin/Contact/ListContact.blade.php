@@ -22,15 +22,32 @@
                     <div class="card-header">
                         <h3 class="card-title"> Danh sách liên hệ </h3>
                     </div>
-                    @if(Session::has('success'))
-                        <div class="alert alert-success" role="alert">
-                            {{Session::get('success')}}
-                        </div>
-                    @endif
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
                             <x-admin.buttom.add router="listDeleteContact" name="Lịch sử xóa"></x-admin.buttom.add>
+                            <form action="{{ route('SearchContact') }}" method="post">
+                                @csrf
+                                <div class="input-group rounded mt-3">
+                                    <input type="text" placeholder="Nhập từ khóa tìm kiếm" class="form-control ps-2" id="search_input" name="keyword">
+                                    <button type="submit" class="input-group-text border-0"><i class="fas fa-search"></i></button>
+                                </div>
+                            </form>
                         </div>
+                        @if (isset($message))
+                            <div class="alert alert-danger">
+                                {{ $message }}
+                            </div>
+                        @endif
+                        @if (isset($success))
+                            <div class="alert alert-success">
+                                {{ $success }}
+                            </div>
+                        @endif
+                        @if(Session::has('success'))
+                            <div class="alert alert-success" role="alert">
+                                {{Session::get('success')}}
+                            </div>
+                        @endif
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                             <tr>

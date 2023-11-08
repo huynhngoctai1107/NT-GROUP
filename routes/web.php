@@ -99,6 +99,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['AdminLogin']], function (){
              ->name('userHistory');
         Route::get('/trang-thai-lien-he/{id}', [ListContactController::class, 'statusContact'])
              ->name('statusContact');
+        Route::post('/tim-kiem-lien-he', [ListContactController::class, 'SearchContact'])->name('SearchContact');
     });
 
     Route::group(['prefix' => 'nguoi-dung', 'middleware' => ['Roles']], function (){
@@ -298,6 +299,7 @@ Route::group(['prefix' => '/'], function (){
              ->name('listDeleteEmail');
         Route::get('/khoi-phuc-email/{id}', [ListEmailController::class, 'restoreEmail'])
              ->name('restoreEmail');
+        Route::post('/tim-kiem-email', [ListEmailController::class, 'SearchEmail'])->name('SearchEmail');
     });
 
 });

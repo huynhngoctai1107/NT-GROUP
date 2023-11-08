@@ -39,4 +39,20 @@ class ListEmailController extends Controller
         $this->email->updateEmail($condition, $value);
         return redirect()->back()->with('success', 'Đã khôi phục email thành công');
     }
+    public function SearchEmail(Request $request){
+
+        if ($request->has('keyword')) {
+            $keyword = $request->keyword;
+            $condition[] = ['email', 'LIKE', "%$keyword%"];
+
+            $data = $this->email->ListEmail($condition);
+            if ($data->isEmpty($condition)) {
+                return view('admin.emailnew.listemail', ['query' => $data])
+                    ->with('message', 'Không tìm thấy kết quả.');
+            } else {
+                return view('admin.emailnew.listemail', ['query' => $data])
+                    ->with('success', 'Danh sách kết quả tìm kiếm.');
+            }
+        }
+    }
 }
