@@ -20,4 +20,18 @@ class ListCategoryController extends Controller
         $data = $this->category->listCategory();
         return view('admin.demandcategory.list', ['page' => 'category', 'query' => $data]);
     }
+    function SearchCategory(Request $request){
+        $condition=[];
+        if ($request->filled('keyword')) {
+            $keyword = $request->keyword;
+            $condition[] = ['name', 'LIKE', "%$keyword%"];
+        }
+        $data = $this->category->searchCategory($condition);
+        if ($data->isEmpty()) {
+            return view('admin.demandcategory.list', ['page' => 'category', 'query' => $data])
+                ->with('message', 'Không tìm thấy kết quả.');
+        } else {
+            return view('admin.demandcategory.list', ['page' => 'category', 'query' => $data]);
+        }
+    }
 }

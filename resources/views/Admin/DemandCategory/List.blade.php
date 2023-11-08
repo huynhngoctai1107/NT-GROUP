@@ -24,14 +24,23 @@
         <div class="wrapper">
             <div class="content-wrapper">
                 <div class="card">
-                    <div class="card-header">
+                    <div class="card-header d-flex" style="justify-content: space-between">
                         <h3 class="card-title"> {{$page=='demand'?'Quản lý nhu cầu':'Quản lý danh mục'}}</h3>
                     </div>
 
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <x-admin.buttom.add :router="$page=='demand'?'addDemand':'addCategory'" :name="$page=='demand'?'Thêm nhu cầu':'Thêm danh mục'"></x-admin.buttom.add>
 
+                        <div class="d-flex justify-content-between">
+                            <x-admin.buttom.add :router="$page=='demand'?'addDemand':'addCategory'" :name="$page=='demand'?'Thêm nhu cầu':'Thêm danh mục'"></x-admin.buttom.add>
+                            <form action="{{$page=='demand' ? route('searchDemand') : route('SearchCategory')}}" method="post">
+                                @csrf
+                                <div class="input-group rounded mt-3">
+                                    <input type="text" placeholder="Nhập từ khóa tìm kiếm" class="form-control ps-2" id="search_input" name="keyword">
+                                    <button type="submit" class="input-group-text border-0"><i class="fas fa-search"></i></button>
+                                </div>
+                            </form>
+                        </div>
                         <table id="example1" class="table table-bordered table-striped">
                             @if(session('error'))
                                 <div class="alert alert-danger">
@@ -44,18 +53,19 @@
                                 <th>Tên {{$page=='demand'?' nhu cầu':' danh mục'}}</th>
                                 <th>Slug</th>
                                 <th>Ngày tạo</th>
+                                <th>Cập nhật</th>
                                 <th>Ghi chú</th>
                                 <th>Nghiệp vụ</th>
                             </tr>
                             </thead>
 
                             <tbody>
-
                             @foreach($query as $item)
                                 <tr>
                                     <td>{{$item->name}}</td>
                                     <td>{{$item->slug}}</td>
-                                    <td>{{$item->created_at}}</td>
+                                    <td>{{date('d-m-Y',strtotime($item->created_at))}}</td>
+                                    <td>{{date('d-m-Y',strtotime($item->updated_at))}}</td>
                                     <td>{{$item->note}}</td>
                                     <td>
                                         <a href="{{ $page === 'demand' ? route('editDemand', $item->slug) : route('editCategory', $item->slug) }}" class="btn btn-outline-success btn-sm">Sửa</a>
@@ -64,6 +74,11 @@
                                     </td>
                                 </tr>
                             @endforeach
+                            @if (isset($message))
+                                <div class="alert alert-danger">
+                                    {{ $message }}
+                                </div>
+                            @endif
                             </tbody>
 
                         </table>

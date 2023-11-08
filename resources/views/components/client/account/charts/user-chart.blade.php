@@ -1,17 +1,17 @@
 <div class="post mb-5 mt-3">
     <div class="d-flex justify-content-between">
-        <select style="width: 40%;" class="form-select" id="month-select" aria-label="Default select example" onchange="handleFilterSelectPost()">
+        <select style="width: 40%;" class="form-select" id="month-select-user" aria-label="Default select example" onchange="handleFilterSelectUser()">
             <option selected disabled>Chọn tháng</option>
             @for($month = 1; $month <= 12; $month++)
                 <option value="{{$month}}">Tháng {{$month}}</option>
             @endfor
         </select>
-        <select style="width: 40%;" class="form-select" id="year-select" aria-label="Default select example" onchange="handleFilterSelectPost()">
+        <select style="width: 40%;" class="form-select" id="year-select-user" aria-label="Default select example" onchange="handleFilterSelectUser()">
             <option selected disabled>Chọn năm</option>
             @php
                 $years = [];
             @endphp
-            @foreach($dates as $item)
+            @foreach($userchart as $item)
                 @php
                     $date = \Carbon\Carbon::parse($item->date);
                     $year = $date->year;
@@ -23,25 +23,26 @@
             @endforeach
         </select>
     </div>
-    <div id="charts"></div>
-    <div id="total-posts"></div>
+    <div id="user-chart"></div>
+    <div id="total-user"></div>
 </div>
-{{--    Charts Post--}}
+
+{{-- Charts Post --}}
 <script>
     var dateData = [
-        @foreach($dates as $item)
+        @foreach($userchart as $item)
             '{{ $item->date }}',
         @endforeach
     ];
 
-    var vipData = [
-        @foreach($dates as $item)
+    var userData = [
+        @foreach($userchart as $item)
                 @php
                     $found = false;
                 @endphp
-                @foreach($vip as $data)
+                @foreach($userchart as $data)
                 @if(date("Y-m-d", strtotime($data->date)) === $item->date)
-                {{$data->post_count}},
+                {{$data->user_count}},
         @php
             $found = true;
             break;
@@ -54,100 +55,67 @@
         @endforeach
     ];
 
-    var chartsData = [
-        @foreach($dates as $item)
-                @php
-                    $found = false;
-                @endphp
-                @foreach($charts as $data)
-                @if(date("Y-m-d", strtotime($data->date)) === $item->date)
-                {{$data->post_count}},
-        @php
-            $found = true;
-            break;
-        @endphp
-                @endif
-                @endforeach
-                @if(!$found)
-            0,
-        @endif
-        @endforeach
-    ];
-
-    function calculateTotalPosts(postsData) {
-        var totalPosts = 0;
-
-        for (var i = 0; i < postsData.length; i++) {
-            totalPosts += postsData[i];
-        }
-
-        return totalPosts;
+    function calculateTotalUsers(userData) {
+        var totalUsers = userData.reduce(function (total, userCount) {
+            return total + userCount;
+        }, 0);
+        return totalUsers;
     }
 
-    function handleFilterSelectPost() {
-        var yearSelect = document.getElementById("year-select");
-        var monthSelect = document.getElementById("month-select");
+    function handleFilterSelectUser() {
+        var yearSelect = document.getElementById("year-select-user");
+        var monthSelect = document.getElementById("month-select-user");
         var selectedYear = yearSelect.value;
         var selectedMonth = monthSelect.value;
 
         var filteredDateData = [];
-        var filteredVipData = [];
-        var filteredChartsData = [];
+        var filteredUserData = [];
 
         for (var i = 0; i < dateData.length; i++) {
             var date = new Date(dateData[i]);
             if (date.getFullYear().toString() === selectedYear && (date.getMonth() + 1).toString() === selectedMonth) {
                 filteredDateData.push(dateData[i]);
-                filteredVipData.push(vipData[i]);
-                filteredChartsData.push(chartsData[i]);
+                filteredUserData.push(userData[i]);
             }
         }
 
-        updateChartData(filteredDateData, filteredVipData, filteredChartsData);
+        updateUserChartData(filteredDateData, filteredUserData);
 
-        // Tính tổng số bài viết
-        var totalVipPosts = calculateTotalPosts(filteredVipData);
-        var totalChartsPosts = calculateTotalPosts(filteredChartsData);
+        // Tính tổng số tài khoản
+        var totalUsers = calculateTotalUsers(filteredUserData);
 
-        // Hiển thị kết quả trong phần tử 'total-posts'
-        var totalPostsElement = document.getElementById("total-posts");
-        totalPostsElement.innerHTML = "Tổng số bài viết VIP trong tháng: " + totalVipPosts + "<br>Tổng số bài viết thường trong tháng: " + totalChartsPosts;
+        // Hiển thị kết quả trong phần tử 'total-user'
+        var totalUsersElement = document.getElementById("total-user");
+        totalUsersElement.innerHTML = "Tổng số tài khoản trong tháng: " + totalUsers;
 
     }
 
-    function updateChartData(dateData, vipData, chartsData) {
-        Highcharts.chart('charts', {
+    function updateUserChartData(dateData, userData) {
+        Highcharts.chart('user-chart', {
             title: {
-                text: 'Thống Kê Bài Viết',
+                text: 'Thống Kê Tài Khoản',
                 align: 'left'
             },
-
             yAxis: {
                 title: {
-                    text: 'Số lượng bài viết'
+                    text: 'Số lượng tài khoản'
                 }
             },
-
             xAxis: {
                 categories: dateData.map(function (date) {
                     return new Date(date).toLocaleDateString('en-GB', { day: 'numeric', month: 'numeric' });
                 })
             },
-
             legend: {
                 layout: 'vertical',
                 align: 'right',
                 verticalAlign: 'middle'
             },
-
             series: [{
-                name: 'Tin VIP',
-                data: vipData
-            }, {
-                name: 'Tin Thường',
-                data: chartsData
-            }],
-
+                name: 'Tài Khoản',
+                data: userData
+            },
+            ],
             responsive: {
                 rules: [{
                     condition: {
@@ -165,5 +133,3 @@
         });
     }
 </script>
-
-

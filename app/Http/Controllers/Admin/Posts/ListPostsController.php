@@ -22,6 +22,22 @@ class ListPostsController extends Controller
         $data = $this->posts->listPost($condition);
         return view('admin.postscategory.list', ['page' => 'posts', 'query' => $data]);
     }
+    function searchListPost(Request $request){
+        $condition = [
+            ['delete', '=', 0],
+        ];
+        if ($request->filled('keyword')) {
+            $keyword = $request->keyword;
+            $condition[] = ['title', 'LIKE', "%$keyword%"];
+        }
+        $data = $this->posts->listPost($condition);
+        if ($data->isEmpty()) {
+            return view('admin.postscategory.list', ['page' => 'posts', 'query' => $data])
+                ->with('message', 'Không tìm thấy kết quả.');
+        } else {
+            return view('admin.postscategory.list', ['page' => 'posts', 'query' => $data]);
+        }
+    }
     public function UpdateStatus($postId)
     {
         $post = Post::find($postId);
@@ -44,5 +60,23 @@ class ListPostsController extends Controller
         ];
         $data = $this->posts->listPost($condition);
         return view('admin.postscategory.DeleteHistory', ['page' => 'posts', 'query' => $data]);
+    }
+
+    function searchHisPost(Request $request)
+    {
+        $condition = [
+            ['delete', '=', 1],
+        ];
+        if ($request->filled('keyword')) {
+            $keyword = $request->keyword;
+            $condition[] = ['title', 'LIKE', "%$keyword%"];
+        }
+        $data = $this->posts->listPost($condition);
+        if ($data->isEmpty()) {
+            return view('admin.postscategory.DeleteHistory', ['page' => 'posts', 'query' => $data])
+                ->with('message', 'Không tìm thấy kết quả.');
+        } else {
+            return view('admin.postscategory.DeleteHistory', ['page' => 'posts', 'query' => $data]);
+        }
     }
 }

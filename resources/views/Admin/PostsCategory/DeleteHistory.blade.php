@@ -27,9 +27,20 @@
 	<div class="wrapper">
 		<div class="content-wrapper">
 			<div class="card">
-				<div class="card-header">
-					<h3 class="card-title"> Lịch sử xóa bài viết</h3>
-				</div>
+                <div class="card-header d-flex" style="justify-content: space-between">
+                    <div class="w-50 d-flex align-items-center">
+                        <h3 class="card-title"> Lịch sử xóa bài viết</h3>
+                    </div>
+                    <div class="w-50 d-flex justify-content-end">
+                    <form  action="{{route('searchHisPost')}}" method="post">
+                        @csrf
+                        <div class="input-group rounded mt-3">
+                            <input type="text" placeholder="Nhập từ khóa tìm kiếm" class="form-control ps-2" id="search_input" name="keyword">
+                            <button type="submit" class="input-group-text border-0"><i class="fas fa-search"></i></button>
+                        </div>
+                    </form>
+                    </div>
+                </div>
 
 				<!-- /.card-header -->
 				<div class="card-body">
@@ -60,6 +71,11 @@
 								<td><a href="{{route('restorePost', $item->slug)}}" class="btn btn-outline-primary btn-sm">Khôi phục</a></td>
 							</tr>
 							@endforeach
+                            @if (isset($message))
+                                <div class="alert alert-danger">
+                                    {{ $message }}
+                                </div>
+                            @endif
 						</tbody>
 
 					</table>

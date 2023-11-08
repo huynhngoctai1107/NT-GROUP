@@ -24,8 +24,14 @@
         <div class="wrapper">
             <div class="content-wrapper">
                 <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">Lịch sử giao dịch </h3>
+                    <div class="card-header d-flex" style="justify-content: space-between">
+                        <div class="w-50">
+                            <h3 class="card-title">Lịch sử giao dịch </h3>
+                        </div>
+                        <form class="d-flex align-items-center w-50" action="{{route('searchListRechargeHistory')}}" method="post">
+                            @csrf
+                            <input class="form-control" name="keyword" type="search" placeholder="Tìm kiếm">
+                        </form>
                     </div>
 
 
@@ -37,7 +43,7 @@
                             <tr>
                                 <th>Loại</th>
                                 <th>Thanh toán</th>
-                                <th>Họ và Tên</th>
+                                <th>Email</th>
                                 <th>Số tiền</th>
                                 <th>số dư</th>
                                 <th>Voucher</th>
@@ -51,7 +57,7 @@
                                 <tr>
                                     <td><span class="badge {{$item->id_category_transaction == 1 ? 'bg-success' : 'bg-danger'}}">{{$item->name_category}}</span></td>
                                     <td><span class="badge {{$item->id_category_transaction == 1 ? 'bg-success' : 'bg-danger'}}">{{$item->id_category_transaction == 1 ? $item->method : 'Mua bài viết VIP'}}</span></td>
-                                    <td>{{$item->fullname}}</td>
+                                    <td>{{$item->email}}</td>
                                     <td>{{number_format($item->price)}} Đ</td>
                                     <td>{{number_format($item->surplus)}} Đ</td>
                                     <td>{{ $item->id_category_transaction == 2 ? ($item->voucher ?? "Không sử dụng") : "bạn không dùng voucher" }}</td>
@@ -62,6 +68,7 @@
                             @endforeach
                             </tbody>
                         </table>
+                        <div class="mt-3">{{ $list->links() }}</div>
                     </div>
                     <!-- /.card-body -->
                 </div>

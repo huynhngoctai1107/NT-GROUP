@@ -70,15 +70,23 @@ PAGE JS
     04. MENU JS
     *===================================*/
     //Main navigation scroll spy for shadow
-    $(window).on('scroll', function () {
-        var scroll = $(window).scrollTop();
+    var isScrolling = false;
+    var delay = 0; // Adjust this delay in milliseconds
 
-        if (scroll >= 150) {
+    $(window).on('scroll', function () {
+        if (!isScrolling) {
+            isScrolling = true;
             $('header.fixed-top').addClass('nav-fixed');
-        } else {
-            $('header.fixed-top').removeClass('nav-fixed');
         }
 
+        clearTimeout($.data(this, 'scrollTimer'));
+        $.data(this, 'scrollTimer', setTimeout(function () {
+            isScrolling = false;
+
+            if ($(window).scrollTop() === 0) {
+                $('header.fixed-top').removeClass('nav-fixed');
+            }
+        }, delay));
     });
 
     //Show Hide dropdown-menu Main navigation

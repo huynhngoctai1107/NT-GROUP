@@ -35,7 +35,7 @@ class Transaction extends Model{
     public function listRechargeHistory($condition){
 
 
-        return $this->select('fullname', 'phone', 'wallet', 'id_category_transaction',
+        return $this->select('fullname', 'email', 'phone', 'wallet', 'id_category_transaction',
             'transactions.created_at', 'transactions.surplus', 'transactions.status',
             'transactions.content', 'price', 'voucher',
             'transaction_categories.name as name_category',

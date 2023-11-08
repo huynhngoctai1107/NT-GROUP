@@ -21,4 +21,15 @@ class RechargeHistoryController extends Controller
 
         return view('transactions.rechargehistory',['list' => $data]);
     }
+    function searchListRechargeHistory(Request $request)
+    {
+        $condition=[];
+        if ($request->filled('keyword')) {
+            $keyword = $request->keyword;
+            $condition[] = ['email', 'LIKE', "%$keyword%"];
+        }
+        $data=$this->transaction->listRechargeHistory($condition);
+
+        return view('transactions.rechargehistory',['list' => $data]);
+    }
 }

@@ -25,9 +25,21 @@
         <div class="wrapper">
             <div class="content-wrapper">
                 <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title"> Quản lý bài viết</h3>
+                    <div class="card-header d-flex" style="justify-content: space-between">
+                        <div class="w-50 d-flex align-items-center">
+                            <h3 class="card-title"> Quản lý bài viết</h3>
+                        </div>
+                        <div class="w-50 d-flex justify-content-end">
+                            <form  action="{{route('searchListPost')}}" method="post">
+                                @csrf
+                                <div class="input-group rounded mt-3">
+                                    <input type="text" placeholder="Nhập từ khóa tìm kiếm" class="form-control ps-2" id="search_input" name="keyword">
+                                    <button type="submit" class="input-group-text border-0"><i class="fas fa-search"></i></button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
+
 
                     <!-- /.card-header -->
                     <div class="card-body">
@@ -44,12 +56,13 @@
                             <thead>
                             <tr>
 
-                                <th style="width: 30%;">Tên {{$page=='medias'?' bài viết':''}}</th>
-                                <th style="width: 30%;">Slug</th>
-                                <th style="width: 8%;">Ngày tạo</th>
-                                <th style="width: 8%;">Ngày cập nhật</th>
-                                <th style="width: 5%;">Trạng thái</th>
-                                <th style="width: 9%;">Nghiệp vụ</th>
+                                <th>Tên {{$page=='medias'?' bài viết':''}}</th>
+                                <th>Slug</th style="width: 30%;">
+                                <th>Ngày tạo</th>
+                                <th>Cập nhật</th>
+                                <th>Trạng thái</th>
+                                <th>Chi tiết</th>
+                                <th>Nghiệp vụ</th>
                             </tr>
                             </thead>
 
@@ -58,8 +71,8 @@
                             @foreach($query as $item)
 
                                 <tr>
-                                    <td>{{$item->title}}</td>
-                                    <td>{{$item->slug}}</td>
+                                    <td style="width: 25%">{{$item->title}}</td>
+                                    <td style="width: 25%">{{$item->slug}}</td>
                                     <td>{{ date('d-m-Y', strtotime($item->created_at)) }}</td>
                                     <td>{{ date('d-m-Y', strtotime($item->updated_at)) }}</td>
                                     <td>
@@ -67,12 +80,18 @@
                                             {{$item->status ? 'Hiện':'Ẩn'}}
                                         </a>
                                     </td>
+                                    <td><a href="{{route('postSingle', $item->slug)}}" class="btn btn-outline-success btn-sm">Xem</a></td>
                                     <td>
                                         <a href="{{route('editPosts', $item->slug)}}" class="btn btn-outline-success btn-sm">Sửa</a>
                                         <a href="{{route('deleteHistory', $item->slug)}}" class="btn btn-outline-danger btn-sm">Xóa</a>
                                     </td>
                                 </tr>
                             @endforeach
+                            @if (isset($message))
+                                <div class="alert alert-danger">
+                                    {{ $message }}
+                                </div>
+                            @endif
                             </tbody>
 
                         </table>

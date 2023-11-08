@@ -19,6 +19,10 @@ class Category extends Model
     {
         return $this->orderBy('id', 'desc')->paginate(5);
     }
+    public function searchCategory($condition)
+    {
+        return $this->where($condition)->orderBy('id', 'desc')->paginate(5);
+    }
 
     public function AddCategory($value)
     {

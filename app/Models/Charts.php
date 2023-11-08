@@ -30,4 +30,103 @@ class Charts extends Model
                  ->orderBy('date', 'asc')
                  ->get();
     }
+
+    public function getPostsAdminCharts()
+    {
+        return $this->select(DB::raw('MONTH(created_at) as month'), DB::raw('COUNT(*) as post_count'))
+                    ->whereRaw('MONTH(created_at) = MONTH(CURRENT_DATE)')
+                    ->groupBy('month')
+                    ->orderBy('month', 'asc')
+                    ->first();
+    }
+
+    public function getRechargeAdminCharts($condition)
+    {
+        return DB::table('transactions')
+                 ->select(DB::raw('MONTH(created_at) as month'), DB::raw('SUM(price) as recharge_price'))
+                 ->whereRaw('MONTH(created_at) = MONTH(CURRENT_DATE)')
+                 ->where($condition)
+                 ->groupBy('month')
+                 ->orderBy('month', 'asc')
+                 ->first();
+    }
+
+    public function getRecharmonth($condition){
+        return DB::table('transactions')
+                 ->select(DB::raw('MONTH(created_at) as month'), DB::raw('SUM(price) as recharge_price'))
+                 ->whereRaw('MONTH(created_at) = MONTH(CURRENT_DATE - INTERVAL 1 MONTH)')
+                 ->where($condition)
+                 ->groupBy('month')
+                 ->orderBy('month', 'asc')
+                 ->first();
+    }
+
+    public function getUserAdminCharts($condition)
+    {
+        return DB::table('users')
+                 ->select(DB::raw('COUNT(*) as user_count'))
+                 ->where($condition)
+                 ->first();
+    }
+
+    public function getPostAdminViewCharts($condition) {
+        return $this->where($condition)
+                    ->select(DB::raw('DATE(created_at) as date'), DB::raw('COUNT(*) as post_count'))
+                    ->groupBy('date')
+                    ->orderBy('date', 'asc')
+                    ->get();
+    }
+
+    public function getUserCharts($condition) {
+        return DB::table('users')
+                 ->where($condition)
+                 ->select(DB::raw('DATE(created_at) as date'), DB::raw('COUNT(*) as user_count'))
+                 ->groupBy('date')
+                 ->orderBy('date', 'asc')
+                 ->get();
+    }
+
+    public function getTransitionAdminCharts($condition){
+        return DB::table('transactions')
+                 ->select(DB::raw('DATE(created_at) as date'), DB::raw('SUM(price) as transactions_sum'))
+                 ->where($condition)
+                 ->groupBy('date')
+                 ->orderBy('date', 'asc')
+                 ->get();
+    }
+
+    public function getCountVoucher($condition){
+        return DB::table('transactions')
+                 ->select(DB::raw('MONTH(created_at) as month'),DB::raw('COUNT(voucher) as voucher_count'))
+                ->whereRaw('MONTH(created_at) = MONTH(CURRENT_DATE)')
+                ->where($condition)
+                ->groupBy('month')
+                ->orderBy('month', 'asc')
+                ->first();
+    }
+
+    public function getCountReport($condition){
+        return DB::table('customer_reports')
+                 ->select(DB::raw('MONTH(created_at) as month'),DB::raw('COUNT(id) as report_count'))
+                 ->whereRaw('MONTH(created_at) = MONTH(CURRENT_DATE)')
+                 ->where($condition)
+                 ->groupBy('month')
+                 ->orderBy('month', 'asc')
+                 ->first();
+    }
+
+    public function getCountEmail($condition){
+        return DB::table('email_news')
+                 ->select(DB::raw('COUNT(id) as email_count'))
+                 ->where($condition)
+                 ->first();
+    }
+
+    public function getCounFaqs($condition){
+        return DB::table('faqs')
+                 ->select(DB::raw('COUNT(id) as faqs_count'))
+                 ->where($condition)
+                 ->first();
+    }
+
 }

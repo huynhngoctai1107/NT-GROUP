@@ -59,12 +59,7 @@
                 display:flex;
             }
 	    }
-	    .shorten {
-		    /*width: 450px; !* Độ rộng của phần tử chứa văn bản( điền bên style của thẻ trực tiếp)*!*/
-		    white-space: nowrap; /* Ngăn chữ bị ngắt dòng */
-		    overflow: hidden; /* Ẩn phần chữ dư thừa */
-		    text-overflow: ellipsis; /* Hiển thị dấu ba chấm (...) khi chữ bị cắt */
-	    }
+
     </style>
 
 

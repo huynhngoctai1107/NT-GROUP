@@ -17,6 +17,10 @@ class Demand extends Model
     {
         return $this->orderBy('id', 'desc')->paginate(5);
     }
+    public function searchDemand($condition)
+    {
+        return $this->where($condition)->orderBy('id', 'desc')->paginate(5);
+    }
     public function GetDemand()
     {
         return $this->get();

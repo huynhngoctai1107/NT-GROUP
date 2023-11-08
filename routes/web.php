@@ -67,6 +67,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['AdminLogin']], function (){
              ->name('editDemand');
         Route::get('/them', [AddDemandController::class, 'addFormDemand'])->name('addDemand');
         Route::post('/them', [AddDemandController::class, 'addDemand'])->name('addDemand');
+        Route::post('/', [ListDemandController::class, 'searchDemand'])->name('searchDemand');
     });
     Route::group(['prefix' => 'danh-muc'], function (){
         Route::get('/danh-sach', [ListCategoryController::class, 'listCategory'])
@@ -79,6 +80,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['AdminLogin']], function (){
              ->name('editCategory');
         Route::get('/them', [AddCategoryController::class, 'addFormCategory'])->name('addCategory');
         Route::post('/them', [AddCategoryController::class, 'addCategory'])->name('addCategory');
+        Route::post('/', [ListCategoryController::class, 'SearchCategory'])->name('SearchCategory');
     });
     Route::group(['prefix' => 'lien-he'], function (){
         Route::get('/danh-sach-lien-he', [ListContactController::class, 'listContact'])
@@ -139,6 +141,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['AdminLogin']], function (){
     Route::group(['prefix' => 'lich-su-giao-dich', 'middleware' => ['Roles']], function (){
         Route::get('/danh-sach', [RechargeHistoryController::class, 'listRechargeHistory'])
              ->name('listRechargeHistory');
+        Route::post('/', [RechargeHistoryController::class, 'searchListRechargeHistory'])->name('searchListRechargeHistory');
     });
     Route::group(['prefix' => 'bai-viet'], function (){
         Route::get('/danh-sach', [ListPostsController::class, 'listPosts'])->name('listPosts');
@@ -158,6 +161,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['AdminLogin']], function (){
              ->name('deleteHistory');
         Route::get('/khoi-phuc-bai-viet/{slug}', [DeletePostsController::class, 'restorePost'])
              ->name('restorePost');
+        Route::post('/', [ListPostsController::class, 'searchListPost'])->name('searchListPost');
+        Route::post('/danh-sach-history', [ListPostsController::class, 'searchHisPost'])->name('searchHisPost');
     });
 
 
