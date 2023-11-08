@@ -4,7 +4,7 @@
             <div class="d-flex align-items-center justify-content-center justify-content-md-start">
                 <div class="lng_dropdown me-2">
                     <ul class="contact_detail text-center text-lg-start">
-                        <li><i class="ti-mobile"></i><span>123-456-7890</span></li>
+                        <li><i class="ti-mobile"></i><span><a href="tel:0949615859">094 961 5859</a></span></li>
                     </ul>
                 </div>
                 <div class="me-3">

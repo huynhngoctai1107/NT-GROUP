@@ -1,4 +1,4 @@
-    @extends('Client.Layout.master')
+@extends('Client.Layout.master')
 
 @section('title')
     Tin Tức Chi Tiết - NT GROUP
@@ -49,7 +49,7 @@
                                 @endphp
                                 <div class="product-image">
                                     <div class="product_img_box">
-                                      <img id="product_img" src="{{ asset('images/medias/' . $firstImage) }}" data-zoom-image="{{ asset('images/medias/' . $firstImage) }}" alt="product_img1" style="width: 100%; height: 500px" />
+                                        <img id="product_img" src="{{ asset('images/medias/' . $firstImage) }}" data-zoom-image="{{ asset('images/medias/' . $firstImage) }}" alt="product_img1" style="width: 100%; height: 500px"/>
                                         <a href="#" class="product_img_zoom" title="Zoom">
                                             <span class="linearicons-zoom-in"></span>
                                         </a>
@@ -58,7 +58,7 @@
                                         @foreach($imageArray as $img)
                                             <div class="item">
                                                 <a href="#" class="product_gallery_item active" data-image="{{ asset('images/medias/' . $img) }}" data-zoom-image="{{ asset('images/medias/' . $img) }}">
-                                                    <img src="{{ asset('images/medias/' . $img) }}" alt="product_small_img1" style="width: 100%; height: 120px; object-fit: cover;" />
+                                                    <img src="{{ asset('images/medias/' . $img) }}" alt="product_small_img1" style="width: 100%; height: 120px; object-fit: cover;"/>
                                                 </a>
                                             </div>
                                         @endforeach
@@ -73,10 +73,11 @@
                                         </h4>
                                         <div class="product_price">
                                             <span class="price">Giá: {{$formatPrice($data->price_posts)}}
-                                                @if($data->slug_demand == 'thue')/tháng @endif</span>
+                                                @if($data->slug_demand == 'thue')
+                                                    /tháng
+                                                @endif</span>
                                             <del></del>
-                                            <div class="on_sale">
-                                            </div>
+                                            <div class="on_sale"></div>
                                         </div>
                                         <div class="rating_wrap">
                                             <span class="rating_num">{{$data->number_views}} lượt xem</span>
@@ -176,36 +177,40 @@
                                 <h5 class="widget_title">Loại Tin</h5>
                                 <ul class="widget_categories">
                                     @foreach($count as $item)
-                                    <li>
-                                        <a href="{{route('search',$item->slug)}}"><span class="categories_name">{{$item->name}}</span><span class="categories_num">({{$item->post_count}})</span></a>
-                                    </li>
+                                        <li>
+                                            <a href="{{route('search',$item->slug)}}"><span class="categories_name">{{$item->name}}</span><span class="categories_num">({{$item->post_count}})</span></a>
+                                        </li>
                                     @endforeach
                                 </ul>
                             </div>
-                            <div class="col-12 mt-3 mb-3">
-                                <h4>Liên Hệ</h4>
-                                @foreach($data->contacts as $contacts)
-                                    <div class="admin mt-3">
+                            <div class="col-12 mt-3 mb-3 transparent-background">
+                                <div class="p card-2">
+                                    <h5>Liên Hệ</h5>
+                                </div>
+                                <div class="admin mt-3">
+                                    @foreach($data->contacts as $contact)
                                         <div class="row d-flex justify-content-center align-items-center">
-                                            <div class="col-md-4 col-4 ">
-                                                <img src="{{ asset('images/contacts/' . $contacts->image) }}" class="img-fluid rounded-circle-custom" alt="Hình ảnh" style="border: 1px solid #000; border-radius: 50%; width: 100px; height: 100px;">
+                                            <div class="p-4 col-md-4 col-4 ">
+                                                <img src="{{ asset('images/contacts/' . $contact->image) }}" class="img-fluid rounded-circle-custom" alt="Hình ảnh" style="border: 1px solid #000; border-radius: 50%; width: 80px; height: 80px;">
                                             </div>
                                             <div class="col-md-8 col-8">
                                                 <div class="infor">
-                                                    <h5>{{$contacts->position}}</h5>
+                                                    <h6>{{$contact->position}}</h6>
                                                     <div class="phone border-warning text-warning p-2 rounded bg-light">
-                                                        <a href="tel:{{$contacts->phone}}"><i class="bi bi-telephone-fill"></i>
-                                                        <span>Gọi ngay</span>
+                                                        <a href="tel:{{$contact->phone}}"><i class="bi bi-telephone-fill"></i>
+                                                            <span>Gọi ngay</span>
                                                         </a>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                @endforeach
+                                    @endforeach
+                                </div>
                             </div>
                             <div class="widget">
-                                <h5 class="widget_title">Bất Động Sản VIP</h5>
+                                <div class="p card-4">
+                                    <h5 class="widget_title">Bất Động Sản VIP</h5>
+                                </div>
                                 <ul class="widget_recent_post">
                                     <x-client.blog.blogVip :list="$list">
 
@@ -233,7 +238,11 @@
     <!-- Bootstrap Font Icon CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"/>
     <style>
-	    /* Điều chỉnh kích thước bản đồ theo ý muốn */
+
+		img {
+			object-fit: cover;
+		}
+		/* Điều chỉnh kích thước bản đồ theo ý muốn */
 		#ggmap {
 			height: 400px;
 			width: 100%;
@@ -250,22 +259,23 @@
 			-webkit-box-orient: vertical;
 			overflow: hidden;
 		}
-	    .card-name {
-		    display: -webkit-box;
-		    -webkit-line-clamp: 2;
-		    -webkit-box-orient: vertical;
-		    overflow: hidden;
-	    }
+		.card-name {
+			display: -webkit-box;
+			-webkit-line-clamp: 2;
+			-webkit-box-orient: vertical;
+			overflow: hidden;
+		}
     </style>
 @endpush
 @push('script')
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             // Khi chọn loại báo cáo là "Khác" thì sẽ hiện ra textarea nhập nội dung
-            $("#type").change(function() {
+            $("#type").change(function () {
                 if ($(this).val() == "khác") {
                     $("#content-wrapper").find("textarea").css("display", "block");
-                } else {
+                }
+                else {
                     $("#content-wrapper").find("textarea").css("display", "none");
                 }
             });

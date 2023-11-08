@@ -25,12 +25,27 @@
             <div class="content-wrapper">
                 <div class="card ">
                     <div class="card-header">
-                        <h3 class="card-title"> Quản lý danh sách Báo cáo </h3>
+                        <h3 class="card-title"> Quản lý lịch sử xoá Báo cáo </h3>
+                        <div class="card-tools">
+                            <form action="{{ route('searchReport') }}" method="GET" class="form-inline">
+                                @csrf
+                                <div class="input-group">
+                                    <input type="text" name="keyword" class="form-control" placeholder="Tìm kiếm..." value="{{ request('keyword') }}">
+                                    <div class="input-group-append">
+                                        <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                    <!-- /.card-header -->
                     <div class="d-flex justify-content-between">
                         <x-admin.buttom.add router="reportHistory" name="Lịch sử xóa"></x-admin.buttom.add>
                     </div>
+                    @if (isset($message))
+                        <div class="alert alert-danger">
+                            {{ $message }}
+                        </div>
+                    @endif
                     <div class="card-body">
                         @if(session('success'))
                             <div class="alert alert-success">
@@ -43,10 +58,10 @@
                                 <th style="width: 10%;">Tên tài khoản</th>
                                 <th style="width: 10%;">Email </th>
                                 <th style="width: 30%;">Bài viết</th>
-                                <th style="width: 30%;">Nội dung</th>
-                                <th style="width: 7%;">Trạng thái</th>
+                                <th style="width: 15%;">Nội dung</th>
+                                <th style="width: 8%;">Trạng thái</th>
                                 <th style="width: 8%;">Ngày tạo</th>
-                                <th style="width: 4%;">Nghiệp vụ</th>
+                                <th style="width: 8%;">Nghiệp vụ</th>
                             </tr>
                             </thead>
                             <tbody class="text-center">

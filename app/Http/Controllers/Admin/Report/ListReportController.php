@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Report;
 
 use App\Http\Controllers\Controller;
 use App\Models\Customer_reports;
+use Illuminate\Http\Request;
 
 class ListReportController extends Controller{
 
@@ -16,8 +17,7 @@ class ListReportController extends Controller{
     public function ListReport(){
 
         $condition =
-            ['customer_reports.delete' => 0
-            ];
+            ['customer_reports.delete' => 0 ];
 
         $data = $this->customer_reports->ListPostReport($condition);
 
@@ -29,7 +29,7 @@ class ListReportController extends Controller{
         $condition = [
             ['customer_reports.delete', '=', 1],
         ];
-        $data = $this->customer_reports->ListPostReport($condition);
+        $data      = $this->customer_reports->ListPostReport($condition);
 
         return view('admin.report.ReportHistory', ['page' => 'report', 'query' => $data]);
     }
@@ -50,5 +50,25 @@ class ListReportController extends Controller{
         return back();
     }
 
+    public function searchReport(Request $request)
+    {
+        $condition = [
+            ['customer_reports.delete', '=', 0],
+            ['customer_reports.status', '=', 1],
+        ];
 
+        if ($request->filled('keyword')) {
+            $keyword = $request->keyword;
+            $condition[] = ['users.email', 'LIKE', "%$keyword%"];
+        }
+
+        $data = $this->customer_reports->ListPostReport($condition);
+
+        if ($data->isEmpty()) {
+            return view('admin.report.list', ['list' => $data])
+                ->with('message', 'Không tìm thấy email báo báo cáo.');
+        } else {
+            return view('admin.report.list', ['list' => $data]);
+        }
+    }
 }

@@ -26,6 +26,17 @@
                 <div class="card ">
                     <div class="card-header">
                         <h3 class="card-title">Quản lý tài khoản người dùng</h3>
+                        <div class="card-tools">
+                            <form action="{{ route('searchUser') }}" method="GET" class="form-inline">
+                                @csrf
+                                <div class="input-group">
+                                    <input type="text" name="keyword" class="form-control" placeholder="Tìm kiếm..." value="{{ request('keyword') }}">
+                                    <div class="input-group-append">
+                                        <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
@@ -33,7 +44,11 @@
                             <x-admin.buttom.add router="addUser" name="Thêm tài khoản"></x-admin.buttom.add>
                             <x-admin.buttom.add router="ListUserHistory" name="Lịch sử xóa"></x-admin.buttom.add>
                         </div>
-
+                        @if (isset($message))
+                            <div class="alert alert-danger">
+                                {{ $message }}
+                            </div>
+                        @endif
                         <div class="table-responsive">
                             <table id="example1" class="table table-bordered table-striped ">
                                 @if(session('success'))

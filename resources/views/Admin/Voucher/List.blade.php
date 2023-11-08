@@ -26,12 +26,28 @@
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title"> Quản lý mã giảm giá </h3>
+                        <div class="card-tools">
+                            <form action="{{ route('searchVoucher') }}" method="GET" class="form-inline">
+                                @csrf
+                                <div class="input-group">
+                                    <input type="text" name="keyword" class="form-control" placeholder="Tìm kiếm..." value="{{ request('keyword') }}">
+                                    <div class="input-group-append">
+                                        <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
                             <x-admin.buttom.add router="addVoucher" name="Thêm mã giảm giá"></x-admin.buttom.add>
                             <x-admin.buttom.add router="ListVoucherHistory" name="Lịch sử xoá"></x-admin.buttom.add>
                         </div>
+                        @if (isset($message))
+                            <div class="alert alert-danger">
+                                {{ $message }}
+                            </div>
+                        @endif
                         <table id="example1" class="table table-bordered table-striped">
                             @if(session('success'))
                                 <div class="alert alert-success">

@@ -112,6 +112,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['AdminLogin']], function (){
         Route::get('/xoa/{id}', [DeleteUserController::class, 'deleteUser'])->name('deleteUser');
         Route::get('/khoi-phuc-tai-khoan/{id}', [DeleteUserController::class, 'userRestore'])
              ->name('userRestore');
+        Route::get('/tim-kiem-tai-khoan', [ListUserController::class, 'searchUser'])->name('searchUser');
+
     });
 
     Route::group(['prefix' => 'voucher'], function (){
@@ -121,6 +123,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['AdminLogin']], function (){
              ->name('status');
         Route::get('/danh-sach-xoa-voucher', [ListVoucherController::class, 'ListVoucherHistory'])
              ->name('ListVoucherHistory');
+        Route::get('/tim-voucher', [ListVoucherController::class, 'searchVoucher'])->name('searchVoucher');
         Route::get('/chinh-sua/{slug}', [EditVoucherController::class, 'editFormVoucher'])
              ->name('editFormVoucher');
         Route::post('/chinh-sua/{slug}', [EditVoucherController::class, 'editVoucher'])
@@ -165,6 +168,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['AdminLogin']], function (){
              ->name('reportHistory');
         Route::get('/trang-thai-bao-cao/{id}', [ListReportController::class, 'statusReport'])
              ->name('statusReport');
+        Route::get('/tim-kiem-bao-cao', [ListReportController::class, 'searchReport'])
+             ->name('searchReport');
         Route::get('/xoa-bao-cao/{id}', [DeleteReportController::class, 'deleteReport'])
              ->name('deleteReport');
         Route::get('/khoi-phuc-bao-cao/{id}', [DeleteReportController::class, 'restoreReport'])

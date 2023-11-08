@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Repost;
+namespace App\Http\Controllers\Admin\Report;
 
 use App\Http\Controllers\Client\Mail\ContactController;
 use App\Http\Controllers\Controller;
