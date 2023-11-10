@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\Category\AddCategoryController;
 use App\Http\Controllers\Admin\Category\DeleteCategoryController;
 use App\Http\Controllers\Admin\Category\EditCategoryController;
@@ -52,9 +52,9 @@ use App\Http\Controllers\Client\Post\EditPostController;
 use App\Http\Controllers\Client\Post\PostListController;
 use App\Http\Controllers\Client\Post\PostNewController;
 use App\Http\Controllers\Client\Search\SearchController;
+use App\Http\Controllers\Client\Tools\CalculateController;
 use App\Http\Controllers\Client\Tools\DesignCostsController;
 use App\Http\Controllers\Client\Tools\MapLocationController;
-use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\Client\Tools\BuildController;
 
 Route::group(['prefix' => 'admin', 'middleware' => ['AdminLogin']], function (){
@@ -282,6 +282,7 @@ Route::group(['prefix' => '/'], function (){
          ->name('postSingle');
     Route::get('lien-he', [AddContactController::class, 'contact'])->name('contact');
     Route::post('lien-he', [AddContactController::class, 'contactFrom'])->name('contactFrom');
+    Route::get('/tinh-lai-xuat', [CalculateController::class, 'calculate'])->name('calculate');
 
     Route::get('gioi-thieu', [AboutController::class, 'about'])->name('about');
 

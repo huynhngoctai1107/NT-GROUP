@@ -22,7 +22,6 @@ class DesginCosts extends Component{
     ];
 
     public function __construct(){
-
         $this->data = [
             ['id'          => 1,
              'title'       => 'Tầng trệt',
@@ -224,8 +223,5 @@ class DesginCosts extends Component{
 
             $this->penthouseHiden = TRUE;
         };
-
     }
-
-
 }

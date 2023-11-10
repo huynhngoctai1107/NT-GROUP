@@ -1,6 +1,6 @@
 <div class="d-md-flex d-none">
     <div class="con-tooltip1 right" style="position: fixed; bottom: 30px; left: 10px; margin-left: 10px; z-index: 100">
-        <a href="{{route('designCost')}}" style="display: flex">
+        <a href="{{route('calculate')}}" style="display: flex">
             <div class="rounded-circle btn btn-primary  custom-circle">
                 <i class="bi bi-calculator-fill"></i>
             </div>
@@ -28,9 +28,12 @@
             <div class="tooltip">
                 <span class=""> Tính thiết kế</span>
             </div>
+
             <div class="rounded-circle btn btn-primary  custom-circle">
                 <i class="bi bi-easel"></i>
             </div>
+
+
         </a>
     </div>
 
@@ -45,6 +48,7 @@
 
         </a>
     </div>
+</div>
 
     <div class="container d-md-none d-flex " style="position: fixed;  bottom: 0px;box-shadow: 0px -1px 5px rgba(0, 0, 0, 0.5);; background-color: white ; z-index: 100; height: 70px">
 
@@ -71,7 +75,7 @@
             <i class="bi bi-building-fill-gear icons-menu-mobile"></i>
             <span style="font-size: 10px">Chi Phí Xây dựng</span>
         </a>
-        <a href="{{route('designCost')}}" class="col-2  justify-content-center align-items-center d-flex   flex-column">
+        <a href="{{route('calculate')}}" class="col-2  justify-content-center align-items-center d-flex   flex-column">
             <i class="bi bi-calculator-fill icons-menu-mobile"></i>
             <span style="font-size: 10px">Tính Lãi suất</span>
         </a>
