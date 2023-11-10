@@ -55,7 +55,7 @@
                             <div class="small-box bg-gradient-warning">
                                 <div class="inner">
                                     <h3>{{$report->report_count}}</h3>
-                                    <p>Số báo cáo</p>
+                                    <p>Số báo cáo chưa xử lí</p>
                                 </div>
                                 <div class="icon">
                                     <i class="ion ion-ios-paper"></i>
@@ -185,9 +185,9 @@
                             <div class="small-box bg-success">
                                 <div class="inner">
                                     @php
-                                        $percentageChange = (($recharge->recharge_price - $recharmonth->recharge_price) / $recharmonth->recharge_price) * 100;
+                                        $percentageChange = $recharge->recharge_price - $recharmonth->recharge_price;
                                     @endphp
-                                    <h3>{{round($percentageChange,2)}}<sup style="font-size: 20px">%</sup></h3>
+                                    <h3>{{number_format($percentageChange)}}<sup style="font-size: 20px">đ</sup></h3>
 
                                     <p>So với tháng trước</p>
                                 </div>

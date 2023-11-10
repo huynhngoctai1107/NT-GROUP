@@ -170,6 +170,7 @@ return [
         App\Providers\EventServiceProvider::class,
         Jenssegers\Agent\AgentServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        \Barryvdh\DomPDF\ServiceProvider::class,
 
     ])->toArray(),
 
@@ -189,6 +190,7 @@ return [
         'Agent' => Jenssegers\Agent\Facades\Agent::class,
         // 'Example' => App\Facades\Example::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'PDF' => Barryvdh\DomPDF\Facade\Pdf::class,
     ])->toArray(),
 
 ];

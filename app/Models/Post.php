@@ -73,7 +73,7 @@ class Post extends Model{
     }
 
 
-    public function getPostList($condition, $orderBy, $random){
+    public function getPostList($condition, $orderBy, $random, $perPage = NULL){
         $query = $this->where($condition)
                       ->select('posts.id as id_post', 'posts.slug as slug_posts',
                           'category_posts.name as name_category',
@@ -93,8 +93,11 @@ class Post extends Model{
         if ($random){
             $query->inRandomOrder();
         }
-
-        return $query->get();
+        if (isset($perPage)){
+            return $query->paginate($perPage);
+        }else{
+            return $query->get();
+        }
     }
 
     public function getPost($condition){

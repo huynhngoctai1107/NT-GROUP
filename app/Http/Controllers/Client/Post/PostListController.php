@@ -21,7 +21,7 @@ class PostListController extends Controller
             ['delete', '=', 0],
             ['status', '=', 1],
         ];
-        $data = $this->post->getPostList($condition, null, false);
+        $data = $this->post->getPostList($condition, null, false,8);
         $lq = $this->post->getPostList($condition, null, true)->take(3);
         return view('Client.Pages.ListPostAll',['page'=>'post', 'list'=>$data, 'lq'=>$lq]);
     }
@@ -36,10 +36,19 @@ class PostListController extends Controller
             ['delete', '=', 0],
             ['status', '=', 1],
         ];
-        if ($request->filled('keyword')) {
+
+        $keyword = isset($_GET['keyword']) ? $_GET['keyword'] : null;
+
+        if ($keyword !== null) {
+            if(!$request->keyword) {
+               return redirect()->back();
+            }
             $keyword = $request->keyword;
+            $keyword = str_replace('/\s+/',' ',$keyword);
+            $keyword = trim($keyword);
             $condition[] = ['title', 'LIKE', "%$keyword%"];
         }
+
         if ($request->filled('category') && $request->category !== "Loại BDS") {
             $category = $request->category;
             $condition[] = ['id_category', '=', $category];
@@ -70,13 +79,12 @@ class PostListController extends Controller
             $acreage = $request->acreage;
             $condition[] = ['id_acreage', '=', $acreage];
         }
-        $data = $this->post->getPostList($condition, null, false);
+        $data = $this->post->getPostList($condition, null, false,8);
         $sale = $this->post->getPostList($condition1, null, true)->take(3);
         if ($data->isEmpty()) {
             return view('Client.Pages.search', ['page' => 'search', 'list' => $data, 'sale' => $sale])
                 ->with('message', 'Không tìm thấy kết quả.');
         } else {
-
             if(count($condition) === 2){
                 return view('Client.Pages.ListPostAll',
                     ['page' => 'post', 'list' => $data, 'lq' => $sale]);

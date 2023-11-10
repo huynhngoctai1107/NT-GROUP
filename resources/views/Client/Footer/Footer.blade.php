@@ -20,17 +20,17 @@
 
                     <ul class="list-unstyled d-flex flex-row justify-content-center">
                         <li>
-                            <a class="text-white px-2" href="#!">
+                            <a class="text-white px-2" href="#">
                                 <i class="fab fa-facebook-square"></i>
                             </a>
                         </li>
                         <li>
-                            <a class="text-white px-2" href="#!">
+                            <a class="text-white px-2" href="#">
                                 <i class="fab fa-instagram"></i>
                             </a>
                         </li>
                         <li>
-                            <a class="text-white ps-2" href="#!">
+                            <a class="text-white ps-2" href="#">
                                 <i class="fab fa-youtube"></i>
                             </a>
                         </li>
@@ -45,16 +45,16 @@
 
                     <ul class="list-unstyled">
                         <li class="mb-2">
-                            <a href="#!" class="text-white"> Cho thuê nhà</a>
+                            <a href="#" class="text-white"> Cho thuê nhà</a>
                         </li>
                         <li class="mb-2">
-                            <a href="#!" class="text-white">Cho thuê đất</a>
+                            <a href="#" class="text-white">Cho thuê đất</a>
                         </li>
                         <li class="mb-2">
-                            <a href="#!" class="text-white">Mua bán bất động sản</a>
+                            <a href="#" class="text-white">Mua bán bất động sản</a>
                         </li>
                         <li class="mb-2">
-                            <a href="#!" class="text-white">Tư vấn bất động sản</a>
+                            <a href="#" class="text-white">Tư vấn bất động sản</a>
                         </li>
                     </ul>
                 </div>
@@ -66,16 +66,16 @@
 
                     <ul class="list-unstyled">
                         <li class="mb-2">
-                            <a href="#!" class="text-white">Giới Thiệu</a>
+                            <a href="#" class="text-white">Giới Thiệu</a>
                         </li>
                         <li class="mb-2">
-                            <a href="#!" class="text-white">Liên Hệ</a>
+                            <a href="#" class="text-white">Liên Hệ</a>
                         </li>
                         <li class="mb-2">
-                            <a href="#!" class="text-white">Chính Sách</a>
+                            <a href="#" class="text-white">Chính Sách</a>
                         </li>
                         <li class="mb-2">
-                            <a href="#!" class="text-white">Điều khoản</a>
+                            <a href="#" class="text-white">Điều khoản</a>
                         </li>
                     </ul>
                 </div>
@@ -110,5 +110,4 @@
         </div>
         <!-- Copyright -->
     </footer>
-
 </div>

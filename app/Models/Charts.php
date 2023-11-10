@@ -51,14 +51,24 @@ class Charts extends Model
                  ->first();
     }
 
-    public function getRecharmonth($condition){
-        return DB::table('transactions')
-                 ->select(DB::raw('MONTH(created_at) as month'), DB::raw('SUM(price) as recharge_price'))
-                 ->whereRaw('MONTH(created_at) = MONTH(CURRENT_DATE - INTERVAL 1 MONTH)')
-                 ->where($condition)
-                 ->groupBy('month')
-                 ->orderBy('month', 'asc')
-                 ->first();
+    public function getRecharmonth($condition)
+    {
+        $result = DB::table('transactions')
+                    ->select(DB::raw('MONTH(created_at) as month'), DB::raw('SUM(price) as recharge_price'))
+                    ->whereRaw('MONTH(created_at) = MONTH(CURRENT_DATE - INTERVAL 1 MONTH)')
+                    ->where($condition)
+                    ->groupBy('month')
+                    ->orderBy('month', 'asc')
+                    ->first();
+
+        if ($result) {
+            return $result;
+        } else {
+            return (object) [
+                'month' => date('n') - 1,
+                'recharge_price' => 0,
+            ];
+        }
     }
 
     public function getUserAdminCharts($condition)
@@ -97,21 +107,15 @@ class Charts extends Model
 
     public function getCountVoucher($condition){
         return DB::table('transactions')
-                 ->select(DB::raw('MONTH(created_at) as month'),DB::raw('COUNT(voucher) as voucher_count'))
-                ->whereRaw('MONTH(created_at) = MONTH(CURRENT_DATE)')
+                 ->select(DB::raw('COUNT(voucher) as voucher_count'))
                 ->where($condition)
-                ->groupBy('month')
-                ->orderBy('month', 'asc')
                 ->first();
     }
 
     public function getCountReport($condition){
         return DB::table('customer_reports')
-                 ->select(DB::raw('MONTH(created_at) as month'),DB::raw('COUNT(id) as report_count'))
-                 ->whereRaw('MONTH(created_at) = MONTH(CURRENT_DATE)')
+                 ->select(DB::raw('COUNT(id) as report_count'))
                  ->where($condition)
-                 ->groupBy('month')
-                 ->orderBy('month', 'asc')
                  ->first();
     }
 

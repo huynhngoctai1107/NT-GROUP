@@ -42,9 +42,6 @@
             </div>
         </div>
     </div>
-
-    <!-- START SECTION SUBSCRIBE NEWSLETTER -->
-    <!-- START SECTION SUBSCRIBE NEWSLETTER -->
 @endsection
 @push('styles')
     <style>

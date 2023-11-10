@@ -5,8 +5,7 @@
                 <p style="font-size: 1.5em;">Lọc Bài Viết</p>
             </div>
             <div class="mt-3" id="searchForm">
-                <form action="{{route('SearchPost')}}" method="post">
-                    @csrf
+                <form action="{{route('SearchPost')}}" method="get">
                     <div class="mb-3">
                         <select class="form-select" aria-label="Default select example" name="category">
                             <option selected>Loại BDS</option>

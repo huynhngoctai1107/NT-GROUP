@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Shopwise is Powerful features and You Can Use The Perfect Build this Template For Any eCommerce Website. The template is built for sell Fashion Products, Shoes, Bags, Cosmetics, Clothes, Sunglasses, Furniture, Kids Products, Electronics, Stationery Products and Sporting Goods.">
     <meta name="keywords" content="ecommerce, electronics store, Fashion store, furniture store,  bootstrap 4, clean, minimal, modern, online store, responsive, retail, shopping, ecommerce store">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- SITE TITLE -->
     <title>@yield('title')</title>
     <!-- Favicon Icon -->
@@ -43,6 +43,9 @@
     <link rel="stylesheet" href="{{asset('client/css/responsive.css')}}">
     {!! RecaptchaV3::initJs() !!}
 
+
+
+
     @stack('styles')
     @stack('css')
 {{--    <style>--}}
@@ -57,6 +60,7 @@
 {{--			}--}}
 {{--		}--}}
 {{--    </style>--}}
+    @livewireStyles
 </head>
 
 <body>
@@ -69,6 +73,7 @@
 </body>
 
 @yield('showhide')
+@livewireScripts
 <!-- Latest jQuery -->
 <script src="{{asset('client/js/jquery-3.6.0.min.js')}}"></script>
 <!-- popper min js -->

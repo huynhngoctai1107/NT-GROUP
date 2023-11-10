@@ -33,3 +33,6 @@
         </div>
     </div>
 @endforeach
+<div class="d-flex justify-content-center mt-4">
+    {{ $list->links('pagination::bootstrap-4') }}
+</div>

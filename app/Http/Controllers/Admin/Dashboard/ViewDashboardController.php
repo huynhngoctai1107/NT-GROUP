@@ -73,7 +73,9 @@ class ViewDashboardController extends Controller
        $voucher = $this->charts->getCountVoucher($condition);
 
        // report
-       $condition = [] ;
+       $condition = [
+           'status'=>0,
+       ] ;
        $report = $this->charts->getCountReport($condition);
 
        // email news

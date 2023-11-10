@@ -55,6 +55,7 @@ use App\Http\Controllers\Client\Search\SearchController;
 use App\Http\Controllers\Client\Tools\DesignCostsController;
 use App\Http\Controllers\Client\Tools\MapLocationController;
 use Illuminate\Support\Facades\Route;
+use \App\Http\Controllers\Client\Tools\BuildController;
 
 Route::group(['prefix' => 'admin', 'middleware' => ['AdminLogin']], function (){
     Route::get('/', [ViewDashboardController::class, 'dashboar'])->name('dashboar');
@@ -272,9 +273,9 @@ Route::group(['prefix' => '/'], function (){
     Route::get('/', [IndexController::class, 'index'])->name('index');
     Route::get('/xem-them-bai-viet-moi/{email}', [InteractionCountCotroller::class, 'interactionCount'])->name('interactionCount');
     Route::get('/vi-tri-bat-dong-san', [MapLocationController::class, 'mapLocation'])->name('mapLocation');
-    Route::get('/ket-qua-vi-tri/', [MapLocationController::class, 'checkMap'])->name('checkMap');
-
-    Route::get('/tin-chi-phi-thiet-ke', [DesignCostsController::class, 'designCost'])->name('designCost');
+    Route::get('/ket-qua-vi-tri-bds/', [MapLocationController::class, 'checkMap'])->name('checkMap');
+    Route::get('/tinh-chi-phi-thiet-ke', [DesignCostsController::class, 'designCost'])->name('designCost');
+    Route::get('/tinh-chi-phi-xay-dung', [BuildController::class, 'index'])->name('buildCost');
     Route::get('bao-loi', [ErrorPageController::class, 'error'])->name('error');
     Route::get('kich-hoat/{token}', [RegisterController::class, 'active'])->name('active');
     Route::get('/chi-tiet-tin/{slug}', [PostSingleController::class, 'postSingle'])

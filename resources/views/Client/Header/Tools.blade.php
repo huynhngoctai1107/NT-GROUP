@@ -14,7 +14,7 @@
         </a>
     </div>
     <div class="call-to-action" style="position: fixed; bottom: 120px; left: 10px; margin-left: 10px; z-index: 100">
-        <a href="{{route('designCost')}}" style="display: flex">
+        <a href="{{route('buildCost')}}" style="display: flex">
 
             <div class="rounded-circle btn btn-primary  custom-circle">
                 <i class="bi bi-building-fill-gear"></i>

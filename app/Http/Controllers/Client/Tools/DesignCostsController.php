@@ -9,7 +9,6 @@ class DesignCostsController extends Controller
 {
   function designCost(){
         return view('client.pages.designCosts');
-
   }
 
 }
