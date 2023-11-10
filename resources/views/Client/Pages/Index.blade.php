@@ -9,7 +9,7 @@
         <div id="carouselExampleControls" class="carousel slide carousel-fade light_arrow" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active background_bg" data-img-src="">
-                    <img src="{{asset('client/images/baner/banner_6.jpg')}}" style="filter:  brightness(65%)">
+                    <img src="{{asset('client/images/baner/banner_6.jpg')}}" style="height: 600px">
                     <div class="banner_slide_content">
                         <div class="container"><!-- STRART CONTAINER -->
                             <div class="row">
@@ -25,7 +25,7 @@
                     </div>
                 </div>
                 <div class="carousel-item background_bg" data-img-src="">
-                    <img src="{{asset('client/images/baner/banner_1.jpg')}}" style="filter:  brightness(65%)">
+                    <img src="{{asset('client/images/baner/banner_1.jpg')}}"style="height: 600px"">
                     <div class="banner_slide_content">
                         <div class="container"><!-- STRART CONTAINER -->
                             <div class="row">
@@ -41,7 +41,7 @@
                     </div>
                 </div>
                 <div class="carousel-item background_bg" data-img-src="">
-                    <img src="{{asset('client/images/baner/banner_7.jpg')}}" style="filter:  brightness(65%)">
+                    <img src="{{asset('client/images/baner/banner_7.jpg')}}" style="height: 600px">
                     <div class="banner_slide_content">
                         <div class="container"><!-- STRART CONTAINER -->
                             <div class="row">

@@ -3196,7 +3196,11 @@ input.text {
 .banner_section:not(.full_screen) .banner_content_wrap .carousel-item {
 	height: 800px;
 }
-
+@media screen and (max-width: 600px) {
+	.carousel-item  img {
+		height: 300px !important;
+	}
+}
 .full_screen, .full_screen .carousel-item {
 	height: 100vh;
 	min-height: 45rem;
@@ -4594,6 +4598,7 @@ h6.blog_title {
   11.START FOOTER STYLE
 *===================================*/
 footer {
+
 	overflow: hidden;
 }
 

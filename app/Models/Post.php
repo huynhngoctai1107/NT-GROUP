@@ -8,44 +8,54 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
-class Post extends Model
-{
+class Post extends Model{
+
     use HasFactory;
 
     protected $table = 'posts';
 
-    public function listPost($condition)
-    {
+    public function listPost($condition){
 
         return $this->orderBy('id', 'desc')->where($condition)->paginate(5);
     }
 
-    public function Show($condition, $name)
-    {
+    public function Show($condition, $name){
         return DB::table($name)->where($condition)->get();
     } // sửa sau 15 tây
 
-    public function addPost($value)
-    {
+    public function addPost($value){
         return $this->insertGetId($value);
     }
 
-    public function getId($where)
-    {
+    public function distance($condition, $location, $kilometer){
+        $longitude = (float) $location[0];
+        $latitude  = (float) $location[1];
+
+        return $this->select('*')->selectRaw("
+                     ( 6371 * acos( cos( radians(?) ) *
+                       cos( radians($latitude) )
+                       * cos( radians($latitude) - radians(?)
+                       ) + sin( radians(?) ) *
+                       sin( radians($latitude) ) )
+                     ) AS distance", [$latitude, $latitude, $latitude])
+                    ->having("distance", "<", $kilometer)
+                    ->where($condition)
+                    ->get();
+    }
+
+    public function getId($where){
         return $this->select('id')->where($where)->first()->id;
     }
 
-    public function editPost($where)
-    {
+    public function editPost($where){
         return $this->where($where)->first();
     }
 
-    public function updatePost($condition, $value)
-    {
+    public function updatePost($condition, $value){
         return $this->where($condition)->update($value);
     }
-    public function deletePost()
-    {
+
+    public function deletePost(){
         // Xóa liên kết trong bảng "media"
         $this->media()->delete();
         $this->contact()->delete();
@@ -54,44 +64,48 @@ class Post extends Model
         $this->delete();
     }
 
-    public function media()
-    {
+    public function media(){
         return $this->hasMany(Media::class, 'id_post');
     }
-    public function contact()
-    {
+
+    public function contact(){
         return $this->hasMany(Contact::class, 'id_post');
     }
 
 
-    public function getPostList($condition, $orderBy, $random)
-    {
+    public function getPostList($condition, $orderBy, $random){
         $query = $this->where($condition)
-                      ->select('posts.id as id_post', 'posts.slug as slug_posts', 'category_posts.name as name_category',
+                      ->select('posts.id as id_post', 'posts.slug as slug_posts',
+                          'category_posts.name as name_category',
                           'category_posts.slug as slug_category', 'demands.name as name_demands',
-                          'demands.slug as slug_demands', 'title', 'address', 'expiration_date', 'acreages', 'number_views', 'price', 'subtitles', 'posts.created_at',
+                          'demands.slug as slug_demands', 'title', 'address', 'expiration_date',
+                          'acreages', 'number_views', 'price', 'subtitles', 'posts.created_at',
                           DB::raw('GROUP_CONCAT(medias.image) AS images'))
                       ->join('medias', 'medias.id_post', '=', 'posts.id')
                       ->join('demands', 'demands.id', '=', 'posts.id_demand')
                       ->join('category_posts', 'category_posts.id', '=', 'posts.id_category')
                       ->groupBy('id_post');
 
-        if ($orderBy !== null) {
+        if ($orderBy !== NULL){
             $query->orderBy($orderBy);
         }
 
-        if ($random) {
+        if ($random){
             $query->inRandomOrder();
         }
 
         return $query->get();
     }
+
     public function getPost($condition){
         return $this->where($condition)
-                    ->select('posts.id as id_post','posts.slug as slug_posts', 'category_posts.name as name_category', 'demands.id as id_demands',
+                    ->select('posts.id as id_post', 'posts.slug as slug_posts',
+                        'category_posts.name as name_category', 'demands.id as id_demands',
                         'category_posts.slug as slug_category', 'demands.name as name_demands',
-                        'demands.slug as slug_demands', 'users.email','posts.delete as delete_posts', 'posts.title', 'posts.subtitles',
-                        'price', 'acreages', 'content','posts.status as status_post','posts.featured_news',
+                        'demands.slug as slug_demands', 'users.email',
+                        'posts.delete as delete_posts', 'posts.title', 'posts.subtitles',
+                        'price', 'acreages', 'content', 'posts.status as status_post',
+                        'posts.featured_news',
                         'posts.link_youtube', 'posts.address',
                         DB::raw('GROUP_CONCAT(medias.image) AS images'))
                     ->join('medias', 'medias.id_post', '=', 'posts.id')
@@ -101,12 +115,16 @@ class Post extends Model
                     ->groupby('id_post')
                     ->get();
     }
+
     public function firstPost($condition){
         return $this->where($condition)
-                    ->select('posts.id as id_post','posts.slug as slug_posts', 'category_posts.name as name_category', 'demands.id as id_demands',
+                    ->select('posts.id as id_post', 'posts.slug as slug_posts',
+                        'category_posts.name as name_category', 'demands.id as id_demands',
                         'category_posts.slug as slug_category', 'demands.name as name_demands',
-                        'demands.slug as slug_demands', 'users.email','posts.delete as delete_posts', 'posts.title', 'posts.subtitles',
-                        'price', 'acreages', 'content', 'posts.id_user','posts.status as status_post','posts.featured_news',
+                        'demands.slug as slug_demands', 'users.email',
+                        'posts.delete as delete_posts', 'posts.title', 'posts.subtitles',
+                        'price', 'acreages', 'content', 'posts.id_user',
+                        'posts.status as status_post', 'posts.featured_news',
                         'posts.link_youtube', 'posts.address',
                         DB::raw('GROUP_CONCAT(medias.image) AS images'))
                     ->join('medias', 'medias.id_post', '=', 'posts.id')
@@ -118,7 +136,7 @@ class Post extends Model
     }
 
 
-    public function getPostWithContacts($condition) {
+    public function getPostWithContacts($condition){
         $post = $this->select(
             'posts.id as id_post',
             'posts.slug as slug_posts',
@@ -147,22 +165,24 @@ class Post extends Model
                      ->groupBy('id_post')
                      ->first();
 
-        if ($post) {
-            $contacts = Contact::where('id_post', $post->id_post)->get();
+        if ($post){
+            $contacts       = Contact::where('id_post', $post->id_post)->get();
             $post->contacts = $contacts;
         }
 
         return $post;
     }
 
-    public function getPostCD($condition, $slug,$name){
+    public function getPostCD($condition, $slug, $name){
         return $this->where($condition)
-                    ->whereHas($name, function ($query) use ($slug) {
+                    ->whereHas($name, function ($query) use ($slug){
                         $query->where('slug', '=', $slug);
                     })
-                    ->select('posts.id as id_post', 'posts.slug as slug_posts', 'category_posts.name as name_category',
+                    ->select('posts.id as id_post', 'posts.slug as slug_posts',
+                        'category_posts.name as name_category',
                         'category_posts.slug as slug_category', 'demands.name as name_demands',
-                        'demands.slug as slug_demands', 'title', 'address', 'acreages', 'price', 'subtitles', 'posts.created_at',
+                        'demands.slug as slug_demands', 'title', 'address', 'acreages', 'price',
+                        'subtitles', 'posts.created_at',
                         DB::raw('GROUP_CONCAT(medias.image) AS images'))
                     ->join('medias', 'medias.id_post', '=', 'posts.id')
                     ->join('demands', 'demands.id', '=', 'posts.id_demand')
@@ -170,22 +190,25 @@ class Post extends Model
                     ->groupBy('id_post')
                     ->get();
     }
-    public function category()
-    {
+
+    public function category(){
         return $this->belongsTo(Category::class, 'id_category');
     }
 
-    public function demand()
-    {
+    public function demand(){
         return $this->belongsTo(Demand::class, 'id_demand');
     }
 
     public function categoriesWithPostCount(){
         $categoriesWithPostCount = DB::table('category_posts')
-                        ->select('category_posts.*', DB::raw('count(posts.id) as post_count'))
-                        ->leftJoin('posts', 'category_posts.id', '=', 'posts.id_category')
-                        ->groupBy('category_posts.id', 'category_posts.name','category_posts.slug' )
-                        ->get();
+                                     ->select('category_posts.*',
+                                         DB::raw('count(posts.id) as post_count'))
+                                     ->leftJoin('posts', 'category_posts.id', '=',
+                                         'posts.id_category')
+                                     ->groupBy('category_posts.id', 'category_posts.name',
+                                         'category_posts.slug')
+                                     ->get();
+
         return $categoriesWithPostCount;
     }
 }

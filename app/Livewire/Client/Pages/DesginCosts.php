@@ -8,37 +8,9 @@ use App\Livewire\Client\Header\Title\DesginCosts as Title;
 class DesginCosts extends Component{
 
 
-    public $construction = '';
-    public $design = "";
-    public $check;
-    public $check1;
-    public $check2;
-    public $check3;
-    public $long;
-    public $wide;
-    public $longGarden;
-    public $wideGarden;
-    public $longPenthouse;
-    public $widePenthouse;
-    public $heightPenthouse;
-    // số tầng
-    public $floors;
-    public $number;
-    public $data;
-    //diện tích
-    public $acreage;
-    //Tổng diện tích
-    public $sumAcreage;
-    public bool $gardenHiden = FALSE;
-    public bool $penthouseHiden = FALSE;
-    public $sumtotal;
-    protected $rules = [
-        'construction' => 'required',
-        'design'       => 'required',
-        'long'         => 'required',
-        'wide'         => 'required',
-        'floors'       => 'required',
-    ];
+    public $construction = 0, $design, $check, $check1, $check2, $check3, $long,
+        $wide, $hightGarden, $longGarden, $longPenthouse, $widePenthouse,
+        $heightPenthouse, $errorPenthouse = "", $sumtotal, $penthouseHiden = FALSE, $errorGarden = "", $gardenHiden = FALSE, $floors, $number, $data, $acreage, $sumAcreage, $Areafloor, $floorsAcreage;
 
     protected $messages = [
         'construction.required' => 'Xin vui lòng chọn gói thiết kế.',
@@ -73,120 +45,166 @@ class DesginCosts extends Component{
 
     public
     function send(){
-        $this->validate();
-        $floorData = [];
-        if ($this->check1 == TRUE){
-            $floorData[] = [
-                'id'          => 10,
-                'title'       => 'Sân hàng rào',
-                'images'      => "",
-                'acreage'     => $this->wide * $this->long,
-                'coefficient' => 50
-            ];
+        $fields   = [
+            'construction' => 'required|min:0|max:999',
+            'design'       => 'required|min:0|max:999',
+            'long'         => 'required|min:0|max:999',
+            'wide'         => 'required|min:0|max:999',
+            'floors'       => 'required|min:0|max:999',
+        ];
+        $messages = [
+            'construction.required' => 'Xây dựng là bắt buộc.',
+            'construction.min'      => 'Xây dựng phải lớn hơn hoặc bằng 0.',
+            'construction.max'      => 'Xây dựng phải nhỏ hơn hoặc bằng 999.',
+            'design.required'       => 'Thiết kế là bắt buộc.',
+            'design.min'            => 'Thiết kế phải lớn hơn hoặc bằng 0.',
+            'design.max'            => 'Thiết kế phải nhỏ hơn hoặc bằng 999.',
+            'long.required'         => 'Chiều dài là bắt buộc.',
+            'long.min'              => 'Chiều dài phải lớn hơn hoặc bằng 0.',
+            'long.max'              => 'Chiều dài phải nhỏ hơn hoặc bằng 999.',
+            'wide.required'         => 'Chiều rộng là bắt buộc.',
+            'wide.min'              => 'Chiều rộng phải lớn hơn hoặc bằng 0.',
+            'wide.max'              => 'Chiều rộng phải nhỏ hơn hoặc bằng 999.',
+            'floors.required'       => 'Số tầng là bắt buộc.',
+            'floors.min'            => 'Số tầng phải lớn hơn hoặc bằng 0.',
+            'floors.max'            => 'Số tầng phải nhỏ hơn hoặc bằng 999.',
+        ];
+        if ($this->penthouseHiden == TRUE){
+            $fields['longPenthouse']   = 'required|min:0|max:999';
+            $fields['widePenthouse']   = 'required|min:0|max:999';
+            $fields['heightPenthouse'] = 'required|min:0|max:999';
+
+            $messages['longPenthouse.required']   = 'Chiều dài của tum thắng là bắt buộc.';
+            $messages['longPenthouse.min']        = 'Chiều dài của tum thắng phải lớn hơn hoặc bằng 0.';
+            $messages['longPenthouse.max']        = 'Chiều dài của tum thắng phải nhỏ hơn hoặc bằng 999.';
+            $messages['widePenthouse.required']   = 'Chiều rộng của tum thắng là bắt buộc.';
+            $messages['widePenthouse.min']        = 'Chiều rộng của tum thắng phải lớn hơn hoặc bằng 0.';
+            $messages['widePenthouse.max']        = 'Chiều rộng của tum thắng phải nhỏ hơn hoặc bằng 999.';
+            $messages['heightPenthouse.required'] = 'Chiều cao của tum thắng là bắt buộc.';
+            $messages['heightPenthouse.min']      = 'Chiều cao của tum thắng phải lớn hơn hoặc bằng 0.';
+            $messages['heightPenthouse.max']      = 'Chiều cao của tum thắng phải nhỏ hơn hoặc bằng 999.';
+        }
+        if ($this->gardenHiden == TRUE){
+            $fields['hightGarden'] = 'required|min:0';
+            $fields['longGarden']  = 'required|min:0|max:999';
+
+            $messages['hightGarden.required'] = 'Chiều cao của Vườn là bắt buộc.';
+            $messages['hightGarden.min']      = 'Chiều cao của Vườn phải lớn hơn hoặc bằng 0.';
+            $messages['wideGarden.required']  = 'Chiều rộng của Vườn là bắt buộc.';
+            $messages['longGarden.min']       = 'Chiều rộng của Vườn phải lớn hơn hoặc bằng 0.';
+            $messages['longGarden.max']       = 'Chiều rộng của Vườn phải nhỏ hơn hoặc bằng 999.';
+        }
+
+        $this->validate($fields, $messages);
+        $floorData        = [];
+        $this->sumtotal   = 0;
+        $this->sumAcreage = 0;
+        $this->Areafloor  = $this->wide * $this->long;
+        if ($this->gardenHiden == TRUE){
+            $errorGarden   = "";
+            $acreageGarden = $this->wide * ($this->longGarden + $this->hightGarden);
+            if ($this->hightGarden < 2.6){
+                $floorData[]      = [
+                    'id'          => 10,
+                    'title'       => 'Sân hàng rào',
+                    'images'      => "",
+                    'acreage'     => $acreageGarden,
+                    'coefficient' => 50
+                ];
+                $this->sumAcreage += ($acreageGarden);
+                $this->sumtotal   += $this->construction *$acreageGarden * 0.5;
+            }else{
+                $this->errorGarden = "Chiều cao tối đa của hàng rào là 2.6m. Xin vui lòng thử lại";
+
+            }
+
+        }else{
+            $this->hightGarden = '';
+            $this->wideGarden  = '';
         }
 
         if ($this->check2 == TRUE){
-            $floorData[] = [
+            $floorData[]      = [
                 'id'          => 9,
-                'title'       => 'Mái',
+                'title'       => 'Mái và lam trang trí',
                 'images'      => "images/tools/mai.jpg",
                 'acreage'     => $this->wide * $this->long,
                 'coefficient' => 50
             ];
+            $this->sumAcreage += ($this->wide * $this->long);
+
+            $this->sumtotal += $this->construction * ($this->wide * $this->long) * 0.5;
+
         }
 
-        if ($this->check == TRUE){
-            $coefficient = ($this->wide * $this->long) * $this->check2 == TRUE ? 75 : 50 / 100;
-            $penthouse   = $this->longPenthouse * $this->widePenthouse * $this->heightPenthouse;
-            $floorData[] = [
-                'id'          => 7,
-                'title'       => 'Sân thượng',
-                'subtitle'    => 'Tự động tính theo tum thang',
-                'images'      => "images/tools/santhuong.jpg",
-                'acreage'     => $coefficient,
-                'coefficient' => 100
-            ];
-            if ($penthouse > (0.5 * $coefficient)){
-
+        if ($this->penthouseHiden == TRUE){
+            $this->errorPenthouse = "";
+            $coefficient          = ($this->wide * $this->long) * ($this->check2 == TRUE ? 75 : 50) / 100;
+            $penthouse            = $this->longPenthouse * $this->widePenthouse * $this->heightPenthouse;
+            if ($penthouse > (0.3 * $coefficient)){
+                $this->errorPenthouse = "Diện tích tum thắng vượt 30% tổng hiện tích sàn";
             }else{
-                $floorData[] = [
+
+                $this->sumAcreage += $coefficient;
+
+
+                $floorData[]      = [
+                    'id'          => 7,
+                    'title'       => 'Sân thượng',
+                    'subtitle'    => 'Tự động tính theo tum thang',
+                    'images'      => "images/tools/santhuong.jpg",
+                    'acreage'     => $coefficient - $penthouse,
+                    'coefficient' => 50
+                ];
+                $this->sumtotal += $this->construction * ( $coefficient - $penthouse) * 0.5;
+                $floorData[]      = [
                     'id'          => 8,
                     'title'       => 'Tum thang',
                     'images'      => "",
                     'acreage'     => $penthouse,
-                    'coefficient' => 100
+                        'coefficient' => 100
                 ];
+                $this->sumtotal += $this->construction * $penthouse;
             }
+        }else{
+            $this->longPenthouse   = "";
+            $this->widePenthouse   = "";
+            $this->heightPenthouse = "";
+        }
+        for ($i = $this->floors; $i <= $this->floors; $i --){
+            $title       = ($i == 0) ? 'Tầng trệt' : "Diện tích lầu $i";
+            $images      = ($i == 0) ? 'images/tools/tret.jpg' : 'images/tools/lau.jpg';
+            $floorData[] = [
+                'id'          => $i + 1,
+                'title'       => $title,
+                'images'      => $images,
+                'acreage'     => $this->wide * $this->long,
+                'coefficient' => 100
+            ];
+
+            $this->sumAcreage += ($this->wide * $this->long);
+            $this->sumtotal += $this->construction* $this->wide * $this->long;
+            if ($i <= 0){
+                break;
+            }
+        }
 
 
-        }
-
-        if ($this->floors >= 5){
-            $floorData[] = [
-                'id'          => 6,
-                'title'       => 'Diện tích lầu 5',
-                'images'      => "images/tools/lau.jpg",
-                'acreage'     => $this->wide * $this->long,
-                'coefficient' => 100
-            ];
-        }
-        if ($this->floors >= 4){
-            $floorData[] = [
-                'id'          => 5,
-                'title'       => 'Diện tích lầu 4',
-                'images'      => "images/tools/lau.jpg",
-                'acreage'     => $this->wide * $this->long,
-                'coefficient' => 100
-            ];
-        }
-        if ($this->floors >= 3){
-            $floorData[] = [
-                'id'          => 4,
-                'title'       => 'Diện tích lầu 3',
-                'images'      => "images/tools/lau.jpg",
-                'acreage'     => $this->wide * $this->long,
-                'coefficient' => 100
-            ];
-        }
-        if ($this->floors >= 2){
-            $floorData[] = [
-                'id'          => 3,
-                'title'       => 'Diện tích lầu 2',
-                'images'      => "images/tools/lau.jpg",
-                'acreage'     => $this->wide * $this->long,
-                'coefficient' => 100
-            ];
-        }
-
-        if ($this->floors >= 1){
-            $floorData[] = [
-                'id'          => 2,
-                'title'       => 'Diện tích lầu 1',
-                'images'      => "images/tools/lau.jpg",
-                'acreage'     => $this->wide * $this->long,
-                'coefficient' => 100
-            ];
-        }
-
-        if ($this->floors >= 0){
-            $floorData[] = [
-                'id'          => 1,
-                'title'       => 'Tầng trệt',
-                'images'      => "images/tools/tret.jpg",
-                'acreage'     => $this->wide * $this->long,
-                'coefficient' => 100
-            ];
-        }
         if ($this->check3 == TRUE){
-            $floorData[] = [
+            $floorData[]     = [
                 'id'          => 0,
                 'title'       => 'Hầm',
                 'images'      => "images/tools/ham.jpg",
                 'acreage'     => $this->wide * $this->long,
                 'coefficient' => 50
             ];
+            $this->Areafloor += $this->Areafloor;
+            $this->sumtotal += ($this->wide * $this->long)* $this->construction * 0.5 ;
         }
-        $this->data = $floorData;
+
+        $this->floorsAcreage = $this->floors * ($this->wide * $this->long);
+        $this->data          = $floorData;
+
     }
 
     public function garden(){
@@ -198,6 +216,7 @@ class DesginCosts extends Component{
         };
 
     }
+
     public function penthouse(){
         if ($this->penthouseHiden == TRUE){
             $this->penthouseHiden = FALSE;

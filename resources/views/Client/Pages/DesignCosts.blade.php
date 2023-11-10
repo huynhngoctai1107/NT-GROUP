@@ -1,10 +1,10 @@
 @extends('client.layout.master')
 
 @section('title')
-    Bất động sản - NT GROUP
+    Tính chi phí thiết kế - NT GROUP
 @endsection
 @php
-    $title = "Test";
+    $title = "Tool - Tính chi phí thiết kế";
 @endphp
 @section('main')
 
