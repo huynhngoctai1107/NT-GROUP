@@ -98,10 +98,10 @@
                                     <div class="card-body">
                                         <div class="table-responsive">
                                             <table class="table">
-                                                <thead class="text-center">
+                                                <thead class="text-left">
                                                 <tr>
-                                                    <th class="product-remove text-center">Loại</th>
-                                                    <th class="product-remove text-center">Hình thức</th>
+                                                    <th class="product-remove">Loại</th>
+                                                    <th class="product-remove">Hình thức</th>
                                                     <th class="product-price">Họ và Tên</th>
                                                     <th class="product-remove">Số tiền</th>
                                                     <th class="product-remove">Mã giảm giá</th>
@@ -140,7 +140,7 @@
             </div>
         </div>
     </div>
-
+@endsection
     <style>
 	    #charts {
 		    height: 400px;
@@ -170,7 +170,7 @@
 		    object-fit: cover;
 	    }
     </style>
-@endsection
+
 @push('javascript')
     <script src="https://code.highcharts.com/stock/highstock.js"></script>
     <script src="https://code.highcharts.com/stock/modules/data.js"></script>

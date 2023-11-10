@@ -8,6 +8,63 @@ Version      : 1.3
 PAGE JS
 *===================================*/
 
+// back-to-top
+$(document).ready(function(){
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 50) {
+            $('#back-to-top').fadeIn();
+        } else {
+            $('#back-to-top').fadeOut();
+        }
+    });
+    // scroll body to 0px on click
+    $('#back-to-top').click(function () {
+        $('body,html').animate({
+            scrollTop: 0
+        }, 400);
+        return false;
+    });
+});
+
+// end back-to-top
+
+
+// navbar
+jQuery(function($) {
+    $(window).on('scroll', function() {
+        if ($(this).scrollTop() >= 200) {
+            $('.navbar').addClass('fixed-top');
+        } else if ($(this).scrollTop() === 0) {
+            $('.navbar').removeClass('fixed-top');
+        }
+    });
+
+    function adjustNav() {
+        var winWidth = $(window).width(),
+            dropdown = $('.dropdown'),
+            dropdownMenu = $('.dropdown-menu');
+
+        if (winWidth >= 768) {
+            dropdown.on('mouseenter', function() {
+                $(this).addClass('show').children(dropdownMenu).addClass('show');
+            });
+
+            dropdown.on('mouseleave', function() {
+                $(this).removeClass('show').children(dropdownMenu).removeClass('show');
+            });
+        } else {
+            dropdown.off('mouseenter mouseleave');
+        }
+    }
+
+    $(window).on('resize', adjustNav);
+
+    adjustNav();
+
+    // Thay đổi màu nền của .navbar thành màu trắng
+    $('.navbar').css('background-color', 'white');
+});
+
 (function ($) {
     'use strict';
 
@@ -30,6 +87,8 @@ PAGE JS
             $(this).css('background-image', 'url(' + attr + ')');
         }
     });
+
+    // end navbar
 
     /*===================================*
     03. ANIMATION JS

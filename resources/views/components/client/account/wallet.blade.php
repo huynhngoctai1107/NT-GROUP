@@ -42,11 +42,6 @@
 
                 <form class="row g-3">
                     <div class="col-md-6">
-                        <label for="email"> Email: </label>
-                        <h6>{{auth()->user()->email}}</h6> <br/>
-                    </div>
-
-                    <div class="col-md-6">
                         <label for="email">Số dư: </label>
                         <h6>{{ number_format(auth()->user()->wallet, 0, ',', '.') }} VND</h6><br/>
                     </div>
@@ -60,8 +55,11 @@
                         <label for="gender">Giới tính: </label>
                         <h6>{{auth()->user()->gender}}</h6> <br/>
                     </div>
-
-                    <div class="col-md-6">
+                    <div class="col-md-10">
+                        <label for="email"> Email: </label>
+                        <h6>{{auth()->user()->email}}</h6> <br/>
+                    </div>
+                    <div class="col-md-10">
                         <label for="address">Địa chỉ: </label>
                         <h6>{{auth()->user()->address}}</h6> <br/>
                     </div>

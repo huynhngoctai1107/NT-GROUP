@@ -1,12 +1,13 @@
-@extends('client.layout.master')
+@extends('Client.Layout.master')
 
 @section('title')
-    Danh sách tin đã đăng - NT GROUP
+Danh sách tin đã đăng - NT GROUP
 @endsection
 @php
     $title = "Danh sách tin đã đăng";
 @endphp
 @section('main')
+
     <div class="main_content mb-4">
 
         <!-- START SECTION BREADCRUMB -->
@@ -100,3 +101,4 @@
         </div>
     </div>
 @endsection
+

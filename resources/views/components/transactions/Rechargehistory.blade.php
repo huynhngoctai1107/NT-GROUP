@@ -1,4 +1,4 @@
-<tbody class="text-center">
+<tbody class="text-left">
 @foreach($list as $item )
     <tr>
         <td><span class="badge {{$item->id_category_transaction == 1 ? 'bg-success' : 'bg-danger'}}">{{$item->name_category}}</span></td>
