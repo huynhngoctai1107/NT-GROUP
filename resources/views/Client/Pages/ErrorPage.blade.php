@@ -4,7 +4,7 @@
     Bất động sản - NT GROUP
 @endsection
 @php
-    $title = "Trang 404";
+    $title = session('title');
 @endphp
 
 @section('main')
@@ -19,7 +19,7 @@
                 <div class="row align-items-center justify-content-center">
                     <div class="col-lg-6 col-md-10 order-lg-first">
                         <div class="text-center">
-                            <div class="error_txt">404</div>
+                            <div class="error_txt">{{session('title') ??''}}</div>
                             <h5 class="mb-2 mb-sm-3">Trang bạn tìm kiếm hiện tại không thấy !</h5>
                             <p>{{session('error') ??''}}.</p>
                             <div class="search_form pb-3 pb-md-4">

@@ -7,7 +7,7 @@
             <div class="p-0 rounded-0 flex-column my-4 mt-md-5 ">
                 <div class="d-flex flex-column flex-md-row justify-content-between">
                     <h3 class="col-md-6 col-12 text-uppercase justify-content-center mb-0 align-items-center d-flex" style="height: 50px; font-size: 20px; color:white; background-color: #c99736;">
-                        Công cụ tính lãi suất vay mua bất động sản</h3>
+                        </h3>
                     <button wire:click="reset_input" type="button" class="btn text-primary pe-0" style=" font-size: 15px">
                         <i class="bi bi-arrow-clockwise"></i>Làm mới
                     </button>

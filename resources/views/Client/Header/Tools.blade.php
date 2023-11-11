@@ -2,7 +2,7 @@
 
 
     <div class="call-to-action" style="position: fixed; bottom: 30px; left: 10px; margin-left: 10px; z-index: 100">
-        <a href="{{route('calculate')}}" style="display: flex">
+        <a href="{{route('viewCalculate')}}" style="display: flex">
             <div class="rounded-circle btn btn-primary  custom-circle">
                 <i class="bi bi-calculator-fill"></i>
             </div>
@@ -80,7 +80,7 @@
         <i class="bi bi-building-fill-gear icons-menu-mobile"></i>
         <span style="font-size: 10px">Chi Phí Xây dựng</span>
     </a>
-    <a href="{{route('calculate')}}" class="col-2  justify-content-center align-items-center d-flex   flex-column">
+    <a href="{{route('viewCalculate')}}" class="col-2  justify-content-center align-items-center d-flex   flex-column">
         <i class="bi bi-calculator-fill icons-menu-mobile"></i>
         <span style="font-size: 10px">Tính Lãi suất</span>
     </a>

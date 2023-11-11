@@ -86,15 +86,14 @@ class RegisterController extends Controller{
 
                 return Redirect()
                     ->route('error')
-                    ->with('error',
-                        "Đã quá thời gian đổi mật khẩu là 15 PHÚT. Tài khoản đã bị khóa xin lòng liên hệ Admin"); //404
+                    ->with(['error'=> "Đã quá thời gian đổi mật khẩu là 15 PHÚT. Tài khoản đã bị khóa xin lòng liên hệ Admin","title"=>403]); //404
+
             }
         }else{
-
             return Redirect()
                 ->route('error')
-                ->with('error',
-                    "Tài khoản đã được kích hoạt hoặc đã quá thời gian kích hoạt. Mọi thắc mắc xin liên hệ Admin để giải quyết"); //404
+                ->with(['error'=> "Tài khoản đã được kích hoạt hoặc đã quá thời gian kích hoạt. Mọi thắc mắc xin liên hệ Admin để giải quyết","title"=>403]); //404
+
         }
 
     }

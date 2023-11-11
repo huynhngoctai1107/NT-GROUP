@@ -272,17 +272,27 @@ Route::group(['prefix' => '/'], function (){
 
     Route::get('/', [IndexController::class, 'index'])->name('index');
     Route::get('/xem-them-bai-viet-moi/{email}', [InteractionCountCotroller::class, 'interactionCount'])->name('interactionCount');
+
+    //tools map
     Route::get('/vi-tri-bat-dong-san', [MapLocationController::class, 'mapLocation'])->name('mapLocation');
     Route::get('/ket-qua-vi-tri-bds/', [MapLocationController::class, 'checkMap'])->name('checkMap');
+  //tool thiet ke
     Route::get('/tinh-chi-phi-thiet-ke', [DesignCostsController::class, 'designCost'])->name('designCost');
+   // tool xay dung
     Route::get('/tinh-chi-phi-xay-dung', [BuildController::class, 'index'])->name('buildCost');
+    //tool lai suat
+    Route::get('/reset-tools', [CalculateController::class, 'resetTool'])
+         ->name('resetTool');
+    Route::get('/tinh-lai-xuat', [CalculateController::class, 'index'])->name('viewCalculate');
+    Route::get('/ket-qua/', [CalculateController::class, 'calculate'])->name('calculate');
+    //404
     Route::get('bao-loi', [ErrorPageController::class, 'error'])->name('error');
     Route::get('kich-hoat/{token}', [RegisterController::class, 'active'])->name('active');
     Route::get('/chi-tiet-tin/{slug}', [PostSingleController::class, 'postSingle'])
          ->name('postSingle');
     Route::get('lien-he', [AddContactController::class, 'contact'])->name('contact');
     Route::post('lien-he', [AddContactController::class, 'contactFrom'])->name('contactFrom');
-    Route::get('/tinh-lai-xuat', [CalculateController::class, 'calculate'])->name('calculate');
+
 
     Route::get('gioi-thieu', [AboutController::class, 'about'])->name('about');
 

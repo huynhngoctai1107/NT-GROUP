@@ -81,6 +81,7 @@ class Calculate extends Component{
         }
 
         $this->amortizationSchedule = $schedule;
+        dd( $this->amortizationSchedule) ;
     }
 
     private function calculateEMI($principal, $loanTermMonths, $annualInterestRate){
@@ -94,29 +95,28 @@ class Calculate extends Component{
     }
 
     public function calculateLoan($principal, $loanTermMonths, $annualInterestRate){
+        $monthlyInterestRate = $annualInterestRate / 100 / 12;
+        $monthlyPayment = $principal * ($monthlyInterestRate * pow((1 + $monthlyInterestRate), $loanTermMonths)) / (pow((1 + $monthlyInterestRate), $loanTermMonths) - 1);
+
         $results = [];
-
-        $monthlyInterestRate = ($annualInterestRate / 12) / 100;
-        $monthlyPayment      = $principal * ($monthlyInterestRate * pow(1 + $monthlyInterestRate,
-                    $loanTermMonths)) / (pow(1 + $monthlyInterestRate, $loanTermMonths) - 1);
-
         $remainingBalance = $principal;
 
-        for ($i = 1; $i <= $loanTermMonths; $i ++){
-            $interestPayment  = $remainingBalance * $monthlyInterestRate;
+        for ($i = 1; $i <= $loanTermMonths; $i++) {
+            $interestPayment = ($remainingBalance) * $monthlyInterestRate;
             $principalPayment = $monthlyPayment - $interestPayment;
-
             $remainingBalance -= $principalPayment;
 
-            $results[]               = [
-                'Month'              => $i,
-                'EMI'                => round($monthlyPayment, 0),
-                'Principal'          => round($principalPayment, 0),
-                'Interest'           => round($interestPayment, 0),
+            $results[] = [
+                'Month' => $i,
+                'EMI' => round($monthlyPayment, 0),
+                'Principal' => round($principalPayment, 0),
+                'Interest' => round($interestPayment, 0),
                 'RemainingPrincipal' => round($remainingBalance, 0),
             ];
+
             $this->sumtotoalInterest += round($monthlyPayment, 0);
         }
+
 
         return $results;
     }
