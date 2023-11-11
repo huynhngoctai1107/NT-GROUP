@@ -186,7 +186,6 @@
 		position: relative;
 		overflow: hidden;
 		width: 100%;
-		left: 70px;
 		max-width: 100%;
 		min-height: 550px;
 	}
@@ -201,7 +200,6 @@
 	.sign-in-container {
 		left: 0;
 		width: 50%;
-		z-index: 2;
 	}
 
 	.containers.right-panel-active .sign-up-container {
@@ -219,7 +217,6 @@
 		height: 100%;
 		overflow: hidden;
 		transition: transform 0.6s ease-in-out;
-		z-index: 100;
 	}
 
 	.containers.right-panel-active .overlay-container {

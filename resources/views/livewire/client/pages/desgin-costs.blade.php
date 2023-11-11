@@ -38,7 +38,7 @@
                         <option value="1000000" {{$construction== 1000000 ? "selected" : ''}}>Nhà phố</option>
                         <option value="1200000" {{$construction== 1200000 ? "selected" : ''}}>Nhà phố 2 mặt tiền</option>
                         <option value="1700000" {{$construction== 1700000 ? "selected" : ''}}>Biệt thự hiện đại</option>
-                        <option value="4" {{$construction== 4 ? "selected" : ''}}>Nhà xưởng</option>
+                        <option value="2000000" {{$construction== 2000000 ? "selected" : ''}}>Nhà xưởng</option>
                     </select>
                     <label for="construction" class="section-form_label section-form_label--darkblue">
                         Gói thiết kế kiến trúc

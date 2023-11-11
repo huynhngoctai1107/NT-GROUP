@@ -11,13 +11,20 @@
     <x-client.header.posttitle :title="$title"></x-client.header.posttitle>
     <livewire:client.pages.calculate></livewire:client.pages.calculate>
 @endsection
+@push('script')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 
+@endpush<!-- END MAIN CONTENT -->
 @push('css')
 
     <style>
-		.section-form_label{
-			color:#0a3c6d ;
-			font-weight:600;
+		.section-form_label {
+
+
+			margin-left: 10px;
+
+			color: #0a3c6d;
+			font-weight: 600;
 		}
 		.button-42 {
 			background-color: #c99736;
@@ -27,7 +34,7 @@
 			color: #FFFFFF;
 			cursor: pointer;
 			display: inline-block;
-			font-family: Inter,-apple-system,system-ui,Roboto,"Helvetica Neue",Arial,sans-serif;
+			font-family: Inter, -apple-system, system-ui, Roboto, "Helvetica Neue", Arial, sans-serif;
 			height: 40px;
 			line-height: 40px;
 			outline: 0;

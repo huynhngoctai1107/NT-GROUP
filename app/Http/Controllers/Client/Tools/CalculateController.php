@@ -9,4 +9,6 @@ class CalculateController extends Controller
       public function calculate(){
           return view('client.pages.calculate');
       }
+
+
 }
