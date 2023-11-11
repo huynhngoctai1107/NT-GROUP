@@ -8,7 +8,7 @@
 @endphp
 @section('main')
     <x-client.header.posttitle :title="$title"></x-client.header.posttitle>
-    <div class="section">
+    <div class="section mb-4">
         <div class="container">
             <div class="row d-flex justify-content-center align-items-center h-100">
                 @if(Session::has('success'))
@@ -21,9 +21,9 @@
                         {{Session::get('error')}}
                     </div>
                 @endif
-                <div class="col-md-12 col-xl-4  mb-5">
+                <div class="col-md-12 col-xl-4  mb-2">
                     <div class="card-body text-center">
-                        <div class="mt-3 mb-4">
+                        <div class=" mb-4">
                             <div class="round-image">
                                 <img src="@if(auth()->user()->image){{asset('images/users/'.auth()->user()->image )}}@else{{'https://static.vecteezy.com/system/resources/previews/000/439/863/original/vector-users-icon.jpg'}}@endif" class="rounded-circle img-fluid" id="userImage"/>
                             </div>
@@ -33,7 +33,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-3 col-md-4">
+                    <div class="col-lg-3 col-md-4 col-12">
                         <div class="dashboard_menu">
                             <ul class="nav nav-tabs flex-column" role="tablist">
 
@@ -62,7 +62,7 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col-lg-9 col-md-8">
+                    <div class="col-lg-9 col-md-8 col-12">
                         <div class="tab-content dashboard_content">
                             <div class="tab-pane fade {{Session::get('active') =='payment' ? '' : (Session::get('active') =='updateProfile' ? '' : (Session::get('active') =='updatePassword' ? '' : 'active show'))}}   " id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
                                 <div class="card">
@@ -120,7 +120,7 @@
                                 </div>
                             </div>
 
-                            <div class="tab-pane fade  {{Session::get('active') =='payment' ? 'active show' : ''}} " id="wallet" role="tabpanel" aria-labelledby="wallet-tab">
+                            <div class="tab-pane fade col-12  {{Session::get('active') =='payment' ? 'active show' : ''}} " id="wallet" role="tabpanel" aria-labelledby="wallet-tab">
                                 <x-client.account.wallet :payment="$payment"></x-client.account.wallet>
                             </div>
 
@@ -140,14 +140,15 @@
             </div>
         </div>
     </div>
+
 @endsection
     <style>
 	    #charts {
-		    height: 400px;
+		    height: auto  !important;
 		    min-width: 310px;
 	    }
 	    #transition {
-		    height: 400px;
+		    height: auto !important;
 		    min-width: 310px;
 	    }
 	    .round-image {

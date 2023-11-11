@@ -11,7 +11,7 @@ jQuery(function($) {
 		var winWidth = $(window).width(),
 			dropdown = $('.dropdown'),
 			dropdownMenu = $('.dropdown-menu');
-		
+
 		if (winWidth >= 768) {
 			dropdown.on('mouseenter', function() {
 				$(this).addClass('show')

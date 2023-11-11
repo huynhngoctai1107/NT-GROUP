@@ -295,29 +295,6 @@
     </style>
 @endpush
 @push('script')
-    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
-    {{-- gg map and hinh anh upload.js--}}
-
-    <script src="https://maps.app.goo.gl/uxx2Xc9w7GcKigKt7"></script>
-    <script>
-        // Create a new Google Map object.
-        const map = new google.maps.Map(document.getElementById('map'), {
-            center: {lat: 10.0401, lng: 105.7364},
-            zoom: 10
-        });
-
-        // Add a click listener to the map.
-        map.addListener('click', function(event) {
-            // Get the longitude and latitude of the click event.
-            const lng = event.latLng.lng();
-            const lat = event.latLng.lat();
-
-            // Update the longitude and latitude input boxes.
-            document.getElementById('longitude').value = lng;
-            document.getElementById('latitude').value = lat;
-        });
-    </script>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
     <script src="{{ asset('plugins/select2/js/address.js') }}"></script>
