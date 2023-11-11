@@ -108,7 +108,7 @@ Sửa bài viết
                             data-select2-id="7" tabindex="-1" aria-hidden="true" id="id_demand" name="id_demand">
                             @foreach ($demand as $row)
                             <option value="{{ $row->id }}" @if (old('id_demand', $data->id_demand) == $row->id) selected
-                                @endif>{{ $row->name }}</option>
+                                @endif data-name="{{ $row->name }}">{{ $row->name }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -226,7 +226,7 @@ Sửa bài viết
                     @error('price')
                     <div class="alert alert-danger mt-3">{{ $message }}</div>
                     @enderror
-                    <label for="price" class="form-label">Giá</label>
+                    <label for="price" id="priceLabel" class="form-label">Giá</label>
                     <input type="number" class="form-control" name="price" value="{{$data->price}}" id="price">
                 </div>
                 <div class="mb-3">
@@ -448,6 +448,31 @@ Sửa bài viết
             document.getElementById('longitude').value = lng;
             document.getElementById('latitude').value = lat;
         });
+</script>
+<script>
+    $(document).ready(function(){
+        // Set giá trị mặc định cho label giá
+        updatePriceLabel();
+
+        // Xử lý sự kiện khi select thay đổi
+        $("#id_demand").change(function(){
+            // Cập nhật nội dung của label giá khi select thay đổi
+            updatePriceLabel();
+        });
+    });
+
+    function updatePriceLabel() {
+        // Lấy giá trị name từ data-name của option được chọn
+        var selectedName = $("#id_demand option:selected").data("name");
+
+        // Hiển thị giá trị name trong label
+        $("#priceLabel").text("Giá ");
+
+        // Kiểm tra nếu name là "thuê", thì thêm "/1 tháng"
+        if (selectedName === "Thuê") {
+            $("#priceLabel").append("thuê 1 tháng");
+        }
+    }
 </script>
 @endpush
 {{-- endjavascript --}}

@@ -10,7 +10,7 @@
     <x-client.header.posttitle :title="$title"></x-client.header.posttitle>
     <div class="section mb-4">
         <div class="container">
-            <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="row d-flex justify-content-center align-items-center">
                 @if(Session::has('success'))
                     <div class="alert alert-success text-center" role="alert">
                         {{Session::get('success')}}
@@ -57,8 +57,6 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{route('logout')}}"><i class="ti-lock"></i>Đăng xuất</a>
                                 </li>
-
-
                             </ul>
                         </div>
                     </div>
@@ -69,7 +67,7 @@
                                     <div class="card-header">
                                         <h3>Thống Kê</h3>
                                     </div>
-                                    <div class="card-body">
+                                    <div class="">
                                         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                                             <li class="nav-item" role="presentation">
                                                 <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Thống Kê Bài Viết</button>
@@ -80,10 +78,14 @@
                                         </ul>
                                         <div class="tab-content" id="pills-tabContent">
                                             <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
-                                                <x-client.account.charts.post-charts :dates="$dates" :vip="$vip" :charts="$charts"></x-client.account.charts.post-charts>
+
+                                                    <x-client.account.charts.post-charts :dates="$dates" :vip="$vip" :charts="$charts"></x-client.account.charts.post-charts>
+
                                             </div>
                                             <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
-                                                <x-client.account.charts.transition-charts :dateT="$dateT" :transitionPay="$transitionPay" :transitionMua="$transitionMua"></x-client.account.charts.transition-charts>
+
+                                                    <x-client.account.charts.transition-charts :dateT="$dateT" :transitionPay="$transitionPay" :transitionMua="$transitionMua"></x-client.account.charts.transition-charts>
+
                                             </div>
                                         </div>
                                     </div>
@@ -108,7 +110,7 @@
                                                     <th class="product-quantity">Số dư</th>
                                                     <th class="product-subtotal">Nội dung</th>
                                                     <th class="product-remove">Ngày giao dịch</th>
-                                                   <th class="product-remove">Ngày hết hạng sử dụng VIP</th>
+                                                    <th class="product-remove">Ngày hết hạng sử dụng VIP</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody class="text-center">
@@ -131,53 +133,50 @@
                                 <div class="tab-pane fade {{Session::get('active') =='updatePassword' ? 'active show' : ''}}" id="account-detail" role="tabpanel" aria-labelledby="account-detail-tab">
                                     <x-client.account.password></x-client.account.password>
                                 </div>
-                            @endif 
-
+                            @endif
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
-
 @endsection
-    <style>
-	    #charts {
-		    height: auto  !important;
-		    min-width: 310px;
-	    }
-	    #transition {
-		    height: auto !important;
-		    min-width: 310px;
-	    }
-	    .round-image {
-		    width: 150px;
-		    height: 150px;
-		    border: 2px solid red;
-		    border-radius: 50%;
-		    display: flex;
-		    margin-left: 27%;
-	    }
+<style>
+	#charts {
+		height: 400px;
+		min-width: 310px;
+	}
+	#transition {
+		height: 400px;
+		min-width: 310px;
+	}
+	.round-image {
+		width: 150px;
+		height: 150px;
+		border: 2px solid red;
+		border-radius: 50%;
+		display: flex;
+		margin-left: 27%;
+	}
 
-	    .round-image img {
-		    width: 100%;
-		    height: 100%;
-		    object-fit: cover;
-	    }
-	    #userImage {
-		    width: 100%;
-		    height: 100%;
-		    object-fit: cover;
-	    }
-    </style>
+	.round-image img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+	#userImage {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+</style>
 
 @push('javascript')
     <script src="https://code.highcharts.com/stock/highstock.js"></script>
     <script src="https://code.highcharts.com/stock/modules/data.js"></script>
-{{--    <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>--}}
-{{--    <script src="https://code.highcharts.com/stock/modules/export-data.js"></script>--}}
-{{--    <script src="https://code.highcharts.com/stock/modules/accessibility.js"></script>--}}
+    {{--    <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>--}}
+    {{--    <script src="https://code.highcharts.com/stock/modules/export-data.js"></script>--}}
+    {{--    <script src="https://code.highcharts.com/stock/modules/accessibility.js"></script>--}}
 @endpush
 
 

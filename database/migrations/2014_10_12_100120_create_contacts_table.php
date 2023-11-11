@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('contacts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_post')->constrained('medias');
+            $table->foreignId('id_post')->constrained('posts');
             $table->string('position');
             $table->string('phone',10);
             $table->string('image',255);

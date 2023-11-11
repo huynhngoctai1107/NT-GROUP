@@ -8,10 +8,10 @@
         </div>
 
         <div class="p-0 rounded-0 flex-column my-4 ">
-            <div class="d-flex justify-content-between">
+            <div class="d-flex flex-column flex-md-row justify-content-between">
                 <h3 class="col-md-3 col-12 text-uppercase justify-content-center mb-0 align-items-center d-flex" style="height: 50px; font-size: 20px; color:white; background-color: #c99736;">
                     CHỌN THÔNG SỐ XÂY DỰNG</h3>
-                <button wire:click="reset_cs" type="button" class="cursor-point btn text-primary pe-0" style=" font-size: 15px">
+                <button wire:click="reset_cs" type="button" class="btn text-primary pe-0" style=" font-size: 15px">
                     <i class="bi bi-arrow-clockwise"></i>Làm mới
                 </button>
             </div>
@@ -20,7 +20,7 @@
 
         <div>
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-4 mb-3">
                     <div class="form-floating">
 
                         <select id="package" wire:model.live="investment_level" name="investment_level" class="
@@ -40,7 +40,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-4 mb-3">
                     <div class="form-floating">
                         <select class=" @error('construction') border border-danger @enderror form-select section-form_input" wire:model.live="construction" name="construction">
                             <option hidden>-- Chọn mặt tiền --</option>
@@ -56,7 +56,7 @@
                         @enderror
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 mb-3">
                     <div class="form-floating">
 
                         <select id="package" wire:model.live="land" name="land" class=" @error('land') border border-danger @enderror form-select section-form_input">
@@ -78,7 +78,7 @@
 
             </div>
             <div class="row mt-3">
-                <div class="col-md-4">
+                <div class="col-md-4 mb-3">
                     <div class="form-floating">
 
                         <select id="package" wire:model.live="construction1" name="construction1" class="@error('construction1') border border-danger @enderror form-select section-form_input">
@@ -96,14 +96,13 @@
                     </div>
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-4 mb-3">
                     <div class="form-floating">
 
                         <select id="package" wire:model.live="road" name="road" class="@error('road') border border-danger @enderror form-select section-form_input">
                             <option {{is_null($road) ? 'selected' : ''}}>-- Chọn loại đường --</option>
                             <option value="1">Đường nhựa, mặt tiền lớn</option>
                             <option value="1.1">Hẻm nhỏ 3m, cấm tải 1,5T</option>
-                            <option value="0">Hẻm nhỏ 2m và hẻm sâu</option>
                         </select>
                         <label for="road" class="section-form_label section-form_label--darkblue">
                             Loại đường
@@ -114,7 +113,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-4 mb-3">
                     <div class="form-floating">
 
                         <select class="@error('foundation') border border-danger @enderror form-select section-form_input" wire:model.live="foundation" name="foundation">
@@ -134,7 +133,7 @@
 
 
             </div>
-            <div class="p-0 rounded-0 flex-column my-4 ">
+            <div class="p-0 rounded-0 flex-column my-4 mb-3">
                 <div class="d-flex flex-column flex-md-row justify-content-between">
                     <h3 class="col-md-3 col-12 text-uppercase justify-content-center mb-0 align-items-center d-flex" style="height: 50px; font-size: 20px; color:white; background-color: #c99736;">
                         CHỌN CẤU TRÚC NHÀ</h3>
@@ -146,7 +145,7 @@
             </div>
             <div class="row">
                 <div class="col-md-4 col-12  ">
-                    <div class="col-12">
+                    <div class="col-12 mb-3">
                         <div class="form-floating">
                             <select id="type" wire:model.live="floor_type" class="@error('floor_type') border border-danger @enderror form-select section-form_input" name="floors">
                                 <option selected>-- Chọn số sàn --</option>
@@ -164,10 +163,8 @@
                             <span class="text-danger py-2">{{ $message }}</span>
                             @enderror
                         </div>
-
-
                     </div>
-                    <div class="form-floating col-12 mt-3 ">
+                    <div class="form-floating col-12 mt-3 mb-3">
                         <input wire:model.live="wide" type="number" class="@error('wide') border border-danger @enderror form-control section-form_input" name="wide" min="0" id="wide">
                         <label for="wide" class="section-form_label section-form_label--darkblue">
                             Chiều rộng
@@ -179,11 +176,8 @@
 
                 </div>
                 <div class="col-md-4 col-12 ">
-
-                    <div class="col-12">
+                    <div class="col-12 mb-3">
                         <div class="form-floating">
-
-
                             <select id="type" wire:model.live="basement_type" class="@error('basement_type') border border-danger @enderror form-select section-form_input" name="floors">
                                 <option selected>-- Chọn số tầng hầm --</option>
                                 <option value="0">Không hầm</option>
@@ -207,10 +201,8 @@
                             @enderror
                         </div>
                     </div>
-
-
                 </div>
-                <div class="col-md-4 col-12 my-3 mt-md-0 d-flex align-items-center flex-column">
+                <div class="col-md-4 col-12 my-3 mt-md-0 d-flex align-items-center flex-column mb-3">
                     <div class="row mt-3 ms-1 ">
                         <div class="form-check form-switch  col-6">
                             <input wire:model.live="terrace" class="form-check-input" name="check" type="checkbox"
@@ -226,11 +218,7 @@
                     <button wire:click="calc_area_" class="button-42 col-12 mt-4" role="button">
                         <i class="bi bi-calculator"></i> Tính diện tích
                     </button>
-
-
                 </div>
-
-
             </div>
             <div id="toolBuild">
             <div class="p-0 rounded-0 flex-column my-4 ">
@@ -432,9 +420,9 @@
                 <div class="row justify-content-around hide-print">
                     <button class="button-42  col-md-5" role="button" id="printBuildButton"><i class="bi bi-calculator"></i> In kết quả
                     </button>
-                    <button class="button-42 mt-3 mt-md-0 col-md-5" role="button">
+                    <a href="tel:0949615859" class="button-42 mt-3 mt-md-0 col-md-5" role="button">
                         <i class="bi bi-calculator"></i> Gọi ngay cho chúng tôi
-                    </button>
+                    </a>
                 </div>
             </div>
             </div>

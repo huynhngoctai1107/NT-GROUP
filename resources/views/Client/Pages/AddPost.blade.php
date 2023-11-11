@@ -41,17 +41,17 @@
                 <div class="col-12" style="display: flex; justify-content: space-between">
                     <div style="width: 49%;">
                         <label for="id_demand" class="form-label">Chọn nhu cầu</label>
-                        <select class="form-select" name="id_demand" id="id_demand" style="width: 100%; height: 50px">
+                        <select class="form-control" name="id_demand" id="id_demand">
                             @foreach ($demand as $row)
-                                <option value="{{ $row->id }}">{{ $row->name }}</option>
+                                <option value="{{ $row->id }}" data-name="{{ $row->name }}">{{ $row->name }}</option>
                             @endforeach
                         </select>
                     </div>
                     <div style="width: 49%;">
                         <label for="id_category" class="form-label">Chọn danh mục</label>
-                        <select class="form-select" name="id_category" id="id_category" style="width: 100%; height: 50px">
+                        <select class="form-control" name="id_category" id="id_category">
                             @foreach ($category as $row)
-                                <option value="{{ $row->id }}">{{ $row->name }}</option>
+                                <option value="{{ $row->id }}" >{{ $row->name }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -59,7 +59,7 @@
                 <div class="col-12" style="display: flex; justify-content: space-between">
                     <div style="width: 49%;">
                         <label for="id_price" class="form-label">Chọn giá</label>
-                        <select class="form-select" name="id_price" id="id_price" style="width: 100%; height: 50px">
+                        <select class="form-control" name="id_price" id="id_price">
                             @foreach ($price as $row)
                                 <option value="{{ $row->id }}">{{ $formatPrice($row->name_min) }} - {{ $formatPrice($row->name_max) }}</option>
                             @endforeach
@@ -67,7 +67,7 @@
                     </div>
                     <div style="width: 49%;">
                         <label for="id_acreage" class="form-label">Chọn diện tích</label>
-                        <select class="form-select" name="id_acreage" id="id_acreage" style="width: 100%; height: 50px">
+                        <select class="form-control" name="id_acreage" id="id_acreage">
                             @foreach ($acreage as $row)
                                 <option value="{{ $row->id }}">{{ $row->name_min }} m² - {{ $row->name_max }} m²</option>
                             @endforeach
@@ -80,7 +80,7 @@
                         @error('price')
                         <div class="alert alert-danger mt-3">{{ $message }}</div>
                         @enderror
-                        <label for="price" class="form-label">Giá *</label>
+                        <label for="price" id="priceLabel" class="form-label">Giá</label>
                         <input type="number" class="form-control" id="price" name="price" value="{{ old('price') }}">
                     </div>
                     <div style="width: 49%;">
@@ -101,6 +101,9 @@
                 <label class="form-label">Thêm ảnh</label>
                 <div class="file-upload">
                     <div class="image-upload-wrap">
+                        @error('uploadfile')
+                        <div class="alert alert-danger mt-3">{{ $message }}</div>
+                        @enderror
                         <input class="file-upload-input" type="file" name="uploadfile[]" onchange="readURL(this);" accept="image/*" multiple/>
                     </div>
                     <div class="file-upload-content">
@@ -141,7 +144,7 @@
                             <div class="alert alert-danger mt-3">{{ $message }}</div>
                             @enderror
                             <label class="mb-3" for="city">Chọn tỉnh thành</label>
-                            <select style="width: 100%; height: 50px" id="city" name="city">
+                            <select class="form-control" id="city" name="city">
                                 <option value="" selected>Chọn tỉnh thành</option>
                             </select>
                         </div>
@@ -150,7 +153,7 @@
                             <div class="alert alert-danger mt-3">{{ $message }}</div>
                             @enderror
                             <label class="mb-3" for="district">Chọn quận huyện</label>
-                            <select style="width: 100%; height: 50px" id="district" name="district">
+                            <select class="form-control" id="district" name="district">
                                 <option value="" selected>Chọn quận huyện</option>
                             </select>
                         </div>
@@ -161,7 +164,7 @@
                             <div class="alert alert-danger mt-3">{{ $message }}</div>
                             @enderror
                             <label class="mb-3" for="ward">Chọn phường xã</label>
-                            <select style="width: 100%; height: 50px" id="ward" name="ward">
+                            <select class="form-control" id="ward" name="ward">
                                 <option value="" selected>Chọn phường xã</option>
                             </select>
                         </div>
@@ -268,7 +271,7 @@
                     </div>
                 </div>
                 <div class="d-flex justify-content-center">
-                    <button style="width: 20%;" type="submit" class="btn btn-warning mt-3 mb-5">Đăng Tin</button>
+                    <button style="width: auto;" type="submit" class="btn btn-warning mt-3 mb-5">Đăng Tin</button>
                 </div>
                 <!-- JavaScript Code -->
             </form>
@@ -288,13 +291,62 @@
 		.image-list img {
 			width: 150px;
 			/* Điều chỉnh kích thước hình ảnh tùy ý */
-			height: auto;
+			height: 150px;
 			margin: 5px;
 			border: 1px solid #ccc;
 		}
     </style>
 @endpush
 @push('script')
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
+    {{-- gg map and hinh anh upload.js--}}
+
+    <script src="https://maps.app.goo.gl/uxx2Xc9w7GcKigKt7"></script>
+    <script>
+        // Create a new Google Map object.
+        const map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: 10.0401, lng: 105.7364},
+            zoom: 10
+        });
+
+        // Add a click listener to the map.
+        map.addListener('click', function(event) {
+            // Get the longitude and latitude of the click event.
+            const lng = event.latLng.lng();
+            const lat = event.latLng.lat();
+
+            // Update the longitude and latitude input boxes.
+            document.getElementById('longitude').value = lng;
+            document.getElementById('latitude').value = lat;
+        });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            // Set giá trị mặc định cho label giá
+            updatePriceLabel();
+
+            // Xử lý sự kiện khi select thay đổi
+            $("#id_demand").change(function(){
+                // Cập nhật nội dung của label giá khi select thay đổi
+                updatePriceLabel();
+            });
+        });
+
+        function updatePriceLabel() {
+            // Lấy giá trị name từ data-name của option được chọn
+            var selectedName = $("#id_demand option:selected").data("name");
+
+            // Hiển thị giá trị name trong label
+            $("#priceLabel").text("Giá ");
+
+            // Kiểm tra nếu name là "thuê", thì thêm "/1 tháng"
+            if (selectedName === "Thuê") {
+                $("#priceLabel").append("thuê 1 tháng");
+            }
+        }
+    </script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
     <script src="{{ asset('plugins/select2/js/address.js') }}"></script>

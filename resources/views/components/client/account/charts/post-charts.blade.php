@@ -1,3 +1,5 @@
+@php use Carbon\Carbon; @endphp
+<div>
 <div class="post mb-5 mt-3">
     <div class="d-flex justify-content-between">
         <select style="width: 40%;" class="form-select" id="month-select" aria-label="Default select example" onchange="handleFilterSelectPost()">
@@ -13,7 +15,7 @@
             @endphp
             @foreach($dates as $item)
                 @php
-                    $date = \Carbon\Carbon::parse($item->date);
+                    $date = Carbon::parse($item->date);
                     $year = $date->year;
                     if (!in_array($year, $years)) $years[] = $year;
                 @endphp
@@ -23,8 +25,11 @@
             @endforeach
         </select>
     </div>
-    <div id="charts"></div>
-    <div id="total-posts"></div>
+    <div>
+        <div id="charts"></div>
+        <div id="total-posts"></div>
+    </div>
+</div>
 </div>
 {{--    Charts Post--}}
 <script>
@@ -37,13 +42,13 @@
     var vipData = [
         @foreach($dates as $item)
                 @php
-                    $found = false;
+                    $found = FALSE;
                 @endphp
                 @foreach($vip as $data)
                 @if(date("Y-m-d", strtotime($data->date)) === $item->date)
                 {{$data->post_count}},
         @php
-            $found = true;
+            $found = TRUE;
             break;
         @endphp
                 @endif
@@ -57,13 +62,13 @@
     var chartsData = [
         @foreach($dates as $item)
                 @php
-                    $found = false;
+                    $found = FALSE;
                 @endphp
                 @foreach($charts as $data)
                 @if(date("Y-m-d", strtotime($data->date)) === $item->date)
                 {{$data->post_count}},
         @php
-            $found = true;
+            $found = TRUE;
             break;
         @endphp
                 @endif
@@ -130,7 +135,7 @@
 
             xAxis: {
                 categories: dateData.map(function (date) {
-                    return new Date(date).toLocaleDateString('en-GB', { day: 'numeric', month: 'numeric' });
+                    return new Date(date).toLocaleDateString('en-GB', {day: 'numeric', month: 'numeric'});
                 })
             },
 

@@ -147,8 +147,6 @@
 
 		.d-flex.justify-content-center ul li {
 			font-size: 14px;
-			text-indent: -1em;
-			padding-left: 1em;
 		}
 
 

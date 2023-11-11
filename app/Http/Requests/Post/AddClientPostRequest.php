@@ -53,6 +53,7 @@ class AddClientPostRequest extends FormRequest
                     }
                 },
             ],
+            'uploadfile' => 'required',
             'subtitles' => 'required|min:50',
             'content' => 'required|min:50',
             'link_youtube' => 'required|max:255|url',
@@ -62,6 +63,8 @@ class AddClientPostRequest extends FormRequest
             'address' => 'required|min:5|max:255',
             'longitude' => 'required',
             'latitude' => 'required',
+            'img1' => 'required|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'img2' => 'required|image|mimes:jpeg,png,jpg,webp|max:2048',
 
         ];
     }
@@ -80,6 +83,7 @@ class AddClientPostRequest extends FormRequest
             'price.numeric' => 'Giá bài viết phải là số',
             'acreage.required' => 'Vui lòng nhập vào diện tích',
             'acreage.numeric' => 'Diện tích bài viết phải là số',
+            'uploadfile.required' => 'Vui lòng thêm ít nhất 1 ảnh',
             'subtitles.required' => 'Vui lòng nhập vào tiêu đề phụ bài viết',
             'subtitles.min' => 'Tiêu đề phụ bài viết từ 50 ký tự trở lên',
             'content.required' => 'Vui lòng nhập vào nội dung bài viết',
@@ -95,6 +99,14 @@ class AddClientPostRequest extends FormRequest
             'address.max' => 'Địa chỉ dưới 255 ký tự',
             'longitude.required' => 'Vui lòng nhập vào kinh độ',
             'latitude.required' => 'Vui lòng nhập vào vĩ độ',
+            'img1.required' => 'Vui lòng thêm ảnh',
+            'img1.image' => 'Vui lòng thêm tệp ảnh',
+            'img1.mimes' => 'Trường ảnh phải có một trong các phần mở rộng: jpeg, png, jpg, webp.',
+            'img1.max' => 'Trường ảnh không thể lớn hơn 2MB.',
+            'img2.required' => 'Vui lòng thêm ảnh',
+            'img2.image' => 'Vui lòng thêm tệp ảnh',
+            'img2.mimes' => 'Trường ảnh phải có một trong các phần mở rộng: jpeg, png, jpg, webp.',
+            'img2.max' => 'Trường ảnh không thể lớn hơn 2MB.',
         ];
     }
 
