@@ -9,24 +9,21 @@
 
 @section('main')
     <x-client.header.posttitle :title="$title"></x-client.header.posttitle>
-    <div class="main_content">
+    <div class="main_content mt-5">
         <div class="section-page section-padding">
             <div class="container">
-                <div class="col-12 mt-4">
-
-                </div>
-              <x-tools.header.title title="Công cụ tính lãi suất vay mua bất động sản" >
-                  <x-slot name="resset">
-                      <a href="{{route('resetTool')}}" type="button" class="btn text-primary pe-0" style=" font-size: 15px">
-                          <i class="bi bi-arrow-clockwise"></i>Làm mới
-                      </a>
-                  </x-slot>
-              </x-tools.header.title>
+                <x-tools.header.title title="Công cụ tính lãi suất vay mua bất động sản">
+                    <x-slot name="resset">
+                        <a href="{{route('resetTool')}}" type="button" class="btn text-primary  my-md-0" style=" font-size: 15px">
+                            <i class="bi bi-arrow-clockwise"></i>Làm mới
+                        </a>
+                    </x-slot>
+                </x-tools.header.title>
                 <form method="get" action="{{route('calculate')}}">
                     <div class="col-md-12 mt-4">
                         <div class="row mt-3">
                             <div class="form-floating col-12 col-md-4    ">
-                                <input type="number" name="principal"  class="form-control inputValue type-number" step="1" placeholder="Nhập số tiền vay" value="{{($principal ?? old('principal')) ?? 0 }}">
+                                <input type="number" name="principal" class="form-control inputValue type-number" step="1" placeholder="Nhập số tiền vay" value="{{($principal ?? old('principal')) ?? 0 }}">
                                 <label for="principal" class="section-form_label section-form_label--darkblue ">
                                     Nhập số tiền vay
                                 </label>
@@ -34,7 +31,7 @@
                                 <span class="error  text-danger">{{ $message }}</span> @enderror
                             </div>
                             <div class="form-floating col-12 col-md-4 mt-4  mt-md-0 ">
-                                <input type="number" name="loanTermMonths"  class="form-control inputValue type-number" step="1" placeholder="Nhập thời hạn vay" value="{{($loanTermMonths ?? old('loanTermMonths') ) ?? 0 }}">
+                                <input type="number" name="loanTermMonths" class="form-control inputValue type-number" step="1" placeholder="Nhập thời hạn vay" value="{{($loanTermMonths ?? old('loanTermMonths') ) ?? 0 }}">
                                 <label for="loanTermMonths" class="section-form_label section-form_label--darkblue ">
                                     Thời gian vay/tháng
                                 </label>
@@ -54,13 +51,10 @@
                         </div>
                     </div>
 
-                    <div class="p-0 rounded-0 flex-column my-4 ">
-                        <div class="d-flex flex-column flex-md-row justify-content-between">
-                            <h3 class="col-md-3 col-12 text-uppercase justify-content-center mb-0 align-items-center d-flex" style="height: 50px; font-size: 20px; color:white; background-color: #c99736;">
-                                Chọn phương thức vay</h3>
-                        </div>
-                        <hr class="col-12 mt-0">
-                    </div>
+                    <x-tools.header.title title="Chọn phương thức vay">
+
+                    </x-tools.header.title>
+
                     <div class="row">
                         <div class="form-floating col-md-8 col-12">
                             <select id="package" name="method" class="form-select section-form_input">
@@ -78,35 +72,27 @@
                         </div>
                         <div class="col-md-4 justify-content-center d-flex col-12 mt-4 mt-md-0">
                             {!! RecaptchaV3::field('calcaldate') !!}
-                            <button type="submit" class="btn text-white col-6 col-md-12 " name="calcaldate" style="background: #e5ab3c; font-size: 18px" name="submit" value="Submit">Tính lãi xuất</button>
+                            <button type="submit" class="btn text-white col-6 col-md-12 " name="calcaldate" style="background: #e5ab3c; font-size: 18px" name="submit" value="Submit">Tính lãi suất</button>
 
                         </div>
 
                     </div>
                 </form>
 
-                <div class="p-0 rounded-0 flex-column my-4 ">
-                    <div class="d-flex flex-column flex-md-row justify-content-between">
-                        <h3 class="col-md-2 col-12 text-uppercase justify-content-center mb-0 align-items-center d-flex" style="height: 50px; font-size: 20px; color:white; background-color: #c99736;">
-                            Thống kê</h3>
+                <x-tools.header.title title="Thống kê">
 
-                    </div>
-                    <hr class="col-12 mt-0">
-                </div>
+                </x-tools.header.title>
                 <div class="col-md-12">
-                    <div class="tools-card card mt-4">
-
-
-                        <div class="card-body p-4">
-                            <div class="tools-chart d-flex col-12">
-                                <div align="center" class="col-7">
-                                    <p class="text-dark text-center mb-0" style="font-weight: bold">Tính lãi xuất vay</p>
-                                    <canvas id="pie-chart" height="210"></canvas>
+                    <div class="tools-card card mt-4 ">
+                            <div class="row">
+                                <div class="col-12 col-md-7 mb-3 justify-content-center align-items-center ">
+                                    <p class="text-dark p-3" style="font-weight: bold">Tính lãi xuất vay</p>
+                                    <canvas id="pie-chart" class=" justify-content-center" style="height: 200px"></canvas>
                                 </div>
-                                <div class="chart-description col-5" style="margin-top: 50px">
+                                <div class="chart-description col-12 col-md-5" style="margin-top: 50px">
                                     <div class="description-item d-flex align-items-md-center">
-                                        <div class="title text-dark">
-                                            Số tiền vay
+                                        <div class="title text-dark ms-2 ms-md-0">
+                                            Số tiền vay:
                                         </div>
                                         <div class="value text-dark" style="margin-left: 35px; font-weight: bold">
                                             {{number_format($principal ?? 0)  }} <sup>đ</sup>
@@ -114,13 +100,17 @@
                                     </div>
                                     <hr/>
                                     <div class="description-item mt-2 d-flex align-items-md-center">
-                                        <div class="title text-dark">
-                                            Số tiền trả tháng đầu
+                                        <div class="title text-dark ms-2 ms-md-0">
+                                            Số tiền trả tháng đầu:
                                         </div>
                                         <div class="value text-dark" style="margin-left: 45px; margin-top: 7px; font-weight: bold">
                                             @if(!empty($amortizationSchedule))
                                                 @foreach($amortizationSchedule as $item)
-                                                    {{ number_format($item['EMI']) ?? 0 }} <sup>đ</sup>
+
+                                                    {{ number_format($item['Interest']+ $item['Principal'])}}
+
+
+                                                    <sup>đ</sup>
                                                     @break
                                                 @endforeach
                                             @else
@@ -130,8 +120,8 @@
                                     </div>
                                     <hr/>
                                     <div class="description-item mt-2 d-flex align-items-md-center">
-                                        <div class="title text-dark">
-                                            Tổng lãi phải trả
+                                        <div class="title text-dark ms-2 ms-md-0">
+                                            Tổng lãi phải trả:
                                         </div>
                                         <div class="value text-dark" style="margin-left: 45px; margin-top: 7px; font-weight: bold">
                                             {{ $sumtotoalInterest == 0 ? 0 : number_format($sumtotoalInterest -  $principal) }}
@@ -139,9 +129,9 @@
                                         </div>
                                     </div>
                                     <hr/>
-                                    <div class="description-item d-flex align-items-md-center">
-                                        <div class="title text-dark">
-                                            Tổng số tiền gốc và lãi phải trả
+                                    <div class="description-item d-flex align-items-md-center mb-3">
+                                        <div class="title text-dark ms-2 ms-md-0 ">
+                                            Tổng gốc và lãi phải trả:
                                         </div>
                                         <div class="value px-4 text-danger" style="font-weight: bold">
                                             {{ $sumtotoalInterest == 0 ? 0 : number_format($principal  +  ($sumtotoalInterest -  $principal)) }}
@@ -150,7 +140,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+
                     </div>
                 </div>
 
@@ -181,7 +171,7 @@
                                 </thead>
                                 <tbody>
                                 @if(!empty($amortizationSchedule))
-                                    @foreach ($amortizationSchedule as $payment)
+                                        @foreach ($amortizationSchedule as $payment)
                                         <tr class="text-center">
                                             <th style="border-width: 0 1px !important;">
                                                 {{number_format( $payment['Month'])}}
@@ -191,7 +181,7 @@
 
                                             </th>
                                             <th>
-                                                    {{number_format($payment['Principal'])}}
+                                                {{number_format($payment['Principal'])}}
 
                                             </th>
                                             <th style="border-width: 0 1px !important;">
@@ -199,13 +189,14 @@
 
                                             </th>
                                             <th style="border-width: 0 1px !important;">
-                                                    @php
-                                             @endphp
+                                                @php
+                                                        @endphp
                                                 {{ number_format($payment['RemainingPrincipal'] ?? 0)}}
                                             </th>
                                         </tr>
                                     @endforeach
                                 @endif
+
                                 </tbody>
                             </table>
                         </div>
@@ -214,8 +205,6 @@
             </div>
         </div>
     </div>
-
-
 
 @endsection
 @push('script')
@@ -233,8 +222,6 @@
             },
         });
     </script>
-
-
 
 @endpush<!-- END MAIN CONTENT -->
 @push('css')

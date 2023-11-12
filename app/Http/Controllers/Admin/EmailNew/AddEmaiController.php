@@ -17,10 +17,10 @@ class AddEmaiController extends Controller
 
     public function emailFrom(EmailRequest $request){
         $data = [
-            'email'      => $request->email,
+            'email'      => $request->emailnew,
             'interaction_count' => 0,
         ];
         $this->email->addEmail($data);
-        return redirect()->back()->with('success', 'Đã gửi email thành công');
+        return redirect()->back()->with('successs', 'Đã gửi email thành công');
     }
 }

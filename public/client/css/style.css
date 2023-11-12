@@ -3200,6 +3200,10 @@ input.text {
 	.carousel-item  img {
 		height: 300px !important;
 	}
+	#scrollBtn{
+		right: 100px;
+		bottom: 170px !important;
+	}
 }
 .full_screen, .full_screen .carousel-item {
 	height: 100vh;
@@ -8638,6 +8642,113 @@ blockquote p:last-child {
 
 .input-group-append {
 	margin-left: -1px;
+}
+
+#scrollBtn {
+	display: none;
+	position: fixed;
+	bottom: 90px;
+	right: 90px;
+
+	color: #fff;
+	border: none;
+
+	padding: 5px;
+	cursor: pointer;
+	z-index: 99;
+}
+arrow-container{
+	width: 100px;
+	height: 100px;
+	margin: 0 auto;
+	position: absolute;
+	bottom: 25px;
+	left: 0;
+	right: 0;
+}
+
+.arrow-1{
+	width: 100px;
+	height: 100px;
+	background: #00BCD4;
+	opacity: 0.5;
+	border-radius: 50%;
+	position: absolute;
+}
+
+.arrow-2{
+	width: 60px;
+	height: 60px;
+	background: #00BCD4;
+	border-radius: 50%;
+	position: absolute;
+	top: 20px;
+	left: 20px;
+	z-index: 1;
+	display: table;
+}
+
+.arrow-2:before{
+	width: 52px;
+	height: 52px;
+	content: "";
+	border: 2px solid #006064;
+	border-radius: 50%;
+	position: absolute;
+	top: 2px;
+	left: 2px;
+}
+
+.arrow-2 i.fa{
+	font-size: 30px;
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+	color: #006064;
+}
+
+/* Custom Animate.css */
+
+.animated.hinge {
+	-webkit-animation-duration: 2s;
+	animation-duration: 2s;
+}
+
+@-webkit-keyframes zoomIn {
+	0% {
+		opacity: 0;
+		-webkit-transform: scale3d(.4, .4, .4);
+		transform: scale3d(.4, .4, .4);
+	}
+
+	50% {
+		opacity: 0.5;
+	}
+
+	100% {
+		opacity: 0;
+	}
+}
+
+@keyframes zoomIn {
+	0% {
+		opacity: 0;
+		-webkit-transform: scale3d(.4, .4, .4);
+		transform: scale3d(.4, .4, .4);
+	}
+
+	50% {
+		opacity: 0.5;
+	}
+
+	100% {
+		opacity: 0;
+	}
+}
+
+.zoomIn {
+	-webkit-animation-name: zoomIn;
+	animation-name: zoomIn;
 }
 
 .input-group-append, .input-group-prepend {

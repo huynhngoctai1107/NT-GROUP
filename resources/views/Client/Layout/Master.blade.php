@@ -69,6 +69,12 @@
 @include('client.header.tools')
 @yield('main')
 
+<div  id="scrollBtn" class="arrow-container animated fadeInDown" onclick="scrollToTop()">
+    <div class="arrow-2">
+        <i class="fa fa-angle-up"></i>
+    </div>
+    <div class="arrow-1 animated hinge infinite zoomIn"></div>
+</div>
 @include('client.footer.footer')
 </body>
 
@@ -105,4 +111,23 @@
 @stack('javascript')
 
 @stack('script')
+<script>
+    // Hiển thị nút khi cuộn xuống một khoảng cách cụ thể
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction() {
+        var scrollBtn = document.getElementById("scrollBtn");
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            scrollBtn.style.display = "block";
+        } else {
+            scrollBtn.style.display = "none";
+        }
+    }
+
+    // Cuộn lên đầu khi nhấp vào nút
+    function scrollToTop() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+</script>
 </html>

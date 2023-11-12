@@ -1,7 +1,7 @@
 <div class="d-md-flex d-none">
 
 
-    <div class="call-to-action" style="position: fixed; bottom: 30px; left: 10px; margin-left: 10px; z-index: 100">
+    <div class="call-to-action" style="position: fixed; bottom: 100px; left: 10px; margin-left: 10px; z-index: 100">
         <a href="{{route('viewCalculate')}}" style="display: flex">
             <div class="rounded-circle btn btn-primary  custom-circle">
                 <i class="bi bi-calculator-fill"></i>
@@ -13,7 +13,7 @@
             </div>
         </a>
     </div>
-    <div class="call-to-action" style="position: fixed; bottom: 120px; left: 10px; margin-left: 10px; z-index: 100">
+    <div class="call-to-action" style="position: fixed; bottom: 190px; left: 10px; margin-left: 10px; z-index: 100">
         <a href="{{route('buildCost')}}" style="display: flex">
 
             <div class="rounded-circle btn btn-primary  custom-circle">
@@ -25,7 +25,7 @@
             </div>
         </a>
     </div>
-    <div class="call-to-action" style="position: fixed; bottom: 30px; right: 10px; margin-left: 10px; z-index: 100">
+    <div class="call-to-action" style="position: fixed; bottom: 100px; right: 10px; margin-left: 10px; z-index: 100">
         <a href="{{route('designCost')}}" style="display: flex">
 
             <div class="justify-content-center align-items-center d-flex custom-right">
@@ -39,7 +39,7 @@
 
         </a>
     </div>
-    <div class="call-to-action" style="position: fixed; bottom: 120px; right: 10px; margin-left: 10px; z-index: 100">
+    <div class="call-to-action" style="position: fixed; bottom: 190px; right: 10px; margin-left: 10px; z-index: 100">
         <a href="{{route('mapLocation')}}" style="display: flex">
             <div class="justify-content-center  align-items-center d-flex custom-right">
                 <span class=" rounded-start px-3  d-md-block d-none" id="search-text" style=" line-height: 40px ; height: 40px">Tìm kiếm quanh đây</span>

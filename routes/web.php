@@ -1,57 +1,99 @@
 <?php
+
 use Illuminate\Support\Facades\Route;
+
+// ++++ CAC TRANG THUOC ADMIN ++++
+// danh mục
 use App\Http\Controllers\Admin\Category\AddCategoryController;
 use App\Http\Controllers\Admin\Category\DeleteCategoryController;
 use App\Http\Controllers\Admin\Category\EditCategoryController;
 use App\Http\Controllers\Admin\Category\ListCategoryController;
+
+// liên hệ
 use App\Http\Controllers\Admin\Contact\AddContactController;
 use App\Http\Controllers\Admin\Contact\DeleteContactController;
 use App\Http\Controllers\Admin\Contact\ListContactController;
+
+// thống kê
 use App\Http\Controllers\Admin\Dashboard\ViewDashboardController;
+
+// nhu cầu
 use App\Http\Controllers\Admin\Demand\AddDemandController;
 use App\Http\Controllers\Admin\Demand\DeleteDemandController;
 use App\Http\Controllers\Admin\Demand\EditDemandController;
 use App\Http\Controllers\Admin\Demand\ListDemandController;
+
+// nhận email mới
 use App\Http\Controllers\Admin\EmailNew\AddEmaiController;
 use App\Http\Controllers\Admin\EmailNew\DeleteEmailController;
 use App\Http\Controllers\Admin\EmailNew\InteractionCountCotroller;
 use App\Http\Controllers\Admin\EmailNew\ListEmailController;
+
+// bài viết
 use App\Http\Controllers\Admin\Posts\AddPostsController;
 use App\Http\Controllers\Admin\Posts\DeletePostsController;
 use App\Http\Controllers\Admin\Posts\EditPostsController;
 use App\Http\Controllers\Admin\Posts\ListPostsController;
+
+// báo cáo
 use App\Http\Controllers\Admin\Report\AddReportController;
 use App\Http\Controllers\Admin\Report\DeleteReportController;
 use App\Http\Controllers\Admin\Report\ListReportController;
+
+// lịch sử giao dịch
 use App\Http\Controllers\Admin\Transactions\RechargeHistoryController;
+
+// tài khoản
 use App\Http\Controllers\Admin\User\AddUserController;
 use App\Http\Controllers\Admin\User\DeleteUserController;
 use App\Http\Controllers\Admin\User\EditUserController;
 use App\Http\Controllers\Admin\User\ListUserController;
+
+// voucher
 use App\Http\Controllers\Admin\Voucher\AddVoucherController;
 use App\Http\Controllers\Admin\Voucher\DeleteVoucherController;
 use App\Http\Controllers\Admin\Voucher\EditVoucherController;
 use App\Http\Controllers\Admin\Voucher\ListVoucherController;
+
+// ++++ CAC TRANG THUOC CLIENT ++++
+use App\Http\Controllers\Client\Index\IndexController;
+
+//trang bao loi
+use App\Http\Controllers\Client\ErrorPage\ErrorPageController;
+
+// dieu khoan
+use App\Http\Controllers\Client\Docs\DocsController;
+
+// gioi thieu
 use App\Http\Controllers\Client\About\AboutController;
+
+// tai khoan
 use App\Http\Controllers\Client\Account\AccountController;
 use App\Http\Controllers\Client\Account\ForgetPasswordController;
 use App\Http\Controllers\Client\Account\GoogleController;
 use App\Http\Controllers\Client\Account\LoginController;
 use App\Http\Controllers\Client\Account\RegisterController;
+
+// chi tiet tin
 use App\Http\Controllers\Client\Blog\BlogListController;
 use App\Http\Controllers\Client\Blog\PostSingleController;
-use App\Http\Controllers\Client\Docs\DocsController;
-use App\Http\Controllers\Client\ErrorPage\ErrorPageController;
-use App\Http\Controllers\Client\Index\IndexController;
+
+// thanh toán
 use App\Http\Controllers\Client\Pay\BuyArticleController;
 use App\Http\Controllers\Client\Pay\PaypalController;
 use App\Http\Controllers\Client\Pay\RechargeController;
+
+// bài viết
 use App\Http\Controllers\Client\Post\AddPostController;
 use App\Http\Controllers\Client\Post\DeletePostController;
 use App\Http\Controllers\Client\Post\EditPostController;
 use App\Http\Controllers\Client\Post\PostListController;
 use App\Http\Controllers\Client\Post\PostNewController;
+
+// tìm kiếm
 use App\Http\Controllers\Client\Search\SearchController;
+
+// tool
 use App\Http\Controllers\Client\Tools\CalculateController;
 use App\Http\Controllers\Client\Tools\DesignCostsController;
 use App\Http\Controllers\Client\Tools\MapLocationController;
@@ -84,22 +126,25 @@ Route::group(['prefix' => 'admin', 'middleware' => ['AdminLogin']], function (){
         Route::post('/them', [AddCategoryController::class, 'addCategory'])->name('addCategory');
         Route::post('/', [ListCategoryController::class, 'SearchCategory'])->name('SearchCategory');
     });
-    Route::group(['prefix' => 'lien-he'], function (){
+    Route::group(['prefix' => 'lien-he', 'middleware' => ['Roles']], function (){
         Route::get('/danh-sach-lien-he', [ListContactController::class, 'listContact'])
              ->name('listContact');
         Route::get('/xoa-lien-he/{id}', [DeleteContactController::class, 'deleteContact'])
              ->name('deleteContact');
         Route::get('/khoi-phuc/{id}', [DeleteContactController::class, 'restoreContact'])
              ->name('restoreContact');
-        Route::get('/lich-su-xoa-tai-khoan/{id}', [DeleteUserController::class, 'userHistory'])->name('userHistory');
-        Route::get('/trang-thai-lien-he/{id}', [ListContactController::class, 'statusContact'])->name('statusContact');
+        Route::get('/lich-su-xoa-tai-khoan/{id}', [DeleteUserController::class, 'userHistory'])
+             ->name('userHistory');
+        Route::get('/trang-thai-lien-he/{id}', [ListContactController::class, 'statusContact'])
+             ->name('statusContact');
         Route::get('/danh-sach-xoa-lien-he', [ListContactController::class, 'listDeleteContact'])
              ->name('listDeleteContact');
         Route::get('/lich-su-xoa-tai-khoan/{id}', [DeleteUserController::class, 'userHistory'])
              ->name('userHistory');
         Route::get('/trang-thai-lien-he/{id}', [ListContactController::class, 'statusContact'])
              ->name('statusContact');
-        Route::post('/tim-kiem-lien-he', [ListContactController::class, 'SearchContact'])->name('SearchContact');
+        Route::post('/tim-kiem-lien-he', [ListContactController::class, 'SearchContact'])
+             ->name('SearchContact');
     });
 
     Route::group(['prefix' => 'nguoi-dung', 'middleware' => ['Roles']], function (){
@@ -116,7 +161,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['AdminLogin']], function (){
         Route::get('/xoa/{id}', [DeleteUserController::class, 'deleteUser'])->name('deleteUser');
         Route::get('/khoi-phuc-tai-khoan/{id}', [DeleteUserController::class, 'userRestore'])
              ->name('userRestore');
-        Route::get('/tim-kiem-tai-khoan', [ListUserController::class, 'searchUser'])->name('searchUser');
+        Route::get('/tim-kiem-tai-khoan', [ListUserController::class, 'searchUser'])
+             ->name('searchUser');
 
     });
 
@@ -127,7 +173,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['AdminLogin']], function (){
              ->name('status');
         Route::get('/danh-sach-xoa-voucher', [ListVoucherController::class, 'ListVoucherHistory'])
              ->name('ListVoucherHistory');
-        Route::get('/tim-voucher', [ListVoucherController::class, 'searchVoucher'])->name('searchVoucher');
+        Route::get('/tim-voucher', [ListVoucherController::class, 'searchVoucher'])
+             ->name('searchVoucher');
         Route::get('/chinh-sua/{slug}', [EditVoucherController::class, 'editFormVoucher'])
              ->name('editFormVoucher');
         Route::post('/chinh-sua/{slug}', [EditVoucherController::class, 'editVoucher'])
@@ -143,7 +190,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['AdminLogin']], function (){
     Route::group(['prefix' => 'lich-su-giao-dich', 'middleware' => ['Roles']], function (){
         Route::get('/danh-sach', [RechargeHistoryController::class, 'listRechargeHistory'])
              ->name('listRechargeHistory');
-        Route::post('/', [RechargeHistoryController::class, 'searchListRechargeHistory'])->name('searchListRechargeHistory');
+        Route::post('/', [RechargeHistoryController::class, 'searchListRechargeHistory'])
+             ->name('searchListRechargeHistory');
     });
     Route::group(['prefix' => 'bai-viet'], function (){
         Route::get('/danh-sach', [ListPostsController::class, 'listPosts'])->name('listPosts');
@@ -164,11 +212,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['AdminLogin']], function (){
         Route::get('/khoi-phuc-bai-viet/{slug}', [DeletePostsController::class, 'restorePost'])
              ->name('restorePost');
         Route::post('/', [ListPostsController::class, 'searchListPost'])->name('searchListPost');
-        Route::post('/danh-sach-history', [ListPostsController::class, 'searchHisPost'])->name('searchHisPost');
+        Route::post('/danh-sach-history', [ListPostsController::class, 'searchHisPost'])
+             ->name('searchHisPost');
     });
 
 
-    Route::group(['prefix' => 'quan-ly-bao-cao'], function (){
+    Route::group(['prefix' => 'quan-ly-bao-cao', 'middleware' => ['Roles']], function (){
         Route::get('/danh-sach-bao-cao', [ListReportController::class, 'ListReport'])
              ->name('ListReport');
         Route::get('/lich-su-bao-cao', [ListReportController::class, 'reportHistory'])
@@ -271,14 +320,18 @@ Route::group(['prefix' => '/'], function (){
 
 
     Route::get('/', [IndexController::class, 'index'])->name('index');
-    Route::get('/xem-them-bai-viet-moi/{email}', [InteractionCountCotroller::class, 'interactionCount'])->name('interactionCount');
+    Route::get('/xem-them-bai-viet-moi/{email}',
+        [InteractionCountCotroller::class, 'interactionCount'])->name('interactionCount');
 
     //tools map
-    Route::get('/vi-tri-bat-dong-san', [MapLocationController::class, 'mapLocation'])->name('mapLocation');
-    Route::get('/ket-qua-vi-tri-bds/', [MapLocationController::class, 'checkMap'])->name('checkMap');
-  //tool thiet ke
-    Route::get('/tinh-chi-phi-thiet-ke', [DesignCostsController::class, 'designCost'])->name('designCost');
-   // tool xay dung
+    Route::get('/vi-tri-bat-dong-san', [MapLocationController::class, 'mapLocation'])
+         ->name('mapLocation');
+    Route::get('/ket-qua-vi-tri-bds/', [MapLocationController::class, 'checkMap'])
+         ->name('checkMap');
+    //tool thiet ke
+    Route::get('/tinh-chi-phi-thiet-ke', [DesignCostsController::class, 'designCost'])
+         ->name('designCost');
+    // tool xay dung
     Route::get('/tinh-chi-phi-xay-dung', [BuildController::class, 'index'])->name('buildCost');
     //tool lai suat
     Route::get('/reset-tools', [CalculateController::class, 'resetTool'])
@@ -315,7 +368,8 @@ Route::group(['prefix' => '/'], function (){
     });
 
     Route::group(['prefix' => 'dang-ky-nhan-bai-viet'], function (){
-        Route::get('/danh-sach-dang-ky', [ListEmailController::class, 'listEmail'])->name('listEmail');
+        Route::get('/danh-sach-dang-ky', [ListEmailController::class, 'listEmail'])
+             ->name('listEmail');
         Route::post('them-dang-ky', [AddEmaiController::class, 'emailFrom'])->name('emailForm');
         Route::get('/xoa-email-nhan-tin/{id}', [DeleteEmailController::class, 'deleteEmail'])
              ->name('deleteEmail');
@@ -323,7 +377,8 @@ Route::group(['prefix' => '/'], function (){
              ->name('listDeleteEmail');
         Route::get('/khoi-phuc-email/{id}', [ListEmailController::class, 'restoreEmail'])
              ->name('restoreEmail');
-        Route::post('/tim-kiem-email', [ListEmailController::class, 'SearchEmail'])->name('SearchEmail');
+        Route::post('/tim-kiem-email', [ListEmailController::class, 'SearchEmail'])
+             ->name('SearchEmail');
     });
 
 });

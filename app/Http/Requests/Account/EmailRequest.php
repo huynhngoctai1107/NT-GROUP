@@ -22,13 +22,13 @@ class EmailRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email'    => 'bail||required|email',
+            'emailnew'    => 'bail||required|email',
         ];
     }
     public function messages(){
         return [
-            'email.required'       => 'Vui lòng nhập vào email',
-            'email.email'          => 'Email chưa đúng định dạng',
+            'emailnew.required'       => 'Vui lòng nhập vào email',
+            'emailnew.email'          => 'Email chưa đúng định dạng',
         ];
     }
 }

@@ -6,12 +6,12 @@
                 <div class="heading_s1 mb-md-0 heading_light">
                     <h3>Đăng ký nhận bản tin của chúng tôi</h3>
                 </div>
-                @if(Session::has('success'))
+                @if(Session::has('successs'))
                     <div class="alert alert-success" role="alert">
-                        {{Session::get('success')}}
+                        {{Session::get('successs')}}
                     </div>
                 @endif
-                @error('email')
+                @error('emailnew')
                 <p class="text-white">
                     {{ $message }}
                 </p>
@@ -21,10 +21,10 @@
                 <div class="newsletter_form">
                     <form action="{{route('emailForm')}}" method="post">
                         @csrf
-                        <input type="text" name="email" class="form-control rounded-0"
+                        <input type="text" name="emailnew" class="form-control rounded-0"
                                placeholder="Email">
 
-                        <button type="submit" class="btn btn-dark rounded-0" name="submit"
+                            <button type="submit" class="btn btn-dark rounded-0" name="submit"
                                 value="Submit">Đăng ký</button>
                     </form>
                 </div>

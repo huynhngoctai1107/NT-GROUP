@@ -19,7 +19,7 @@ class BuyArticleController extends Controller{
     public $voucher;
 
     public $transaction;
-
+        public $price = 50000 ;
 
     public function __construct(){
 
@@ -36,11 +36,11 @@ class BuyArticleController extends Controller{
         $post      = $this->post->firstPost($condition);
 
         if ($post->id_user == auth()->user()->id){
-            if (Auth::user()->wallet >= 50000){
+            if (Auth::user()->wallet >= $this->price){
                 if ($post->featured_news == 0 && $post->delete_posts == 0){
 
                     return view('client.pages.buyarticle',
-                        ['post' => $post, 'user' => auth()->user(), 'total' => 50000]);
+                        ['post' => $post, 'user' => auth()->user(), 'total' => $this->price]);
                 }else{
                     return Redirect()
                         ->route('error')

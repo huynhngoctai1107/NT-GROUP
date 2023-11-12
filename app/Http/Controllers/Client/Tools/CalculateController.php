@@ -11,12 +11,10 @@ class CalculateController extends Controller{
 
     public function index(){
         return view('client.pages.calculate',
-            ['amortizationSchedule' => 0, 'sumtotoalInterest' => 0, 'principal' => 0]);
+            [ 'sumtotoalInterest' => 0,'principal' => 0]);
     }
 
     public function calculate(CalculateRequest $request){
-//        $score = RecaptchaV3::verify($request->get('g-recaptcha-response'));
-//        if ($score > 0.7){
             $sumtotoalInterest    = 0;
             $amortizationSchedule = [];
             $schedule             = [];
@@ -58,11 +56,6 @@ class CalculateController extends Controller{
                  "annualInterestRate"   => $request->annualInterestRate,
                  "loanTermMonths"       => $request->loanTermMonths,
                  "method"               => $request->method]);
-//        }else{
-//            return Redirect()
-//                ->route('error')
-//                ->with(['error' => "Có thể bạn là robot. Vui lòng thử lại", "title" => 403]); //404
-//        }
     }
 
     private function calculateEMI($principal, $loanTermMonths, $annualInterestRate){
@@ -75,37 +68,6 @@ class CalculateController extends Controller{
         return $emi;
     }
 
-    //    public function calculateLoan($principal, $loanTermMonths, $annualInterestRate){
-    //        $sumtotoalInterest   = 0;
-    //        $monthlyInterestRate = $annualInterestRate / 100 / 12;
-    //        $monthlyPayment      = $principal * ($monthlyInterestRate * pow((1 + $monthlyInterestRate),
-    //                    $loanTermMonths)) / (pow((1 + $monthlyInterestRate), $loanTermMonths) - 1);
-    //
-    //        $schedule         = [];
-    //        $remainingBalance = $principal;
-    //
-    //        for ($i = 1; $i <= $loanTermMonths; $i ++){
-    //            $interestPayment  = ($remainingBalance) * $monthlyInterestRate;
-    //            $principalPayment = $monthlyPayment - $interestPayment;
-    //            $remainingBalance -= $principalPayment;
-    //
-    //            $schedule[] = [
-    //                'Month'              => $i,
-    //                'EMI'                => round($monthlyPayment, 0),
-    //                'Principal'          => round($principalPayment, 0),
-    //                'Interest'           => round($interestPayment, 0),
-    //                'RemainingPrincipal' => round($remainingBalance, 0),
-    //            ];
-    //
-    //            $sumtotoalInterest += round($monthlyPayment, 0);
-    //        }
-    //
-    //
-    //        return [
-    //            'schedule'          => $schedule,
-    //            'sumtotoalInterest' => $sumtotoalInterest
-    //        ];
-    //    }
 
     public function calculateLoan($principal, $loanTermMonths, $annualInterestRate){
         $amount        = $principal;
@@ -131,7 +93,7 @@ class CalculateController extends Controller{
                 'RemainingPrincipal' => $principal,
 
             ];
-            $sumtotoalInterest += round($monthly_payment, 0);
+            $sumtotoalInterest += round(($amount * $interest_rate / 12 * ($term - $i + 1)+($amount / $term)));
         }
 
         return [
@@ -143,8 +105,7 @@ class CalculateController extends Controller{
 
     public function resetTool(Request $request){
         $request->flush();
-
-        return redirect()->back();
+        return redirect()->route('viewCalculate');
     }
 
 

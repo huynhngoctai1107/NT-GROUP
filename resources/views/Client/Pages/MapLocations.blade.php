@@ -14,14 +14,14 @@
                 <div class="row">
                     <div class="form-floating col-md-3 mb-4 col-6">
                         <select id="type" name="kilometer" class="form-select section-form_input" name="kilometer">
-                            <option value="" {{old('kilometer') == '' ? "selected" : ""}} >-Chọn phạm vi cần tìm-</option>
-                            <option value="5" {{old('kilometer') == 5 ? "selected" : ""}} >5km</option>
-                            <option value="10" {{old('kilometer') == 10 ? "selected" : ""}}>10km</option>
-                            <option value="15" {{old('kilometer') == 15 ? "selected" : ""}}>15km</option>
-                            <option value="20" {{old('kilometer') == 20 ? "selected" : ""}}>20km</option>
-                            <option value="30" {{old('kilometer') == 30 ? "selected" : ""}}>30km</option>
-                            <option value="50" {{old('kilometer') == 50 ? "selected" : ""}}>50km</option>
-                            <option value="100" {{old('kilometer') == 100 ? "selected" : ""}}>Tất cả dữ liệu</option>
+                            <option value="" selected >-Chọn phạm vi cần tìm-</option>
+                            <option value="5" {{($kilometer ?? old('kilometer')) == 5 ? "selected" : ""}} >5km</option>
+                            <option value="10" {{($kilometer ?? old('kilometer')) == 10 ? "selected" : ""}}>10km</option>
+                            <option value="15" {{($kilometer ?? old('kilometer'))== 15 ? "selected" : ""}}>15km</option>
+                            <option value="20" {{($kilometer ?? old('kilometer')) == 20 ? "selected" : ""}}>20km</option>
+                            <option value="30" {{($kilometer ?? old('kilometer'))== 30 ? "selected" : ""}}>30km</option>
+                            <option value="50" {{($kilometer ?? old('kilometer')) == 50 ? "selected" : ""}}>50km</option>
+                            <option value="100" {{($kilometer ?? old('kilometer')) == 100 ? "selected" : ""}}>Tất cả dữ liệu</option>
 
                         </select>
                         @error('kilometer')
@@ -35,9 +35,9 @@
                     </div>
                     <div class="form-floating col-md-3  mb-4 col-6">
                         <select id="type" class="form-select section-form_input" name="price">
-                            <option value="" {{old('price') == '' ? "selected" : ""}}>-Chọn mức giá cần tìm --</option>
-                            @foreach($dataToPrice as $price)
-                                <option value="{{$price->id}}" {{ old('price') == $price->id ? "selected" : ""}}> {{ $formatPrice($price->name_min) }} - {{ $formatPrice($price->name_max) }}</option>
+                            <option value="" checked>-Chọn mức giá cần tìm --</option>
+                            @foreach($dataToPrice as $item)
+                                <option value="{{$item->id}}" {{($price ?? old('price'))  == $item->id ? "selected" : ""}}> {{ $formatPrice($item->name_min) }} đến {{ $formatPrice($item->name_max) }}</option>
                             @endforeach
 
                         </select>
@@ -52,9 +52,9 @@
                     </div>
                     <div class="form-floating col-md-3 col-6">
                         <select id="type" class="form-select section-form_input" name="acreage">
-                            <option value="" {{old('acreage') == "" ? "selected" : ""}} selected>-Chọn diện tích cần tìm-</option>
-                            @foreach($dataToAcreage as $acreage)
-                                <option value="{{$acreage->id}}" {{old('acreage') == $acreage->id ? "selected" : ""}}>  {{ $acreage->name_min }} m² - {{ $acreage->name_max }} m²</option>
+                            <option value="" {{($acreage ?? old('acreage')) == "" ? "selected" : ""}} selected>-Chọn diện tích cần tìm-</option>
+                            @foreach($dataToAcreage as $item)
+                                <option value="{{$item->id}}" {{($acreage ?? old('acreage')) == $item->id ? "selected" : ""}}>  {{ $item->name_min }} m² đến {{ $item->name_max }} m²</option>
                             @endforeach
 
 
@@ -126,17 +126,7 @@
     </script>
 
     <script type="text/javascript">
-        function createSlug(str) {
-            str = str.trim(); // Loại bỏ khoảng trắng ở đầu và cuối chuỗi
-            str = str.toLowerCase(); // Chuyển đổi chuỗi thành chữ thường
 
-            // Loại bỏ các ký tự đặc biệt, dấu và khoảng trắng, thay thế chúng bằng dấu gạch ngang
-            str = str.replace(/[^\w\s-]/g, '');
-            str = str.replace(/\s+/g, '-'); // Thay thế khoảng trắng bằng dấu gạch ngang
-            str = str.replace(/--+/g, '-'); // Loại bỏ các dấu gạch ngang liên tiếp
-
-            return str;
-        }
         var locations = [
                 @foreach ($locations as $location)
             [   '{{ $location->slug }}',
@@ -166,7 +156,7 @@
 
             google.maps.event.addListener(marker, 'click', (function (marker, i) {
                 return function () {
-                    var link = '<a href="/chi-tiet-tin/' + createSlug(locations[i][0]) + '">' + locations[i][1] + '</a>';
+                    var link = '<a href="/chi-tiet-tin/' + locations[i][0] + '">' + locations[i][1] + '</a>';
 
 
                     infowindow.setContent(link);

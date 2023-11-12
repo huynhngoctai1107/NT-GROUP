@@ -8,44 +8,57 @@ use App\Http\Requests\Tools\MapLocationRequest;
 
 class MapLocationController extends Controller{
 
-    public $location ;
+    public $location;
 
     public function __construct(){
 
-        $this->location = new Post() ;
+        $this->location = new Post();
 
     }
 
     function mapLocation(){
-      $condition = [
+        $condition = [
             ['posts.delete', '=', 0],
             ['posts.status', '=', 1],
         ];
-        $locations= $this->location->Show($condition,'posts');
-        return view('client.pages.maplocations',['locations'=>$locations]);
+        $locations = $this->location->Show($condition, 'posts');
+
+        return view('client.pages.maplocations',
+            ['locations' => $locations]);
     }
+
     function checkMap(MapLocationRequest $request){
         $condition = [
-            'posts.id_price' => $request->price,
+            'posts.id_price'   => $request->price,
             'posts.id_acreage' => $request->acreage,
         ];
-        $location =  explode(',',$request->location) ;
-        $kilometer = $request->kilometer == 100 ? 10000000 : $request->kilometer ;
+        $location  = explode(',', $request->location);
+        $kilometer = $request->kilometer == 100 ? 10000000 : $request->kilometer;
 
-        if($distance = $this->location->distance($condition,$location,$kilometer)){
-            session()->flash("notification","Tìm thấy ".count($distance)." Kết quả");
-            return view('client.pages.maplocations',['locations'=>$distance]);
-         }else{
+        if ($distance = $this->location->distance($condition, $location, $kilometer)){
+            session()->flash("notification", "Tìm thấy " . count($distance) . " Kết quả");
+
+            return view('client.pages.maplocations',
+                ['locations' => $distance,
+                 'price'     => $request->price,
+                 'acreage'   => $request->acreage,
+                 'kilometer' => $request->kilometer]);
+        }else{
             $condition = [
                 ['posts.delete', '=', 0],
                 ['posts.status', '=', 1],
             ];
-            session()->flash("notification","Tìm thấy ".count($distance)." Kết quả");
-            return view('client.pages.maplocations',['locations'=>$this->location->Show($condition,'posts')]);
+            session()->flash("notification", "Tìm thấy " . count($distance) . " Kết quả");
+
+            return view('client.pages.maplocations',
+                ['locations' => $this->location->Show($condition, 'posts'),
+                 'price'     => $request->price,
+                 'acreage'   => $request->acreage,
+                 'kilometer' => $request->kilometer]
+            );
 
 
         }
-
 
 
     }
