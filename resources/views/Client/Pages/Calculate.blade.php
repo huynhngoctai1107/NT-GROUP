@@ -213,11 +213,11 @@
         new Chart(document.getElementById("pie-chart"), {
             type: 'pie',
             data: {
-                labels: ["Gốc cần trả", "Lãi cần trả",],
+                labels: ["Gốc cần trả: ", "Lãi cần trả:",],
                 datasets: [{
                     label: "Population (millions)",
                     backgroundColor: ["#3e95cd", "#e5ab3c",],
-                    data: [{{$principal ?? 50}}, {{$sumtotoalInterest ?? 50}}],
+                    data: [{{$principal ?? 50}}, {{($sumtotoalInterest -  $principal) ?? 50}}],
                 }]
             },
         });

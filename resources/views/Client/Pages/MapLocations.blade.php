@@ -39,6 +39,7 @@
                             @foreach($dataToPrice as $item)
                                 <option value="{{$item->id}}" {{($price ?? old('price'))  == $item->id ? "selected" : ""}}> {{ $formatPrice($item->name_min) }} đến {{ $formatPrice($item->name_max) }}</option>
                             @endforeach
+                            <option value="100" {{($price ?? old('price'))  == 100 ? "selected" : ""}}> Tất cả dữ liệu</option>
 
                         </select>
                         @error('price')
@@ -56,7 +57,7 @@
                             @foreach($dataToAcreage as $item)
                                 <option value="{{$item->id}}" {{($acreage ?? old('acreage')) == $item->id ? "selected" : ""}}>  {{ $item->name_min }} m² đến {{ $item->name_max }} m²</option>
                             @endforeach
-
+                            <option value="100" {{($acreage ?? old('acreage'))  == 100 ? "selected" : ""}}> Tất cả dữ liệu</option>
 
                         </select>
 
@@ -80,7 +81,7 @@
 
             @error('location')
 
-            <marquee direction="right" class="alert alert-warning text-center mb-0" >
+            <marquee direction="right" id="geolocation" class="alert alert-warning text-center mb-0" >
                 {{ $message }}
             </marquee>
             @enderror
@@ -90,6 +91,7 @@
                 </div>
             @endif
         </form>
+
         <div id="map" style="height: 800px"></div>
     </div>
 
@@ -117,8 +119,8 @@
             const longitude = position.coords.longitude;
 
             // Hiển thị vị trí
-            // x.innerHTML = "Định vị địa lý không được hỗ trợ bởi trình duyệt này. Xin vui lòng kiểm tra lại. ";
-            // x.innerHTML = "Latitude: " + latitude + "<br>Longitude: " + longitude;
+            // // x.innerHTML = "Định vị địa lý không được hỗ trợ bởi trình duyệt này. Xin vui lòng kiểm tra lại. ";
+            //     x.innerHTML = "Latitude: " + latitude + "<br>Longitude: " + longitude;
 
             // Truyền giá trị vào input form
             locationInput.value = latitude + "," + longitude;

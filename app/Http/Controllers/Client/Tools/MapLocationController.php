@@ -28,14 +28,20 @@ class MapLocationController extends Controller{
     }
 
     function checkMap(MapLocationRequest $request){
-        $condition = [
-            'posts.id_price'   => $request->price,
-            'posts.id_acreage' => $request->acreage,
-        ];
-        $location  = explode(',', $request->location);
-        $kilometer = $request->kilometer == 100 ? 10000000 : $request->kilometer;
 
-        if ($distance = $this->location->distance($condition, $location, $kilometer)){
+        $condition = [
+            'posts.delete' => 0,
+            'posts.status' => 1,
+        ];
+        $kilometer = ((int) $request->kilometer == 100 ? 1000000 : $request->kilometer);
+        $a         = $request->price == 100 ? 100 : $condition['id_price'] = $request->price;
+        $b         = $request->acreage == 100 ? 100 : $condition['id_acreage'] = $request->acreage;
+        $location = explode(',', $request->location);
+        $distance = $this->location->distance($condition, $location, $kilometer);
+
+        if (!empty($distance)){
+
+
             session()->flash("notification", "Tìm thấy " . count($distance) . " Kết quả");
 
             return view('client.pages.maplocations',
@@ -62,5 +68,6 @@ class MapLocationController extends Controller{
 
 
     }
+
 
 }

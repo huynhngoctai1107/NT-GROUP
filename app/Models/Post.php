@@ -28,19 +28,40 @@ class Post extends Model{
     }
 
     public function distance($condition, $location, $kilometer){
-        $longitude = (float) $location[0];
-        $latitude  = (float) $location[1];
+        $latitude  = (float) $location[0];
+        $longitude = (float) $location[1];
 
-        return $this->select('*')->selectRaw("
-                     ( 6371 * acos( cos( radians(?) ) *
-                       cos( radians($latitude) )
-                       * cos( radians($latitude) - radians(?)
+
+        return  $this->select('*')
+            ->selectRaw(" ( 6371 * acos( cos( radians(?) ) *
+                       cos( radians( latitude ) )
+                       * cos( radians( longitude ) - radians(?)
                        ) + sin( radians(?) ) *
-                       sin( radians($latitude) ) )
-                     ) AS distance", [$latitude, $latitude, $latitude])
-                    ->having("distance", "<", $kilometer)
-                    ->where($condition)
-                    ->get();
+                       sin( radians( latitude ) ) )
+                     ) AS distance", [$latitude, $longitude, $latitude])
+            ->having('distance', '<=', $kilometer)
+            ->where($condition)
+            ->orderBy('distance')
+            ->get();
+    }
+
+    function haversineDistance($lat1, $lon1, $lat2, $lon2) {
+        $lat1Rad = deg2rad($lat1);
+        $lon1Rad = deg2rad($lon1);
+        $lat2Rad = deg2rad($lat2);
+        $lon2Rad = deg2rad($lon2);
+
+        $deltaLat = $lat2Rad - $lat1Rad;
+        $deltaLon = $lon2Rad - $lon1Rad;
+
+        $a = sin($deltaLat / 2) * sin($deltaLat / 2) +
+             cos($lat1Rad) * cos($lat2Rad) * sin($deltaLon / 2) * sin($deltaLon / 2);
+
+        $c = 2 * atan2(sqrt($a), sqrt(1 - $a));
+
+        $distance = 6371 * $c; // Earth's radius in kilometers
+
+        return $distance;
     }
 
     public function getId($where){

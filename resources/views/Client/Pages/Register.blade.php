@@ -74,12 +74,10 @@
                                         </p>
                                         @enderror
                                     </div>
-                                    <div class="input-group date" id="reservationdatetime" data-target-input="nearest">
+                                    <div class="form-group mb-3">
                                         <input type='file' class="form-control" name="uploadfile" multiple id="imgInp"/>
                                     </div>
-                                    <div align="center">
-                                        <img width="100" id="blah" src="#" alt="your image"/>
-                                    </div>
+
                                     @error('uploadfile')
                                     <p class="text-danger">
                                         {{ $message }}
@@ -109,11 +107,10 @@
                                     </div>
                                     <div class="payment_option mb-50">
                                         <label for="exampleInputFile">Giới tính</label>
-                                        <div class="custome-radio">
+                                        <div class="custome-radio d-flex ">
                                             <input class="form-check-input" type="radio" name="gender" value="nam" {{old('gender') =="nam"? "checked" : ""}} id="exampleRadios3"/>
-                                            <label class="form-check-label" for="exampleRadios3" data-bs-toggle="collapse" data-target="#bankTranfer" aria-controls="bankTranfer">Nam</label>
-                                        </div>
-                                        <div class="custome-radio">
+                                            <label class="form-check-label me-3" for="exampleRadios3" data-bs-toggle="collapse" data-target="#bankTranfer" aria-controls="bankTranfer">Nam</label>
+
                                             <input class="form-check-input" type="radio" name="gender" value="nữ" {{old('gender') =="nữ"? "checked" : ""}} id="exampleRadios4"/>
                                             <label class="form-check-label" for="exampleRadios4" data-bs-toggle="collapse" data-target="#checkPayment" aria-controls="checkPayment">Nữ</label>
                                         </div>
