@@ -1262,6 +1262,272 @@ button:focus:not(:focus-visible) {
   01.END GENERAL STYLE
 *===================================*/
 
+/* form wallet*/
+
+.user-card-full {
+	overflow: hidden;
+}
+
+.card {
+	border-radius: 5px;
+	-webkit-box-shadow: 0 1px 20px 0 rgba(69,90,100,0.08);
+	box-shadow: 0 1px 20px 0 rgba(69,90,100,0.08);
+	border: none;
+	margin-bottom: 30px;
+}
+
+.m-r-0 {
+	margin-right: 0px;
+}
+
+.m-l-0 {
+	margin-left: 0px;
+}
+
+.user-card-full .user-profile {
+	border-radius: 5px 0 0 5px;
+}
+
+.bg-c-lite-green {
+	background-color: #e2e7e3;
+}
+
+.user-profile {
+	padding: 20px 0;
+}
+
+.card-block {
+	padding: 1.25rem;
+}
+
+.m-b-25 {
+	margin-bottom: 25px;
+}
+
+.userImages{
+	object-fit: cover;
+}
+
+h6 {
+	font-size: 14px;
+}
+
+.card .card-block p {
+	line-height: 25px;
+}
+
+@media only screen and (min-width: 1400px){
+	p {
+		font-size: 14px;
+	}
+}
+
+.card-block {
+	padding: 1.25rem;
+}
+
+.b-b-default {
+	border-bottom: 1px solid #e0e0e0;
+}
+
+.m-b-20 {
+	margin-bottom: 20px;
+}
+
+.p-b-5 {
+	padding-bottom: 5px !important;
+}
+
+.card .card-block p {
+	line-height: 25px;
+}
+
+.m-b-10 {
+	margin-bottom: 10px;
+}
+
+.text-muted {
+	color: #919aa3 !important;
+}
+
+.b-b-default {
+	border-bottom: 1px solid #e0e0e0;
+}
+
+.f-w-600 {
+	font-weight: 600;
+}
+
+.m-b-20 {
+	margin-bottom: 20px;
+}
+
+.m-t-40 {
+	margin-top: 20px;
+}
+
+.p-b-5 {
+	padding-bottom: 5px !important;
+}
+
+.m-b-10 {
+	margin-bottom: 10px;
+}
+
+.m-t-40 {
+	margin-top: 20px;
+}
+
+.user-card-full .social-link li {
+	display: inline-block;
+}
+
+.user-card-full .social-link li a {
+	font-size: 20px;
+	margin: 0 10px 0 0;
+	-webkit-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+/*end form wallet*/
+
+
+.modal {
+	top: 20%;
+}
+
+.btn-close {
+	box-shadow: none;
+	border: none;
+	outline: none;
+}
+
+.modal-body .icons {
+	margin: 15px 0px 20px 0px;
+}
+
+.modal-body .icons a {
+	text-decoration: none;
+	border: 1px solid transparent;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	margin-right: 20px;
+	transition: all 0.3s ease-in-out;
+}
+
+.modal-body .icons a:nth-child(1) {
+	color: #1877F2;
+	border-color: #B7D4FB;
+}
+
+.modal-body .icons a:nth-child(1):hover {
+	background-color: #1877F2;
+	color: #fff;
+}
+
+.modal-body .icons a:nth-child(2) {
+	color: #46C1F6;
+	border-color: #b6e7fc;
+}
+
+.modal-body .icons a:nth-child(2):hover {
+	background-color: #46C1F6;
+	color: #fff;
+}
+
+.modal-body .icons a:nth-child(3) {
+	color: #e1306c;
+	border-color: #f5bccf;
+}
+
+.modal-body .icons a:nth-child(3):hover {
+	background-color: #e1306c;
+	color: #fff;
+}
+
+.modal-body .icons a:nth-child(4) {
+	color: #25d366;
+	border-color: #bef4d2;
+}
+
+.modal-body .icons a:nth-child(4):hover {
+	background-color: #25d366;
+	color: #fff;
+}
+
+
+.modal-body .icons a:nth-child(5) {
+	color: #0088cc;
+	border-color: #b3e6ff;
+}
+
+.modal-body .icons a:nth-child(5):hover {
+	background-color: #0088cc;
+	color: #fff;
+}
+
+.modal-body .icons a:hover {
+	border-color: transparent;
+}
+
+.modal-body .icons a span {
+	transition: all 0.09s ease-in-out;
+}
+
+.modal-body .icons a:hover span {
+	transform: scaleX(1.1);
+}
+
+.modal-body .field {
+	margin: 15px 0px -5px 0px;
+	height: 45px;
+	border: 1px solid #dfdfdf;
+	border-radius: 5px;
+	padding: 0 5px;
+}
+
+.modal-body .field.active {
+	border-color: #7d2ae8;
+}
+
+.field span {
+	width: 50px;
+	font-size: 1.1rem;
+}
+
+.field.active span {
+	color: #7d2ae8;
+}
+
+.field input {
+	border: none;
+	outline: none;
+	font-size: 0.89rem;
+	width: 100%;
+	height: 100%;
+}
+
+.field button {
+	padding: 5px 16px;
+	color: #fff;
+	background: #7d2ae8;
+	border: 2px solid transparent;
+	border-radius: 5px;
+
+}
+
+@media (max-width: 330px) {
+	.modal-body .icons a {
+		margin-right: 15px;
+		width: 35px;
+		height: 35px;
+	}
+}
+/* form nạp tiền */
+
+
+/*end form nạp tiền */
+
 /*===================================*
   02.START HEADER STYLE
 *===================================*/
