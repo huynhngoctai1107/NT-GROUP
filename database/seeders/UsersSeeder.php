@@ -21,6 +21,7 @@ class UsersSeeder extends Seeder{
             [
                 'id'        => 1,
                 'fullname'  => 'Duy Hòa',
+                'slug'      => 'duy-hoa',
                 'social_id' => '0',
                 'email'     => 'duyhoa102201@gmail.com',
                 'image'     => 'user-1.png',
@@ -29,7 +30,7 @@ class UsersSeeder extends Seeder{
                 'address'   => 'Phường An Khánh, Quận Ninh Kiều, Thành Phố Cần Thơ',
                 'password'  => Hash::make('Duyhoa@123'),
                 'wallet'    => 0,
-                'delete'     => 0,
+                'delete'    => 0,
                 'token'     => strtoupper(Str::random(10)),
                 'gender'    => 'Nam',
                 'status'    => 1
@@ -37,6 +38,7 @@ class UsersSeeder extends Seeder{
             [
                 'id'         => 2,
                 'fullname'   => 'Lê Hồng Nhi',
+                'slug'       => 'le-hong-nhi',
                 'social_id'  => '0',
                 'email'      => 'amimon552@gmail.com',
                 'image'      => 'user-2.jpg',
@@ -55,6 +57,7 @@ class UsersSeeder extends Seeder{
             [
                 'id'         => 3,
                 'fullname'   => 'Tuyết Ngân',
+                'slug'       => 'tuyet-ngan',
                 'social_id'  => '0',
                 'email'      => 'tuyetngan17072003z@gmail.com',
                 'image'      => 'user-2.jpg',

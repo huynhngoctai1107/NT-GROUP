@@ -62,7 +62,7 @@
                     @csrf
                     <div class="col-12">
                         <label for="so-tien">Số tiền</label>
-                        <input type="number" class="form-control" id="so-tien" name="price"/>
+                        <input type="number" required class="form-control" id="so-tien" name="price"/>
                     </div>
 
                     <div class="col-md-12">

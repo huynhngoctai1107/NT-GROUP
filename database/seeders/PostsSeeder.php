@@ -53,7 +53,7 @@ class PostsSeeder extends Seeder{
             [
                 'id'            => 2,
                 'id_category'   => 5,
-                'id_demand'     => 3,
+                'id_demand'     => 2,
                 'id_user'       => 1,
                 'id_price'      => 2,
                 'id_acreage'    => 2,
@@ -109,7 +109,7 @@ class PostsSeeder extends Seeder{
             [
                 'id'              => 4,
                 'id_category'     => 5,
-                'id_demand'       => 3,
+                'id_demand'       => 1,
                 'id_user'         => 2,
                 'id_price'        => 7,
                 'id_acreage'      => 2,
@@ -143,7 +143,7 @@ class PostsSeeder extends Seeder{
             [
                 'id'              => 5,
                 'id_category'     => 5,
-                'id_demand'       => 3,
+                'id_demand'       => 2,
                 'id_user'         => 3,
                 'id_price'        => 9,
                 'id_acreage'      => 5,
@@ -176,7 +176,7 @@ class PostsSeeder extends Seeder{
             [
                 'id'              => 6,
                 'id_category'     => 5,
-                'id_demand'       => 3,
+                'id_demand'       => 2,
                 'id_user'         => 3,
                 'id_price'        => 6,
                 'id_acreage'      => 7,
@@ -234,7 +234,7 @@ Nhà ốp đá Granite, gạch 800x800, cửa gỗ Cẩm Lai tự nhiên, gỗ M
             [
                 'id'            => 8,
                 'id_category'   => 1,
-                'id_demand'     => 3,
+                'id_demand'     => 2,
                 'id_user'       => 2,
                 'id_price'      => 8,
                 'id_acreage'    => 11,

@@ -47,8 +47,8 @@ class GoogleController extends Controller{
             }else{
                 if (Auth::attempt(['email' => $user->getEmail(), 'password' => 'nt-group.com', 'status' => 1])){
                     $this->mail->loginMail();
-                    return redirect(session('resetPage') ?? 'tai-khoan')
 
+                    return redirect(session('resetPage') ?? 'tai-khoan')
                         ->with('success',
                             'Đăng nhập thành công và đã gửi email thông báo đăng nhập!');
                 }else{
@@ -62,15 +62,16 @@ class GoogleController extends Controller{
             $newUser            = new User;
             $newUser->social_id = 1;
             $newUser->password  = Hash::make('nt-group.com');
-            $newUser->id_role   = 3;
-            $newUser->status    = 1;
-            $newUser->gender    = 'Nam';
-            $newUser->token     = strtoupper(Str::random(10));
-            $newUser->fullname  = $user->getName();
-            $newUser->email     = $user->getEmail();
-            $newUser->address   = 'Đang cập nhật';
-            $newUser->wallet    = 0;
-            $newUser->phone     = '0912345678';
+            $newUser->slug      = Str::slug($user->getName());
+            $newUser->id_role  = 3;
+            $newUser->status   = 1;
+            $newUser->gender   = 'Nam';
+            $newUser->token    = strtoupper(Str::random(10));
+            $newUser->fullname = $user->getName();
+            $newUser->email    = $user->getEmail();
+            $newUser->address  = 'Đang cập nhật';
+            $newUser->wallet   = 0;
+            $newUser->phone    = '0912345678';
             $newUser->save();
             auth()->login($newUser, TRUE);
             $this->mail->loginMail();

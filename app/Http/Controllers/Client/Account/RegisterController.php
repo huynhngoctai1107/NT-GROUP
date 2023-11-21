@@ -35,6 +35,7 @@ class RegisterController extends Controller{
             }
             $data = [
                 'fullname'   => $request->fullname,
+                    'slug'   => Str::slug($request->fullname),
                 'email'      => $request->email,
                 'image'      => $request->image,
                 'phone'      => $request->phone,
