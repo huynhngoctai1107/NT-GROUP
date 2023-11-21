@@ -1,5 +1,5 @@
 @foreach($list as $item )
-    <div class="card mt-3">
+    <div class="card mt-3 px-3">
         <div class="row">
             @php
                 // Tách chuỗi thành mảng
@@ -11,7 +11,7 @@
             @endphp
             <div class="col-md-4 ">
                 <a href="{{ route('postSingle',$item->slug_posts) }}">
-                    <div class="frame d-flex justify-content-center align-items-center" style="width: 100%; height: 250px; background-image: url('{{ asset('images/medias/' . $firstImage) }}'); background-size: cover; background-position: center;"></div>
+                    <div class="frame d-flex justify-content-center align-items-center" style="width: 100%; height: 300px; background-image: url('{{ asset('images/medias/' . $firstImage) }}'); background-size: cover; background-position: center;"></div>
                 </a>
             </div>
             <div class="col-md-8">

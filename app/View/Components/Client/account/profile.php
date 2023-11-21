@@ -21,6 +21,6 @@ class profile extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.client.account.Profile.blade.php');
+        return view('components.client.account.Profile');
     }
 }

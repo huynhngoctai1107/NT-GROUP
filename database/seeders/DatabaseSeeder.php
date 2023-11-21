@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder{
             CategorySeeder::class,
             RolesSeeder::class,
             UsersSeeder::class,
+            FollowerSeeder::class,
             Payment_methods::class,
             Transaction_CategoriesSeeder::class,
             TransactionsSeeder::class,

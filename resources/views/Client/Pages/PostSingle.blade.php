@@ -93,82 +93,55 @@
                                             </ul>
                                         </div>
                                     </div>
-                                    <h5 class="text-bold mb-3">Người đăng: </h5>
-                                    <div class="nearby-user">
-                                        <div class="row align-items-center">
-                                            <div class="col-md-2 col-sm-12 text-center mb-3">
-                                                <img src="{{asset('images/users/'.$data->user_image )}}" alt="user" class="profile-photo-lg rounded-circle" style="width: 100px; height: 100px;">
-                                            </div>
-                                            <div class="col-md-5 col-sm-12 text-center">
-                                                <h5><a href="#" class="profile-link">{{$data->fullname}}</a></h5>
-                                                <p>Model at Fashion</p>
-                                                <div class="d-flex justify-content-center">
-                                                    <button class="btn btn-primary me-2"><a href="#">Chi Tiết</a></button>
-                                                    <button class="btn btn-primary"><a href="tel:{{$data->user_phone}}">Liên Hệ</a></button>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <div class="heading_s1">
+                                        <h3>Thông tin người đăng</h3>
                                     </div>
+                                <x-client.card.contact :item="$data"></x-client.card.contact>
 
-                                    <div class="product_share">
-                                        <span>Chia sẻ:</span>
-                                        <ul class="social_icons">
-                                            <li><a href="#"><i class="ion-social-facebook"></i></a></li>
-                                            <li><a href="#"><i class="ion-social-twitter"></i></a></li>
-                                            <li><a href="#"><i class="ion-social-googleplus"></i></a></li>
-                                            <li><a href="#"><i class="ion-social-youtube-outline"></i></a></li>
-                                            <li><a href="#"><i class="ion-social-instagram-outline"></i></a></li>
-                                        </ul>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <div class="col-12">
+                            <div class="tab-style3">
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="Description-tab" data-bs-toggle="tab" href="#Description" role="tab" aria-controls="Description" aria-selected="true">Mô tả</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="Additional-info-tab" data-bs-toggle="tab" href="#Additional-info" role="tab" aria-controls="Additional-info" aria-selected="false">Thông tin</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="Reviews-tab" data-bs-toggle="tab" href="#Reviews" role="tab" aria-controls="Reviews" aria-selected="false">Báo cáo bài viết</a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content shop_info_tab">
+                                    <div class="tab-pane fade show active mb-3 text-justify" id="Description" role="tabpanel" aria-labelledby="Description-tab">
+                                        {!! $data->content !!}
+                                    </div>
+                                    <div class="tab-pane fade" id="Additional-info" role="tabpanel" aria-labelledby="Additional-info-tab">
+                                        <table class="table table-bordered">
+                                            <tr>
+                                                <td>Diện tích</td>
+                                                <td>{{$data->acreages}} m²</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Vị trí</td>
+                                                <td>{{$data->posts_address}}</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div class="tab-pane fade mb-4" id="Reviews" role="tabpanel" aria-labelledby="Reviews-tab">
+                                        <x-client.pages.report :report="$data"></x-client.pages.report>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="large_divider clearfix"></div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="tab-style3">
-                                    <ul class="nav nav-tabs" role="tablist">
-                                        <li class="nav-item">
-                                            <a class="nav-link active" id="Description-tab" data-bs-toggle="tab" href="#Description" role="tab" aria-controls="Description" aria-selected="true">Mô tả</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" id="Additional-info-tab" data-bs-toggle="tab" href="#Additional-info" role="tab" aria-controls="Additional-info" aria-selected="false">Thông tin</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" id="Reviews-tab" data-bs-toggle="tab" href="#Reviews" role="tab" aria-controls="Reviews" aria-selected="false">Báo cáo bài viết</a>
-                                        </li>
-                                    </ul>
-                                    <div class="tab-content shop_info_tab">
-                                        <div class="tab-pane fade show active mb-3" id="Description" role="tabpanel" aria-labelledby="Description-tab">
-                                            <div>{!! $data->content !!}</div>
-                                        </div>
-                                        <div class="tab-pane fade" id="Additional-info" role="tabpanel" aria-labelledby="Additional-info-tab">
-                                            <table class="table table-bordered">
-                                                <tr>
-                                                    <td>Diện tích</td>
-                                                    <td>{{$data->acreages}} m²</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Vị trí</td>
-                                                    <td>{{$data->posts_address}}</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                        <div class="tab-pane fade mb-4" id="Reviews" role="tabpanel" aria-labelledby="Reviews-tab">
-                                            <x-client.pages.report :report="$data"></x-client.pages.report>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col" id="ggmap">
 
-                            </div>
+                        <div class="col-12" id="ggmap">
+
                         </div>
                         <div class="row">
                             <div class="col-12">
@@ -255,7 +228,10 @@
     <!-- Bootstrap Font Icon CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"/>
     <style>
-
+		.img-md {
+			width: 4rem;
+			height: 4rem;
+		}
 		img {
 			object-fit: cover;
 		}
@@ -285,6 +261,7 @@
     </style>
 @endpush
 @push('script')
+
     <script>
         $(document).ready(function () {
             // Khi chọn loại báo cáo là "Khác" thì sẽ hiện ra textarea nhập nội dung

@@ -16,13 +16,14 @@ return new class extends Migration{
             $table->foreignId('id_role')->constrained('roles');
             $table->integer('social_id')->default(0);
             $table->string('image')->default('');
-            $table->string('fullname');
+            $table->string('fullname')->unique();
+            $table->string('slug');
             $table->string('email')->unique();
             $table->string('phone', 10);
             $table->string('address', 255);
             $table->string('password');
             $table->bigInteger('wallet')->default(0);
-
+            $table->bigInteger('number_view')->default(0);
             $table->string('token', 50)->nullable();
             $table->string('gender', 10)->default(0);
             $table->tinyInteger('status')->default(0);
