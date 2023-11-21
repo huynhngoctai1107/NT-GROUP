@@ -202,12 +202,12 @@
 			object-fit: cover;
 			/* Cách hình ảnh sẽ được hiển thị */
 		}
-		.shorten {
-			/*width: 450px; !* Độ rộng của phần tử chứa văn bản( điền bên style của thẻ trực tiếp)*!*/
-			white-space: nowrap; /* Ngăn chữ bị ngắt dòng */
-			overflow: hidden; /* Ẩn phần chữ dư thừa */
-			text-overflow: ellipsis; /* Hiển thị dấu ba chấm (...) khi chữ bị cắt */
-		}
+        .shorten {
+	        display: -webkit-box;
+	        -webkit-line-clamp: 2;
+	        -webkit-box-orient: vertical;
+	        overflow: hidden;
+        }
     </style>
 @endpush
 @push('script')

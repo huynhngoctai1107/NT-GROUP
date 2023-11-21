@@ -93,6 +93,23 @@
                                             </ul>
                                         </div>
                                     </div>
+                                    <h5 class="text-bold mb-3">Người đăng: </h5>
+                                    <div class="nearby-user">
+                                        <div class="row align-items-center">
+                                            <div class="col-md-2 col-sm-12 text-center mb-3">
+                                                <img src="{{asset('images/users/'.$data->user_image )}}" alt="user" class="profile-photo-lg rounded-circle" style="width: 100px; height: 100px;">
+                                            </div>
+                                            <div class="col-md-5 col-sm-12 text-center">
+                                                <h5><a href="#" class="profile-link">{{$data->fullname}}</a></h5>
+                                                <p>Model at Fashion</p>
+                                                <div class="d-flex justify-content-center">
+                                                    <button class="btn btn-primary me-2"><a href="#">Chi Tiết</a></button>
+                                                    <button class="btn btn-primary"><a href="tel:{{$data->user_phone}}">Liên Hệ</a></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     <div class="product_share">
                                         <span>Chia sẻ:</span>
                                         <ul class="social_icons">
@@ -137,7 +154,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td>Vị trí</td>
-                                                    <td>{{$data->address}}</td>
+                                                    <td>{{$data->posts_address}}</td>
                                                 </tr>
                                             </table>
                                         </div>

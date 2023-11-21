@@ -28,7 +28,7 @@ class RegisterRequest extends FormRequest{
             'checkbok'              => 'required',
             'address'               => 'required',
              'email'                 => 'bail||required|email|unique:users,email',
-            'phone'                 => 'bail|required|min:9|numeric',
+            'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:9',
             'password'              => [
                 'required',
                 'string',
@@ -55,7 +55,7 @@ class RegisterRequest extends FormRequest{
             'email.unique'                   => 'Email đã tồn tại trong hệ thống',
             'email.email'                    => 'Email chưa đúng định dạng',
             'phone.required'                 => 'Vui lòng nhập vào số điện thoại',
-             'phone.numeric'                  => 'Số điện thoại sai định dạng',
+             'phone.regex'                  => 'Số điện thoại sai định dạng',
             'phone.min'                      => 'Số điện thoại chưa đúng định dạng',
             'password.required'              => 'Vui lòng nhập vào mật khẩu',
             'password.min'                   => 'Độ dài tối thiểu là 10',

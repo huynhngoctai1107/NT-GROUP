@@ -168,6 +168,10 @@ class Post extends Model{
             'category_posts.slug as slug_category',
             'demands.name as name_demand',
             'demands.slug as slug_demand',
+            'users.fullname as fullname',
+            'users.email as email',
+            'users.image  as user_image',
+            'users.phone  as user_phone',
             'posts.id_user',
             'posts.featured_news',
             'posts.delete as delete_posts',
@@ -175,7 +179,7 @@ class Post extends Model{
             'title',
             'content',
             'acreages',
-            'address',
+            'posts.address as posts_address',
             'number_views',
             'posts.price as price_posts',
             'subtitles',
@@ -185,6 +189,7 @@ class Post extends Model{
                      ->join('medias', 'medias.id_post', '=', 'posts.id')
                      ->join('demands', 'demands.id', '=', 'posts.id_demand')
                      ->join('category_posts', 'category_posts.id', '=', 'posts.id_category')
+                     ->join('users', 'users.id', '=', 'posts.id_user')
                      ->where($condition)
                      ->groupBy('id_post')
                      ->first();

@@ -16,8 +16,8 @@
             </div>
             <div class="col-md-8">
                 <div class="card-body">
-                    <h5 class="card-title fw-bold my-1 shorten"><a href="{{ route('postSingle',$item->slug_posts) }}">{{ $item->title }}</a></h5>
-                    <p class="card-title my-2 shorten">{!! $item->subtitles !!}</p>
+                    <h5 class="card-name card-title fw-bold my-1 shorten"><a href="{{ route('postSingle',$item->slug_posts) }}">{{ $item->title }}</a></h5>
+                    <p class="card-name card-title my-2 shorten">{!! $item->subtitles !!}</p>
                     <hr class="my-3">
                     <div class="d-md-flex justify-content-between">
                         <span class="price format-number text-warning fw-bold">{{$formatPrice($item->price)}}</span>

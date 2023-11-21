@@ -21,8 +21,8 @@ class BuildCosts extends Component
             'foundation' => 'required',
             'floor_type' => 'required',
             'basement_type' => 'required',
-            'wide' => 'required|numeric',
-            'long' => 'required|numeric',
+            'wide' => 'required|numeric|min:1|max:100',
+            'long' => 'required|numeric|min:1|max:100',
         ];
     }
     protected $validationAttributes = [
@@ -40,6 +40,8 @@ class BuildCosts extends Component
     protected $messages = [
         '*.required' => ':attribute không bỏ trống.',
         '*.numeric' => ':attribute không hợp lệ',
+        '*.max' => ':attribute tối đa 100m',
+        '*.min' => ':attribute tối thiểu 1m',
         ];
     public function calc_price(){
         //(mái * dv * %) + ((trệt + lầu)*dv * %)+ (hầm * dv * %) + (sân * dv * %) + (tum  * dv * %) + (thượng * dv * %)

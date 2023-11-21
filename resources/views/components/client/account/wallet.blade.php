@@ -58,7 +58,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="{{route('Payment_method')}}" method="POST" class="row g-3">
+                <form action="{{route('Payment_method')}}" method="POST">
                     @csrf
                     <div class="col-12">
                         <label for="so-tien">Số tiền</label>
@@ -80,7 +80,7 @@
                     </div>
                     <div class="d-grid gap-2">
                         <br/>
-                        <button name="redirect" class="btn btn-fill-out" type="button">Nạp Tiền</button>
+                        <button name="redirect" class="btn btn-fill-out" type="submit">Nạp Tiền</button>
                     </div>
                 </form>
             </div>

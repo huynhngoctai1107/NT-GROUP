@@ -59,16 +59,17 @@ class PostListController extends Controller
             $condition[] = ['id_demand', '=', $demand];
         }
 
-        if ($request->filled('ward') && $request->ward !== NULL) {
+        if ($request->filled('ward') && $request->filled('district') && $request->filled('city')) {
             $ward = implode(' - ', [$request->city, $request->district, $request->ward]);
             $condition[] = ['address', 'LIKE', "%$ward%"];
-        } elseif ($request->filled('district') && $request->district !== NULL) {
+        } elseif ($request->filled('district') && $request->filled('city')) {
             $district = implode(' - ', [$request->city, $request->district]);
             $condition[] = ['address', 'LIKE', "%$district%"];
-        } elseif ($request->filled('city') && $request->city !== NULL) {
+        } elseif ($request->filled('city')) {
             $city = $request->city;
             $condition[] = ['address', 'LIKE', "%$city%"];
         }
+
 
         if ($request->filled('price') && $request->price !== "Giá") {
             $price = $request->price;
