@@ -87,6 +87,18 @@ class AcreagesSeeder extends Seeder{
                 'name_max' => 1000,
 
             ],
+            [
+                'id'      => 13,
+                'name_min' => 1000,
+                'name_max' => 3000,
+
+            ],
+            [
+                'id'      => 14,
+                'name_min' => 3000,
+                'name_max' => 5000,
+
+            ],
 
         ];
         foreach ($data as $item){

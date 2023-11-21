@@ -48,28 +48,20 @@
 
     @stack('styles')
     @stack('css')
-{{--    <style>--}}
-{{--		@media (max-width: 767px) {--}}
-{{--			.bds .content h2, .bds .content p {--}}
-{{--				text-align: center;--}}
-{{--			}--}}
 
-{{--			.bds .content button {--}}
-{{--				margin: 0 auto;--}}
-{{--				display: flex;--}}
-{{--			}--}}
-{{--		}--}}
-{{--    </style>--}}
     @livewireStyles
 </head>
 
 <body>
-
+@include('client.pages.simple_html_dom')
 @include('client.header.nav')
 @include('client.header.tools')
+
+
+
 @yield('main')
 
-<div  id="scrollBtn" class="arrow-container animated fadeInDown" onclick="scrollToTop()">
+<div id="scrollBtn" class="arrow-container animated fadeInDown" onclick="scrollToTop()">
     <div class="arrow-2">
         <i class="fa fa-angle-up"></i>
     </div>

@@ -94,7 +94,7 @@ class Post extends Model{
     }
 
 
-    public function getPostList($condition, $orderBy, $random, $perPage = NULL){
+        public function getPostList($condition, $orderBy, $random, $perPage = NULL){
         $query = $this->where($condition)
                       ->select('posts.id as id_post', 'posts.slug as slug_posts',
                           'category_posts.name as name_category',

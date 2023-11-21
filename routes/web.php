@@ -48,6 +48,7 @@ use App\Http\Controllers\Admin\User\AddUserController;
 use App\Http\Controllers\Admin\User\DeleteUserController;
 use App\Http\Controllers\Admin\User\EditUserController;
 use App\Http\Controllers\Admin\User\ListUserController;
+use App\Http\Controllers\Client\Account\ProfileCotroller;
 
 // voucher
 use App\Http\Controllers\Admin\Voucher\AddVoucherController;
@@ -340,6 +341,10 @@ Route::group(['prefix' => '/'], function (){
     Route::get('/ket-qua/', [CalculateController::class, 'calculate'])->name('calculate');
     //404
     Route::get('bao-loi', [ErrorPageController::class, 'error'])->name('error');
+    // chi tiet tai khoan dang bai viet
+    Route::get('/thong-tin/{email}', [ProfileCotroller::class, 'Profile'])->name('Profile');
+
+
     Route::get('kich-hoat/{token}', [RegisterController::class, 'active'])->name('active');
     Route::get('/chi-tiet-tin/{slug}', [PostSingleController::class, 'postSingle'])
          ->name('postSingle');

@@ -24,19 +24,13 @@ class DemandsSeeder extends Seeder{
             ],
             [
                 'id'         => 2,
-                'name'       => 'Mua',
-                'slug'       => 'mua',
+                'name'       => 'Mua, Bán',
+                'slug'       => 'mua-ban',
                 'note'       => '',
                 'created_at' => date('Y-m-d'),
             ],
 
-            [
-                'id'         => 3,
-                'name'       => 'Bán',
-                'slug'       => 'ban',
-                'note'       => '',
-                'created_at' => date('Y-m-d'),
-            ],
+
         ];
         foreach ($data as $item){
             $model->addDemands($item);
