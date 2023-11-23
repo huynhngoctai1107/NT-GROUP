@@ -70,7 +70,7 @@ class User extends Authenticatable{
         return $this->where('id', '=', $id)->first();
     }
     public function first($condition){
-        return $this->select('users.id','name','id_role','fullname','phone','image','email','address','gender','users.created_at')->where($condition)->join('roles','roles.id','=','users.id_role')->groupby('users.id')->first();
+        return $this->select('users.id','slug','name','id_role','fullname','phone','image','email','address','gender','users.created_at')->where($condition)->join('roles','roles.id','=','users.id_role')->groupby('users.id')->first();
     }
 
     public function updateUser($data, $condition){

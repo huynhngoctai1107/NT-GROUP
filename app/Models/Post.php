@@ -177,6 +177,7 @@ class Post extends Model{
             'posts.delete as delete_posts',
             'demands.id as id_demand',
             'title',
+            'users.slug',
             'content',
             'acreages',
             'posts.address as posts_address',

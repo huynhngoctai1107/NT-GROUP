@@ -6,18 +6,22 @@
                     $imgPost = explode(',', $item->images);
                 @endphp
                 @for ($i = 0; $i < count($imgPost); $i++)
-                    <img width="" src='{{ asset('images/medias/' . $imgPost[$i]) }}' alt="{{ $imgPost[$i] }}">
+                    <a class="hover" href="{{route('postSingle',$item->slug_posts)}}">
+                        <img width="" src='{{ asset('images/medias/' . $imgPost[$i]) }}' alt="{{ $imgPost[$i] }}"> </a>
                     @break
                 @endfor
             </a>
         </td>
-        <td colspan="2" class="product-name " data-title="Tiêu đề"><span class="text-dark" style="
+
+        <td colspan="2" class="product-name " data-title="Tiêu đề">
+
+            <a href="{{route('postSingle',$item->slug_posts)}}" class="text-dark" style="
                     display:inline-block;
                     white-space: nowrap;
                     overflow: hidden;
                     text-overflow: ellipsis;
                     -webkit-line-clamp:1;
-                    max-width: 30ch;">{{ $item->title }}</span>
+                    max-width: 30ch;">{{ $item->title }}</a>
 
             <a href="{{route('search',$item->slug_category )}}" class="btn btn-fill-out fst-italic " type="button">
                 {{ $item->name_category }}</a>
@@ -60,9 +64,9 @@
             </form>
             @endif
         </td>
-        <td colspan="2">
-            <a href="{{route('postSingle',$item->slug_posts)}}" class="text-success" style="font-weight: bold;">Xem Chi tiết</a><br>
-        </td>
+        {{--        <td colspan="2">--}}
+        {{--            <a href="{{route('postSingle',$item->slug_posts)}}" class="text-success" style="font-weight: bold;">Xem Chi tiết</a><br>--}}
+        {{--        </td>--}}
 
         <td colspan="2">
             @if($item->delete_posts == 0)

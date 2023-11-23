@@ -236,6 +236,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['AdminLogin']], function (){
 
 });
 Route::group(['prefix' => '/', 'middleware' => ['Logout']], function (){
+    Route::get('/theo-doi/', [ProfileCotroller::class, 'follow'])->name('follow');
+    Route::get('/bo-theo-doi/', [ProfileCotroller::class, 'unFollow'])->name('unFollow');
     Route::get('dang-xuat', [LoginController::class, 'logout'])->name('logout');
 
 });
@@ -342,7 +344,7 @@ Route::group(['prefix' => '/'], function (){
     //404
     Route::get('bao-loi', [ErrorPageController::class, 'error'])->name('error');
     // chi tiet tai khoan dang bai viet
-    Route::get('/thong-tin/{email}', [ProfileCotroller::class, 'Profile'])->name('Profile');
+    Route::get('/thong-tin/{slug}', [ProfileCotroller::class, 'Profile'])->name('Profile');
 
 
     Route::get('kich-hoat/{token}', [RegisterController::class, 'active'])->name('active');

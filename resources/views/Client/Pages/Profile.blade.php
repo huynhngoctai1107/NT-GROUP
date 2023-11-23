@@ -6,57 +6,57 @@
 @section('main')
     <div class="container mt-5 mb-5">
         <div class="row justify-content-center">
+            @if(Session::has('success'))
+                <div class="alert alert-success text-center" role="alert">
+                    {{Session::get('success')}}
+                </div>
+            @endif
+            @if(Session::has('error'))
+                <div class="alert alert-danger text-center" role="alert">
+                    {{Session::get('error')}}
+                </div>
+            @endif
             <div class="col-md-4 col-12 mb-5 mb-lg-0 wow fadeIn">
-                {{--                <div class="card border-0 shadow">--}}
-                {{--                    <img src="{{asset('images/users/'.$user->image) }}" alt="...">--}}
-                {{--                    <div class="card-body p-1-9 p-xl-4">--}}
-                {{--                        <div class="mb-4">--}}
-                {{--                            <h3 class="h4 mb-0">{{$user->fullname ?? ""}}</h3>--}}
-                {{--                            <span class="text-primary">{{$user->name}}</span>--}}
-                {{--                        </div>--}}
-                {{--                        <ul class="list-unstyled mb-4">--}}
-                {{--                            <li class="mb-3">--}}
-                {{--                                <a href="#!"><i class="far fa-envelope display-25 me-3 text-secondary"></i>{{$user->email ?? "Đang cập nhật"}}--}}
-                {{--                                </a></li>--}}
-                {{--                            <li class="mb-3">--}}
-                {{--                                <a href="#!"><i class="fas fa-mobile-alt display-25 me-3 text-secondary"></i>{{$user->phone ?? "Đang cập nhật"}}--}}
-                {{--                                </a></li>--}}
-                {{--                            <li>--}}
-                {{--                                <a href="#!"><i class="fas fa-map-marker-alt display-25 me-3 text-secondary"></i>{{$user->address ?? "Đang cập nhật"}}--}}
-                {{--                                </a></li>--}}
-                {{--                        </ul>--}}
-
-                {{--                    </div>--}}
-                {{--                </div>--}}
-
 
                 <div class="card ">
                     <div class="p-4">
-                        <div class="d-flex justify-content-center flex-row">
+                        <div class="d-flex justify-content-center">
                             <div class="col-md-4 col-3 me-md-0 me-3 ">
                                 <img src="{{asset('images/users/'.$user->image) }}" alt="user" class="rounded-circle" width="100"/>
                             </div>
-                            <div class="pl-4 ps-md-4 col-md-8 col-4 " >
-                                <h3 class="h4 mb-1">{{$user->fullname ?? ""}}</h3>
-                                <span class="text-danger">{{$user->name}}</span>
-                                <br>
-                                <button class="btn btn-success btn-rounded text-white text-uppercase font-14 mt-3">
-                                    <i class="fa fa-plus mr-2"></i> Follow
-                                </button>
+                            <div class="ps-md-4 col-md-8 col-6  @if($follow == FALSE) flex-column justify-content-center mt-4 d-flex @endif ">
+                                <h3 class="h4 mb-0">{{$user->fullname ?? ""}}</h3>
+                                <p class="text-danger mb-3">{{$user->name}}</p>
+                                @if($follow == TRUE)
+
+                                    <form action="{{$checkFollower == NULL ? route('follow') : route('unFollow') }}" method="get">
+                                        <input type="hidden" name="id_user" value="{{$checkFollower == NULL ? auth()->user()->id : $user->id}}">
+                                        <input type="hidden" name="id_follower" value="{{$checkFollower == NULL ? $user->id : auth()->user()->id}}">
+                                        <button type="submit" class="button-24 py-2 px-3" role="button">
+                                            @if(empty($checkFollower))
+                                                <i class="fa fa-plus mr-2 "></i> Theo dõi
+                                            @else
+                                                <i class="fa fa-minus mr-2 "></i>  Bỏ theo dõi
+                                            @endif
+                                        </button>
+                                    </form>
+                                @endif
                             </div>
                         </div>
 
                     </div>
 
-                    <div class="row justify-content-center p-1 mb-2">
-                        <div class="col-6  justify-content-center d-flex flex-column align-items-center"><h5>Follow</h5>
+                    <div class="row justify-content-center p-1 my-2">
+                        <div class="col-6  justify-content-center d-flex flex-column align-items-center">
+                            <h5 data-bs-toggle="modal" data-bs-target="#staticBackdrop">Lượt theo dõi</h5>
                             <span style="font-weight:600 ">
-                                2
+                              {{$ViewFollow['total']->sum_follower ?? 0}}
                             </span>
                         </div>
-                        <div class="col-6 justify-content-center d-flex flex-column align-items-center"><h5>Lượt xem</h5>
+                        <div class="col-6 justify-content-center d-flex flex-column align-items-center">
+                            <h5 data-bs-toggle="modal" data-bs-target="#staticBackdropOne">Đã theo dõi</h5>
                             <span style="font-weight:600 ">
-                                2.5K
+                               {{$followed['total']->sum_follower ?? 0}}
                             </span>
                         </div>
 
@@ -95,13 +95,101 @@
                 {{ $post->links('pagination::bootstrap-4') }}
             </div>
         </div>
+        {{--            // danh sach follow--}}
+        <div class="modal fade mt-0" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Danh sách tài khoản theo dõi</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <x-client.account.follower :getFollow="$ViewFollow['getview']" check=""></x-client.account.follower>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{--        // danh sach dang follow--}}
+        <div class="modal fade mt-0" id="staticBackdropOne" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabelOne" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabelOne">Danh sách tài khoản đã theo dõi</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        @if(auth()->check())
+                            @if($follow == FALSE)
+                                <x-client.account.follower :getFollow="$followed['getview']" :check="$user->id"></x-client.account.follower>
+                            @else
+                                Danh sách này bị ẩn khi không phải chủ tài khoản này!
+                            @endif
+                        @else
+                            Danh sách này bị ẩn khi không phải chủ tài khoản này!
+                        @endif
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
     </div>
+
 @endsection
 @push('styles')
     <style>
 		.bi {
 			font-size: 23px !important;
 		}
+		.modal {
+			top: 0% !important;
+		}
+		.button-24 {
+			background: #FF4742;
+			border: 1px solid #FF4742;
+			border-radius: 6px;
+			box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+			box-sizing: border-box;
+			color: #FFFFFF;
+			cursor: pointer;
+			display: inline-block;
+			font-family: nunito, roboto, proxima-nova, "proxima nova", sans-serif;
+			font-size: 14px;
+			font-weight: 600;
+			line-height: 16px;
+			min-height: 40px;
+			outline: 0;
+			padding: 12px 14px;
+			text-align: center;
+			text-rendering: geometricprecision;
+			text-transform: none;
+			user-select: none;
+			-webkit-user-select: none;
+			touch-action: manipulation;
+			vertical-align: middle;
+		}
+
+		.button-24:hover,
+		.button-24:active {
+			background-color: initial;
+			background-position: 0 0;
+			color: #FF4742;
+		}
+
+		.button-24:active {
+			opacity: .5;
+		}
+
 
     </style>
     <!-- Bootstrap Font Icon CSS -->

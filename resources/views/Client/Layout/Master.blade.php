@@ -41,6 +41,8 @@
     <!-- Style CSS -->
     <link rel="stylesheet" href="{{asset('client/css/style.css')}}">
     <link rel="stylesheet" href="{{asset('client/css/responsive.css')}}">
+
+
     {!! RecaptchaV3::initJs() !!}
 
 
@@ -76,8 +78,8 @@
 <script src="{{asset('client/js/jquery-3.6.0.min.js')}}"></script>
 <!-- popper min js -->
 <script src="{{asset('client/js/popper.min.js')}}"></script>
-<!-- Latest compiled and minified Bootstrap -->
-<script src="{{asset('client/bootstrap/js/bootstrap.min.js')}}"></script>
+
+
 <!-- owl-carousel min js  -->
 <script src="{{asset('client/owlcarousel/js/owl.carousel.min.js')}}"></script>
 <!-- magnific-popup min js  -->
@@ -100,18 +102,22 @@
 <script src="{{asset('client/js/jquery.elevatezoom.js')}}"></script>
 <!-- scripts js -->
 <script src="{{asset('client/js/scripts.js')}}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 @stack('javascript')
 
 @stack('script')
 <script>
     // Hiển thị nút khi cuộn xuống một khoảng cách cụ thể
-    window.onscroll = function() {scrollFunction()};
+    window.onscroll = function () {
+        scrollFunction()
+    };
 
     function scrollFunction() {
         var scrollBtn = document.getElementById("scrollBtn");
         if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
             scrollBtn.style.display = "block";
-        } else {
+        }
+        else {
             scrollBtn.style.display = "none";
         }
     }

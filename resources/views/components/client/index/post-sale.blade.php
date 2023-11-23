@@ -1,3 +1,5 @@
+
+
 @foreach($list as $item )
     <div class="card mt-3 px-3">
         <div class="row">

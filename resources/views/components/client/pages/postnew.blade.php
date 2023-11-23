@@ -5,7 +5,7 @@
  
     <th colspan="2">Địa chỉ</th>
      <th colspan="2">Trạng thái</th>
-    <th colspan="2">Xem</th>
+
     
     <th colspan="2">Nghiệp vụ</th>
 </tr>
