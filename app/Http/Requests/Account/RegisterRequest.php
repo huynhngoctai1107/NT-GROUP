@@ -27,8 +27,8 @@ class RegisterRequest extends FormRequest{
             'uploadfile'            => 'required',
             'checkbok'              => 'required',
             'address'               => 'required',
-            'email'                 => 'bail||required|email|unique:users,email',
-            'phone'                 => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:9',
+             'email'                 => 'bail||required|email|unique:users,email',
+            'phone' => ['required', 'regex:/^(0[0-9]{9}|84[0-9]{8})$/'],
             'password'              => [
                 'required',
                 'string',

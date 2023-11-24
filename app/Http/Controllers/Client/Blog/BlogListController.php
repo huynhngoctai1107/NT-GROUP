@@ -3,26 +3,59 @@
 namespace App\Http\Controllers\Client\Blog;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
+use App\Models\Blog;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
 class BlogListController extends Controller
 {
+    public $blog;
     public $post;
-    public $category;
     public function __construct()
     {
+        $this->blog = new Blog();
         $this->post = new Post();
-        $this->category = new Category();
     }
-    function listBlog(){
-        $condition = [
+    function listBlog()
+    {
+        $condition = [];
+        $data = $this->blog->listBlog($condition);
+        $condition1 = [
             ['delete', '=', 0],
+            ['status', '=', 1],
         ];
-        $data = $this->post->getPostList($condition);
-        $category = $this->category->GetCategory();
-        return view('Client.Pages.BlogList',['page'=>'blog', 'list'=>$data, 'category'=>$category]);
-
+        $list = $this->post->getPostList($condition1, null, TRUE)->take(5);
+        return view('Client.Pages.BlogList', ['data' => $data, 'list'=>$list]);
     }
+
+    function SearchBlog(Request $request)
+    {
+        $condition = [];
+        $keyword = isset($_GET['keyword']) ? $_GET['keyword'] : null;
+
+        if ($keyword !== null) {
+            if (!$request->keyword) {
+                return redirect()->back();
+            }
+            $keyword = $request->keyword;
+            $keyword = preg_replace('/\s+/', ' ', $keyword);
+            $keyword = trim($keyword);
+            $condition[] = ['title', 'LIKE', "%$keyword%"];
+        }
+
+        $data = $this->blog->listBlog($condition);
+        $condition1 = [
+            ['delete', '=', 0],
+            ['status', '=', 1],
+        ];
+        $list = $this->post->getPostList($condition1, null, true)->take(5);
+
+        if ($data->isEmpty()) {
+            $message = 'Không tìm thấy kết quả.';
+            return view('Client.Pages.BlogList', compact('data', 'list', 'message'));
+        } else {
+            return view('Client.Pages.BlogList', compact('data', 'list'));
+        }
+    }
+
 }

@@ -25,14 +25,6 @@
                                             <a href="javascript:Void(0);" class="shorting_icon grid"><i class="ti-view-grid"></i></a>
                                             <a href="javascript:Void(0);" class="shorting_icon list active"><i class="ti-layout-list-thumb"></i></a>
                                         </div>
-{{--                                        <div class="custom_select">--}}
-{{--                                            <select class="form-control form-control-sm">--}}
-{{--                                                <option value="">Hiển thị</option>--}}
-{{--                                                <option value="9">9</option>--}}
-{{--                                                <option value="12">12</option>--}}
-{{--                                                <option value="18">18</option>--}}
-{{--                                            </select>--}}
-{{--                                        </div>--}}
                                     </div>
                                 </div>
                             </div>

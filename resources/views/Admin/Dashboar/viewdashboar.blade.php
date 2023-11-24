@@ -4,6 +4,7 @@
 @endsection
 
 @section('main')
+    <!-- Main Sidebar Container -->
 
     @if(auth()->user()->id_role == 1 )
 
@@ -14,12 +15,12 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Dashboard</h1>
+                            <h1 class="m-0">Thống Kê</h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Dashboard v1</li>
+                                <li class="breadcrumb-item"><a href="#">Trang Chủ</a></li>
+                                <li class="breadcrumb-item active">Thống kê</li>
 
                             </ol>
 
@@ -218,7 +219,7 @@
                             </ul>
 
                             <!-- Tab panes -->
-                            <div class="tab-content">
+                            <div class="tab-content m-3">
                                 <div class="tab-pane active" id="posts">
                                     <h5>Biểu đồ thống kế bài viết</h5>
                                     <x-client.account.charts.post-charts :dates="$dates" :vip="$vip" :charts="$charts"></x-client.account.charts.post-charts>

@@ -1,5 +1,5 @@
 @foreach($list as $item)
-    <div class="col-lg-3 col-md-4 col-6">
+    <div class="col-lg-3 col-md-4 col-6 px-3">
         <div class="product">
             @php
                 // Tách chuỗi thành mảng

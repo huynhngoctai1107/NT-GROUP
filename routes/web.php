@@ -98,7 +98,10 @@ use App\Http\Controllers\Client\Search\SearchController;
 use App\Http\Controllers\Client\Tools\CalculateController;
 use App\Http\Controllers\Client\Tools\DesignCostsController;
 use App\Http\Controllers\Client\Tools\MapLocationController;
-use \App\Http\Controllers\Client\Tools\BuildController;
+use App\Http\Controllers\Client\Tools\BuildController;
+
+//bai viet wp
+use App\Http\Controllers\Client\Blog\BlogSingleController;
 
 Route::group(['prefix' => 'admin', 'middleware' => ['AdminLogin']], function (){
 
@@ -388,6 +391,12 @@ Route::group(['prefix' => '/'], function (){
              ->name('restoreEmail');
         Route::post('/tim-kiem-email', [ListEmailController::class, 'SearchEmail'])
              ->name('SearchEmail');
+    });
+
+    Route::group(['prefix' => 'tin-tuc'], function (){
+        Route::get('/danh-sach', [BlogListController::class, 'listBlog'])->name('listBlog');
+        Route::get('/chi-tiet/{slug}', [BlogSingleController::class, 'SingleBlog'])->name('SingleBlog');
+        Route::get('/tim-kiem', [BlogListController::class, 'SearchBlog'])->name('SearchBlog');
     });
 
 });

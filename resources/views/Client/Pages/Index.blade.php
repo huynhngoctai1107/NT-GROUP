@@ -72,7 +72,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="tab-content">
-                        <div class="row shop_container">
+                        <div class="row shop_container px-3">
                             <x-client.index.post :list="$vip">
 
                             </x-client.index.post>
@@ -101,7 +101,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="tab-content">
-                            <div class="row shop_container">
+                            <div class="row shop_container px-3">
                                 <x-client.index.post :list="$hot">
 
                                 </x-client.index.post>
