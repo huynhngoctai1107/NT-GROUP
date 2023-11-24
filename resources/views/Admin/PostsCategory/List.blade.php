@@ -1,4 +1,4 @@
-@extends('Admin.Layout.master')
+@extends('Admin.Layout.Master')
 
 
 {{-- css --}}
@@ -30,11 +30,12 @@
                             <h3 class="card-title"> Quản lý bài viết</h3>
                         </div>
                         <div class="w-50 d-flex justify-content-end">
-                            <form  action="{{route('searchListPost')}}" method="post">
+                            <form action="{{route('searchListPost')}}" method="post">
                                 @csrf
                                 <div class="input-group rounded mt-3">
                                     <input type="text" placeholder="Nhập từ khóa tìm kiếm" class="form-control ps-2" id="search_input" name="keyword">
-                                    <button type="submit" class="input-group-text border-0"><i class="fas fa-search"></i></button>
+                                    <button type="submit" class="input-group-text border-0">
+                                        <i class="fas fa-search"></i></button>
                                 </div>
                             </form>
                         </div>
@@ -80,7 +81,9 @@
                                             {{$item->status ? 'Hiện':'Ẩn'}}
                                         </a>
                                     </td>
-                                    <td><a href="{{route('postSingle', $item->slug)}}" class="btn btn-outline-success btn-sm">Xem</a></td>
+                                    <td>
+                                        <a href="{{route('postSingle', $item->slug)}}" class="btn btn-outline-success btn-sm">Xem</a>
+                                    </td>
                                     <td>
                                         <a href="{{route('editPosts', $item->slug)}}" class="btn btn-outline-success btn-sm">Sửa</a>
                                         <a href="{{route('deleteHistory', $item->slug)}}" class="btn btn-outline-danger btn-sm">Xóa</a>

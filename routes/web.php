@@ -101,6 +101,7 @@ use App\Http\Controllers\Client\Tools\MapLocationController;
 use \App\Http\Controllers\Client\Tools\BuildController;
 
 Route::group(['prefix' => 'admin', 'middleware' => ['AdminLogin']], function (){
+
     Route::get('/', [ViewDashboardController::class, 'dashboar'])->name('dashboar');
     Route::group(['prefix' => 'nhu-cau'], function (){
         Route::get('/danh-sach', [ListDemandController::class, 'listDemand'])->name('listDemand');
@@ -128,6 +129,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['AdminLogin']], function (){
         Route::post('/', [ListCategoryController::class, 'SearchCategory'])->name('SearchCategory');
     });
     Route::group(['prefix' => 'lien-he', 'middleware' => ['Roles']], function (){
+
         Route::get('/danh-sach-lien-he', [ListContactController::class, 'listContact'])
              ->name('listContact');
         Route::get('/xoa-lien-he/{id}', [DeleteContactController::class, 'deleteContact'])

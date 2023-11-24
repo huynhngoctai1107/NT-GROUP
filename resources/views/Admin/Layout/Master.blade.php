@@ -31,22 +31,26 @@
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
+
 <x-admin.nav.navbar></x-admin.nav.navbar>
 <div class="wrapper bg-white" style="background-color: white !important ">
 
 
-    <!-- Main content -->
     @yield('main')
 
-    <!-- /.content -->
+
 </div>
 
 
-<x-admin.footer.footer>
-</x-admin.footer.footer>
+<x-admin.footer.footer></x-admin.footer.footer>
 @stack('javascript')
- </body>
+</body>
+<style>
+    .content-wrapper{
+        background-color: #fff;
+    }
 
+</style>
 <script>
     document.getElementById('toggleOldPassword').addEventListener('click', function () {
         var passwordInput = document.getElementById('exampleInputPassword');

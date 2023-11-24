@@ -22,13 +22,13 @@ class RegisterRequest extends FormRequest{
     public function rules()
     : array{
         return [
-            'fullname'              => 'bail|required|min:3|max:100|regex:/^[\p{L}\p{M}\s.\-]+$/u',
+            'fullname'              => 'bail|required|min:3|max:100|regex:/^[\p{L}\p{M}\s.\-]+$/u|unique:users,fullname',
             'gender'                => 'required|in:nam,nữ',
             'uploadfile'            => 'required',
             'checkbok'              => 'required',
             'address'               => 'required',
-             'email'                 => 'bail||required|email|unique:users,email',
-            'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:9',
+            'email'                 => 'bail||required|email|unique:users,email',
+            'phone'                 => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:9',
             'password'              => [
                 'required',
                 'string',
@@ -47,6 +47,7 @@ class RegisterRequest extends FormRequest{
             'fullname.required'              => 'Vui lòng nhập vào Họ và Tên',
             'fullname.min'                   => 'Độ dài tối thiểu là 3',
             'fullname.max'                   => 'Độ dài tối đa là 100',
+            'fullname.unique'                => 'Họ và tên đã tồn tại trong hệ thống.',
             'checkbok.required'              => 'Vui lòng chọn điều khoản',
             'gender.required'                => 'Vui lòng chọn giới tính',
             'uploadfile.required'            => 'Vui lòng nhập hình ảnh',
@@ -55,7 +56,7 @@ class RegisterRequest extends FormRequest{
             'email.unique'                   => 'Email đã tồn tại trong hệ thống',
             'email.email'                    => 'Email chưa đúng định dạng',
             'phone.required'                 => 'Vui lòng nhập vào số điện thoại',
-             'phone.regex'                  => 'Số điện thoại sai định dạng',
+            'phone.regex'                    => 'Số điện thoại sai định dạng',
             'phone.min'                      => 'Số điện thoại chưa đúng định dạng',
             'password.required'              => 'Vui lòng nhập vào mật khẩu',
             'password.min'                   => 'Độ dài tối thiểu là 10',

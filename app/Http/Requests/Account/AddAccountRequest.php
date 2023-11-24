@@ -23,7 +23,7 @@ class AddAccountRequest extends FormRequest
     {
         return [
             'id_role'  => 'required',
-            'fullname' => 'required|min:5|max:30',
+            'fullname' => 'required|min:5|max:30|unique:users,fullname',
             'email'    => 'required|email|unique:users,email',
             'password' => 'required|min:10|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/',
             'gender'   => 'required',
@@ -46,6 +46,7 @@ class AddAccountRequest extends FormRequest
             'fullname.required' => 'Vui lòng nhập họ và tên.',
             'fullname.min'      => 'Vui lòng nhập họ và tên tối thiểu 5 kí tự.',
             'fullname.max'      => 'Vui lòng nhập họ và tên tối đa 30 kí tự.',
+            'fullname.unique'      => 'Họ và tên đã tồn tại trong hệ thống.',
             'email.required'    => 'Vui lòng nhập địa chỉ email.',
             'email.email'       => 'Vui lòng nhập địa chỉ email hợp lệ.',
             'email.unique'      => 'Địa chỉ email đã tồn tại.',

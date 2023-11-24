@@ -28,32 +28,32 @@ class RegisterController extends Controller{
     function registerFrom(RegisterRequest $request){
 
 
-            if ($request->has('uploadfile')){
-                $fileName = time() . '-' . 'product' . '.' . $request->uploadfile->extension();
-                $request->uploadfile->move(public_path("img/users"), $fileName);
-                $request->merge(['image' => $fileName]);
-            }
-            $data = [
-                'fullname'   => $request->fullname,
-                    'slug'   => Str::slug($request->fullname),
-                'email'      => $request->email,
-                'image'      => $request->image,
-                'phone'      => $request->phone,
-                'password'   => Hash:: make($request->password),
-                'id_role'    => 3,
-                'status'     => 0,
-                'address'    => $request->address,
-                'wallet'     => 0,
-                'token'      => strtoupper(Str::random(10)),
-                'gender'     => $request->gender,
-                'created_at' => date('Y-m-d'),
-            ];
-            $user = User::create($data);
-            $this->mail->activateMaill($user);
+        if ($request->has('uploadfile')){
+            $fileName = time() . '-' . 'product' . '.' . $request->uploadfile->extension();
+            $request->uploadfile->move(public_path("img/users"), $fileName);
+            $request->merge(['image' => $fileName]);
+        }
+        $data = [
+            'fullname'   => $request->fullname,
+            'slug'       => Str::slug($request->fullname),
+            'email'      => $request->email,
+            'image'      => $request->image,
+            'phone'      => $request->phone,
+            'password'   => Hash:: make($request->password),
+            'id_role'    => 3,
+            'status'     => 0,
+            'address'    => $request->address,
+            'wallet'     => 0,
+            'token'      => strtoupper(Str::random(10)),
+            'gender'     => $request->gender,
+            'created_at' => date('Y-m-d'),
+        ];
+        $user = User::create($data);
+        $this->mail->activateMaill($user);
 
-            return Redirect()
-                ->back()
-                ->with('success', 'Đăng ký thành công, vui lòng kích hoạt tài khoản để đăng nhập');
+        return Redirect()
+            ->back()
+            ->with('success', 'Đăng ký thành công, vui lòng kích hoạt tài khoản để đăng nhập');
 
 
     }
@@ -83,17 +83,17 @@ class RegisterController extends Controller{
                 $data = [
                     'token' => strtoupper(Str::random(10)),
                 ];
-                    $this->user->updateUser($data, $condition);
+                $this->user->updateUser($data, $condition);
 
                 return Redirect()
                     ->route('error')
-                    ->with(['error'=> "Đã quá thời gian đổi mật khẩu là 15 PHÚT. Tài khoản đã bị khóa xin lòng liên hệ Admin","title"=>403]); //404
+                    ->with(['error' => "Đã quá thời gian đổi mật khẩu là 15 PHÚT. Tài khoản đã bị khóa xin lòng liên hệ Admin", "title" => 403]); //404
 
             }
         }else{
             return Redirect()
                 ->route('error')
-                ->with(['error'=> "Tài khoản đã được kích hoạt hoặc đã quá thời gian kích hoạt. Mọi thắc mắc xin liên hệ Admin để giải quyết","title"=>403]); //404
+                ->with(['error' => "Tài khoản đã được kích hoạt hoặc đã quá thời gian kích hoạt. Mọi thắc mắc xin liên hệ Admin để giải quyết", "title" => 403]); //404
 
         }
 

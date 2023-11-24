@@ -1,4 +1,4 @@
-@extends('Admin.Layout.master')
+@extends('Admin.Layout.Master')
 
 
 {{-- css --}}
@@ -69,14 +69,15 @@
                         <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
-                    <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Email</label>
-                        <input type="text" class="form-control @error('email') is-invalid @enderror" value="{{ $page == 'addUser' ? old('email') : $data->email }}" name="email" id="exampleInputEmail1" aria-describedby="emailHelp">
-                        @error('email')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
-                    @if ($page == 'addUser')
+                    @if($page == 'addUser')
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Email</label>
+                            <input type="text" class="form-control @error('email') is-invalid @enderror" value="{{ $page == 'addUser' ? old('email') : $data->email }}" name="email" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            @error('email')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
                         <div class="mb-3">
                             <label for="exampleInputPassword" class="form-label">Mật khẩu</label>
                             <input type="password" class="form-control @error('password') is-invalid @enderror" value="" name="password" id="exampleInputPassword" aria-describedby="PasswordHelp">
@@ -145,4 +146,4 @@
 
             </script>
 
-        @endsection
+@endsection

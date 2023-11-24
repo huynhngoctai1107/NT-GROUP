@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\Account\AddAccountRequest;
+use Illuminate\Support\Str;
 
 class AddUserController extends Controller{
 
@@ -25,7 +26,7 @@ class AddUserController extends Controller{
 
     public function formAddUser(AddAccountRequest $request){
         // Xử lý tải lên hình ảnh
-        $fileName  = NULL;
+        $fileName = NULL;
         if ($request->hasFile('image')){
             $fileName = time() . '-' . 'users' . '.' . $request->image->extension();
             $request->image->move(public_path("images"), $fileName);
@@ -35,6 +36,7 @@ class AddUserController extends Controller{
         $userData = [
             'id_role'  => $request->id_role,
             'fullname' => $request->fullname,
+            'slug'     => Str::slug($request->fullname),
             'email'    => $request->email,
             'wallet'   => $request->wallet,
             'gender'   => $request->gender,
@@ -48,6 +50,7 @@ class AddUserController extends Controller{
 
         return redirect()
             ->route('listUser')
-            ->with('success', 'Thêm tài khoản người dùng " ' .$request->fullname. ' " thành công');
+            ->with('success',
+                'Thêm tài khoản người dùng " ' . $request->fullname . ' " thành công');
     }
 }

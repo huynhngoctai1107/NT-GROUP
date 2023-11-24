@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Demand;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class EditCategoryRequest extends FormRequest
+class EditDemandRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,21 +23,21 @@ class EditCategoryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'category' => [
+            'demand' => [
                 'required',
                 'min:3',
                 'max:100',
-                Rule::unique('category_posts', 'name')->ignore($this->slug, 'slug'),
+                Rule::unique('demands', 'name')->ignore($this->slug, 'slug'),
             ],
         ];
     }
+
     public function messages(){
         return [
-            'category.required' => 'Vui lòng nhập vào tên danh mục',
-            'category.unique' => 'Tên danh mục đã tồn tại',
-            'category.min' => 'Tên danh mục từ 3 ký tự trở lên',
-            'category.max' => 'Tên danh mục dưới 100 ký tự',
+            'demand.required' => 'Vui lòng nhập vào tên nhu cầu',
+            'demand.unique' => 'Tên nhu cầu đã tồn tại',
+            'demand.min' => 'Tên nhu cầu từ 3 ký tự trở lên',
+            'demand.max' => 'Tên nhu cầu dưới 100 ký tự',
         ];
     }
-
 }

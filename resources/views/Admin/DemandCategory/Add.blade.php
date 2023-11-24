@@ -1,96 +1,96 @@
-@extends('Admin.Layout.master')
+@extends('Admin.Layout.Master')
 
 
 {{-- css --}}
 @section('link')
-<!-- iCheck for checkboxes and radio inputs -->
-<link rel="stylesheet" href="{{ asset('plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
-<!-- Bootstrap Color Picker -->
-<link rel="stylesheet" href="{{ asset('plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css') }}">
-<!-- Select2 -->
-<link rel="stylesheet" href="{{ asset('plugins/select2/css/select2.min.css') }}">
-<link rel="stylesheet" href="{{ asset('plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
-<!-- Bootstrap4 Duallistbox -->
-<link rel="stylesheet" href="{{ asset('plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css') }}">
-<!-- BS Stepper -->
-<link rel="stylesheet" href="{{ asset('plugins/bs-stepper/css/bs-stepper.min.css') }}">
-<!-- dropzonejs -->
-<link rel="stylesheet" href="{{ asset('plugins/dropzone/min/dropzone.min.css') }}">
-{{-- endcss --}}
+    <!-- iCheck for checkboxes and radio inputs -->
+    <link rel="stylesheet" href="{{ asset('plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
+    <!-- Bootstrap Color Picker -->
+    <link rel="stylesheet" href="{{ asset('plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css') }}">
+    <!-- Select2 -->
+    <link rel="stylesheet" href="{{ asset('plugins/select2/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
+    <!-- Bootstrap4 Duallistbox -->
+    <link rel="stylesheet" href="{{ asset('plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css') }}">
+    <!-- BS Stepper -->
+    <link rel="stylesheet" href="{{ asset('plugins/bs-stepper/css/bs-stepper.min.css') }}">
+    <!-- dropzonejs -->
+    <link rel="stylesheet" href="{{ asset('plugins/dropzone/min/dropzone.min.css') }}">
+    {{-- endcss --}}
 
 
-{{-- title --}}
+    {{-- title --}}
 @endsection
 @section('title')
-@if ($page == 'demand')
-Thêm nhu cầu
-@else
-Thêm danh mục bài viết
-@endif
+    @if ($page == 'demand')
+        Thêm nhu cầu
+    @else
+        Thêm danh mục bài viết
+    @endif
 @endsection
 {{-- endtitle --}}
 
 @section('main')
-<div class="hold-transition sidebar-mini">
-    <div class="wrapper">
-        <div class="content-wrapper">
-            <form action="{{route($page=='demand'?'addDemand':'addCategory' )}}" method="post" class="mx-5 pt-4">
-                @csrf
-                <div class="mb-3">
-                    @if ($errors->has($page == 'demand' ? 'demand' : 'category'))
-                        <div class="alert alert-danger mt-3">{{ $errors->first($page == 'demand' ? 'demand' : 'category') }}
-                        </div>
-                    @endif
-                    <label for="exampleInputEmail1" class="form-label">Tên {{$page=="demand"?'nhu cầu':'danh
+    <div class="hold-transition sidebar-mini">
+        <div class="wrapper">
+            <div class="content-wrapper">
+                <form action="{{route($page=='demand'?'addDemand':'addCategory' )}}" method="post" class="mx-5 pt-4">
+                    @csrf
+                    <div class="mb-3">
+                        @if ($errors->has($page == 'demand' ? 'demand' : 'category'))
+                            <div class="alert alert-danger mt-3">{{ $errors->first($page == 'demand' ? 'demand' : 'category') }}
+                            </div>
+                        @endif
+                        <label for="exampleInputEmail1" class="form-label">Tên {{$page=="demand"?'nhu cầu':'danh
                         mục'}}</label>
 
-                    <input type="text" placeholder="Nhập vào ..." class="form-control" value="{{old($page=="demand"?'demand':'category')}}" name="{{$page=="demand"?'demand':'category'}}" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <input type="text" placeholder="Nhập vào ..." class="form-control" value="{{old($page=="demand"?'demand':'category')}}" name="{{$page=="demand"?'demand':'category'}}" id="exampleInputEmail1" aria-describedby="emailHelp">
 
 
-                </div>
-                <div class="form-outline mb-4">
-                    <label class="form-label" for="textAreaExample6">Ghi chú</label>
+                    </div>
+                    <div class="form-outline mb-4">
+                        <label class="form-label" for="textAreaExample6">Ghi chú</label>
 
-                    <textarea class="form-control" name="note" id="textAreaExample6" rows="3">{{old('note')}}</textarea>
-                </div>
+                        <textarea class="form-control" name="note" id="textAreaExample6" rows="3">{{old('note')}}</textarea>
+                    </div>
 
-                <button type="submit" class="btn btn-primary">Thêm</button>
-            </form>
+                    <button type="submit" class="btn btn-primary">Thêm</button>
+                </form>
+            </div>
         </div>
     </div>
-</div>
 
 @endsection
 
 {{-- javascript --}}
 @section('js')
-<script src="../../plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- Select2 -->
-<script src="../../plugins/select2/js/select2.full.min.js"></script>
-<!-- Bootstrap4 Duallistbox -->
-<script src="../../plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
-<!-- InputMask -->
-<script src="../../plugins/moment/moment.min.js"></script>
-<script src="../../plugins/inputmask/jquery.inputmask.min.js"></script>
-<!-- date-range-picker -->
-<script src="../../plugins/daterangepicker/daterangepicker.js"></script>
-<!-- bootstrap color picker -->
-<script src="../../plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
-<!-- Tempusdominus Bootstrap 4 -->
-<script src="../../plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
-<!-- BS-Stepper -->
-<script src="../../plugins/bs-stepper/js/bs-stepper.min.js"></script>
-<!-- dropzonejs -->
-<script src="../../plugins/dropzone/min/dropzone.min.js"></script>
-<!-- AdminLTE App -->
-<script src="../../dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="../../dist/js/demo.js"></script>
-<!-- Page specific script -->
-<script>
-    $(function () {
+    <script src="../../plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Select2 -->
+    <script src="../../plugins/select2/js/select2.full.min.js"></script>
+    <!-- Bootstrap4 Duallistbox -->
+    <script src="../../plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+    <!-- InputMask -->
+    <script src="../../plugins/moment/moment.min.js"></script>
+    <script src="../../plugins/inputmask/jquery.inputmask.min.js"></script>
+    <!-- date-range-picker -->
+    <script src="../../plugins/daterangepicker/daterangepicker.js"></script>
+    <!-- bootstrap color picker -->
+    <script src="../../plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
+    <!-- Tempusdominus Bootstrap 4 -->
+    <script src="../../plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+    <!-- BS-Stepper -->
+    <script src="../../plugins/bs-stepper/js/bs-stepper.min.js"></script>
+    <!-- dropzonejs -->
+    <script src="../../plugins/dropzone/min/dropzone.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="../../dist/js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="../../dist/js/demo.js"></script>
+    <!-- Page specific script -->
+    <script>
+        $(function () {
             //Initialize Select2 Elements
             $('.select2').select2()
 
@@ -228,7 +228,7 @@ Thêm danh mục bài viết
             myDropzone.removeAllFiles(true)
         }
         // DropzoneJS Demo Code End
-</script>
+    </script>
 @endsection
 {{-- endjavascript --}}
 

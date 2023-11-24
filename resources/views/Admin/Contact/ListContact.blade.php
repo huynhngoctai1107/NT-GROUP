@@ -1,4 +1,4 @@
-@extends('Admin.Layout.master')
+@extends('Admin.Layout.Master')
 @push('link')
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -29,7 +29,8 @@
                                 @csrf
                                 <div class="input-group rounded mt-3">
                                     <input type="text" placeholder="Nhập từ khóa tìm kiếm" class="form-control ps-2" id="search_input" name="keyword">
-                                    <button type="submit" class="input-group-text border-0"><i class="fas fa-search"></i></button>
+                                    <button type="submit" class="input-group-text border-0">
+                                        <i class="fas fa-search"></i></button>
                                 </div>
                             </form>
                         </div>
@@ -69,14 +70,13 @@
                                     <td>{{$item->address}}</td>
                                     <td>{{$item->content}}</td>
                                     <td class="text-center" style="font-weight: bold;">
-                                        <a href="{{route('statusContact', $item->id)}}"
-                                           class="btn btn-sm btn-{{$item->status ? 'danger':'success'}}">
+                                        <a href="{{route('statusContact', $item->id)}}" class="btn btn-sm btn-{{$item->status ? 'danger':'success'}}">
                                             {{$item->status==0 ? 'Đang xử lý':'Đã xử lý'}}
                                         </a>
                                     </td>
                                     <td>
-                                        <div class="btn-group"  role="group">
-                                            <a href="{{route('deleteContact',$item->id)}}"  class="btn btn-outline-danger btn-sm">Xoá</a>
+                                        <div class="btn-group" role="group">
+                                            <a href="{{route('deleteContact',$item->id)}}" class="btn btn-outline-danger btn-sm">Xoá</a>
                                         </div>
                                     </td>
                                 </tr>

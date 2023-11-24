@@ -1,4 +1,4 @@
-@extends('Admin.Layout.master')
+@extends('Admin.Layout.Master')
 
 
 {{-- css --}}
@@ -69,9 +69,9 @@
             </div>
         </div>
         <div style="margin-bottom: 30px;"></div>
-        @endsection
+@endsection
 
-        {{-- javascript --}}
-        @section('js')
+{{-- javascript --}}
+@section('js')
 
 @endsection

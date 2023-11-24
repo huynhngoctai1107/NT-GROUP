@@ -73,6 +73,7 @@ class AccountController extends Controller
 
         $userData = [
             'fullname' => $request->fullname,
+            'slug'     => Str::slug($request->fullname),
             'gender'   => $request->gender,
             'phone'    => $request->phone,
             'address'  => $request->address,

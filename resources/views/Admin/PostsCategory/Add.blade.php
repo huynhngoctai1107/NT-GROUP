@@ -1,4 +1,4 @@
-@extends('Admin.Layout.master')
+@extends('Admin.Layout.Master')
 
 
 {{-- css --}}
@@ -402,7 +402,7 @@
         });
 
         // Add a click listener to the map.
-        map.addListener('click', function(event) {
+        map.addListener('click', function (event) {
             // Get the longitude and latitude of the click event.
             const lng = event.latLng.lng();
             const lat = event.latLng.lat();
@@ -412,14 +412,14 @@
             document.getElementById('latitude').value = lat;
         });
     </script>
-{{--    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>--}}
+    {{--    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>--}}
     <script>
-        $(document).ready(function(){
+        $(document).ready(function () {
             // Set giá trị mặc định cho label giá
             updatePriceLabel();
 
             // Xử lý sự kiện khi select thay đổi
-            $("#id_demand").change(function(){
+            $("#id_demand").change(function () {
                 // Cập nhật nội dung của label giá khi select thay đổi
                 updatePriceLabel();
             });

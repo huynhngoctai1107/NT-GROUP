@@ -25,16 +25,17 @@ class EditAccountRequest extends FormRequest{
         return [
 
             'id_role'  => 'required',
-            'fullname' => 'required',
+            'fullname' => [
+                'required',
+                'min:3',
+                'max:100',
+                Rule::unique('users', 'fullname')->ignore($this->id,'id'),
+            ],
             'gender'   => 'required',
             'phone'    => 'required|numeric|min:10',
             'address'  => 'required',
             'wallet'   => 'required|min:0',
-            'email'    => [
-                'required',
-                'email:',
-                Rule::unique('users', 'email')->ignore($this->id),
-            ],
+
         ];
     }
 
@@ -48,6 +49,7 @@ class EditAccountRequest extends FormRequest{
         return [
             'id_role.required'  => 'Vui lòng chọn vai trò.',
             'fullname.required' => 'Vui lòng nhập họ và tên.',
+            'fullname.unique'   => 'Họ và tên đã tồn tại trong hệ thống.',
             'gender.required'   => 'Vui lòng chọn giới tính.',
             'phone.required'    => 'Vui lòng nhập số điện thoại.',
             'phone.numeric'     => 'Số điện thoại phải là số.',
@@ -55,9 +57,7 @@ class EditAccountRequest extends FormRequest{
             'address.required'  => 'Vui lòng nhập địa chỉ.',
             'wallet.required'   => 'Vui lòng nhập giá trị ví.',
             'wallet.min'        => 'Số dư ví không được âm tiền.',
-            'email.required'    => 'Vui lòng nhập vào email.',
-            'email.unique'      => 'Email đã tồn tại.',
-            'email.email'       => 'Vui lòng nhập vào đúng định dạng email.',
+
         ];
     }
 }

@@ -22,7 +22,7 @@
                     <div class="p-4">
                         <div class="d-flex justify-content-center">
                             <div class="col-md-4 col-3 me-md-0 me-3 ">
-                                <img src="{{asset('images/users/'.$user->image) }}" alt="user" class="rounded-circle" width="100"/>
+                                <img src="{{$user->image != null ? asset('images/users/'.$user->image): asset('images/users/user-1.png')  }}" alt="user" class="rounded-circle" width="100"/>
                             </div>
                             <div class="ps-md-4 col-md-8 col-6  @if($follow == FALSE) flex-column justify-content-center mt-4 d-flex @endif ">
                                 <h3 class="h4 mb-0">{{$user->fullname ?? ""}}</h3>
@@ -41,6 +41,10 @@
                                         </button>
                                     </form>
                                 @endif
+                                @if(auth()->check() == null)
+                                    <a  href="{{route('follow')}}">  <i class="fa fa-plus mr-2 "></i> Theo dõi </a>
+                                @endif
+
                             </div>
                         </div>
 

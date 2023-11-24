@@ -1,4 +1,4 @@
-@extends('Admin.Layout.master')
+@extends('Admin.Layout.Master')
 
 
 {{-- css --}}
@@ -55,8 +55,12 @@
                             <tbody class="text-center">
                             @foreach($list as $item )
                                 <tr>
-                                    <td><span class="badge {{$item->id_category_transaction == 1 ? 'bg-success' : 'bg-danger'}}">{{$item->name_category}}</span></td>
-                                    <td><span class="badge {{$item->id_category_transaction == 1 ? 'bg-success' : 'bg-danger'}}">{{$item->id_category_transaction == 1 ? $item->method : 'Mua bài viết VIP'}}</span></td>
+                                    <td>
+                                        <span class="badge {{$item->id_category_transaction == 1 ? 'bg-success' : 'bg-danger'}}">{{$item->name_category}}</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge {{$item->id_category_transaction == 1 ? 'bg-success' : 'bg-danger'}}">{{$item->id_category_transaction == 1 ? $item->method : 'Mua bài viết VIP'}}</span>
+                                    </td>
                                     <td>{{$item->email}}</td>
                                     <td>{{number_format($item->price)}} Đ</td>
                                     <td>{{number_format($item->surplus)}} Đ</td>

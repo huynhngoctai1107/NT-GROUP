@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\Admin\Demand;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\EditDemandRequest;
+use App\Http\Requests\Demand\EditDemandRequest;
 use App\Models\Demand;
-use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 class EditDemandController extends Controller

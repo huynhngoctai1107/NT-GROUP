@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\Admin\Category;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\AddCategoryRequest;
+use App\Http\Requests\Category\AddCategoryRequest;
 use App\Models\Category;
-use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 class AddCategoryController extends Controller

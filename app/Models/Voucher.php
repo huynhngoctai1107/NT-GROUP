@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
-class Voucher extends Model
-{
+class Voucher extends Model{
+
     use HasFactory;
 
     /**
@@ -19,34 +19,33 @@ class Voucher extends Model
 
     protected $table = 'vouchers';
 
-    public function listVoucher($condition)
-    {
+    public function listVoucher($condition){
         return $this->orderBy('id', 'desc')->where($condition)->paginate(5);
     }
 
-    public function addVoucher($value)
-    {
+    public function addVoucher($value){
         return $this->insert($value);
     }
 
-    public function show($condition)
-    {
+    public function show($condition){
         return DB::table($this->table)->where($condition)->get();
     }
 
-    public function editVoucher($condition)
-    {
+    public function editVoucher($condition){
         return $this->where($condition)->first();
     }
-    public function deleteVoucher($id)
-    {
+
+    public function deleteVoucher($id){
         $this->delete(); // Xoá mềm voucher
 
         return $this->where($id)->delete();
     }
 
-    public function updateVoucher($condition, $value)
-    {
-        return $this->where($condition)->update($value);
+    public function updateVoucher($condition, $value){
+        if (isset($value['content']) && $value['content'] !== NULL){
+            return $this->where($condition)->update($value);
+        }
+
+        return FALSE;
     }
 }

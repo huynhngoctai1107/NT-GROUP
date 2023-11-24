@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Http\Requests\Account\EditAccountRequest;
+use Illuminate\Support\Str;
 
 class EditUserController extends Controller{
 
@@ -36,13 +37,12 @@ class EditUserController extends Controller{
         $userData = [
             'id_role'  => $request->id_role,
             'fullname' => $request->fullname,
-            'email'    => $request->email,
+            'slug'     => Str::slug($request->fullname),
             'wallet'   => $request->wallet,
             'gender'   => $request->gender,
             'phone'    => $request->phone,
             'address'  => $request->address,
             'dateinput' => now(),
-            'password' => Hash::make($request->password)
         ];
 
         // Tìm người dùng theo ID

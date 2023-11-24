@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\Admin\Demand;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\AddDemandRequest;
+use App\Http\Requests\Demand\AddDemandRequest;
 use App\Models\Demand;
-use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 class AddDemandController extends Controller

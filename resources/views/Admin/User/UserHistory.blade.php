@@ -1,4 +1,4 @@
-@extends('Admin.Layout.master')
+@extends('Admin.Layout.Master')
 
 
 {{-- css --}}
@@ -36,7 +36,8 @@
                                 <div class="input-group">
                                     <input type="text" name="keyword" class="form-control" placeholder="Tìm kiếm..." value="{{ request('keyword') }}">
                                     <div class="input-group-append">
-                                        <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
+                                        <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i>
+                                        </button>
                                     </div>
                                 </div>
                             </form>
@@ -55,7 +56,7 @@
                                     {{ session('success') }}
                                 </div>
                             @endif
-                                <thead class="text-center">
+                            <thead class="text-center">
                             <tr>
                                 <th>Quyền</th>
                                 <th>Hình ảnh</th>

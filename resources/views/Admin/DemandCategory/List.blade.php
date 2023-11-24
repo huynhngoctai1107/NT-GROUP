@@ -1,4 +1,4 @@
-@extends('Admin.Layout.master')
+@extends('Admin.Layout.Master')
 
 
 {{-- css --}}
@@ -37,7 +37,8 @@
                                 @csrf
                                 <div class="input-group rounded mt-3">
                                     <input type="text" placeholder="Nhập từ khóa tìm kiếm" class="form-control ps-2" id="search_input" name="keyword">
-                                    <button type="submit" class="input-group-text border-0"><i class="fas fa-search"></i></button>
+                                    <button type="submit" class="input-group-text border-0">
+                                        <i class="fas fa-search"></i></button>
                                 </div>
                             </form>
                         </div>
