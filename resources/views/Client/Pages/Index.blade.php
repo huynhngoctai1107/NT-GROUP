@@ -25,7 +25,7 @@
                     </div>
                 </div>
                 <div class="carousel-item background_bg" data-img-src="">
-                    <img src="{{asset('client/images/baner/banner_1.jpg')}}"style="height: 600px"">
+                    <img src="{{asset('client/images/baner/banner_1.jpg')}}"style="height: 600px">
                     <div class="banner_slide_content">
                         <div class="container"><!-- STRART CONTAINER -->
                             <div class="row">
@@ -164,9 +164,7 @@
 			border-left: thick solid #ff0000;
 		}
 
-		.img {
-			background-image: url("client/images/banner0.webp");
-		}
+
 
 		.bds {
 			height: 550px !important;

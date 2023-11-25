@@ -30,6 +30,8 @@ class DatabaseSeeder extends Seeder{
             Faqs::class,
             VouchersSeeder::class,
             EmailNews::class,
+            CategoryBlogSeeder::class,
+            BlogSeeder::class,
 
         ]);
     }

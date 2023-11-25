@@ -22,7 +22,7 @@
                     <div class="p-4">
                         <div class="d-flex justify-content-center">
                             <div class="col-md-4 col-3 me-md-0 me-3 ">
-                                <img src="{{$user->image != null ? asset('images/users/'.$user->image): asset('images/users/user-1.png')  }}" alt="user" class="rounded-circle" width="100"/>
+                                <img src="{{$user->image != NULL ? asset('images/users/'.$user->image): asset('images/users/user-1.png')  }}" alt="user" class="rounded-circle" width="100"/>
                             </div>
                             <div class="ps-md-4 col-md-8 col-6  @if($follow == FALSE) flex-column justify-content-center mt-4 d-flex @endif ">
                                 <h3 class="h4 mb-0">{{$user->fullname ?? ""}}</h3>
@@ -41,8 +41,8 @@
                                         </button>
                                     </form>
                                 @endif
-                                @if(auth()->check() == null)
-                                    <a  href="{{route('follow')}}">  <i class="fa fa-plus mr-2 "></i> Theo dõi </a>
+                                @if(auth()->check() == NULL)
+                                    <a href="{{route('follow')}}"> <i class="fa fa-plus mr-2 "></i> Theo dõi </a>
                                 @endif
 
                             </div>
@@ -50,15 +50,16 @@
 
                     </div>
 
-                    <div class="row justify-content-center p-1 my-2">
+                    <div class="row justify-content-centerph  mb-2">
                         <div class="col-6  justify-content-center d-flex flex-column align-items-center">
-                            <h5 data-bs-toggle="modal" data-bs-target="#staticBackdrop">Lượt theo dõi</h5>
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="font-weight: 600; font-size: 16px">Lượt theo dõi</a>
                             <span style="font-weight:600 ">
                               {{$ViewFollow['total']->sum_follower ?? 0}}
                             </span>
                         </div>
-                        <div class="col-6 justify-content-center d-flex flex-column align-items-center">
-                            <h5 data-bs-toggle="modal" data-bs-target="#staticBackdropOne">Đã theo dõi</h5>
+                        <div class="col-6 justify-content-center d-flex flex-column align-items-center ">
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdropOne" style="font-weight: 600; font-size: 16px">Đã theo dõi</a>
+
                             <span style="font-weight:600 ">
                                {{$followed['total']->sum_follower ?? 0}}
                             </span>
@@ -73,8 +74,9 @@
                             <div class="col-3 justify-content-center d-flex">
                                 <a href=""><i class="bi bi-facebook"></i></a></div>
                             <div class="col-3 justify-content-center d-flex">
-                                <a href=""><i class="bi bi-envelope"></i></a></div>
-                            <div class="col-3 justify-content-center d-flex"><a href=""><i class="bi bi-telephone"></i></a>
+                                <a href="mailto:{{$user->email}}"><i class="bi bi-envelope"></i></a></div>
+                            <div class="col-3 justify-content-center d-flex">
+                                <a href="tel:{{$user->phone??""}}"><i class="bi bi-telephone"></i></a>
                             </div>
                             <div class="col-3 justify-content-center d-flex">
                                 <a href=""><i class="bi bi-youtube"></i></a></div>
@@ -85,21 +87,44 @@
 
             </div>
             <div class="col-12 col-md-8 px-4">
-
-                <div class="mb-3 wow fadeIn">
-                    <div class="text-start mb-1-6 wow fadeIn">
-                        <h4 class="h3 mb-0 text-danger">Danh sách bài viết của tôi</h4>
+                <nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Danh sách bài viết theo dõi </button>
+                        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Danh sách bài viết của tôi</button>
                     </div>
+                </nav>
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                        @if(auth()->check())
+                            @if($user->id == auth()->user()->id)
+                                <x-client.index.postSale :list="$postFollow">
+
+
+                                </x-client.index.postSale>
+                                <div class="d-flex justify-content-center mt-4">
+                                    {{$postFollow->links('pagination::bootstrap-4') }}
+                                </div>
+
+                            @else
+                                Danh sách này bị ẩn khi không phải chủ tài khoản này!
+                            @endif
+                        @else
+                            Danh sách này bị ẩn khi không phải chủ tài khoản này!
+                        @endif
+
+
+                    </div>
+                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                        <x-client.index.postSale :list="$postUser"></x-client.index.postSale>
+                    </div>
+
                 </div>
 
-                <x-client.index.postSale :list="$post"></x-client.index.postSale>
 
             </div>
-            <div class="d-flex justify-content-center mt-4">
-                {{ $post->links('pagination::bootstrap-4') }}
-            </div>
+
         </div>
-        {{--            // danh sach follow--}}
+
         <div class="modal fade mt-0" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-scrollable">
                 <div class="modal-content">
@@ -118,7 +143,7 @@
                 </div>
             </div>
         </div>
-        {{--        // danh sach dang follow--}}
+
         <div class="modal fade mt-0" id="staticBackdropOne" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabelOne" aria-hidden="true">
             <div class="modal-dialog modal-dialog-scrollable">
                 <div class="modal-content">
@@ -128,7 +153,7 @@
                     </div>
                     <div class="modal-body">
                         @if(auth()->check())
-                            @if($follow == FALSE)
+                            @if($user->id == auth()->user()->id)
                                 <x-client.account.follower :getFollow="$followed['getview']" :check="$user->id"></x-client.account.follower>
                             @else
                                 Danh sách này bị ẩn khi không phải chủ tài khoản này!
@@ -139,7 +164,7 @@
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> Đóng</button>
 
                     </div>
                 </div>
@@ -150,6 +175,7 @@
     </div>
 
 @endsection
+
 @push('styles')
     <style>
 		.bi {

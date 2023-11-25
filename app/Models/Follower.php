@@ -36,5 +36,4 @@ class Follower extends Model{
         return $this->insert($values);
     }
 
-
 }

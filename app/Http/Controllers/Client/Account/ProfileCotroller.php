@@ -70,15 +70,19 @@ class ProfileCotroller extends Controller{
                     'followers.id_user'),
             ];
 
-
             $condition = [
                 ['id_user', '=', $user->id],
                 ['posts.delete', '=', 0],
                 ['posts.status', '=', 1],
             ];
+            foreach ($followed['getview'] as $item){
+                $values[] = $item->id;
+            }
+
 
             return view('client.pages.profile',
-                ['post'          => $this->post->getPostList($condition, NULL, FALSE, 1),
+                ['postUser'      => $this->post->getPostList($condition, NULL, FALSE, NULL),
+                 'postFollow'    => $this->post->getPostFollow($values,4),
                  'user'          => $user,
                  'slug'          => $slug,
                  'ViewFollow'    => $ViewFollow,
@@ -144,7 +148,7 @@ class ProfileCotroller extends Controller{
                     'id_user'     => $request->id_user,
                     'id_follower' => $request->id_follower,
                 ];
-             $data=   $this->modelFollow->unFollow($condition);
+                $data      = $this->modelFollow->unFollow($condition);
 
                 return redirect()
                     ->back()
@@ -162,7 +166,7 @@ class ProfileCotroller extends Controller{
                     'id_user'     => $request->id_user,
                     'id_follower' => $request->id_follower,
                 ];
-               $this->modelFollow->unFollow($condition);
+                $this->modelFollow->unFollow($condition);
 
                 return redirect()
                     ->back()
