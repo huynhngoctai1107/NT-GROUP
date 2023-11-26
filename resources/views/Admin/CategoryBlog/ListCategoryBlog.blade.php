@@ -13,10 +13,9 @@
     <link rel="stylesheet" href="{{ asset('plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxy/1.6.1/scripts/jquery.ajaxy.min.js" integrity="sha512-bztGAvCE/3+a1Oh0gUro7BHukf6v7zpzrAb3ReWAVrt+bVNNphcl2tDTKCBr5zk7iEDmQ2Bv401fX3jeVXGIcA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 @endpush
 @section('title')
-    Quản lý danh mục tin
+    Quản lý danh mục tin tức
 @endsection
 
 
@@ -26,11 +25,15 @@
             <div class="content-wrapper">
                 <div class="card">
                     <div class="card-header d-flex" style="justify-content: space-between">
-                        <div class="w-50 d-flex align-items-center">
-                            <h3 class="card-title"> Quản lý danh mục tin</h3>
-                        </div>
-                        <div class="w-50 d-flex justify-content-end">
-                            <form action="{{route('SearchCategoryBlog\')}}" method="post">
+                        <h3 class="card-title"> Quản lý danh mục tin tức </h3>
+                    </div>
+
+                    <!-- /.card-header -->
+                    <div class="card-body">
+
+                        <div class="d-flex justify-content-between">
+                            <x-admin.buttom.add router="addFormCategoryBlog" name="Thêm danh mục tin"></x-admin.buttom.add>
+                            <form action="" method="post">
                                 @csrf
                                 <div class="input-group rounded mt-3">
                                     <input type="text" placeholder="Nhập từ khóa tìm kiếm" class="form-control ps-2" id="search_input" name="keyword">
@@ -39,15 +42,12 @@
                                 </div>
                             </form>
                         </div>
-                    </div>
-
-
-                    <!-- /.card-header -->
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between">
-                            <x-admin.buttom.add router="addFormCategoryBlog" name="Thêm bài danh mục"></x-admin.buttom.add>
-                        </div>
                         <table id="example1" class="table table-bordered table-striped">
+                            @if(session('error'))
+                                <div class="alert alert-danger">
+                                    {{ session('error') }}
+                                </div>
+                            @endif
                             @if(session('success'))
                                 <div class="alert alert-success">
                                     {{ session('success') }}
@@ -57,10 +57,9 @@
                             <tr>
 
                                 <th>Tên danh mục</th>
-                                <th style="width: 30%;">Slug</th>
                                 <th>Ngày tạo</th>
                                 <th>Cập nhật</th>
-                                <th>Chi tiết</th>
+                                <th>Ghi chú</th>
                                 <th>Nghiệp vụ</th>
                             </tr>
                             </thead>
@@ -68,13 +67,13 @@
                             <tbody>
                             @foreach($data as $item)
                                 <tr>
-                                    <td style="width: 25%">{{$item->name}}</td>
-                                    <td style="width: 25%">{{$item->slug}}</td>
-                                    <td>{{ date('d-m-Y', strtotime($item->created_at)) }}</td>
-                                    <td>{{ date('d-m-Y', strtotime($item->updated_at)) }}</td>
-                                    <td>{{$item->description}}</td>
+                                    <td>{{$item->name}}</td>
+                                    <td>{{date('d-m-Y',strtotime($item->created_at))}}</td>
+                                    <td>{{date('d-m-Y',strtotime($item->updated_at))}}</td>
+                                    <td></td>
                                     <td>
                                         <a href="{{route('editFormCategoryBlog',$item->slug)}}" class="btn btn-outline-success btn-sm">Sửa</a>
+
                                         <a href="" class="btn btn-outline-danger btn-sm">Xóa</a>
                                     </td>
                                 </tr>
@@ -89,7 +88,7 @@
                         </table>
                         <div class="mt-3">{{ $data->links() }}</div>
                     </div>
-
+                    <!-- /.card-body -->
                 </div>
             </div>
         </div>
@@ -113,7 +112,9 @@
     <script src="{{ asset('plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
     <script src="{{ asset('plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
     <script src="{{ asset('plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
+    <!-- AdminLTE App -->
     <script src="{{ asset('dist/js/adminlte.min.js') }}"></script>
+    <!-- AdminLTE for demo purposes -->
     <script src="{{ asset('dist/js/demo.js') }}"></script>
 @endpush
 <!-- HTML !-->
@@ -122,8 +123,8 @@
 	/* CSS */
 	.button-86 {
 		all: unset;
-		width: 150px;
-		height: 40px;
+		width: 100px;
+		height: 30px;
 		font-size: 16px;
 		background: transparent;
 		border: none;
