@@ -63,17 +63,17 @@
                     <div class="col-lg-9 col-md-8 col-12">
                         <div class="tab-content dashboard_content">
                             <div class="tab-pane fade {{Session::get('active') =='payment' ? '' : (Session::get('active') =='updateProfile' ? '' : (Session::get('active') =='updatePassword' ? '' : 'active show'))}}   " id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
-                                <div class="card">
+                                <div class="card ml-3">
                                     <div class="card-header">
                                         <h3>Thống Kê</h3>
                                     </div>
-                                    <div class="">
+                                    <div class="card-body">
                                         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                                             <li class="nav-item" role="presentation">
-                                                <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Thống Kê Bài Viết</button>
+                                                <button class="nav-link active border" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Thống Kê Bài Viết</button>
                                             </li>
                                             <li class="nav-item" role="presentation">
-                                                <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Thống Kê Chi Tiêu</button>
+                                                <button class="nav-link border" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Thống Kê Chi Tiêu</button>
                                             </li>
                                         </ul>
                                         <div class="tab-content" id="pills-tabContent">
@@ -82,7 +82,7 @@
                                                     <x-client.account.charts.post-charts :dates="$dates" :vip="$vip" :charts="$charts"></x-client.account.charts.post-charts>
 
                                             </div>
-                                            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
+                                            <div class="tab-pane fade show active" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
 
                                                     <x-client.account.charts.transition-charts :dateT="$dateT" :transitionPay="$transitionPay" :transitionMua="$transitionMua"></x-client.account.charts.transition-charts>
 

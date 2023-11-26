@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Acreage;
+use App\Models\CategoryBlog;
 use App\Models\Demand;
 use App\Models\Price;
 use DateTime;
@@ -74,6 +75,12 @@ class AppServiceProvider extends ServiceProvider{
             $acreage       = new Acreage(); // Thay Category() bằng tên của mô hình của bạn
             $dataToAcreage = $acreage->GetAcreage();
             $view->with('dataToAcreage', $dataToAcreage);
+        });
+
+        View::composer('*', function ($view){
+            $categoryBlog       = new CategoryBlog(); // Thay Category() bằng tên của mô hình của bạn
+            $dataToCategoryBlog = $categoryBlog->GetCategoryBlog();
+            $view->with('dataCategoryBlog', $dataToCategoryBlog);
         });
 
 

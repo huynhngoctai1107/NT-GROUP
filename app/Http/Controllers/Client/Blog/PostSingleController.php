@@ -43,6 +43,7 @@ class PostSingleController extends Controller
         $condition1 = [
             ['delete', '=', 0],
             ['status', '=', 1],
+            ['posts.slug','!=',$slug]
         ];
         $count = $this->post->categoriesWithPostCount();
         $list = $this->post->getPostList($condition1, null, false)->take(3);

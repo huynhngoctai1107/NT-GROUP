@@ -16,6 +16,31 @@ class Blog extends Model
         return $this->orderBy('id', 'desc')->where($condition)->paginate(9);
     }
 
+    public function listBlogAdmin($condition){
+
+        return $this->orderBy('id', 'desc')->where($condition)->paginate(5);
+    }
+
+    public function addBlog($value)
+    {
+        return $this->insert($value);
+    }
+
+    public function editBlog($condition)
+    {
+        return $this->where($condition)->first();
+    }
+
+    public function updateBlog($value, $condition)
+    {
+
+        return $this->where($condition)->update($value);
+    }
+    public function deleteBlog($condition)
+    {
+        return $this->where($condition)->delete();
+    }
+
     public function SingleBlog($condition){
         return $this->where($condition)->first();
     }

@@ -21,6 +21,9 @@
                             <div class="dropdown-menu">
                                 <ul>
                                     <li>
+                                        <a class="dropdown-item nav-link nav_item" href="{{route('listBlog')}}">Tất Cả Tin Tức</a>
+                                    </li>
+                                    <li>
                                         <a class="dropdown-item nav-link nav_item" href="{{route('about')}}">Tin tức công ty</a>
                                     </li>
                                     <li>
@@ -42,7 +45,7 @@
                             <a class="dropdown-toggle nav-link ps-3 ps-md-2" href="{{route('listBlog')}}" data-bs-toggle="dropdown">Loại Bất Động Sản</a>
                             <div class="dropdown-menu">
                                 <ul>
-                                    <li><a class="dropdown-item nav-link nav_item" href="{{route('listPost')}}">Tất Cả Tin</a></li>
+                                    <li><a class="dropdown-item nav-link nav_item" href="{{route('listPost')}}">Tất Cả Bài Viết</a></li>
                                     @foreach($dataToCategory as $category)
                                         <li><a class="dropdown-item nav-link nav_item" href="{{route('search',$category->slug)}}">{{$category->name}}</a></li>
                                     @endforeach

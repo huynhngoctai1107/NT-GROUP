@@ -32,20 +32,20 @@ class Post extends Model{
         $longitude = (float) $location[1];
 
 
-        return $this->select('*')
-                    ->selectRaw(" ( 6371 * acos( cos( radians(?) ) *
+        return  $this->select('*')
+            ->selectRaw(" ( 6371 * acos( cos( radians(?) ) *
                        cos( radians( latitude ) )
                        * cos( radians( longitude ) - radians(?)
                        ) + sin( radians(?) ) *
                        sin( radians( latitude ) ) )
                      ) AS distance", [$latitude, $longitude, $latitude])
-                    ->having('distance', '<=', $kilometer)
-                    ->where($condition)
-                    ->orderBy('distance')
-                    ->get();
+            ->having('distance', '<=', $kilometer)
+            ->where($condition)
+            ->orderBy('distance')
+            ->get();
     }
 
-    function haversineDistance($lat1, $lon1, $lat2, $lon2){
+    function haversineDistance($lat1, $lon1, $lat2, $lon2) {
         $lat1Rad = deg2rad($lat1);
         $lon1Rad = deg2rad($lon1);
         $lat2Rad = deg2rad($lat2);
@@ -94,13 +94,12 @@ class Post extends Model{
     }
 
 
-    public function getPostList($condition, $orderBy, $random, $perPage = NULL){
+        public function getPostList($condition, $orderBy, $random, $perPage = NULL){
         $query = $this->where($condition)
                       ->select('posts.id as id_post', 'posts.slug as slug_posts',
                           'category_posts.name as name_category',
                           'category_posts.slug as slug_category', 'demands.name as name_demands',
-                          'demands.slug as slug_demands', 'title', 'posts.address',
-                          'expiration_date',
+                          'demands.slug as slug_demands', 'title', 'address', 'expiration_date',
                           'acreages', 'number_views', 'price', 'subtitles', 'posts.created_at',
                           DB::raw('GROUP_CONCAT(medias.image) AS images'))
                       ->join('medias', 'medias.id_post', '=', 'posts.id')

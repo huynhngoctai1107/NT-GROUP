@@ -13,6 +13,85 @@
 @endsection
 
 @push('script')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var form = $('#toolBuild'),
+                cache_width = form.width(),
+                a4 = [595.28, 1000],
+                logoUrl = "{{asset('images/logos/logo.png')}}",
+                companyName = 'NT - GROUP';
+
+            $('#printBuildButton').on('click', function (event) {
+                event.preventDefault();
+                generatePDF();
+            });
+
+            function generatePDF() {
+                getCanvas().then(function (canvas) {
+                    var img = canvas.toDataURL("image/png"),
+                        doc = new jsPDF({
+                            unit: 'px',
+                            format: 'a4',
+                            orientation: 'portrait',
+                        });
+
+                    // Add logo
+                    getBase64FromImageUrl(logoUrl).then(function (logoBase64) {
+                        doc.addImage(logoBase64, 'PNG', 20, 20, 50, 50);
+
+                        // Set font size and calculate width of the company name
+                        doc.setFontSize(14);
+                        var companyNameWidth = doc.getStringUnitWidth(companyName) * doc.internal.getFontSize();
+
+                        // Add company name to the right
+                        var companyNameX = doc.internal.pageSize.width - 20 - companyNameWidth;
+                        doc.text(companyName, companyNameX, 60);
+
+                        // Add the captured content
+                        doc.addImage(img, 'JPEG', 20, 120);
+
+                        // Trigger download
+                        var blob = doc.output('blob');
+                        var url = URL.createObjectURL(blob);
+                        var link = document.createElement('a');
+                        link.href = url;
+                        link.download = 'bao-cao.pdf';
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+
+                        // Show the hidden elements after download
+                        form.width(cache_width);
+                        form.find('.hide-print').show();
+                    });
+                });
+            }
+
+            function getCanvas() {
+                form.width((a4[0] * 1.33333) - 80).css('max-width', 'none');
+                form.find('.hide-print').hide();
+                return html2canvas(form, {
+                    imageTimeout: 5000,
+                    removeContainer: true,
+                    scale: 2
+                });
+            }
+
+            function getBase64FromImageUrl(url) {
+                return fetch(url)
+                    .then(response => response.blob())
+                    .then(blob => new Promise((resolve, reject) => {
+                        const reader = new FileReader();
+                        reader.onloadend = () => resolve(reader.result);
+                        reader.onerror = reject;
+                        reader.readAsDataURL(blob);
+                    }));
+            }
+        });
+    </script>
+
+
     <script>
         function showHideOptions() {
             var packageSelect = document.getElementById("package");

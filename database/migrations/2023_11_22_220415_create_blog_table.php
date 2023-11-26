@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('id_user')->constrained('users');
             $table->foreignId('id_category_blog')->constrained('category_blogs');
-            $table->string("title");
-            $table->string("slug");
+            $table->string("title")->unique();
+            $table->string("slug")->unique();
             $table->string("image");
             $table->longText("content");
             $table->longText("excerpt");

@@ -96,10 +96,6 @@
                             }));
                     }
                 });
-
-
-
-
             </script>
 @endpush
 @push('css')

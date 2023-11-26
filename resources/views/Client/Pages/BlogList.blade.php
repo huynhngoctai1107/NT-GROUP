@@ -29,11 +29,15 @@
                                 <div class="col-xl-4 col-md-6">
                                     <div class="blog_post blog_style2 box_shadow1">
                                         <div class="blog_img">
-                                            <a href="{{route('SingleBlog',$item->slug)}}">
+                                            <a href="{{ route('SingleBlog', $item->slug) }}">
                                                 @php
                                                     $image = json_decode($item->image);
                                                 @endphp
-                                                <img src="{{ $image[0]->url }}" alt="blog_small_img1" class="responsive-img" style="height: 200px;">
+                                                @if (is_array($image))
+                                                    <img src="{{ $image[0]->url }}" alt="blog_small_img1" class="responsive-img" style="height: 200px;">
+                                                @else
+                                                    <img src="{{ asset('images/blogs/' . $item->image) }}" alt="blog_small_img1" class="responsive-img" style="height: 200px;">
+                                                @endif
                                             </a>
                                         </div>
                                         <div class="blog_content bg-white">

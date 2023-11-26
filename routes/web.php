@@ -56,6 +56,17 @@ use App\Http\Controllers\Admin\Voucher\DeleteVoucherController;
 use App\Http\Controllers\Admin\Voucher\EditVoucherController;
 use App\Http\Controllers\Admin\Voucher\ListVoucherController;
 
+// danh mục tin tức
+use App\Http\Controllers\Admin\CategoryBlog\ListCategoryBlog;
+use App\Http\Controllers\Admin\CategoryBlog\AddCategoryBlog;
+use App\Http\Controllers\Admin\CategoryBlog\EditCategoryBlog;
+
+// tin tức
+use App\Http\Controllers\Admin\Blog\ListBlogController;
+use App\Http\Controllers\Admin\Blog\AddBlogController;
+use App\Http\Controllers\Admin\Blog\EditBlogController;
+use App\Http\Controllers\Admin\Blog\DeleteBlogController;
+
 // ++++ CAC TRANG THUOC CLIENT ++++
 use App\Http\Controllers\Client\Index\IndexController;
 
@@ -239,6 +250,24 @@ Route::group(['prefix' => 'admin', 'middleware' => ['AdminLogin']], function (){
 
     });
 
+    Route::group(['prefix' => 'danh-muc-tin'], function (){
+        Route::get('/danh-sach', [ListCategoryBlog::class, 'listCategoryBlog'])->name('listCategoryBlog');
+        Route::get('/them', [AddCategoryBlog::class, 'addFormCategoryBlog'])->name('addFormCategoryBlog');
+        Route::post('/them', [AddCategoryBlog::class, 'addCategoryBlog'])->name('addCategoryBlog');
+        Route::get('/sua/{slug}', [EditCategoryBlog::class, 'editFormCategoryBlog'])->name('editFormCategoryBlog');
+        Route::post('/cap-nhat/{slug}', [EditCategoryBlog::class, 'editCategoryBlog'])->name('editCategoryBlog');
+        Route::post('/', [ListCategoryBlog::class, 'SearchCategoryBlog'])->name('SearchCategoryBlog');
+
+    });
+
+    Route::group(['prefix' => 'tin-tuc'], function (){
+        Route::get('/danh-sach-tin', [ListBlogController::class, 'listBlog'])->name('listBlogAdmin');
+        Route::get('/them', [AddBlogController::class, 'addFormBlog'])->name('addFormBlog');
+        Route::post('/them', [AddBlogController::class, 'addBlog'])->name('addBlog');
+        Route::get('/sua/{slug}', [EditBlogController::class, 'editFormBlog'])->name('editFormBlog');
+        Route::post('/sua/{slug}', [EditBlogController::class, 'editBlog'])->name('editBlog');
+        Route::get('/xoa/{slug}', [DeleteBlogController::class, 'deleteBlog'])->name('deleteBlog');
+    });
 });
 Route::group(['prefix' => '/', 'middleware' => ['Logout']], function (){
     Route::get('/theo-doi/', [ProfileCotroller::class, 'follow'])->name('follow');

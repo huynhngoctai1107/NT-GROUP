@@ -1,4 +1,4 @@
-<div class="container mt-5">
+<div class="container mt-5 mb-5">
     <div class="row">
         <div class="col-12">
             <h2 class="mb-4">Công cụ dự tính chi phí</h2>
@@ -196,6 +196,7 @@
 
     </form>
 
+    <div id="toolBuild">
     <div class="p-0 rounded-0 flex-column my-4 ">
         <div class="d-flex justify-content-between">
             <h3 class="col-md-3 col-12 text-uppercase justify-content-center mb-0 align-items-center d-flex" style="height: 50px; font-size: 20px; color:white; background-color: #c99736;">
@@ -257,15 +258,15 @@
     </div>
     <div class="row justify-content-center">
         <div class="col-md-6 col-12">
-            <div class="row">
+            <div class="row hide-print">
                 <p class="text-start col-6 fw-bold">Diện tích tầng trệt, tầng hầm (nếu có):</p>
                 <p class="text-end col-6">{{$Areafloor ?? 25}} m<sup>2</sup></p>
             </div>
-            <div class="row">
+            <div class="row hide-print">
                 <p class="text-start col-6 fw-bold">Diện tích lầu:</p>
                 <p class="text-end col-6">{{$floorsAcreage ?? 0}} m<sup>2</sup></p>
             </div>
-            <div class="row">
+            <div class="row hide-print">
                 <p class="text-start col-6 fw-bold">Diện tích sân thượng mái:</p>
                 <p class="text-end col-6">{{$check2 == TRUE ? ($wide * $long) : 0 }} m<sup>2</sup></p>
             </div>
@@ -289,12 +290,14 @@
 
         </p>
         <p class="text-center text-danger">- Đơn giá chưa bao gồm thuế VAT 10% </p>
-        <div class="row justify-content-around">
-            <button class="button-42  col-md-5" role="button"><i class="bi bi-file-earmark-pdf"></i> In kết quả</button>
-            <button class="button-42 mt-3 mt-md-0 col-md-5" role="button">
-                <i class="bi bi-phone-vibrate"></i> Gọi ngay cho chúng tôi
+        <div class="row justify-content-around hide-print">
+            <button class="button-42  col-md-5" role="button" id="printBuildButton"><i class="bi bi-calculator"></i> In kết quả
             </button>
+            <a href="tel:0949615859" class="button-42 mt-3 mt-md-0 col-md-5" role="button">
+                <i class="bi bi-calculator"></i> Gọi ngay cho chúng tôi
+            </a>
         </div>
+    </div>
     </div>
 </div>
 

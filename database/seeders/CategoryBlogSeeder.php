@@ -19,12 +19,14 @@ class CategoryBlogSeeder extends Seeder
                 'name'     => 'Du Lịch',
                 'slug' => 'du-lich',
                 'description'=>'abc',
+                'created_at' => date('Y-m-d'),
             ],
             [
                 'id'          => 2,
                 'name'     => 'Văn Hóa',
                 'slug' => 'van-hoa',
-                'description'=>'abc'
+                'description'=>'abc',
+                'created_at' => date('Y-m-d'),
             ],
         ];
         foreach ($data as $item){
