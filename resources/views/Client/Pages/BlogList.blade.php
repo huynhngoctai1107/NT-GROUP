@@ -3,6 +3,9 @@
 @section('title')
     Tin Tức Thị Trường - NT GROUP
 @endsection
+@section('active3')
+    active
+@endsection
 @php
     $title = "Danh Sách Tin Tức";
 @endphp

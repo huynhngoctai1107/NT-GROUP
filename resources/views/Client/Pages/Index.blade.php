@@ -3,6 +3,9 @@
 @section('title')
     Bất động sản - NT GROUP
 @endsection
+@section('active1')
+    active
+@endsection
 @section('main')
     <!-- START SECTION BANNER -->
     <div class="banner_section slide_medium shop_banner_slider staggered-animation-wrap">

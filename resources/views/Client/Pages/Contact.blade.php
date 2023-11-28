@@ -3,6 +3,9 @@
 @section('title')
     Liên Hệ - NT GROUP
 @endsection
+@section('active6')
+    active
+@endsection
 @php
     $title = "Liên hệ";
 @endphp

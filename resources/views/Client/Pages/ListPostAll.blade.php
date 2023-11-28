@@ -3,6 +3,9 @@
 @section('title')
     TIN - NT GROUP
 @endsection
+@section('active4')
+    active
+@endsection
 @php
     $title = "Danh Sách Tin";
 @endphp

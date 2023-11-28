@@ -21,7 +21,7 @@ class BlogSingleController extends Controller
         $condition        = ['slug' => $slug,];
         $data = $this->blog->SingleBlog($condition);
         $condition1 = [
-            ['delete', '=', 0],
+            ['posts.delete', '=', 0],
             ['status', '=', 1],
         ];
         $list = $this->post->getPostList($condition1, null, TRUE)->take(5);

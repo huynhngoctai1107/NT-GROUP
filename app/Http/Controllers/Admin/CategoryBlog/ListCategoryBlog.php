@@ -15,8 +15,20 @@ class ListCategoryBlog extends Controller
     }
     function listCategoryBlog()
     {
-        $data = $this->categoryBlog->listCategoryBlog();
+        $condition = [
+            ['delete', '=', 0],
+        ];
+        $data = $this->categoryBlog->listCategoryBlog($condition);
         return view('admin.categoryBlog.ListCategoryBlog', [ 'data' => $data]);
+    }
+
+    function listHistoryCategoryBlog()
+    {
+        $condition = [
+            ['delete', '=', 1],
+        ];
+        $data = $this->categoryBlog->listCategoryBlog($condition);
+        return view('admin.categoryBlog.History', [ 'data' => $data]);
     }
 
     function SearchCategoryBlog(Request $request){

@@ -17,15 +17,25 @@ class DeleteDemandController extends Controller
 
     function deleteDemand($slug)
     {
-        //        $data = $this->demand->deleteDemand($slug);
-        //        return redirect()->back()->with('success','Đã xóa nhu cầu thành công');
+        $condition = [
+            ['slug', '=', $slug],
+        ];
+        $value = [
+            'delete' => 1,
+        ];
+        $this->demand->updateDemand($value, $condition);
+        return redirect()->back()->with('success', 'Đã xóa nhu cầu thành công');
+    }
 
-        $result = $this->demand->deleteDemand($slug);
-
-        if ($result === false) {
-            return redirect()->back()->with('error', 'Không thể xóa nhu cầu vì đang chứa bài viết.');
-        }
-
-        return redirect()->back()->with('success', 'Nhu cầu đã được xóa thành công.');
+    function restoreDemand($slug)
+    {
+        $condition = [
+            ['slug', '=', $slug],
+        ];
+        $value = [
+            'delete' => 0,
+        ];
+        $this->demand->updateDemand($value, $condition);
+        return redirect()->back()->with('success', 'Đã khôi phục nhu cầu thành công');
     }
 }

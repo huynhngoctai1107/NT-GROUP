@@ -14,35 +14,27 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-end " id="navbarSupportedContent">
                     <ul class="navbar-nav">
-                        <li><a class="nav-link nav_item ps-3 ps-md-2" href="{{route('index')}}">Trang chủ</a></li>
-                        <li><a class="nav-link nav_item ps-3 ps-md-2" href="{{route('about')}}">Giới thiệu</a></li>
+                        <li><a class="nav-link nav_item ps-3 ps-md-2 @yield('active1')" href="{{route('index')}}">Trang chủ</a></li>
+                        <li><a class="nav-link nav_item ps-3 ps-md-2 @yield('active2')" href="{{route('about')}}">Giới thiệu</a></li>
                         <li class="dropdown">
-                            <a class="dropdown-toggle nav-link ps-3 ps-md-2" href="{{route('listBlog')}}" data-bs-toggle="dropdown">Tin tức</a>
+                            <a class="dropdown-toggle nav-link ps-3 ps-md-2 @yield('active3')" href="{{route('listBlog')}}" data-bs-toggle="dropdown">Tin tức</a>
                             <div class="dropdown-menu">
                                 <ul>
                                     <li>
                                         <a class="dropdown-item nav-link nav_item" href="{{route('listBlog')}}">Tất Cả Tin Tức</a>
                                     </li>
+                                    @foreach($dataCategoryBlog as $item)
                                     <li>
-                                        <a class="dropdown-item nav-link nav_item" href="{{route('about')}}">Tin tức công ty</a>
+                                        <a class="dropdown-item nav-link nav_item" href="{{route('listBlog')}}">Tin Tức {{$item->name}}</a>
                                     </li>
-                                    <li>
-                                        <a class="dropdown-item nav-link nav_item" href="{{route('listBlog')}}">Tin thị trường</a>
-                                    </li>
-                                    <li><a class="dropdown-item nav-link nav_item" href="{{route('listBlog')}}">Nhà đẹp</a></li>
-                                    <li><a class="dropdown-item nav-link nav_item" href="{{route('listBlog')}}">Phong thủy</a>
-                                    </li>
-                                    <li><a class="dropdown-item nav-link nav_item" href="{{route('listBlog')}}">Kiến thức</a></li>
-                                    <li>
-                                        <a class="dropdown-item nav-link nav_item" href="{{route('listBlog')}}">Vật liệu xây dựng</a>
-                                    </li>
+                                    @endforeach
 
                                 </ul>
                             </div>
                         </li>
 
                         <li class="dropdown">
-                            <a class="dropdown-toggle nav-link ps-3 ps-md-2" href="{{route('listBlog')}}" data-bs-toggle="dropdown">Loại Bất Động Sản</a>
+                            <a class="dropdown-toggle nav-link ps-3 ps-md-2 @yield('active4')" href="{{route('listBlog')}}" data-bs-toggle="dropdown">Loại Bất Động Sản</a>
                             <div class="dropdown-menu">
                                 <ul>
                                     <li><a class="dropdown-item nav-link nav_item" href="{{route('listPost')}}">Tất Cả Bài Viết</a></li>
@@ -53,7 +45,7 @@
                             </div>
                         </li>
                         <li class="dropdown">
-                            <a class="dropdown-toggle nav-link ps-3 ps-md-2" href="{{route('listBlog')}}" data-bs-toggle="dropdown">Nhu Cầu Bất Động Sản</a>
+                            <a class="dropdown-toggle nav-link ps-3 ps-md-2 @yield('active5')" href="{{route('listBlog')}}" data-bs-toggle="dropdown">Nhu Cầu Bất Động Sản</a>
                             <div class="dropdown-menu">
                                 <ul>
                                     @foreach($dataToDemand as $demand)
@@ -62,7 +54,7 @@
                                 </ul>
                             </div>
                         </li>
-                        <li><a class="nav-link nav_item  ps-3 ps-md-2" href="{{route('contact')}}">Liên hệ</a></li>
+                        <li><a class="nav-link nav_item  ps-3 ps-md-2 @yield('active6')" href="{{route('contact')}}">Liên hệ</a></li>
                     </ul>
                 </div>
                 <ul class="navbar-nav attr-nav align-items-center pt-2 pt-md-0">

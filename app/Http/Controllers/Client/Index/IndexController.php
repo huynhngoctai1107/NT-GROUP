@@ -26,8 +26,8 @@ class IndexController extends Controller
 
 
         $condition = [
-            ['delete', '=', 0],
-            ['status', '=', 1],
+            ['posts.delete', '=', 0],
+            ['posts.status', '=', 1],
         ];
         $data = $this->post->getPostList($condition, null, true)->take(3);
         $h = $this->post->getPostList($condition, null, false);
@@ -35,7 +35,7 @@ class IndexController extends Controller
 
         $today = Carbon::now();
         $condition1 = [
-            ['delete', '=', 0],
+            ['posts.delete', '=', 0],
             ['status', '=', 1],
             ['featured_news', '=', 1],
         ];

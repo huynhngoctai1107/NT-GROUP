@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
 @endpush
 @section('title')
-    Quản lý danh mục tin tức
+    Danh sách xóa danh mục tin tức
 @endsection
 
 
@@ -26,7 +26,7 @@
                 <div class="card">
                     <div class="card-header d-flex" style="justify-content: space-between">
                         <div class="w-50 d-flex align-items-center">
-                            <h3 class="card-title"> Quản lý danh mục tin tức </h3>
+                            <h3 class="card-title"> Danh sách xóa danh mục tin tức </h3>
                         </div>
                         <div class="w-50 d-flex justify-content-end">
                             <form action="{{route('SearchCategoryBlog')}}" method="post">
@@ -44,8 +44,7 @@
                     <div class="card-body">
 
                         <div class="d-flex justify-content-between">
-                            <x-admin.buttom.add router="addFormCategoryBlog" name="Thêm danh mục tin"></x-admin.buttom.add>
-                            <x-admin.buttom.add router="listHistoryCategoryBlog" name="Lịch sử xóa"></x-admin.buttom.add>
+                            <x-admin.buttom.add router="listCategoryBlog" name="Danh sách"></x-admin.buttom.add>
                         </div>
                         <table id="example1" class="table table-bordered table-striped">
                             @if(session('error'))
@@ -79,9 +78,7 @@
                                     <td>{{date('d-m-Y',strtotime($item->updated_at))}}</td>
                                     <td></td>
                                     <td>
-                                        <a href="{{route('editFormCategoryBlog',$item->slug)}}" class="btn btn-outline-success btn-sm">Sửa</a>
-
-                                        <a href="{{route('DeleteCategoryBlog',$item->slug)}}" class="btn btn-outline-danger btn-sm">Xóa</a>
+                                        <a href="{{route('restoreCategoryBlog',$item->slug)}}" class="btn btn-outline-success btn-sm">Khôi phục</a>
                                     </td>
                                 </tr>
                             @endforeach

@@ -15,8 +15,25 @@ class DeleteBlogController extends Controller
     }
 
     public function deleteBlog($slug){
-        $condition = ['slug' => $slug,];
-        $this->blog->deleteBlog($condition);
-        return redirect()->back()->with('success', 'Bài viết đã được xóa thành công.');
+        $condition = [
+            ['slug', '=', $slug],
+        ];
+        $value = [
+            'delete' => 1,
+        ];
+        $this->blog->updateBlog($value, $condition);
+        return redirect()->back()->with('success', 'Đã xóa tin tức thành công');
+    }
+
+    function restoreBlog($slug)
+    {
+        $condition = [
+            ['slug', '=', $slug],
+        ];
+        $value = [
+            'delete' => 0,
+        ];
+        $this->blog->updateBlog($value, $condition);
+        return redirect()->back()->with('success', 'Đã khôi phục tin tức thành công');
     }
 }

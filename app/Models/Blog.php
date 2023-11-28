@@ -21,6 +21,11 @@ class Blog extends Model
         return $this->orderBy('id', 'desc')->where($condition)->paginate(5);
     }
 
+    public function searchBlog($condition)
+    {
+        return $this->where($condition)->orderBy('id', 'desc')->paginate(5);
+    }
+
     public function addBlog($value)
     {
         return $this->insert($value);

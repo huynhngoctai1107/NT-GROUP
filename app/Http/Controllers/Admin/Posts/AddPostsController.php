@@ -27,8 +27,11 @@ class AddPostsController extends Controller
     function addFormPosts()
     {
         $condition = [];
-        $demand    = $this->posts->Show($condition, 'demands');
-        $category  = $this->posts->Show($condition, 'category_posts');
+        $condition1 = [
+            ['delete', '=', 0],
+        ];
+        $demand    = $this->posts->Show($condition1, 'demands');
+        $category  = $this->posts->Show($condition1, 'category_posts');
         $user      = $this->posts->Show($condition, 'users');
         $price     = $this->posts->Show($condition, 'prices');
         $acreage   = $this->posts->Show($condition, 'acreages');

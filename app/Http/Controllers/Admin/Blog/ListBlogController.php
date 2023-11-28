@@ -16,8 +16,34 @@ class ListBlogController extends Controller
 
     function listBlog()
     {
-        $condition = [];
+        $condition = [
+            ['delete', '=', 0],
+        ];
         $data = $this->blog->listBlogAdmin($condition);
         return view('admin.Blog.ListBlog', [ 'data' => $data]);
+    }
+
+    function listHistoryBlog()
+    {
+        $condition = [
+            ['delete', '=', 1],
+        ];
+        $data = $this->blog->listBlogAdmin($condition);
+        return view('admin.Blog.history', [ 'data' => $data]);
+    }
+
+    function SearchBlog(Request $request){
+        $condition=[];
+        if ($request->filled('keyword')) {
+            $keyword = $request->keyword;
+            $condition[] = ['title', 'LIKE', "%$keyword%"];
+        }
+        $data = $this->blog->listBlogAdmin($condition);
+        if ($data->isEmpty()) {
+            return view('admin.Blog.ListBlog', [ 'data' => $data])
+                ->with('message', 'Không tìm thấy kết quả.');
+        } else {
+            return view('admin.Blog.ListBlog', [ 'data' => $data]);
+        }
     }
 }

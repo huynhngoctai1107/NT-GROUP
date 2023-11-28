@@ -18,7 +18,7 @@ class SearchController extends Controller
     }
     function search($slug){
         $condition = [
-            ['delete', '=', 0],
+            ['posts.delete', '=', 0],
             ['status', '=', 1],
         ];
         $data = $this->post->getPostCD($condition,$slug,'category');
@@ -28,7 +28,7 @@ class SearchController extends Controller
     }
     function search1($slug){
         $condition = [
-            ['delete', '=', 0],
+            ['posts.delete', '=', 0],
             ['status', '=', 1],
         ];
         $data = $this->post->getPostCD($condition,$slug,'demand');

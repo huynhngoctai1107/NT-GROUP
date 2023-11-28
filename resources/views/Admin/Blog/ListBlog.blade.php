@@ -25,15 +25,11 @@
             <div class="content-wrapper">
                 <div class="card">
                     <div class="card-header d-flex" style="justify-content: space-between">
-                        <h3 class="card-title"> Quản lý tin tức </h3>
-                    </div>
-
-                    <!-- /.card-header -->
-                    <div class="card-body">
-
-                        <div class="d-flex justify-content-between">
-                            <x-admin.buttom.add router="addFormBlog" name="Thêm tin tức"></x-admin.buttom.add>
-                            <form action="" method="post">
+                        <div class="w-50 d-flex align-items-center">
+                            <h3 class="card-title"> Quản lý tin tức </h3>
+                        </div>
+                        <div class="w-50 d-flex justify-content-end">
+                            <form action="{{route('SearchBlogs')}}" method="post">
                                 @csrf
                                 <div class="input-group rounded mt-3">
                                     <input type="text" placeholder="Nhập từ khóa tìm kiếm" class="form-control ps-2" id="search_input" name="keyword">
@@ -41,6 +37,14 @@
                                         <i class="fas fa-search"></i></button>
                                 </div>
                             </form>
+                        </div>
+                    </div>
+
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between mb-3">
+                            <x-admin.buttom.add router="addFormBlog" name="Thêm tin tức"></x-admin.buttom.add>
+                            <x-admin.buttom.add router="listHistoryBlog" name="Lịch sử xóa"></x-admin.buttom.add>
                         </div>
                         <table id="example1" class="table table-bordered table-striped">
                             @if(session('error'))

@@ -41,12 +41,12 @@ class PostSingleController extends Controller
 
         $data = $this->post->getPostWithContacts($condition);
         $condition1 = [
-            ['delete', '=', 0],
+            ['posts.delete', '=', 0],
             ['status', '=', 1],
             ['posts.slug','!=',$slug]
         ];
         $count = $this->post->categoriesWithPostCount();
-        $list = $this->post->getPostList($condition1, null, false)->take(3);
+        $list = $this->post->getPostList($condition1, null, TRUE)->take(3);
         return view('Client.Pages.PostSingle',['page'=>'blog', 'data'=>$data, 'category'=>$count, 'list'=>$list, 'count'=>$count]);
     }
 }

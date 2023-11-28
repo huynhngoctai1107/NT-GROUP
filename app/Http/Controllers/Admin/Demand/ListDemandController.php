@@ -17,8 +17,20 @@ class ListDemandController extends Controller
 
     function listDemand()
     {
-        $data = $this->demand->listDemand();
+        $condition = [
+            ['delete', '=', 0],
+        ];
+        $data = $this->demand->listDemand($condition);
         return view('admin.demandcategory.list', ['page' => 'demand', 'query' => $data]);
+    }
+
+    function listHistoryDemand()
+    {
+        $condition = [
+            ['delete', '=', 1],
+        ];
+        $data = $this->demand->listDemand($condition);
+        return view('admin.demandcategory.history', ['page' => 'demand', 'query' => $data]);
     }
 
     function searchDemand(Request $request)

@@ -18,10 +18,12 @@ class BlogListController extends Controller
     }
     function listBlog()
     {
-        $condition = [];
+        $condition = [
+            ['delete', '=', 0],
+        ];
         $data = $this->blog->listBlog($condition);
         $condition1 = [
-            ['delete', '=', 0],
+            ['posts.delete', '=', 0],
             ['status', '=', 1],
         ];
         $list = $this->post->getPostList($condition1, null, TRUE)->take(5);
@@ -45,7 +47,7 @@ class BlogListController extends Controller
 
         $data = $this->blog->listBlog($condition);
         $condition1 = [
-            ['delete', '=', 0],
+            ['posts.delete', '=', 0],
             ['status', '=', 1],
         ];
         $list = $this->post->getPostList($condition1, null, true)->take(5);
@@ -56,6 +58,15 @@ class BlogListController extends Controller
         } else {
             return view('Client.Pages.BlogList', compact('data', 'list'));
         }
+    }
+
+    public function SearchBlogList($id){
+        $condition = [
+            ['id_category_blog', '=', 0],
+        ];
+        $data = $this->post->getPostCD($condition,$slug,'demand');
+        $sale = $this->post->getPostList($condition, null, true)->take(3);
+        return view('Client.Pages.search',['page'=>'search', 'list'=>$data, 'sale'=>$sale]);
     }
 
 }

@@ -3,6 +3,9 @@
 @section('title')
     Bất động sản - NT GROUP
 @endsection
+@section('active2')
+    active
+@endsection
 @php
     $title = "Giới thiệu";
 @endphp

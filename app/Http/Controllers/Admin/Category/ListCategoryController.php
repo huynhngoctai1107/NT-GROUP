@@ -17,9 +17,22 @@ class ListCategoryController extends Controller
 
     function listCategory()
     {
-        $data = $this->category->listCategory();
+        $condition = [
+            ['delete', '=', 0],
+        ];
+        $data = $this->category->listCategory($condition);
         return view('admin.demandcategory.list', ['page' => 'category', 'query' => $data]);
     }
+
+    function listHistoryCategory()
+    {
+        $condition = [
+            ['delete', '=', 1],
+        ];
+        $data = $this->category->listCategory($condition);
+        return view('admin.demandcategory.history', ['page' => 'category', 'query' => $data]);
+    }
+
     function SearchCategory(Request $request){
         $condition=[];
         if ($request->filled('keyword')) {

@@ -18,7 +18,7 @@ class PostListController extends Controller
     }
     function listPost(){
         $condition = [
-            ['delete', '=', 0],
+            ['posts.delete', '=', 0],
             ['status', '=', 1],
         ];
         $data = $this->post->getPostList($condition, null, false,8);
@@ -29,11 +29,11 @@ class PostListController extends Controller
 
     public function SearchPost(Request $request){
         $condition = [
-            ['delete', '=', 0],
+            ['posts.delete', '=', 0],
             ['status', '=', 1],
         ];
         $condition1 = [
-            ['delete', '=', 0],
+            ['posts.delete', '=', 0],
             ['status', '=', 1],
         ];
 

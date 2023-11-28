@@ -3,6 +3,9 @@
 @section('title')
     Tin Tức Chi Tiết - NT GROUP
 @endsection
+@section('active3')
+    active
+@endsection
 @php
     $title = "Chi Tiết Tin Tức";
 @endphp

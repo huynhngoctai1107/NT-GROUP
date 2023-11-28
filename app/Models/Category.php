@@ -15,9 +15,9 @@ class Category extends Model
 
     protected $table = 'category_posts';
 
-    public function listCategory()
+    public function listCategory($condition)
     {
-        return $this->orderBy('id', 'desc')->paginate(5);
+        return $this->orderBy('id', 'desc')->where($condition)->paginate(5);
     }
     public function searchCategory($condition)
     {
@@ -41,14 +41,14 @@ class Category extends Model
     }
     public function GetCategory()
     {
-        return $this->get();
+        return $this->where('delete', 0)->get();
     }
 
     public function deleteCategory($slug)
     {
         // Kiểm tra xem nhu cầu có sản phẩm nào không
         $demandHasProducts = $this->where('category_posts.slug', $slug)
-            ->join('medias', 'category_posts.id', '=', 'medias.id_category')
+            ->join('posts', 'category_posts.id', '=', 'posts.id_category')
             ->exists();
 
         if ($demandHasProducts) {

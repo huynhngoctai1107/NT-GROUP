@@ -25,14 +25,10 @@
             <div class="content-wrapper">
                 <div class="card">
                     <div class="card-header d-flex" style="justify-content: space-between">
-                        <h3 class="card-title"> {{$page=='demand'?'Quản lý nhu cầu':'Quản lý danh mục'}}</h3>
-                    </div>
-
-                    <!-- /.card-header -->
-                    <div class="card-body">
-
-                        <div class="d-flex justify-content-between">
-                            <x-admin.buttom.add :router="$page=='demand'?'addDemand':'addCategory'" :name="$page=='demand'?'Thêm nhu cầu':'Thêm danh mục'"></x-admin.buttom.add>
+                        <div class="w-50 d-flex align-items-center">
+                            <h3 class="card-title"> {{$page=='demand'?'Quản lý nhu cầu':'Quản lý danh mục'}}</h3>
+                        </div>
+                        <div class="w-50 d-flex justify-content-end">
                             <form action="{{$page=='demand' ? route('searchDemand') : route('SearchCategory')}}" method="post">
                                 @csrf
                                 <div class="input-group rounded mt-3">
@@ -42,12 +38,26 @@
                                 </div>
                             </form>
                         </div>
+                    </div>
+
+                    <!-- /.card-header -->
+                    <div class="card-body">
+
+                        <div class="d-flex justify-content-between">
+                            <x-admin.buttom.add :router="$page=='demand'?'addDemand':'addCategory'" :name="$page=='demand'?'Thêm nhu cầu':'Thêm danh mục'"></x-admin.buttom.add>
+                            <x-admin.buttom.add :router="$page=='demand'?'listHistoryDemand':'listHistoryCategory'" :name="$page=='demand'?'Lịch sử xóa nhu cầu':'Lịch sử xóa danh mục'"></x-admin.buttom.add>
+                        </div>
                         <table id="example1" class="table table-bordered table-striped">
                             @if(session('error'))
                                 <div class="alert alert-danger">
                                     {{ session('error') }}
                                 </div>
                             @endif
+                                @if(session('success'))
+                                    <div class="alert alert-success">
+                                        {{ session('success') }}
+                                    </div>
+                                @endif
                             <thead>
                             <tr>
 

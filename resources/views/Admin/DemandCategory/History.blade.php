@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
 @endpush
 @section('title')
-    Quản lý danh mục tin tức
+    {{$page=='demand'?'Danh sách xóa nhu cầu':'Danh sách xóa danh mục'}}
 @endsection
 
 
@@ -26,10 +26,10 @@
                 <div class="card">
                     <div class="card-header d-flex" style="justify-content: space-between">
                         <div class="w-50 d-flex align-items-center">
-                            <h3 class="card-title"> Quản lý danh mục tin tức </h3>
+                            <h3 class="card-title"> {{$page=='demand'?'Quản lý nhu cầu':'Quản lý danh mục'}}</h3>
                         </div>
                         <div class="w-50 d-flex justify-content-end">
-                            <form action="{{route('SearchCategoryBlog')}}" method="post">
+                            <form action="{{$page=='demand' ? route('searchDemand') : route('SearchCategory')}}" method="post">
                                 @csrf
                                 <div class="input-group rounded mt-3">
                                     <input type="text" placeholder="Nhập từ khóa tìm kiếm" class="form-control ps-2" id="search_input" name="keyword">
@@ -44,8 +44,7 @@
                     <div class="card-body">
 
                         <div class="d-flex justify-content-between">
-                            <x-admin.buttom.add router="addFormCategoryBlog" name="Thêm danh mục tin"></x-admin.buttom.add>
-                            <x-admin.buttom.add router="listHistoryCategoryBlog" name="Lịch sử xóa"></x-admin.buttom.add>
+                            <x-admin.buttom.add :router="$page=='demand'?'listDemand':'listCategory'" :name="$page=='demand'?'Danh sách nhu cầu':'Danh sách danh mục'"></x-admin.buttom.add>
                         </div>
                         <table id="example1" class="table table-bordered table-striped">
                             @if(session('error'))
@@ -61,7 +60,7 @@
                             <thead>
                             <tr>
 
-                                <th>Tên danh mục</th>
+                                <th>Tên {{$page=='demand'?' nhu cầu':' danh mục'}}</th>
                                 <th>Slug</th>
                                 <th>Ngày tạo</th>
                                 <th>Cập nhật</th>
@@ -71,17 +70,16 @@
                             </thead>
 
                             <tbody>
-                            @foreach($data as $item)
+                            @foreach($query as $item)
                                 <tr>
                                     <td>{{$item->name}}</td>
                                     <td>{{$item->slug}}</td>
                                     <td>{{date('d-m-Y',strtotime($item->created_at))}}</td>
                                     <td>{{date('d-m-Y',strtotime($item->updated_at))}}</td>
-                                    <td></td>
+                                    <td>{{$item->note}}</td>
                                     <td>
-                                        <a href="{{route('editFormCategoryBlog',$item->slug)}}" class="btn btn-outline-success btn-sm">Sửa</a>
+                                        <a href="{{ $page === 'demand' ? route('restoreDemand', $item->slug) : route('restoreCategory', $item->slug) }}" class="btn btn-outline-success btn-sm">Khôi phục</a>
 
-                                        <a href="{{route('DeleteCategoryBlog',$item->slug)}}" class="btn btn-outline-danger btn-sm">Xóa</a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -93,7 +91,7 @@
                             </tbody>
 
                         </table>
-                        <div class="mt-3">{{ $data->links() }}</div>
+                        <div class="mt-3">{{ $query->links() }}</div>
                     </div>
                     <!-- /.card-body -->
                 </div>

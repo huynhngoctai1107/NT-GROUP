@@ -3,6 +3,9 @@
 @section('title')
     Kết Quả Tìm Kiếm - NT GROUP
 @endsection
+@section('active5')
+    active
+@endsection
 @section('main')
     <div class="container mt-5 mb-5">
         <div class="row">

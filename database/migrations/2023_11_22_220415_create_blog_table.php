@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string("image");
             $table->longText("content");
             $table->longText("excerpt");
+            $table->tinyInteger('delete')->default(0);
             $table->timestamps();
         });
     }

@@ -16,13 +16,25 @@ class DeleteCategoryController extends Controller
 
     function deleteCategory($slug)
     {
+        $condition = [
+            ['slug', '=', $slug],
+        ];
+        $value = [
+            'delete' => 1,
+        ];
+        $this->category->updateCategory($value, $condition);
+        return redirect()->back()->with('success', 'Đã xóa danh mục thành công');
+    }
 
-        $result = $this->category->deleteCategory($slug);
-
-        if ($result === false) {
-            return redirect()->back()->with('error', 'Không thể xóa danh mục vì đang chứa bài viết.');
-        }
-
-        return redirect()->back()->with('success', 'Nhu cầu đã được xóa thành công.');
+    function restoreCategory($slug)
+    {
+        $condition = [
+            ['slug', '=', $slug],
+        ];
+        $value = [
+            'delete' => 0,
+        ];
+        $this->category->updateCategory($value, $condition);
+        return redirect()->back()->with('success', 'Đã khôi phục danh mục thành công');
     }
 }

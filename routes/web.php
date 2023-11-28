@@ -60,6 +60,7 @@ use App\Http\Controllers\Admin\Voucher\ListVoucherController;
 use App\Http\Controllers\Admin\CategoryBlog\ListCategoryBlog;
 use App\Http\Controllers\Admin\CategoryBlog\AddCategoryBlog;
 use App\Http\Controllers\Admin\CategoryBlog\EditCategoryBlog;
+use App\Http\Controllers\Admin\CategoryBlog\DeleteCategoryBlogController;
 
 // tin tức
 use App\Http\Controllers\Admin\Blog\ListBlogController;
@@ -121,6 +122,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['AdminLogin']], function (){
         Route::get('/danh-sach', [ListDemandController::class, 'listDemand'])->name('listDemand');
         Route::get('/xoa/{slug}', [DeleteDemandController::class, 'deleteDemand'])
              ->name('deleteDemand');
+        Route::get('/khoi-phuc/{slug}', [DeleteDemandController::class, 'restoreDemand'])
+             ->name('restoreDemand');
+        Route::get('/lich-su-xoa-nhu-cau', [ListDemandController::class, 'listHistoryDemand'])
+             ->name('listHistoryDemand');
         Route::get('/chinh-sua/{slug}', [EditDemandController::class, 'editFormDemand'])
              ->name('editDemand');
         Route::post('/chinh-sua/{slug}', [EditDemandController::class, 'editDemand'])
@@ -134,6 +139,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['AdminLogin']], function (){
              ->name('listCategory');
         Route::get('/xoa/{slug}', [DeleteCategoryController::class, 'deleteCategory'])
              ->name('deleteCategory');
+        Route::get('/khoi-phuc/{slug}', [DeleteCategoryController::class, 'restoreCategory'])
+             ->name('restoreCategory');
+        Route::get('/lich-su-xoa-danh-muc', [ListCategoryController::class, 'listHistoryCategory'])
+             ->name('listHistoryCategory');
         Route::get('/chinh-sua/{slug}', [EditCategoryController::class, 'editFormCategory'])
              ->name('editCategory');
         Route::post('/chinh-sua/{slug}', [EditCategoryController::class, 'editCategory'])
@@ -224,7 +233,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['AdminLogin']], function (){
         Route::get('/{id}', [ListPostsController::class, 'UpdateStatus'])->name('UpdateStatus');
         Route::get('/hinh-anh/{id}', [EditPostsController::class, 'deleteMedia'])
              ->name('deleteMedia');
-        Route::get('/xoa-history/{slug}', [DeletePostsController::class, 'deleteHistory'])
+        Route::get('/lich-su-xoa-bai-viet/{slug}', [DeletePostsController::class, 'deleteHistory'])
              ->name('deleteHistory');
         Route::get('/khoi-phuc-bai-viet/{slug}', [DeletePostsController::class, 'restorePost'])
              ->name('restorePost');
@@ -252,21 +261,27 @@ Route::group(['prefix' => 'admin', 'middleware' => ['AdminLogin']], function (){
 
     Route::group(['prefix' => 'danh-muc-tin'], function (){
         Route::get('/danh-sach', [ListCategoryBlog::class, 'listCategoryBlog'])->name('listCategoryBlog');
+        Route::get('/lich-su-xoa-danh-muc-tin-tuc', [ListCategoryBlog::class, 'listHistoryCategoryBlog'])
+             ->name('listHistoryCategoryBlog');
         Route::get('/them', [AddCategoryBlog::class, 'addFormCategoryBlog'])->name('addFormCategoryBlog');
         Route::post('/them', [AddCategoryBlog::class, 'addCategoryBlog'])->name('addCategoryBlog');
         Route::get('/sua/{slug}', [EditCategoryBlog::class, 'editFormCategoryBlog'])->name('editFormCategoryBlog');
         Route::post('/cap-nhat/{slug}', [EditCategoryBlog::class, 'editCategoryBlog'])->name('editCategoryBlog');
-        Route::post('/', [ListCategoryBlog::class, 'SearchCategoryBlog'])->name('SearchCategoryBlog');
-
+        Route::post('tim-kiem/', [ListCategoryBlog::class, 'SearchCategoryBlog'])->name('SearchCategoryBlog');
+        Route::get('xoa/{slug}', [DeleteCategoryBlogController::class, 'DeleteCategoryBlog'])->name('DeleteCategoryBlog');
+        Route::get('khoi-phuc/{slug}', [DeleteCategoryBlogController::class, 'restoreCategoryBlog'])->name('restoreCategoryBlog');
     });
 
     Route::group(['prefix' => 'tin-tuc'], function (){
-        Route::get('/danh-sach-tin', [ListBlogController::class, 'listBlog'])->name('listBlogAdmin');
+        Route::get('/danh-sach-tin-tuc', [ListBlogController::class, 'listBlog'])->name('listBlogAdmin');
+        Route::get('/lich-su-xoa-tin-tuc', [ListBlogController::class, 'listHistoryBlog'])->name('listHistoryBlog');
         Route::get('/them', [AddBlogController::class, 'addFormBlog'])->name('addFormBlog');
         Route::post('/them', [AddBlogController::class, 'addBlog'])->name('addBlog');
         Route::get('/sua/{slug}', [EditBlogController::class, 'editFormBlog'])->name('editFormBlog');
         Route::post('/sua/{slug}', [EditBlogController::class, 'editBlog'])->name('editBlog');
+        Route::post('tim-kiem/', [ListBlogController::class, 'SearchBlog'])->name('SearchBlogs');
         Route::get('/xoa/{slug}', [DeleteBlogController::class, 'deleteBlog'])->name('deleteBlog');
+        Route::get('/khoi-phuc/{slug}', [DeleteBlogController::class, 'restoreBlog'])->name('restoreBlog');
     });
 });
 Route::group(['prefix' => '/', 'middleware' => ['Logout']], function (){
@@ -424,7 +439,7 @@ Route::group(['prefix' => '/'], function (){
 
     Route::group(['prefix' => 'tin-tuc'], function (){
         Route::get('/danh-sach', [BlogListController::class, 'listBlog'])->name('listBlog');
-        Route::get('/chi-tiet/{slug}', [BlogSingleController::class, 'SingleBlog'])->name('SingleBlog');
+        Route::get('/{slug}', [BlogSingleController::class, 'SingleBlog'])->name('SingleBlog');
         Route::get('/tim-kiem', [BlogListController::class, 'SearchBlog'])->name('SearchBlog');
     });
 
