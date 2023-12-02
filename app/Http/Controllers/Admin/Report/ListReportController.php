@@ -36,6 +36,18 @@ class ListReportController extends Controller{
 
 
     public function statusReport($Customer_reportsId){
+        $condition = [
+            'id'     => $Customer_reportsId,
+            'status' => 0,
+        ];
+
+        $query     = $this->customer_reports->firstReport($condition);
+
+        if (!$query){
+            return redirect()
+                ->back()
+                ->with('error', "Cập nhật trạng thái thất bại khi đã xữ lý thành công");
+        }
         $Customer_reports = Customer_reports::find($Customer_reportsId);
 
         if ($Customer_reports){
@@ -47,7 +59,9 @@ class ListReportController extends Controller{
             $Customer_reports->save();
         }
 
-        return back();
+        return redirect()
+            ->back()
+            ->with('success', "Cập nhật trại thái thành công");
     }
 
     public function searchReport(Request $request)

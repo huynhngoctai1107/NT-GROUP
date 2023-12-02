@@ -9,6 +9,7 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use function PHPUnit\Framework\isEmpty;
 
 class ProfileCotroller extends Controller{
 
@@ -75,14 +76,18 @@ class ProfileCotroller extends Controller{
                 ['posts.delete', '=', 0],
                 ['posts.status', '=', 1],
             ];
-            foreach ($followed['getview'] as $item){
-                $values[] = $item->id;
+
+            if($followed['getview'] == null){
+                foreach ($followed['getview'] as $item){
+                    $values[] = $item->id;
+                }
+              $postFollow =   $this->post->getPostFollow($values, 4) ;
             }
 
 
             return view('client.pages.profile',
                 ['postUser'      => $this->post->getPostList($condition, NULL, FALSE, NULL),
-                 'postFollow'    => $this->post->getPostFollow($values,4),
+                 'postFollow'    => $postFollow ?? NULL,
                  'user'          => $user,
                  'slug'          => $slug,
                  'ViewFollow'    => $ViewFollow,

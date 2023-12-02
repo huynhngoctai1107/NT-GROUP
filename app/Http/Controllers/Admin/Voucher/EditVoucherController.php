@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Voucher;
 
 use App\Http\Controllers\Controller;
+use App\Models\Transaction;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Voucher;
 use Illuminate\Support\Str;
@@ -12,9 +13,11 @@ use App\Http\Requests\Voucher\EditVoucherRequest;
 class EditVoucherController extends Controller{
 
     public $voucher;
+    public $transaction;
 
     public function __construct(){
-        $this->voucher = new Voucher();
+        $this->voucher     = new Voucher();
+        $this->transaction = new Transaction();
     }
 
     public function editFormVoucher($slug){
@@ -29,6 +32,18 @@ class EditVoucherController extends Controller{
 
     public function editVoucher(EditVoucherRequest $request, $slug){
 
+        $condition = [
+            ['slug', '=', $slug],
+        ];
+        $voucher   = $this->voucher->editVoucher($condition);
+
+        $condition    = [
+            ['transactions.voucher', '=', $voucher->code]
+        ];
+        $checkVoucher = $this->transaction->getHistory($condition);
+        if(count($checkVoucher) > 0 ){
+            return redirect()->route('listVoucher')->with('error', 'Voucher đã được sử dụng không được chỉnh sửa');
+        }
 
         $value = [
             'name'            => $request->name,

@@ -42,10 +42,8 @@ class Voucher extends Model{
     }
 
     public function updateVoucher($condition, $value){
-        if (isset($value['content']) && $value['content'] !== NULL){
-            return $this->where($condition)->update($value);
-        }
 
-        return FALSE;
+            return $this->where($condition)->update($value);
+
     }
 }

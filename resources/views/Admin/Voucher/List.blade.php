@@ -55,6 +55,11 @@
                                     {{ session('success') }}
                                 </div>
                             @endif
+                            @if(Session::has('error'))
+                                <div class="alert alert-danger" role="alert">
+                                    {{Session::get('error')}}
+                                </div>
+                            @endif
                             <thead class="text-center">
                             <tr>
                                 <th>Tên mã</th>

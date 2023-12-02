@@ -23,7 +23,6 @@ Danh sách tin đã đăng - NT GROUP
                 </div>
             @endif
                 @if(Session::has('error-post'))
-
                     <div class="alert alert-danger text-center" role="alert">
                         {{Session::get('error-post')}}
                     </div>
@@ -43,9 +42,6 @@ Danh sách tin đã đăng - NT GROUP
         <div class="container tab-content" id="nav-tabContent">
             <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
                 <div class="card">
-                    <div class="card-header">
-                        <h6>Tin đăng</h6>
-                    </div>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table">
@@ -62,9 +58,6 @@ Danh sách tin đã đăng - NT GROUP
             </div>
             <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
                 <div class="card">
-                    <div class="card-header">
-                        <h6>Tin mua vip</h6>
-                    </div>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table">
@@ -81,9 +74,6 @@ Danh sách tin đã đăng - NT GROUP
             </div>
             <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
                 <div class="card">
-                    <div class="card-header">
-                        <h6>Tin đã xóa</h6>
-                    </div>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table">

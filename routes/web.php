@@ -192,14 +192,14 @@ Route::group(['prefix' => 'admin', 'middleware' => ['AdminLogin']], function (){
 
     });
 
-    Route::group(['prefix' => 'voucher'], function (){
+    Route::group(['prefix' => 'ma-giam-gia'], function (){
         Route::get('/danh-sach', [ListVoucherController::class, 'listVoucher'])
              ->name('listVoucher');
-        Route::get('trang-thai-voucher/{id}', [ListVoucherController::class, 'status'])
+        Route::get('trang-thai-ma-giam-gia/{id}', [ListVoucherController::class, 'status'])
              ->name('status');
-        Route::get('/danh-sach-xoa-voucher', [ListVoucherController::class, 'ListVoucherHistory'])
+        Route::get('/danh-sach-xoa-ma-giam-gia', [ListVoucherController::class, 'ListVoucherHistory'])
              ->name('ListVoucherHistory');
-        Route::get('/tim-voucher', [ListVoucherController::class, 'searchVoucher'])
+        Route::get('/tim-ma-giam-gia', [ListVoucherController::class, 'searchVoucher'])
              ->name('searchVoucher');
         Route::get('/chinh-sua/{slug}', [EditVoucherController::class, 'editFormVoucher'])
              ->name('editFormVoucher');
@@ -210,7 +210,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['AdminLogin']], function (){
         Route::post('/them', [AddVoucherController::class, 'addVoucher'])->name('addVoucher');
         Route::get('/xoa/{slug}', [DeleteVoucherController::class, 'deleteVoucher'])
              ->name('deleteVoucher');
-        Route::get('/khoi-phuc-voucher/{slug}', [DeleteVoucherController::class, 'VoucherRestor'])
+        Route::get('/khoi-phuc-ma-giam-gia/{slug}', [DeleteVoucherController::class, 'VoucherRestor'])
              ->name('VoucherRestor');
     });
     Route::group(['prefix' => 'lich-su-giao-dich', 'middleware' => ['Roles']], function (){
@@ -341,7 +341,7 @@ Route::group(['prefix' => '/', 'middleware' => ['ClientLogin']], function (){
 
     });
     Route::get('/tai-khoan', [AccountController::class, 'account'])->name('account');
-    Route::post('/sua-tai-khoan/{token}', [AccountController::class, 'updateProfile'])
+    Route::post('/sua-tai-khoan/{slug}', [AccountController::class, 'updateProfile'])
          ->name('updateProfile');
     Route::post('/doi-mat-khau/{token}', [AccountController::class, 'updatePassword'])
          ->name('updatePassword');

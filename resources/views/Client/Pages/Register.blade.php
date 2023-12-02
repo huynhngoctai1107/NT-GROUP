@@ -108,10 +108,10 @@
                                     <div class="payment_option mb-50">
                                         <label for="exampleInputFile">Giới tính</label>
                                         <div class="custome-radio d-flex ">
-                                            <input class="form-check-input" type="radio" name="gender" value="nam" {{old('gender') =="nam"? "checked" : ""}} id="exampleRadios3"/>
+                                            <input class="form-check-input" type="radio" name="gender" value="Nam" {{old('gender') =="Nam"? "checked" : ""}} id="exampleRadios3"/>
                                             <label class="form-check-label me-3" for="exampleRadios3" data-bs-toggle="collapse" data-target="#bankTranfer" aria-controls="bankTranfer">Nam</label>
 
-                                            <input class="form-check-input" type="radio" name="gender" value="nữ" {{old('gender') =="nữ"? "checked" : ""}} id="exampleRadios4"/>
+                                            <input class="form-check-input" type="radio" name="gender" value="Nữ" {{old('gender') =="Nữ"? "checked" : ""}} id="exampleRadios4"/>
                                             <label class="form-check-label" for="exampleRadios4" data-bs-toggle="collapse" data-target="#checkPayment" aria-controls="checkPayment">Nữ</label>
                                         </div>
                                     </div>

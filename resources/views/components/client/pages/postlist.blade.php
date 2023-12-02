@@ -22,7 +22,7 @@
                     text-overflow: ellipsis;
                     -webkit-line-clamp:1;
                     max-width: 30ch;">{{ $item->title }}</a>
-
+            <br>
             <a href="{{route('search',$item->slug_category )}}" class="btn btn-fill-out fst-italic " type="button">
                 {{ $item->name_category }}</a>
 
@@ -55,27 +55,32 @@
             </p>
 
         </td>
+        @if($item->delete_posts == 0)
+            <td colspan="2">
+                <form action="{{route('editStatus',$item->slug_posts)}}" method="post">
+                    @csrf
+                    <button type="submit" style="font-size:12px" class="btn  text-white fst-italic p-2 {{$item->status_post == 1 ? 'bg-success' : 'bg-danger' }}" name="status" value="{{$item->status_post}}">{{$item->status_post == 1 ? 'Đang hoạt động' : 'Tạm ngưng hoạt động' }}</button>
 
-        <td colspan="2">
-            <form action="{{route('editStatus',$item->slug_posts)}}" method="post">
-                @csrf
-                <button type="submit" style="font-size:12px" class="btn  text-white fst-italic p-2 {{$item->status_post == 1 ? 'bg-success' : 'bg-danger' }}" name="status" value="{{$item->status_post}}">{{$item->status_post == 1 ? 'Đang hoạt động' : 'Tạm ngưng hoạt động' }}</button>
-                @if($item->delete_posts == 0)
-            </form>
-            @endif
-        </td>
-        {{--        <td colspan="2">--}}
-        {{--            <a href="{{route('postSingle',$item->slug_posts)}}" class="text-success" style="font-weight: bold;">Xem Chi tiết</a><br>--}}
-        {{--        </td>--}}
+                </form>
 
-        <td colspan="2">
-            @if($item->delete_posts == 0)
+            </td>
+            {{--        <td colspan="2">--}}
+            {{--            <a href="{{route('postSingle',$item->slug_posts)}}" class="text-success" style="font-weight: bold;">Xem Chi tiết</a><br>--}}
+            {{--        </td>--}}
+
+            <td colspan="2">
                 <div class="btn-group  align-items-center" role="group">
                     <a href="{{route('editPostsClient',$item->slug_posts)}}" class="btn btn-outline-success btn-sm">Sửa</a>
                     <a href="{{ route('deletePostlist', $item->slug_posts) }}" class="btn btn-outline-danger btn-sm">Xóa</a>
                 </div>
-            @endif
-        </td>
+            </td>
+        @else
+            <td colspan="2">
+                <button type="submit" style="font-size:12px" class="btn  text-white fst-italic p-2 bg-danger ">Tạm ngưng hoạt động</button>
 
+
+            </td>
+            <td><a href="#" class="btn btn-outline-success btn-sm">Yêu cầu khôi phục</a></td>
+        @endif
     </tr>
 @endforeach

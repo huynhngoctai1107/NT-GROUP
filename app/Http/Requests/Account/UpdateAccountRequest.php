@@ -29,7 +29,7 @@ class UpdateAccountRequest extends FormRequest{
                 'required',
                 'min:3',
                 'max:100',
-                Rule::unique('users', 'fullname')->ignore($this->token,'token'),
+                Rule::unique('users', 'fullname')->ignore($this->slug,'slug'),
             ],
             'gender'   => 'required',
             'phone'    => 'required|numeric|min:10',

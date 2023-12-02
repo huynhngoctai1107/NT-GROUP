@@ -53,6 +53,11 @@
                                 {{ session('success') }}
                             </div>
                         @endif
+                            @if(Session::has('error'))
+                                <div class="alert alert-danger" role="alert">
+                                    {{Session::get('error')}}
+                                </div>
+                            @endif
                         <table id="example1" class="table table-bordered table-striped ">
                             <thead class="text-center">
                             <tr>

@@ -57,6 +57,11 @@
                                 {{ session('success') }}
                             </div>
                         @endif
+                        @if(Session::has('error'))
+                            <div class="alert alert-danger" role="alert">
+                                {{Session::get('error')}}
+                            </div>
+                        @endif
                         <table id="example1" class="table table-bordered table-striped ">
                             <thead class="text-center">
                             <tr>
@@ -77,7 +82,7 @@
                                     <td>{{ $data->getTitleAttribute() }}</td>
                                     <td>{{ $data->content }}</td>
                                     <td>
-                                        <a href="" class="btn btn-sm btn-{{$data->status_report == 1 ? 'success':'danger'}}">
+                                        <a href="#" class="btn btn-sm btn-{{$data->status_report == 1 ? 'success':'danger'}}">
                                             {{$data->status_report == 1 ? 'Đã xử lý':'Chưa xử lý'}}
                                         </a>
                                     </td>

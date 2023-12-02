@@ -27,6 +27,10 @@ class Customer_reports extends Model{
     public function ListReport($condition){
         return $this->orderBy('id', 'desc')->where($condition)->paginate(5);
     }
+    public function firstReport($condition){
+        return $this->orderBy('id', 'desc')->where($condition)->first();
+    }
+
 
     public function ListPostReport($condition){
         return $this->select('customer_reports.id as id_report','user_id','post_id','Customer_reports.content','Customer_reports.delete as delete_report','Customer_reports.status as status_report','Customer_reports.created_at as created_at_report','Customer_reports.updated_at as updated_at_report','fullname','email')->

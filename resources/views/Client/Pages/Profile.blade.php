@@ -22,27 +22,24 @@
                     <div class="p-4">
                         <div class="d-flex justify-content-center">
                             <div class="col-md-4 col-3 me-md-0 me-3 ">
-                                <img src="{{$user->image != NULL ? asset('images/users/'.$user->image): asset('images/users/user-1.png')  }}" alt="user" class="rounded-circle" width="100"/>
+                                <img src="{{$user->image != NULL ? asset('images/users/'.$user->image): asset('images/users/user-1.png')}}" alt="user" class="rounded-circle" width="100"/>
                             </div>
                             <div class="ps-md-4 col-md-8 col-6  @if($follow == FALSE) flex-column justify-content-center mt-4 d-flex @endif ">
                                 <h3 class="h4 mb-0">{{$user->fullname ?? ""}}</h3>
                                 <p class="text-danger mb-3">{{$user->name}}</p>
-                                @if($follow == TRUE)
-
-                                    <form action="{{$checkFollower == NULL ? route('follow') : route('unFollow') }}" method="get">
-                                        <input type="hidden" name="id_user" value="{{$checkFollower == NULL ? auth()->user()->id : $user->id}}">
-                                        <input type="hidden" name="id_follower" value="{{$checkFollower == NULL ? $user->id : auth()->user()->id}}">
+                                @if($follow)
+                                    <form action="{{ $checkFollower == NULL ? route('follow') : route('unFollow') }}" method="get">
+                                        <input type="hidden" name="id_user" value="{{ $checkFollower == NULL ? auth()->user()->id : $user->id }}">
+                                        <input type="hidden" name="id_follower" value="{{ $checkFollower == NULL ? $user->id : auth()->user()->id }}">
                                         <button type="submit" class="button-24 py-2 px-3" role="button">
-                                            @if(empty($checkFollower))
-                                                <i class="fa fa-plus mr-2 "></i> Theo dõi
-                                            @else
-                                                <i class="fa fa-minus mr-2 "></i>  Bỏ theo dõi
-                                            @endif
+                                            <i class="fa {{ empty($checkFollower) ? 'fa-plus' : 'fa-minus' }} mr-2 "></i>
+                                            {{ empty($checkFollower) ? 'Theo dõi' : 'Bỏ theo dõi' }}
                                         </button>
                                     </form>
-                                @endif
-                                @if(auth()->check() == NULL)
-                                    <a href="{{route('follow')}}"> <i class="fa fa-plus mr-2 "></i> Theo dõi </a>
+                                @elseif(!auth()->check())
+                                    <a href="{{ route('follow') }}">
+                                        <i class="fa fa-plus mr-2 "></i> Theo dõi
+                                    </a>
                                 @endif
 
                             </div>
@@ -89,24 +86,20 @@
             <div class="col-12 col-md-8 px-4">
                 <nav>
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                        <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Theo dõi </button>
+                        <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Theo dõi</button>
                         <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Bài viết của tôi</button>
                     </div>
                 </nav>
                 <div class="tab-content" id="nav-tabContent">
                     <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                        @if(auth()->check())
-                            @if($user->id == auth()->user()->id)
-                                <x-client.index.postSale :list="$postFollow">
-
-
-                                </x-client.index.postSale>
+                        @if(auth()->check() && ($user->id == auth()->user()->id))
+                            @if($postFollow != NULL)
+                                <x-client.index.postSale :list="$postFollow"></x-client.index.postSale>
                                 <div class="d-flex justify-content-center mt-4">
-                                    {{$postFollow->links('pagination::bootstrap-4') }}
+                                    {{$postFollow->links('pagination::bootstrap-4')}}
                                 </div>
-
                             @else
-                                Danh sách này bị ẩn khi không phải chủ tài khoản này!
+                                Hiện tại không có bài viết theo dõi nào
                             @endif
                         @else
                             Danh sách này bị ẩn khi không phải chủ tài khoản này!
@@ -115,7 +108,12 @@
 
                     </div>
                     <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                        <x-client.index.postSale :list="$postUser"></x-client.index.postSale>
+
+                        @if(count($postUser) !== 0)
+                            <x-client.index.postSale :list="$postUser"></x-client.index.postSale>
+                        @else
+                            Hiện tại không có bài đăng nào
+                        @endif
                     </div>
 
                 </div>

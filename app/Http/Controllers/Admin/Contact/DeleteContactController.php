@@ -17,10 +17,11 @@ class DeleteContactController extends Controller{
     function deleteContact($id){
         $condition = [
             ['id', '=', $id],
+            ['status', '=', 0],
         ];
         $value     = [
             'delete' => 1,
-            'status' => 0,
+            'status' => 1,
         ];
         $this->faqs->updateContact($condition,$value);
         return redirect()->back()->with('success', 'Đã xóa vài viết thành công');

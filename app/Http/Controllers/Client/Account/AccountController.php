@@ -69,7 +69,7 @@ class AccountController extends Controller
             'dateT'=>$DateTransition]);
     }
 
-    public function updateProfile(UpdateAccountRequest $request, $token){
+    public function updateProfile(UpdateAccountRequest $request, $slug){
 
         $userData = [
             'fullname' => $request->fullname,
@@ -80,6 +80,7 @@ class AccountController extends Controller
             'token'    => strtoupper(Str::random(10)),
         ];
 
+
         // Kiểm tra và lưu trữ hình ảnh mới (nếu có)
         if ($request->hasFile('image')){
             $image     = $request->file('image');
@@ -89,7 +90,7 @@ class AccountController extends Controller
         }
 
         $condition = [
-            'token' => $token,
+            'slug' => $slug,
         ];
 
         $this->user->updateUser($userData, $condition);

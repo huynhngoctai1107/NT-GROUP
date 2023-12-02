@@ -4,7 +4,8 @@
     </div>
     <div class="card-body">
         <div class="row">
-            <form method="POST" action="{{route('updateProfile',auth()->user()->token)}}" id="update_profile" enctype="multipart/form-data" class="contactForm">
+
+            <form method="POST" action="{{route('updateProfile',auth()->user()->slug)}}" id="update_profile" enctype="multipart/form-data" class="contactForm">
                 @csrf
                 <div class="row">
                     <div class="mb-3">
@@ -34,6 +35,9 @@
                             <input type="radio" class="form-check-input" name="gender" id="female" value="Nữ" {{ auth()->user()->gender == 'Nữ' ? 'checked' : '' }}>
                             <label class="label" for="female">Nữ</label>
                         </div>
+                        @error('gender')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
 
                     <div class="mb-3">
@@ -41,10 +45,18 @@
                             <label for="phone-number" class="label">Số điện thoại</label>
                             <input type="tel" class="form-control" id="phone-number" name="phone" value="{{ auth()->user()->phone ?? '' }}" placeholder="Nhập số điện thoại của bạn">
                         </div>
+                        @error('phone')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="mb-3">
-                        <label for="street-address" class="label">Địa chỉ</label>
-                        <input type="text" class="form-control" id="street-address" name="address" value="{{ auth()->user()->address ?? '' }}" placeholder="Nhập địa chỉ của bạn">
+                        <div class="form-group">
+                            <label for="street-address" class="label">Địa chỉ</label>
+                            <input type="text" class="form-control" id="street-address" name="address" value="{{ auth()->user()->address ?? '' }}" placeholder="Nhập địa chỉ của bạn">
+                        </div>
+                        @error('address')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
 
                     <div class="mb-3">
@@ -59,7 +71,7 @@
                     </div>
 
                     <div class="btn-group" role="group">
-                        <button type="submit" class="btn btn-fill-out" >Cập nhật tài khoản</button>
+                        <button type="submit" class="btn btn-fill-out">Cập nhật tài khoản</button>
                     </div>
 
                 </div>
@@ -69,7 +81,7 @@
 </div>
 
 <style>
-	.imgs{
+	.imgs {
 		max-width: 300px;
 		max-height: 300px;
 		margin: 15px auto;
