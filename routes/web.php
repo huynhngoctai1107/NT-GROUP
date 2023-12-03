@@ -372,7 +372,7 @@ Route::group(['prefix' => '/'], function (){
 
 
     Route::get('/', [IndexController::class, 'index'])->name('index');
-    Route::get('/xem-them-bai-viet-moi/{email}',
+    Route::get('/tuong-tac/{slug}',
         [InteractionCountCotroller::class, 'interactionCount'])->name('interactionCount');
 
     //tools map

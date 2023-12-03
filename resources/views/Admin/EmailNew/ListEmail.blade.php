@@ -54,6 +54,7 @@
                             <tr>
                                 <th class="text-center">ID</th>
                                 <th class="">Email</th>
+                                <th class="">Lượt tương tác</th>
                                 <th class="text-center">Nghiệp vụ</th>
                             </tr>
                             </thead>
@@ -62,6 +63,7 @@
                                 <tr>
                                     <td class="text-center">{{$item->id}}</td>
                                     <td class="text-md-left">{{$item->email}}</td>
+                                    <th >{{$item->interaction_count}}</th>
                                     <td class="text-center">
                                         <div class="btn-group" role="group">
                                             <a href="{{route('deleteEmail',$item->id)}}" class="btn btn-outline-danger btn-sm">Xoá</a>

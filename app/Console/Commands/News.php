@@ -24,7 +24,7 @@ class News extends Command{
     public function handle(){
 
         $email     = new Email();
-        $newPosts  = Post::where('created_at', '>', now()->subDays(3))->paginate(5);
+        $newPosts  = Post::where('created_at', '>', now()->subDays(7))->paginate(5);
 
         if ($newPosts->isEmpty()) {
             $this->info('Không có bài viết mới.');
@@ -34,6 +34,10 @@ class News extends Command{
             'delete' => 0,
         ];
         $customers  = $email->getAll($condition);
+        if ($customers->isEmpty()) {
+            $this->info('Không có tài người đăng ký.');
+            return;
+        }
         foreach ($customers as $customer){
             $dataPost =[
                 'post' =>$newPosts ,
