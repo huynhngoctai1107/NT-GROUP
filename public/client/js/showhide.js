@@ -6,7 +6,18 @@ function myFunction() {
         x.type = "password";
     }
 }
+function togglePasswordVisibility(targetId, otherId) {
+    var targetInput = document.getElementById(targetId);
+    var otherInput = document.getElementById(otherId);
 
+    if (targetInput.type === "password") {
+        targetInput.type = "text";
+        otherInput.type = "text";
+    } else {
+        targetInput.type = "password";
+        otherInput.type = "password";
+    }
+}
 function myFunctionone() {
     var x = document.getElementById("againpassword");
     if (x.type === "password") {

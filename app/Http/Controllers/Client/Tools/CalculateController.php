@@ -18,26 +18,27 @@ class CalculateController extends Controller{
             $sumtotoalInterest    = 0;
             $amortizationSchedule = [];
             $schedule             = [];
+            //Phương thức thanh toán, trong trường hợp này là gốc cố định,lãi giảm dần
             if ($request->method == 'equalMonthlyPayments'){
-                $principalRemaining  = $request->principal;
-                $monthlyInterestRate = ($request->annualInterestRate / 12) / 100;
-                $emi                 = $this->calculateEMI($request->principal,
-                    $request->loanTermMonths,
-                    $request->annualInterestRate
+                $principalRemaining  = $request->principal; //Số tiền còn lại của khoản vay, được khởi tạo bằng số tiền vay ban đầu.
+                $monthlyInterestRate = ($request->annualInterestRate / 12) / 100;//Lãi suất hàng tháng, được tính bằng cách chia lãi suất hàng năm cho 12 và chia cho 100.
+                $emi                 = $this->calculateEMI($request->principal,//Số tiền thanh toán hàng tháng, được tính toán bằng hàm calculateEMI.
+                    $request->loanTermMonths,//Thời hạn vay tính bằng tháng.
+                    $request->annualInterestRate //Lãi suất hàng năm.
                 );
                 for ($i = 1; $i <= $request->loanTermMonths; $i ++){
                     $interest           = $principalRemaining * $monthlyInterestRate;
                     $principalPaid      = $emi - $interest;
-                    $principalRemaining -= $principalPaid;
-
+                    $principalRemaining -= $principalPaid; //Cập nhật số tiền gốc còn lại ($principalRemaining).
+                    //Mảng lưu trữ lịch trình thanh toán hàng tháng.
                     $schedule[]        = [
                         'Month'              => $i,
-                        'EMI'                => round($emi, 0),
-                        'Principal'          => round($principalPaid, 0),
-                        'Interest'           => round($interest, 0),
-                        'RemainingPrincipal' => round($principalRemaining, 0),
+                        'EMI'                => round($emi, 0),//Số tiền thanh toán hàng tháng
+                        'Principal'          => round($principalPaid, 0),//Lãi xuất hằng tháng
+                        'Interest'           => round($interest, 0),//Lãi phải trả
+                        'RemainingPrincipal' => round($principalRemaining, 0),//Số tiền còn lại
                     ];
-                    $sumtotoalInterest += round($emi, 0);
+                    $sumtotoalInterest += round($emi, 0);//Tính tổng lãi suất đã trả trong toàn bộ kỳ vay ($sumtotoalInterest), bằng cách cộng thêm lượng thanh toán hàng tháng (round($emi, 0)) vào tổng.
                 }
 
             }else{
@@ -69,6 +70,8 @@ class CalculateController extends Controller{
     }
 
 
+
+    //Phương thức thanh toán, trong trường hợp này là gốc cố định, hằng tháng
     public function calculateLoan($principal, $loanTermMonths, $annualInterestRate){
         $amount        = $principal;
         $interest_rate = $annualInterestRate;
@@ -106,6 +109,7 @@ class CalculateController extends Controller{
     public function resetTool(Request $request){
         $request->flush();
         return redirect()->route('viewCalculate');
+        //làm mới
     }
 
 

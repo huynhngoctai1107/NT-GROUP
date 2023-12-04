@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('email_news', function (Blueprint $table) {
             $table->id();
-            $table->string('email');
+            $table->string('email')->unique();
             $table->integer('interaction_count');
             $table->tinyInteger('delete')->default(0);
             $table->timestamps();

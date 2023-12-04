@@ -23,7 +23,7 @@ class RegisterRequest extends FormRequest{
     : array{
         return [
             'fullname'              => 'bail|required|min:3|max:100|regex:/^[\p{L}\p{M}\s.\-]+$/u|unique:users,fullname',
-            'gender'                => 'required|in:nam,nữ',
+            'gender'                => 'required|in:Nam,Nữ',
             'uploadfile'            => 'required',
             'checkbok'              => 'required',
             'address'               => 'required',

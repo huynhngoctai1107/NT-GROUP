@@ -46,9 +46,9 @@
 
                                     <div class="mb-3">
                                         <label for="myInput" class="form-label">Tạo mật khẩu</label>
-                                        <input type="password" value="{{old('password')}}" name="password" class="form-control" id="myInput">
+                                        <input type="password" value="{{ old('password') }}" name="password" class="form-control" id="myInput" placeholder="Tạo mật khẩu">
                                         <div class="mb-3">
-                                            <input type="checkbox" onclick="myFunction()"> Hiện mật khẩu
+                                            <input type="checkbox" onclick="togglePasswordVisibility('myInput', 'againpassword')"> Hiện mật khẩu
                                             @error('password')
                                             <p class="text-danger">
                                                 {{ $message }}
@@ -58,9 +58,8 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="exampleInputPassword2" class="form-label">Nhập lại mật khẩu vừa tạo</label>
-                                        <input type="password" name="password_confirmation" value="{{old('password_confirmation')}}" class="form-control" id="againpassword">
+                                        <input type="password" name="password_confirmation" value="{{ old('password_confirmation') }}" class="form-control" id="againpassword" placeholder="Nhập lại mật khẩu">
                                         <div class="mb-3">
-                                            <input type="checkbox" onclick="myFunctionone()"> Hiện mật khẩu
                                             @error('password_confirmation')
                                             <p class="text-danger">
                                                 {{ $message }}

@@ -22,11 +22,12 @@ class EmailRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'emailnew'    => 'bail||required|email',
+            'emailnew'                 => 'bail||required|email|unique:email_news,email',
         ];
     }
     public function messages(){
         return [
+            'emailnew.unique'         =>"Email đã đăng ký trước đó. Xin vui lòng thử lại",
             'emailnew.required'       => 'Vui lòng nhập vào email',
             'emailnew.email'          => 'Email chưa đúng định dạng',
         ];

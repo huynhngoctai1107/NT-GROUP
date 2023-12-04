@@ -29,8 +29,8 @@ class RegisterController extends Controller{
 
 
         if ($request->has('uploadfile')){
-            $fileName = time() . '-' . 'product' . '.' . $request->uploadfile->extension();
-            $request->uploadfile->move(public_path("img/users"), $fileName);
+            $fileName = time() . '-' . 'user' . '.' . $request->uploadfile->extension();
+            $request->uploadfile->move(public_path("images/users"), $fileName);
             $request->merge(['image' => $fileName]);
         }
         $data = [
