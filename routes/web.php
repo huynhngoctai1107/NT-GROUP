@@ -440,7 +440,8 @@ Route::group(['prefix' => '/'], function (){
     Route::group(['prefix' => 'tin-tuc'], function (){
         Route::get('/danh-sach', [BlogListController::class, 'listBlog'])->name('listBlog');
         Route::get('/{slug}', [BlogSingleController::class, 'SingleBlog'])->name('SingleBlog');
-        Route::get('/tim-kiem', [BlogListController::class, 'SearchBlog'])->name('SearchBlog');
     });
+    Route::get('/tim-kiem-tin-tuc/', [BlogListController::class, 'SearchBlogClient'])->name('SearchBlogClient');
+    Route::get('/danh-sach-tin-tuc/{slug}', [BlogListController::class, 'SearchBlogList'])->name('SearchBlogList');
 
 });

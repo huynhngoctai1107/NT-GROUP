@@ -30,9 +30,11 @@ class BlogListController extends Controller
         return view('Client.Pages.BlogList', ['data' => $data, 'list'=>$list]);
     }
 
-    function SearchBlog(Request $request)
+    function SearchBlogClient(Request $request)
     {
-        $condition = [];
+        $condition = [
+            ['delete', '=', 0],
+        ];
         $keyword = isset($_GET['keyword']) ? $_GET['keyword'] : null;
 
         if ($keyword !== null) {
@@ -54,19 +56,23 @@ class BlogListController extends Controller
 
         if ($data->isEmpty()) {
             $message = 'Không tìm thấy kết quả.';
-            return view('Client.Pages.BlogList', compact('data', 'list', 'message'));
+            return view('Client.Pages.BlogList', ['data' => $data, 'list'=>$list, 'message'=>$message]);
         } else {
-            return view('Client.Pages.BlogList', compact('data', 'list'));
+            return view('Client.Pages.BlogList', ['data' => $data, 'list'=>$list]);
         }
     }
 
-    public function SearchBlogList($id){
+    public function SearchBlogList($slug){
         $condition = [
-            ['id_category_blog', '=', 0],
+            ['blogs.delete', '=', 0],
         ];
-        $data = $this->post->getPostCD($condition,$slug,'demand');
-        $sale = $this->post->getPostList($condition, null, true)->take(3);
-        return view('Client.Pages.search',['page'=>'search', 'list'=>$data, 'sale'=>$sale]);
+        $data = $this->blog->getBlogCD($condition,$slug,'category_blogs');
+        $condition1 = [
+            ['posts.delete', '=', 0],
+            ['status', '=', 1],
+        ];
+        $list = $this->post->getPostList($condition1, null, true)->take(5);
+        return view('Client.Pages.SearchBlog',['page'=>'search', 'data'=>$data, 'list'=>$list]);
     }
 
 }

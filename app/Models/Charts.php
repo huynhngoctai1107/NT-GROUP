@@ -34,22 +34,23 @@ class Charts extends Model
     public function getPostsAdminCharts()
     {
         return $this->select(DB::raw('MONTH(created_at) as month'), DB::raw('COUNT(*) as post_count'))
-                    ->whereRaw('MONTH(created_at) = MONTH(CURRENT_DATE)')
+                    ->whereMonth('created_at', '=', now()->month) // Sử dụng hàm whereMonth để làm cho câu truy vấn rõ ràng hơn.
                     ->groupBy('month')
                     ->orderBy('month', 'asc')
                     ->first();
     }
 
+
     public function getRechargeAdminCharts($condition)
     {
         return DB::table('transactions')
-                 ->select(DB::raw('MONTH(created_at) as month'), DB::raw('SUM(price) as recharge_price'))
-                 ->whereRaw('MONTH(created_at) = MONTH(CURRENT_DATE)')
+                 ->select(DB::raw('SUM(price) as recharge_price'))
+                 ->whereMonth('created_at', '=', now()->month)
                  ->where($condition)
-                 ->groupBy('month')
-                 ->orderBy('month', 'asc')
                  ->first();
     }
+
+
 
     public function getRecharmonth($condition)
     {

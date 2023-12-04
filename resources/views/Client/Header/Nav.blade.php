@@ -25,7 +25,7 @@
                                     </li>
                                     @foreach($dataCategoryBlog as $item)
                                     <li>
-                                        <a class="dropdown-item nav-link nav_item" href="{{route('listBlog')}}">Tin Tức {{$item->name}}</a>
+                                        <a class="dropdown-item nav-link nav_item" href="{{route('SearchBlogList', $item->slug)}}">Tin Tức {{$item->name}}</a>
                                     </li>
                                     @endforeach
 

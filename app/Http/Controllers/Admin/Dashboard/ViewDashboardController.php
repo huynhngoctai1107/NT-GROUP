@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Charts;
 use App\Models\PaymentMethod;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -25,8 +26,9 @@ class ViewDashboardController extends Controller
    public function dashboar()
    {
        $data = $this->charts->getPostsAdminCharts();
+       // doanh thu tháng
        $condition = [
-           'id_category_transaction' => 1
+           'id_category_transaction' => 1,
        ] ;
        $recharge = $this->charts->getRechargeAdminCharts($condition);
        $recharmonth = $this->charts->getRecharmonth($condition);
@@ -46,7 +48,6 @@ class ViewDashboardController extends Controller
        $post = $this->charts->getPostAdminViewCharts($condition);
        $condition = [] ;
        $dates = $this->charts->getPostAdminViewCharts($condition);
-
        //user charts
        $condition = [
            'id_role' => 3

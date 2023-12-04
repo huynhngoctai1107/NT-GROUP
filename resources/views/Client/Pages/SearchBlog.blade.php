@@ -32,7 +32,7 @@
                                 <div class="col-xl-4 col-md-6">
                                     <div class="blog_post blog_style2 box_shadow1">
                                         <div class="blog_img">
-                                            <a href="{{ route('SingleBlog', $item->slug) }}">
+                                            <a href="{{ route('SingleBlog', $item->slug_blogs) }}">
                                                 @php
                                                     $image = json_decode($item->image);
                                                 @endphp
@@ -45,7 +45,7 @@
                                         </div>
                                         <div class="blog_content bg-white">
                                             <div class="blog_text">
-                                                <h6 class="blog_title"><a href="{{route('SingleBlog',$item->slug)}}">{{ $item->title }}</a></h6>
+                                                <h6 class="blog_title"><a href="{{route('SingleBlog',$item->slug_blogs)}}">{{ $item->title }}</a></h6>
                                                 <ul class="list_none blog_meta">
                                                     <li><a href="#"><i class="ti-calendar"></i> {{ date('d-m-Y', strtotime($item->created_at)) }}</a></li>
                                                     <li><a href="#"><i class="ti-comments"></i> 10</a></li>
@@ -56,9 +56,9 @@
                                     </div>
                                 </div>
                             @endforeach
-                                <div class="d-flex justify-content-center mt-4">
-                                    {{ $data->links('pagination::bootstrap-4') }}
-                                </div>
+                            <div class="d-flex justify-content-center mt-4">
+                                {{ $data->links('pagination::bootstrap-4') }}
+                            </div>
                         </div>
                     </div>
                     <div class="col-lg-4 mt-4 pt-2 mt-lg-0 pt-lg-0">
@@ -66,6 +66,7 @@
                             <div class="widget">
                                 <div class="search_form">
                                     <form action="{{route('SearchBlogClient')}}" method="GET">
+                                        @csrf
                                         <input class="form-control" placeholder="Tìm kiếm ..." type="text" name="keyword">
                                         <button type="submit" class="btn icon_search">
                                             <i class="ion-ios-search-strong"></i>

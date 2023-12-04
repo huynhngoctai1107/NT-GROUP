@@ -101,7 +101,7 @@
                                 <!-- small box -->
                                 <div class="small-box bg-info">
                                     <div class="inner">
-                                        <h3>{{$data->post_count}}</h3>
+                                        <h3>{{$data->post_count ?? 0}}</h3>
                                         <p>Bài viết mới</p>
                                     </div>
                                     <div class="icon">
@@ -136,8 +136,7 @@
                                     <div class="icon">
                                         <i class="ion ion-person-add"></i>
                                     </div>
-                                    <a href="#" class="small-box-footer" id="custom-user">Xem chi tiết
-                                        <i class="fas fa-arrow-circle-right"></i></a>
+                                    <p class="small-box-footer" style="height: 30px"></p>
                                 </div>
                                 <script>
                                     document.addEventListener("DOMContentLoaded", function () {
@@ -158,7 +157,7 @@
                                 <!-- small box -->
                                 <div class="small-box bg-danger">
                                     <div class="inner">
-                                        <h3>{{number_format($recharge->recharge_price)}} đ</h3>
+                                        <h3>{{number_format($recharge->recharge_price ?? 0)}} đ</h3>
 
                                         <p>Doanh thu tháng</p>
                                     </div>
@@ -189,7 +188,7 @@
                                 <div class="small-box bg-success">
                                     <div class="inner">
                                         @php
-                                            $percentageChange = $recharge->recharge_price - $recharmonth->recharge_price;
+                                            $percentageChange = ($recharge->recharge_price ?? 0) - $recharmonth->recharge_price;
                                         @endphp
                                         <h3>{{number_format($percentageChange)}}<sup style="font-size: 20px">đ</sup>
                                         </h3>
@@ -211,9 +210,6 @@
                                     <a class="nav-link active" data-toggle="pill" href="#posts">Thống kê bài viết</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" data-toggle="pill" href="#user">Menu 1</a>
-                                </li>
-                                <li class="nav-item">
                                     <a class="nav-link" data-toggle="pill" href="#pay">Menu 2</a>
                                 </li>
                             </ul>
@@ -224,10 +220,10 @@
                                     <h5>Biểu đồ thống kế bài viết</h5>
                                     <x-client.account.charts.post-charts :dates="$dates" :vip="$vip" :charts="$charts"></x-client.account.charts.post-charts>
                                 </div>
-                                <div class="tab-pane fade" id="user">
-                                    <h5>Biểu đồ thống kê tài khoản</h5>
-                                    <x-client.account.charts.user-chart :userchart="$userchart"></x-client.account.charts.user-chart>
-                                </div>
+{{--                                <div class="tab-pane fade" id="user">--}}
+{{--                                    <h5>Biểu đồ thống kê tài khoản</h5>--}}
+{{--                                    <x-client.account.charts.user-chart :userchart="$userchart"></x-client.account.charts.user-chart>--}}
+{{--                                </div>--}}
                                 <div class="tab-pane fade" id="pay">
                                     <h5>Doanh thu</h5>
                                     <x-client.account.charts.transition-charts :dateT="$dateT" :transitionPay="$transitionPay" :transitionMua="$transitionMua"></x-client.account.charts.transition-charts>

@@ -33,8 +33,7 @@
                     <div class="sidebar">
                         <div class="widget">
                             <div class="search_form">
-                                <form action="{{ route('SearchBlog') }}" method="GET">
-                                    @csrf
+                                <form action="{{route('SearchBlogClient')}}" method="GET">
                                     <input class="form-control" placeholder="Tìm kiếm ..." type="text" name="keyword">
                                     <button type="submit" class="btn icon_search">
                                         <i class="ion-ios-search-strong"></i>
