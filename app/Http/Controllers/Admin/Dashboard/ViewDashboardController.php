@@ -88,7 +88,7 @@ class ViewDashboardController extends Controller
            'status'=>0,
        ] ;
        $faqs = $this->charts->getCounFaqs($condition);
-    return view('admin.dashboar.viewdashboar',[
+    return view('Admin.Dashboar.ViewDashboar',[
         'data'=>$data,
         'recharge'=>$recharge,
         'recharmonth'=>$recharmonth,

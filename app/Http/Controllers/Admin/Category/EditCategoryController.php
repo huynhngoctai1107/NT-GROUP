@@ -21,7 +21,7 @@ class EditCategoryController extends Controller
             ['slug', '=', $slug],
         ];
         $data = $this->category->editCategory($condition);
-        return view('admin.demandcategory.edit', ['page' => 'category', 'data' => $data]);
+        return view('Admin.DemandCategory.Edit', ['page' => 'category', 'data' => $data]);
     }
     function editCategory(EditCategoryRequest $request, $slug)
     {

@@ -77,12 +77,13 @@ class ProfileCotroller extends Controller{
                 ['posts.status', '=', 1],
             ];
 
-            if($followed['getview'] == null){
+            if($followed['getview'] !== null){
                 foreach ($followed['getview'] as $item){
                     $values[] = $item->id;
                 }
               $postFollow =   $this->post->getPostFollow($values, 4) ;
             }
+
 
 
             return view('client.pages.profile',

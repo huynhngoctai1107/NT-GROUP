@@ -27,7 +27,7 @@ class ListEmailController extends Controller
             'delete' => 1,
         ]; //
         $data = $this->email->listEmail($condition);
-        return view('admin.emailnew.DeleteEmail', ['page' => 'faqs', 'query' => $data]);
+        return view('Admin.EmailNew.DeleteEmail', ['page' => 'faqs', 'query' => $data]);
     }
     function restoreEmail($id){
         $condition = [
@@ -47,10 +47,10 @@ class ListEmailController extends Controller
 
             $data = $this->email->ListEmail($condition);
             if ($data->isEmpty($condition)) {
-                return view('admin.emailnew.listemail', ['query' => $data])
+                return view('Admin.EmailNew.ListEmail', ['query' => $data])
                     ->with('message', 'Không tìm thấy kết quả.');
             } else {
-                return view('admin.emailnew.listemail', ['query' => $data])
+                return view('Admin.EmailNew.ListEmail', ['query' => $data])
                     ->with('success', 'Danh sách kết quả tìm kiếm.');
             }
         }

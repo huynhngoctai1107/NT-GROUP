@@ -21,7 +21,7 @@ class ListDemandController extends Controller
             ['delete', '=', 0],
         ];
         $data = $this->demand->listDemand($condition);
-        return view('admin.demandcategory.list', ['page' => 'demand', 'query' => $data]);
+        return view('Admin.DemandCategory.List', ['page' => 'demand', 'query' => $data]);
     }
 
     function listHistoryDemand()
@@ -30,7 +30,7 @@ class ListDemandController extends Controller
             ['delete', '=', 1],
         ];
         $data = $this->demand->listDemand($condition);
-        return view('admin.demandcategory.history', ['page' => 'demand', 'query' => $data]);
+        return view('Admin.DemandCategory.History', ['page' => 'demand', 'query' => $data]);
     }
 
     function searchDemand(Request $request)
@@ -42,10 +42,10 @@ class ListDemandController extends Controller
         }
         $data = $this->demand->searchDemand($condition);
         if ($data->isEmpty()) {
-            return view('admin.demandcategory.list', ['page' => 'demand', 'query' => $data])
+            return view('Admin.DemandCategory.List', ['page' => 'demand', 'query' => $data])
                 ->with('message', 'Không tìm thấy kết quả.');
         } else {
-            return view('admin.demandcategory.list', ['page' => 'demand', 'query' => $data]);
+            return view('Admin.DemandCategory.List', ['page' => 'demand', 'query' => $data]);
         }
     }
 }

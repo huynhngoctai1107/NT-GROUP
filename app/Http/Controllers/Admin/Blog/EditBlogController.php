@@ -23,7 +23,7 @@ class EditBlogController extends Controller
             ['slug', '=', $slug],
         ];
         $data = $this->blog->editBlog($condition);
-        return view('admin.Blog.EditBlog', ['data' => $data]);
+        return view('Admin.Blog.EditBlog', ['data' => $data]);
     }
 
     function editBlog(EditBlogRequest $request, $slug)

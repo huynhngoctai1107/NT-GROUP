@@ -27,7 +27,7 @@ class EditVoucherController extends Controller{
         $voucher   = $this->voucher->editVoucher($condition);
 
         // Truyền thông tin voucher vào view
-        return view('admin.voucher.add', ['page' => 'editVoucher', 'data' => $voucher]);
+        return view('Admin.Voucher.Add', ['page' => 'editVoucher', 'data' => $voucher]);
     }
 
     public function editVoucher(EditVoucherRequest $request, $slug){

@@ -12,8 +12,8 @@ class   Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-//        $schedule->command('emailNew:cron')->timezone('Asia/Ho_Chi_Minh')->everyTwoSeconds();
-        $schedule->command('emailNew:cron')->timezone('Asia/Ho_Chi_Minh')->weekly();
+        $schedule->command('emailNew:cron')->timezone('Asia/Ho_Chi_Minh')->everyTwoSeconds();
+//        $schedule->command('emailNew:cron')->timezone('Asia/Ho_Chi_Minh')->weekly();
 
     }
 

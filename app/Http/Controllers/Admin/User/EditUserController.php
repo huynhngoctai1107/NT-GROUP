@@ -22,7 +22,7 @@ class EditUserController extends Controller{
         $data      = $this->user->editUser($id);
         $query     = $this->user->show($condition);
 
-        return view('admin.user.add', ['page' => 'editUser', 'data' => $data, 'query' => $query]);
+        return view('Admin.User.Add', ['page' => 'editUser', 'data' => $data, 'query' => $query]);
     }
 
     public function editUser(EditAccountRequest $request, $id){

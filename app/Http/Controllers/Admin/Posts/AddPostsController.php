@@ -36,7 +36,7 @@ class AddPostsController extends Controller
         $price     = $this->posts->Show($condition, 'prices');
         $acreage   = $this->posts->Show($condition, 'acreages');
 
-        return view('admin.postscategory.add', ['page' => 'posts', 'demand' => $demand, 'category' => $category, 'user' => $user, 'price' => $price, 'acreage' => $acreage]);
+        return view('Admin.PostsCategory.Add', ['page' => 'posts', 'demand' => $demand, 'category' => $category, 'user' => $user, 'price' => $price, 'acreage' => $acreage]);
     }
 
     function addPosts(AddPostRequest $request)

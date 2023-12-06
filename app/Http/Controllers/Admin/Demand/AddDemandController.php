@@ -18,7 +18,7 @@ class AddDemandController extends Controller
 
     function addFormDemand()
     {
-        return view('admin.demandcategory.add', ['page' => 'demand']);
+        return view('Admin.DemandCategory.Add', ['page' => 'demand']);
     }
 
     function addDemand(AddDemandRequest $request)

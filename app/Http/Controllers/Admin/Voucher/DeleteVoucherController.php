@@ -39,16 +39,5 @@ class DeleteVoucherController extends Controller
         return redirect()->back()->with('success', 'Đã khôi phục voucher thành công');
     }
 
-    function VoucherDelete($slug)
-    {
-        $condition = [
-            ['slug', '=', $slug],
-        ];
-        $value = [
-            'delete' => 1,
-            'status' => 0,
-        ];
-        $data = $this->voucher->updateVoucher($condition, $value);
-        return redirect()->back()->with('success', 'Đã xóa voucher thành công');
-    }
+
 }

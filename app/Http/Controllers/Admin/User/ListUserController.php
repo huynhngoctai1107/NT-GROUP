@@ -19,7 +19,7 @@ class ListUserController extends Controller{
         $condition = ['delete' => 0,];
         $data      = $this->user->listUser($condition);
 
-        return view('admin.user.list', ['list' => $data]);
+        return view('Admin.User.List', ['list' => $data]);
     }
 
     public function statusUser($userId){
@@ -43,7 +43,7 @@ class ListUserController extends Controller{
         ];
         $data      = $this->user->listUser($condition);
 
-        return view('admin.user.UserHistory', ['page' => 'history', 'query' => $data]);
+        return view('Admin.User.UserHistory', ['page' => 'history', 'query' => $data]);
     }
 
     public function searchUser(Request $request)
@@ -63,10 +63,10 @@ class ListUserController extends Controller{
         $users->appends($request->query());
 
         if ($users->isEmpty()) {
-            return view('admin.user.list', ['list' => $users])
+            return view('Admin.User.List', ['list' => $users])
                 ->with('message', 'Không tìm thấy email tài khoản .');
         } else {
-            return view('admin.user.list', ['list' => $users]);
+            return view('Admin.User.List', ['list' => $users]);
         }
     }
 }

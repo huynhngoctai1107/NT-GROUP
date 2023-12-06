@@ -21,7 +21,7 @@ class ListCategoryController extends Controller
             ['delete', '=', 0],
         ];
         $data = $this->category->listCategory($condition);
-        return view('admin.demandcategory.list', ['page' => 'category', 'query' => $data]);
+        return view('Admin.DemandCategory.list', ['page' => 'category', 'query' => $data]);
     }
 
     function listHistoryCategory()
@@ -30,7 +30,7 @@ class ListCategoryController extends Controller
             ['delete', '=', 1],
         ];
         $data = $this->category->listCategory($condition);
-        return view('admin.demandcategory.history', ['page' => 'category', 'query' => $data]);
+        return view('Admin.Demandcategory.History', ['page' => 'category', 'query' => $data]);
     }
 
     function SearchCategory(Request $request){
@@ -41,10 +41,10 @@ class ListCategoryController extends Controller
         }
         $data = $this->category->searchCategory($condition);
         if ($data->isEmpty()) {
-            return view('admin.demandcategory.list', ['page' => 'category', 'query' => $data])
+            return view('Admin.DemandCategory.List', ['page' => 'category', 'query' => $data])
                 ->with('message', 'Không tìm thấy kết quả.');
         } else {
-            return view('admin.demandcategory.list', ['page' => 'category', 'query' => $data]);
+            return view('Admin.DemandCategory.List', ['page' => 'category', 'query' => $data]);
         }
     }
 }

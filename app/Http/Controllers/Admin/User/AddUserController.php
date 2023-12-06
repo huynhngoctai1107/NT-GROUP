@@ -21,7 +21,7 @@ class AddUserController extends Controller{
         $condition = [];
         $data      = $this->user->show($condition);
 
-        return view('admin.user.add', ['page' => 'addUser', 'query' => $data]);
+        return view('Admin.User.Add', ['page' => 'addUser', 'query' => $data]);
     }
 
     public function formAddUser(AddAccountRequest $request){

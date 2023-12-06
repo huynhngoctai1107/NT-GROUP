@@ -19,7 +19,7 @@ class RechargeHistoryController extends Controller
         $condition=[];
         $data=$this->transaction->listRechargeHistory($condition);
 
-        return view('transactions.rechargehistory',['list' => $data]);
+        return view('Transactions.RechargeHistory',['list' => $data]);
     }
     function searchListRechargeHistory(Request $request)
     {
@@ -30,6 +30,6 @@ class RechargeHistoryController extends Controller
         }
         $data=$this->transaction->listRechargeHistory($condition);
 
-        return view('transactions.rechargehistory',['list' => $data]);
+        return view('Transactions.RechargeHistory',['list' => $data]);
     }
 }

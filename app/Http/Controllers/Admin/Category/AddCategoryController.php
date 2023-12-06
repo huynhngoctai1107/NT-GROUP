@@ -17,7 +17,7 @@ class AddCategoryController extends Controller
 
     function addFormCategory()
     {
-        return view('admin.demandcategory.add', ['page' => 'category']);
+        return view('Admin.DemandCategory.Add', ['page' => 'category']);
     }
     function addCategory(AddCategoryRequest $request)
     {

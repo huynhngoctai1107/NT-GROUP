@@ -18,7 +18,7 @@ class AddVoucherController extends Controller{
     }
 
     public function addFormVoucher(){
-        return view('admin.voucher.add', ['page' => 'addVoucher']);
+        return view('Admin.Voucher.Add', ['page' => 'addVoucher']);
     }
 
     public function addVoucher(AddVoucherRequest $request){

@@ -19,7 +19,7 @@ class ListCategoryBlog extends Controller
             ['delete', '=', 0],
         ];
         $data = $this->categoryBlog->listCategoryBlog($condition);
-        return view('admin.categoryBlog.ListCategoryBlog', [ 'data' => $data]);
+        return view('Admin.CategoryBlog.ListCategoryBlog', [ 'data' => $data]);
     }
 
     function listHistoryCategoryBlog()
@@ -28,7 +28,7 @@ class ListCategoryBlog extends Controller
             ['delete', '=', 1],
         ];
         $data = $this->categoryBlog->listCategoryBlog($condition);
-        return view('admin.categoryBlog.History', [ 'data' => $data]);
+        return view('Admin.CategoryBlog.History', [ 'data' => $data]);
     }
 
     function SearchCategoryBlog(Request $request){
@@ -39,10 +39,10 @@ class ListCategoryBlog extends Controller
         }
         $data = $this->categoryBlog->searchCategoryBlog($condition);
         if ($data->isEmpty()) {
-            return view('admin.CategoryBlog.ListCategoryBlog', ['data' => $data])
+            return view('Admin.CategoryBlog.ListCategoryBlog', ['data' => $data])
                 ->with('message', 'Không tìm thấy kết quả.');
         } else {
-            return view('admin.CategoryBlog.ListCategoryBlog', ['data' => $data]);
+            return view('Admin.CategoryBlog.ListCategoryBlog', ['data' => $data]);
         }
     }
 }

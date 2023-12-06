@@ -21,7 +21,7 @@ class ListReportController extends Controller{
 
         $data = $this->customer_reports->ListPostReport($condition);
 
-        return view('admin.report.list', ['list' => $data]);
+        return view('Admin.Report.List', ['list' => $data]);
     }
 
 
@@ -31,7 +31,7 @@ class ListReportController extends Controller{
         ];
         $data      = $this->customer_reports->ListPostReport($condition);
 
-        return view('admin.report.ReportHistory', ['page' => 'report', 'query' => $data]);
+        return view('Admin.Report.ReportHistory', ['page' => 'report', 'query' => $data]);
     }
 
 
@@ -79,10 +79,10 @@ class ListReportController extends Controller{
         $data = $this->customer_reports->ListPostReport($condition);
 
         if ($data->isEmpty()) {
-            return view('admin.report.list', ['list' => $data])
+            return view('Admin.Report.List', ['list' => $data])
                 ->with('message', 'Không tìm thấy email báo báo cáo.');
         } else {
-            return view('admin.report.list', ['list' => $data]);
+            return view('Admin.Report.List', ['list' => $data]);
         }
     }
 }

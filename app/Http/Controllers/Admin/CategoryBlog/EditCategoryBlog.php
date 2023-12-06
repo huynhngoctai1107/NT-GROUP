@@ -22,7 +22,7 @@ class EditCategoryBlog extends Controller
             ['slug', '=', $slug],
         ];
         $data = $this->categoryBlog->editCategoryBlog($condition);
-        return view('admin.CategoryBlog.EditCategoryBlog', ['data' => $data]);
+        return view('Admin.CategoryBlog.EditCategoryBlog', ['data' => $data]);
     }
 
     function editCategoryBlog(EditCategoryBlogRequest $request, $slug)

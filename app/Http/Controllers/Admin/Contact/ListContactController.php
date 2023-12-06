@@ -52,7 +52,7 @@ class ListContactController extends Controller{
         ]; //
         $data      = $this->faqs->listContact($condition);
 
-        return view('admin.contact.DeleteContact', ['page' => 'faqs', 'query' => $data]);
+        return view('Admin.Contact.DeleteContact', ['page' => 'faqs', 'query' => $data]);
     }
 
     public function SearchContact(Request $request){
@@ -63,10 +63,10 @@ class ListContactController extends Controller{
         }
         $data = $this->faqs->listContact($condition);
         if ($data->isEmpty($condition)){
-            return view('admin.contact.listcontact', ['query' => $data])
+            return view('Admin.Contact.ListContact', ['query' => $data])
                 ->with('message', 'Không tìm thấy kết quả.');
         }else{
-            return view('admin.contact.listcontact', ['query' => $data])
+            return view('Admin.Contact.ListContact', ['query' => $data])
                 ->with('success', 'Danh sách kết quả tìm kiếm.');
         }
     }

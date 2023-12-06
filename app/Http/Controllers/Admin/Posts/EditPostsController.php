@@ -44,7 +44,7 @@ class EditPostsController extends Controller{
             'street' => $addressParts[3] ?? '',
         ];
 
-        return view('admin.postscategory.edit', [
+        return view('Admin.PostsCategory.Edit', [
             'page' => 'posts',
             'data' => $data,
             'demand' => $demand,

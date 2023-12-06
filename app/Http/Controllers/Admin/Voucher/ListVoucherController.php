@@ -19,7 +19,7 @@ class ListVoucherController extends Controller{
 
         $list = $this->voucher->listVoucher($condition);
 
-        return view('admin.voucher.list', ['list' => $list]);
+        return view('Admin.Voucher.List', ['list' => $list]);
     }
 
     public function status($id){
@@ -44,7 +44,7 @@ class ListVoucherController extends Controller{
 
         $list = $this->voucher->listVoucher($condition);
 
-        return view('admin.voucher.VoucherHistory',
+        return view('Admin.Voucher.VoucherHistory',
             ['page' => 'ListVoucherHistory', 'query' => $list]);
     }
 
@@ -63,10 +63,10 @@ class ListVoucherController extends Controller{
         $vouchers->appends($request->query());
 
         if ($vouchers->isEmpty()){
-            return view('admin.voucher.list', ['list' => $vouchers])
+            return view('Admin.Voucher.List', ['list' => $vouchers])
                 ->with('message', 'Không tìm thấy tên mã.');
         }else{
-            return view('admin.voucher.list', ['list' => $vouchers]);
+            return view('Admin.Voucher.List', ['list' => $vouchers]);
         }
     }
 }

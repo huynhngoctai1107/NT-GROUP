@@ -18,7 +18,7 @@ class AddContactController extends Controller{
         $this->mail = new ContactController();
     }
     function contact(){
-        return view('Client.Pages.contact', ['page' => 'contact']);
+        return view('Client.Pages.Contact', ['page' => 'contact']);
     }
     function contactFrom(ContactsRequest $request){
         $data = [

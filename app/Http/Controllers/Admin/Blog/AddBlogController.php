@@ -18,7 +18,7 @@ class AddBlogController extends Controller
 
     function addFormBlog()
     {
-        return view('admin.Blog.AddBlog');
+        return view('Admin.Blog.AddBlog');
     }
 
     public function addBlog(AddBlogRequest $request)

@@ -20,7 +20,7 @@ class ListPostsController extends Controller
             ['delete', '=', 0],
         ];
         $data = $this->posts->listPost($condition);
-        return view('admin.postscategory.list', ['page' => 'posts', 'query' => $data]);
+        return view('Admin.PostsCategory.List', ['page' => 'posts', 'query' => $data]);
     }
     function searchListPost(Request $request){
         $condition = [
@@ -32,10 +32,10 @@ class ListPostsController extends Controller
         }
         $data = $this->posts->listPost($condition);
         if ($data->isEmpty()) {
-            return view('admin.postscategory.list', ['page' => 'posts', 'query' => $data])
+            return view('Admin.PostsCategory.List', ['page' => 'posts', 'query' => $data])
                 ->with('message', 'Không tìm thấy kết quả.');
         } else {
-            return view('admin.postscategory.list', ['page' => 'posts', 'query' => $data]);
+            return view('Admin.PostsCategory.List', ['page' => 'posts', 'query' => $data]);
         }
     }
     public function UpdateStatus($postId)
@@ -59,7 +59,7 @@ class ListPostsController extends Controller
             ['delete', '=', 1],
         ];
         $data = $this->posts->listPost($condition);
-        return view('admin.postscategory.DeleteHistory', ['page' => 'posts', 'query' => $data]);
+        return view('Admin.PostsCategory.DeleteHistory', ['page' => 'posts', 'query' => $data]);
     }
 
     function searchHisPost(Request $request)
@@ -73,10 +73,10 @@ class ListPostsController extends Controller
         }
         $data = $this->posts->listPost($condition);
         if ($data->isEmpty()) {
-            return view('admin.postscategory.DeleteHistory', ['page' => 'posts', 'query' => $data])
+            return view('Admin.PostsCategory.DeleteHistory', ['page' => 'posts', 'query' => $data])
                 ->with('message', 'Không tìm thấy kết quả.');
         } else {
-            return view('admin.postscategory.DeleteHistory', ['page' => 'posts', 'query' => $data]);
+            return view('Admin.PostsCategory.DeleteHistory', ['page' => 'posts', 'query' => $data]);
         }
     }
 }

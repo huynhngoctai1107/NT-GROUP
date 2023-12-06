@@ -18,7 +18,7 @@ class AddCategoryBlog extends Controller
 
     function addFormCategoryBlog()
     {
-        return view('admin.CategoryBlog.AddCategoryBlog');
+        return view('Admin.CategoryBlog.AddCategoryBlog');
     }
 
     function addCategoryBlog(AddCategoryBlogRequest $request)

@@ -20,7 +20,7 @@ class ListBlogController extends Controller
             ['delete', '=', 0],
         ];
         $data = $this->blog->listBlogAdmin($condition);
-        return view('admin.Blog.ListBlog', [ 'data' => $data]);
+        return view('Admin.Blog.ListBlog', [ 'data' => $data]);
     }
 
     function listHistoryBlog()
@@ -29,7 +29,7 @@ class ListBlogController extends Controller
             ['delete', '=', 1],
         ];
         $data = $this->blog->listBlogAdmin($condition);
-        return view('admin.Blog.history', [ 'data' => $data]);
+        return view('Admin.Blog.History', [ 'data' => $data]);
     }
 
     function SearchBlog(Request $request){
@@ -40,10 +40,10 @@ class ListBlogController extends Controller
         }
         $data = $this->blog->listBlogAdmin($condition);
         if ($data->isEmpty()) {
-            return view('admin.Blog.ListBlog', [ 'data' => $data])
+            return view('Admin.Blog.ListBlog', [ 'data' => $data])
                 ->with('message', 'Không tìm thấy kết quả.');
         } else {
-            return view('admin.Blog.ListBlog', [ 'data' => $data]);
+            return view('Admin.Blog.ListBlog', [ 'data' => $data]);
         }
     }
 }
