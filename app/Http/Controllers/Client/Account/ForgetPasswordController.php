@@ -23,7 +23,7 @@ class ForgetPasswordController extends Controller{
     }
 
     function fogetPassword(){
-        return view('client.pages.forgetpassword');
+        return view('Client.Pages.Forgetpassword');
     }
 
     function postForgetPassword(ForgetPasswordRequest $request){
@@ -70,7 +70,7 @@ class ForgetPasswordController extends Controller{
         if ($this->user->resetPassword($condition)){
             $time = abs($this->user->resetPassword($condition)->updated_at->minute - Carbon::now()->minute);
             if ($time <= 2){
-                return view('client.pages.ResetPassword',
+                return view('Client.Pages.ResetPassword',
                     ['email' => $this->user->resetPassword($condition)->email,
                      'token' => $this->user->resetPassword($condition)->token]);
             }else{

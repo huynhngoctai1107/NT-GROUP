@@ -17,7 +17,7 @@ class LoginController extends Controller{
     public function login(){
         session('resetPage', Route::current()->getName()) ;
 
-        return view('client.pages.login');
+        return view('Client.Pages.Login');
     }
 
     public function loginForm(LoginRequest $request){

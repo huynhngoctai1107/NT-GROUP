@@ -12,7 +12,7 @@ class ContactController extends Controller
     public function contactMail($data){
 
         if ($data){
-            Mail::send('client.mail.MailContact', compact('data'), function ($email) use ($data){
+            Mail::send('Client.Mail.MailContact', compact('data'), function ($email) use ($data){
                 $email->subject("NT-GROUP - ".$data['title']);
                 $email->to($data['email'], $data['fullname']);
             });

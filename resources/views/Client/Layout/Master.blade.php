@@ -55,9 +55,9 @@
 </head>
 
 <body>
-@include('client.pages.simple_html_dom')
-@include('client.header.nav')
-@include('client.header.tools')
+@include('Client.Pages.simple_html_dom')
+@include('Client.Header.Nav')
+@include('Client.Header.Tools')
 
 
 
@@ -69,7 +69,7 @@
     </div>
     <div class="arrow-1 animated hinge infinite zoomIn"></div>
 </div>
-@include('client.footer.footer')
+@include('Client.Footer.Footer')
 </body>
 
 @yield('showhide')

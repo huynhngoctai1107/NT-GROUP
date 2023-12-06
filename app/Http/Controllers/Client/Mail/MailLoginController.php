@@ -23,7 +23,7 @@ class MailLoginController extends Controller{
                 'fullname' =>auth()->user()->fullname,
                 'email'   =>auth()->user()->email,
             ];
-            Mail::send('client.mail.MailLogin', compact('data'), function ($email) use ($data){
+            Mail::send('Client.Mail.MailLogin', compact('data'), function ($email) use ($data){
                 $email->subject('NT-GROUP - Thông báo đăng nhập');
                 $email->to($data['email'], $data['fullname']);
             });

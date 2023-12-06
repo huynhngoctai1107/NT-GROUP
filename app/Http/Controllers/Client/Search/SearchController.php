@@ -23,7 +23,7 @@ class SearchController extends Controller
         ];
         $data = $this->post->getPostCD($condition,$slug,'category');
         $sale = $this->post->getPostList($condition, null, true)->take(3);
-        return view('Client.Pages.search',['page'=>'search', 'list'=>$data, 'sale'=>$sale]);
+        return view('Client.Pages.Search',['page'=>'search', 'list'=>$data, 'sale'=>$sale]);
 
     }
     function search1($slug){
@@ -33,7 +33,7 @@ class SearchController extends Controller
         ];
         $data = $this->post->getPostCD($condition,$slug,'demand');
         $sale = $this->post->getPostList($condition, null, true)->take(3);
-        return view('Client.Pages.search',['page'=>'search', 'list'=>$data, 'sale'=>$sale]);
+        return view('Client.Pages.Search',['page'=>'search', 'list'=>$data, 'sale'=>$sale]);
 
     }
 }

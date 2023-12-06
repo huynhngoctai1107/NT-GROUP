@@ -8,6 +8,6 @@ use Illuminate\Http\Request;
 class BuildController extends Controller
 {
     public function index(){
-        return view('client.pages.BuildCost');
+        return view('Client.Pages.BuildCost');
     }
 }

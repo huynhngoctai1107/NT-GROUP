@@ -26,6 +26,6 @@ class TransactionHistoryController extends Controller{
     }
 
     function history(){
-        return view('transactionhistory.rechargehistory');
+        return view('Transactions.RechargeHistory');
     }
 }

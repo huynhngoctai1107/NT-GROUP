@@ -10,7 +10,7 @@ class ForgetPasswordController extends Controller{
 
     public function forgetPassword($data){
         if ($data){
-            Mail::send('client.mail.MailForgetPassword', compact('data'),
+            Mail::send('Client.Mail.MailForgetPassword', compact('data'),
                 function ($email) use ($data){
                     $email->subject('NT-GROUP - Lấy lại mật khẩu');
                     $email->to($data->email, $data->name);

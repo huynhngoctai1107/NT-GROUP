@@ -40,7 +40,7 @@ class PostNewController extends Controller
         $postDelete = $this->post->getPost($condition);
         
      
-        return view('Client.Pages.postnew',['postList'=>$postList, 'postVip'=> $postVip, 'postDelete'=>$postDelete]);
+        return view('Client.Pages.PostNew',['postList'=>$postList, 'postVip'=> $postVip, 'postDelete'=>$postDelete]);
     }
 
     function status($slug, Request $request){

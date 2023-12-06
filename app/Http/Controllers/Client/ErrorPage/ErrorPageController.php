@@ -8,6 +8,6 @@ use Illuminate\Http\Request;
 class ErrorPageController extends Controller
 {
     function error(){
-        return view('client.pages.ErrorPage');
+        return view('Client.Pages.ErrorPage');
     }
 }

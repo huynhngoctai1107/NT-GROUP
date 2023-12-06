@@ -7,6 +7,6 @@ use App\Http\Controllers\Controller;
 class AboutController extends Controller
 {
     function about(){
-        return view('client.pages.about');
+        return view('Client.Pages.About');
     }
 }

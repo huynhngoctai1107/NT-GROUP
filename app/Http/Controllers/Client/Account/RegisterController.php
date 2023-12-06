@@ -22,7 +22,7 @@ class RegisterController extends Controller{
     }
 
     function register(){
-        return view('client.pages.register');
+        return view('Client.Pages.Register');
     }
 
     function registerFrom(RegisterRequest $request){

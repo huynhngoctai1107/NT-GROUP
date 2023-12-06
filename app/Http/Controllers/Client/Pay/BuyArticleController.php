@@ -39,7 +39,7 @@ class BuyArticleController extends Controller{
             if (Auth::user()->wallet >= $this->price){
                 if ($post->featured_news == 0 && $post->delete_posts == 0){
 
-                    return view('client.pages.buyarticle',
+                    return view('Client.Pages.BuyArticle',
                         ['post' => $post, 'user' => auth()->user(), 'total' => $this->price]);
                 }else{
                     return Redirect()

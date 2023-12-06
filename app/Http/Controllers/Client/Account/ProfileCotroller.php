@@ -85,8 +85,7 @@ class ProfileCotroller extends Controller{
             }
 
 
-
-            return view('client.pages.profile',
+            return view('Client.Pages.Profile',
                 ['postUser'      => $this->post->getPostList($condition, NULL, FALSE, NULL),
                  'postFollow'    => $postFollow ?? NULL,
                  'user'          => $user,

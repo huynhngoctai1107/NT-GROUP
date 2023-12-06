@@ -1,4 +1,4 @@
-@extends('Client.Layout.master')
+@extends('Client.Layout.Master')
 
 @section('title')
     Liên Hệ - NT GROUP

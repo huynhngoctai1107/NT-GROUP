@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class DesignCostsController extends Controller
 {
   function designCost(){
-        return view('client.pages.designCosts');
+        return view('Client.Pages.DesignCosts');
   }
 
 }

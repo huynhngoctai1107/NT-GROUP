@@ -10,7 +10,7 @@ class ActiveController extends Controller{
 
     public function activateMaill($data){
         if ($data){
-            Mail::send('client.mail.MailActive', compact('data'), function ($email) use ($data){
+            Mail::send('Client.Mail.MailActive', compact('data'), function ($email) use ($data){
                 $email->subject('NT-GROUP - Kích hoạt tài khoản');
                 $email->to($data->email, $data->name);
             });

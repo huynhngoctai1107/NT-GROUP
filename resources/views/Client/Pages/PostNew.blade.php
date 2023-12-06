@@ -1,4 +1,4 @@
-@extends('Client.Layout.master')
+@extends('Client.Layout.Master')
 
 @section('title')
 Danh sách tin đã đăng - NT GROUP
@@ -14,7 +14,7 @@ Danh sách tin đã đăng - NT GROUP
         <x-client.header.posttitle :title="$title"></x-client.header.posttitle>
 
 
-        <div class="container mt-2">
+        <div class="container mt-4">
 
             @if(Session::has('success'))
 

@@ -34,7 +34,7 @@ class AddPostController extends Controller
         $price     = $this->posts->Show($condition, 'prices');
         $acreage   = $this->posts->Show($condition, 'acreages');
 
-        return view('client.pages.addpost', ['demand' => $demand, 'category' => $category, 'price' => $price, 'acreage' => $acreage]);
+        return view('Client.Pages.AddPost', ['demand' => $demand, 'category' => $category, 'price' => $price, 'acreage' => $acreage]);
     }
 
     function addClientPosts(AddClientPostRequest $request)

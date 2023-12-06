@@ -1,4 +1,4 @@
-@extends('client.layout.master')
+@extends('Client.Layout.Master')
 
 @section('title')
     Tính lãi xuất ngân hàng - NT GROUP

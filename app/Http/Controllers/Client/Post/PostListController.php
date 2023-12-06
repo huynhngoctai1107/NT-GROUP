@@ -83,14 +83,14 @@ class PostListController extends Controller
         $data = $this->post->getPostList($condition, null, false,8);
         $sale = $this->post->getPostList($condition1, null, true)->take(3);
         if ($data->isEmpty()) {
-            return view('Client.Pages.search', ['page' => 'search', 'list' => $data, 'sale' => $sale])
+            return view('Client.Pages.Search', ['page' => 'search', 'list' => $data, 'sale' => $sale])
                 ->with('message', 'Không tìm thấy kết quả.');
         } else {
             if(count($condition) === 2){
                 return view('Client.Pages.ListPostAll',
                     ['page' => 'post', 'list' => $data, 'lq' => $sale]);
             }else{
-                return view('Client.Pages.search',
+                return view('Client.Pages.Search',
                     ['page' => 'search', 'list' => $data, 'sale' => $sale]);
             }
         }

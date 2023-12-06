@@ -7,10 +7,10 @@ use App\Http\Controllers\Controller;
 class DocsController extends Controller
 {
     function docsterms(){
-        return view('client.docs.terms', ['page' => 'docs']);
+        return view('Client.Docs.Terms', ['page' => 'docs']);
     }
 
     function docspolicy(){
-        return view('client.docs.policy', ['page' => 'docs']);
+        return view('Client.Docs.Policy', ['page' => 'docs']);
     }
 }

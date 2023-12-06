@@ -10,7 +10,7 @@ use Lunaweb\RecaptchaV3\Facades\RecaptchaV3;
 class CalculateController extends Controller{
 
     public function index(){
-        return view('client.pages.calculate',
+        return view('Client.Pages.Calculate',
             [ 'sumtotoalInterest' => 0,'principal' => 0]);
     }
 
@@ -51,7 +51,7 @@ class CalculateController extends Controller{
 
             $amortizationSchedule = $schedule;
 
-            return view('client.pages.calculate',
+            return view('Client.Pages.Calculate',
                 ['amortizationSchedule' => $amortizationSchedule, 'sumtotoalInterest' => $sumtotoalInterest,
                  'principal'            => $request->principal,
                  "annualInterestRate"   => $request->annualInterestRate,

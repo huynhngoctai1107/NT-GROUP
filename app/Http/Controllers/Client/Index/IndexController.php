@@ -62,6 +62,6 @@ class IndexController extends Controller
 
         $category = $this->category->GetCategory();
 
-        return view('client.pages.index', ['data' => $data, 'category' => $category, 'vip' => $datas, 'hot' => $hot]);
+        return view('Client.Pages.Index', ['data' => $data, 'category' => $category, 'vip' => $datas, 'hot' => $hot]);
     }
 }

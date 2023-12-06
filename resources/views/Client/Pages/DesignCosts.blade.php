@@ -1,4 +1,4 @@
-@extends('client.layout.master')
+@extends('Client.Layout.Master')
 
 @section('title')
     Tính chi phí thiết kế - NT GROUP

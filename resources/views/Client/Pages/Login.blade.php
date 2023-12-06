@@ -1,4 +1,4 @@
-@extends('client.layout.master')
+@extends('Client.Layout.Master')
 
 @section('title')
     Bất động sản - NT GROUP
@@ -15,9 +15,8 @@
     <!-- START MAIN CONTENT -->
     <div class="main_content">
         <x-client.header.posttitle :title="$title"></x-client.header.posttitle>
-
         <!-- START LOGIN SECTION -->
-        <div class="login_register_wrap section">
+        <div class="login_register_wrap section mb-0">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-xl-6 col-md-10">

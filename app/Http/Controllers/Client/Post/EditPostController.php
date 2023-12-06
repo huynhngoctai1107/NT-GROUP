@@ -44,7 +44,7 @@ class EditPostController extends Controller
             'street' => $addressParts[3] ?? '',
         ];
 
-        return view('client.pages.EditPost', [
+        return view('Client.Pages.EditPost', [
             'page' => 'posts',
             'data' => $data,
             'demand' => $demand,
