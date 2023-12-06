@@ -47,9 +47,9 @@
                                 <h5 class="widget_title">Bất Động Sản VIP</h5>
                             </div>
                             <ul class="widget_recent_post">
-                                <x-client.blog.blogVip :list="$list">
+                                <x-client.blog.blogvip :list="$list">
 
-                                </x-client.blog.blogVip>
+                                </x-client.blog.blogvip>
                             </ul>
                         </div>
                     </div>

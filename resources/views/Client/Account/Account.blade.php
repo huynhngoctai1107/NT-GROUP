@@ -79,12 +79,12 @@
                                         <div class="tab-content" id="pills-tabContent">
                                             <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
 
-                                                    <x-client.account.charts.post-charts :dates="$dates" :vip="$vip" :charts="$charts"></x-client.account.charts.post-charts>
+                                                    <x-client.account.charts.postcharts :dates="$dates" :vip="$vip" :charts="$charts"></x-client.account.charts.postcharts>
 
                                             </div>
                                             <div class="tab-pane fade show active" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
 
-                                                    <x-client.account.charts.transition-charts :dateT="$dateT" :transitionPay="$transitionPay" :transitionMua="$transitionMua"></x-client.account.charts.transition-charts>
+                                                    <x-client.account.charts.transitioncharts :dateT="$dateT" :transitionPay="$transitionPay" :transitionMua="$transitionMua"></x-client.account.charts.transitioncharts>
 
                                             </div>
                                         </div>

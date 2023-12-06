@@ -55,7 +55,7 @@
 </head>
 
 <body>
-@include('Client.Pages.simple_html_dom')
+{{-- @include('Client.Pages.simple_html_dom') --}}
 @include('Client.Header.Nav')
 @include('Client.Header.Tools')
 

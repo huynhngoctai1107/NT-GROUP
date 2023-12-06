@@ -218,7 +218,7 @@
                             <div class="tab-content m-3">
                                 <div class="tab-pane active" id="posts">
                                     <h5>Biểu đồ thống kế bài viết</h5>
-                                    <x-client.account.charts.post-charts :dates="$dates" :vip="$vip" :charts="$charts"></x-client.account.charts.post-charts>
+                                    <x-client.account.charts.postcharts :dates="$dates" :vip="$vip" :charts="$charts"></x-client.account.charts.postcharts>
                                 </div>
 {{--                                <div class="tab-pane fade" id="user">--}}
 {{--                                    <h5>Biểu đồ thống kê tài khoản</h5>--}}
@@ -226,7 +226,7 @@
 {{--                                </div>--}}
                                 <div class="tab-pane fade" id="pay">
                                     <h5>Doanh thu</h5>
-                                    <x-client.account.charts.transition-charts :dateT="$dateT" :transitionPay="$transitionPay" :transitionMua="$transitionMua"></x-client.account.charts.transition-charts>
+                                    <x-client.account.charts.transitioncharts :dateT="$dateT" :transitionPay="$transitionPay" :transitionMua="$transitionMua"></x-client.account.charts.transitioncharts>
                                 </div>
                             </div>
                         </div>

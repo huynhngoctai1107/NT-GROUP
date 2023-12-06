@@ -129,13 +129,13 @@
                         </div>
                         <div class="col-md-12 col-12">
                             <div class="box">
-                                <x-client.index.postSale :list="$data"></x-client.index.postSale>
+                                <x-client.index.postsale :list="$data"></x-client.index.postsale>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 mt-1">
-                    <x-client.index.contact_post></x-client.index.contact_post>
+                    <x-client.index.contactpost></x-client.index.contactpost>
                 </div>
             </div>
         </div>

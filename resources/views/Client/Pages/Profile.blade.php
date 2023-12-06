@@ -95,7 +95,7 @@
                         
                         @if(auth()->check() && ($user->id == auth()->user()->id))
                             @if($postFollow !== NULL)
-                                <x-client.index.postSale :list="$postFollow"></x-client.index.postSale>
+                                <x-client.index.postsale :list="$postFollow"></x-client.index.postsale>
                                 <div class="d-flex justify-content-center mt-4">
                                     {{$postFollow->links('pagination::bootstrap-4')}}
                                 </div>

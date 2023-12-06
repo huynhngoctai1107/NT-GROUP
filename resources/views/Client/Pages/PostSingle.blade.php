@@ -156,7 +156,7 @@
                                     <h3>Tin Liên Quan</h3>
                                 </div>
                                 <div>
-                                    <x-client.index.postSale :list="$list"></x-client.index.postSale>
+                                    <x-client.index.postsale :list="$list"></x-client.index.postsale>
                                 </div>
                             </div>
                         </div>
@@ -202,9 +202,9 @@
                                     <h5 class="widget_title">Bất Động Sản VIP</h5>
                                 </div>
                                 <ul class="widget_recent_post">
-                                    <x-client.blog.blogVip :list="$list">
+                                    <x-client.blog.blogvip :list="$list">
 
-                                    </x-client.blog.blogVip>
+                                    </x-client.blog.blogvip>
                                 </ul>
                             </div>
                             <div class="widget">

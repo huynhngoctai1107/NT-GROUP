@@ -36,7 +36,7 @@
                             <div class="row justify-content-between">
                                 <div class="col-md-8">
                                     <div class="row shop_container list">
-                                        <x-client.index.post-list :list="$list"></x-client.index.post-list>
+                                        <x-client.index.postlist :list="$list"></x-client.index.postlist>
 
                                     </div>
 
@@ -55,12 +55,12 @@
 
                                         </div>
                                         <div class="box">
-                                            <x-client.index.postSale :list="$lq"></x-client.index.postSale>
+                                            <x-client.index.postsale :list="$lq"></x-client.index.postsale>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-4 mt-1">
-                                    <x-client.index.contact_post></x-client.index.contact_post>
+                                    <x-client.index.contactpost></x-client.index.contactpost>
                                 </div>
                             </div>
                         </div>

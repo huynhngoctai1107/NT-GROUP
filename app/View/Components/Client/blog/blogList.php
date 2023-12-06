@@ -23,6 +23,6 @@ class blogList extends Component{
      */
     public function render(): View|Closure|string
     {
-        return view('components.client.blog.blog-list');
+        return view('components.client.blog.bloglist');
     }
 }

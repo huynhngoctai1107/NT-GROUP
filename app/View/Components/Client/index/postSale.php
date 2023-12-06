@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class postSale extends Component{
+class postsale extends Component{
 
     /**
      * Create a new component instance.
@@ -23,6 +23,6 @@ class postSale extends Component{
      */
     public function render(): View|Closure|string
     {
-        return view('components.client.index.post-sale');
+        return view('components.client.index.postsale');
     }
 }

@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class postList extends Component
+class postlist extends Component
 {
     /**
      * Create a new component instance.
@@ -22,6 +22,6 @@ class postList extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.client.index.post-list');
+        return view('components.client.index.postlist');
     }
 }

@@ -23,6 +23,6 @@ class blogVip extends Component{
      */
     public function render(): View|Closure|string
     {
-        return view('components.client.blog.blog-vip');
+        return view('components.client.blog.blogvip');
     }
 }

@@ -23,7 +23,7 @@
                                     {{ $message }}
                                 </div>
                             @endif
-                            <x-client.index.postSale :list="$list"></x-client.index.postSale>
+                            <x-client.index.postsale :list="$list"></x-client.index.postsale>
                         </div>
                     </div>
                 </div>
@@ -35,9 +35,9 @@
                         <div class="verticalLine">
                             <h3 class="ms-lg-3">VIP BẤT ĐỘNG SẢN</h3>
                         </div>
-                        <x-client.blog.blogVip :list="$sale">
+                        <x-client.blog.blogvip :list="$sale">
 
-                        </x-client.blog.blogVip>
+                        </x-client.blog.blogvip>
 
 
                     </div>
