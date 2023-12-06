@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class userChart extends Component
+class userchart extends Component
 {
     /**
      * Create a new component instance.
@@ -23,6 +23,6 @@ class userChart extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.client.account.charts.user-chart');
+        return view('components.client.account.charts.userchart');
     }
 }

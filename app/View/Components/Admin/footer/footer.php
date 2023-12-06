@@ -1,6 +1,6 @@
 <?php
 
-namespace App\View\Components\Admin\footer;
+namespace App\View\Components\admin\footer;
 
 use Closure;
 use Illuminate\Contracts\View\View;

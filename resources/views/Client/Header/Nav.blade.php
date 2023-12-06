@@ -1,7 +1,7 @@
 
 <header class="header_wrap fixed-top header_with_topbar w-100">
     <div class="top-header">
-        @include('client.header.headingtop')
+        @include('Client.Header.HeadingTop')
     </div>
     <div class="bottom_header dark_skin main_menu_uppercase">
         <div class="container">

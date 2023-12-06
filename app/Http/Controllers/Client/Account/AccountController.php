@@ -61,7 +61,7 @@ class AccountController extends Controller
             'id_user' => Auth::user()->id,
         ] ;
         $DateTransition = $this->charts->getRechargeCharts($where);
-        return view('client.account.account', [
+        return view('Client.Account.Account', [
             'list'=>$this->transaction->getHistory(),
             'payment'=>$this->method->getPaymentMethod($condition),
             'vip'=>$vip, 'charts'=>$charts, 'dates'=>$date,

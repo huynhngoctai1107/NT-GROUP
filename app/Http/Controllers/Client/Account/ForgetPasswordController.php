@@ -23,7 +23,7 @@ class ForgetPasswordController extends Controller{
     }
 
     function fogetPassword(){
-        return view('Client.Pages.Forgetpassword');
+        return view('Client.Pages.ForgetPassword');
     }
 
     function postForgetPassword(ForgetPasswordRequest $request){

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\View\Components\Client\index;
+namespace App\View\Components\client\index;
 
 use Closure;
 use Illuminate\Contracts\View\View;

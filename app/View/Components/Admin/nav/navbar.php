@@ -1,6 +1,6 @@
 <?php
 
-namespace App\View\Components\Admin\nav;
+namespace App\View\Components\admin\nav;
 
 use Closure;
 use Illuminate\Contracts\View\View;
