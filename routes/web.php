@@ -349,20 +349,20 @@ Route::group(['prefix' => '/', 'middleware' => ['ClientLogin']], function (){
 
 
     Route::group(['prefix' => 'bai-viet'], function (){
-        Route::get('/danh-sach-tin-da-dang', [PostNewController::class, 'postNew'])
+        Route::get('/danh-sach-bai-viet-da-dang', [PostNewController::class, 'postNew'])
              ->name('postNew');
         Route::get('/them', [AddPostController::class, 'post'])->name('postAdd');
         Route::post('/them', [AddPostController::class, 'addClientPosts'])->name('addClientPosts');
-        Route::get('/danh-sach-dang-tin', [PostListController::class, 'listPost'])
+        Route::get('/danh-sach-dang-bai-viet', [PostListController::class, 'listPost'])
              ->name('listPost');
-        Route::get('/sua-tin/{slug}', [EditPostController::class, 'editPostsClient'])
+        Route::get('/sua-bai-viet/{slug}', [EditPostController::class, 'editPostsClient'])
              ->name('editPostsClient');
-        Route::post('/sua-tin/{slug}', [EditPostController::class, 'storePostsClient'])
+        Route::post('/sua-bai-viet/{slug}', [EditPostController::class, 'storePostsClient'])
              ->name('storePostsClient');
         Route::get('/hinh-anh/{id}', [EditPostController::class, 'deleteMedia'])
              ->name('deleteMedia');
 
-        Route::get('/xoa-dang-tin/{slug}', [DeletePostController::class, 'deletePostlist'])
+        Route::get('/xoa-bai-viet/{slug}', [DeletePostController::class, 'deletePostlist'])
              ->name('deletePostlist');
     });
 
@@ -397,7 +397,7 @@ Route::group(['prefix' => '/'], function (){
 
 
     Route::get('kich-hoat/{token}', [RegisterController::class, 'active'])->name('active');
-    Route::get('/chi-tiet-tin/{slug}', [PostSingleController::class, 'postSingle'])
+    Route::get('/chi-tiet-bai-viet/{slug}', [PostSingleController::class, 'postSingle'])
          ->name('postSingle');
     Route::get('lien-he', [AddContactController::class, 'contact'])->name('contact');
     Route::post('lien-he', [AddContactController::class, 'contactFrom'])->name('contactFrom');
@@ -411,12 +411,10 @@ Route::group(['prefix' => '/'], function (){
     Route::group(['prefix' => 'tin'], function (){
         Route::get('/danh-sach-tin', [PostListController::class, 'listPost'])->name('listPost');
     });
-    Route::group(['prefix' => 'tim-kiem'], function (){
-        Route::get('/loai/danh-sach/{slug}', [SearchController::class, 'search'])->name('search');
-        Route::get('/nhu-cau/danh-sach/{slug}', [SearchController::class, 'search1'])
+        Route::get('/danh-muc/{slug}', [SearchController::class, 'search'])->name('search');
+        Route::get('/nhu-cau/{slug}', [SearchController::class, 'search1'])
              ->name('search1');
-        Route::get('/', [PostListController::class, 'SearchPost'])->name('SearchPost');
-    });
+        Route::get('tim-kiem', [PostListController::class, 'SearchPost'])->name('SearchPost');
 
     Route::group(['prefix' => 'tai-lieu'], function (){
         Route::get('/dieu-khoan', [DocsController::class, 'docsterms'])->name('terms');

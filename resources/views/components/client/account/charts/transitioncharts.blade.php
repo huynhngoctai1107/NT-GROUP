@@ -1,12 +1,12 @@
 <div class="post mb-5">
-    <div class="d-flex justify-content-between">
-        <select style="width: 40%" class="form-select" id="month-select-transition" aria-label="Default select example" onchange="handleFilterSelectTransition()">
+    <div class="d-flex">
+        <select style="width: 20%" class="form-select" id="month-select-transition" aria-label="Default select example" onchange="handleFilterSelectTransition()">
             <option selected disabled>Chọn tháng</option>
             @for($month = 1; $month <= 12; $month++)
                 <option value="{{$month}}">Tháng {{$month}}</option>
             @endfor
         </select>
-        <select style="width: 40%" class="form-select" id="year-select-transition" aria-label="Default select example" onchange="handleFilterSelectTransition()">
+        <select style="width: 20%; margin-left: 10px;" class="form-select" id="year-select-transition" aria-label="Default select example" onchange="handleFilterSelectTransition()">
             <option selected disabled>Chọn năm</option>
             @php
                 $years = [];

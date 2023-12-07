@@ -39,7 +39,10 @@ class IndexController extends Controller
             ['status', '=', 1],
             ['featured_news', '=', 1],
         ];
-        $vip = $this->post->getPostList($condition1, null, false);
+        $orderby = [
+            ['posts.updated_at', 'desc'], // Sắp xếp theo trường created_at giảm dần (desc)
+        ];
+        $vip = $this->post->getPostList($condition1, true, false);
 
         $datas = [];
 

@@ -107,23 +107,8 @@
                                     <div class="icon">
                                         <i class="ion ion-clipboard"></i>
                                     </div>
-                                    <a href="#" class="small-box-footer" id="custom-link">Xem chi tiết
-                                        <i class="fas fa-arrow-circle-right"></i></a>
+                                    <p class="small-box-footer" style="height: 30px"></p>
                                 </div>
-
-                                <script>
-                                    document.addEventListener("DOMContentLoaded", function () {
-                                        var customLink = document.getElementById("custom-link");
-                                        var tabLink = document.querySelector(".nav-link.active");
-
-                                        if (customLink && tabLink) {
-                                            customLink.addEventListener("click", function (event) {
-                                                event.preventDefault();
-                                                tabLink.click();
-                                            });
-                                        }
-                                    });
-                                </script>
                             </div>
                             <!-- ./col -->
                             <div class="col-lg-3 col-6">
@@ -138,19 +123,6 @@
                                     </div>
                                     <p class="small-box-footer" style="height: 30px"></p>
                                 </div>
-                                <script>
-                                    document.addEventListener("DOMContentLoaded", function () {
-                                        var customUserLink = document.getElementById("custom-user");
-                                        var menu1Link = document.querySelector('a[data-toggle="pill"][href="#user"]');
-
-                                        if (customUserLink && menu1Link) {
-                                            customUserLink.addEventListener("click", function (event) {
-                                                event.preventDefault();
-                                                menu1Link.click();
-                                            });
-                                        }
-                                    });
-                                </script>
                             </div>
                             <!-- ./col -->
                             <div class="col-lg-3 col-6">
@@ -164,22 +136,8 @@
                                     <div class="icon">
                                         <i class="ion ion-social-usd"></i>
                                     </div>
-                                    <a href="#" class="small-box-footer" id="custom-pay">Xem chi tiết
-                                        <i class="fas fa-arrow-circle-right"></i></a>
+                                    <p class="small-box-footer" style="height: 30px"></p>
                                 </div>
-                                <script>
-                                    document.addEventListener("DOMContentLoaded", function () {
-                                        var customUserLink = document.getElementById("custom-pay");
-                                        var menupayLink = document.querySelector('a[data-toggle="pill"][href="#pay"]');
-
-                                        if (customUserLink && menupayLink) {
-                                            customUserLink.addEventListener("click", function (event) {
-                                                event.preventDefault();
-                                                menupayLink.click();
-                                            });
-                                        }
-                                    });
-                                </script>
                             </div>
                             <!-- ./col -->
                             <!-- ./col -->
@@ -205,29 +163,13 @@
                         <!-- /.row -->
                         <!-- Main row -->
                         <div>
-                            <ul class="nav nav-pills" style="display: none">
-                                <li class="nav-item">
-                                    <a class="nav-link active" data-toggle="pill" href="#posts">Thống kê bài viết</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" data-toggle="pill" href="#pay">Menu 2</a>
-                                </li>
-                            </ul>
-
-                            <!-- Tab panes -->
-                            <div class="tab-content m-3">
-                                <div class="tab-pane active" id="posts">
-                                    <h5>Biểu đồ thống kế bài viết</h5>
-                                    <x-client.account.charts.postcharts :dates="$dates" :vip="$vip" :charts="$charts"></x-client.account.charts.postcharts>
-                                </div>
-{{--                                <div class="tab-pane fade" id="user">--}}
-{{--                                    <h5>Biểu đồ thống kê tài khoản</h5>--}}
-{{--                                    <x-client.account.charts.user-chart :userchart="$userchart"></x-client.account.charts.user-chart>--}}
-{{--                                </div>--}}
-                                <div class="tab-pane fade" id="pay">
-                                    <h5>Doanh thu</h5>
-                                    <x-client.account.charts.transitioncharts :dateT="$dateT" :transitionPay="$transitionPay" :transitionMua="$transitionMua"></x-client.account.charts.transitioncharts>
-                                </div>
+                            <div>
+                                <h5>Biểu đồ thống kế bài viết</h5>
+                                <x-client.account.charts.postcharts :dates="$dates" :vip="$vip" :charts="$charts"></x-client.account.charts.postcharts>
+                            </div>
+                            <div>
+                                <h5>Biểu đồ thống kê doanh thu</h5>
+                                <x-client.account.charts.transitioncharts :dateT="$dateT" :transitionPay="$transitionPay" :transitionMua="$transitionMua"></x-client.account.charts.transitioncharts>
                             </div>
                         </div>
                     </div>

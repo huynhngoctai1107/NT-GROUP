@@ -171,6 +171,7 @@ return [
         Jenssegers\Agent\AgentServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         \Barryvdh\DomPDF\ServiceProvider::class,
+        Spatie\Sitemap\SitemapServiceProvider::class,
 
     ])->toArray(),
 

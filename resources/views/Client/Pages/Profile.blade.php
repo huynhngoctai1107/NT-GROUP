@@ -111,7 +111,7 @@
                     <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
 
                         @if(count($postUser) !== 0)
-                            <x-client.index.postSale :list="$postUser"></x-client.index.postSale>
+                            <x-client.index.postsale :list="$postUser"></x-client.index.postsale>
                         @else
                             Hiện tại không có bài đăng nào
                         @endif

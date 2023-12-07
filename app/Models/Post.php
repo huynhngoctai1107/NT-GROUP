@@ -107,8 +107,8 @@ class Post extends Model{
                       ->join('category_posts', 'category_posts.id', '=', 'posts.id_category')
                       ->groupBy('id_post');
 
-        if ($orderBy !== NULL){
-            $query->orderBy($orderBy);
+        if ($orderBy){
+            $query->orderBy('posts.updated_at', 'desc');
         }
 
         if ($random){

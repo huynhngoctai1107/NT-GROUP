@@ -83,6 +83,12 @@ class AppServiceProvider extends ServiceProvider{
             $view->with('dataCategoryBlog', $dataToCategoryBlog);
         });
 
+        View::composer('*', function ($view){
+            $getcategory       = new Category(); // Thay Category() bằng tên của mô hình của bạn
+            $getdataToCategory = $getcategory->GetCategoryFooter();
+            $view->with('getdataToCategory', $getdataToCategory);
+        });
+
 
     }
 }

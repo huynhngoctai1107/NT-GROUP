@@ -8,8 +8,7 @@
             </div>
             <div class="col-md-6">
                 <ol class="breadcrumb justify-content-md-end">
-                    <li class="breadcrumb-item"><a href="#" style="font-size: 16px">Trang chủ</a></li>
-                    <li class="breadcrumb-item"><a href="#" style="font-size: 16px">Trang</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('index')}}" style="font-size: 16px">Trang chủ</a></li>
                     <li class="breadcrumb-item active" style="font-size: 16px">{{$title}}</li>
                 </ol>
             </div>

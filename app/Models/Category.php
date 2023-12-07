@@ -44,6 +44,11 @@ class Category extends Model
         return $this->where('delete', 0)->get();
     }
 
+    public function GetCategoryFooter()
+    {
+        return $this->where('delete', 0)->orderBy('id', 'desc')->paginate(5);
+    }
+
     public function deleteCategory($slug)
     {
         // Kiểm tra xem nhu cầu có sản phẩm nào không

@@ -1,14 +1,14 @@
 @php use Carbon\Carbon; @endphp
-<div>
 <div class="post mb-5 mt-3">
-    <div class="d-flex justify-content-between">
-        <select style="width: 40%;" class="form-select" id="month-select" aria-label="Default select example" onchange="handleFilterSelectPost()">
+    <div class="d-flex flex-wrap"> <!-- Thêm lớp flex-wrap để dòng mới có thể chia nhỏ khi cần -->
+        <select style="width: 20%; margin-bottom: 10px;" class="form-select" id="month-select" aria-label="Default select example" onchange="handleFilterSelectPost()">
             <option selected disabled>Chọn tháng</option>
             @for($month = 1; $month <= 12; $month++)
                 <option value="{{$month}}">Tháng {{$month}}</option>
             @endfor
         </select>
-        <select style="width: 40%;" class="form-select" id="year-select" aria-label="Default select example" onchange="handleFilterSelectPost()">
+
+        <select style="width: 20%; margin-bottom: 10px; margin-left: 10px;" class="form-select" id="year-select" aria-label="Default select example" onchange="handleFilterSelectPost()">
             <option selected disabled>Chọn năm</option>
             @php
                 $years = [];
@@ -30,7 +30,7 @@
         <div id="total-posts"></div>
     </div>
 </div>
-</div>
+
 {{--    Charts Post--}}
 <script>
     var dateData = [

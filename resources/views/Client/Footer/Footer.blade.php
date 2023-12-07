@@ -26,9 +26,9 @@
                         <div class="widget">
                             <h6 class="widget_title">Dịch vụ</h6>
                             <ul class="widget_links">
-                                <li><a href="{{ route('listPost') }}">Tất cả bài viết</a></li>
-                                <li><a href="{{ route('SearchPost') }}">Cho thuê đất</a></li>
-                                <li><a href="{{ route('listPost') }}">Mua bán bất động sản</a></li>
+                                @foreach($getdataToCategory as $category)
+                                    <li><a href="{{route('search',$category->slug)}}">{{$category->name}}</a></li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>

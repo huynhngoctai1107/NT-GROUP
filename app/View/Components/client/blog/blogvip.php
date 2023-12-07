@@ -1,12 +1,12 @@
 <?php
 
-namespace App\View\Components\Client\blog;
+namespace App\View\Components\client\blog;
 
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class blogVip extends Component{
+class blogvip extends Component{
 
     /**
      * Create a new component instance.

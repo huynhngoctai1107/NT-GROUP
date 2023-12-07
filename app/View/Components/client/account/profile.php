@@ -1,12 +1,12 @@
 <?php
 
-namespace App\View\Components\Client\account;
+namespace App\View\Components\client\account;
 
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class password extends Component
+class profile extends Component
 {
     /**
      * Create a new component instance.
@@ -21,6 +21,6 @@ class password extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.client.account.password');
+        return view('components.client.account.profile');
     }
 }
