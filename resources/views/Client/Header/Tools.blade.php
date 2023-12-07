@@ -59,12 +59,12 @@
     <a href="{{route('mapLocation')}}" class="col-2 justify-content-center align-items-center d-flex flex-column  ">
         <i class="bi bi-compass-fill icons-menu-mobile"></i>
 
-        <span style="font-size: 10px">Tìm kiếm DBS</span>
+        <span class="text-center"  style="font-size: 10px">Tìm kiếm  <br/> DBS</span>
     </a>
     <a href="{{route('designCost')}}" class="col-3  justify-content-center align-items-center d-flex  flex-column ">
 
         <i class="bi bi-easel icons-menu-mobile"></i>
-        <span style="font-size: 10px">Chi Phí Thiết kế</span>
+        <span class="text-center" style="font-size: 10px">Chi Phí <br/>Thiết kế</span>
 
     </a>
     <div class="col-2  justify-content-center align-items-center d-flex ">
@@ -78,11 +78,11 @@
     </div>
     <a href="{{route('buildCost')}}" class="col-3 justify-content-center align-items-center d-flex flex-column">
         <i class="bi bi-building-fill-gear icons-menu-mobile"></i>
-        <span style="font-size: 10px">Chi Phí Xây dựng</span>
+        <span class="text-center" style="font-size: 10px">Chi Phí <br/>Xây dựng</span>
     </a>
     <a href="{{route('viewCalculate')}}" class="col-2  justify-content-center align-items-center d-flex   flex-column">
         <i class="bi bi-calculator-fill icons-menu-mobile"></i>
-        <span style="font-size: 10px">Tính Lãi suất</span>
+        <span class="text-center"  style="font-size: 10px">Tính Lãi  <br/> suất</span>
     </a>
 
 

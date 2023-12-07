@@ -23,7 +23,7 @@ class MapLocationController extends Controller{
         ];
         $locations = $this->location->Show($condition, 'posts');
 
-        return view('Client.Pages.Maplocations',
+        return view('Client.Pages.MapLocations',
             ['locations' => $locations]);
     }
 
@@ -44,7 +44,7 @@ class MapLocationController extends Controller{
 
             session()->flash("notification", "Tìm thấy " . count($distance) . " Kết quả");
 
-            return view('Client.Pages.Maplocations',
+            return view('Client.Pages.MapLocations',
                 ['locations' => $distance,
                  'price'     => $request->price,
                  'acreage'   => $request->acreage,
@@ -56,7 +56,7 @@ class MapLocationController extends Controller{
             ];
             session()->flash("notification", "Tìm thấy " . count($distance) . " Kết quả");
 
-            return view('Client.Pages.Maplocations',
+            return view('Client.Pages.MapLocations',
                 ['locations' => $this->location->Show($condition, 'posts'),
                  'price'     => $request->price,
                  'acreage'   => $request->acreage,

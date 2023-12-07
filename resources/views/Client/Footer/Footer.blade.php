@@ -13,7 +13,7 @@
                                 <p>Mang lại giá trị cốt lỗi trong cuộc sống</p>
                                 <div class="widget">
                                     <ul class="widget_links">
-                                        <li class="bi bi-envelope"><a href="htai67934@mail.com "> htai67934@mail.com </a></li>
+                                        <li class="bi bi-envelope"><a href="contact@nt-group.top"> contact@nt-group.top </a></li>
                                         <li class="bi bi-telephone"><a href="0949 615 859 "> 0949 615 859 </a></li>
                                     </ul>
                                 </div>
@@ -26,10 +26,9 @@
                         <div class="widget">
                             <h6 class="widget_title">Dịch vụ</h6>
                             <ul class="widget_links">
-                                <li><a href="#">Cho thuê nhà</a></li>
-                                <li><a href="#">Cho thuê đất</a></li>
-                                <li><a href="#">Mua bán bất động sản</a></li>
-                                <li><a href="#">Tư vấn bất động sản</a></li>
+                                <li><a href="{{ route('listPost') }}">Tất cả bài viết</a></li>
+                                <li><a href="{{ route('SearchPost') }}">Cho thuê đất</a></li>
+                                <li><a href="{{ route('listPost') }}">Mua bán bất động sản</a></li>
                             </ul>
                         </div>
                     </div>
@@ -46,10 +45,9 @@
                         <div class="widget">
                             <h6 class="widget_title">Công Ty</h6>
                             <ul class="widget_links">
-                                <li><a href="#">Giới thiệu</a></li>
-                                <li><a href="#">Blog</a></li>
-                                <li><a href="#">Liên hệ</a></li>
-                                <li><a href="#">Partners</a></li>
+                                <li><a href="{{ route('about') }}">Giới thiệu</a></li>
+                                <li><a href="{{ route('listPost') }}">Blog</a></li>
+                                <li><a href="{{ route('contact') }}">Liên hệ</a></li>
                             </ul>
                         </div>
                     </div>
@@ -57,7 +55,7 @@
                         <div class="widget">
                             <h6 class="widget_title">Liên kết</h6>
                             <ul class="widget_links">
-                                <li><a href="#">Facebook</a></li>
+                                <li><a href="https://www.facebook.com/profile.php?id=61554496914625">Facebook</a></li>
                                 <li><a href="#">Instagram</a></li>
                                 <li><a href="#">Telegram</a></li>
                             </ul>

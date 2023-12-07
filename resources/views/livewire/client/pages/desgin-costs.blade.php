@@ -123,10 +123,8 @@
 
 
             </div>
-            <div class="col-md-4 col-12 ">
-
-               
-                <div class="form-floating  ">
+            <div class="col-md-4 col-12">
+                <div class="form-floating mt-3">
                     <input type="number" {{$gardenHiden == TRUE ? "" : "disabled"}} wire:model="longGarden" class="form-control section-form_input" name=wideGarden" value="{{$longGarden}}" min="0" id="wideGarden">
                     <label for="wideGarden" class="section-form_label section-form_label--darkblue">
                         Chiều dài hàng rào

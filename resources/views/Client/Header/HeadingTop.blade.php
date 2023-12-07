@@ -22,7 +22,7 @@
                 <ul class="header_list justify-content-center  ">
                     <li><a href="{{route('postAdd')}}"><i class="ti-control-shuffle"  style="font-size: 15px" ></i><span>Đăng tin</span></a></li>
                     <li class="ps-3 ps-md-0">
-                        <a href="{{route('postNew')}}"><i class="ti-heart" style="font-size: 15px"  ></i><span>Danh sách tin</span></a></li>
+                        <a href="{{route('postNew')}}"><i class="ti-heart" style="font-size: 15px"  ></i><span>Bài Viết</span></a></li>
                     @if(auth()->check())
                         <li class="dropdown mt-0">
                             <a class="dropdown-toggle nav-link ps-3 ps-md-2" href="{{route('listBlog')}}" data-bs-toggle="dropdown">
