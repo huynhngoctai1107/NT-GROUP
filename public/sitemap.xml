@@ -191,12 +191,27 @@
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/cho-thue-nha-tret-2-lau-hem-11-nguyen-van-linh-an-khanh-ninh-kieu-can-tho</loc>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/nha-ban-hem-132-lien-to-1-2-phuong-an-khanh-ninh-kieu-can-tho</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/cho-thue-mini-house-xay-moi-chi-con-1-phong-duy-nhat</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/chinh-chu-ket-ngan-hang-ban-gap-2000m2-tai-tp-phu-quoc-gia-68ty</loc>
             <changefreq>daily</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
         <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/ban-nha-mat-tien-duong-tran-nam-phu-gan-ho-bun-xang</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/cho-thue-nha-tret-2-lau-hem-11-nguyen-van-linh-an-khanh-ninh-kieu-can-tho</loc>
             <changefreq>daily</changefreq>
         <priority>0.8</priority>
             </url>
@@ -232,11 +247,6 @@
             </url>
     <url>
         <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/can-sang-hoac-cho-thue-lai-quan-com-trua-van-phong-chieu-ban-lau-bo</loc>
-            <changefreq>daily</changefreq>
-        <priority>0.8</priority>
-            </url>
-    <url>
-        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/cho-thue-mini-house-xay-moi-chi-con-1-phong-duy-nhat</loc>
             <changefreq>daily</changefreq>
         <priority>0.8</priority>
             </url>

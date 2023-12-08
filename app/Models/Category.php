@@ -43,6 +43,10 @@ class Category extends Model
     {
         return $this->where('delete', 0)->get();
     }
+    public function GetSeeder()
+    {
+        return $this->get();
+    }
 
     public function GetCategoryFooter()
     {

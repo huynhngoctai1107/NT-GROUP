@@ -77,11 +77,12 @@ class ProfileCotroller extends Controller{
                 ['posts.status', '=', 1],
             ];
 
-            if($followed['getview'] !== null){
+            if ($followed['getview'] !== NULL){
+                $values = [];
                 foreach ($followed['getview'] as $item){
                     $values[] = $item->id;
                 }
-              $postFollow =   $this->post->getPostFollow($values, 4) ;
+                $postFollow = $this->post->getPostFollow($values, 4);
             }
 
 

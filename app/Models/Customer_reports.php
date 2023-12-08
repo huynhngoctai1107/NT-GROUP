@@ -12,7 +12,7 @@ class Customer_reports extends Model{
 
     use HasApiTokens, HasFactory, Notifiable;
 
-    protected $table = 'Customer_reports';
+    protected $table = 'customer_reports';
 
     protected $fillable = [
         'id',
@@ -28,7 +28,7 @@ class Customer_reports extends Model{
         return $this->orderBy('id', 'desc')->where($condition)->paginate(5);
     }
     public function firstReport($condition){
-        return $this->orderBy('id', 'desc')->where($condition)->first();
+        return $this->where($condition)->first();
     }
 
 

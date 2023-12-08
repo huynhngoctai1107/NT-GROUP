@@ -76,8 +76,6 @@
                                     <span>Hoặc</span>
                                 </div>
                                 <ul class="btn-login list_none text-center">
-                                    <li><a href="#" class="btn btn-facebook"><i class="ion-social-facebook"></i>Facebook</a>
-                                    </li>
                                     <li>
                                         <a href="{{route('loginGoogle')}}" class="btn btn-google"><i class="ion-social-googleplus"></i>Google</a>
                                     </li>

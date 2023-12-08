@@ -41,21 +41,15 @@
     <!-- Style CSS -->
     <link rel="stylesheet" href="{{asset('client/css/style.css')}}">
     <link rel="stylesheet" href="{{asset('client/css/responsive.css')}}">
-
-
     {!! RecaptchaV3::initJs() !!}
-
-
-
-
     @stack('styles')
     @stack('css')
-
     @livewireStyles
 </head>
 
 <body>
-{{-- @include('Client.Pages.simple_html_dom') --}}
+
+
 @include('Client.Header.Nav')
 @include('Client.Header.Tools')
 
@@ -107,7 +101,6 @@
 
 @stack('script')
 <script>
-    // Hiển thị nút khi cuộn xuống một khoảng cách cụ thể
     window.onscroll = function () {
         scrollFunction()
     };

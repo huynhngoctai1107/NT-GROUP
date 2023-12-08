@@ -111,7 +111,8 @@ use App\Http\Controllers\Client\Tools\CalculateController;
 use App\Http\Controllers\Client\Tools\DesignCostsController;
 use App\Http\Controllers\Client\Tools\MapLocationController;
 use App\Http\Controllers\Client\Tools\BuildController;
-
+//fb
+use App\Http\Controllers\Client\Account\FaceBookController ;
 //bai viet wp
 use App\Http\Controllers\Client\Blog\BlogSingleController;
 
@@ -294,6 +295,7 @@ Route::group(['prefix' => '/', 'middleware' => ['checkLogin']], function (){
     Route::get('/google', [GoogleController::class, 'loginUsingGoogle'])->name('loginGoogle');
     Route::get('/google/callback', [GoogleController::class, 'callbackFromGoogle'])
          ->name('callBackGoogle');
+
     Route::get('dang-nhap', [LoginController::class, 'login'])->name('login');
     Route::get('/checkPost', [LoginController::class, 'checkPost'])->name('checkPost');
     Route::post('dang-nhap', [LoginController::class, 'loginForm'])->name('loginForm');

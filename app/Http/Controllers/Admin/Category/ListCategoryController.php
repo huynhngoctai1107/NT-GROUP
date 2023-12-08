@@ -21,7 +21,7 @@ class ListCategoryController extends Controller
             ['delete', '=', 0],
         ];
         $data = $this->category->listCategory($condition);
-        return view('Admin.DemandCategory.list', ['page' => 'category', 'query' => $data]);
+        return view('Admin.DemandCategory.List', ['page' => 'category', 'query' => $data]);
     }
 
     function listHistoryCategory()

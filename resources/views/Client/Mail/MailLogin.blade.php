@@ -49,17 +49,7 @@
                                 <td class="column column-1" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; padding-bottom: 5px; padding-top: 5px; vertical-align: top; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" width="33.333333333333336%">
                                     <div class="spacer_block block-1" style="height:0px;line-height:0px;font-size:1px;"> </div>
                                 </td>
-                                <td class="column column-2" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; padding-bottom: 5px; padding-top: 5px; vertical-align: top; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" width="33.333333333333336%">
-                                    <table border="0" cellpadding="0" cellspacing="0" class="image_block block-1" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
-                                        <tr>
-                                            <td class="pad" style="width:100%;padding-right:0px;padding-left:0px;">
-                                                <div align="center" class="alignment" style="line-height:10px">
-                                                    <img alt="Company Logo" src="https://nt-group.top/wp-content/uploads/2023/07/cropped-nl-removebg-preview-222x165.png" style="display: block; height: auto; border: 0; max-width: 147.33333333333331px; width: 100%;" title="Company Logo" width="147.33333333333331"/>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </td>
+
                                 <td class="column column-3" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; padding-bottom: 5px; padding-top: 5px; vertical-align: top; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" width="33.333333333333336%">
                                     <div class="spacer_block block-1" style="height:0px;line-height:0px;font-size:1px;"> </div>
                                 </td>

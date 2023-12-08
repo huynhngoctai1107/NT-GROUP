@@ -42,7 +42,7 @@ class IndexController extends Controller
         $orderby = [
             ['posts.updated_at', 'desc'], // Sắp xếp theo trường created_at giảm dần (desc)
         ];
-        $vip = $this->post->getPostList($condition1, true, false);
+        $vip = $this->post->getPostList($condition1, true, false,8);
 
         $datas = [];
 

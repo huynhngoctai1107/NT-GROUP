@@ -35,6 +35,11 @@ return [
         'client_secret' => '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', //USE FROM FACEBOOK DEVELOPER ACCOUNT
         'redirect' => '/google/callback'
     ],
+    'facebook' => [
+        'client_id' => '1041771406864223',
+        'client_secret' => '611677d3e1a24cc35dba66ac1d5da09b',
+        'redirect' => '/auth/facebook/callback',
+    ],
  
 
 ];

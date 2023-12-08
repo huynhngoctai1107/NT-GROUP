@@ -1,7 +1,7 @@
 @foreach ($postList as $item)
 
     <tr class="text-center">
-        <td colspan="1" class="product-thumbnail"><a href="#">
+        <td colspan="1" class="product-thumbnail pt-3"><a href="#">
                 @php
                     $imgPost = explode(',', $item->images);
                 @endphp
@@ -12,8 +12,7 @@
                 @endfor
             </a>
         </td>
-
-        <td colspan="2" class="product-name " data-title="Tiêu đề">
+        <td colspan="2" class="product-name pt-4 " data-title="Tiêu đề">
             <a href="{{route('postSingle',$item->slug_posts)}}" class="text-dark" style="
                     display:inline-block;
                     white-space: nowrap;
@@ -74,7 +73,7 @@
         @else
 
             <td colspan="2" class="pt-4">
-            <button type="submit" style="width: auto; height: 32px; background:#ff324d " class="badge border">Tạm ngưng hoạt động</button>
+                <button type="submit" style="width: auto; height: 32px; background:#ff324d " class="badge border">Tạm ngưng hoạt động</button>
             </td>
             <td class="pt-4">
                 <a href="#">

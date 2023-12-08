@@ -51,7 +51,7 @@
                                             @endfor
                                         </a>
                                     </td>
-                                    <td colspan="2" class="product-name " data-title="Tiêu đề"><span class="text-dark" style="
+                                    <td colspan="2" class="product-name text-center pt-3 " data-title="Tiêu đề"><span class="text-dark" style="
                                                 display:inline-block;
                                                 white-space: nowrap;
                                                 overflow: hidden;
@@ -59,19 +59,20 @@
                                                 -webkit-line-clamp:1;
                                                 max-width: 30ch;">{{ $post->title }}</span>
                                         <br>
-                                        <a href="{{route('search',$post->slug_category )}}" class="btn btn-fill-out fst-italic " type="button">
-                                            {{ $post->name_category }}</a>
-
-                                        <a href="{{route('search1',$post->slug_demands)}}" class=" text-white  btn btn-fill-out fst-italic" type="button">
-                                            {{ $post->name_demands }}</a>
+                                        <a href="{{route('search',$post->slug_category )}}">
+                                            <button type="button" class="badge p-2 team-status border" style="background:#ff324d">{{ $post->name_category }}</button>
+                                        </a>
+                                        <a href="{{route('search1',$post->slug_demands)}}">
+                                            <button type="button" class="badge p-2 team-status border" style="background:#ff324d">{{ $post->name_demands }}</button>
+                                        </a>
                                     </td>
                                     <td colspan="2" class="text-danger" style="font-weight: bold;" data-title="Giá">
                                         {{ $formatPrice($post->price) }}</td>
-                                    <td colspan="2" class="align-items-center" data-title="Địa chỉ">
-                                        <p class="text-dark">
-                                            {{ $post->address }}
+                                    <td colspan="2" class="align-items-center pt-3 data-title="Địa chỉ">
+                                    <p class="text-dark mt-3">
+                                        {{ $post->address }}
 
-                                        </p>
+                                    </p>
                                     </td>
                                 </tr>
                                 </tbody>

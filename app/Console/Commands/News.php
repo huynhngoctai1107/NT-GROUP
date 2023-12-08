@@ -43,7 +43,7 @@ class News extends Command{
                 'post' =>$newPosts ,
                 'customer' =>$customer
             ] ;
-            Mail::send('client.mail.Mailnews', compact('dataPost'), function ($message) use ($dataPost){
+            Mail::send('Client.Mail.MailNews', compact('dataPost'), function ($message) use ($dataPost){
                 $message->subject('NT-GROUP - Thông báo bài viết mới nhất');
                 $message->to($dataPost['customer']->email);
             });

@@ -39,7 +39,8 @@ class AddReportController extends Controller{
             'email'    => $request->email,
             'title'    => "Báo cáo"
         ];
-        if ($report = Customer_reports::where($condition)->first()){
+        $report = $this->report->firstReport($condition) ;
+        if ($report){
             if ($report && now()->diffInHours($report->created_at) < 6){
                 return Redirect()
                     ->back()

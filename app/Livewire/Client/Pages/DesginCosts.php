@@ -140,7 +140,7 @@ class DesginCosts extends Component{
 
         if ($this->penthouseHiden == TRUE){
             $this->errorPenthouse = "";
-            $coefficient          = ($this->wide * $this->long) * ($this->check2 == TRUE ? 75 : 50) / 100;
+                $coefficient          = ($this->wide * $this->long) * ($this->check2 == TRUE ? 75 : 50) / 100;
             $penthouse            = $this->longPenthouse * $this->widePenthouse * $this->heightPenthouse;
             if ($penthouse > (0.3 * $coefficient)){
                 $this->errorPenthouse = "Diện tích tum thắng vượt 30% tổng hiện tích sàn";
@@ -199,6 +199,7 @@ class DesginCosts extends Component{
                 'acreage'     => $this->wide * $this->long,
                 'coefficient' => 50
             ];
+            $this->sumAcreage += ($this->wide * $this->long);
             $this->Areafloor += $this->Areafloor;
             $this->sumtotal  += ($this->wide * $this->long) * $this->construction * 0.5;
         }

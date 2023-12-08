@@ -19,7 +19,7 @@ return new class extends Migration{
             $table->string('fullname')->unique();
             $table->string('slug');
             $table->string('email')->unique();
-            $table->string('phone', 10);
+            $table->string('phone', 10)->default('');
             $table->string('address', 255);
             $table->string('password');
             $table->bigInteger('wallet')->default(0);
