@@ -59,6 +59,7 @@ class EditPostController extends Controller
     }
 
     function storePostsClient(EditPostClientRequest $request, $slug){
+        $price = str_replace(['.', ','], '', $request->price);
         $value = [
             'title' => $request->title,
             'slug' => Str::slug(!empty($request->input('slug')) ? $request->input('slug') : $request->input('title')),
@@ -67,7 +68,7 @@ class EditPostController extends Controller
             'id_user' => $request->id_user,
             'id_price' => $request->id_price,
             'id_acreage' => $request->id_acreage,
-            'price' => $request->price,
+            'price' => $price,
             'acreages' => $request->acreage,
             'subtitles' => $request->subtitles,
             'content' => $request->input('content'),

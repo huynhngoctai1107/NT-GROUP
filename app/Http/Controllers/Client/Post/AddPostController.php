@@ -39,6 +39,7 @@ class AddPostController extends Controller
 
     function addClientPosts(AddClientPostRequest $request)
     {
+        $price = str_replace(['.', ','], '', $request->price);
         $value = [
             'title' => $request->title,
             'slug' => Str::slug($request->title),
@@ -47,7 +48,7 @@ class AddPostController extends Controller
             'id_user' => auth()->user()->id,
             'id_price' => $request->id_price,
             'id_acreage' => $request->id_acreage,
-            'price' => $request->price,
+            'price' => $price,
             'acreages' => $request->acreage,
             'subtitles' => $request->subtitles,
             'content' =>  $request->input('content'),

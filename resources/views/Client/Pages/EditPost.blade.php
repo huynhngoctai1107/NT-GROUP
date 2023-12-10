@@ -83,7 +83,7 @@
                         <div class="alert alert-danger mt-3">{{ $message }}</div>
                         @enderror
                         <label for="price" id="priceLabel" class="form-label">Giá </label>
-                        <input type="number" class="form-control" id="price" name="price" value="{{$data->price}}">
+                        <input type="text" class="form-control" id="price" name="price" value="{{$data->price}}">
                     </div>
                     <div style="width: 45%;">
                         @error('acreage')
@@ -285,6 +285,7 @@
     </div>
 @endsection
 @push('styles')
+    <script src="https://cdn.jsdelivr.net/npm/autonumeric@4.1.0/dist/autoNumeric.min.js"></script>
     <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
     <style>
 		/* CSS cho phần danh sách hình ảnh */
@@ -305,6 +306,17 @@
     </style>
 @endpush
 @push('script')
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            new AutoNumeric('#price', {
+                // currencySymbol: 'VND',
+                digitGroupSeparator: '.',
+                decimalCharacter: ',',
+                decimalPlaces: 0,
+            });
+        });
+    </script>
+
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
         $(document).ready(function(){

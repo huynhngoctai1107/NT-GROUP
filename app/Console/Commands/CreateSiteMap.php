@@ -40,6 +40,10 @@ class CreateSiteMap extends Command
         $sitemap->add(URL::to('/'), Carbon::now(), '1.0', 'daily');
         $sitemap->add(route('about'), Carbon::now(), '1.0', 'daily');
         $sitemap->add(route('contact'), Carbon::now(), '1.0', 'daily');
+        $sitemap->add(route('buildCost'), Carbon::now(), '1.0', 'daily');
+        $sitemap->add(route('designCost'), Carbon::now(), '1.0', 'daily');
+        $sitemap->add(route('viewCalculate'), Carbon::now(), '1.0', 'daily');
+        $sitemap->add(route('mapLocation'), Carbon::now(), '1.0', 'daily');
 
         $blogs = Blog::orderBy('created_at', 'desc')->paginate(10000);
 

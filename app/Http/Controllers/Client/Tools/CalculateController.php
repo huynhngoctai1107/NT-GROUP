@@ -18,11 +18,12 @@ class CalculateController extends Controller{
             $sumtotoalInterest    = 0;
             $amortizationSchedule = [];
             $schedule             = [];
+            $price = str_replace(['.', ','], '', $request->principal);
             //Phương thức thanh toán, trong trường hợp này là gốc cố định,lãi giảm dần
             if ($request->method == 'equalMonthlyPayments'){
-                $principalRemaining  = $request->principal; //Số tiền còn lại của khoản vay, được khởi tạo bằng số tiền vay ban đầu.
+                $principalRemaining  = $price; //Số tiền còn lại của khoản vay, được khởi tạo bằng số tiền vay ban đầu.
                 $monthlyInterestRate = ($request->annualInterestRate / 12) / 100;//Lãi suất hàng tháng, được tính bằng cách chia lãi suất hàng năm cho 12 và chia cho 100.
-                $emi                 = $this->calculateEMI($request->principal,//Số tiền thanh toán hàng tháng, được tính toán bằng hàm calculateEMI.
+                $emi                 = $this->calculateEMI($price,//Số tiền thanh toán hàng tháng, được tính toán bằng hàm calculateEMI.
                     $request->loanTermMonths,//Thời hạn vay tính bằng tháng.
                     $request->annualInterestRate //Lãi suất hàng năm.
                 );
@@ -42,7 +43,7 @@ class CalculateController extends Controller{
                 }
 
             }else{
-                $temp              = $this->calculateLoan($request->principal,
+                $temp              = $this->calculateLoan($price,
                     $request->loanTermMonths,
                     $request->annualInterestRate);
                 $schedule          = $temp['schedule'];
@@ -53,7 +54,7 @@ class CalculateController extends Controller{
 
             return view('Client.Pages.Calculate',
                 ['amortizationSchedule' => $amortizationSchedule, 'sumtotoalInterest' => $sumtotoalInterest,
-                 'principal'            => $request->principal,
+                 'principal'            => $price,
                  "annualInterestRate"   => $request->annualInterestRate,
                  "loanTermMonths"       => $request->loanTermMonths,
                  "method"               => $request->method]);

@@ -378,7 +378,7 @@ Route::group(['prefix' => '/'], function (){
         [InteractionCountCotroller::class, 'interactionCount'])->name('interactionCount');
 
     //tools map
-    Route::get('/vi-tri-bat-dong-san', [MapLocationController::class, 'mapLocation'])
+    Route::get('/tim-kiem-bat-dong-san', [MapLocationController::class, 'mapLocation'])
          ->name('mapLocation');
     Route::get('/ket-qua-vi-tri-bds/', [MapLocationController::class, 'checkMap'])
          ->name('checkMap');

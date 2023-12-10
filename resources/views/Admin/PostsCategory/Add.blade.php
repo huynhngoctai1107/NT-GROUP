@@ -201,7 +201,7 @@
                         <div class="alert alert-danger mt-3">{{ $message }}</div>
                         @enderror
                         <label for="price" id="priceLabel" class="form-label">Giá</label>
-                        <input type="number" class="form-control" name="price" value="{{ old($page == 'posts' ? 'price' : '') }}" id="price">
+                        <input type="text" class="form-control" name="price" value="{{ old($page == 'posts' ? 'price' : '') }}" id="price">
                     </div>
                     <div class="form-group">
                         @error('subtitles')
@@ -217,10 +217,7 @@
                         <label for="summernote">Nội dung</label>
                         <textarea id="summernote" name="content">{{ old($page == 'posts' ? 'content' : '') }}</textarea>
                     </div>
-                    <div class="mb-3">
-                        <label for="featured_news" class="form-label">Bài viết VIP</label>
-                        <input type="number" min="0" max="1" class="form-control" name="featured_news" value="{{ old($page == 'posts' ? 'featured_news' : '') }}" id="featured_news">
-                    </div>
+                    <input type="hidden" class="form-control" name="featured_news" value="0" id="featured_news">
                     <div class="mb-3">
                         @error('link_youtube')
                         <div class="alert alert-danger mt-3">{{ $message }}</div>
@@ -353,6 +350,7 @@
 {{-- javascript --}}
 @push('javascript')
     <!-- jQuery -->
+    <script src="https://cdn.jsdelivr.net/npm/autonumeric@4.1.0/dist/autoNumeric.min.js"></script>
     <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
@@ -437,6 +435,17 @@
                 $("#priceLabel").append("thuê 1 tháng");
             }
         }
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            new AutoNumeric('#price', {
+                // currencySymbol: 'VND',
+                digitGroupSeparator: '.',
+                decimalCharacter: ',',
+                decimalPlaces: 0,
+            });
+        });
     </script>
 @endpush
 {{-- endjavascript --}}

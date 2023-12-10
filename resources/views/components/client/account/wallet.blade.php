@@ -61,8 +61,8 @@
                 <form action="{{route('Payment_method')}}" method="POST">
                     @csrf
                     <div class="col-12">
-                        <label for="so-tien">Số tiền</label>
-                        <input type="number" required class="form-control" id="so-tien" name="price"/>
+                        <label for="price">Số tiền</label>
+                        <input type="text" required class="form-control" id="price" name="price"/>
                     </div>
 
                     <div class="col-md-12">
@@ -107,4 +107,15 @@
             }
         }
     })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/autonumeric@4.1.0/dist/autoNumeric.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        new AutoNumeric('#price', {
+            // currencySymbol: 'VND',
+            digitGroupSeparator: '.',
+            decimalCharacter: ',',
+            decimalPlaces: 0,
+        });
+    });
 </script>

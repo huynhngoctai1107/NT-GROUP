@@ -218,7 +218,7 @@
                         <div class="alert alert-danger mt-3">{{ $message }}</div>
                         @enderror
                         <label for="price" id="priceLabel" class="form-label">Giá</label>
-                        <input type="number" class="form-control" name="price" value="{{$data->price}}" id="price">
+                        <input type="text" class="form-control" name="price" value="{{$data->price}}" id="price">
                     </div>
                     <div class="mb-3">
                         @error('acreage')
@@ -240,10 +240,6 @@
                         @enderror
                         <label for="summernote">Nội dung</label>
                         <textarea id="summernote" name="content">{{$data->content}}</textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="featured_news" class="form-label">Bài viết VIP</label>
-                        <input type="number" class="form-control" name="featured_news" value="{{$data->featured_news}}" id="featured_news">
                     </div>
                     <div class="mb-3">
                         @error('link_youtube')
@@ -364,40 +360,27 @@
 
 {{-- javascript --}}
 @push('javascript')
-    <!-- jQuery -->
+    <script src="https://cdn.jsdelivr.net/npm/autonumeric@4.1.0/dist/autoNumeric.min.js"></script>
     <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
     <script src="{{ asset('plugins/select2/js/edit-address.js') }}"></script>
-    //
-    <!-- jQuery UI 1.11.4 -->
     <script src="{{ asset('plugins/jquery-ui/jquery-ui.min.js') }}"></script>
-    //
-    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script>
         $.widget.bridge('uibutton', $.ui.button)
     </script>
-    <!-- Bootstrap 4 -->
     <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <!-- ChartJS -->
     <script src="{{ asset('plugins/chart.js/Chart.min.js') }}"></script>
-    <!-- Sparkline -->
     <script src="{{ asset('plugins/sparklines/sparkline.js') }}"></script>
-    <!-- JQVMap -->
     <script src="{{ asset('plugins/jqvmap/jquery.vmap.min.js') }}"></script>
     <script src="{{ asset('plugins/jqvmap/maps/jquery.vmap.usa.js') }}"></script>
-    <!-- jQuery Knob Chart -->
     <script src="{{ asset('plugins/jquery-knob/jquery.knob.min.js') }}"></script>
-    <!-- daterangepicker -->
     <script src="{{ asset('plugins/moment/moment.min.js') }}"></script>
-    <!-- overlayScrollbars -->
     <script src="{{ asset('plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
-    <!-- AdminLTE App -->
     <script src="{{ asset('dist/js/adminlte.js') }}"></script>
     <script src="{{ asset('dist/js/pages/dashboard.js') }}"></script>
     <script src="{{ asset('plugins/summernote/summernote-bs4.min.js') }}"></script>
     <script src="{{ asset('plugins/select2/js/select2.full.min.js') }}"></script>
-    <!-- Page specific script -->
     {{-- gg map and hinh anh upload.js--}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8ttJcdnyqOwb93B47rjRU+ABJxUrEDR/i" crossorigin="anonymous">
     <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
@@ -459,6 +442,17 @@
                 $("#priceLabel").append("thuê 1 tháng");
             }
         }
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            new AutoNumeric('#price', {
+                // currencySymbol: 'VND',
+                digitGroupSeparator: '.',
+                decimalCharacter: ',',
+                decimalPlaces: 0,
+            });
+        });
     </script>
 @endpush
 {{-- endjavascript --}}

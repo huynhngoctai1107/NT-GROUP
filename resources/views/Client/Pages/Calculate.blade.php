@@ -23,7 +23,7 @@
                     <div class="col-md-12 mt-4">
                         <div class="row mt-3">
                             <div class="form-floating col-12 col-md-4    ">
-                                <input type="number" name="principal" class="form-control inputValue type-number" step="1" placeholder="Nhập số tiền vay" value="{{($principal ?? old('principal')) ?? 0 }}">
+                                <input type="text" id="price"  name="principal" class="form-control inputValue type-number" step="1" placeholder="Nhập số tiền vay" value="{{($principal ?? old('principal')) ?? 0 }}">
                                 <label for="principal" class="section-form_label section-form_label--darkblue ">
                                     Nhập số tiền vay
                                 </label>
@@ -222,7 +222,17 @@
             },
         });
     </script>
-
+    <script src="https://cdn.jsdelivr.net/npm/autonumeric@4.1.0/dist/autoNumeric.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            new AutoNumeric('#price', {
+                // currencySymbol: 'VND',
+                digitGroupSeparator: '.',
+                decimalCharacter: ',',
+                decimalPlaces: 0,
+            });
+        });
+    </script>
 @endpush<!-- END MAIN CONTENT -->
 @push('css')
 

@@ -32,13 +32,15 @@ class AddPostRequest extends FormRequest
             'id_acreage' => 'required',
             'price' => [
                 'required',
-                'numeric',
                 function ($attribute, $value, $fail) {
                     $idPrice = request()->input('id_price');
                     $selectedPrice = Price::find($idPrice);
 
-                    if (!$selectedPrice || ($value < $selectedPrice->name_min || $value > $selectedPrice->name_max)) {
-                        $fail('Giá không nằm trong giới hạn cho phép.');
+                    // Loại bỏ dấu chấm và dấu phẩy từ giá trị nhập vào
+                    $formattedValue = str_replace(['.', ','], '', $value);
+
+                    if (!$selectedPrice || ($formattedValue < $selectedPrice->name_min || $formattedValue > $selectedPrice->name_max)) {
+                        $fail("Giá phải nằm trong giới hạn từ " . number_format($selectedPrice->name_min) . " đến " . number_format($selectedPrice->name_max) . ".");
                     }
                 },
             ],
@@ -50,7 +52,7 @@ class AddPostRequest extends FormRequest
                     $selectedAcreage = Acreage::find($idAcreage);
 
                     if (!$selectedAcreage || ($value < $selectedAcreage->name_min || $value > $selectedAcreage->name_max)) {
-                        $fail('Diện tích phải nằm trong giới hạn cho phép từ.');
+                        $fail("Diện tích phải nằm trong giới hạn từ {$selectedAcreage->name_min} đến {$selectedAcreage->name_max}.");
                     }
                 },
             ],
@@ -93,6 +95,8 @@ class AddPostRequest extends FormRequest
             'id_price.required' => 'Vui lòng chọn giá',
             'id_acreage.required' => 'Vui lòng chọn diện tích',
             'price.required' => 'Vui lòng nhập vào giá',
+            'acreage.numeric' => 'Diện tích bài viết phải là số',
+            'acreage.required' => 'Vui lòng nhập vào diện tích',
             'price.numeric' => 'Giá bài viết phải là số',
             'uploadfile.required'=>'Vui lòng thêm ít nhất 1 ảnh',
             'subtitles.required' => 'Vui lòng nhập vào tiêu đề phụ bài viết',

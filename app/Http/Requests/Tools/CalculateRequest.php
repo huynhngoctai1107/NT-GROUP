@@ -22,7 +22,7 @@ class CalculateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'principal'          => 'required|min:1|max:5000000000|numeric',
+            'principal'          => 'required|min:1|max:50000000000',
             'loanTermMonths'     => 'required|min:1|max:300|numeric',
             'annualInterestRate' => 'required|min:1|max:20|numeric',
             'method'             => 'required',

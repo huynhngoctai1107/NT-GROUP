@@ -16,6 +16,26 @@
         <priority>0.8</priority>
             </url>
     <url>
+        <loc>http://127.0.0.1:8000/tinh-chi-phi-xay-dung</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/tinh-chi-phi-thiet-ke</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/tinh-lai-xuat</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/tim-kiem-bat-dong-san</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
         <loc>http://127.0.0.1:8000/tin-tuc/co-nen-dau-tu-bat-dong-san-kien-giang-khong</loc>
             <changefreq>daily</changefreq>
         <priority>0.8</priority>
@@ -191,62 +211,372 @@
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/nha-ban-hem-132-lien-to-1-2-phuong-an-khanh-ninh-kieu-can-tho</loc>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/ten-bai-vietten-bai-vietten-bai-vietten-bai-vietten-bai-viet</loc>
             <changefreq>daily</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/cho-thue-mini-house-xay-moi-chi-con-1-phong-duy-nhat</loc>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/thong-tin-bat-dong-santhong-tin-bat-dong-santhong-tin-bat-dong-santhong-tin-bat-dong-santhong-tin-bat-dong-san</loc>
             <changefreq>daily</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/chinh-chu-ket-ngan-hang-ban-gap-2000m2-tai-tp-phu-quoc-gia-68ty</loc>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/cat-lo-52-ty-co-ngay-can-ho-hillside-1pn-view-bien-cua-sun-group-o-cap-treo-phu-quoc22</loc>
             <changefreq>daily</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/ban-nha-mat-tien-duong-tran-nam-phu-gan-ho-bun-xang</loc>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/ban-cat-lo-can-biet-thu-3-tang-gan-bien-cua-ceo-tai-phu-quoc53</loc>
             <changefreq>daily</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/cho-thue-nha-tret-2-lau-hem-11-nguyen-van-linh-an-khanh-ninh-kieu-can-tho</loc>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/cat-lo-52-ty-co-ngay-can-ho-hillside-1pn-view-bien-cua-sun-group-o-cap-treo-phu-quoc54</loc>
             <changefreq>daily</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/giam-gia-cuc-soc-cat-lo-1-1-ty-ban-nha-moi-xay-1-tret-2-lau-san-thuong</loc>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/so-huu-ngay-nen-dat-120-m2-tai-duong-quang-trung-vinh-quang-rach-gia-kien-giang-gia-tot3</loc>
             <changefreq>daily</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/nha-dep-lo-4m-phuong-an-cu-ninh-kieu-can-tho</loc>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/can-ban-nhanh-manh-dat-180-m2-mat-tien-6m-huong-bac-tai-phu-quoc-kien-giang-gia-163-ty5</loc>
             <changefreq>daily</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/giam-160tr-ban-nha-1-tret-2-lau-hem-11-nguyen-van-linh-thong-ho-bun-xang-qninh-kieu-can-tho</loc>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/chinh-chu-ban-hang-hiem-biet-thu-khu-sonasea-villas-resort-55</loc>
             <changefreq>daily</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/ban-nha-kdc-cuu-long-1-tret-2-lau</loc>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/can-ban-lo-dat-187-m2-tai-duong-ben-tram-cua-duong-phu-quoc-kien-giang-gia-206-ty8</loc>
             <changefreq>daily</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/nen-biet-thu-duong-so-1-kdc-nam-long-1-hung-thanh-cai-rang-can-tho</loc>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/can-ban-gap-ban-nhanh-lo-dat-120-m2-tai-duong-quoc-lo-80-hon-dat-kien-giang-thoa-thuan11</loc>
             <changefreq>daily</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/cho-thue-nha-kho-dep-moi-200m2-kdc-hung-phu-cty8-can-tho</loc>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/so-huu-mieng-dat-150-m2-mat-tien-8m-tai-vinh-lac-rach-gia-kien-giang-gia-590-tr10</loc>
             <changefreq>daily</changefreq>
         <priority>0.8</priority>
             </url>
     <url>
-        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/can-sang-hoac-cho-thue-lai-quan-com-trua-van-phong-chieu-ban-lau-bo</loc>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/can-ban-gap-manh-dat-120-m2-tai-xa-ham-ninh-phu-quoc-kien-giang-gia-14-ty7</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/ban-nha-mat-tien-moi-xay-thiet-ke-hien-dai-sang-trong40</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/ban-dat-thanh-pho-rach-gia-kien-giang-gia-300-ty51</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/so-huu-dat-nen-3-m2-tai-phuong-duong-dong-phu-quoc-kien-giang-thoa-thuan13</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/ban-nha-dep-kdt-tay-bac-p-vinh-quang-rach-gia-kg42</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/dau-tu-shop-grand-world-phu-quoc-gia-chi-tu-79-ty41</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/can-ban-lo-dat-nen-2-m2-tai-duong-nguyen-van-cu-phu-quoc-kien-giang-gia-68-ty21</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/ban-nhanh-lo-dat-so-rieng-150-m2-mat-tien-6m-tai-phu-quoc-kien-giang-gia-1-ty18</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/can-ban-ngay-lo-dat-nen-120-m2-tai-xa-ham-ninh-phu-quoc-kien-giang-gia-13-ty17</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/45-ty-mua-duoc-biet-thu-3-tang-gan-bien-o-phu-quoc-1</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/ban-lo-dat-so-rieng-126-m2-mat-tien-6m-huong-dong-nam-tai-phu-quoc-kien-giang-gia-15-ty15</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/7-ty-so-huu-nha-pho-5-tang-sun-grand-city-new-an-thoi-da-co-so-hong-o-phu-quoc52</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/du-an-rivera-villas-vi-tri-vang-song-giua-long-thanh-pho-phu-quoc59</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/so-huu-nha-mat-pho-120-m2-tai-xa-duong-to-phu-quoc-kien-giang-gia-10-ty30</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/ban-dat-lien-ke-duong-32-noi-dai-tu-khu-lan-bien-rach-gia-kien-giang52</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/ban-dat-huyen-phu-quoc-kien-giang-gia-91035-trieu54</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/ban-dat-huyen-phu-quoc-kien-giang-gia-91035-trieu2</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/ban-nha-biet-thu-hai-mat-tien-trung-tam-tp-rach-gia23</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/ban-nha-duong-dong-phu-quoc-moi-100-so-hong-970tr43</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/vinhomes-the-5-way-phu-quoc-can-sutdio-1pn-2pn-tu-15-ty-full-noi-that26</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/vinhomes-the-5-way-phu-quoc-can-sutdio-1pn-2pn-tu-15-ty-full-noi-that5</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/10-so-huu-can-ho-bien-vingroup-phu-quoc-o-truoc-thanh-toan-sau0</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/10-so-huu-can-ho-bien-vingroup-phu-quoc-o-truoc-thanh-toan-sau24</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/can-ban-ngay-can-nha-mat-pho-3-tang-mat-tien-16m-tai-duong-nguyen-trung-truc-thoa-thuan31</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/ban-biet-thu-san-vuon-nghi-duong-ngay-trung-tam-bai-truong-tp-phu-quoc6</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/toi-can-ban-nha-goc-2-mat-tien-xa-ham-ninh-phu-quoc-ngay-ben-ham-ninh-gia-125-ty44</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/chuyen-nhuong-khach-san-suoi-may-garden-resort-phu-quoc45</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/thanh-toan-10-nhan-ngay-can-ho-bien-cua-vingroup-o-tpphu-quoc57</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/thanh-toan-10-nhan-ngay-can-ho-bien-cua-vingroup-o-tpphu-quoc23</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/the-5-way-phu-quoc-chiet-khau-15-tang-full-goi-noi-that-cao-cap-212-trieu-gia-14-ty8</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/the-5-way-phu-quoc-chiet-khau-15-tang-full-goi-noi-that-cao-cap-212-trieu-gia-14-ty27</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/so-huu-can-ho-bien-de-o-va-kinh-doanh-chua-bao-gio-de-den-nhu-hien-tai10</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/so-huu-can-ho-bien-de-o-va-kinh-doanh-chua-bao-gio-de-den-nhu-hien-tai28</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/ban-can-ho-huyen-phu-quoc-kien-giang-gia-150-ty13</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/thong-tin-can-ho-bien-the-5way-phu-quoc-gia-15-ty-ban-giao-full-noi-that-cao-15</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/ban-can-ho-huyen-phu-quoc-kien-giang-gia-150-ty31</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/lan-dau-xuat-hien-can-ho-bien-tai-phu-quoc-15-ty-the-5way-phu-quoc-lien-he-096299116829</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/lan-dau-xuat-hien-can-ho-bien-tai-phu-quoc-15-ty-the-5way-phu-quoc-lien-he-096299116812</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/thong-tin-can-ho-bien-the-5way-phu-quoc-gia-15-ty-ban-giao-full-noi-that-cao-32</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/mua-biet-thu-song-rivera-villas-phu-quoc-tang-xe-mercedes-benz-goi-ha-090824528318</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/ban-can-ho-huyen-phu-quoc-kien-giang-gia-150-ty33</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/ban-nha-mat-pho-huyen-phu-quoc-kien-giang-gia-185-ty25</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/ban-can-ho-huyen-phu-quoc-kien-giang-gia-150-ty20</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/can-ho-bien-cao-cap-the-5way-toa-lac-ngay-trung-tam-united-center-phu-quoc-gia-3-ty2pn-70m2-35</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/ban-can-ho-huyen-phu-quoc-kien-giang-gia-150-ty37</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/ban-can-ho-bien-ban-giao-full-noi-that-gia-15-ty-ho-tro-tra-cham-1thang-trong-5-nam41</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/can-ho-bien-sieu-cao-cap-so-huu-lau-dai-meypearl-harmony-gia-18-tycan-39</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/tap-doan-vingroup-cho-ra-mat-tuyet-tac-ngoi-nha-tren-bien-khai-mo-moi-giac-quan-gia-15-tycan44</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/can-ban-gap-dat-duong-tran-nhat-duat-an-hoa-rach-gia-kg-120m2-600tr-shr-gan-quang-truong-56</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/can-ban-can-hotel-tai-thanh-pho-rach-gia-tinh-kien-giang27</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/ngop-lo-goc-125m2-so-rieng-gan-bien-tai-phu-quoc-gia-chi-hon-1-ty59</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/501m2-so-rieng-gan-bien-va-san-bay-phu-quoc-gia-chi-35-ty57</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/ban-cat-lo-can-ho-bien-phu-quoc-gia-15-ty-full-noi-that-lh-093677759546</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/ban-dat-thi-tran-duong-dong-phu-quoc-dt-85m2-gia-187-ty-hoac-22trm2-173-nen1</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/cdt-vingroup-chinh-thuc-nhan-booking-chon-uu-tien-can-ho-bien-5way-phu-quoc48</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/chi-voi-150tr-so-huu-ngay-can-ho-bien-cua-vinhomes-lh-093677759549</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/can-ban-rat-gap-nha-nghi-duong-lac-hong-tp-rach-gia-29</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/so-huu-ngay-nha-mat-pho-dep-4-tang-mat-tien-9m-tai-duong-nguyen-trung-truc-rach-gia-gia-23-ty32</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/ban-nha-pho-2-tang-90-m2-mat-tien-4m-huong-tay-nam-tai-rach-gia-gia-335-ty34</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/can-ban-gap-nha-mat-tien-130-m2-mat-tien-5m-huong-tay-nam-tai-rach-gia-gia-198-ty33</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/ban-nha-mat-pho-126-m2-tai-duong-cay-thong-trong-cua-duong-phu-quoc-kien-giang-gia-21-ty36</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/can-ban-ngay-can-nha-mat-pho-3-tang-150-m2-tai-pho-ton-duc-thang-rach-gia-gia-435-ty37</loc>
+            <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/chi-tiet-bai-viet/so-huu-ngay-nha-mat-tien-5-tang-115-m2-tai-xa-duong-to-phu-quoc-kien-giang-gia-149-ty38</loc>
             <changefreq>daily</changefreq>
         <priority>0.8</priority>
             </url>

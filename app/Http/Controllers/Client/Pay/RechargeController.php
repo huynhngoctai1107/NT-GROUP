@@ -32,7 +32,8 @@ class RechargeController extends Controller{
             $vnp_TxnRef    = uniqid(); //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
             $vnp_OrderInfo = $vnp_TxnRef; // thanh toán đơn hàng, trạng thái
             $vnp_OrderType = "online";
-            $vnp_Amount    = $request['price'] * 100; // lấy ở form về * 100 => ra tiền đúng, in vào DB thì /100
+            $price = str_replace(['.', ','], '', $request['price']);
+            $vnp_Amount    = $price * 100; // lấy ở form về * 100 => ra tiền đúng, in vào DB thì /100
             $vnp_Locale    = "VN";
             $vnp_BankCode  = $request['bank_code'];
             $vnp_IpAddr    = $_SERVER['REMOTE_ADDR'];

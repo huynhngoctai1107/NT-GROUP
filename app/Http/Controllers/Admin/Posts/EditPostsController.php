@@ -59,6 +59,7 @@ class EditPostsController extends Controller{
     }
 
     function editPosts(EditPostRequest $request, $slug){
+        $price = str_replace(['.', ','], '', $request->price);
         $value         = [
             'title' => $request->title,
             'slug' => Str::slug(!empty($request->input('slug')) ? $request->input('slug') : $request->input('title')),
@@ -67,11 +68,10 @@ class EditPostsController extends Controller{
             'id_user' => $request->id_user,
             'id_price' => $request->id_price,
             'id_acreage' => $request->id_acreage,
-            'price' => $request->price,
+            'price' => $price,
             'acreages' => $request->acreage,
             'subtitles' => $request->subtitles,
             'content' => $request->input('content'),
-            'featured_news' => $request->input('featured_news') ?? 0,
             'link_youtube' => $request->input('link_youtube'),
             'address' => $request->input('address1') . ' ' . $request->address,
             'longitude' => $request->input('longitude'),

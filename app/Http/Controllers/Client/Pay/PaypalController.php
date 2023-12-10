@@ -22,12 +22,13 @@ class PaypalController extends Controller{
     function paypalPayment(Request $request){
 
         $request->session()->forget('paypal');
+        $price = str_replace(['.', ','], '', $request->price);
         $values = [
             'id_user'                 => Auth::user()->id,
             'id_category_transaction' => 1,
             'id_method'               => $request->payments,
-            'price'                   => $request->price,
-            'surplus'                 => Auth::user()->wallet + $request->price,
+            'price'                   => $price,
+            'surplus'                 => Auth::user()->wallet + $price,
             'status'                  => 1,
             'created_at'              => date('Y-m-d'),
             'content'                 => "Giao dịch thành công",
@@ -35,7 +36,7 @@ class PaypalController extends Controller{
 
         session()->push('paypal', $values);
 
-        $usd = (round($request->price / 24580, 2));
+        $usd = (round($price / 24580, 2));
 
         $this->paypal->setApiCredentials(config('paypal'));
         $paypalToken = $this->paypal->getAccessToken();

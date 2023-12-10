@@ -120,14 +120,14 @@
                                     </p>
                                     @enderror
                                     <div class="login_footer form-group mb-3">
-                                        <div class="chek-form">
-                                            <div class="custome-checkbox">
-                                                <input class="form-check-input" type="checkbox" name="checkbok" id="exampleCheckbox2" value="checkbok">
-                                                <label class="form-check-label" for="exampleCheckbox2"><span>Tôi đồng ý với các điều khoản trên</span>
-                                                    <a href="{{route('terms')}}">- Xem điều khoản</a></label>
-                                            </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="checkbok" id="exampleCheckbox2" value="checkbok">
+                                            <label class="form-check-label" for="exampleCheckbox2">
+                                                Tôi đồng ý với các điều khoản trên - <a href="{{ route('terms') }}">Xem điều khoản</a>
+                                            </label>
                                         </div>
                                     </div>
+
                                     @error('checkbok')
                                     <p class="text-danger">
                                         {{ $message }}
