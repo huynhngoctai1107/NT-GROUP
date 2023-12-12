@@ -33,9 +33,9 @@ class Customer_reports extends Model{
 
 
     public function ListPostReport($condition){
-        return $this->select('customer_reports.id as id_report','user_id','post_id','Customer_reports.content','Customer_reports.delete as delete_report','Customer_reports.status as status_report','Customer_reports.created_at as created_at_report','Customer_reports.updated_at as updated_at_report','fullname','email')->
-                    join('users', 'users.id', '=', 'Customer_reports.user_id')
-                    ->join('posts','posts.id','=','Customer_reports.post_id')
+        return $this->select('customer_reports.id as id_report','user_id','post_id','customer_reports.content','customer_reports.delete as delete_report','customer_reports.status as status_report','customer_reports.created_at as created_at_report','customer_reports.updated_at as updated_at_report','fullname','email')->
+                    join('users', 'users.id', '=', 'customer_reports.user_id')
+                    ->join('posts','posts.id','=','customer_reports.post_id')
                     ->where($condition)
                      ->groupby('customer_reports.id')
                     ->paginate(5);
@@ -45,8 +45,6 @@ class Customer_reports extends Model{
 
     public function AddReport($values){
         return $this->insert($values);
-
-
     }
 
     public function getTitleAttribute(){
@@ -54,7 +52,6 @@ class Customer_reports extends Model{
         if ($post){
             return $post->title;
         }
-
         return NULL;
     }
 

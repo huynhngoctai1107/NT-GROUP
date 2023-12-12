@@ -62,7 +62,6 @@
                                 <th>Ngày tạo</th>
                                 <th>Cập nhật</th>
                                 <th>Trạng thái</th>
-                                <th>Chi tiết</th>
                                 <th>Nghiệp vụ</th>
                             </tr>
                             </thead>
@@ -72,7 +71,7 @@
                             @foreach($query as $item)
 
                                 <tr>
-                                    <td style="width: 25%">{{$item->title}}</td>
+                                    <td style="width: 25%"><a style="color: black;" href="{{route('postSingle', $item->slug)}}">{{$item->title}}</a></td>
                                     <td style="width: 25%">{{$item->slug}}</td>
                                     <td>{{ date('d-m-Y', strtotime($item->created_at)) }}</td>
                                     <td>{{ date('d-m-Y', strtotime($item->updated_at)) }}</td>
@@ -80,9 +79,6 @@
                                         <a href="{{route('UpdateStatus', $item->id)}}" class="btn btn-sm btn-{{$item->status ? 'success':'danger'}}">
                                             {{$item->status ? 'Hiện':'Ẩn'}}
                                         </a>
-                                    </td>
-                                    <td>
-                                        <a href="{{route('postSingle', $item->slug)}}" class="btn btn-outline-success btn-sm">Xem</a>
                                     </td>
                                     <td>
                                         <a href="{{route('editPosts', $item->slug)}}" class="btn btn-outline-success btn-sm">Sửa</a>

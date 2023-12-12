@@ -209,7 +209,7 @@
                         @foreach($media as $row)
                             <div class="d-flex">
                                 <img src="{{ asset('images/medias/' . $row->image) }}" alt="Image"/>
-                                <a href="{{route('deleteMedia',$row->id)}}">Xóa</a>
+                                <a href="{{route('deleteMediaAdmin',$row->id)}}">Xóa</a>
                             </div>
                         @endforeach
                     </div>

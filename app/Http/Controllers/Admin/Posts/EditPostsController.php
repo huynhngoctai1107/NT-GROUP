@@ -160,7 +160,9 @@ class EditPostsController extends Controller{
 
 
     function deleteMedia($id){
-        $condition = [['id', '=', $id],];
+        $condition = [
+            ['id', '=', $id],
+        ];
         $data      = $this->media->deleteMedia($condition);
 
         return redirect()->back()->with('success', 'Đã xóa ảnh thành công');

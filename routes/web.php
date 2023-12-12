@@ -233,7 +233,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['AdminLogin']], function (){
         Route::post('/them', [AddPostsController::class, 'addPosts'])->name('addPosts');
         Route::get('/{id}', [ListPostsController::class, 'UpdateStatus'])->name('UpdateStatus');
         Route::get('/hinh-anh/{id}', [EditPostsController::class, 'deleteMedia'])
-             ->name('deleteMedia');
+             ->name('deleteMediaAdmin');
         Route::get('/lich-su-xoa-bai-viet/{slug}', [DeletePostsController::class, 'deleteHistory'])
              ->name('deleteHistory');
         Route::get('/khoi-phuc-bai-viet/{slug}', [DeletePostsController::class, 'restorePost'])
